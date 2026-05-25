@@ -2,7 +2,7 @@
 :root{--bg:#050505;--base:#0B0B0B;--red:#D71920;--red2:#D71920;--cream:#C7B9B9;--muted:#666;--soft:#B8B8B8;--glass:rgba(255,255,255,.06);--border:rgba(255,255,255,.12)}
 *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:white;font-family:Inter,Arial,sans-serif} 
 h1,h2,h3,.geist{font-family:Geist,Inter,sans-serif}
-a{text-decoration:none} .glass{background:var(--glass);border:1px solid var(--border);-webkit-backdrop-filter:blur;backdrop-filter:blur(22px)}
+a{text-decoration:none}
 .heroVideo{animation:slowZoom 18s ease-out forwards}@keyframes slowZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
 .prose h2{font-size:2rem;font-weight:800;margin-top:3rem}.prose h3{font-size:1.35rem;font-weight:800;margin-top:2rem}.prose p{color:#C7B9B9;line-height:1.85;margin-top:1rem}.prose ul{color:#C7B9B9;line-height:1.8;margin:1rem 0 0 1.25rem;list-style:disc}
 
@@ -117,6 +117,8 @@ a{text-decoration:none} .glass{background:var(--glass);border:1px solid var(--bo
 }
 
 .glass {
-  -webkit--webkit-backdrop-filter: blur;backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur;backdrop-filter: blur(24px);
+  background: var(--glass);
+  border: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(22px);
+  backdrop-filter: blur(22px);
 }

@@ -39,9 +39,6 @@ export const metadata: Metadata = {
   creator: "StillAwake Media",
   publisher: "StillAwake Media",
   category: "Digital Agency",
-  alternates: {
-    canonical: "/",
-  },
   icons: {
     icon: [
       { url: "/stillawake-media-favicon.png", type: "image/png" },

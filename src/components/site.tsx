@@ -30,21 +30,36 @@ export function Header() {
       lastScrollY.current = currentY;
     };
 
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+
+    document.body.style.overflow = open ? "hidden" : "";
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("keydown", onKeyDown);
+    };
   }, [open]);
 
   return (
-    <header className={`fixed left-0 right-0 top-0 z-50 px-4 transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] ${showHeader ? "translate-y-0" : "-translate-y-full"}`}>
-      <div
+    <>
+      <button
+        type="button"
+        aria-label="Close mobile menu"
         onClick={() => setOpen(false)}
-        className={`fixed inset-0 top-0 -z-10 bg-white/[0.035] backdrop-blur-md transition-all duration-700 ease-[cubic-bezier(.16,1,.3,1)] lg:hidden ${
-          open ? "opacity-100" : "pointer-events-none opacity-0"
+        className={`fixed inset-0 z-40 bg-white/[0.06] backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(.16,1,.3,1)] lg:hidden ${
+          open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
       />
-      <nav className={`relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] px-5 py-3 border border-white/10 backdrop-blur-2xl shadow-2xl transition-all duration-700 ease-[cubic-bezier(.16,1,.3,1)] before:absolute before:inset-0 before:-z-10 before:bg-black before:transition-opacity before:duration-700 before:ease-[cubic-bezier(.16,1,.3,1)] ${
+
+      <header className={`fixed left-0 right-0 top-0 z-50 px-4 transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] ${showHeader ? "translate-y-0" : "-translate-y-full"}`}>
+      <nav className={`relative z-50 mx-auto max-w-7xl overflow-hidden rounded-[2rem] px-5 py-3 border border-white/10 backdrop-blur-2xl shadow-2xl transition-all duration-700 ease-[cubic-bezier(.16,1,.3,1)] before:absolute before:inset-0 before:-z-10 before:bg-black/25 before:transition-opacity before:duration-700 before:ease-[cubic-bezier(.16,1,.3,1)] ${
   open
-    ? "bg-white/[0.03] before:opacity-80"
+    ? "bg-black/35 before:opacity-100"
     : "bg-white/[0.06] before:opacity-0"
 }`}>
         <div className="flex items-center justify-between">
@@ -107,6 +122,7 @@ export function Header() {
         )}
       </nav>
     </header>
+    </>
   );
 }
 

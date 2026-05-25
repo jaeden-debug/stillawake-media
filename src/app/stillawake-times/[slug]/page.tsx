@@ -55,10 +55,10 @@ export default async function ArticlePage({ params }: Props) {
           </header>
 
           <div className="mt-16 grid gap-10 lg:grid-cols-[280px_1fr]">
-            <aside className="hidden lg:block">
-              <div className="sticky top-28 rounded-[2rem] border border-white/10 bg-white/[.04] p-5 backdrop-blur-xl">
+            <aside className="block lg:block">
+              <div className="rounded-[2rem] border border-white/10 bg-white/[.04] p-5 backdrop-blur-xl lg:sticky lg:top-28">
                 <p className="mb-4 text-xs uppercase tracking-[.3em] text-[#D71920]">Article Map</p>
-                <nav className="grid gap-3">
+                <nav className="grid max-h-[340px] gap-3 overflow-y-auto pr-1">
                   {post.toc.slice(0, 14).map((item) => (
                     <a
                       key={item.id}

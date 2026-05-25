@@ -33,11 +33,11 @@ export default function Blog() {
 
               <div className="relative min-h-[320px] overflow-hidden">
                 <Image
-                  src={featured.image || "/best-website-design-for-small-businesses-2026-featured-image.png"}
+                  src={featured.image && !featured.image.startsWith("/images/blog/") ? featured.image : "/best-website-design-for-small-businesses-2026-featured-image.png"}
                   alt={featured.title}
                   fill
                   priority
-                  className="object-cover transition duration-700 group-hover:scale-[1.02]"
+                  sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition duration-700 group-hover:scale-[1.02]"
                 />
               </div>
 

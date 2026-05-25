@@ -4,7 +4,7 @@ date: "2026-05-24"
 excerpt: "Premium websites don't just look expensive — they feel expensive. The difference is intentional: specific typography choices, spatial decisions, motion behavior, and visual systems that signal quality before a visitor reads a single word. Here's what separates luxury web design from everything else."
 category: "Web Design"
 featured: true
-image: "/images/blog/luxury-brand-website-premium.jpg"
+image: "/best-website-design-for-small-businesses-2026-featured-image.png"
 readTime: "27 min read"
 author: "StillAwake Media"
 ---

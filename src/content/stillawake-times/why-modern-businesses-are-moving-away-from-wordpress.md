@@ -4,7 +4,7 @@ date: "2026-05-24"
 excerpt: "WordPress built the internet we have. It also accumulated enough technical debt, security vulnerabilities, and performance problems that businesses with high standards are increasingly choosing something else. Here's why — and what they're moving to."
 category: "Web Design"
 featured: true
-image: "/images/blog/moving-away-from-wordpress.jpg"
+image: "/best-website-design-for-small-businesses-2026-featured-image.png"
 readTime: "26 min read"
 author: "StillAwake Media"
 ---

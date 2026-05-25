@@ -4,7 +4,7 @@ date: "2026-05-24"
 excerpt: "Your Google Business Profile is the single most important free marketing asset a local business has. This complete guide covers every optimization lever — from categories and service descriptions to photos, posts, reviews, and the technical signals most businesses miss entirely."
 category: "Local SEO"
 featured: true
-image: "/images/blog/google-business-profile-optimization.jpg"
+image: "/best-website-design-for-small-businesses-2026-featured-image.png"
 readTime: "25 min read"
 author: "StillAwake Media"
 ---

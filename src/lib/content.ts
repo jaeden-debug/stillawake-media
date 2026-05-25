@@ -44,20 +44,24 @@ function getPostFiles() {
   return fs.readdirSync(contentDir).filter((file) => file.endsWith(".md"));
 }
 
+function cleanHeadingText(value: string) {
+  return value.replace(/\s*\{#[^}]+\}\s*$/g, "").trim();
+}
+
 function extractToc(markdown: string): TocItem[] {
   return markdown
     .split("\n")
     .filter((line) => /^#{2,3}\s+/.test(line))
     .map((line) => {
       const level = line.startsWith("###") ? 3 : 2;
-      const text = line.replace(/^#{2,3}\s+/, "").trim();
+      const text = cleanHeadingText(line.replace(/^#{2,3}\s+/, "").trim());
       return { id: slugify(text), text, level };
     });
 }
 
 function addHeadingIds(markdown: string) {
   return markdown.replace(/^(#{2,3})\s+(.+)$/gm, (_match, hashes, text) => {
-    const clean = String(text).trim();
+    const clean = cleanHeadingText(String(text).trim());
     return `${hashes} <span id="${slugify(clean)}"></span>${clean}`;
   });
 }

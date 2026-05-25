@@ -4,7 +4,7 @@ date: "2026-05-24"
 excerpt: "Businesses redesigning their websites in 2026 face a fundamental architecture decision: stick with WordPress or move to a modern platform like Framer. This guide breaks down every dimension — speed, SEO, design, CMS usability, maintenance, and cost — so you can make the right call."
 category: "Web Design"
 featured: true
-image: "/images/blog/framer-vs-wordpress.jpg"
+image: "/best-website-design-for-small-businesses-2026-featured-image.png"
 readTime: "27 min read"
 author: "StillAwake Media"
 ---

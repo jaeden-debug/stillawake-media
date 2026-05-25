@@ -4,7 +4,7 @@ date: "2026-05-24"
 excerpt: "Technical SEO is the foundation underneath all other SEO work. Without it, great content and strong backlinks underperform their potential. This guide explains every component of technical SEO — from crawlability and indexing to schema, Core Web Vitals, and JavaScript rendering — in plain language."
 category: "Local SEO"
 featured: true
-image: "/images/blog/what-is-technical-seo.jpg"
+image: "/best-website-design-for-small-businesses-2026-featured-image.png"
 readTime: "26 min read"
 author: "StillAwake Media"
 ---

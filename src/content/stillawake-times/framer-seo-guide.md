@@ -4,7 +4,7 @@ date: "2026-05-24"
 excerpt: "Framer is one of the best design platforms available, but businesses considering it often have one question before committing: can a Framer website actually rank on Google? The answer is yes — and in many ways, Framer has structural SEO advantages over traditional platforms. Here's the complete picture."
 category: "Web Design"
 featured: true
-image: "/images/blog/framer-seo-guide.jpg"
+image: "/best-website-design-for-small-businesses-2026-featured-image.png"
 readTime: "24 min read"
 author: "StillAwake Media"
 ---

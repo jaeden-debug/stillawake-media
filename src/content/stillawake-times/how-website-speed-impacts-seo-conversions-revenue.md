@@ -4,7 +4,7 @@ date: "2026-05-24"
 excerpt: "A slow website isn't just an inconvenience — it's a direct tax on your search rankings, your conversion rate, and your revenue. This guide breaks down every dimension of website performance: Core Web Vitals, mobile speed, conversion psychology, and exactly how to fix what's slowing you down."
 category: "Web Design"
 featured: true
-image: "/images/blog/website-speed-seo-conversions.jpg"
+image: "/best-website-design-for-small-businesses-2026-featured-image.png"
 readTime: "26 min read"
 author: "StillAwake Media"
 ---

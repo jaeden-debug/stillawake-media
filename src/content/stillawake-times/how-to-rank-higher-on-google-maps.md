@@ -4,7 +4,7 @@ date: "2026-05-24"
 excerpt: "Google Maps is the most powerful free lead generation tool most local businesses are barely using. This guide breaks down every ranking factor — from GBP optimization to local citations, reviews, and behavioral signals — so you can dominate the map pack in your market."
 category: "Local SEO"
 featured: true
-image: "/images/blog/rank-higher-google-maps.jpg"
+image: "/best-website-design-for-small-businesses-2026-featured-image.png"
 readTime: "27 min read"
 author: "StillAwake Media"
 ---

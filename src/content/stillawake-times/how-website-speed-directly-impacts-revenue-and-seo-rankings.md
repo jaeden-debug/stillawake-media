@@ -296,7 +296,7 @@ A performance audit starts with measurement, and measurement requires the right 
 
 When auditing, test from multiple locations, on multiple connection speeds, and on both mobile and desktop. A website that scores 95 on desktop might score 40 on mobile — and the mobile score is the one that matters.
 
-For businesses unsure where to start, our [web design](/web-design) team conducts detailed performance audits as part of every project — identifying specific bottlenecks and prioritizing fixes by impact.
+For businesses unsure where to start, our [web design](/web-design-montreal) team conducts detailed performance audits as part of every project — identifying specific bottlenecks and prioritizing fixes by impact.
 
 ---
 
@@ -341,7 +341,7 @@ Beyond rankings and conversion rates, slow websites have broader UX implications
 
 The UX implications of slow websites are why performance optimization is not purely a technical concern — it's a brand concern. Every interaction with your website is an interaction with your brand. Speed is one of the most immediate ways your brand communicates its values.
 
-For businesses investing in [web design](/web-design) and [software development](/software-development), performance is a foundational requirement — not an afterthought.
+For businesses investing in [web design](/web-design-montreal) and [software development](/software-development), performance is a foundational requirement — not an afterthought.
 
 ---
 

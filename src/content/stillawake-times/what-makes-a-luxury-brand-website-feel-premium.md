@@ -259,7 +259,7 @@ A genuinely premium website is fast. Sub-2-second LCP on mobile. Low CLS. Fast T
 
 This requires platform choices that support it. WordPress with a premium theme and page builder cannot deliver premium loading performance. Framer, Next.js, and custom builds that output lean code served from edge CDNs deliver the 30–50ms TTFB and instant page transitions that premium experiences require.
 
-> **Internal Link:** [StillAwake Media's web design work](/web-design) is built on platforms that deliver performance as standard — not as an optimization project.
+> **Internal Link:** [StillAwake Media's web design work](/web-design-montreal) is built on platforms that deliver performance as standard — not as an optimization project.
 
 ### Loading Micro-Experiences
 
@@ -388,7 +388,7 @@ A Next.js site designed by a skilled frontend team has no design ceiling. Every 
 
 Template-based website builders — even with premium themes — produce template-looking sites. The underlying structure shows through the customization. For brands where premium positioning is the entire business strategy, template tools are the wrong starting point.
 
-> **Internal Link:** [StillAwake Media's web design team](/web-design) builds on Framer and Next.js — platforms that deliver premium outcomes rather than constraining them.
+> **Internal Link:** [StillAwake Media's web design team](/web-design-montreal) builds on Framer and Next.js — platforms that deliver premium outcomes rather than constraining them.
 
 ---
 
@@ -449,4 +449,4 @@ The brands that invest in this level of design deliberateness are not buying aes
 
 ---
 
-*StillAwake Media builds premium brand experiences on [Framer and Next.js](/web-design), grounded in [brand identities](/branding) that support genuine visual differentiation. [Start a conversation](/contact) about your project.*
+*StillAwake Media builds premium brand experiences on [Framer and Next.js](/web-design-montreal), grounded in [brand identities](/branding) that support genuine visual differentiation. [Start a conversation](/contact) about your project.*

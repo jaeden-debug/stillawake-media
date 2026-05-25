@@ -605,7 +605,7 @@ Visit [/contact](/contact) to start your project and discuss your SEO strategy.
 
 ## Related Services
 
-- [Web Design](/web-design)
+- [Web Design](/web-design-montreal)
 - [Local SEO](/local-seo)
 - [Software Development](/software-development)
 - [Branding](/branding)

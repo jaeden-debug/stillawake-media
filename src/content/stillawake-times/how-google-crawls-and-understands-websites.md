@@ -228,7 +228,7 @@ The SEO implications of orphan pages are significant. Even if an orphan page is 
 
 Identifying orphan pages requires crawling your own website — tools like Screaming Frog or Sitebulb can crawl your site and flag pages that receive no internal links. Once identified, the fix is either to add relevant internal links to valuable orphan pages, or to noindex and eventually remove pages that have no value.
 
-For websites we build and manage at [StillAwake Media](/web-design), internal link architecture is designed from the beginning — every page has a clear place in the hierarchy, receives appropriate internal links, and contributes to the topical cluster it belongs to.
+For websites we build and manage at [StillAwake Media](/web-design-montreal), internal link architecture is designed from the beginning — every page has a clear place in the hierarchy, receives appropriate internal links, and contributes to the topical cluster it belongs to.
 
 ---
 

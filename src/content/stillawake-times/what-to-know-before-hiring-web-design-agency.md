@@ -267,7 +267,7 @@ Beyond the baseline, better agencies:
 - Integrate local SEO signals into the site architecture (location in titles, LocalBusiness schema, service area pages)
 - Run a post-launch technical SEO audit
 
-> **Internal Link:** [StillAwake Media's web design process](/web-design) treats SEO as a core design constraint — not an afterthought. Every site we build is architecturally optimized for search from the URL structure up.
+> **Internal Link:** [StillAwake Media's web design process](/web-design-montreal) treats SEO as a core design constraint — not an afterthought. Every site we build is architecturally optimized for search from the URL structure up.
 
 ---
 
@@ -438,4 +438,4 @@ Those agencies exist. Finding them requires asking the right questions before yo
 
 ---
 
-*StillAwake Media is a [web design agency](/web-design) and software studio that builds conversion-optimized websites with real SEO integration. [Our branding services](/branding) ensure every site we build is anchored to a strong visual identity. [Contact us](/contact) to discuss your project.*
+*StillAwake Media is a [web design agency](/web-design-montreal) and software studio that builds conversion-optimized websites with real SEO integration. [Our branding services](/branding) ensure every site we build is anchored to a strong visual identity. [Contact us](/contact) to discuss your project.*

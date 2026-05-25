@@ -246,7 +246,7 @@ Proper mobile optimization isn't about adding `@media` queries to make a desktop
 
 **Testing across real devices:** Responsive design testing in browser dev tools captures most issues but misses device-specific behaviors — scroll behavior on iOS vs. Android, keyboard interaction differences, notch and safe area considerations on modern phones, and performance on real hardware. Testing on a range of actual devices — including an older Android device on LTE — catches real-world problems that simulation misses.
 
-For businesses working with our [web design](/web-design) team, mobile-first design is a default, not an option. We build from the smallest viewport up, ensuring that the mobile experience is as carefully considered as the desktop — because that's where most of your visitors are, and that's what Google is evaluating. [Contact us](/contact) to build a mobile experience that actually converts.
+For businesses working with our [web design](/web-design-montreal) team, mobile-first design is a default, not an option. We build from the smallest viewport up, ensuring that the mobile experience is as carefully considered as the desktop — because that's where most of your visitors are, and that's what Google is evaluating. [Contact us](/contact) to build a mobile experience that actually converts.
 
 ---
 

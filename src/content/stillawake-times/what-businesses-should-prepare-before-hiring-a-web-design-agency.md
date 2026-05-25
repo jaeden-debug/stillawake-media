@@ -121,7 +121,7 @@ SEO architecture is far easier to build correctly from the start than to retrofi
 
 **Local SEO requirements.** If you serve local markets, identify the location and service area pages you need. These need to be planned into the site architecture, not added as afterthoughts.
 
-For businesses ready to prioritize organic visibility from launch, working with an agency that provides both [web design](/web-design) and SEO services — or that builds websites with SEO architecture as a foundational consideration — produces dramatically better early-stage organic results.
+For businesses ready to prioritize organic visibility from launch, working with an agency that provides both [web design](/web-design-montreal) and SEO services — or that builds websites with SEO architecture as a foundational consideration — produces dramatically better early-stage organic results.
 
 ---
 

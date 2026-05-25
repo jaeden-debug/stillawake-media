@@ -500,4 +500,4 @@ The technical foundation — canonical tags, sitemap, schema, performance — ne
 
 ---
 
-*StillAwake Media builds [Shopify stores](/shopify-development) and [custom e-commerce systems](/web-design) for brands ready to reduce their paid traffic dependency and build lasting organic visibility.*
+*StillAwake Media builds [Shopify stores](/shopify-development) and [custom e-commerce systems](/web-design-montreal) for brands ready to reduce their paid traffic dependency and build lasting organic visibility.*

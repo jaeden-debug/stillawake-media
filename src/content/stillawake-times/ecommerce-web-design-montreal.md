@@ -558,7 +558,7 @@ Visit [/contact](/contact) to start your ecommerce project.
 ## Related Services
 
 - [Shopify Development](/shopify-development)
-- [Web Design](/web-design)
+- [Web Design](/web-design-montreal)
 - [Branding](/branding)
 - [Software Development](/software-development)
 - [Local SEO](/local-seo)

@@ -211,7 +211,7 @@ Add to the site-wide `<head>` via Framer's site settings → Custom Code:
   "@type": "LocalBusiness",
   "name": "StillAwake Media",
   "url": "https://stillawakemedia.com",
-  "logo": "https://stillawakemedia.com/logo.png",
+  "logo": "https://stillawakemedia.com/stillawake-media-favicon.png",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Montreal",

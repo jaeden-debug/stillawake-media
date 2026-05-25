@@ -367,4 +367,4 @@ The cost of not investing in local SEO isn't zero. It's the revenue that goes to
 
 ---
 
-*StillAwake Media builds local SEO systems for businesses that want to dominate their markets. We combine [web design](/web-design), [local SEO](/local-seo), and [branding](/branding) into integrated growth strategies that compound over time.*
+*StillAwake Media builds local SEO systems for businesses that want to dominate their markets. We combine [web design](/web-design-montreal), [local SEO](/local-seo), and [branding](/branding) into integrated growth strategies that compound over time.*

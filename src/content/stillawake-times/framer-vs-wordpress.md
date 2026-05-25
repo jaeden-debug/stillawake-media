@@ -461,4 +461,4 @@ WordPress isn't going away, and it's the right tool for specific scenarios. But 
 
 ---
 
-*StillAwake Media builds [Framer websites](/framer-development) and [custom web experiences](/web-design) for modern businesses that take their brand seriously. Performance, design, and conversion are baked in from the start.*
+*StillAwake Media builds [Framer websites](/framer-development) and [custom web experiences](/web-design-montreal) for modern businesses that take their brand seriously. Performance, design, and conversion are baked in from the start.*

@@ -430,7 +430,7 @@ Framer's architecture addresses many technical SEO requirements automatically:
 
 Framer doesn't solve every technical SEO requirement — complex schema, custom canonical logic for dynamic content, and advanced crawl management still require developer attention. But for a marketing site or service business site, Framer's defaults cover the most important technical SEO bases without custom development.
 
-> **Internal Link:** Our [web design services](/web-design) include full technical SEO implementation — LocalBusiness schema, sitemap submission, canonical configuration, and Core Web Vitals optimization built into every project.
+> **Internal Link:** Our [web design services](/web-design-montreal) include full technical SEO implementation — LocalBusiness schema, sitemap submission, canonical configuration, and Core Web Vitals optimization built into every project.
 
 ---
 
@@ -525,4 +525,4 @@ Businesses that invest in technical SEO foundations find that their content rank
 
 ---
 
-*StillAwake Media combines [local SEO](/local-seo), [technical web development](/software-development), and [web design](/web-design) to build websites that perform at every layer — not just visually, but technically.*
+*StillAwake Media combines [local SEO](/local-seo), [technical web development](/software-development), and [web design](/web-design-montreal) to build websites that perform at every layer — not just visually, but technically.*

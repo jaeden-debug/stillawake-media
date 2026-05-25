@@ -409,7 +409,7 @@ A redesign is the natural moment to upgrade conversion architecture — not just
 
 A redesign that improves visual quality, performance, and SEO preservation but doesn't improve conversion architecture is leaving a significant share of the redesign's potential value on the table.
 
-> **Internal Link:** [StillAwake Media's web design services](/web-design) treat every redesign as a conversion architecture upgrade — we don't just rebuild what you had, we rebuild what should have been there.
+> **Internal Link:** [StillAwake Media's web design services](/web-design-montreal) treat every redesign as a conversion architecture upgrade — we don't just rebuild what you had, we rebuild what should have been there.
 
 ---
 
@@ -426,7 +426,7 @@ If you're working with an agency for your redesign, these are the SEO questions 
 
 An agency that can answer all of these clearly — with a documented process — is a safer partner than one that treats SEO as a peripheral concern.
 
-> **Internal Link:** [StillAwake Media's web design approach](/web-design) includes full SEO audit, URL migration planning, redirect implementation, and post-launch monitoring as part of every redesign engagement.
+> **Internal Link:** [StillAwake Media's web design approach](/web-design-montreal) includes full SEO audit, URL migration planning, redirect implementation, and post-launch monitoring as part of every redesign engagement.
 
 ---
 
@@ -489,4 +489,4 @@ Done right, a redesign protects what you've built and builds something better. D
 
 ---
 
-*StillAwake Media handles [website redesigns](/web-design) with full SEO preservation — from pre-launch audit through post-launch monitoring. We also specialize in [local SEO](/local-seo) and [branding](/branding) for businesses ready to build something worth keeping.*
+*StillAwake Media handles [website redesigns](/web-design-montreal) with full SEO preservation — from pre-launch audit through post-launch monitoring. We also specialize in [local SEO](/local-seo) and [branding](/branding) for businesses ready to build something worth keeping.*

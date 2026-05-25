@@ -31,7 +31,7 @@ This isn't manipulation. The best high-converting websites don't trick visitors 
 
 Most business websites fail at conversion not because the business is bad, but because the website was built without understanding the psychological mechanisms that drive visitor behavior. Design decisions were made aesthetically — what looks good — rather than behaviorally — what drives action.
 
-This guide walks through each psychological mechanism that drives conversion, explains the research behind it, and shows how it translates into concrete design decisions. It's the foundation for every [web design](/web-design) project we build at StillAwake Media.
+This guide walks through each psychological mechanism that drives conversion, explains the research behind it, and shows how it translates into concrete design decisions. It's the foundation for every [web design](/web-design-montreal) project we build at StillAwake Media.
 
 ---
 

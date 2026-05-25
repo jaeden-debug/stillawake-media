@@ -197,7 +197,7 @@ A cinematic web experience borrows principles from filmmaking: deliberate pacing
 
 **Composed compositions:** Every visual element in each section is placed with intention. The relationship between foreground and background, between text and image, between empty and filled space — these relationships create compositions that feel considered rather than assembled.
 
-Achieving cinematic quality requires design skill, motion design capability, and development sophistication. It's not a template feature — it's the result of art direction applied to a specific brand and executed with genuine craft. This is the type of work our [web design](/web-design) team produces and our [branding](/branding) practice supports.
+Achieving cinematic quality requires design skill, motion design capability, and development sophistication. It's not a template feature — it's the result of art direction applied to a specific brand and executed with genuine craft. This is the type of work our [web design](/web-design-montreal) team produces and our [branding](/branding) practice supports.
 
 ---
 
@@ -247,7 +247,7 @@ Emotional branding is the practice of designing experiences that create specific
 
 **Photography direction as emotional signal:** The emotional tone of photography — whether subjects appear confident, relaxed, focused, or warm — transmits directly to the visitor's emotional experience. Photography art direction for a premium brand should explicitly target the emotional qualities the brand wants to embody.
 
-Premium [branding](/branding) work and premium [web design](/web-design) are inseparable precisely because both are fundamentally emotional communication disciplines. The visual identity and the website experience work together to create a consistent emotional impression that builds over time into genuine brand equity.
+Premium [branding](/branding) work and premium [web design](/web-design-montreal) are inseparable precisely because both are fundamentally emotional communication disciplines. The visual identity and the website experience work together to create a consistent emotional impression that builds over time into genuine brand equity.
 
 ---
 

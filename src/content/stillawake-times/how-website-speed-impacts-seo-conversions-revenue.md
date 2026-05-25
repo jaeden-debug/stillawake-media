@@ -438,4 +438,4 @@ The good news: page speed is fixable. Modern platforms like Framer and Next.js m
 
 ---
 
-*StillAwake Media builds [fast, conversion-optimized websites](/web-design) on modern platforms — [Framer](/framer-development), [Next.js](/software-development), and custom builds — where performance is never an afterthought.*
+*StillAwake Media builds [fast, conversion-optimized websites](/web-design-montreal) on modern platforms — [Framer](/framer-development), [Next.js](/software-development), and custom builds — where performance is never an afterthought.*

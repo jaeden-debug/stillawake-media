@@ -185,7 +185,7 @@ A contextual link appears in the flow of content: a sentence or paragraph that n
 
 Navigation and footer links lack topical context. Google sees a link with anchor text "Web Design" in the footer — but without surrounding text, it can only read the anchor text itself as a topical signal.
 
-A contextual link has surrounding text that creates a richer topical signal. "For businesses considering a performance-first approach to [web design](/web-design), the technical architecture decisions made during the build phase directly affect long-term SEO outcomes." The full sentence creates a context that reinforces the topical relationship between the linking page (about SEO) and the linked page (about web design).
+A contextual link has surrounding text that creates a richer topical signal. "For businesses considering a performance-first approach to [web design](/web-design-montreal), the technical architecture decisions made during the build phase directly affect long-term SEO outcomes." The full sentence creates a context that reinforces the topical relationship between the linking page (about SEO) and the linked page (about web design).
 
 **Contextual link placement:** The placement of a contextual link within the page content matters. Links in the first paragraph of a page carry slightly more weight than links deep in the body content, because their position signals relative importance within the document.
 

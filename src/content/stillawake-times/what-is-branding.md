@@ -275,7 +275,7 @@ Many local service categories feel commoditized — clients perceive most plumbe
 
 A local electrician with a premium brand identity, strong Google reviews, a professional website, and consistent visual communications across trucks, uniforms, and invoices occupies a different perceived position than competitors with generic identities. That perceived position supports higher pricing and better client quality.
 
-> **Internal Link:** [StillAwake Media's web design services](/web-design) combine brand identity with conversion-focused digital presence — the complete system that turns visual quality into measurable business outcomes.
+> **Internal Link:** [StillAwake Media's web design services](/web-design-montreal) combine brand identity with conversion-focused digital presence — the complete system that turns visual quality into measurable business outcomes.
 
 ---
 
@@ -350,4 +350,4 @@ The businesses with strong brands don't necessarily do better work than their co
 
 ---
 
-*StillAwake Media builds [brand identity systems](/branding) for businesses that are ready to move beyond a logo. We combine strategic positioning, visual identity, and [web design](/web-design) into cohesive brand presences that build trust and command premium pricing. [Contact us](/contact) to start the conversation.*
+*StillAwake Media builds [brand identity systems](/branding) for businesses that are ready to move beyond a logo. We combine strategic positioning, visual identity, and [web design](/web-design-montreal) into cohesive brand presences that build trust and command premium pricing. [Contact us](/contact) to start the conversation.*

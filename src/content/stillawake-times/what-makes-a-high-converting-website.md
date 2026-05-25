@@ -219,7 +219,7 @@ High-performing websites in 2026 are typically built with:
 - **Cloudflare** — DNS, CDN, and security layer that dramatically improves TTFB and protects against attacks.
 - **Next/Image or native `<picture>`** — Automatic image optimization, lazy loading, and modern formats (WebP, AVIF).
 
-> **Internal Link Opportunity:** [StillAwake Media's web design services](/web-design) are built on modern stacks — Framer, Next.js, and edge-optimized infrastructure — to ensure every site we deliver is fast by default, not as an afterthought.
+> **Internal Link Opportunity:** [StillAwake Media's web design services](/web-design-montreal) are built on modern stacks — Framer, Next.js, and edge-optimized infrastructure — to ensure every site we deliver is fast by default, not as an afterthought.
 
 ---
 
@@ -669,7 +669,7 @@ Web design and SEO are inseparable. An agency that builds beautiful websites wit
 
 Your website is not a one-time project. It needs updates, optimizations, new pages, content additions, and performance monitoring. The best agency relationships are ongoing — not handoffs.
 
-> **Internal Link Opportunity:** See how [StillAwake Media approaches web design](/web-design) as a conversion and growth system, not just a design deliverable.
+> **Internal Link Opportunity:** See how [StillAwake Media approaches web design](/web-design-montreal) as a conversion and growth system, not just a design deliverable.
 
 ---
 

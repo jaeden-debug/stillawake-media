@@ -307,7 +307,7 @@ In 2026, it's no longer the best tool for businesses that need performance, secu
 
 Moving off WordPress is not a decision to make lightly or prematurely. But for businesses that have hit the platform's performance ceiling, are spending significant time on maintenance, or need a visual quality that templates can't deliver — the migration is worth having a serious conversation about.
 
-> **Considering moving off WordPress?** [Talk to StillAwake Media](/web-design) — we evaluate your current site's performance, content depth, and SEO situation to build a migration plan that improves rankings rather than risking them.
+> **Considering moving off WordPress?** [Talk to StillAwake Media](/web-design-montreal) — we evaluate your current site's performance, content depth, and SEO situation to build a migration plan that improves rankings rather than risking them.
 
 ---
 

@@ -248,7 +248,7 @@ Your website doesn't just help people convert after they find you in the map pac
 
 **Website authority:** Generally speaking, a more authoritative website — one with more quality backlinks, better content, and stronger technical SEO — contributes to higher GBP rankings. This is one of the reasons businesses with strong websites consistently outperform competitors in the map pack despite similar GBP profiles.
 
-> **Internal Link:** Our [web design services](/web-design) include full local SEO integration — every site we build is architected to support strong map pack rankings, not just look good.
+> **Internal Link:** Our [web design services](/web-design-montreal) include full local SEO integration — every site we build is architected to support strong map pack rankings, not just look good.
 
 ---
 

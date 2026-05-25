@@ -99,7 +99,7 @@ A one-second page load is ideal. Two seconds is acceptable. Three seconds starts
 
 For most small businesses, organic search — people Googling for services near them — is the single highest-quality lead source available. A well-optimized website compounds over time, building visibility that paid advertising can't replicate and that works even when you're not running campaigns.
 
-> **Internal Link:** [StillAwake Media's web design services](/web-design) integrate local SEO from day one — site architecture, page structure, and schema markup are all part of the build, not afterthoughts.
+> **Internal Link:** [StillAwake Media's web design services](/web-design-montreal) integrate local SEO from day one — site architecture, page structure, and schema markup are all part of the build, not afterthoughts.
 
 ---
 
@@ -613,4 +613,4 @@ The businesses winning locally in 2026 are the ones who treated their website as
 
 ---
 
-*StillAwake Media builds conversion-optimized websites for ambitious small businesses. Our work combines [modern web design](/web-design), [local SEO](/local-seo), [branding](/branding), and performance engineering to create websites that rank, convert, and grow with your business.*
+*StillAwake Media builds conversion-optimized websites for ambitious small businesses. Our work combines [modern web design](/web-design-montreal), [local SEO](/local-seo), [branding](/branding), and performance engineering to create websites that rank, convert, and grow with your business.*

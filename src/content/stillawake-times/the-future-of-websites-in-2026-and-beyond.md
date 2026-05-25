@@ -117,7 +117,7 @@ The shift is most visible in portfolio websites, agency websites, and product si
 
 **Reduced motion accessibility:** As motion systems become more sophisticated, the accessibility responsibility grows. Users with vestibular disorders can experience discomfort or nausea from excessive animation. The `prefers-reduced-motion` media query allows designers to create simplified motion experiences for users who've requested reduced motion in their system preferences. Premium motion systems implement this as a default behavior, not an afterthought.
 
-For businesses building [web design](/web-design) at the premium end of the market, motion design capability is increasingly a table-stakes differentiator — the presence of sophisticated motion systems separates premium studios from commodity web production.
+For businesses building [web design](/web-design-montreal) at the premium end of the market, motion design capability is increasingly a table-stakes differentiator — the presence of sophisticated motion systems separates premium studios from commodity web production.
 
 ---
 
@@ -225,7 +225,7 @@ Understanding how your potential clients find businesses like yours is essential
 
 The trajectory is clear: businesses that build genuine expertise, publish substantive content, maintain technically excellent websites, and develop recognizable brands are better positioned in the evolving search landscape than those relying on thin content or technical SEO tricks.
 
-For businesses building toward sustained digital visibility, combining [web design](/web-design), [software development](/software-development), and [AI automation](/ai-automation) capabilities creates a compounding advantage that becomes more valuable as the digital environment evolves.
+For businesses building toward sustained digital visibility, combining [web design](/web-design-montreal), [software development](/software-development), and [AI automation](/ai-automation) capabilities creates a compounding advantage that becomes more valuable as the digital environment evolves.
 
 ---
 

@@ -11,31 +11,6 @@ author: "StillAwake Media"
 
 # What Businesses Should Prepare Before Hiring a Web Design Agency
 
-**SEO Title:** What Businesses Should Prepare Before Hiring a Web Design Agency (2026 Checklist)  
-**Meta Description:** Coming into a web design project unprepared costs time, money, and results. This guide covers everything your business should have ready — from brand assets to SEO strategy, content, and conversion goals.  
-**Primary Keyword:** website design company  
-**Secondary Keywords:** professional website development, website redesign services, branding preparation, website planning checklist, custom website design  
-**URL Slug:** /what-to-prepare-before-hiring-web-design-agency  
-**Search Intent:** Commercial — businesses actively planning a website project and preparing to hire a development partner
-
----
-
-## Table of Contents
-
-1. [Why Preparation Determines Project Outcomes](#why-preparation-matters)
-2. [Clarifying Your Business Goals First](#business-goals)
-3. [Branding Assets and Visual Identity](#branding-assets)
-4. [Copywriting and Messaging Strategy](#copywriting)
-5. [SEO Planning Before the Build](#seo-planning)
-6. [Photography and Visual Content](#photography)
-7. [Content Hierarchy and Site Architecture](#content-hierarchy)
-8. [Lead Generation Goals and Conversion Architecture](#lead-goals)
-9. [Third-Party Integrations and Technology Stack](#integrations)
-10. [CRM and Lead Management Planning](#crm-planning)
-11. [Analytics and Tracking Setup](#analytics)
-12. [Sitemap Planning](#sitemap-planning)
-13. [Conversion Goals and User Flow Planning](#conversion-goals)
-14. [FAQ](#faq)
 
 ---
 

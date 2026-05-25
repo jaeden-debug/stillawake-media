@@ -11,31 +11,6 @@ author: "StillAwake Media"
 
 # Why Most Agency Websites Feel Cheap (And How Premium Brands Avoid It)
 
-**SEO Title:** Why Most Agency Websites Feel Cheap (And How Premium Brands Avoid It)  
-**Meta Description:** Cheap website signals — bad spacing, template layouts, weak typography, stock visuals — erode trust instantly. Learn what separates premium web design from amateur work and how to build something that commands authority.  
-**Primary Keyword:** modern web design  
-**Secondary Keywords:** premium website design, luxury website design, branding agency, high end web design, professional website design  
-**URL Slug:** /why-most-agency-websites-feel-cheap  
-**Search Intent:** Commercial + Informational — businesses comparing design quality and evaluating agencies
-
----
-
-## Table of Contents
-
-1. [The First Two Seconds Tell You Everything](#first-two-seconds)
-2. [The Cheap Design Signals](#cheap-design-signals)
-3. [Poor Spacing: The Most Common Mistake](#poor-spacing)
-4. [Typography That Undermines Trust](#bad-typography)
-5. [Template Repetition and Generic Layouts](#template-repetition)
-6. [Stock Visuals and the Authenticity Problem](#stock-visuals)
-7. [Weak Messaging and Generic Copy](#weak-messaging)
-8. [How Cheap Design Affects Trust Perception](#trust-perception)
-9. [What Cinematic UX Actually Means](#cinematic-ux)
-10. [Premium Motion Systems](#premium-motion-systems)
-11. [Interaction Design as Brand Expression](#interaction-design)
-12. [Emotional Branding Through Design](#emotional-branding)
-13. [Modern Luxury Website Examples and What They Teach](#modern-luxury-examples)
-14. [FAQ](#faq)
 
 ---
 

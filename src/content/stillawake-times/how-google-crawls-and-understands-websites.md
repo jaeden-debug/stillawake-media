@@ -11,12 +11,6 @@ author: "StillAwake Media"
 
 # How Google Actually Crawls and Understands Websites
 
-**SEO Title:** How Google Actually Crawls and Understands Websites (Technical SEO Guide 2026)  
-**Meta Description:** Google crawls, renders, and evaluates every page of your site. Learn how Googlebot works — crawl budget, indexing, canonicalization, schema, topical authority — and how to structure your website to rank.  
-**Primary Keyword:** technical SEO  
-**Secondary Keywords:** website crawlability, SEO website structure, Google indexing, website hierarchy, internal linking strategy, crawl optimization  
-**URL Slug:** /how-google-crawls-and-understands-websites  
-**Search Intent:** Informational + Commercial — businesses and marketers wanting to understand technical SEO to improve rankings
 
 ---
 

@@ -83,7 +83,6 @@ That's it. Google is trying to determine what this page is about and whether it 
 - Weak: "Running Shoes"
 - Better: "Men's Running Shoes — High-Performance Road & Trail"
 
-**Meta description:** Write for the human click, not just the algorithm. Describe what makes your selection unique.
 
 **Collection description (above or below the grid):**
 Add substantive text content to collection pages. Options:

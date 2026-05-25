@@ -3,7 +3,7 @@ import { getAllPosts } from "@/lib/content";
 import { siteUrl } from "@/lib/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ["", "about", "portfolio", "stillawake-times", "contact", "web-design", "software-development", "branding", "local-seo", "ai-automation", "framer-development", "shopify-development", "work"].map((page) => ({
+  const pages = ["", "about", "portfolio", "services", "stillawake-times", "contact", "web-design", "software-development", "branding", "local-seo", "ai-automation", "framer-development", "shopify-development", "work", "web-design-montreal", "fr/agence-web-montreal", "seo-montreal"].map((page) => ({
     url: page ? `${siteUrl}/${page}` : `${siteUrl}/`,
     lastModified: new Date(),
   }));

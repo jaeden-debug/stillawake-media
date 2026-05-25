@@ -4,8 +4,33 @@ export const nav = [
   ["Home", "/"],
   ["About", "/about"],
   ["Portfolio", "/portfolio"],
+  ["Services", "/services"],
+  ["Montreal", "/web-design-montreal"],
   ["StillAwake Times", "/stillawake-times"],
   ["Contact", "/contact"],
+];
+
+export const serviceNav = [
+  ["Web Design", "/web-design"],
+  ["Software Development", "/software-development"],
+  ["Branding", "/branding"],
+  ["Local SEO", "/local-seo"],
+  ["AI Automation", "/ai-automation"],
+  ["Framer Development", "/framer-development"],
+  ["Shopify Development", "/shopify-development"],
+  ["Technical SEO", "/stillawake-times/technical-seo"],
+  ["Website Performance", "/stillawake-times/website-performance"],
+];
+
+export const montrealNav = [
+  ["Web Design Montreal", "/web-design-montreal"],
+  ["Agence Web Montréal", "/fr/agence-web-montreal"],
+  ["SEO Montreal", "/seo-montreal"],
+  ["Web Development Montreal", "/stillawake-times/web-development-montreal"],
+  ["Montreal Web Designer", "/stillawake-times/montreal-web-designer"],
+  ["Web Design Agency Montreal", "/stillawake-times/web-design-agency-montreal"],
+  ["Website Redesign Montreal", "/stillawake-times/website-redesign-montreal"],
+  ["Ecommerce Web Design Montreal", "/stillawake-times/ecommerce-web-design-montreal"],
 ];
 
 export const services = [

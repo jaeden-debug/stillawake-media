@@ -29,7 +29,7 @@ export default function Page() {
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
-            <Link href="/contact" className="rounded-full bg-[#B51C1D] px-6 py-4 font-bold">
+            <Link href="/contact" className="rounded-full bg-[#D71920] px-6 py-4 font-bold">
               Start a Project →
             </Link>
 
@@ -43,7 +43,7 @@ export default function Page() {
       <section className="px-6 py-12">
         <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-3">
           {points.map((point) => (
-            <div key={point} className="glass rounded-[2rem] p-7">
+            <div key={point} className="glass rounded-4xl p-7">
               <p className="text-xs uppercase tracking-[.25em] text-[#D71920]">
                 StillAwake System
               </p>

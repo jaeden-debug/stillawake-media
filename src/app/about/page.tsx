@@ -51,8 +51,8 @@ export default function About() {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Button href="/contact">Start a Project</Button>
-              <Link href="/portfolio" className="glass inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-[13px] font-medium text-[#C7B9B9] transition hover:bg-white/[0.08] hover:text-white">
-                View Work <span className="grid size-7 place-items-center rounded-full bg-white/[0.08] text-white">→</span>
+              <Link href="/portfolio" className="glass inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-[13px] font-medium text-[#C7B9B9] transition hover:bg-white/8 hover:text-white">
+                View Work <span className="grid size-7 place-items-center rounded-full bg-white/8 text-white">→</span>
               </Link>
             </div>
           </div>
@@ -66,9 +66,9 @@ export default function About() {
                 ["03", "Brand systems people remember"],
                 ["04", "AI workflows that save time"],
               ].map(([num, text]) => (
-                <div key={text} className="rounded-[1.5rem] border border-white/10 bg-black/35 p-5 transition hover:-translate-y-1 hover:border-[#D71920]/50">
+                <div key={text} className="rounded-3xl border border-white/10 bg-black/35 p-5 transition hover:-translate-y-1 hover:border-[#D71920]/50">
                   <p className="text-xs tracking-[.25em] text-[#D71920]">{num}</p>
-                  <p className="geist mt-2 text-2xl font-black tracking-[-.05em]">{text}</p>
+                  <p className="geist mt-2 text-2xl font-black tracking-tighter">{text}</p>
                 </div>
               ))}
             </div>
@@ -85,7 +85,7 @@ export default function About() {
 
           <div className="mt-12 grid gap-4 md:grid-cols-3">
             {capabilities.map(([title, desc]) => (
-              <article key={title} className="glass group rounded-[2rem] p-6 transition duration-500 hover:-translate-y-1 hover:border-[#D71920]/50 hover:bg-white/[.08]">
+              <article key={title} className="glass group rounded-4xl p-6 transition duration-500 hover:-translate-y-1 hover:border-[#D71920]/50 hover:bg-white/8">
                 <div className="mb-8 h-1 w-16 rounded-full bg-[#D71920] transition group-hover:w-28" />
                 <h3 className="geist text-3xl font-black tracking-[-0.06em]">{title}</h3>
                 <p className="mt-4 text-sm leading-7 text-[#C7B9B9]">{desc}</p>
@@ -99,9 +99,9 @@ export default function About() {
         <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-[.9fr_1.1fr] md:items-center">
           <div className="relative overflow-hidden rounded-[3rem] border border-white/10 bg-black p-6 shadow-2xl md:p-8">
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(215,25,32,.35),transparent_32%),radial-gradient(circle_at_70%_60%,rgba(255,255,255,.12),transparent_30%)]" />
-            <div className="relative rounded-[2rem] border border-white/10 bg-white/[.06] p-5 backdrop-blur-2xl md:p-6">
+            <div className="relative rounded-4xl border border-white/10 bg-white/6 p-5 backdrop-blur-2xl md:p-6">
               <p className="text-xs uppercase tracking-[.35em] text-[#D71920]">System View</p>
-              <p className="geist mt-4 text-3xl font-black leading-[1] tracking-[-.07em] md:text-5xl">
+              <p className="geist mt-4 text-3xl font-black leading-none tracking-[-.07em] md:text-5xl">
                 Brand → Website → SEO → Leads → Automation
               </p>
             </div>
@@ -138,7 +138,7 @@ export default function About() {
 
           <div className="mt-10 grid gap-3 md:grid-cols-3">
             {fit.map((item) => (
-              <div key={item} className="rounded-full border border-white/10 bg-white/[.04] px-5 py-4 text-sm text-[#C7B9B9] transition hover:border-[#D71920]/50 hover:text-white">
+              <div key={item} className="rounded-full border border-white/10 bg-white/4 px-5 py-4 text-sm text-[#C7B9B9] transition hover:border-[#D71920]/50 hover:text-white">
                 {item}
               </div>
             ))}
@@ -158,7 +158,7 @@ export default function About() {
 
             <div className="grid gap-4">
               {process.map(([num, title, desc]) => (
-                <div key={title} className="glass grid gap-5 rounded-[2rem] p-6 transition hover:-translate-x-1 hover:border-[#D71920]/50 md:grid-cols-[90px_1fr]">
+                <div key={title} className="glass grid gap-5 rounded-4xl p-6 transition hover:-translate-x-1 hover:border-[#D71920]/50 md:grid-cols-[90px_1fr]">
                   <p className="text-sm tracking-[.3em] text-[#D71920]">{num}</p>
                   <div>
                     <h3 className="geist text-3xl font-black tracking-[-.06em]">{title}</h3>
@@ -172,7 +172,7 @@ export default function About() {
       </section>
 
       <section className="px-6 py-24">
-        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[3rem] bg-[#B51C1D] p-8 md:p-14">
+        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[3rem] bg-[#D71920] p-8 md:p-14">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,.22),transparent_30%)]" />
           <div className="relative grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
             <div>

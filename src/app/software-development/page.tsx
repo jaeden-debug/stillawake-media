@@ -89,7 +89,7 @@ export default function SoftwareDevelopmentPage() {
 
             <Link
               href="/contact"
-              className="rounded-full bg-[#B51C1D] px-7 py-4 text-sm font-bold text-white transition hover:scale-[1.02]"
+              className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-bold text-white transition hover:scale-[1.02]"
             >
               Start a Project →
             </Link>
@@ -264,7 +264,7 @@ export default function SoftwareDevelopmentPage() {
 
               <Link
                 href="/contact"
-                className="rounded-full bg-[#B51C1D] px-7 py-4 text-sm font-bold text-white"
+                className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-bold text-white"
               >
                 Start a Project →
               </Link>

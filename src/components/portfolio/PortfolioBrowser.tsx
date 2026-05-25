@@ -453,7 +453,7 @@ export default function PortfolioBrowser() {
           </div>
         </section>
 
-        <section className="mt-12 rounded-[3rem] bg-[#B51C1D] p-8 md:p-14">
+        <section className="mt-12 rounded-[3rem] bg-[#D71920] p-8 md:p-14">
           <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
             <div>
               <p className="mb-4 text-sm uppercase tracking-[.35em] text-white/70">Build with StillAwake</p>

@@ -35,7 +35,7 @@ export default function LiveWorkShowcase() {
             href="/portfolio"
             className="glass inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-black/70 px-5 py-3 text-sm font-medium text-[#C7B9B9] transition hover:text-white"
           >
-            View full portfolio <span className="grid size-7 place-items-center rounded-full bg-[#B51C1D] text-white">→</span>
+            View full portfolio <span className="grid size-7 place-items-center rounded-full bg-[#D71920] text-white">→</span>
           </Link>
         </div>
 

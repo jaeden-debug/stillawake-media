@@ -77,7 +77,7 @@ export default async function ArticlePage({ params }: Props) {
             <div>
               <div className="articleProse" dangerouslySetInnerHTML={{ __html: post.html }} />
 
-              <section className="mt-16 rounded-[3rem] bg-[#B51C1D] p-8 md:p-12">
+              <section className="mt-16 rounded-[3rem] bg-[#D71920] p-8 md:p-12">
                 <p className="mb-4 text-sm uppercase tracking-[.35em] text-white/70">Next Step</p>
                 <h2 className="geist max-w-3xl text-4xl font-black leading-[.95] tracking-[-0.06em] md:text-6xl">
                   Want this kind of strategy applied to your business?

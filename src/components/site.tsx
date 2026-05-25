@@ -38,7 +38,7 @@ export function Header() {
     <header className={`fixed left-0 right-0 top-0 z-50 px-4 transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] ${showHeader ? "translate-y-0" : "-translate-y-full"}`}>
       <div
         onClick={() => setOpen(false)}
-        className={`fixed inset-0 top-0 -z-10 bg-white/[0.035] backdrop-blur-md transition-all duration-700 ease-[cubic-bezier(.16,1,.3,1)] md:hidden ${
+        className={`fixed inset-0 top-0 -z-10 bg-white/[0.035] backdrop-blur-md transition-all duration-700 ease-[cubic-bezier(.16,1,.3,1)] lg:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       />
@@ -52,7 +52,7 @@ export function Header() {
             <Logo />
           </div>
 
-          <div className="hidden gap-7 text-sm text-[#C7B9B9] md:flex">
+          <div className="hidden gap-7 text-sm text-[#C7B9B9] lg:flex">
             {nav.map(([n, h]) => (
               <Link className="hover:text-white" key={h} href={h}>
                 {n}
@@ -64,7 +64,7 @@ export function Header() {
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className="rounded-full border border-[#B51C1D]/50 bg-[#B51C1D]/20 px-4 py-2 text-sm"
+              className="rounded-full border border-[#D71920]/50 bg-[#D71920]/20 px-4 py-2 text-sm"
             >
               Free Audit
             </Link>
@@ -73,7 +73,7 @@ export function Header() {
               onClick={() => setOpen(!open)}
               aria-label="Open menu"
               aria-expanded={open}
-              className="glass flex h-10 w-10 items-center justify-center rounded-full md:hidden"
+              className="glass flex h-10 w-10 items-center justify-center rounded-full lg:hidden"
             >
               <span className="relative block h-5 w-5">
                 <span
@@ -92,7 +92,7 @@ export function Header() {
         </div>
 
         {open && (
-          <div className="mt-4 grid gap-2 md:hidden">
+          <div className="mt-4 grid gap-2 lg:hidden">
             {nav.map(([n, h]) => (
               <Link
                 key={h}
@@ -115,7 +115,7 @@ export function Footer() {
 }
 
 export function Button({ href, children }: { href: string; children: React.ReactNode }) {
-  return <Link href={href} className="glass inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-[13px] font-medium tracking-[-0.02em] transition hover:bg-white/[0.08]">{children}<span className="grid size-7 place-items-center rounded-full bg-[#B51C1D] text-[12px]">→</span></Link>;
+  return <Link href={href} className="glass inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-[13px] font-medium tracking-[-0.02em] transition hover:bg-white/[0.08]">{children}<span className="grid size-7 place-items-center rounded-full bg-[#D71920] text-[12px]">→</span></Link>;
 }
 
 export function Section({ eyebrow, title, children }: { eyebrow: string; title: string; children: React.ReactNode }) {
@@ -144,4 +144,136 @@ export function PortfolioGrid() {
 
 export function BlogCards() {
   return <div className="grid gap-5 md:grid-cols-3">{posts.map(p => <Link key={p.slug} href={`/stillawake-times/${p.slug}`} className="glass rounded-[2rem] p-6"><p className="text-xs uppercase tracking-[.25em] text-[#D71920]">{p.category}</p><h3 className="geist mt-4 text-2xl font-black tracking-[-0.06em]">{p.title}</h3><p className="mt-3 text-sm leading-6 text-[#C7B9B9]">{p.excerpt}</p></Link>)}</div>;
+}
+
+
+export function AuditCta() {
+  return (
+    <section className="px-6 py-20">
+      <div className="mx-auto max-w-7xl rounded-[3rem] border border-[#D71920]/30 bg-[#D71920]/20 p-10 md:p-16">
+        <h2 className="geist max-w-5xl text-4xl font-black leading-[.92] tracking-[-0.07em] md:text-7xl">
+          Start building before your competitors wake up.
+        </h2>
+
+        <p className="mt-8 max-w-3xl text-lg leading-8 text-[#E7DFDF]">
+          Get a clear look at what your website, SEO, brand, or digital system
+          needs next.
+        </p>
+
+        <Link
+          href="/contact"
+          className="mt-10 inline-flex rounded-full bg-white px-7 py-4 text-sm font-bold text-black"
+        >
+          Get a Free Audit →
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+export function MagazineInjection() {
+  return (
+    <section className="px-6 py-20">
+      <div className="mx-auto max-w-7xl">
+        <p className="mb-4 text-sm uppercase tracking-[.35em] text-[#D71920]">
+          StillAwake Times
+        </p>
+
+        <h2 className="geist max-w-4xl text-4xl font-black tracking-[-0.06em] md:text-6xl">
+          Editorial strategy, web systems, SEO, AI, and premium digital infrastructure.
+        </h2>
+
+        <Link
+          href="/stillawake-times/why-custom-coded-websites-outperform-templates"
+          className="glass mt-12 block rounded-[2.5rem] p-8 transition hover:border-[#D71920]/60 md:p-12"
+        >
+          <p className="text-xs uppercase tracking-[.25em] text-[#D71920]">
+            Web Development
+          </p>
+
+          <h3 className="geist mt-4 max-w-4xl text-4xl font-black tracking-[-0.06em]">
+            Why Custom-Coded Websites Outperform Templates
+          </h3>
+
+          <p className="mt-5 max-w-3xl text-base leading-8 text-[#C7B9B9]">
+            Templates can launch fast, but custom-coded websites win when
+            performance, SEO, brand control, and scalability matter.
+          </p>
+
+          <p className="mt-8 text-sm text-white">
+            Read the magazine →
+          </p>
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+export function RelatedReadingInjection() {
+  const relatedReading = [
+    {
+      category: "Web Design",
+      title: "Montreal Web Designer for Premium Modern Websites",
+      excerpt:
+        "Work with a Montreal web designer focused on premium UX, modern branding, SEO structure, conversion systems, and high-performance digital experiences.",
+      href: "/stillawake-times/montreal-web-designer",
+    },
+    {
+      category: "Web Design",
+      title: "The Future of Websites in 2026 and Beyond",
+      excerpt:
+        "Websites are changing faster than most businesses realize. AI-native interfaces, immersive motion systems, adaptive personalization, and evolving search behavior are reshaping what a website is and what it needs to do.",
+      href: "/stillawake-times/the-future-of-websites-in-2026-and-beyond",
+    },
+    {
+      category: "Web Design",
+      title: "Web Design Agency Montreal for Modern Businesses",
+      excerpt:
+        "A Montreal web design agency building premium websites, SEO systems, conversion architecture, branding, and scalable digital infrastructure.",
+      href: "/stillawake-times/web-design-agency-montreal",
+    },
+    {
+      category: "Web Design",
+      title: "Web Design Montreal: Premium Websites Built for Growth",
+      excerpt:
+        "Premium web design in Montreal focused on SEO, performance, conversion optimization, and modern digital infrastructure for serious businesses.",
+      href: "/stillawake-times/web-design-montreal",
+    },
+  ];
+
+  return (
+    <section className="px-6 py-20">
+      <div className="mx-auto max-w-7xl">
+        <p className="mb-4 text-sm uppercase tracking-[.35em] text-[#D71920]">
+          Related Reading
+        </p>
+
+        <h2 className="geist max-w-4xl text-4xl font-black tracking-[-0.06em] md:text-6xl">
+          Keep building the system.
+        </h2>
+
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
+          {relatedReading.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="glass rounded-[2rem] p-7 transition hover:border-[#D71920]/60"
+            >
+              <p className="text-xs uppercase tracking-[.25em] text-[#D71920]">
+                {item.category}
+              </p>
+
+              <h3 className="geist mt-4 text-3xl font-black tracking-[-0.06em]">
+                {item.title}
+              </h3>
+
+              <p className="mt-5 text-sm leading-7 text-[#C7B9B9]">
+                {item.excerpt}
+              </p>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

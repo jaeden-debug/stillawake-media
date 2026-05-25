@@ -1,26 +1,117 @@
 @import "tailwindcss";
+:root{--bg:#050505;--base:#0B0B0B;--red:#B51C1D;--red2:#D71920;--cream:#C7B9B9;--muted:#666;--soft:#B8B8B8;--glass:rgba(255,255,255,.06);--border:rgba(255,255,255,.12)}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:white;font-family:Inter,Arial,sans-serif} 
+h1,h2,h3,.geist{font-family:Geist,Inter,sans-serif}
+a{text-decoration:none} .glass{background:var(--glass);border:1px solid var(--border);backdrop-filter:blur(22px)}
+.heroVideo{animation:slowZoom 18s ease-out forwards}@keyframes slowZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+.prose h2{font-size:2rem;font-weight:800;margin-top:3rem}.prose h3{font-size:1.35rem;font-weight:800;margin-top:2rem}.prose p{color:#C7B9B9;line-height:1.85;margin-top:1rem}.prose ul{color:#C7B9B9;line-height:1.8;margin:1rem 0 0 1.25rem;list-style:disc}
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@keyframes portfolioTabHint{
+  0%,100%{transform:translateX(0)}
+  50%{transform:translateX(-10px)}
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.learnMoreButton{
+  animation:learnMoreBounce 3.2s ease-in-out infinite;
+  transform-origin:center;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes learnMoreBounce{
+  0%,100%{
+    transform:scale(1) translateY(0);
+  }
+
+  8%{
+    transform:scale(1.04,.96) translateY(0);
+  }
+
+  14%{
+    transform:scale(.98,1.02) translateY(-2px);
+  }
+
+  20%{
+    transform:scale(1.02,.98) translateY(0);
+  }
+
+  26%{
+    transform:scale(1);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.articleProse{
+  max-width:850px;
+}
+
+.articleProse h1{
+  display:none;
+}
+
+.articleProse h2{
+  margin-top:4rem;
+  font-family:Geist,Inter,sans-serif;
+  font-size:clamp(2rem,4vw,3.4rem);
+  line-height:.95;
+  letter-spacing:-.06em;
+  font-weight:900;
+}
+
+.articleProse h3{
+  margin-top:2.5rem;
+  font-family:Geist,Inter,sans-serif;
+  font-size:clamp(1.45rem,2.4vw,2rem);
+  line-height:1.05;
+  letter-spacing:-.04em;
+  font-weight:900;
+}
+
+.articleProse p,
+.articleProse li{
+  color:#C7B9B9;
+  font-size:1.05rem;
+  line-height:1.9;
+}
+
+.articleProse p{
+  margin-top:1.35rem;
+}
+
+.articleProse ul,
+.articleProse ol{
+  margin-top:1.25rem;
+  padding-left:1.4rem;
+}
+
+.articleProse blockquote{
+  margin:2.5rem 0;
+  border-left:4px solid #D71920;
+  background:rgba(255,255,255,.045);
+  border-radius:1.5rem;
+  padding:1.5rem;
+}
+
+.articleProse a{
+  color:white;
+  text-decoration:underline;
+  text-decoration-color:#D71920;
+  text-underline-offset:4px;
+}
+
+.articleProse table{
+  margin-top:2rem;
+  width:100%;
+  border-collapse:collapse;
+  overflow:hidden;
+  border-radius:1rem;
+}
+
+.articleProse th,
+.articleProse td{
+  border:1px solid rgba(255,255,255,.12);
+  padding:1rem;
+  color:#C7B9B9;
+}
+
+.articleProse th{
+  color:white;
+  background:rgba(255,255,255,.06);
 }

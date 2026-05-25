@@ -55,16 +55,10 @@ export const metadata: Metadata = {
     locale: "en_CA",
     images: [
       {
-        url: "/stillawake-media-og-image.jpeg",
-        width: 1200,
-        height: 1200,
-        alt: "StillAwake Media — Ambition Never Sleeps",
-      },
-      {
         url: "/stillawake-media-social-preview.jpeg",
         width: 1200,
         height: 630,
-        alt: "StillAwake Media digital experiences that perform",
+        alt: "StillAwake Media — Web Design, SEO, AI and Software",
       },
     ],
   },

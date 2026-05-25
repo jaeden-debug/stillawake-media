@@ -113,6 +113,32 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     },
   };
 
+  const localBusiness = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "StillAwake Media",
+    url: siteUrl,
+    image: `${siteUrl}/stillawake-media-social-preview.jpeg`,
+    logo: `${siteUrl}/stillawake-media-favicon.png`,
+    slogan: "Ambition Never Sleeps.",
+    description,
+    areaServed: ["Montreal", "Quebec", "Canada"],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Montreal",
+      addressRegion: "QC",
+      addressCountry: "CA"
+    },
+    serviceType: [
+      "Web Design",
+      "SEO",
+      "AI Automation",
+      "Software Development",
+      "Shopify Development",
+      "Branding"
+    ]
+  };
+
   return (
     <html lang="en" className={`${geist.variable} ${inter.variable}`}>
       <body>
@@ -123,6 +149,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(web) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }}
         />
         <Header />
         {children}

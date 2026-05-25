@@ -11,7 +11,7 @@ export const nav = [
 ];
 
 export const serviceNav = [
-  ["Web Design", "/web-design"],
+  ["Web Design", "/web-design-montreal"],
   ["Software Development", "/software-development"],
   ["Branding", "/branding"],
   ["Local SEO", "/local-seo"],

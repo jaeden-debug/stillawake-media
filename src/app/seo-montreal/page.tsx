@@ -217,7 +217,7 @@ export default function SeoMontrealPage() {
 
           <p>
             At StillAwake Media, SEO strategy is deeply integrated into our{" "}
-            <Link href="/web-design">web design systems</Link>,{" "}
+            <Link href="/web-design-montreal">web design systems</Link>,{" "}
             <Link href="/software-development">software architecture</Link>, and{" "}
             <Link href="/branding">brand positioning</Link>.
           </p>

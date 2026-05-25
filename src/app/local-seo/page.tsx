@@ -270,7 +270,7 @@ export default function LocalSEOPage() {
               </Link>
 
               <Link
-                href="/web-design"
+                href="/web-design-montreal"
                 className="rounded-full border border-white/10 px-7 py-4 text-sm font-bold text-[#C7B9B9]"
               >
                 Explore Web Design →

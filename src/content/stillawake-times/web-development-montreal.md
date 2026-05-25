@@ -4,7 +4,7 @@ date: "2026-05-25"
 excerpt: "Custom web development in Montreal focused on performance, scalability, SEO infrastructure, APIs, Next.js, React, and modern digital systems."
 category: "Software Development"
 featured: false
-image: "/images/blog/web-development-montreal.jpg"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "44 min read"
 author: "StillAwake Media"
 ---

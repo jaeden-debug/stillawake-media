@@ -4,7 +4,7 @@ date: "2026-05-24"
 excerpt: "AI automation isn't a future concept — it's how modern businesses are eliminating repetitive work, accelerating decision-making, and scaling operations without scaling headcount. Here's where the real time savings come from, what the implementation actually looks like, and how to calculate whether it's worth it."
 category: "AI Automation"
 featured: true
-image: "/best-website-design-for-small-businesses-2026-featured-image.png"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "28 min read"
 author: "StillAwake Media"
 ---

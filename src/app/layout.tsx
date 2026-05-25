@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/site";
 import { Footer } from "@/components/footer";
 import { siteUrl } from "@/lib/data";
+import Script from "next/script";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -153,6 +154,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }}
+        />
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="U2gzncDcxNZl9k/ub6ypfA"
+          strategy="afterInteractive"
         />
         <Header />
         {children}

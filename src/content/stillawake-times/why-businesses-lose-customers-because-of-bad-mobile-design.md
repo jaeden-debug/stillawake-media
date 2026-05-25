@@ -4,7 +4,7 @@ date: "2026-05-25"
 excerpt: "More than half your visitors are on mobile — and most websites are losing them silently. Bad mobile design isn't just an aesthetic problem. It's a conversion problem, a ranking problem, and a trust problem that costs businesses real revenue every day."
 category: "Mobile Design"
 featured: true
-image: "/best-website-design-for-small-businesses-2026-featured-image.png"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "25 min read"
 author: "StillAwake Media"
 ---

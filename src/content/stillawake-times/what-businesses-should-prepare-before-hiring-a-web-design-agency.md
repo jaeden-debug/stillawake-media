@@ -4,7 +4,7 @@ date: "2026-05-25"
 excerpt: "Most web projects struggle not because of the agency, but because the client came unprepared. This guide covers everything your business needs to have sorted before the discovery call — goals, branding, content, SEO, integrations, and more."
 category: "Web Design"
 featured: true
-image: "/best-website-design-for-small-businesses-2026-featured-image.png"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "27 min read"
 author: "StillAwake Media"
 ---

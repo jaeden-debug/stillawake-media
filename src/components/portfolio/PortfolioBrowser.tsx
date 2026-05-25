@@ -77,7 +77,7 @@ export default function PortfolioBrowser() {
       id: "custom-sections",
       title: "Custom Sections",
       label: "Custom UI",
-      image: "/stillawake-neon-links-component-showcase.png",
+      image: "/stillawake-neon-links-component-showcase.jpg",
       alt: "StillAwake Media neon links custom component showcase",
       desc: "Interactive website sections, animated UI blocks, link hubs, feature layouts, and premium conversion-focused experiences.",
     },
@@ -85,7 +85,7 @@ export default function PortfolioBrowser() {
       id: "logos",
       title: "Logos & Identity",
       label: "Brand System",
-      image: "/blackwater-aquatics-canada-logo.png",
+      image: "/blackwater-aquatics-canada-logo.jpg",
       alt: "Blackwater Aquatics Canada logo design example",
       desc: "Brand marks, icon systems, typography direction, and visual identity work designed to feel recognizable, sharp, and scalable.",
     },
@@ -93,7 +93,7 @@ export default function PortfolioBrowser() {
       id: "graphics",
       title: "Graphics & Assets",
       label: "Visual Assets",
-      image: "/rhabdocoela-flatworm-aquarium-guide.png",
+      image: "/rhabdocoela-flatworm-aquarium-guide.jpg",
       alt: "Aquarium infographic and graphic design example",
       desc: "Infographics, thumbnails, social visuals, banners, and digital assets built to stop scrolling and strengthen brand authority.",
     },
@@ -402,10 +402,10 @@ export default function PortfolioBrowser() {
                     media="(max-width: 767px)"
                     srcSet={
                       activeCreative.id === "logos"
-                        ? "/a_clean_high_resolution_square_futuristic_app_i.png"
+                        ? "/a_clean_high_resolution_square_futuristic_app_i.jpg"
                         : activeCreative.id === "graphics"
-                        ? "/square_infographic_style_image_with_an_aquarium_ed..png"
-                        : "/a_dark_moody_graphic_design_scene_a_centered_hor.png"
+                        ? "/square_infographic_style_image_with_an_aquarium_ed..jpg"
+                        : "/a_dark_moody_graphic_design_scene_a_centered_hor.jpg"
                     }
                   />
 

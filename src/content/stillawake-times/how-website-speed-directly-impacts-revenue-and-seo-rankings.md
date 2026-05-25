@@ -4,7 +4,7 @@ date: "2026-05-25"
 excerpt: "Every second your website takes to load, you lose visitors, rankings, and revenue. This guide breaks down Core Web Vitals, bounce rate psychology, rendering performance, and exactly how to make your website fast enough to convert."
 category: "Web Performance"
 featured: true
-image: "/best-website-design-for-small-businesses-2026-featured-image.png"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "32 min read"
 author: "StillAwake Media"
 ---

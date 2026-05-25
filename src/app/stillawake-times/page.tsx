@@ -33,7 +33,7 @@ export default function Blog() {
 
               <div className="relative min-h-[320px] overflow-hidden">
                 <Image
-                  src={featured.image && !featured.image.startsWith("/images/blog/") ? featured.image : "/best-website-design-for-small-businesses-2026-featured-image.png"}
+                  src={featured.image && !featured.image.startsWith("/images/blog/") ? featured.image : "/best-website-design-for-small-businesses-2026-featured-image.jpg"}
                   alt={featured.title}
                   fill
                   priority

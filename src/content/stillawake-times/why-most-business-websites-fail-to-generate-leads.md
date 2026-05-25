@@ -4,7 +4,7 @@ date: "2026-05-24"
 excerpt: "Your website might look professional. It might even rank on Google. And it's still generating almost no leads — because looking good and converting visitors are completely different problems. This article diagnoses the real reasons most business websites fail, with brutal specificity."
 category: "Web Design"
 featured: true
-image: "/best-website-design-for-small-businesses-2026-featured-image.png"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "28 min read"
 author: "StillAwake Media"
 ---

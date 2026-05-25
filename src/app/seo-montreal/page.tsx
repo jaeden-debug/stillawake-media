@@ -367,7 +367,7 @@ export default function SeoMontrealPage() {
 
           <p>
             Our{" "}
-            <Link href="/web-development-montreal">
+            <Link href="/stillawake-times/web-development-montreal">
               web development systems
             </Link>{" "}
             prioritize performance from the architecture level upward.

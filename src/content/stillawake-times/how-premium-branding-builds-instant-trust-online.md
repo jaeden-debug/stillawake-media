@@ -4,7 +4,7 @@ date: "2026-05-25"
 excerpt: "Premium branding isn't decoration — it's the fastest trust-building mechanism your business has. Before anyone reads your copy, reviews your testimonials, or evaluates your pricing, your visual identity has already formed their impression. Here's how to make it the right one."
 category: "Branding"
 featured: true
-image: "/images/blog/premium-branding-builds-trust.jpg"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "27 min read"
 author: "StillAwake Media"
 ---

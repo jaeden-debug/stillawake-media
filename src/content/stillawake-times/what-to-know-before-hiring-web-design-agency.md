@@ -4,7 +4,7 @@ date: "2026-05-24"
 excerpt: "Most businesses hire a web design agency based on portfolio aesthetics and pricing — and end up with a beautiful website that's slow, doesn't rank, and converts no one. This guide covers every dimension of a smart agency evaluation, including the questions most businesses never think to ask."
 category: "Web Design"
 featured: true
-image: "/best-website-design-for-small-businesses-2026-featured-image.png"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "27 min read"
 author: "StillAwake Media"
 ---

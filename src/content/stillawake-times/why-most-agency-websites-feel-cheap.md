@@ -4,7 +4,7 @@ date: "2026-05-25"
 excerpt: "You can feel the difference between a cheap website and a premium one in seconds. This guide breaks down exactly what signals cheap — and what separates studios whose websites command trust from those that undermine it."
 category: "Web Design"
 featured: true
-image: "/best-website-design-for-small-businesses-2026-featured-image.png"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "26 min read"
 author: "StillAwake Media"
 ---

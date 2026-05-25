@@ -4,7 +4,7 @@ date: "2026-05-24"
 excerpt: "Templates are a compromise. A custom-coded website is an asset built around your business — your conversion architecture, your brand, your performance requirements, your integrations. This guide breaks down every dimension where custom code wins, and what businesses are giving up when they settle for a template."
 category: "Web Design"
 featured: true
-image: "/best-website-design-for-small-businesses-2026-featured-image.png"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "28 min read"
 author: "StillAwake Media"
 ---

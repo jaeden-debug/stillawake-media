@@ -4,7 +4,7 @@ date: "2026-05-25"
 excerpt: "Websites are changing faster than most businesses realize. AI-native interfaces, immersive motion systems, adaptive personalization, and evolving search behavior are reshaping what a website is and what it needs to do. Here's what's coming — and how to be ready."
 category: "Web Design"
 featured: true
-image: "/best-website-design-for-small-businesses-2026-featured-image.png"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "29 min read"
 author: "StillAwake Media"
 ---

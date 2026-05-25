@@ -4,7 +4,7 @@ date: "2026-05-25"
 excerpt: "Website redesign Montreal services focused on modern UX, SEO preservation, performance optimization, branding upgrades, and conversion-focused rebuilds."
 category: "Web Design"
 featured: false
-image: "/images/blog/website-redesign-montreal.jpg"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "43 min read"
 author: "StillAwake Media"
 ---

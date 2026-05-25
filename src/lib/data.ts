@@ -18,7 +18,7 @@ export const serviceNav = [
   ["AI Automation", "/ai-automation"],
   ["Framer Development", "/framer-development"],
   ["Shopify Development", "/shopify-development"],
-  ["Technical SEO", "/stillawake-times/technical-seo"],
+  ["Technical SEO", "/stillawake-times/what-is-technical-seo"],
   ["Website Performance", "/stillawake-times/website-performance"],
 ];
 

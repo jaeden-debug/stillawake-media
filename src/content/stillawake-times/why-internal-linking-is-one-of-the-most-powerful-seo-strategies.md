@@ -4,7 +4,7 @@ date: "2026-05-25"
 excerpt: "Internal linking isn't a maintenance task — it's an architecture strategy. Done correctly, it builds topical authority, guides crawl flow, and distributes ranking power across your entire website. This guide covers how to do it systematically."
 category: "SEO Strategy"
 featured: true
-image: "/images/blog/internal-linking-seo-strategy.jpg"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "26 min read"
 author: "StillAwake Media"
 ---

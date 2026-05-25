@@ -4,7 +4,7 @@ date: "2026-05-25"
 excerpt: "Agence web à Montréal spécialisée en création de sites modernes, branding, SEO, performance, UX et infrastructure numérique premium."
 category: "Web Design"
 featured: false
-image: "/images/blog/agence-web-montreal.jpg"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "41 min read"
 author: "StillAwake Media"
 ---

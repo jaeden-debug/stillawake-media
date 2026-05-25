@@ -4,7 +4,7 @@ date: "2026-05-25"
 excerpt: "Ecommerce web design Montreal services for Shopify stores and product brands focused on conversion optimization, SEO, UX, and scalable digital infrastructure."
 category: "Shopify"
 featured: false
-image: "/images/blog/ecommerce-web-design-montreal.jpg"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "46 min read"
 author: "StillAwake Media"
 ---

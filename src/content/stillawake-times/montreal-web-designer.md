@@ -4,7 +4,7 @@ date: "2026-05-25"
 excerpt: "Work with a Montreal web designer focused on premium UX, modern branding, SEO structure, conversion systems, and high-performance digital experiences."
 category: "Web Design"
 featured: false
-image: "/images/blog/montreal-web-designer.jpg"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "36 min read"
 author: "StillAwake Media"
 ---

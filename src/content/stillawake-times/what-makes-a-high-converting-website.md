@@ -4,7 +4,7 @@ date: "2026-05-24"
 excerpt: "Most business websites look decent but convert nothing. This guide breaks down every element that separates a high converting website from a digital brochure — from psychology and UX to page speed, CTA architecture, and lead generation systems."
 category: "Web Design"
 featured: true
-image: "/best-website-design-for-small-businesses-2026-featured-image.png"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "28 min read"
 author: "StillAwake Media"
 ---

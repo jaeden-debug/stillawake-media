@@ -4,7 +4,7 @@ date: "2026-05-25"
 excerpt: "Website performance optimization services focused on Core Web Vitals, speed, rendering, caching, UX performance, and conversion-focused infrastructure."
 category: "Web Performance"
 featured: false
-image: "/images/blog/website-performance.jpg"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "48 min read"
 author: "StillAwake Media"
 ---

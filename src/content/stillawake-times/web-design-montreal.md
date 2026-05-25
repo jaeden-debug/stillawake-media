@@ -4,7 +4,7 @@ date: "2026-05-25"
 excerpt: "Premium web design in Montreal focused on SEO, performance, conversion optimization, and modern digital infrastructure for serious businesses."
 category: "Web Design"
 featured: false
-image: "/images/blog/web-design-montreal.jpg"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "38 min read"
 author: "StillAwake Media"
 ---

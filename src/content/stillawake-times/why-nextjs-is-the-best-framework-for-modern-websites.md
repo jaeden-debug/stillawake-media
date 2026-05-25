@@ -4,7 +4,7 @@ date: "2026-05-24"
 excerpt: "Next.js has become the de facto standard for serious web development. This guide breaks down exactly why — covering server-side rendering, performance, SEO advantages, the App Router, scalability, and how it compares to WordPress and other alternatives."
 category: "Software Development"
 featured: true
-image: "/best-website-design-for-small-businesses-2026-featured-image.png"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "24 min read"
 author: "StillAwake Media"
 ---

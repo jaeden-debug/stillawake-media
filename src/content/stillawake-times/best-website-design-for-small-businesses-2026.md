@@ -4,7 +4,7 @@ date: "2026-05-24"
 excerpt: "Most small business websites are invisible online and convert almost no one who visits. Here's exactly what your website needs to rank on Google, look credible on mobile, and turn visitors into customers — built for 2026 and beyond."
 category: "Web Design"
 featured: true
-image: "/best-website-design-for-small-businesses-2026-featured-image.png"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "26 min read"
 author: "StillAwake Media"
 ---

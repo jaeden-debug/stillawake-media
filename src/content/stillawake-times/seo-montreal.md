@@ -4,7 +4,7 @@ date: "2026-05-25"
 excerpt: "SEO Montreal services focused on technical SEO, local visibility, Google rankings, content systems, and long-term organic growth."
 category: "Local SEO"
 featured: false
-image: "/images/blog/seo-montreal.jpg"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "44 min read"
 author: "StillAwake Media"
 ---

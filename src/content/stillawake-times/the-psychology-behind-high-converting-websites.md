@@ -4,7 +4,7 @@ date: "2026-05-25"
 excerpt: "High-converting websites aren't accidents. They're the result of deliberate psychological design choices — visual hierarchy, trust systems, frictionless user flows, and emotional positioning. This guide explains the science and gives you the practical framework."
 category: "Conversion Optimization"
 featured: true
-image: "/best-website-design-for-small-businesses-2026-featured-image.png"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "30 min read"
 author: "StillAwake Media"
 ---

@@ -4,7 +4,7 @@ date: "2026-05-24"
 excerpt: "A website redesign is one of the highest-risk moments for organic search rankings. Done carelessly, it can wipe out years of SEO equity in days. Done correctly, it's an opportunity to build something faster, stronger, and better-ranking than what you had. This guide covers every step."
 category: "Web Design"
 featured: true
-image: "/best-website-design-for-small-businesses-2026-featured-image.png"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "27 min read"
 author: "StillAwake Media"
 ---

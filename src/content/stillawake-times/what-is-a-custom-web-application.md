@@ -4,7 +4,7 @@ date: "2026-05-24"
 excerpt: "A custom web application is purpose-built software that runs in a browser, designed specifically around how your business operates. This guide covers what they are, what problems they solve, what they cost, and whether your business is ready for one."
 category: "Software Development"
 featured: true
-image: "/best-website-design-for-small-businesses-2026-featured-image.png"
+image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 readTime: "26 min read"
 author: "StillAwake Media"
 ---

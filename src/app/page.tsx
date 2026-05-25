@@ -1,5 +1,5 @@
 import Link from "next/link";import {Button,Section,ServiceGrid,PortfolioGrid,BlogCards,InternalLinks} from "@/components/site";import LiveWorkShowcase from "@/components/LiveWorkShowcase";import {services} from "@/lib/data";
-export default function Home(){return <main><section className="relative min-h-screen overflow-hidden px-6"><video className="heroVideo absolute inset-0 h-screen min-h-screen w-full object-cover opacity-65" src="/stillawakemedia-hero-optimized.mp4" poster="/stillawakemedia-hero-poster.jpg" preload="metadata" autoPlay muted loop playsInline/><div className="absolute inset-0 bg-gradient-to-b from-black/40 via-[#050505]/50 to-[#050505]"/><div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_35%,rgba(215,25,32,.25),transparent_35%)]"/><div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-start pt-32"><div className="flex w-full items-center">
+export default function Home(){return <main><section className="relative min-h-screen overflow-hidden px-6"><video className="heroVideo absolute inset-0 h-screen min-h-screen w-full object-cover opacity-65" src="/stillawakemedia-hero-optimized-small.mp4" poster="/stillawakemedia-hero-poster.jpg" preload="metadata" autoPlay muted loop playsInline/><div className="absolute inset-0 bg-gradient-to-b from-black/40 via-[#050505]/50 to-[#050505]"/><div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_35%,rgba(215,25,32,.25),transparent_35%)]"/><div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-start pt-32"><div className="flex w-full items-center">
 <div className="flex min-h-[82vh] w-full flex-col justify-between">
 <div>
 <h1 className="geist font-mono text-[14vw] font-normal leading-[1.2] tracking-[0.36em] text-white md:text-[120px]">
@@ -32,7 +32,7 @@ We build <span className="text-[#D71920]">bold brands</span>, high-performance w
     
     <video
       className="h-[420px] w-full object-cover md:h-[620px]"
-      src="/tv-static-stillawake-media-intro-optimized.mp4"
+      src="/tv-static-stillawake-media-intro-optimized-small.mp4"
       poster="/tv-static-stillawake-media-intro-poster.jpg"
       preload="none"
       autoPlay

@@ -3,8 +3,9 @@ import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
 export const metadata: Metadata = {
-  title: "Shopify Development",
-  description: "StillAwake Media helps ecommerce brands improve product pages, collections, SEO structure, conversion flow, trust signals, and visual presentation.",
+  title: "Shopify Development Services | SEO & Conversion Builds",
+  description:
+    "StillAwake Media helps ecommerce brands improve Shopify product pages, collections, SEO structure, conversion flow, trust signals, and visual presentation.",
 };
 
 export default function Page() {

@@ -3,9 +3,19 @@ import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
 export const metadata: Metadata = {
-  title: "Branding Services | StillAwake Media",
-  description:
-    "StillAwake Media builds premium brand identity systems, visual direction, messaging, logos, typography, colors, and digital assets for modern businesses.",
+  title:
+    "Branding Services | Premium Brand Identity Systems",
+
+  description: "StillAwake Media builds premium brand identity systems, positioning, logo direction, typography, color strategy, messaging, and digital assets that help modern businesses stand out online.",
+
+  alternates: {
+    canonical: "https://stillawakedmedia.com/branding",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 const systems = [

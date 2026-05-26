@@ -68,6 +68,10 @@ export const metadata: Metadata = {
     description,
     images: ["/stillawake-media-social-preview.jpeg"],
   },
+  alternates: {
+    canonical: "https://stillawakedmedia.com",
+  },
+
   robots: {
     index: true,
     follow: true,

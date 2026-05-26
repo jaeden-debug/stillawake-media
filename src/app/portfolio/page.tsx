@@ -3,9 +3,9 @@ import PortfolioBrowser from "@/components/portfolio/PortfolioBrowser";
 import { InternalLinks } from "@/components/site";
 
 export const metadata: Metadata = {
-  title: "Website Portfolio",
+  title: "Website Portfolio | Premium Web Design & SEO Projects",
   description:
-    "Explore StillAwake Media website projects through an interactive browser-style portfolio featuring live website previews, SEO systems, brand builds, and digital products.",
+    "Explore StillAwake Media website projects through live previews, SEO systems, brand builds, ecommerce experiences, and digital infrastructure examples.",
 };
 
 export default function Portfolio() {

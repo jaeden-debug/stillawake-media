@@ -3,8 +3,9 @@ import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
 export const metadata: Metadata = {
-  title: "Work",
-  description: "Explore StillAwake Media projects across websites, SEO systems, software concepts, brand assets, and digital infrastructure.",
+  title: "StillAwake Media Work | Websites, SEO & Brand Systems",
+  description:
+    "Explore StillAwake Media projects across premium websites, SEO systems, brand assets, software concepts, Shopify builds, and digital infrastructure.",
 };
 
 export default function Page() {

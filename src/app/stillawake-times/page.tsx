@@ -6,9 +6,9 @@ import { getAllPosts } from "@/lib/content";
 import { InternalLinks, Section } from "@/components/site";
 
 export const metadata: Metadata = {
-  title: "StillAwake Times",
+  title: "StillAwake Times | Digital Strategy, SEO & AI Insights",
   description:
-    "StillAwake Times is the editorial hub for web strategy, SEO, AI automation, premium branding, and digital infrastructure.",
+    "Explore StillAwake Times for practical insights on web design, SEO, AI automation, branding, software, Shopify, Framer, and digital infrastructure.",
 };
 
 export default function Blog() {

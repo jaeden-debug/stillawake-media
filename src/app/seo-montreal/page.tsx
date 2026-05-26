@@ -25,6 +25,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://stillawakemedia.com/seo-montreal",
   },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function SeoMontrealPage() {

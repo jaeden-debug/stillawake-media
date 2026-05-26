@@ -3,9 +3,9 @@ import Link from "next/link";
 import { Button, InternalLinks } from "@/components/site";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About StillAwake Media | Digital Infrastructure Studio",
   description:
-    "StillAwake Media is a Canada-based digital studio building custom websites, SEO systems, brand identities, AI automation, apps, software tools, and digital growth infrastructure.",
+    "StillAwake Media is a Canada-based digital infrastructure studio building premium websites, SEO systems, branding, AI automation, Shopify experiences, and custom software.",
 };
 
 const capabilities = [

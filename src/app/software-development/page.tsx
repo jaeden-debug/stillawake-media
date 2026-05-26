@@ -4,8 +4,16 @@ import { InternalLinks } from "@/components/site";
 
 export const metadata: Metadata = {
   title: "Custom Software Development | StillAwake Media",
-  description:
-    "StillAwake Media builds custom software, dashboards, portals, web applications, AI workflows, and scalable digital systems for modern businesses.",
+  description: "StillAwake Media builds custom software, dashboards, portals, web applications, AI workflows, and scalable digital systems for modern businesses.",
+
+  alternates: {
+    canonical: "https://stillawakedmedia.com/software-development",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 const systems = [

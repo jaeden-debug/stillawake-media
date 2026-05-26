@@ -5,19 +5,9 @@ import { InternalLinks } from "@/components/site";
 const pageUrl = "https://stillawakemedia.com/fr/agence-web-montreal";
 
 export const metadata: Metadata = {
-  title: "Agence Web Montréal | Sites Premium et SEO",
+  title: "Agence Web Montréal | Sites Premium, SEO et Branding",
   description:
-    "Agence web à Montréal spécialisée en création de sites modernes, SEO, performance, branding et croissance numérique.",
-  alternates: {
-    canonical: pageUrl,
-  },
-  openGraph: {
-    title: "Agence Web Montréal | StillAwake Media",
-    description:
-      "Agence web à Montréal pour sites modernes, branding, SEO, performance, conversion et croissance numérique.",
-    url: pageUrl,
-    type: "website",
-  },
+    "StillAwake Media est une agence web à Montréal spécialisée en sites premium, SEO, branding, performance, automatisation IA et croissance numérique.",
 };
 
 const sections = [

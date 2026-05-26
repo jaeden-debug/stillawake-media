@@ -6,8 +6,7 @@ const pageUrl = "https://stillawakemedia.com/web-design-montreal";
 
 export const metadata: Metadata = {
   title: "Web Design Montreal | Premium Websites Built for Growth",
-  description:
-    "Premium web design Montreal services built for SEO, speed, trust, conversion, branding, and long-term business growth.",
+  description: "Premium web design Montreal services built for SEO, speed, trust, conversion, branding, and long-term business growth for modern businesses.",
   alternates: {
     canonical: pageUrl,
   },
@@ -17,6 +16,11 @@ export const metadata: Metadata = {
       "Premium Montreal web design built for trust, SEO, performance, conversion, and modern digital infrastructure.",
     url: pageUrl,
     type: "website",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

@@ -3,8 +3,9 @@ import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
 export const metadata: Metadata = {
-  title: "Framer Development",
-  description: "We build Framer websites that feel high-end, load fast, stay easy to edit, and support real search visibility through clean page architecture and strategic content systems.",
+  title: "Framer Development Services | Premium Framer Websites",
+  description:
+    "StillAwake Media builds premium Framer websites that feel high-end, load fast, stay easy to edit, and support SEO, conversion, and long-term brand growth.",
 };
 
 export default function Page() {

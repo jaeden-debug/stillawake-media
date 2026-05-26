@@ -3,9 +3,9 @@ import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
 export const metadata: Metadata = {
-  title: "Local SEO Services | StillAwake Media",
+  title: "Local SEO Services | Google Maps & Lead Generation",
   description:
-    "Local SEO systems built to improve Google Maps visibility, rankings, trust signals, and lead generation for modern businesses.",
+    "StillAwake Media builds local SEO systems that improve Google Maps visibility, search rankings, trust signals, and lead generation for modern businesses.",
 };
 
 const systems = [

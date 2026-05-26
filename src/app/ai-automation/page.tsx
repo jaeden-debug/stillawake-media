@@ -3,9 +3,19 @@ import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
 export const metadata: Metadata = {
-  title: "AI Automation Services | StillAwake Media",
-  description:
-    "StillAwake Media builds practical AI automation systems for content, research, lead handling, admin workflows, reporting, and business operations.",
+  title:
+    "AI Automation Services | Custom AI Workflows for Business",
+
+  description: "StillAwake Media builds custom AI automation systems for lead handling, content workflows, research, reporting, admin tasks, SEO pipelines, and scalable business operations.",
+
+  alternates: {
+    canonical: "https://stillawakedmedia.com/ai-automation",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 const systems = [

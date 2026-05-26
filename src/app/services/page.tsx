@@ -4,9 +4,9 @@ import { serviceNav, montrealNav } from "@/lib/data";
 import { AuditCta, MagazineInjection, RelatedReadingInjection, InternalLinks } from "@/components/site";
 
 export const metadata: Metadata = {
-  title: "Services | StillAwake Media",
+  title: "StillAwake Media Services | Web, SEO, AI & Software",
   description:
-    "Explore StillAwake Media services across web design, SEO, software development, branding, AI automation, Shopify, Framer, and Montreal digital strategy.",
+    "Explore StillAwake Media services across web design, SEO, software development, branding, AI automation, Shopify, Framer, and digital strategy.",
 };
 
 export default function Page() {

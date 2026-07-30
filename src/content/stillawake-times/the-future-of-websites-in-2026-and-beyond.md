@@ -5,7 +5,6 @@ excerpt: "Websites are changing faster than most businesses realize. AI-native i
 category: "Web Design"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "29 min read"
 author: "StillAwake Media"
 ---
 

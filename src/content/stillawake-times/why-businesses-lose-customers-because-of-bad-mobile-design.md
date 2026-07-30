@@ -5,7 +5,6 @@ excerpt: "More than half your visitors are on mobile — and most websites are l
 category: "Mobile Design"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "25 min read"
 author: "StillAwake Media"
 ---
 

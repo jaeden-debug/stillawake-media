@@ -5,7 +5,6 @@ excerpt: "Ecommerce web design Montreal services for Shopify stores and product 
 category: "Shopify"
 featured: false
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "46 min read"
 author: "StillAwake Media"
 ---
 

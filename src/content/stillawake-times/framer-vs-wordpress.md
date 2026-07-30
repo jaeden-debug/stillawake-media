@@ -5,7 +5,6 @@ excerpt: "Businesses redesigning their websites in 2026 face a fundamental archi
 category: "Web Design"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "27 min read"
 author: "StillAwake Media"
 ---
 

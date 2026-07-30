@@ -5,7 +5,6 @@ excerpt: "Internal linking isn't a maintenance task — it's an architecture str
 category: "SEO Strategy"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "26 min read"
 author: "StillAwake Media"
 ---
 

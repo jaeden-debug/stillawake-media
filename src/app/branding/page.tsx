@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "StillAwake Media builds premium brand identity systems, positioning, logo direction, typography, color strategy, messaging, and digital assets that help modern businesses stand out online.",
 
   alternates: {
-    canonical: "https://stillawakedmedia.com/branding",
+    canonical: "/branding",
   },
 
   robots: {

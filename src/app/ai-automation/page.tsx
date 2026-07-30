@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "StillAwake Media builds custom AI automation systems for lead handling, content workflows, research, reporting, admin tasks, SEO pipelines, and scalable business operations.",
 
   alternates: {
-    canonical: "https://stillawakedmedia.com/ai-automation",
+    canonical: "/ai-automation",
   },
 
   robots: {

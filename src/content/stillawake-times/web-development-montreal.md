@@ -5,7 +5,6 @@ excerpt: "Custom web development in Montreal focused on performance, scalability
 category: "Software Development"
 featured: false
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "44 min read"
 author: "StillAwake Media"
 ---
 

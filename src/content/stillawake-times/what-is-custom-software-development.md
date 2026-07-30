@@ -5,7 +5,6 @@ excerpt: "Off-the-shelf software is built for everyone, which means it's optimiz
 category: "Software Development"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "26 min read"
 author: "StillAwake Media"
 ---
 

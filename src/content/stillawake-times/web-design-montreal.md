@@ -5,7 +5,6 @@ excerpt: "Premium web design in Montreal focused on SEO, performance, conversion
 category: "Web Design"
 featured: false
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "38 min read"
 author: "StillAwake Media"
 ---
 

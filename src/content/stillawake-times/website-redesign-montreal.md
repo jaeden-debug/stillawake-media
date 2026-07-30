@@ -5,7 +5,6 @@ excerpt: "Website redesign Montreal services focused on modern UX, SEO preservat
 category: "Web Design"
 featured: false
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "43 min read"
 author: "StillAwake Media"
 ---
 

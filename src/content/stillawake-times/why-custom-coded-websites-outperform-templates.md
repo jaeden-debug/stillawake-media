@@ -5,7 +5,6 @@ excerpt: "Templates are a compromise. A custom-coded website is an asset built a
 category: "Web Design"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "28 min read"
 author: "StillAwake Media"
 ---
 

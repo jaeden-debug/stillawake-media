@@ -5,7 +5,6 @@ excerpt: "A Montreal web design agency building premium websites, SEO systems, c
 category: "Web Design"
 featured: false
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "42 min read"
 author: "StillAwake Media"
 ---
 

@@ -5,7 +5,6 @@ excerpt: "Every second your website takes to load, you lose visitors, rankings, 
 category: "Web Performance"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "32 min read"
 author: "StillAwake Media"
 ---
 

@@ -5,7 +5,6 @@ excerpt: "Premium branding isn't decoration — it's the fastest trust-building 
 category: "Branding"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "27 min read"
 author: "StillAwake Media"
 ---
 

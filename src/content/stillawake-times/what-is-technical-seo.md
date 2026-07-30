@@ -5,7 +5,6 @@ excerpt: "Technical SEO is the foundation underneath all other SEO work. Without
 category: "Local SEO"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "26 min read"
 author: "StillAwake Media"
 ---
 

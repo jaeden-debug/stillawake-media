@@ -5,7 +5,6 @@ excerpt: "Most business websites look decent but convert nothing. This guide bre
 category: "Web Design"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "28 min read"
 author: "StillAwake Media"
 ---
 

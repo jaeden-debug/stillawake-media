@@ -5,7 +5,6 @@ excerpt: "Agence web à Montréal spécialisée en création de sites modernes, 
 category: "Web Design"
 featured: false
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "41 min read"
 author: "StillAwake Media"
 ---
 

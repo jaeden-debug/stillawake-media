@@ -5,7 +5,6 @@ excerpt: "AI automation isn't a future concept — it's how modern businesses ar
 category: "AI Automation"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "28 min read"
 author: "StillAwake Media"
 ---
 

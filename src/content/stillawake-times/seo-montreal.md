@@ -5,7 +5,6 @@ excerpt: "SEO Montreal services focused on technical SEO, local visibility, Goog
 category: "Local SEO"
 featured: false
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "44 min read"
 author: "StillAwake Media"
 ---
 

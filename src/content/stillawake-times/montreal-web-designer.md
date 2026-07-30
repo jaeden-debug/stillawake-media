@@ -5,7 +5,6 @@ excerpt: "Work with a Montreal web designer focused on premium UX, modern brandi
 category: "Web Design"
 featured: false
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "36 min read"
 author: "StillAwake Media"
 ---
 

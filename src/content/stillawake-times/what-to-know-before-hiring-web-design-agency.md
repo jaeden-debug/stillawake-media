@@ -5,7 +5,6 @@ excerpt: "Most businesses hire a web design agency based on portfolio aesthetics
 category: "Web Design"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "27 min read"
 author: "StillAwake Media"
 ---
 

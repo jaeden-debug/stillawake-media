@@ -5,7 +5,6 @@ excerpt: "Google doesn't just index your content — it crawls, renders, evaluat
 category: "Technical SEO"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "28 min read"
 author: "StillAwake Media"
 ---
 

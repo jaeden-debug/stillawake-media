@@ -5,7 +5,6 @@ excerpt: "Most web projects struggle not because of the agency, but because the 
 category: "Web Design"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "27 min read"
 author: "StillAwake Media"
 ---
 

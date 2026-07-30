@@ -5,7 +5,6 @@ excerpt: "Most local businesses are spending money on ads while their highest-qu
 category: "Local SEO"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "24 min read"
 author: "StillAwake Media"
 ---
 

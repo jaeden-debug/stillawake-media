@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "StillAwake Media builds custom software, dashboards, portals, web applications, AI workflows, and scalable digital systems for modern businesses.",
 
   alternates: {
-    canonical: "https://stillawakedmedia.com/software-development",
+    canonical: "/software-development",
   },
 
   robots: {

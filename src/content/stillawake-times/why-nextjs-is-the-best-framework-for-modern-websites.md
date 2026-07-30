@@ -5,7 +5,6 @@ excerpt: "Next.js has become the de facto standard for serious web development. 
 category: "Software Development"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "24 min read"
 author: "StillAwake Media"
 ---
 

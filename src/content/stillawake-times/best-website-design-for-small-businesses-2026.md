@@ -5,7 +5,6 @@ excerpt: "Most small business websites are invisible online and convert almost n
 category: "Web Design"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "26 min read"
 author: "StillAwake Media"
 ---
 

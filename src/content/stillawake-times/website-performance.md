@@ -5,7 +5,6 @@ excerpt: "Website performance optimization services focused on Core Web Vitals, 
 category: "Web Performance"
 featured: false
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "48 min read"
 author: "StillAwake Media"
 ---
 

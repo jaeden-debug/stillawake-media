@@ -5,7 +5,6 @@ excerpt: "A custom web application is purpose-built software that runs in a brow
 category: "Software Development"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-readTime: "26 min read"
 author: "StillAwake Media"
 ---
 

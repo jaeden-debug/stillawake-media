@@ -17,7 +17,7 @@ There is no Supabase, database, CRM, newsletter, webhook, or alternate inquiry w
    - Path equals `/api/contact`.
    - Method equals `POST`.
    - Fixed window: 10 requests per 600 seconds per source IP.
-   - Exceeded action: deny for 15 minutes.
+   - Exceeded action: default non-persistent `429` for matching requests only.
 3. BotID Basic, initialized only for `POST /api/contact` in `src/instrumentation-client.ts` and verified server-side in `src/app/api/contact/route.ts`.
 4. Exact Origin enforcement. Production accepts only `https://stillawakemedia.com`; `www` redirects to the apex, arbitrary Vercel deployment domains are not accepted, and Preview contact submissions are intentionally non-functional.
 5. Exact JSON Content-Type and 16 KiB streaming request limit.

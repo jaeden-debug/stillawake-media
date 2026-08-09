@@ -1,5 +1,19 @@
+import { withBotId } from "botid/next/config";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async headers() {
+    return [
+      {
+        source: "/api/contact",
+        headers: [
+          { key: "Cache-Control", value: "no-store" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       { source: "/web-design", destination: "/web-design-montreal", permanent: true },
@@ -16,4 +30,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withBotId(nextConfig);

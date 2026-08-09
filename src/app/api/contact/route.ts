@@ -1,49 +1,56 @@
-import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { checkBotId } from "botid/server";
+import { handleContactRequest, methodNotAllowedResponse } from "@/lib/contact/handler";
+import { loadContactRuntimeConfig } from "@/lib/contact/security";
+import type { ContactSubmission } from "@/lib/contact/schema";
 
-export async function POST(req: Request) {
-  try {
-    const apiKey = process.env.RESEND_API_KEY;
+export const runtime = "nodejs";
 
-    if (!apiKey || apiKey.includes("your_resend_api_key_here")) {
-      return NextResponse.json(
-        { error: "Missing real RESEND_API_KEY in .env.local or Vercel." },
-        { status: 500 }
-      );
-    }
+function safeSubjectName(name: string) {
+  return name.replace(/[\r\n]+/gu, " ").slice(0, 100);
+}
 
-    const { name, email, service, message } = await req.json();
-
-    if (!name || !email || !message) {
-      return NextResponse.json(
-        { error: "Name, email, and message are required." },
-        { status: 400 }
-      );
-    }
-
-    const resend = new Resend(apiKey);
-
-    const { error } = await resend.emails.send({
-      from: "StillAwake Media <onboarding@resend.dev>",
-      to: process.env.CONTACT_TO_EMAIL || "jaedendoody10@gmail.com",
-      replyTo: email,
-      subject: `New StillAwake Media inquiry from ${name}`,
-      text: `Name: ${name}
-Email: ${email}
-Service: ${service || "Not selected"}
-
-Message:
-${message}`,
-    });
-
-    if (error) {
-      console.error("Resend error:", error);
-      return NextResponse.json({ error: error.message }, { status: 500 });
-    }
-
-    return NextResponse.json({ ok: true });
-  } catch (err) {
-    console.error("Contact API error:", err);
-    return NextResponse.json({ error: "Server error sending message." }, { status: 500 });
+async function sendNotification(submission: ContactSubmission) {
+  const config = loadContactRuntimeConfig();
+  if (!config.resendApiKey || !config.fromEmail || !config.toEmail) {
+    throw new Error("email_not_configured");
   }
+
+  const resend = new Resend(config.resendApiKey);
+  const { error } = await resend.emails.send({
+    from: config.fromEmail,
+    to: config.toEmail,
+    replyTo: submission.email,
+    subject: `New StillAwake Media inquiry from ${safeSubjectName(submission.name)}`,
+    text: `Name: ${submission.name}\nEmail: ${submission.email}\nService: ${submission.service}\n\nMessage:\n${submission.message}`,
+  });
+  if (error) throw new Error("resend_failed");
+}
+
+export async function POST(request: Request) {
+  return handleContactRequest(request, {
+    config: loadContactRuntimeConfig(),
+    checkBot: async () => !(await checkBotId()).isBot,
+    sendNotification,
+  });
+}
+
+export async function GET() {
+  return methodNotAllowedResponse();
+}
+
+export async function PUT() {
+  return methodNotAllowedResponse();
+}
+
+export async function PATCH() {
+  return methodNotAllowedResponse();
+}
+
+export async function DELETE() {
+  return methodNotAllowedResponse();
+}
+
+export async function OPTIONS() {
+  return methodNotAllowedResponse();
 }

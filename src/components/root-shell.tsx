@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Inter } from "next/font/google";
-import "./globals.css";
+import Script from "next/script";
 import { Header } from "@/components/site";
 import { Footer } from "@/components/footer";
 import { siteUrl } from "@/lib/data";
-import Script from "next/script";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -13,75 +12,88 @@ const title = "StillAwake Media | Web Design, SEO, AI & Software";
 const description =
   "StillAwake Media builds premium websites, SEO systems, branding, AI automation, Shopify stores, and custom software for modern businesses. Ambition Never Sleeps.";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: {
-    default: title,
-    template: "%s | StillAwake Media",
-  },
-  description,
-  applicationName: "StillAwake Media",
-  generator: "Next.js",
-  referrer: "origin-when-cross-origin",
-  keywords: [
-    "StillAwake Media",
-    "web design Montreal",
-    "SEO Montreal",
-    "AI automation",
-    "custom software development",
-    "Shopify development",
-    "branding agency",
-    "digital agency Canada",
-    "premium web design",
-    "technical SEO",
-  ],
-  authors: [{ name: "StillAwake Media", url: siteUrl }],
-  creator: "StillAwake Media",
-  publisher: "StillAwake Media",
-  category: "Digital Agency",
-  icons: {
-    icon: [
-      { url: "/stillawake-media-favicon.png", type: "image/png" },
-    ],
-    shortcut: "/stillawake-media-favicon.png",
-    apple: "/stillawake-media-favicon.png",
-  },
-  openGraph: {
-    title,
+/**
+ * Shared root metadata.
+ *
+ * The site has two root layouts — one per language route group — so that the
+ * French page can declare `<html lang="fr-CA">` instead of inheriting `en`.
+ * Both layouts derive their metadata from here so the two roots cannot drift.
+ */
+export function buildRootMetadata(locale: "en_CA" | "fr_CA"): Metadata {
+  return {
+    metadataBase: new URL(siteUrl),
+    title: {
+      default: title,
+      template: "%s | StillAwake Media",
+    },
     description,
-    url: siteUrl,
-    siteName: "StillAwake Media",
-    type: "website",
-    locale: "en_CA",
-    images: [
-      {
-        url: "/stillawake-media-social-preview.jpeg",
-        width: 1200,
-        height: 630,
-        alt: "StillAwake Media — Web Design, SEO, AI and Software",
-      },
+    applicationName: "StillAwake Media",
+    generator: "Next.js",
+    referrer: "origin-when-cross-origin",
+    keywords: [
+      "StillAwake Media",
+      "web design Montreal",
+      "SEO Montreal",
+      "AI automation",
+      "custom software development",
+      "Shopify development",
+      "branding agency",
+      "digital agency Canada",
+      "premium web design",
+      "technical SEO",
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-    images: ["/stillawake-media-social-preview.jpeg"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+    authors: [{ name: "StillAwake Media", url: siteUrl }],
+    creator: "StillAwake Media",
+    publisher: "StillAwake Media",
+    category: "Digital Agency",
+    icons: {
+      icon: [{ url: "/stillawake-media-favicon.png", type: "image/png" }],
+      shortcut: "/stillawake-media-favicon.png",
+      apple: "/stillawake-media-favicon.png",
+    },
+    openGraph: {
+      title,
+      description,
+      url: siteUrl,
+      siteName: "StillAwake Media",
+      type: "website",
+      locale,
+      images: [
+        {
+          url: "/stillawake-media-social-preview.jpeg",
+          width: 1200,
+          height: 630,
+          alt: "StillAwake Media — Web Design, SEO, AI and Software",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/stillawake-media-social-preview.jpeg"],
+    },
+    robots: {
       index: true,
       follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
     },
-  },
-};
+  };
+}
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export function RootShell({
+  lang,
+  children,
+}: {
+  lang: string;
+  children: React.ReactNode;
+}) {
   const org = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -119,7 +131,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       "@type": "PostalAddress",
       addressLocality: "Montreal",
       addressRegion: "QC",
-      addressCountry: "CA"
+      addressCountry: "CA",
     },
     serviceType: [
       "Web Design",
@@ -127,12 +139,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       "AI Automation",
       "Software Development",
       "Shopify Development",
-      "Branding"
-    ]
+      "Branding",
+    ],
   };
 
   return (
-    <html lang="en" className={`${geist.variable} ${inter.variable}`}>
+    <html lang={lang} className={`${geist.variable} ${inter.variable}`}>
       <body>
         <script
           type="application/ld+json"

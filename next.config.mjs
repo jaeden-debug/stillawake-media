@@ -2,6 +2,13 @@ import { withBotId } from "botid/next/config";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    // Required for app/global-not-found.tsx. The site has two root layouts
+    // ((en) and (fr)) so there is no single layout Next can compose a global
+    // 404 from; without this the 404 for unmatched URLs renders as a bare
+    // unstyled document with no lang attribute and no header/footer.
+    globalNotFound: true,
+  },
   async headers() {
     return [
       {

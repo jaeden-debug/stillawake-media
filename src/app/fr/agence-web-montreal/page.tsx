@@ -8,6 +8,13 @@ export const metadata: Metadata = {
   title: "Agence Web Montréal | Sites Premium, SEO et Branding",
   description:
     "StillAwake Media est une agence web à Montréal spécialisée en sites premium, SEO, branding, performance, automatisation IA et croissance numérique.",
+  alternates: {
+    canonical: pageUrl,
+    languages: {
+      "fr-CA": pageUrl,
+      "en-CA": "https://stillawakemedia.com/web-design-montreal",
+    },
+  },
 };
 
 const sections = [

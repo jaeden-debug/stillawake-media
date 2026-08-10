@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   description: "Premium web design Montreal services built for SEO, speed, trust, conversion, branding, and long-term business growth for modern businesses.",
   alternates: {
     canonical: pageUrl,
+    languages: {
+      "en-CA": pageUrl,
+      "fr-CA": "https://stillawakemedia.com/fr/agence-web-montreal",
+    },
   },
   openGraph: {
     title: "Web Design Montreal | StillAwake Media",

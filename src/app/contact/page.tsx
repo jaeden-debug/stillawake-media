@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact-form";
 import { Section } from "@/components/site";
+
+export const metadata: Metadata = {
+  title: "Contact StillAwake Media | Start a Project",
+  description:
+    "Contact StillAwake Media to start a premium website, SEO system, brand identity, AI automation, Shopify build, or custom software project.",
+  alternates: {
+    canonical: "/contact",
+  },
+};
 
 export default function Contact() {
   return (

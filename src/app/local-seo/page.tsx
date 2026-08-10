@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Local SEO Services | Google Maps & Lead Generation",
   description:
     "StillAwake Media builds local SEO systems that improve Google Maps visibility, search rankings, trust signals, and lead generation for modern businesses.",
+  alternates: {
+    canonical: "/local-seo",
+  },
 };
 
 const systems = [

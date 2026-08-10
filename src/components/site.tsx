@@ -139,7 +139,8 @@ export function Section({ eyebrow, title, children }: { eyebrow: string; title: 
 }
 
 export function InternalLinks() {
-  return <section className="px-6 py-16"><div className="glass mx-auto max-w-7xl rounded-[2rem] p-8"><h2 className="geist text-3xl font-black tracking-[-0.06em]">Keep exploring.</h2><p className="mt-3 text-[#C7B9B9]">See the work, read the strategy, or start a project with StillAwake Media.</p><div className="mt-8 flex flex-wrap gap-3">{nav.slice(1).map(([n,h])=><Link key={h} href={h} className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">{n}</Link>)}</div></div></section>;
+  const links = [...nav.slice(1, 3), ["Case Studies", "/work"] as const, ...nav.slice(3)];
+  return <section className="px-6 py-16"><div className="glass mx-auto max-w-7xl rounded-[2rem] p-8"><h2 className="geist text-3xl font-black tracking-[-0.06em]">Keep exploring.</h2><p className="mt-3 text-[#C7B9B9]">See the work, read the strategy, or start a project with StillAwake Media.</p><div className="mt-8 flex flex-wrap gap-3">{links.map(([n,h])=><Link key={h} href={h} className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">{n}</Link>)}</div></div></section>;
 }
 
 export function ServiceGrid() {

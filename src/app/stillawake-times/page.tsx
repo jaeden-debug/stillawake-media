@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "StillAwake Times | Digital Strategy, SEO & AI Insights",
   description:
     "Explore StillAwake Times for practical insights on web design, SEO, AI automation, branding, software, Shopify, Framer, and digital infrastructure.",
+  alternates: {
+    canonical: "/stillawake-times",
+  },
 };
 
 export default function Blog() {

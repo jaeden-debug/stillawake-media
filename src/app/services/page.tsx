@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "StillAwake Media Services | Web, SEO, AI & Software",
   description:
     "Explore StillAwake Media services across web design, SEO, software development, branding, AI automation, Shopify, Framer, and digital strategy.",
+  alternates: {
+    canonical: "/services",
+  },
 };
 
 export default function Page() {

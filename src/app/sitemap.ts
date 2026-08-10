@@ -24,6 +24,7 @@ const pageLastModified: Record<string, string> = {
   "framer-development": "2026-08-09",
   "shopify-development": "2026-08-09",
   work: "2026-08-09",
+  "founder/jaeden-doody": "2026-08-10",
   "web-design-montreal": "2026-05-25",
   "fr/agence-web-montreal": "2026-05-25",
   "seo-montreal": "2026-05-25",

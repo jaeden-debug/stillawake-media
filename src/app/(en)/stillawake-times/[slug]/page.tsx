@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { siteUrl } from "@/lib/data";
+import { entityIds } from "@/data/entities";
+import { jaedenDoody, personAuthorNames } from "@/data/people/jaeden-doody";
 import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/content";
 import { InternalLinks } from "@/components/site";
 
@@ -52,8 +55,35 @@ export default async function ArticlePage({ params }: Props) {
 
   const related = getRelatedPosts(post.slug, post.category, 4);
 
+  /**
+   * Article authorship resolves to a canonical entity @id rather than a bare
+   * string. Posts crediting Jaeden by name attach to his Person entity;
+   * everything else attaches to the StillAwake Media Organization, which is
+   * what the frontmatter of every current post declares. Authorship is never
+   * reassigned implicitly — a post is authored by whoever the frontmatter says.
+   */
+  const byJaeden = personAuthorNames.has(post.author);
+  const authorId = byJaeden ? jaedenDoody.id : entityIds.organization;
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${siteUrl}/stillawake-times/${post.slug}#article`,
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    mainEntityOfPage: `${siteUrl}/stillawake-times/${post.slug}`,
+    author: { "@id": authorId },
+    publisher: { "@id": entityIds.organization },
+    isPartOf: { "@id": entityIds.website },
+  };
+
   return (
     <main className="pt-28">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       <article className="px-6 py-20">
         <div className="mx-auto max-w-7xl">
           <Link href="/stillawake-times" className="text-sm text-[#C7B9B9] hover:text-white">
@@ -67,7 +97,14 @@ export default async function ArticlePage({ params }: Props) {
             </h1>
             <p className="mt-8 max-w-3xl text-lg leading-8 text-[#C7B9B9]">{post.excerpt}</p>
             <p className="mt-6 text-xs uppercase tracking-[.25em] text-[#666]">
-              {post.author} · {post.date} · {post.readTime}
+              {byJaeden ? (
+                <Link href={jaedenDoody.path} className="underline decoration-[#D71920] underline-offset-4 hover:text-white">
+                  By {post.author}
+                </Link>
+              ) : (
+                post.author
+              )}{" "}
+              · {post.date} · {post.readTime}
             </p>
           </header>
 

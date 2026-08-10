@@ -1,0 +1,82 @@
+import { entityIds, organization } from "@/data/entities";
+import { siteUrl } from "@/lib/data";
+
+/**
+ * Source of truth for the Jaeden Doody entity.
+ *
+ * Every surface that describes Jaeden — the founder page, Person JSON-LD,
+ * article authorship, About references — reads from here. Wording may vary by
+ * surface; the facts below must not. If this file and another site (ZylX,
+ * BankDeMark) ever disagree on name, birth date, location, or role, this file
+ * is what gets reconciled to, not quietly forked.
+ *
+ * Nothing here is aspirational. No awards, press, education, certifications,
+ * client counts, revenue, funding, or expertise claims — only what is real.
+ */
+export const jaedenDoody = {
+  id: entityIds.founder,
+  name: "Jaeden Doody",
+  slug: "jaeden-doody",
+  path: "/founder/jaeden-doody",
+  url: `${siteUrl}/founder/jaeden-doody`,
+
+  birthDate: "1997-10-09",
+  birthPlaceName: "Montreal, Quebec, Canada",
+  locality: "Montreal",
+  region: "QC",
+  country: "CA",
+
+  jobTitle: "Founder",
+  roles: ["Founder", "Creator", "Developer", "Builder", "Problem solver"],
+
+  /** One-line identity used under the H1 and in compact contexts. */
+  tagline:
+    "Founder of StillAwake Media · Creator · Developer · Problem Solver",
+
+  /** Meta description and compact bio. Kept under ~160 characters. */
+  shortBio:
+    "Jaeden Doody is the Montreal-based founder of StillAwake Media, building software, AI systems, and practical business solutions for modern companies.",
+
+  /** Opening paragraph on the founder page and the schema `description`. */
+  longBio:
+    "Jaeden Doody is a creator and developer based in Montreal, and the founder of StillAwake Media. He builds software, digital products, and the business systems underneath them — starting from a background in mechanics that shaped how he approaches every system he has worked on since.",
+
+  /** Areas of work. Framed as what he builds and researches in, not expertise claims. */
+  knowsAbout: [
+    "Artificial intelligence",
+    "AI agents",
+    "Model Context Protocol",
+    "Business intelligence",
+    "SaaS",
+    "Software development",
+    "Business systems",
+    "Automation",
+    "Financial technology",
+    "Ecommerce",
+    "Search and SEO",
+    "Data infrastructure",
+    "Websites and digital products",
+    "Product development",
+  ],
+
+  organizationId: organization.id,
+  organizationName: organization.name,
+
+  /**
+   * Confirmed public professional profiles only.
+   *
+   * Deliberately empty. No public personal profile for Jaeden has been
+   * verified, and https://zylx.ai/authors/jaeden-doody returns 404 as of
+   * implementation. A company-controlled account (for example x.com/zylxai)
+   * is not a personal sameAs and must not be listed here. Adding unverified
+   * or dead URLs weakens the entity rather than strengthening it — populate
+   * this only with profiles confirmed to exist and to be his.
+   */
+  sameAs: [] as string[],
+} as const;
+
+/**
+ * Author names in article frontmatter that resolve to Jaeden's Person entity.
+ * Everything else falls back to the Organization as author.
+ */
+export const personAuthorNames = new Set(["Jaeden Doody"]);

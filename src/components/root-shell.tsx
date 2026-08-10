@@ -4,6 +4,7 @@ import Script from "next/script";
 import { Header } from "@/components/site";
 import { Footer } from "@/components/footer";
 import { siteUrl } from "@/lib/data";
+import { entityIds } from "@/data/entities";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -94,38 +95,26 @@ export function RootShell({
   lang: string;
   children: React.ReactNode;
 }) {
+  /**
+   * One canonical Organization node for StillAwake Media.
+   *
+   * This previously emitted a separate `Organization` and `ProfessionalService`
+   * node, both named "StillAwake Media" and neither carrying an @id — two
+   * unlinked entities for one company. They are merged into a single node with
+   * both types and a stable @id so the rest of the graph (founder page,
+   * article authorship) has one thing to point at.
+   */
   const org = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "ProfessionalService"],
+    "@id": entityIds.organization,
     name: "StillAwake Media",
     url: siteUrl,
     slogan: "Ambition Never Sleeps.",
     logo: `${siteUrl}/stillawake-media-favicon.png`,
     image: `${siteUrl}/stillawake-media-social-preview.jpeg`,
     description,
-  };
-
-  const web = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "StillAwake Media",
-    url: siteUrl,
-    description,
-    publisher: {
-      "@type": "Organization",
-      name: "StillAwake Media",
-    },
-  };
-
-  const localBusiness = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: "StillAwake Media",
-    url: siteUrl,
-    image: `${siteUrl}/stillawake-media-social-preview.jpeg`,
-    logo: `${siteUrl}/stillawake-media-favicon.png`,
-    slogan: "Ambition Never Sleeps.",
-    description,
+    founder: { "@id": entityIds.founder },
     areaServed: ["Montreal", "Quebec", "Canada"],
     address: {
       "@type": "PostalAddress",
@@ -143,6 +132,16 @@ export function RootShell({
     ],
   };
 
+  const web = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": entityIds.website,
+    name: "StillAwake Media",
+    url: siteUrl,
+    description,
+    publisher: { "@id": entityIds.organization },
+  };
+
   return (
     <html lang={lang} className={`${geist.variable} ${inter.variable}`}>
       <body>
@@ -153,10 +152,6 @@ export function RootShell({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(web) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }}
         />
         <Script
           src="https://analytics.ahrefs.com/analytics.js"

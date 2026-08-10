@@ -174,6 +174,41 @@ export default function About() {
         </div>
       </section>
 
+      <section className="px-6 py-20">
+        <div className="mx-auto max-w-7xl rounded-[3rem] border border-white/10 bg-[#070707] p-8 md:p-14">
+          <p className="mb-4 text-sm uppercase tracking-[.35em] text-[#D71920]">Founder</p>
+
+          <h2 className="geist max-w-4xl text-4xl font-black leading-[.95] tracking-[-0.06em] md:text-6xl">
+            StillAwake Media was founded by Jaeden Doody.
+          </h2>
+
+          <p className="mt-6 max-w-3xl text-base leading-8 text-[#C7B9B9]">
+            Jaeden is a Montreal-based creator and developer who came to software
+            from a background in mechanics. He builds the products StillAwake
+            develops, including{" "}
+            <a href="https://zylx.ai" target="_blank" rel="noopener" className="text-white underline decoration-[#D71920] underline-offset-4">
+              ZylX
+            </a>
+            , and separately founded{" "}
+            <a href="https://bankdemark.com" target="_blank" rel="noopener" className="text-white underline decoration-[#D71920] underline-offset-4">
+              BankDeMark
+            </a>{" "}
+            and{" "}
+            <a href="https://blackwateraquatics.ca" target="_blank" rel="noopener" className="text-white underline decoration-[#D71920] underline-offset-4">
+              Blackwater Aquatics
+            </a>
+            .
+          </p>
+
+          <Link
+            href="/founder/jaeden-doody"
+            className="mt-10 inline-flex rounded-full bg-[#D71920] px-6 py-4 font-bold"
+          >
+            Read Jaeden&apos;s story →
+          </Link>
+        </div>
+      </section>
+
       <section className="px-6 py-24">
         <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[3rem] bg-[#D71920] p-8 md:p-14">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,.22),transparent_30%)]" />

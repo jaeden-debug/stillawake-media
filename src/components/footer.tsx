@@ -20,6 +20,7 @@ const resources = [
   ["Portfolio", "/portfolio"],
   ["Case Studies", "/work"],
   ["About", "/about"],
+  ["Founder", "/founder/jaeden-doody"],
   ["Contact", "/contact"],
 ];
 

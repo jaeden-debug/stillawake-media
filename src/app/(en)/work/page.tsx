@@ -417,6 +417,15 @@ export default function Page() {
         </div>
       </section>
 
+      <section className="px-6 pb-8"><div className="glass mx-auto max-w-7xl rounded-[2rem] p-8">
+        <h2 className="geist text-3xl font-black tracking-[-0.06em]">Hire the services behind this work.</h2>
+        <div className="mt-6 flex flex-wrap gap-3">
+          {[["Web Design Montréal","/web-design-montreal"],["Shopify Development","/shopify-development"],["SEO Montréal","/seo-montreal"],["Custom Software","/software-development"],["Website Redesign","/website-redesign"],["Branding","/branding"]].map(([n,h])=>(
+            <a key={h} href={h} className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">{n}</a>
+          ))}
+        </div>
+      </div></section>
+
       <InternalLinks />
     </main>
   );

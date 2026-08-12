@@ -9,6 +9,7 @@ const services = [
   ["Branding", "/branding"],
   ["Software Development", "/software-development"],
   ["AI Automation", "/ai-automation"],
+  ["Website Redesign", "/website-redesign"],
   ["Pricing", "/pricing"],
 ];
 
@@ -18,6 +19,7 @@ const montreal = [
   ["SEO Montreal", "/seo-montreal"],
   ["Agence SEO Montréal", "/fr/agence-seo-montreal"],
   ["Maintenance Site Web", "/fr/maintenance-site-web"],
+  ["Refonte de site web", "/fr/refonte-site-web"],
   ["Tarifs", "/fr/tarifs"],
 ];
 

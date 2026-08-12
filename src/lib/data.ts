@@ -32,6 +32,7 @@ export const serviceNav = [
   ["Local SEO", "/local-seo"],
   ["AI Automation", "/ai-automation"],
   ["Framer Development", "/framer-development"],
+  ["Website Redesign", "/website-redesign"],
   ["Pricing", "/pricing"],
 ];
 

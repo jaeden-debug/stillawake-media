@@ -114,6 +114,11 @@ export default function TarifsPage() {
             ))}
           </div>
 
+          <p className="mt-10 text-sm text-[#C7B9B9]">
+            Avant de commencer, lisez le guide :{" "}
+            <Link href="/fr/prix-site-web-quebec" className="text-[#D71920] underline-offset-4 hover:underline">Combien coûte un site web au Québec?</Link>
+          </p>
+
           <div className="mt-16 rounded-[2rem] bg-[#D71920] p-10">
             <h2 className="geist max-w-2xl text-4xl font-black tracking-[-0.06em]">Sautez l&apos;appel de vente. Dites-nous ce que vous bâtissez.</h2>
             <Link href="/contact" className="mt-6 inline-flex rounded-full bg-black px-6 py-4 font-bold">Démarrer un projet →</Link>

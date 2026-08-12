@@ -38,6 +38,8 @@ const pageLastModified: Record<string, string> = {
   "fr/tarifs": "2026-08-12",
   fr: "2026-08-12",
   "fr/contact": "2026-08-12",
+  "website-cost-canada": "2026-08-12",
+  "fr/prix-site-web-quebec": "2026-08-12",
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {

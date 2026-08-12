@@ -119,6 +119,11 @@ export default function PricingPage() {
             ))}
           </div>
 
+          <p className="mt-10 text-sm text-[#C7B9B9]">
+            Wondering what a build should cost before you start? Read the guide:{" "}
+            <Link href="/website-cost-canada" className="text-[#D71920] underline-offset-4 hover:underline">How much does a website cost in Canada?</Link>
+          </p>
+
           <div className="mt-16 rounded-[2rem] bg-[#D71920] p-10">
             <h2 className="geist max-w-2xl text-4xl font-black tracking-[-0.06em]">Skip the sales call. Tell us what you&apos;re building.</h2>
             <Link href="/contact" className="mt-6 inline-flex rounded-full bg-black px-6 py-4 font-bold">Start a Project →</Link>

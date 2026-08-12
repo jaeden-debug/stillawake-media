@@ -1,6 +1,7 @@
 import { siteUrl } from "@/lib/data";
 import { organization, ventures } from "@/data/entities";
 import { jaedenDoody } from "@/data/people/jaeden-doody";
+import { SERVICES } from "@/data/services";
 
 /**
  * llms.txt — a plain-text orientation file for language models.
@@ -33,6 +34,23 @@ ${ventures
 
 ZylX is a ${organization.name} product. BankDeMark and Blackwater Aquatics Canada are separate organizations founded by ${jaedenDoody.name}; ${organization.name} is not their parent company.
 
+## Services and pricing
+
+Prices are in Canadian dollars and mirror the live service catalogue. Services without a listed price are custom-quoted in writing through an async intake (no sales call required).
+
+${SERVICES.filter((svc) => svc.active)
+  .map((svc) => {
+    const price = svc.price
+      ? `${svc.price} CAD/month`
+      : svc.tiers?.length
+        ? `${svc.tiers.map((t) => `$${t.price}`).join(" / ")} CAD one-time (tier set by workload)`
+        : "custom quote";
+    return `- ${svc.name} — ${price} — ${siteUrl}${svc.enPath}${svc.frPath ? ` (français: ${siteUrl}${svc.frPath})` : ""}`;
+  })
+  .join("\n")}
+
+Pricing overview: ${siteUrl}/pricing (français: ${siteUrl}/fr/tarifs)
+
 ## Key pages
 
 - ${siteUrl}/ — home
@@ -43,6 +61,8 @@ ZylX is a ${organization.name} product. BankDeMark and Blackwater Aquatics Canad
 - ${siteUrl}/services — services
 - ${siteUrl}/stillawake-times — articles
 - ${siteUrl}/contact — contact
+- ${siteUrl}/pricing — published pricing
+- ${siteUrl}/fr — French site (Québec French; every commercial page has a French counterpart)
 
 ## Related first-party sites
 

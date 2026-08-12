@@ -176,6 +176,27 @@ export default function Page() {
       </section>
 
       <InternalLinks />
+    
+      <section className="border-t border-white/10 px-6 py-20">
+        <div className="mx-auto max-w-7xl">
+          <p className="mb-4 text-sm uppercase tracking-[.3em] text-[#D71920]">Proof · Montréal</p>
+          <h2 className="geist max-w-4xl text-4xl font-black tracking-[-0.06em] md:text-5xl">
+            Shopify work you can actually visit.
+          </h2>
+          <p className="mt-6 max-w-3xl leading-8 text-[#C7B9B9]">
+            StillAwake Media is a Montréal studio that builds Shopify stores and original Shopify themes — including
+            live Canadian ecommerce like Blackwater Aquatics Canada, a bilingual-market aquarium store with SEO-led
+            product education. We build for merchants across Québec and Canada, fully remotely: store architecture,
+            custom themes, speed, structured data, and the SEO that makes a store findable.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href="/work" className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">Read the case studies</a>
+            <a href="/portfolio" className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">Open the live stores</a>
+            <a href="/website-maintenance" className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">Ecommerce emergency support ($250–$600)</a>
+            <a href="/fr/developpement-shopify" className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">Version française</a>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

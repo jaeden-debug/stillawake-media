@@ -1,6 +1,7 @@
 ---
 title: "Why Internal Linking Is One of the Most Powerful SEO Strategies"
 date: "2026-05-25"
+updated: "2026-08-12"
 excerpt: "Internal linking isn't a maintenance task — it's an architecture strategy. Done correctly, it builds topical authority, guides crawl flow, and distributes ranking power across your entire website. This guide covers how to do it systematically."
 category: "SEO Strategy"
 featured: true
@@ -28,6 +29,10 @@ Internal links do three distinct things for your SEO:
 Understanding these three functions transforms how you approach internal linking. It's not about connecting pages for the sake of connection — it's about architecting a signal system that tells Google, clearly and consistently, which pages are most important, how topics relate, and what authority flows where.
 
 ---
+
+## A Live Example You Can Inspect {#live-example}
+
+Updated August 2026: this site is the demonstration. Every service page names its cluster (service → pricing → guides → case studies), every article links back to the commercial page it supports, and each search intent has exactly one owning URL — we even consolidated four of our own thin location articles into their money pages when they competed. The measurable version of this discipline is in the [Blackwater Aquatics case study](/work/blackwater-aquatics): 64 education pages interlinked behind 17 products, holding ~60,000 impressions on the top 12 URLs and ranking a product page at an 8.6% CTR — link architecture doing exactly what this article describes.
 
 ## Topical Authority and Semantic Relationships {#topical-authority}
 

@@ -1,6 +1,7 @@
 ---
 title: "How Google Actually Crawls and Understands Websites"
 date: "2026-05-25"
+updated: "2026-08-12"
 excerpt: "Google doesn't just index your content — it crawls, renders, evaluates, and signals every page of your website through a complex system most businesses know nothing about. Understanding how Googlebot works gives you a real competitive advantage in search."
 category: "Technical SEO"
 featured: true
@@ -25,6 +26,10 @@ Understanding how this system works lets you design your website to work with it
 This guide covers the technical SEO knowledge that separates websites that consistently grow their organic traffic from those that plateau. For businesses building their online presence in competitive local or national markets, technical SEO is the foundation that content and link-building strategies build upon.
 
 ---
+
+## Update: It's No Longer Just Googlebot Reading Your Site {#not-just-googlebot}
+
+August 2026 update: everything in this guide now applies to a second audience — the crawlers behind AI answer engines (ChatGPT, Perplexity, Gemini). They are observably less patient than Googlebot: content that only exists after heavy JavaScript execution may simply never be seen. The server-rendered architecture this guide recommends is exactly what keeps a site legible to both. How AI systems choose what to cite is its own discipline now, covered in our [Generative Engine Optimization guide](/stillawake-times/what-is-generative-engine-optimization).
 
 ## How Googlebot Discovers and Crawls Websites {#how-googlebot-discovers}
 

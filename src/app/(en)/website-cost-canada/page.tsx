@@ -69,8 +69,9 @@ export default function WebsiteCostCanadaPage() {
           <p className="mt-8 max-w-3xl text-lg leading-8 text-white/70">
             The honest answer: <strong className="text-white">from about $1,500 for a template build to well past
             $100,000 for a custom web application</strong> — because &quot;a website&quot; describes ten different
-            products. This guide breaks down real 2026 Canadian ranges, what actually moves the price, and — unusually
-            for an agency — the rates we publish ourselves.
+            products. Whether you&apos;re pricing web design, web development, or a full platform, this guide breaks
+            down real 2026 Canadian ranges, what actually moves web design cost up or down, and — unusually for an
+            agency — the rates we publish ourselves.
           </p>
         </div>
       </section>

@@ -1,6 +1,7 @@
 ---
 title: "What Is Technical SEO? (Complete Business Guide)"
 date: "2026-05-24"
+updated: "2026-08-12"
 excerpt: "Technical SEO is the foundation underneath all other SEO work. Without it, great content and strong backlinks underperform their potential. This guide explains every component of technical SEO — from crawlability and indexing to schema, Core Web Vitals, and JavaScript rendering — in plain language."
 category: "Technical SEO"
 featured: true
@@ -25,6 +26,10 @@ This guide explains every component of technical SEO — what it is, why it matt
 Technical SEO is the optimization of a website's infrastructure so that search engines can efficiently crawl, render, and index its content. It covers site architecture, URL structure, page speed, mobile-friendliness, structured data, duplicate content prevention, JavaScript rendering, and the technical signals that affect how search engines evaluate and rank a website.
 
 ---
+
+## A Measured Example of What Technical SEO Is Worth
+
+Updated August 2026: when we took over the TravelDesign By Lisa platform, the technical audit surfaced roughly 2,300 defects — crawlability, structure, canonicals, performance. Clearing that foundation before touching content is what let the site go from zero organic clicks to page-1 rankings in 8 weeks, with a measured CLS of 0.00. The sourced breakdown is in the [case study](/work/lisa-travel-design), and the performance layer of technical SEO now has its own deep guide: [Core Web Vitals: What They Are and How to Actually Fix Them](/stillawake-times/core-web-vitals-guide).
 
 ## Why Technical SEO Is the Foundation of All SEO
 

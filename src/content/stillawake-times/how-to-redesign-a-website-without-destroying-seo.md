@@ -1,6 +1,7 @@
 ---
 title: "How to Redesign a Website Without Destroying Your SEO"
 date: "2026-05-24"
+updated: "2026-08-12"
 excerpt: "A website redesign is one of the highest-risk moments for organic search rankings. Done carelessly, it can wipe out years of SEO equity in days. Done correctly, it's an opportunity to build something faster, stronger, and better-ranking than what you had. This guide covers every step."
 category: "Web Design"
 featured: true
@@ -64,6 +65,10 @@ A redesign is a full technical rebuild. New technical issues are frequently intr
 A redesign on a platform with worse performance characteristics than the previous site introduces Core Web Vitals regression. Rankings that were supported by good performance scores can drop when the new site is slower.
 
 ---
+
+## What a Redesign Costs (Updated 2026)
+
+A quick reality check before the phases, since it's the most-asked question: in the 2026 Canadian market, professional redesigns generally track the same ranges as new builds — roughly $3,000–$10,000 for a small-business site and $8,000–$25,000 for a fully custom one — because a redesign done properly re-examines structure, content, and technical foundation rather than repainting the old site. These are market observations, not quotes; a real project gets a written scope with a fixed price. Our redesign service — including the ranking-preservation process this article describes — is documented with its process on the [website redesign page](/website-redesign).
 
 ## Phase 1: Pre-Redesign SEO Audit
 

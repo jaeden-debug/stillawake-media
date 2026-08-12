@@ -1,6 +1,7 @@
 ---
 title: "Framer SEO Guide: Can Framer Websites Rank on Google?"
 date: "2026-05-24"
+updated: "2026-08-12"
 excerpt: "Framer is one of the best design platforms available, but businesses considering it often have one question before committing: can a Framer website actually rank on Google? The answer is yes — and in many ways, Framer has structural SEO advantages over traditional platforms. Here's the complete picture."
 category: "Web Design"
 featured: true
@@ -25,6 +26,10 @@ This guide covers every SEO dimension of Framer: the advantages, the limitations
 Yes. Framer websites are fully indexable by Google, support all standard on-page SEO controls, generate clean semantic HTML, and achieve excellent Core Web Vitals scores by default. Framer's static CDN delivery model is architecturally strong for SEO performance. The main area requiring attention is structured data (schema markup), which requires custom code rather than plugin-based implementation.
 
 ---
+
+## Proof Point: A Measured Framer-Class Marketing Site
+
+Updated August 2026: the standard this guide argues for is achievable and measurable. A 31-route marketing site we shipped in 19 days ([NAVTRL](/work/stalkr-navtrl)) measures 98 accessibility / 100 best practices / 100 SEO on Chrome Lighthouse (mobile), plus a perfect 100 on the agentic-browsing audit — the new Lighthouse measure of how well AI assistants can navigate a site. Whether you build on Framer or custom, hold your builder to published numbers like these; our [Framer development service](/framer-development) does exactly that.
 
 ## How Google Crawls and Indexes Framer Websites
 

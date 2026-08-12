@@ -1,6 +1,7 @@
 ---
 title: "Why Custom-Coded Websites Outperform Templates"
 date: "2026-05-24"
+updated: "2026-08-12"
 excerpt: "Templates are a compromise. A custom-coded website is an asset built around your business — your conversion architecture, your brand, your performance requirements, your integrations. This guide breaks down every dimension where custom code wins, and what businesses are giving up when they settle for a template."
 category: "Web Design"
 featured: true
@@ -56,6 +57,10 @@ They're working within the template's architecture. They're not redesigning the 
 This is not customization in any meaningful technical sense. It's configuration. And configuration has hard limits.
 
 ---
+
+## The Numbers Behind the Claim
+
+Updated August 2026: "custom outperforms templates" should be measurable, so here are our published measurements. Custom builds from our portfolio hold 100/100/100 ([BankDeMark](/work/bankdemark) — a financial platform with 13 interactive calculators) and CLS 0.00 across 834 URLs ([TravelDesign By Lisa](/work/lisa-travel-design)) on Chrome Lighthouse, mobile, August 2026. Template themes carry code for every feature every buyer might want; a custom build carries only yours — that's the structural difference the metrics keep confirming. What those metrics mean and how to fix them on any site: [our Core Web Vitals guide](/stillawake-times/core-web-vitals-guide).
 
 ## The Performance Gap: Why Templates Are Structurally Slower
 

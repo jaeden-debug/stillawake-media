@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ServiceJsonLd, FaqBlock, RelatedServices } from "@/components/service-page";
+import { ArticlesLies } from "@/components/articles-lies";
 
 export const metadata: Metadata = {
   title: "Refonte de site web | Moderniser sans perdre votre référencement",
@@ -123,6 +124,8 @@ export default function RefonteSiteWebPage() {
           ["English version", "/website-redesign"],
         ]}
       />
+    
+      <ArticlesLies pillar="/fr/refonte-site-web" />
     </main>
   );
 }

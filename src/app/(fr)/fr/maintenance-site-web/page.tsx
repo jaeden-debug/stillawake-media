@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ServiceJsonLd, PriceCard, FaqBlock, RelatedServices } from "@/components/service-page";
+import { ArticlesLies } from "@/components/articles-lies";
 
 export const metadata: Metadata = {
   title: "Maintenance de site web et support d'urgence | Tarifs affichés",
@@ -161,6 +162,8 @@ export default function MaintenanceSiteWebPage() {
           ["English version", "/website-maintenance"],
         ]}
       />
+    
+      <ArticlesLies pillar="/fr/maintenance-site-web" />
     </main>
   );
 }

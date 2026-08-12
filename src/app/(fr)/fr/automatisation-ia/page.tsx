@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ServiceJsonLd, FaqBlock, RelatedServices } from "@/components/service-page";
+import { ArticlesLies } from "@/components/articles-lies";
 
 export const metadata: Metadata = {
   title: "Automatisation IA pour PME | Agents et flux automatisés — Montréal",
@@ -163,6 +164,8 @@ export default function AutomatisationIaPage() {
           ["English version", "/ai-automation"],
         ]}
       />
+    
+      <ArticlesLies pillar="/fr/automatisation-ia" />
     </main>
   );
 }

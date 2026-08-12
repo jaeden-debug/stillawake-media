@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { RelatedServices } from "@/components/service-page";
+import { ArticlesLies } from "@/components/articles-lies";
 
 const pageUrl = "https://stillawakemedia.com/fr/agence-web-montreal";
 
@@ -348,6 +349,8 @@ export default function Page() {
           <a href="/fr/etude-de-cas-lisa-travel-design" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Lire l'étude de cas →</a>
         </div>
       </section>
+    
+      <ArticlesLies pillar="/fr/agence-web-montreal" />
     </main>
   );
 }

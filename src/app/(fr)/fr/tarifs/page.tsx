@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ServiceJsonLd, PriceCard } from "@/components/service-page";
 import { getContentLayer } from "@/lib/cms/adapter";
 import { slot } from "@/lib/cms/layer";
+import { ArticlesLies } from "@/components/articles-lies";
 
 export const revalidate = 300;
 
@@ -131,6 +132,8 @@ export default async function TarifsPage() {
           </div>
         </div>
       </section>
+    
+      <ArticlesLies pillar="/fr/tarifs" />
     </main>
   );
 }

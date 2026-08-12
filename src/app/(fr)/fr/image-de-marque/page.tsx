@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ServiceJsonLd, FaqBlock, RelatedServices } from "@/components/service-page";
+import { ArticlesLies } from "@/components/articles-lies";
 
 export const metadata: Metadata = {
   title: "Image de marque et identité visuelle | Studio de branding à Montréal",
@@ -181,6 +182,8 @@ export default function ImageDeMarquePage() {
           ["English version", "/branding"],
         ]}
       />
+    
+      <ArticlesLies pillar="/fr/image-de-marque" />
     </main>
   );
 }

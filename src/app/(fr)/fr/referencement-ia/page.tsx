@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ServiceJsonLd, FaqBlock, RelatedServices } from "@/components/service-page";
+import { ArticlesLies } from "@/components/articles-lies";
 
 export const metadata: Metadata = {
   title: "Référencement IA (AEO) | Être cité par ChatGPT et Google IA",
@@ -126,6 +127,8 @@ export default function ReferencementIaPage() {
           ["English version", "/answer-engine-optimization"],
         ]}
       />
+    
+      <ArticlesLies pillar="/fr/referencement-ia" />
     </main>
   );
 }

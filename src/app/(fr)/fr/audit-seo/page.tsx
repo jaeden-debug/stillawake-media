@@ -3,6 +3,7 @@ import Link from "next/link";
 import { siteUrl } from "@/lib/data";
 import { entityIds } from "@/data/entities";
 import { jaedenDoody } from "@/data/people/jaeden-doody";
+import { ArticlesLies } from "@/components/articles-lies";
 
 const url = `${siteUrl}/fr/audit-seo`;
 
@@ -142,6 +143,8 @@ export default function AuditSeoPage() {
           </div>
         </div>
       </article>
+    
+      <ArticlesLies pillar="/fr/audit-seo" />
     </main>
   );
 }

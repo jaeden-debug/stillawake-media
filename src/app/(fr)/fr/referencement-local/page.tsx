@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ServiceJsonLd, FaqBlock, RelatedServices, PriceCard } from "@/components/service-page";
+import { ArticlesLies } from "@/components/articles-lies";
 
 export const metadata: Metadata = {
   title: "Référencement local à Montréal | Être trouvé dans votre quartier",
@@ -202,6 +203,8 @@ export default function ReferencementLocalPage() {
           ["English version", "/local-seo"],
         ]}
       />
+    
+      <ArticlesLies pillar="/fr/referencement-local" />
     </main>
   );
 }

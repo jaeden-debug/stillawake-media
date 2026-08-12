@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ServiceJsonLd, PriceCard, FaqBlock, RelatedServices } from "@/components/service-page";
+import { ArticlesLies } from "@/components/articles-lies";
 
 export const metadata: Metadata = {
   title: "Agence SEO Montréal | Référencement avec tarifs affichés",
@@ -364,6 +365,8 @@ export default function AgenceSeoMontrealPage() {
           <a href="/fr/etude-de-cas-lisa-travel-design" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Lire l'étude de cas →</a>
         </div>
       </section>
+    
+      <ArticlesLies pillar="/fr/agence-seo-montreal" />
     </main>
   );
 }

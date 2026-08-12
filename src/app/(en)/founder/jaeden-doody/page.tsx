@@ -17,11 +17,35 @@ export const metadata: Metadata = {
       "x-default": person.url,
     },
   },
+  /**
+   * Declaring `openGraph` here REPLACES the root layout's block rather than
+   * merging with it, so the inherited og:image was being dropped. Without an
+   * og:image LinkedIn refuses to build a preview card for this URL at all
+   * ("please enter a valid link"), and every other social/AI surface renders
+   * it bare. The same applies to `twitter` — without it, twitter:title fell
+   * back to the generic site-wide title instead of Jaeden's.
+   */
   openGraph: {
     title: "Jaeden Doody — Founder of StillAwake Media",
     description: person.shortBio,
     url: person.url,
     type: "profile",
+    siteName: "StillAwake Media",
+    locale: "en_CA",
+    images: [
+      {
+        url: person.image,
+        width: 800,
+        height: 800,
+        alt: "Jaeden Doody, founder of StillAwake Media",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jaeden Doody — Founder of StillAwake Media",
+    description: person.shortBio,
+    images: [person.image],
   },
 };
 
@@ -107,6 +131,7 @@ export default function Page() {
         "@id": person.id,
         name: person.name,
         url: person.url,
+        image: person.image,
         description: person.longBio,
         birthDate: person.birthDate,
         birthPlace: {

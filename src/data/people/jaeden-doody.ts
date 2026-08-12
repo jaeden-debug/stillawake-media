@@ -26,6 +26,14 @@ export const jaedenDoody = {
   region: "QC",
   country: "CA",
 
+  /**
+   * Genuine photograph, supplied by Jaeden. Used for the Person entity's
+   * `image`, the founder page's og:image, and the LinkedIn Featured preview.
+   * A Person node with a real image is a materially stronger entity signal
+   * than one without — but it must never be an AI-generated likeness.
+   */
+  image: "https://stillawakemedia.com/jaeden-doody-founder-stillawake-media.jpg",
+
   jobTitle: "Founder",
   roles: ["Founder", "Creator", "Developer", "Builder", "Problem solver"],
 
@@ -65,14 +73,15 @@ export const jaedenDoody = {
   /**
    * Confirmed public professional profiles only.
    *
-   * Deliberately empty. No public personal profile for Jaeden has been
-   * verified, and https://zylx.ai/authors/jaeden-doody returns 404 as of
-   * implementation. A company-controlled account (for example x.com/zylxai)
-   * is not a personal sameAs and must not be listed here. Adding unverified
-   * or dead URLs weakens the entity rather than strengthening it — populate
-   * this only with profiles confirmed to exist and to be his.
+   * Only profiles verified to exist AND to represent Jaeden himself belong
+   * here. A company-controlled account (for example x.com/zylxai) is not a
+   * personal sameAs. Product/venture sites are modelled as separate entities
+   * with their own relationships — they must never be listed here just
+   * because he built them.
+   *
+   * https://zylx.ai/authors/jaeden-doody still returns 404; add it once live.
    */
-  sameAs: [] as string[],
+  sameAs: ["https://www.linkedin.com/in/jaedendoody"] as string[],
 } as const;
 
 /**

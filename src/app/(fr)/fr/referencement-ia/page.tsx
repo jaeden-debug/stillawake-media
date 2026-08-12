@@ -76,7 +76,7 @@ export default function ReferencementIaPage() {
             Montréal, pour des clients partout.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/contact" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">
+            <Link href="/fr/contact" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">
               Demander un audit de visibilité IA
             </Link>
             <Link href="/fr/agence-seo-montreal" className="rounded-full border border-white/15 px-7 py-4 text-sm font-medium transition hover:border-white/40">

@@ -90,10 +90,10 @@ export default function AgenceSeoMontrealPage() {
             mesurables.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/contact" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">
+            <Link href="/fr/contact" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">
               Démarrer mon SEO
             </Link>
-            <Link href="/portfolio" className="rounded-full border border-white/15 px-7 py-4 text-sm font-medium transition hover:border-white/40">
+            <Link href="/fr/realisations" className="rounded-full border border-white/15 px-7 py-4 text-sm font-medium transition hover:border-white/40">
               Voir nos réalisations
             </Link>
           </div>
@@ -112,14 +112,14 @@ export default function AgenceSeoMontrealPage() {
               price="600 $ CAD"
               cadence="par mois"
               items={["SEO technique", "Optimisation des pages", "Suivi Google Search Console", "Rapport mensuel clair"]}
-              cta={["Choisir Essentiel", "/contact"]}
+              cta={["Choisir Essentiel", "/fr/contact"]}
             />
             <PriceCard
               name="Croissance SEO — Avancé"
               price="850 $ CAD"
               cadence="par mois"
               items={["Tout le forfait Essentiel", "Optimisation moteurs IA (AEO)", "Optimisation des entités", "Stratégie de contenu"]}
-              cta={["Choisir Avancé", "/contact"]}
+              cta={["Choisir Avancé", "/fr/contact"]}
               highlight
             />
           </div>

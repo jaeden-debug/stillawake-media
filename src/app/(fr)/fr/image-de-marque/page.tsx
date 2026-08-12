@@ -100,7 +100,7 @@ export default function ImageDeMarquePage() {
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link href="/fr/contact" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">Démarrer ma marque</Link>
-            <Link href="/portfolio" className="rounded-full border border-white/15 px-7 py-4 text-sm font-medium transition hover:border-white/40">Voir le portfolio</Link>
+            <Link href="/fr/realisations" className="rounded-full border border-white/15 px-7 py-4 text-sm font-medium transition hover:border-white/40">Voir le portfolio</Link>
           </div>
         </div>
       </section>

@@ -60,7 +60,8 @@ const projects = [
   },
 ];
 
-export default function PortfolioBrowser() {
+export default function PortfolioBrowser({ locale = "en" }: { locale?: "en" | "fr" } = {}) {
+  const fr = locale === "fr";
   const [activeId, setActiveId] = useState(projects[0].id);
   const [openTabs, setOpenTabs] = useState(projects.map((p) => p.id));
   const [query, setQuery] = useState("");
@@ -133,10 +134,10 @@ export default function PortfolioBrowser() {
         <div className="mb-10 grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
           <div>
             <p className="mb-4 text-sm uppercase tracking-[.35em] text-[#D71920]">
-              Website Portfolio
+              {fr ? "Réalisations" : "Website Portfolio"}
             </p>
             <h1 className="geist max-w-5xl text-5xl font-black leading-[.9] tracking-[-0.075em] md:text-8xl">
-              Open the work like a live operating system.
+              {fr ? <>Ouvrez les projets comme un système d’exploitation en direct.</> : <>Open the work like a live operating system.</>}
             </h1>
             <p className="mt-7 max-w-3xl text-lg leading-8 text-[#C7B9B9]">
               Browse live website builds inside a custom StillAwake browser. Search projects, open tabs, close them, restore them, and explore the systems like you are inside the portfolio itself.
@@ -144,7 +145,7 @@ export default function PortfolioBrowser() {
           </div>
 
           <a
-            href="/contact"
+            href={fr ? "/fr/contact" : "/contact"}
             className="glass inline-flex w-fit rounded-full px-6 py-4 text-sm font-bold transition hover:bg-white/[.09]"
           >
             Start a Project →
@@ -170,7 +171,7 @@ export default function PortfolioBrowser() {
                 <input
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search websites, SEO, AI, travel, finance..."
+                  placeholder={fr ? "Chercher : sites, SEO, IA, voyage, finance..." : "Search websites, SEO, AI, travel, finance..."}
                   className="w-full bg-transparent text-sm text-white outline-none placeholder:text-[#666]"
                 />
               </div>
@@ -258,8 +259,8 @@ export default function PortfolioBrowser() {
               {minimized || !openTabs.length ? (
                 <div className="grid h-full min-h-[620px] place-items-center rounded-[2rem] border border-dashed border-white/15 bg-black/40 p-8 text-center">
                   <div>
-                    <p className="text-sm uppercase tracking-[.35em] text-[#D71920]">No active tab</p>
-                    <h2 className="geist mt-4 text-5xl font-black tracking-[-.07em]">Choose a project to reopen the browser.</h2>
+                    <p className="text-sm uppercase tracking-[.35em] text-[#D71920]">{fr ? "Aucun onglet actif" : "No active tab"}</p>
+                    <h2 className="geist mt-4 text-5xl font-black tracking-[-.07em]">{fr ? "Choisissez un projet pour rouvrir le navigateur." : "Choose a project to reopen the browser."}</h2>
                     <div className="mt-8 flex flex-wrap justify-center gap-3">
                       {projects.map((project) => (
                         <button
@@ -331,7 +332,7 @@ export default function PortfolioBrowser() {
                     </div>
 
                     <aside className="border-t border-white/10 bg-[#080808] p-5 xl:border-l xl:border-t-0">
-                      <p className="text-xs uppercase tracking-[.3em] text-[#D71920]">Project Intel</p>
+                      <p className="text-xs uppercase tracking-[.3em] text-[#D71920]">{fr ? "Fiche projet" : "Project Intel"}</p>
                       <p className="mt-4 text-sm leading-7 text-[#C7B9B9]">{activeProject.summary}</p>
 
                       <div className="mt-6 flex flex-wrap gap-2">
@@ -351,7 +352,7 @@ export default function PortfolioBrowser() {
                       </div>
 
                       <div className="mt-8 rounded-2xl border border-white/10 bg-black/50 p-4">
-                        <p className="text-xs uppercase tracking-[.25em] text-[#666]">Preview note</p>
+                        <p className="text-xs uppercase tracking-[.25em] text-[#666]">{fr ? "Note sur l’aperçu" : "Preview note"}</p>
                         <p className="mt-3 text-sm leading-6 text-[#C7B9B9]">
                           Some live sites block iframe previews. If a preview fails, use Open Live to view the project directly.
                         </p>
@@ -378,7 +379,7 @@ export default function PortfolioBrowser() {
               </p>
             </div>
 
-            <a href="/contact" className="glass inline-flex w-fit rounded-full px-5 py-3 text-sm font-bold transition hover:bg-white/[.08]">
+            <a href={fr ? "/fr/contact" : "/contact"} className="glass inline-flex w-fit rounded-full px-5 py-3 text-sm font-bold transition hover:bg-white/[.08]">
               Request Custom Work →
             </a>
           </div>
@@ -387,7 +388,7 @@ export default function PortfolioBrowser() {
             <article ref={creativeDisplayRef} className="group scroll-mt-24 overflow-hidden rounded-[2.5rem] border border-white/10 bg-black shadow-2xl">
               <div className="flex flex-col gap-3 border-b border-white/10 bg-white/[.04] px-5 py-4 md:flex-row md:items-center md:justify-between">
                 <div>
-                  <p className="text-xs uppercase tracking-[.3em] text-[#D71920]">Featured Component</p>
+                  <p className="text-xs uppercase tracking-[.3em] text-[#D71920]">{fr ? "Composant vedette" : "Featured Component"}</p>
                   <h3 className="geist mt-1 text-2xl font-black tracking-[-.06em]">{activeCreative.title}</h3>
                 </div>
                 <span className="w-fit rounded-full border border-white/10 px-3 py-1 text-xs text-[#C7B9B9]">
@@ -456,13 +457,13 @@ export default function PortfolioBrowser() {
         <section className="mt-12 rounded-[3rem] bg-[#D71920] p-8 md:p-14">
           <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
             <div>
-              <p className="mb-4 text-sm uppercase tracking-[.35em] text-white/70">Build with StillAwake</p>
+              <p className="mb-4 text-sm uppercase tracking-[.35em] text-white/70">{fr ? "Bâtir avec StillAwake" : "Build with StillAwake"}</p>
               <h2 className="geist max-w-4xl text-5xl font-black leading-[.9] tracking-[-0.07em] md:text-7xl">
                 Want your site to feel this impossible to ignore?
               </h2>
             </div>
-            <a href="/contact" className="inline-flex rounded-full bg-black px-7 py-4 font-bold text-white transition hover:scale-[1.02]">
-              Start a Project →
+            <a href={fr ? "/fr/contact" : "/contact"} className="inline-flex rounded-full bg-black px-7 py-4 font-bold text-white transition hover:scale-[1.02]">
+              {fr ? "Démarrer un projet →" : "Start a Project →"}
             </a>
           </div>
         </section>

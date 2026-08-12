@@ -33,7 +33,7 @@ export default function LiveWorkShowcase({ locale = "en" }: { locale?: "en" | "f
           </div>
 
           <Link
-            href="/portfolio"
+            href={fr ? "/fr/realisations" : "/portfolio"}
             className="glass inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-black/70 px-5 py-3 text-sm font-medium text-[#C7B9B9] transition hover:text-white"
           >
             {fr ? "Voir le portfolio complet" : "View full portfolio"} <span className="grid size-7 place-items-center rounded-full bg-[#D71920] text-white">→</span>

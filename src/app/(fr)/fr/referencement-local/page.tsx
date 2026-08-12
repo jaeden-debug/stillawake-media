@@ -198,7 +198,7 @@ export default function ReferencementLocalPage() {
           ["Création de site web", "/fr/agence-web-montreal"],
           ["Guide des prix", "/fr/prix-site-web-quebec"],
           ["Tarifs", "/fr/tarifs"],
-          ["English version", "/local-seo-montreal"],
+          ["English version", "/local-seo"],
         ]}
       />
     </main>

@@ -46,9 +46,9 @@ const servicesFr = [
 ];
 
 const resourcesFr = [
-  ["Portfolio", "/portfolio"],
-  ["Études de cas", "/work"],
-  ["À propos", "/about"],
+  ["Réalisations", "/fr/realisations"],
+  ["Études de cas", "/fr/etudes-de-cas"],
+  ["À propos", "/fr/a-propos"],
   ["Fondateur", "/fr/fondateur/jaeden-doody"],
   ["Contact", "/fr/contact"],
   ["English", "/"],
@@ -89,10 +89,10 @@ export function Footer({ locale = "en" }: { locale?: "en" | "fr" }) {
               </Link>
 
               <Link
-                href="/portfolio"
+                href={fr ? "/fr/realisations" : "/portfolio"}
                 className="rounded-full border border-white/10 px-6 py-3 text-sm text-white transition hover:border-[#D71920]/60"
               >
-                View Portfolio
+                {fr ? "Voir les réalisations" : "View Portfolio"}
               </Link>
             </div>
           </div>
@@ -159,21 +159,14 @@ export function Footer({ locale = "en" }: { locale?: "en" | "fr" }) {
           </p>
 
           <div className="flex flex-wrap gap-6">
-            <Link href="/about" className="transition hover:text-white">
-              About
-            </Link>
-
-            <Link href="/portfolio" className="transition hover:text-white">
-              Portfolio
-            </Link>
-
-            <Link href="/stillawake-times" className="transition hover:text-white">
-              StillAwake Times
-            </Link>
-
-            <Link href="/contact" className="transition hover:text-white">
-              Contact
-            </Link>
+            {(fr
+              ? ([["À propos", "/fr/a-propos"], ["Réalisations", "/fr/realisations"], ["Études de cas", "/fr/etudes-de-cas"], ["Contact", "/fr/contact"]] as const)
+              : ([["About", "/about"], ["Portfolio", "/portfolio"], ["StillAwake Times", "/stillawake-times"], ["Contact", "/contact"]] as const)
+            ).map(([label, href]) => (
+              <Link key={href} href={href} className="transition hover:text-white">
+                {label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

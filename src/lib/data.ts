@@ -36,15 +36,20 @@ export const serviceNav = [
   ["Pricing", "/pricing"],
 ];
 
+/**
+ * Rendered on the English /services page, so it must stay English-only.
+ * It previously mixed in three French URLs, which sent English visitors into
+ * the French site from an English page. Crossing languages is the header's
+ * FR/English switcher's job, not a content list's.
+ */
 export const montrealNav = [
   ["Web Design Montreal", "/web-design-montreal"],
-  ["Agence Web Montréal", "/fr/agence-web-montreal"],
   ["SEO Montreal", "/seo-montreal"],
-  ["Agence SEO Montréal", "/fr/agence-seo-montreal"],
-  ["Maintenance Site Web", "/fr/maintenance-site-web"],
-  ["Web Development Montreal", "/stillawake-times/web-development-montreal"],
-  ["Website Redesign Montreal", "/stillawake-times/website-redesign-montreal"],
-  ["Ecommerce Web Design Montreal", "/stillawake-times/ecommerce-web-design-montreal"],
+  ["Local SEO", "/local-seo"],
+  ["Website Maintenance", "/website-maintenance"],
+  ["Software Development", "/software-development"],
+  ["Website Redesign", "/website-redesign"],
+  ["Shopify Development", "/shopify-development"],
 ];
 
 export const services = [

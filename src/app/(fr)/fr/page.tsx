@@ -83,7 +83,7 @@ export default function FrHome() {
                 <div className="mt-5 flex items-center gap-3">
                   <Button href="/fr/contact">Audit gratuit</Button>
                   <Link
-                    href="/portfolio"
+                    href="/fr/realisations"
                     className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/75 px-4 py-2.5 text-[13px] font-medium tracking-[-0.02em] text-[#C7B9B9] shadow-2xl backdrop-blur-2xl transition hover:bg-black/90 hover:text-white"
                   >
                     Nos réalisations <span className="grid size-7 place-items-center rounded-full bg-white/[0.08] text-[12px] text-white">→</span>
@@ -181,7 +181,7 @@ export default function FrHome() {
 
       <Section eyebrow="Portfolio" title="La preuve par des propriétés numériques en ligne.">
         <PortfolioGrid locale="fr" />
-        <Link className="mt-8 inline-flex text-[#D71920]" href="/portfolio">Voir le portfolio complet →</Link>
+        <Link className="mt-8 inline-flex text-[#D71920]" href="/fr/realisations">Voir le portfolio complet →</Link>
       </Section>
 
       <Section eyebrow="Études de cas" title="Des résultats mesurés, pas affirmés.">
@@ -194,7 +194,7 @@ export default function FrHome() {
             </Link>
           ))}
         </div>
-        <Link className="mt-8 inline-flex text-[#D71920]" href="/work">Voir toutes les études de cas →</Link>
+        <Link className="mt-8 inline-flex text-[#D71920]" href="/fr/etudes-de-cas">Voir toutes les études de cas →</Link>
       </Section>
 
       <InternalLinks locale="fr" />

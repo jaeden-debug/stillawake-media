@@ -219,7 +219,7 @@ export default function Page() {
             </Link>
 
             <Link
-              href="/portfolio"
+              href="/fr/realisations"
               className="rounded-full border border-white/10 px-7 py-4 text-sm font-bold text-[#C7B9B9]"
             >
               Voir le portfolio →

@@ -10,6 +10,8 @@ export type PostMeta = {
   slug: string;
   title: string;
   date: string;
+  /** Last substantive content revision (YYYY-MM-DD). Drives dateModified + sitemap lastmod. */
+  updated?: string;
   excerpt: string;
   category: string;
   featured: boolean;
@@ -82,6 +84,7 @@ export function getAllPosts(): PostMeta[] {
         slug,
         title: data.title || slug,
         date: data.date || "2026-05-24",
+        updated: data.updated || undefined,
         excerpt: data.excerpt || content.slice(0, 180),
         category: data.category || "Strategy",
         featured: Boolean(data.featured),

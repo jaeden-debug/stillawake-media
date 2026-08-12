@@ -25,10 +25,18 @@ const nextConfig = {
     return [
       { source: "/web-design", destination: "/web-design-montreal", permanent: true },
       { source: "/technical-seo", destination: "/stillawake-times/what-is-technical-seo", permanent: true },
-      { source: "/web-development-montreal", destination: "/stillawake-times/web-development-montreal", permanent: true },
-      { source: "/ecommerce-web-design-montreal", destination: "/stillawake-times/ecommerce-web-design-montreal", permanent: true },
-      { source: "/montreal-web-designer", destination: "/stillawake-times/montreal-web-designer", permanent: true },
-      { source: "/web-design-agency-montreal", destination: "/stillawake-times/web-design-agency-montreal", permanent: true },
+      // Cannibalization repair round 2: the four "Montréal" article stubs were
+      // thin commercial-intent duplicates of dedicated service pages. The
+      // service page owns the commercial query; article equity 301s into it.
+      // Top-level legacy sources point straight at the final target (no chains).
+      { source: "/web-development-montreal", destination: "/software-development", permanent: true },
+      { source: "/stillawake-times/web-development-montreal", destination: "/software-development", permanent: true },
+      { source: "/ecommerce-web-design-montreal", destination: "/shopify-development", permanent: true },
+      { source: "/stillawake-times/ecommerce-web-design-montreal", destination: "/shopify-development", permanent: true },
+      { source: "/montreal-web-designer", destination: "/web-design-montreal", permanent: true },
+      { source: "/stillawake-times/montreal-web-designer", destination: "/web-design-montreal", permanent: true },
+      { source: "/web-design-agency-montreal", destination: "/web-design-montreal", permanent: true },
+      { source: "/stillawake-times/web-design-agency-montreal", destination: "/web-design-montreal", permanent: true },
       { source: "/website-redesign-montreal", destination: "/website-redesign", permanent: true },
       { source: "/stillawake-times/website-redesign-montreal", destination: "/website-redesign", permanent: true },
       { source: "/blog/google-business-profile-optimization", destination: "/stillawake-times/google-business-profile-optimization", permanent: true },

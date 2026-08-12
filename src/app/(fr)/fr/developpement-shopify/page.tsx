@@ -76,10 +76,10 @@ export default function DeveloppementShopifyPage() {
             portfolio.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/contact" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">
+            <Link href="/fr/contact" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">
               Démarrer ma boutique
             </Link>
-            <Link href="/portfolio" className="rounded-full border border-white/15 px-7 py-4 text-sm font-medium transition hover:border-white/40">
+            <Link href="/fr/realisations" className="rounded-full border border-white/15 px-7 py-4 text-sm font-medium transition hover:border-white/40">
               Voir nos boutiques
             </Link>
           </div>
@@ -109,7 +109,7 @@ export default function DeveloppementShopifyPage() {
               </Link>{" "}
               coûte de 250 $ à 600 $ CAD, tarif affiché avant paiement.
             </p>
-            <Link href="/contact" className="mt-8 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">
+            <Link href="/fr/contact" className="mt-8 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">
               Obtenir une soumission
             </Link>
           </div>

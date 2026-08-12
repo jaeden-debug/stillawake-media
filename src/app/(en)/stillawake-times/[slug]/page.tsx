@@ -72,6 +72,7 @@ export default async function ArticlePage({ params }: Props) {
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
+    dateModified: post.updated || post.date,
     mainEntityOfPage: `${siteUrl}/stillawake-times/${post.slug}`,
     author: { "@id": authorId },
     publisher: { "@id": entityIds.organization },
@@ -104,7 +105,8 @@ export default async function ArticlePage({ params }: Props) {
               ) : (
                 post.author
               )}{" "}
-              · {post.date} · {post.readTime}
+              · {post.date}
+              {post.updated ? ` · Updated ${post.updated}` : ""} · {post.readTime}
             </p>
           </header>
 

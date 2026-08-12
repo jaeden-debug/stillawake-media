@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { siteUrl } from "@/lib/data";
 import { entityIds, ventures } from "@/data/entities";
-import { jaedenDoody as person, personAuthorNames } from "@/data/people/jaeden-doody";
-import { getAllPosts } from "@/lib/content";
+import { jaedenDoody as person } from "@/data/people/jaeden-doody";
 
 const frUrl = `${siteUrl}/fr/fondateur/jaeden-doody`;
 
@@ -84,10 +83,6 @@ const faqs = [
 ];
 
 export default function Page() {
-  const authoredPosts = getAllPosts().filter((post) =>
-    personAuthorNames.has(post.author)
-  );
-
   /**
    * Same entity graph as the EN page — identical @ids, French surface. The
    * Person node re-uses person.id so both language pages describe one entity;
@@ -193,7 +188,7 @@ export default function Page() {
               Travailler avec StillAwake →
             </Link>
 
-            <Link href="/work" className="rounded-full border border-white/10 px-6 py-4 font-bold text-[#C7B9B9] transition hover:text-white">
+            <Link href="/fr/etudes-de-cas" className="rounded-full border border-white/10 px-6 py-4 font-bold text-[#C7B9B9] transition hover:text-white">
               Voir le travail →
             </Link>
 
@@ -416,7 +411,7 @@ export default function Page() {
                 des outils qui n&apos;étaient pas faits pour la tâche.
               </p>
               <Link
-                href="/about"
+                href="/fr/a-propos"
                 className="mt-6 inline-flex text-sm font-bold text-white underline decoration-[#D71920] underline-offset-4"
               >
                 En savoir plus sur StillAwake Media →
@@ -705,31 +700,38 @@ export default function Page() {
           </p>
 
           <h2 className="geist max-w-4xl text-4xl font-black leading-[.95] tracking-[-0.06em] md:text-6xl">
-            Écrit par Jaeden Doody.
+            Le travail, décortiqué.
           </h2>
 
           <p className="mt-6 max-w-3xl text-base leading-8 text-[#C7B9B9]">
-            Les articles que Jaeden a signés dans{" "}
-            <Link href="/stillawake-times" className="text-[#D71920] underline underline-offset-4">
-              The StillAwake Times
-            </Link>{" "}
-            (en anglais). La paternité des textes est littérale sur ce site :
-            les articles qu&apos;il a écrits portent son nom; le reste est
-            signé par le studio.
+            Jaeden signe des articles dans The StillAwake Times, publiés en
+            anglais seulement pour l&apos;instant. En français, le raisonnement
+            derrière les projets est documenté dans les études de cas : le
+            mandat, l&apos;architecture des pages, la structure de recherche et
+            les décisions techniques, avec les chiffres mesurés.
           </p>
 
           <div className="mt-10 grid gap-4 md:grid-cols-2">
-            {authoredPosts.map((post) => (
+            {[
+              ["BankDeMark", "/fr/etude-de-cas-bankdemark", "Architecture SEO menée par les calculateurs, et un score Lighthouse parfait mesuré."],
+              ["NAVTRL / Stalkr", "/fr/etude-de-cas-stalkr-navtrl", "Du premier commit à TestFlight en 24 jours, plus le moteur de croissance autour."],
+              ["Blackwater Aquatics", "/fr/etude-de-cas-blackwater-aquatics", "Commerce Shopify mené par l&apos;éducation : 64 pages pour 17 produits."],
+              ["Lisa Travel Design", "/fr/etude-de-cas-lisa-travel-design", "Positionnement haut de gamme et parcours de demande qualifiée."],
+            ].map(([name, href, desc]) => (
               <Link
-                key={post.slug}
-                href={`/stillawake-times/${post.slug}`}
+                key={href}
+                href={href}
                 className="glass rounded-[2rem] p-6 transition hover:border-[#D71920]/60"
               >
-                <h3 className="geist text-xl font-black tracking-[-0.04em]">{post.title}</h3>
-                <p className="mt-3 text-sm text-[#8F8585]">Lire l&apos;article (en anglais) →</p>
+                <h3 className="geist text-xl font-black tracking-[-0.04em]">{name}</h3>
+                <p className="mt-3 text-sm leading-6 text-[#C7B9B9]">{desc}</p>
               </Link>
             ))}
           </div>
+
+          <Link href="/fr/etudes-de-cas" className="mt-8 inline-flex text-[#D71920]">
+            Voir toutes les études de cas →
+          </Link>
         </div>
       </section>
 
@@ -771,7 +773,7 @@ export default function Page() {
             <Link href="/fr/contact" className="rounded-full bg-white px-7 py-4 text-sm font-bold text-black">
               Démarrer un projet →
             </Link>
-            <Link href="/work" className="rounded-full border border-white/20 px-7 py-4 text-sm font-bold text-white">
+            <Link href="/fr/etudes-de-cas" className="rounded-full border border-white/20 px-7 py-4 text-sm font-bold text-white">
               Explorer le travail →
             </Link>
           </div>

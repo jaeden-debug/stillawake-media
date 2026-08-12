@@ -144,9 +144,9 @@ export function Section({ eyebrow, title, children }: { eyebrow: string; title: 
 /** FR counterparts for the shared homepage blocks. `locale` defaults to "en"
  *  so every existing English call site keeps its current behaviour. */
 const internalLinksFr: readonly (readonly [string, string])[] = [
-  ["À propos", "/about"],
-  ["Portfolio", "/portfolio"],
-  ["Études de cas", "/work"],
+  ["À propos", "/fr/a-propos"],
+  ["Réalisations", "/fr/realisations"],
+  ["Études de cas", "/fr/etudes-de-cas"],
   ["Création Web", "/fr/agence-web-montreal"],
   ["SEO", "/fr/agence-seo-montreal"],
   ["Tarifs", "/fr/tarifs"],
@@ -261,10 +261,10 @@ export function RelatedReadingInjection() {
   const relatedReading = [
     {
       category: "Web Design",
-      title: "Montreal Web Designer for Premium Modern Websites",
+      title: "What to Know Before Hiring a Web Design Agency",
       excerpt:
-        "Work with a Montreal web designer focused on premium UX, modern branding, SEO structure, conversion systems, and high-performance digital experiences.",
-      href: "/stillawake-times/montreal-web-designer",
+        "The questions that separate builders from resellers: proof, pricing transparency, SEO structure, ownership, and what a written scope should contain.",
+      href: "/stillawake-times/what-to-know-before-hiring-web-design-agency",
     },
     {
       category: "Web Design",
@@ -275,17 +275,17 @@ export function RelatedReadingInjection() {
     },
     {
       category: "Web Design",
-      title: "Web Design Agency Montreal for Modern Businesses",
+      title: "Why Custom-Coded Websites Outperform Templates",
       excerpt:
-        "A Montreal web design agency building premium websites, SEO systems, conversion architecture, branding, and scalable digital infrastructure.",
-      href: "/stillawake-times/web-design-agency-montreal",
+        "Template code bloat hurts Core Web Vitals, generic structure gives Google nothing distinctive to rank, and identical themes dilute your brand.",
+      href: "/stillawake-times/why-custom-coded-websites-outperform-templates",
     },
     {
-      category: "Web Design",
-      title: "Web Design Montreal: Premium Websites Built for Growth",
+      category: "Web Performance",
+      title: "How Website Speed Impacts Revenue & SEO",
       excerpt:
-        "Premium web design in Montreal focused on SEO, performance, conversion optimization, and modern digital infrastructure for serious businesses.",
-      href: "/stillawake-times/web-design-montreal",
+        "Speed is part of trust. How Core Web Vitals, mobile performance, and rendering strategy shape rankings, conversion rates, and brand perception.",
+      href: "/stillawake-times/how-website-speed-directly-impacts-revenue-and-seo-rankings",
     },
   ];
 

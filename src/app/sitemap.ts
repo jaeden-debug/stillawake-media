@@ -26,6 +26,9 @@ const pageLastModified: Record<string, string> = {
   work: "2026-08-09",
   "founder/jaeden-doody": "2026-08-12",
   "fr/fondateur/jaeden-doody": "2026-08-12",
+  "fr/a-propos": "2026-08-12",
+  "fr/realisations": "2026-08-12",
+  "fr/etudes-de-cas": "2026-08-12",
   "web-design-montreal": "2026-05-25",
   "fr/agence-web-montreal": "2026-08-12",
   "seo-montreal": "2026-08-12",
@@ -84,6 +87,9 @@ const languagePairs: Record<string, string> = {
   "work/stalkr-navtrl": "fr/etude-de-cas-stalkr-navtrl",
   "work/blackwater-aquatics": "fr/etude-de-cas-blackwater-aquatics",
   "founder/jaeden-doody": "fr/fondateur/jaeden-doody",
+  about: "fr/a-propos",
+  portfolio: "fr/realisations",
+  work: "fr/etudes-de-cas",
 };
 const frToEn = Object.fromEntries(Object.entries(languagePairs).map(([en, fr]) => [fr, en]));
 
@@ -108,7 +114,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const articles = getAllPosts().map((post) => ({
     url: `${siteUrl}/stillawake-times/${post.slug}`,
-    lastModified: new Date(post.date),
+    lastModified: new Date(post.updated || post.date),
   }));
 
   return [...pages, ...articles];

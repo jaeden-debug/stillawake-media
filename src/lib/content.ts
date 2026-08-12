@@ -4,7 +4,18 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 
-const contentDir = path.join(process.cwd(), "src/content/stillawake-times");
+/**
+ * Articles are stored per-locale. French articles are written for Québec, not
+ * machine-translated from the English set — several have no English
+ * counterpart at all (Loi 96, for instance), so the two directories are
+ * deliberately independent rather than mirrored.
+ */
+export type Locale = "en" | "fr";
+
+const contentDirs: Record<Locale, string> = {
+  en: path.join(process.cwd(), "src/content/stillawake-times"),
+  fr: path.join(process.cwd(), "src/content/fr/stillawake-times"),
+};
 
 export type PostMeta = {
   slug: string;
@@ -41,9 +52,10 @@ function slugify(value: string) {
     .replace(/\s+/g, "-");
 }
 
-function getPostFiles() {
-  if (!fs.existsSync(contentDir)) return [];
-  return fs.readdirSync(contentDir).filter((file) => file.endsWith(".md"));
+function getPostFiles(locale: Locale = "en") {
+  const dir = contentDirs[locale];
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir).filter((file) => file.endsWith(".md"));
 }
 
 function cleanHeadingText(value: string) {
@@ -68,16 +80,17 @@ function addHeadingIds(markdown: string) {
   });
 }
 
-function estimateReadTime(markdown: string) {
+function estimateReadTime(markdown: string, locale: Locale = "en") {
   const words = markdown.replace(/[#>*_[\]()`-]/g, " ").split(/\s+/).filter(Boolean).length;
-  return `${Math.max(1, Math.ceil(words / 220))} min read`;
+  const minutes = Math.max(1, Math.ceil(words / 220));
+  return locale === "fr" ? `${minutes} min de lecture` : `${minutes} min read`;
 }
 
-export function getAllPosts(): PostMeta[] {
-  return getPostFiles()
+export function getAllPosts(locale: Locale = "en"): PostMeta[] {
+  return getPostFiles(locale)
     .map((file) => {
       const slug = file.replace(/\.md$/, "");
-      const raw = fs.readFileSync(path.join(contentDir, file), "utf8");
+      const raw = fs.readFileSync(path.join(contentDirs[locale], file), "utf8");
       const { data, content } = matter(raw);
 
       return {
@@ -89,15 +102,15 @@ export function getAllPosts(): PostMeta[] {
         category: data.category || "Strategy",
         featured: Boolean(data.featured),
         image: data.image || "",
-        readTime: data.readTime || estimateReadTime(content),
+        readTime: data.readTime || estimateReadTime(content, locale),
         author: data.author || "StillAwake Media",
       };
     })
     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 }
 
-export async function getPostBySlug(slug: string): Promise<Post | null> {
-  const file = path.join(contentDir, `${slug}.md`);
+export async function getPostBySlug(slug: string, locale: Locale = "en"): Promise<Post | null> {
+  const file = path.join(contentDirs[locale], `${slug}.md`);
   if (!fs.existsSync(file)) return null;
 
   const raw = fs.readFileSync(file, "utf8");
@@ -112,11 +125,12 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     slug,
     title: data.title || slug,
     date: data.date || "2026-05-24",
+    updated: data.updated || undefined,
     excerpt: data.excerpt || content.slice(0, 180),
     category: data.category || "Strategy",
     featured: Boolean(data.featured),
     image: data.image || "",
-    readTime: data.readTime || estimateReadTime(content),
+    readTime: data.readTime || estimateReadTime(content, locale),
     author: data.author || "StillAwake Media",
     content,
     html: processed.toString(),
@@ -124,8 +138,8 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   };
 }
 
-export function getRelatedPosts(currentSlug: string, category?: string, limit = 4) {
-  const posts = getAllPosts().filter((post) => post.slug !== currentSlug);
+export function getRelatedPosts(currentSlug: string, category?: string, limit = 4, locale: Locale = "en") {
+  const posts = getAllPosts(locale).filter((post) => post.slug !== currentSlug);
   const related = posts.filter((post) => post.category === category);
   const fallback = posts.filter((post) => post.category !== category);
   return [...related, ...fallback].slice(0, limit);

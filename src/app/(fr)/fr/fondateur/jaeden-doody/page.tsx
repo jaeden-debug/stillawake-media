@@ -701,7 +701,7 @@ export default function Page() {
 
           <p className="mt-6 max-w-3xl text-base leading-8 text-[#C7B9B9]">
             Les articles que Jaeden a signés dans{" "}
-            <Link href="/stillawake-times" className="text-[#D71920] underline-offset-4 hover:underline">
+            <Link href="/stillawake-times" className="text-[#D71920] underline underline-offset-4">
               The StillAwake Times
             </Link>{" "}
             (en anglais). La paternité des textes est littérale sur ce site :

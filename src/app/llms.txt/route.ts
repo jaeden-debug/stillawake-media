@@ -53,16 +53,17 @@ Pricing overview: ${siteUrl}/pricing (français: ${siteUrl}/fr/tarifs)
 
 ## Key pages
 
-- ${siteUrl}/ — home
-- ${siteUrl}/about — about ${organization.name}
-- ${jaedenDoody.url} — founder profile
-- ${siteUrl}/work — case studies
-- ${siteUrl}/portfolio — live project previews
-- ${siteUrl}/services — services
-- ${siteUrl}/stillawake-times — articles
-- ${siteUrl}/contact — contact
-- ${siteUrl}/pricing — published pricing
-- ${siteUrl}/fr — French site (Québec French; every commercial page has a French counterpart)
+- [Home](${siteUrl}/)
+- [About ${organization.name}](${siteUrl}/about)
+- [Founder profile — ${jaedenDoody.name}](${jaedenDoody.url})
+- [Profil du fondateur (français)](${siteUrl}/fr/fondateur/jaeden-doody)
+- [Case studies](${siteUrl}/work)
+- [Live project previews](${siteUrl}/portfolio)
+- [Services](${siteUrl}/services)
+- [Articles — The StillAwake Times](${siteUrl}/stillawake-times)
+- [Contact](${siteUrl}/contact)
+- [Published pricing](${siteUrl}/pricing)
+- [French site](${siteUrl}/fr) — Québec French; every commercial page has a French counterpart
 
 ## Related first-party sites
 

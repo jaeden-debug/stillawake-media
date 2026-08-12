@@ -696,7 +696,7 @@ export default function Page() {
 
           <p className="mt-6 max-w-3xl text-base leading-8 text-[#C7B9B9]">
             Articles Jaeden authored in{" "}
-            <Link href="/stillawake-times" className="text-[#D71920] underline-offset-4 hover:underline">
+            <Link href="/stillawake-times" className="text-[#D71920] underline underline-offset-4">
               The StillAwake Times
             </Link>
             . Authorship on this site is literal — pieces he wrote carry his

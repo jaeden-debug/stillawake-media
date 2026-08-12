@@ -197,6 +197,18 @@ export default function Page() {
           </div>
         </div>
       </section>
+    
+      <section className="border-t border-white/10 px-6 py-16">
+        <div className="mx-auto max-w-7xl rounded-[2rem] border border-[#D71920]/40 bg-[#D71920]/5 p-8">
+          <p className="mb-3 text-sm uppercase tracking-[.3em] text-[#D71920]">Proof, not promises</p>
+          <h2 className="geist max-w-3xl text-3xl font-black tracking-[-0.06em]">A product page at 8.6% CTR and a 27.8% repeat-customer rate — measured.</h2>
+          <p className="mt-4 max-w-3xl leading-8 text-[#C7B9B9]">
+            Blackwater Aquatics Canada: 64 education pages powering a 17-product Shopify store — page-1 rankings,
+            ~60,000 impressions on the top pages, and a repeat rate that more than quadrupled. Sourced and dated.
+          </p>
+          <a href="/work/blackwater-aquatics" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Read the case study →</a>
+        </div>
+      </section>
     </main>
   );
 }

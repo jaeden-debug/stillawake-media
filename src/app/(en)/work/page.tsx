@@ -419,8 +419,8 @@ export default function Page() {
 
       <section className="px-6 pb-8"><div className="mx-auto max-w-7xl">
         <p className="mb-4 text-sm uppercase tracking-[.3em] text-[#D71920]">Metric-Driven Case Studies</p>
-        <div className="grid gap-5 md:grid-cols-3">
-          {[["TravelDesign By Lisa","0 organic clicks to page 1 in 8 weeks — sourced and dated.","/work/lisa-travel-design"],["BankDeMark","#1 Google positions with a perfect 100/100/100 Lighthouse.","/work/bankdemark"],["NAVTRL / Stalkr","A real-time location app built to beta in 24 days.","/work/stalkr-navtrl"]].map(([n,d,h])=>(
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {[["TravelDesign By Lisa","0 organic clicks to page 1 in 8 weeks — sourced and dated.","/work/lisa-travel-design"],["BankDeMark","#1 Google positions with a perfect 100/100/100 Lighthouse.","/work/bankdemark"],["NAVTRL / Stalkr","A real-time location app built to beta in 24 days.","/work/stalkr-navtrl"],["Blackwater Aquatics","Education-led Shopify: an 8.6% CTR product page and 27.8% repeat customers.","/work/blackwater-aquatics"]].map(([n,d,h])=>(
             <a key={h} href={h} className="rounded-[2rem] border border-[#D71920]/40 bg-[#D71920]/5 p-7 transition hover:border-[#D71920]">
               <h3 className="geist text-2xl font-black tracking-[-0.05em]">{n}</h3>
               <p className="mt-3 text-sm leading-6 text-[#C7B9B9]">{d}</p>

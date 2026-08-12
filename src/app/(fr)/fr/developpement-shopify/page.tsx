@@ -128,6 +128,18 @@ export default function DeveloppementShopifyPage() {
           ["English version", "/shopify-development"],
         ]}
       />
+    
+      <section className="border-t border-white/10 px-6 py-16">
+        <div className="mx-auto max-w-7xl rounded-[2rem] border border-[#D71920]/40 bg-[#D71920]/5 p-8">
+          <p className="mb-3 text-sm uppercase tracking-[.3em] text-[#D71920]">Des preuves, pas des promesses</p>
+          <h2 className="geist max-w-3xl text-3xl font-black tracking-[-0.06em]">Une fiche produit à 8,6 % de CTR et 27,8 % de clients récurrents — mesuré.</h2>
+          <p className="mt-4 max-w-3xl leading-8 text-[#C7B9B9]">
+            Blackwater Aquatics Canada : 64 pages éducatives derrière une boutique Shopify de 17 produits — positions
+            en page 1, ~60 000 impressions sur les meilleures pages, et un taux de fidélité plus que quadruplé. Sourcé et daté.
+          </p>
+          <a href="/fr/etude-de-cas-blackwater-aquatics" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Lire l'étude de cas →</a>
+        </div>
+      </section>
     </main>
   );
 }

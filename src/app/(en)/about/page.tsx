@@ -9,6 +9,11 @@ export const metadata: Metadata = {
     "StillAwake Media is a Canada-based digital infrastructure studio building premium websites, SEO systems, branding, AI automation, Shopify experiences, and custom software.",
   alternates: {
     canonical: "/about",
+    languages: {
+      "en-CA": "https://stillawakemedia.com/about",
+      "fr-CA": "https://stillawakemedia.com/fr/a-propos",
+      "x-default": "https://stillawakemedia.com/about",
+    },
   },
 };
 

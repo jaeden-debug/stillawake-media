@@ -9,6 +9,11 @@ export const metadata: Metadata = {
     "Explore StillAwake Media website projects through live previews, SEO systems, brand builds, ecommerce experiences, and digital infrastructure examples.",
   alternates: {
     canonical: "/portfolio",
+    languages: {
+      "en-CA": "https://stillawakemedia.com/portfolio",
+      "fr-CA": "https://stillawakemedia.com/fr/realisations",
+      "x-default": "https://stillawakemedia.com/portfolio",
+    },
   },
 };
 

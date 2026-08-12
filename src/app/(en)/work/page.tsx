@@ -11,6 +11,11 @@ export const metadata: Metadata = {
     "Build breakdowns from StillAwake Media client projects — the brief, the page architecture, the SEO structure, and the design decisions behind each website.",
   alternates: {
     canonical: "/work",
+    languages: {
+      "en-CA": "https://stillawakemedia.com/work",
+      "fr-CA": "https://stillawakemedia.com/fr/etudes-de-cas",
+      "x-default": "https://stillawakemedia.com/work",
+    },
   },
   openGraph: {
     title: "Case Studies | StillAwake Media",

@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "preview-manager",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "start", "--prefix", "/Users/jaedendoody/Documents/Claude/Projects/stillawakemedia.dev"],
+      "port": 3000
+    }
+  ]
+}

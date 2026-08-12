@@ -98,7 +98,10 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   if (!fs.existsSync(file)) return null;
 
   const raw = fs.readFileSync(file, "utf8");
-  const { data, content } = matter(raw);
+  const { data, content: rawContent } = matter(raw);
+  // The template renders post.title as the page's single H1; a leading
+  // markdown `# …` would produce a second one, so it is stripped centrally.
+  const content = rawContent.replace(/^\s*# .+\n/, "");
   const toc = extractToc(content);
   const processed = await remark().use(html, { sanitize: false }).process(addHeadingIds(content));
 

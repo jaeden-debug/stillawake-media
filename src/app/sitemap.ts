@@ -27,7 +27,15 @@ const pageLastModified: Record<string, string> = {
   "founder/jaeden-doody": "2026-08-10",
   "web-design-montreal": "2026-05-25",
   "fr/agence-web-montreal": "2026-05-25",
-  "seo-montreal": "2026-05-25",
+  "seo-montreal": "2026-08-12",
+  "website-maintenance": "2026-08-12",
+  "answer-engine-optimization": "2026-08-12",
+  pricing: "2026-08-12",
+  "fr/agence-seo-montreal": "2026-08-12",
+  "fr/maintenance-site-web": "2026-08-12",
+  "fr/referencement-ia": "2026-08-12",
+  "fr/developpement-shopify": "2026-08-12",
+  "fr/tarifs": "2026-08-12",
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {

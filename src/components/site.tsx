@@ -135,7 +135,7 @@ export function Button({ href, children }: { href: string; children: React.React
 }
 
 export function Section({ eyebrow, title, children }: { eyebrow: string; title: string; children: React.ReactNode }) {
-  return <section className="px-6 py-24"><div className="mx-auto max-w-7xl"><p className="mb-4 text-sm uppercase tracking-[.3em] text-[#D71920]">{eyebrow}</p><h2 className="geist max-w-4xl text-4xl font-black md:text-6xl tracking-[-0.06em]">{title}</h2><div className="mt-10">{children}</div></div></section>;
+  return <section className="px-6 py-24"><div className="mx-auto max-w-7xl">{eyebrow ? <p className="mb-4 text-sm uppercase tracking-[.3em] text-[#D71920]">{eyebrow}</p> : null}{title ? <h2 className="geist max-w-4xl text-4xl font-black md:text-6xl tracking-[-0.06em]">{title}</h2> : null}<div className="mt-10">{children}</div></div></section>;
 }
 
 export function InternalLinks() {

@@ -22,10 +22,11 @@ export default function Blog() {
   return (
     <main className="pt-28">
 
-      <Section
-        eyebrow="Magazine"
-        title="StillAwake Times. Strategy for brands that refuse to sleep."
-      >
+      <section className="px-6 pt-24 pb-0"><div className="mx-auto max-w-7xl">
+        <p className="mb-4 text-sm uppercase tracking-[.3em] text-[#D71920]">Magazine</p>
+        <h1 className="geist max-w-4xl text-4xl font-black tracking-[-0.06em] md:text-6xl">StillAwake Times. Strategy for brands that refuse to sleep.</h1>
+      </div></section>
+      <Section eyebrow="" title="">
 
         {featured && (
           <Link

@@ -33,6 +33,12 @@ const nextConfig = {
       { source: "/blog/google-business-profile-optimization", destination: "/stillawake-times/google-business-profile-optimization", permanent: true },
       { source: "/blog/how-to-redesign-a-website-without-destroying-seo", destination: "/stillawake-times/how-to-redesign-a-website-without-destroying-seo", permanent: true },
       { source: "/stillawake-times/custom-coded-websites-outperform-templates", destination: "/stillawake-times/why-custom-coded-websites-outperform-templates", permanent: true },
+      // Cannibalization repair: these articles duplicated dedicated commercial
+      // pages head-on (near-identical titles/intent). The service page is the
+      // canonical commercial target; the article equity 301s into it.
+      { source: "/stillawake-times/web-design-montreal", destination: "/web-design-montreal", permanent: true },
+      { source: "/stillawake-times/seo-montreal", destination: "/seo-montreal", permanent: true },
+      { source: "/stillawake-times/agence-web-montreal", destination: "/fr/agence-web-montreal", permanent: true },
     ];
   },
 };

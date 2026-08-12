@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PriceCard, ServiceJsonLd } from "@/components/service-page";
 
 export const metadata: Metadata = {
   title: "SEO Montreal | Technical SEO & Local SEO Services",
@@ -24,6 +25,11 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://stillawakemedia.com/seo-montreal",
+    languages: {
+      "en-CA": "https://stillawakemedia.com/seo-montreal",
+      "fr-CA": "https://stillawakemedia.com/fr/agence-seo-montreal",
+      "x-default": "https://stillawakemedia.com/seo-montreal",
+    },
   },
 
   robots: {
@@ -35,6 +41,16 @@ export const metadata: Metadata = {
 export default function SeoMontrealPage() {
   return (
     <main className="bg-black text-white">
+      <ServiceJsonLd
+        path="/seo-montreal"
+        name="SEO Montreal — Technical & Local SEO Services"
+        description="Monthly SEO plans for Montréal businesses: technical SEO, local visibility, content architecture, and AI-search optimization, from $600 CAD per month."
+        offers={[
+          { name: "SEO Growth — Essentials", price: 600, interval: "MONTH" },
+          { name: "SEO Growth — Advanced", price: 850, interval: "MONTH" },
+        ]}
+        breadcrumb={[["Home", "/"], ["Services", "/services"], ["SEO Montreal", "/seo-montreal"]]}
+      />
       <section className="border-b border-white/10">
         <div className="mx-auto max-w-6xl px-6 py-28">
           <p className="mb-6 text-sm uppercase tracking-[0.35em] text-[#D71920]">
@@ -97,6 +113,41 @@ export default function SeoMontrealPage() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="border-b border-white/10 px-6 py-20">
+        <div className="mx-auto max-w-7xl">
+          <h2 className="geist max-w-4xl text-4xl font-black tracking-[-0.06em] md:text-5xl">
+            SEO plans with the price on the page.
+          </h2>
+          <p className="mt-4 max-w-3xl text-[#C7B9B9]">
+            SEO Growth — Essentials costs $600 CAD per month. SEO Growth — Advanced costs $850 CAD per month. Both are
+            month-to-month plans in Canadian dollars with a written monthly report — no discovery call required to see
+            the price.
+          </p>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <PriceCard
+              name="SEO Growth — Essentials"
+              price="$600 CAD"
+              cadence="per month"
+              items={["Technical SEO", "On-page optimization", "Google Search Console monitoring", "Monthly report"]}
+              cta={["Start Essentials", "/contact"]}
+            />
+            <PriceCard
+              name="SEO Growth — Advanced"
+              price="$850 CAD"
+              cadence="per month"
+              items={["Everything in Essentials", "AI-search (AEO) optimization", "Entity optimization", "Content strategy"]}
+              cta={["Start Advanced", "/contact"]}
+              highlight
+            />
+          </div>
+          <p className="mt-8 text-sm text-[#C7B9B9]">
+            Also see: <Link className="text-[#D71920] underline-offset-4 hover:underline" href="/answer-engine-optimization">AI search optimization (AEO)</Link> ·{" "}
+            <Link className="text-[#D71920] underline-offset-4 hover:underline" href="/pricing">all pricing</Link> ·{" "}
+            <Link className="text-[#D71920] underline-offset-4 hover:underline" href="/fr/agence-seo-montreal">version française</Link>
+          </p>
         </div>
       </section>
 

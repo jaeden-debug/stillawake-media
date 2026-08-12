@@ -3,16 +3,22 @@ import Link from "next/link";
 const services = [
   ["Web Design", "/web-design-montreal"],
   ["SEO", "/seo-montreal"],
+  ["Maintenance & Support", "/website-maintenance"],
+  ["AI Search (AEO)", "/answer-engine-optimization"],
   ["Shopify Development", "/shopify-development"],
   ["Branding", "/branding"],
   ["Software Development", "/software-development"],
   ["AI Automation", "/ai-automation"],
+  ["Pricing", "/pricing"],
 ];
 
 const montreal = [
   ["Web Design Montreal", "/web-design-montreal"],
   ["Agence Web Montréal", "/fr/agence-web-montreal"],
   ["SEO Montreal", "/seo-montreal"],
+  ["Agence SEO Montréal", "/fr/agence-seo-montreal"],
+  ["Maintenance Site Web", "/fr/maintenance-site-web"],
+  ["Tarifs", "/fr/tarifs"],
 ];
 
 const resources = [

@@ -14,7 +14,11 @@ export const metadata: Metadata = {
 export default function Contact() {
   return (
     <main className="pt-28">
-      <Section eyebrow="Contact" title="Start building.">
+      <section className="px-6 pt-24 pb-0"><div className="mx-auto max-w-7xl">
+        <p className="mb-4 text-sm uppercase tracking-[.3em] text-[#D71920]">Contact</p>
+        <h1 className="geist max-w-4xl text-4xl font-black tracking-[-0.06em] md:text-6xl">Start a project with StillAwake Media.</h1>
+      </div></section>
+      <Section eyebrow="" title="">
         <div className="grid gap-8 md:grid-cols-2">
           <div>
             <p className="text-xl leading-9 text-[#C7B9B9]">

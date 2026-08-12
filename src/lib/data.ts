@@ -12,23 +12,25 @@ export const nav = [
 
 export const serviceNav = [
   ["Web Design", "/web-design-montreal"],
+  ["SEO Montréal", "/seo-montreal"],
+  ["Website Maintenance & Support", "/website-maintenance"],
+  ["AI Search Optimization (AEO)", "/answer-engine-optimization"],
+  ["Shopify Development", "/shopify-development"],
   ["Software Development", "/software-development"],
   ["Branding", "/branding"],
   ["Local SEO", "/local-seo"],
   ["AI Automation", "/ai-automation"],
   ["Framer Development", "/framer-development"],
-  ["Shopify Development", "/shopify-development"],
-  ["Technical SEO", "/stillawake-times/what-is-technical-seo"],
-  ["Website Performance", "/stillawake-times/website-performance"],
+  ["Pricing", "/pricing"],
 ];
 
 export const montrealNav = [
   ["Web Design Montreal", "/web-design-montreal"],
   ["Agence Web Montréal", "/fr/agence-web-montreal"],
   ["SEO Montreal", "/seo-montreal"],
+  ["Agence SEO Montréal", "/fr/agence-seo-montreal"],
+  ["Maintenance Site Web", "/fr/maintenance-site-web"],
   ["Web Development Montreal", "/stillawake-times/web-development-montreal"],
-  ["Montreal Web Designer", "/stillawake-times/montreal-web-designer"],
-  ["Web Design Agency Montreal", "/stillawake-times/web-design-agency-montreal"],
   ["Website Redesign Montreal", "/stillawake-times/website-redesign-montreal"],
   ["Ecommerce Web Design Montreal", "/stillawake-times/ecommerce-web-design-montreal"],
 ];

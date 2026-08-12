@@ -1,11 +1,16 @@
 import type { Metadata } from "next";import Link from "next/link";import {Button,Section,ServiceGrid,PortfolioGrid,BlogCards,InternalLinks} from "@/components/site";import LiveWorkShowcase from "@/components/LiveWorkShowcase";import {services} from "@/lib/data";
-export const metadata: Metadata = { alternates: { canonical: "/" } };
+export const metadata: Metadata = {
+  title: "StillAwake Media | Web Design, SEO & AI Search — Montréal",
+  description:
+    "Montréal studio building premium websites, Shopify stores, SEO systems, AI-search (AEO) visibility, and custom software — with transparent pricing and measurable results.",
+  alternates: { canonical: "/" },
+};
 export default function Home(){return <main><section className="relative min-h-[100svh] overflow-hidden px-6 pt-6 md:min-h-screen"><video className="heroVideo absolute inset-0 h-screen min-h-screen w-full object-cover opacity-65" src="/stillawakemedia-hero-optimized-small.mp4" poster="/stillawakemedia-hero-poster.jpg" preload="metadata" autoPlay muted loop playsInline/><div className="absolute inset-0 bg-gradient-to-b from-black/40 via-[#050505]/50 to-[#050505]"/><div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_35%,rgba(215,25,32,.25),transparent_35%)]"/><div className="relative z-10 mx-auto flex min-h-[calc(100svh-1.5rem)] max-w-7xl items-start pt-28 pb-4 md:min-h-screen md:pt-32 md:pb-20"><div className="flex w-full items-center">
 <div className="flex min-h-[calc(100svh-9rem)] w-full flex-col justify-between md:min-h-[82vh]">
 <div>
-<h1 className="geist font-mono text-[13vw] font-normal leading-[1.05] tracking-[0.34em] text-white md:text-[120px]">
+<p aria-hidden="true" className="geist font-mono text-[13vw] font-normal leading-[1.05] tracking-[0.34em] text-white md:text-[120px]">
 STILL<br/><span className="text-[#D71920]">AWAKE</span>
-</h1>
+</p>
 
 <div className="mt-5 flex items-center gap-3">
 <Button href="/contact">Get a Free Audit</Button>
@@ -16,9 +21,11 @@ Our Work <span className="grid size-7 place-items-center rounded-full bg-white/[
 </div>
 
 <div className="glass mb-2 max-w-2xl rounded-[2rem] border border-white/10 bg-black/30 p-5 md:p-7">
-<p className="geist text-2xl font-black tracking-[-0.06em] md:text-[2rem]">
-Ambition Never Sleeps.
-</p>
+<h1 className="geist text-2xl font-black tracking-[-0.06em] md:text-[2rem]">
+Web design, SEO &amp; AI-search systems built in Montréal for ambitious businesses.
+</h1>
+
+<p className="mt-2 text-sm uppercase tracking-[0.25em] text-[#D71920]">Ambition Never Sleeps.</p>
 
 <p className="mt-4 max-w-xl text-[15px] leading-7 text-[#C7B9B9] md:text-base md:leading-8">
 We build <span className="text-[#D71920]">bold brands</span>, high-performance websites, SEO systems, AI tools, and digital assets <span className="text-[#D71920]">designed to scale</span> modern businesses.
@@ -26,7 +33,8 @@ We build <span className="text-[#D71920]">bold brands</span>, high-performance w
 </div>
 </div>
 </div></div></section>
-<Section eyebrow="What we do" title="Digital infrastructure for ambitious operators."><ServiceGrid/></Section>
+<Section eyebrow="What we do" title="Digital infrastructure for ambitious operators."><ServiceGrid/>
+<div className="mt-10 flex flex-wrap gap-3">{[["Web Design Montréal","/web-design-montreal"],["SEO Montréal","/seo-montreal"],["Shopify Development","/shopify-development"],["Website Maintenance & Support","/website-maintenance"],["AI Search Optimization (AEO)","/answer-engine-optimization"],["Custom Software","/software-development"],["Branding","/branding"],["Pricing","/pricing"]].map(([n,h])=>(<Link key={h} href={h} className="rounded-full border border-white/10 px-4 py-2 text-sm text-[#C7B9B9] transition hover:border-[#D71920]/60 hover:text-white">{n}</Link>))}</div></Section>
 
 <section className="px-6 py-10 md:py-16">
   <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-black shadow-2xl">

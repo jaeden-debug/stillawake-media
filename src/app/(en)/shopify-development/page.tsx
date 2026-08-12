@@ -8,6 +8,11 @@ export const metadata: Metadata = {
     "StillAwake Media helps ecommerce brands improve Shopify product pages, collections, SEO structure, conversion flow, trust signals, and visual presentation.",
   alternates: {
     canonical: "/shopify-development",
+    languages: {
+      "en-CA": "https://stillawakemedia.com/shopify-development",
+      "fr-CA": "https://stillawakemedia.com/fr/developpement-shopify",
+      "x-default": "https://stillawakemedia.com/shopify-development",
+    },
   },
 };
 

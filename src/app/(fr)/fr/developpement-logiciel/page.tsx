@@ -58,6 +58,18 @@ export default function Page() {
       </section>
       <FaqBlock title="Questions fréquentes" items={FAQ} />
       <RelatedServices title="Services connexes" links={[["Création de site web", "/fr/agence-web-montreal"], ["Automatisation IA", "/fr/automatisation-ia"], ["Maintenance", "/fr/maintenance-site-web"], ["Tarifs", "/fr/tarifs"], ["English version", "/software-development"]]} />
+    
+      <section className="border-t border-white/10 px-6 py-16">
+        <div className="mx-auto max-w-7xl rounded-[2rem] border border-[#D71920]/40 bg-[#D71920]/5 p-8">
+          <p className="mb-3 text-sm uppercase tracking-[.3em] text-[#D71920]">Des preuves, pas des promesses</p>
+          <h2 className="geist max-w-3xl text-3xl font-black tracking-[-0.06em]">De zéro clic organique à la page 1 en 8 semaines — mesuré.</h2>
+          <p className="mt-4 max-w-3xl leading-8 text-[#C7B9B9]">
+            TravelDesign By Lisa : plateforme trilingue de 834 URL, ~2 300 défauts SEO corrigés, sessions moyennes de
+            9 minutes, CLS 0,00 et Bonnes pratiques 100 mesurés en août 2026. Chaque chiffre est sourcé et daté dans l'étude de cas.
+          </p>
+          <a href="/fr/etude-de-cas-lisa-travel-design" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Lire l'étude de cas →</a>
+        </div>
+      </section>
     </main>
   );
 }

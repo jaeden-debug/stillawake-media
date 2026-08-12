@@ -756,6 +756,18 @@ export default function SeoMontrealPage() {
 
         </article>
       </section>
+    
+      <section className="border-t border-white/10 px-6 py-16">
+        <div className="mx-auto max-w-7xl rounded-[2rem] border border-[#D71920]/40 bg-[#D71920]/5 p-8">
+          <p className="mb-3 text-sm uppercase tracking-[.3em] text-[#D71920]">Proof, not promises</p>
+          <h2 className="geist max-w-3xl text-3xl font-black tracking-[-0.06em]">Zero organic clicks to page 1 in 8 weeks — measured.</h2>
+          <p className="mt-4 max-w-3xl leading-8 text-[#C7B9B9]">
+            TravelDesign By Lisa: 834-URL trilingual build, ~2,300 SEO defects cleared, 9-minute average sessions,
+            CLS 0.00 and Best Practices 100 measured Aug 2026. Every number sourced and dated in the case study.
+          </p>
+          <a href="/work/lisa-travel-design" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Read the case study →</a>
+        </div>
+      </section>
     </main>
   );
 }

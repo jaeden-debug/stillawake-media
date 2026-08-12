@@ -49,6 +49,8 @@ const pageLastModified: Record<string, string> = {
   "fr/automatisation-ia": "2026-08-12",
   "fr/referencement-local": "2026-08-12",
   "fr/developpement-framer": "2026-08-12",
+  "work/lisa-travel-design": "2026-08-12",
+  "fr/etude-de-cas-lisa-travel-design": "2026-08-12",
 };
 
 /** EN ↔ FR pairs — surfaces hreflang directly in the sitemap so both
@@ -70,6 +72,7 @@ const languagePairs: Record<string, string> = {
   "ai-automation": "fr/automatisation-ia",
   "local-seo": "fr/referencement-local",
   "framer-development": "fr/developpement-framer",
+  "work/lisa-travel-design": "fr/etude-de-cas-lisa-travel-design",
 };
 const frToEn = Object.fromEntries(Object.entries(languagePairs).map(([en, fr]) => [fr, en]));
 

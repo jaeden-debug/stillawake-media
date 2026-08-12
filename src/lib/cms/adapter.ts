@@ -334,6 +334,17 @@ export function getRedirects(): Promise<CmsRedirect[]> {
   })();
 }
 
+/**
+ * Redirect lookup for file routes that own a URL namespace (e.g. the article
+ * [slug] routes) — the last-resort catch-all never sees their misses, so they
+ * must consult the table themselves before 404ing. Cached under the same
+ * cms-redirects tag the publish webhook invalidates.
+ */
+export async function redirectFor(path: string): Promise<CmsRedirect | null> {
+  const all = await getRedirects();
+  return all.find((r) => r.from_path === path) ?? null;
+}
+
 export function getAllPublishedForSitemap(): Promise<CmsPublishedContent[]> {
   return unstable_cache(queryAllPublished, ["cms-all-published"], {
     revalidate: REVALIDATE,

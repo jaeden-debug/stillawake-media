@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { draftMode } from "next/headers";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect, redirect } from "next/navigation";
 import { siteUrl } from "@/lib/data";
 import { entityIds } from "@/data/entities";
 import { jaedenDoody, personAuthorNames } from "@/data/people/jaeden-doody";
 import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/content";
-import { getPublishedByTypeSlugConfirmed, getSiblingOf } from "@/lib/cms/adapter";
+import { getPublishedByTypeSlugConfirmed, getSiblingOf, redirectFor } from "@/lib/cms/adapter";
 import { fetchDraftByRoute } from "@/lib/cms/draft";
 import {
   CmsArticle,
@@ -140,7 +140,17 @@ export default async function ArticlePage({ params }: Props) {
   }
 
   const post = await getPostBySlug(slug);
-  if (!post) notFound();
+  if (!post) {
+    // Slug changes in the CMS auto-create 301s; this file route owns the
+    // /stillawake-times namespace, so the redirect table must be consulted
+    // here — the last-resort catch-all never sees these paths.
+    const target = await redirectFor(`/stillawake-times/${slug}`);
+    if (target) {
+      if (target.status_code === 301 || target.status_code === 308) permanentRedirect(target.to_path);
+      redirect(target.to_path);
+    }
+    notFound();
+  }
 
   const related = getRelatedPosts(post.slug, post.category, 4);
 

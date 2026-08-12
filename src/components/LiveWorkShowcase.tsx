@@ -11,7 +11,8 @@ const projects = [
   { title: "Northground Bushcraft", url: "https://northgroundbushcraft.com", accent: "#C19A6B" },
 ];
 
-export default function LiveWorkShowcase() {
+export default function LiveWorkShowcase({ locale = "en" }: { locale?: "en" | "fr" } = {}) {
+  const fr = locale === "fr";
   const [showMore, setShowMore] = useState(false);
   const visibleProjects = showMore ? projects : projects.slice(0, 2);
 
@@ -22,12 +23,12 @@ export default function LiveWorkShowcase() {
 
         <div className="relative z-10 mb-12 flex flex-col gap-6 md:mb-16 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
-            <p className="text-xs uppercase tracking-[.35em] text-[#D71920]">Website Portfolio Preview</p>
+            <p className="text-xs uppercase tracking-[.35em] text-[#D71920]">{fr ? "Aperçu du portfolio" : "Website Portfolio Preview"}</p>
             <h2 className="geist mt-4 text-5xl font-black leading-[.9] md:text-7xl tracking-[-0.06em]">
-              Real websites <br /> we have built.
+              {fr ? <>Des sites réels <br /> que nous avons bâtis.</> : <>Real websites <br /> we have built.</>}
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-8 text-[#C7B9B9] md:text-lg">
-              Explore live examples of StillAwake Media website builds, brand systems, ecommerce platforms, SEO projects, and digital products.
+              {fr ? "Explorez des exemples en ligne de sites, systèmes de marque, plateformes ecommerce, projets SEO et produits numériques réalisés par StillAwake Media." : "Explore live examples of StillAwake Media website builds, brand systems, ecommerce platforms, SEO projects, and digital products."}
             </p>
           </div>
 
@@ -35,7 +36,7 @@ export default function LiveWorkShowcase() {
             href="/portfolio"
             className="glass inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-black/70 px-5 py-3 text-sm font-medium text-[#C7B9B9] transition hover:text-white"
           >
-            View full portfolio <span className="grid size-7 place-items-center rounded-full bg-[#D71920] text-white">→</span>
+            {fr ? "Voir le portfolio complet" : "View full portfolio"} <span className="grid size-7 place-items-center rounded-full bg-[#D71920] text-white">→</span>
           </Link>
         </div>
 
@@ -98,10 +99,10 @@ export default function LiveWorkShowcase() {
         >
           <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(215,25,32,.35),transparent_35%)]" />
           <span className="relative block text-xs font-black uppercase tracking-[.25em] text-[#D71920]">
-            {showMore ? "Collapse Showcase" : "View More Work"}
+            {showMore ? (fr ? "Réduire la vitrine" : "Collapse Showcase") : (fr ? "Voir plus de projets" : "View More Work")}
           </span>
           <strong className="relative mt-2 block text-2xl tracking-[-.05em]">
-            {showMore ? "Show featured projects only ↑" : "Open 4 more live projects ↓"}
+            {showMore ? (fr ? "Afficher seulement les projets vedettes ↑" : "Show featured projects only ↑") : (fr ? "Ouvrir 3 autres projets en ligne ↓" : "Open 4 more live projects ↓")}
           </strong>
         </button>
       </div>

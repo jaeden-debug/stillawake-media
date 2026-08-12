@@ -77,12 +77,14 @@ export function Header({ locale = "en" }: { locale?: "en" | "fr" }) {
           </div>
 
           <div className="flex items-center gap-2">
+            {/* Locale-aware: French visitors got an English label AND were sent
+                to the English /contact page from every French page. */}
             <Link
-              href="/contact"
+              href={locale === "fr" ? "/fr/contact" : "/contact"}
               onClick={() => setOpen(false)}
               className="rounded-full border border-[#D71920]/50 bg-[#D71920]/20 px-4 py-2 text-sm"
             >
-              Free Audit
+              {locale === "fr" ? "Audit gratuit" : "Free Audit"}
             </Link>
 
             <button
@@ -139,9 +141,24 @@ export function Section({ eyebrow, title, children }: { eyebrow: string; title: 
   return <section className="px-6 py-24"><div className="mx-auto max-w-7xl">{eyebrow ? <p className="mb-4 text-sm uppercase tracking-[.3em] text-[#D71920]">{eyebrow}</p> : null}{title ? <h2 className="geist max-w-4xl text-4xl font-black md:text-6xl tracking-[-0.06em]">{title}</h2> : null}<div className="mt-10">{children}</div></div></section>;
 }
 
-export function InternalLinks() {
-  const links = [...nav.slice(1, 3), ["Case Studies", "/work"] as const, ...nav.slice(3)];
-  return <section className="px-6 py-16"><div className="glass mx-auto max-w-7xl rounded-[2rem] p-8"><h2 className="geist text-3xl font-black tracking-[-0.06em]">Keep exploring.</h2><p className="mt-3 text-[#C7B9B9]">See the work, read the strategy, or start a project with StillAwake Media.</p><div className="mt-8 flex flex-wrap gap-3">{links.map(([n,h])=><Link key={h} href={h} className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">{n}</Link>)}</div></div></section>;
+/** FR counterparts for the shared homepage blocks. `locale` defaults to "en"
+ *  so every existing English call site keeps its current behaviour. */
+const internalLinksFr: readonly (readonly [string, string])[] = [
+  ["À propos", "/about"],
+  ["Portfolio", "/portfolio"],
+  ["Études de cas", "/work"],
+  ["Création Web", "/fr/agence-web-montreal"],
+  ["SEO", "/fr/agence-seo-montreal"],
+  ["Tarifs", "/fr/tarifs"],
+  ["Contact", "/fr/contact"],
+];
+
+export function InternalLinks({ locale = "en" }: { locale?: "en" | "fr" } = {}) {
+  const fr = locale === "fr";
+  const links = fr
+    ? internalLinksFr
+    : [...nav.slice(1, 3), ["Case Studies", "/work"] as const, ...nav.slice(3)];
+  return <section className="px-6 py-16"><div className="glass mx-auto max-w-7xl rounded-[2rem] p-8"><h2 className="geist text-3xl font-black tracking-[-0.06em]">{fr ? "Continuez d’explorer." : "Keep exploring."}</h2><p className="mt-3 text-[#C7B9B9]">{fr ? "Voyez les réalisations, lisez la stratégie, ou démarrez un projet avec StillAwake Media." : "See the work, read the strategy, or start a project with StillAwake Media."}</p><div className="mt-8 flex flex-wrap gap-3">{links.map(([n,h])=><Link key={h} href={h} className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">{n}</Link>)}</div></div></section>;
 }
 
 export function ServiceGrid() {
@@ -156,8 +173,21 @@ export function ServiceGrid() {
 return <div className="grid gap-4 md:grid-cols-5">{services.map(s => <div key={s} className="glass rounded-3xl p-6"><h3 className="geist text-xl font-black tracking-[-0.06em]">{s}</h3><p className="mt-3 text-sm leading-6 text-[#C7B9B9]">{serviceCopy[s]}</p></div>)}</div>;
 }
 
-export function PortfolioGrid() {
-  return <div className="grid gap-5 md:grid-cols-3">{portfolio.map(([n,u,d]) => <article key={n} className="glass rounded-[2rem] p-6"><p className="text-xs uppercase tracking-[.25em] text-[#D71920]">Live project</p><h3 className="geist mt-4 text-2xl font-black tracking-[-0.06em]">{n}</h3><p className="mt-3 text-sm leading-6 text-[#C7B9B9]">{d}</p><a href={u} target="_blank" className="mt-6 inline-flex text-sm text-white">View live site →</a></article>)}</div>;
+const servicesFr: readonly (readonly [string, string])[] = [
+  ["Développement web", "Sites rapides et sur mesure, mise en page nette, interactions précises et une structure qui peut grandir au-delà d’une simple page d’accueil."],
+  ["Référencement (SEO)", "Architecture de pages orientée recherche, liens internes, métadonnées, planification de contenu et nettoyage technique pour un site plus facile à explorer."],
+  ["Image de marque", "Direction visuelle, typographie, couleurs, message et actifs qui rendent l’entreprise crédible dès la première seconde."],
+  ["Applications & logiciels", "Outils sur mesure, tableaux de bord, portails et systèmes de travail bâtis autour des opérations réelles plutôt que de fonctionnalités au hasard."],
+  ["Automatisation IA", "Flux IA concrets pour le contenu, la recherche, l’administration, les opérations et les tâches répétitives qui ralentissent l’entreprise."],
+];
+
+export function ServiceGridFr() {
+  return <div className="grid gap-4 md:grid-cols-5">{servicesFr.map(([n, d]) => <div key={n} className="glass rounded-3xl p-6"><h3 className="geist text-xl font-black tracking-[-0.06em]">{n}</h3><p className="mt-3 text-sm leading-6 text-[#C7B9B9]">{d}</p></div>)}</div>;
+}
+
+export function PortfolioGrid({ locale = "en" }: { locale?: "en" | "fr" } = {}) {
+  const fr = locale === "fr";
+  return <div className="grid gap-5 md:grid-cols-3">{portfolio.map(([n,u,d]) => <article key={n} className="glass rounded-[2rem] p-6"><p className="text-xs uppercase tracking-[.25em] text-[#D71920]">{fr ? "Projet en ligne" : "Live project"}</p><h3 className="geist mt-4 text-2xl font-black tracking-[-0.06em]">{n}</h3><p className="mt-3 text-sm leading-6 text-[#C7B9B9]">{d}</p><a href={u} target="_blank" rel="noopener" className="mt-6 inline-flex text-sm text-white">{fr ? "Voir le site →" : "View live site →"}</a></article>)}</div>;
 }
 
 export function BlogCards() {

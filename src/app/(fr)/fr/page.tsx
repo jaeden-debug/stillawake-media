@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Button, Section, ServiceGridFr, PortfolioGrid, InternalLinks } from "@/components/site";
+import LiveWorkShowcase from "@/components/LiveWorkShowcase";
 import { ServiceJsonLd } from "@/components/service-page";
 
 export const metadata: Metadata = {
@@ -23,18 +25,26 @@ export const metadata: Metadata = {
   },
 };
 
-const SERVICES: [string, string, string][] = [
-  ["Création de site web", "/fr/agence-web-montreal", "Sites premium codés sur mesure, rapides et bâtis pour convertir."],
-  ["Agence SEO Montréal", "/fr/agence-seo-montreal", "Forfaits de référencement affichés : 600 $ à 850 $ CAD par mois."],
-  ["Maintenance & dépannage", "/fr/maintenance-site-web", "Entretien continu et urgences réglées le jour même, dès 150 $."],
-  ["Référencement IA (AEO)", "/fr/referencement-ia", "Faites-vous citer par ChatGPT, Perplexity et Google IA."],
-  ["Développement Shopify", "/fr/developpement-shopify", "Boutiques bilingues et thèmes sur mesure qui vendent."],
-  ["Tarifs", "/fr/tarifs", "Tous nos prix, affichés. Sans appel de vente."],
+const SERVICE_PILLS: [string, string][] = [
+  ["Création Web Montréal", "/fr/agence-web-montreal"],
+  ["SEO Montréal", "/fr/agence-seo-montreal"],
+  ["Développement Shopify", "/fr/developpement-shopify"],
+  ["Maintenance & Support", "/fr/maintenance-site-web"],
+  ["Référencement IA (AEO)", "/fr/referencement-ia"],
+  ["Logiciels sur mesure", "/fr/developpement-logiciel"],
+  ["Image de marque", "/fr/image-de-marque"],
+  ["Tarifs", "/fr/tarifs"],
+];
+
+const CASE_STUDIES: [string, string, string][] = [
+  ["Lisa Travel Design", "/fr/etude-de-cas-lisa-travel-design", "Site de voyage haut de gamme bâti autour de la confiance et des demandes qualifiées."],
+  ["BankDeMark", "/fr/etude-de-cas-bankdemark", "Architecture SEO menée par les calculateurs : positions n°1 et score Lighthouse parfait."],
+  ["NAVTRL / Stalkr", "/fr/etude-de-cas-stalkr-navtrl", "Une app de localisation en temps réel, du premier commit à TestFlight en 24 jours."],
 ];
 
 export default function FrHome() {
   return (
-    <main className="bg-black pt-28 text-white">
+    <main>
       <ServiceJsonLd
         path="/fr"
         name="StillAwake Media — Agence web à Montréal"
@@ -43,54 +53,159 @@ export default function FrHome() {
         inLanguage="fr-CA"
       />
 
-      <section className="border-b border-white/10 px-6 pb-20 pt-16">
-        <div className="mx-auto max-w-6xl">
-          <p aria-hidden="true" className="geist font-mono text-[11vw] font-normal leading-[1.05] tracking-[0.3em] text-white md:text-[96px]">
-            STILL<span className="text-[#D71920]">AWAKE</span>
-          </p>
-          <h1 className="mt-8 max-w-3xl text-4xl font-semibold leading-[1.1] md:text-5xl">
-            Sites web, SEO et systèmes IA — bâtis à Montréal pour les entreprises ambitieuses.
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-            StillAwake Media conçoit des marques audacieuses, des sites performants, des systèmes de référencement et
-            des outils IA pensés pour faire croître les entreprises modernes — au Québec, au Canada et partout, à
-            distance. L&apos;ambition ne dort jamais.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/fr/contact" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">
-              Obtenir un audit gratuit
-            </Link>
-            <Link href="/portfolio" className="rounded-full border border-white/15 px-7 py-4 text-sm font-medium transition hover:border-white/40">
-              Voir nos réalisations
-            </Link>
+      {/* Hero — mirrors the English homepage exactly: background video, two
+          gradient overlays, the wordmark split across two lines, and the glass
+          card pinned to the bottom of the viewport. The wordmark MUST stay on
+          two lines: "STILLAWAKE" as a single 10-character line at this size
+          and letter-spacing measures wider than the viewport and clips. */}
+      <section className="relative min-h-[100svh] overflow-hidden px-6 pt-6 md:min-h-screen">
+        <video
+          className="heroVideo absolute inset-0 h-screen min-h-screen w-full object-cover opacity-65"
+          src="/stillawakemedia-hero-optimized-small.mp4"
+          poster="/stillawakemedia-hero-poster.jpg"
+          preload="metadata"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-[#050505]/50 to-[#050505]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_35%,rgba(215,25,32,.25),transparent_35%)]" />
+
+        <div className="relative z-10 mx-auto flex min-h-[calc(100svh-1.5rem)] max-w-7xl items-start pt-28 pb-4 md:min-h-screen md:pt-32 md:pb-20">
+          <div className="flex w-full items-center">
+            <div className="flex min-h-[calc(100svh-9rem)] w-full flex-col justify-between md:min-h-[82vh]">
+              <div>
+                <p aria-hidden="true" className="geist font-mono text-[13vw] font-normal leading-[1.05] tracking-[0.34em] text-white md:text-[120px]">
+                  STILL<br /><span className="text-[#D71920]">AWAKE</span>
+                </p>
+
+                <div className="mt-5 flex items-center gap-3">
+                  <Button href="/fr/contact">Audit gratuit</Button>
+                  <Link
+                    href="/portfolio"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/75 px-4 py-2.5 text-[13px] font-medium tracking-[-0.02em] text-[#C7B9B9] shadow-2xl backdrop-blur-2xl transition hover:bg-black/90 hover:text-white"
+                  >
+                    Nos réalisations <span className="grid size-7 place-items-center rounded-full bg-white/[0.08] text-[12px] text-white">→</span>
+                  </Link>
+                </div>
+              </div>
+
+              <div className="glass mb-2 max-w-2xl rounded-[2rem] border border-white/10 bg-black/30 p-5 md:p-7">
+                <h1 className="geist text-2xl font-black tracking-[-0.06em] md:text-[2rem]">
+                  Sites web, SEO et systèmes IA — bâtis à Montréal pour les entreprises ambitieuses.
+                </h1>
+
+                <p className="mt-2 text-sm uppercase tracking-[0.25em] text-[#D71920]">L&apos;ambition ne dort jamais.</p>
+
+                <p className="mt-4 max-w-xl text-[15px] leading-7 text-[#C7B9B9] md:text-base md:leading-8">
+                  Nous bâtissons des <span className="text-[#D71920]">marques audacieuses</span>, des sites performants, des systèmes SEO, des outils IA et des actifs numériques <span className="text-[#D71920]">conçus pour faire croître</span> les entreprises modernes.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-7xl">
-          <p className="mb-4 text-sm uppercase tracking-[.3em] text-[#D71920]">Nos services</p>
-          <h2 className="geist max-w-4xl text-4xl font-black tracking-[-0.06em] md:text-6xl">
-            L&apos;infrastructure numérique, au complet.
-          </h2>
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map(([name, href, desc]) => (
-              <Link key={href} href={href} className="rounded-[2rem] border border-white/10 p-7 transition hover:border-[#D71920]/60">
-                <h3 className="geist text-2xl font-black tracking-[-0.05em]">{name}</h3>
-                <p className="mt-3 text-sm leading-6 text-[#C7B9B9]">{desc}</p>
-              </Link>
-            ))}
-          </div>
+      <Section eyebrow="Ce que nous faisons" title="L'infrastructure numérique des opérateurs ambitieux.">
+        <ServiceGridFr />
+        <div className="mt-10 flex flex-wrap gap-3">
+          {SERVICE_PILLS.map(([n, h]) => (
+            <Link key={h} href={h} className="rounded-full border border-white/10 px-4 py-2 text-sm text-[#C7B9B9] transition hover:border-[#D71920]/60 hover:text-white">
+              {n}
+            </Link>
+          ))}
+        </div>
+      </Section>
+
+      <section className="px-6 py-10 md:py-16">
+        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-black shadow-2xl">
+          <video
+            className="h-[420px] w-full object-cover md:h-[620px]"
+            src="/tv-static-stillawake-media-intro-optimized-small.mp4"
+            poster="/tv-static-stillawake-media-intro-poster.jpg"
+            preload="none"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/10" />
         </div>
       </section>
 
-      <section className="px-6 pb-24">
+      <LiveWorkShowcase locale="fr" />
+
+      <Section eyebrow="Systèmes" title="Sites, marques, moteurs SEO, outils IA et logiciels bâtis comme une seule machine de croissance.">
+        <div className="grid gap-5 md:grid-cols-3">
+          {[
+            "Lancer des sites premium qui chargent vite et convertissent.",
+            "Bâtir des structures SEO que Google peut explorer, comprendre et récompenser.",
+            "Créer des systèmes d'automatisation qui éliminent les frictions répétitives.",
+          ].map((x) => (
+            <div className="rounded-[2rem] border border-white/10 bg-[#111] p-8 text-xl text-[#C7B9B9]" key={x}>{x}</div>
+          ))}
+        </div>
+      </Section>
+
+      <Section eyebrow="Le problème" title="La plupart des sites échouent parce qu'ils sont bâtis comme des brochures, pas comme des systèmes d'affaires.">
+        <p className="max-w-3xl text-xl leading-9 text-[#C7B9B9]">
+          Nous concevons des écosystèmes explorables, rapides et orientés conversion : pages de services, articles, liens internes, données structurées, preuves et prochaines étapes claires.
+        </p>
+      </Section>
+
+      <Section eyebrow="Qui nous aidons" title="Startups, créateurs, marques ecommerce, entreprises de services et commerces locaux.">
+        <div className="grid gap-4 md:grid-cols-4">
+          {["Startups", "Créateurs", "Ecommerce", "Commerce local"].map((x) => (
+            <div className="glass rounded-3xl p-6 text-xl font-bold" key={x}>{x}</div>
+          ))}
+        </div>
+      </Section>
+
+      <Section eyebrow="Processus" title="Un chemin simple. Un résultat solide.">
+        <div className="grid gap-4 md:grid-cols-4">
+          {[
+            ["01", "Positionner", "Clarifier l'offre."],
+            ["02", "Concevoir", "La rendre premium."],
+            ["03", "Bâtir", "Lancer le système."],
+            ["04", "Croître", "Faire grandir le trafic et la confiance."],
+          ].map(([num, title, desc]) => (
+            <div className="glass rounded-3xl p-7" key={title}>
+              <p className="text-sm tracking-[0.25em] text-[#D71920]">{num}</p>
+              <h3 className="geist mt-4 text-3xl tracking-[-0.06em] text-white">{title}</h3>
+              <p className="mt-4 text-sm leading-7 text-[#C7B9B9]">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section eyebrow="Portfolio" title="La preuve par des propriétés numériques en ligne.">
+        <PortfolioGrid locale="fr" />
+        <Link className="mt-8 inline-flex text-[#D71920]" href="/portfolio">Voir le portfolio complet →</Link>
+      </Section>
+
+      <Section eyebrow="Études de cas" title="Des résultats mesurés, pas affirmés.">
+        <div className="grid gap-5 md:grid-cols-3">
+          {CASE_STUDIES.map(([name, href, desc]) => (
+            <Link key={href} href={href} className="glass rounded-[2rem] p-6 transition hover:border-[#D71920]/60">
+              <p className="text-xs uppercase tracking-[.25em] text-[#D71920]">Étude de cas</p>
+              <h3 className="geist mt-4 text-2xl font-black tracking-[-0.06em]">{name}</h3>
+              <p className="mt-3 text-sm leading-6 text-[#C7B9B9]">{desc}</p>
+            </Link>
+          ))}
+        </div>
+        <Link className="mt-8 inline-flex text-[#D71920]" href="/work">Voir toutes les études de cas →</Link>
+      </Section>
+
+      <InternalLinks locale="fr" />
+
+      <section className="px-6 py-24">
         <div className="mx-auto max-w-7xl rounded-[2rem] bg-[#D71920] p-10 md:p-16">
-          <h2 className="geist max-w-3xl text-4xl font-black tracking-[-0.06em] md:text-6xl">
-            Sautez l&apos;appel de vente. Dites-nous ce que vous bâtissez.
+          <h2 className="geist text-5xl font-black tracking-[-0.06em]">
+            Commencez à bâtir avant que vos concurrents se réveillent.
           </h2>
           <Link href="/fr/contact" className="mt-8 inline-flex rounded-full bg-black px-6 py-4 font-bold">
-            Démarrer un projet →
+            Obtenir un audit gratuit →
           </Link>
         </div>
       </section>

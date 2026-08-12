@@ -417,6 +417,19 @@ export default function Page() {
         </div>
       </section>
 
+      <section className="px-6 pb-8"><div className="mx-auto max-w-7xl">
+        <p className="mb-4 text-sm uppercase tracking-[.3em] text-[#D71920]">Metric-Driven Case Studies</p>
+        <div className="grid gap-5 md:grid-cols-3">
+          {[["TravelDesign By Lisa","0 organic clicks to page 1 in 8 weeks — sourced and dated.","/work/lisa-travel-design"],["BankDeMark","#1 Google positions with a perfect 100/100/100 Lighthouse.","/work/bankdemark"],["NAVTRL / Stalkr","A real-time location app built to beta in 24 days.","/work/stalkr-navtrl"]].map(([n,d,h])=>(
+            <a key={h} href={h} className="rounded-[2rem] border border-[#D71920]/40 bg-[#D71920]/5 p-7 transition hover:border-[#D71920]">
+              <h3 className="geist text-2xl font-black tracking-[-0.05em]">{n}</h3>
+              <p className="mt-3 text-sm leading-6 text-[#C7B9B9]">{d}</p>
+              <p className="mt-4 text-sm font-semibold text-[#D71920]">Read the numbers →</p>
+            </a>
+          ))}
+        </div>
+      </div></section>
+
       <section className="px-6 pb-8"><div className="glass mx-auto max-w-7xl rounded-[2rem] p-8">
         <h2 className="geist text-3xl font-black tracking-[-0.06em]">Hire the services behind this work.</h2>
         <div className="mt-6 flex flex-wrap gap-3">

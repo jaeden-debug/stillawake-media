@@ -51,6 +51,10 @@ const pageLastModified: Record<string, string> = {
   "fr/developpement-framer": "2026-08-12",
   "work/lisa-travel-design": "2026-08-12",
   "fr/etude-de-cas-lisa-travel-design": "2026-08-12",
+  "work/bankdemark": "2026-08-12",
+  "fr/etude-de-cas-bankdemark": "2026-08-12",
+  "work/stalkr-navtrl": "2026-08-12",
+  "fr/etude-de-cas-stalkr-navtrl": "2026-08-12",
 };
 
 /** EN ↔ FR pairs — surfaces hreflang directly in the sitemap so both
@@ -73,6 +77,8 @@ const languagePairs: Record<string, string> = {
   "local-seo": "fr/referencement-local",
   "framer-development": "fr/developpement-framer",
   "work/lisa-travel-design": "fr/etude-de-cas-lisa-travel-design",
+  "work/bankdemark": "fr/etude-de-cas-bankdemark",
+  "work/stalkr-navtrl": "fr/etude-de-cas-stalkr-navtrl",
 };
 const frToEn = Object.fromEntries(Object.entries(languagePairs).map(([en, fr]) => [fr, en]));
 

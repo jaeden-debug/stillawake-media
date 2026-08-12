@@ -8,6 +8,17 @@ export const nav = [
   ["Montreal", "/web-design-montreal"],
   ["StillAwake Times", "/stillawake-times"],
   ["Contact", "/contact"],
+  ["FR", "/fr"],
+];
+
+export const navFr = [
+  ["Accueil", "/fr"],
+  ["Création Web", "/fr/agence-web-montreal"],
+  ["SEO", "/fr/agence-seo-montreal"],
+  ["Maintenance", "/fr/maintenance-site-web"],
+  ["Tarifs", "/fr/tarifs"],
+  ["Contact", "/fr/contact"],
+  ["English", "/"],
 ];
 
 export const serviceNav = [

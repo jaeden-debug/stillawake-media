@@ -5,7 +5,7 @@ excerpt: "Google Maps is the most powerful free lead generation tool most local 
 category: "Local SEO"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-author: "StillAwake Media"
+author: "Jaeden Doody"
 ---
 
 # How to Rank Higher on Google Maps for Local Businesses

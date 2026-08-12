@@ -6,7 +6,22 @@ import { acquireSubmissionLock } from "@/lib/contact/submission-lock";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
-export function ContactForm() {
+type FormLabels = {
+  name: string; email: string; message: string; submit: string; sending: string;
+  sent: string; failed: string;
+};
+const EN_LABELS: FormLabels = {
+  name: "Name", email: "Email", message: "Message", submit: "Request Free Audit",
+  sending: "Sending...", sent: "Message sent. We’ll review it shortly.",
+  failed: "Message failed to send. Please try again.",
+};
+export const FR_LABELS: FormLabels = {
+  name: "Nom", email: "Courriel", message: "Message", submit: "Demander un audit gratuit",
+  sending: "Envoi en cours...", sent: "Message envoyé. Nous vous répondrons rapidement.",
+  failed: "L'envoi a échoué. Veuillez réessayer.",
+};
+
+export function ContactForm({ labels = EN_LABELS }: { labels?: FormLabels } = {}) {
   const [status, setStatus] = useState<Status>("idle");
   const [notice, setNotice] = useState("");
   const [formStartedAt, setFormStartedAt] = useState(() => Date.now());
@@ -20,7 +35,7 @@ export function ContactForm() {
     event.preventDefault();
     if (!acquireSubmissionLock(submissionLock)) return;
     setStatus("sending");
-    setNotice("Sending your message...");
+    setNotice(labels.sending);
 
     const form = event.currentTarget;
     const formData = new FormData(form);
@@ -42,18 +57,18 @@ export function ContactForm() {
       const data = (await response.json().catch(() => ({}))) as { error?: string };
       if (response.ok) {
         setStatus("sent");
-        setNotice("Message sent. We’ll review it shortly.");
+        setNotice(labels.sent);
         form.reset();
         refreshTimingSignal();
         return;
       }
 
       setStatus("error");
-      setNotice(data.error || "Message failed to send. Please try again.");
+      setNotice(data.error || labels.failed);
       refreshTimingSignal();
     } catch {
       setStatus("error");
-      setNotice("Message failed to send. Please check your connection and try again.");
+      setNotice(labels.failed);
       refreshTimingSignal();
     } finally {
       submissionLock.current = false;
@@ -63,7 +78,7 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="glass relative grid gap-4 rounded-[2rem] p-6">
       <label className="grid gap-2">
-        <span className="text-sm text-[#C7B9B9]">Name</span>
+        <span className="text-sm text-[#C7B9B9]">{labels.name}</span>
         <input
           name="name"
           required
@@ -74,7 +89,7 @@ export function ContactForm() {
       </label>
 
       <label className="grid gap-2">
-        <span className="text-sm text-[#C7B9B9]">Email</span>
+        <span className="text-sm text-[#C7B9B9]">{labels.email}</span>
         <input
           name="email"
           type="email"
@@ -123,7 +138,7 @@ export function ContactForm() {
         disabled={status === "sending"}
         className="rounded-full bg-[#D71920] px-6 py-4 font-bold disabled:cursor-not-allowed disabled:opacity-60"
       >
-        {status === "sending" ? "Sending..." : "Request Free Audit"}
+        {status === "sending" ? labels.sending : labels.submit}
       </button>
 
       <div aria-live="polite" aria-atomic="true">

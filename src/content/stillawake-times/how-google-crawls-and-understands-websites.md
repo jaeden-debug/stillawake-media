@@ -5,7 +5,7 @@ excerpt: "Google doesn't just index your content — it crawls, renders, evaluat
 category: "Technical SEO"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-author: "StillAwake Media"
+author: "Jaeden Doody"
 ---
 
 # How Google Actually Crawls and Understands Websites

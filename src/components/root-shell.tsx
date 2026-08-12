@@ -158,9 +158,9 @@ export function RootShell({
           data-key="U2gzncDcxNZl9k/ub6ypfA"
           strategy="afterInteractive"
         />
-        <Header />
+        <Header locale={lang.startsWith("fr") ? "fr" : "en"} />
         {children}
-        <Footer />
+        <Footer locale={lang.startsWith("fr") ? "fr" : "en"} />
       </body>
     </html>
   );

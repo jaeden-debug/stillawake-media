@@ -5,7 +5,7 @@ excerpt: "Most Shopify stores are entirely dependent on paid ads. The ones that 
 category: "Shopify"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-author: "StillAwake Media"
+author: "Jaeden Doody"
 ---
 
 # Shopify SEO: How Ecommerce Brands Actually Grow Organically

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { InternalLinks } from "@/components/site";
+import { RelatedServices } from "@/components/service-page";
 
 const pageUrl = "https://stillawakemedia.com/fr/agence-web-montreal";
 
@@ -212,7 +212,7 @@ export default function Page() {
 
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
-              href="/contact"
+              href="/fr/contact"
               className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-bold text-white"
             >
               Démarrer votre projet →
@@ -308,14 +308,14 @@ export default function Page() {
 
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
-              href="/contact"
+              href="/fr/contact"
               className="rounded-full bg-white px-7 py-4 text-sm font-bold text-black"
             >
               Démarrer votre projet →
             </Link>
 
             <Link
-              href="/about"
+              href="/fr"
               className="rounded-full border border-white/20 px-7 py-4 text-sm font-bold text-white"
             >
               À propos →
@@ -324,7 +324,18 @@ export default function Page() {
         </div>
       </section>
 
-      <InternalLinks />
+      <RelatedServices
+        title="Continuez en français"
+        links={[
+          ["Agence SEO Montréal", "/fr/agence-seo-montreal"],
+          ["Maintenance de site web", "/fr/maintenance-site-web"],
+          ["Développement Shopify", "/fr/developpement-shopify"],
+          ["Référencement IA (AEO)", "/fr/referencement-ia"],
+          ["Tarifs", "/fr/tarifs"],
+          ["Nous joindre", "/fr/contact"],
+          ["English version", "/web-design-montreal"],
+        ]}
+      />
     </main>
   );
 }

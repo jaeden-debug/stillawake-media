@@ -39,6 +39,9 @@ const nextConfig = {
       { source: "/stillawake-times/web-design-montreal", destination: "/web-design-montreal", permanent: true },
       { source: "/stillawake-times/seo-montreal", destination: "/seo-montreal", permanent: true },
       { source: "/stillawake-times/agence-web-montreal", destination: "/fr/agence-web-montreal", permanent: true },
+      // Near-duplicate merges (same topic, one day apart / same intent):
+      { source: "/stillawake-times/how-website-speed-impacts-seo-conversions-revenue", destination: "/stillawake-times/how-website-speed-directly-impacts-revenue-and-seo-rankings", permanent: true },
+      { source: "/stillawake-times/what-businesses-should-prepare-before-hiring-a-web-design-agency", destination: "/stillawake-times/what-to-know-before-hiring-web-design-agency", permanent: true },
     ];
   },
 };

@@ -5,7 +5,7 @@ excerpt: "Your Google Business Profile is the single most important free marketi
 category: "Local SEO"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-author: "StillAwake Media"
+author: "Jaeden Doody"
 ---
 
 # Google Business Profile Optimization: Complete Guide for Businesses

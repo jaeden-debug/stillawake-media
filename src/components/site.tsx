@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { nav, services, portfolio, posts } from "@/lib/data";
+import { nav, navFr, services, portfolio, posts } from "@/lib/data";
 
 export function Logo() {
   return (
@@ -16,7 +16,8 @@ export function Logo() {
   );
 }
 
-export function Header() {
+export function Header({ locale = "en" }: { locale?: "en" | "fr" }) {
+  const items = locale === "fr" ? navFr : nav;
   const [open, setOpen] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
   const lastScrollY = useRef(0);
@@ -68,7 +69,7 @@ export function Header() {
           </div>
 
           <div className="hidden gap-7 text-sm text-[#C7B9B9] lg:flex">
-            {nav.map(([n, h]) => (
+            {items.map(([n, h]) => (
               <Link className="hover:text-white" key={h} href={h}>
                 {n}
               </Link>
@@ -108,7 +109,7 @@ export function Header() {
 
         {open && (
           <div className="mt-4 grid gap-2 lg:hidden">
-            {nav.map(([n, h]) => (
+            {items.map(([n, h]) => (
               <Link
                 key={h}
                 href={h}

@@ -26,7 +26,7 @@ const pageLastModified: Record<string, string> = {
   work: "2026-08-09",
   "founder/jaeden-doody": "2026-08-10",
   "web-design-montreal": "2026-05-25",
-  "fr/agence-web-montreal": "2026-05-25",
+  "fr/agence-web-montreal": "2026-08-12",
   "seo-montreal": "2026-08-12",
   "website-maintenance": "2026-08-12",
   "answer-engine-optimization": "2026-08-12",
@@ -36,6 +36,8 @@ const pageLastModified: Record<string, string> = {
   "fr/referencement-ia": "2026-08-12",
   "fr/developpement-shopify": "2026-08-12",
   "fr/tarifs": "2026-08-12",
+  fr: "2026-08-12",
+  "fr/contact": "2026-08-12",
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {

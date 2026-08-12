@@ -5,7 +5,7 @@ excerpt: "Internal linking isn't a maintenance task — it's an architecture str
 category: "SEO Strategy"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-author: "StillAwake Media"
+author: "Jaeden Doody"
 ---
 
 # Why Internal Linking Is One of the Most Powerful SEO Strategies

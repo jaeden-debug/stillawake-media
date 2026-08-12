@@ -30,7 +30,28 @@ const resources = [
   ["Contact", "/contact"],
 ];
 
-export function Footer() {
+const servicesFr = [
+  ["Création de site web", "/fr/agence-web-montreal"],
+  ["Agence SEO Montréal", "/fr/agence-seo-montreal"],
+  ["Maintenance & Support", "/fr/maintenance-site-web"],
+  ["Référencement IA (AEO)", "/fr/referencement-ia"],
+  ["Développement Shopify", "/fr/developpement-shopify"],
+  ["Tarifs", "/fr/tarifs"],
+];
+
+const resourcesFr = [
+  ["Portfolio", "/portfolio"],
+  ["Études de cas", "/work"],
+  ["À propos", "/about"],
+  ["Fondateur", "/founder/jaeden-doody"],
+  ["Contact", "/fr/contact"],
+  ["English", "/"],
+];
+
+export function Footer({ locale = "en" }: { locale?: "en" | "fr" }) {
+  const fr = locale === "fr";
+  const serviceLinks = fr ? servicesFr : services;
+  const resourceLinks = fr ? resourcesFr : resources;
   return (
     <footer className="relative overflow-hidden border-t border-white/10 bg-black">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#D71920_0%,transparent_60%)] opacity-[0.08]" />
@@ -44,7 +65,7 @@ export function Footer() {
             </p>
 
             <h2 className="geist mt-6 max-w-xl text-5xl font-black leading-[0.9] tracking-[-0.08em] md:text-7xl">
-              Digital infrastructure for brands built to dominate online.
+              {fr ? "L'infrastructure numérique des marques bâties pour dominer en ligne." : "Digital infrastructure for brands built to dominate online."}
             </h2>
 
             <p className="mt-8 max-w-2xl text-base leading-8 text-[#B8B8B8]">
@@ -55,10 +76,10 @@ export function Footer() {
 
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
-                href="/contact"
+                href={fr ? "/fr/contact" : "/contact"}
                 className="rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium text-white transition hover:scale-[1.02]"
               >
-                Start a Project
+                {fr ? "Démarrer un projet" : "Start a Project"}
               </Link>
 
               <Link
@@ -76,7 +97,7 @@ export function Footer() {
             </p>
 
             <div className="mt-6 flex flex-col gap-4">
-              {services.map(([label, href]) => (
+              {serviceLinks.map(([label, href]) => (
                 <Link
                   key={href}
                   href={href}
@@ -112,7 +133,7 @@ export function Footer() {
             </p>
 
             <div className="mt-6 flex flex-col gap-4">
-              {resources.map(([label, href]) => (
+              {resourceLinks.map(([label, href]) => (
                 <Link
                   key={href}
                   href={href}

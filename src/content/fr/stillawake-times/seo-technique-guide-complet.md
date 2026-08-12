@@ -180,3 +180,5 @@ Le SEO technique ne fait pas grimper une page. Il enlève les raisons pour lesqu
 C'est pour ça qu'il vient en premier — pas parce que c'est le plus important, mais parce que tout le reste en dépend. Un excellent article sur une page non indexée vaut zéro. La même page, correctement explorable et reliée, laisse le contenu faire son travail.
 
 Commencez par vérifier l'indexation. Tout part de là.
+
+Si vous préférez que ce soit fait plutôt qu'expliqué, voyez [nos forfaits de référencement](/fr/agence-seo-montreal).

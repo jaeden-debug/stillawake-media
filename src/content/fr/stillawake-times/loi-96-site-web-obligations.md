@@ -130,3 +130,5 @@ La Loi 96 ne demande pas de traduire votre site. Elle demande que vos clients qu
 La différence entre ces deux formulations est tout le projet. La première mène à une couche de traduction posée sur un site anglais, avec des liens qui fuient vers l'anglais dès le deuxième clic. La seconde mène à un vrai site français — qui se trouve aussi être celui qui se classe dans Google, qui convertit, et qui n'a pas besoin d'être refait la prochaine fois que la réglementation bouge.
 
 Faites-le une fois, correctement, dans le bon ordre.
+
+Si vous préférez que ce soit fait plutôt qu'expliqué, voyez [notre service de création de site web bilingue](/fr/agence-web-montreal).

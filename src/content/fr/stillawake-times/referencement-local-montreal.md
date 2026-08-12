@@ -1,8 +1,8 @@
 ---
-title: "Référencement local à Montréal : comment sortir dans le paquet de trois"
+title: "Référencement local à Montréal : l'architecture derrière le paquet de trois"
 date: "2026-08-12"
 updated: "2026-08-12"
-excerpt: "Le référencement local ne fonctionne pas comme le SEO classique. Voici les trois facteurs qui décident réellement du classement sur Google Maps, ce que le bilinguisme change à Montréal, et la séquence de travail qui donne des résultats."
+excerpt: "Admissibilité, cohérence NAP, citations et pages de destination locales : les fondations qui décident si votre fiche peut se classer. Le réglage de la fiche elle-même est traité séparément."
 category: "SEO local"
 featured: false
 author: "Jaeden Doody"
@@ -34,7 +34,7 @@ Google est inhabituellement transparent ici. Le classement local repose sur troi
 
 La catégorie principale est le champ le plus déterminant de toute la fiche, et le plus souvent mal rempli. « Agence de marketing » et « Concepteur de sites Web » ne concourent pas pour les mêmes requêtes. Choisissez la catégorie qui décrit ce que vous faites *réellement*, pas la plus large.
 
-Un test utile : cherchez votre service principal, regardez les trois fiches qui sortent, et vérifiez leur catégorie principale. Si les trois utilisent la même et que vous en avez une autre, vous avez trouvé votre problème.
+Un test utile : cherchez votre service principal, regardez les trois fiches qui sortent, et vérifiez leur catégorie principale. Si les trois utilisent la même et que vous en avez une autre, vous avez trouvé votre problème. Le choix des catégories et le réglage complet de la fiche sont détaillés dans le [guide de la fiche Google Entreprise](/fr/fiche-google-entreprise).
 
 ### La distance
 
@@ -88,21 +88,9 @@ Si vous vous déplacez, déclarez les zones que vous **desservez réellement en 
 
 Déclarer « Canada » parce que vous pouvez travailler à distance est une erreur de catégorie. La zone de service décrit un déplacement physique. La capacité à distance se raconte sur votre site web, pas sur votre fiche.
 
-## Les avis : la partie qui bouge le classement
+## Les avis, en une phrase
 
-Les avis influencent le classement local et, davantage encore, le taux de clic. Entre deux fiches voisines, celle avec 40 avis à 4,8 gagne contre celle avec 6 avis à 5,0.
-
-Ce qui fonctionne :
-
-**Demander systématiquement**, au bon moment — quand le travail vient d'être livré et que le client est satisfait, pas trois mois plus tard.
-
-**Envoyer le lien direct**, pas « cherchez-nous sur Google ». Chaque étape supplémentaire coupe la moitié des réponses.
-
-**Répondre à tous les avis**, positifs comme négatifs. Une réponse posée à un avis négatif convainc davantage de futurs clients qu'un mur de cinq étoiles.
-
-**Demander en français aux clients francophones.** Des avis dans les deux langues renforcent la pertinence bilingue de la fiche.
-
-Ce qui est interdit et détectable : acheter des avis, offrir une contrepartie contre un avis positif, ou filtrer — demander d'abord si le client est satisfait et ne solliciter l'avis public que dans ce cas. Le filtrage viole explicitement les politiques.
+Les avis influencent le classement local et, davantage encore, le taux de clic — entre deux fiches voisines, celle avec 40 avis à 4,8 bat celle avec 6 avis à 5,0. La mécanique complète (quand demander, comment répondre, ce qui est interdit et détectable) est traitée dans le [guide de la fiche Google Entreprise](/fr/fiche-google-entreprise), qui couvre le réglage de la fiche en détail. Ce guide-ci s'occupe de ce qu'il y a autour.
 
 ## Les citations et la cohérence NAP
 
@@ -149,3 +137,5 @@ Les points 1 à 4 se font en une journée et produisent souvent le plus gros gai
 Le référencement local récompense la précision et la cohérence plus que le volume. La bonne catégorie, des informations identiques partout, des avis réels demandés systématiquement, et des pages qui disent quelque chose de vrai sur votre marché.
 
 À Montréal, ajoutez une contrainte : faites-le dans les deux langues, avec des mots-clés recherchés séparément dans chacune. La traduction ne suffit pas, parce que vos clients ne traduisent pas — ils cherchent avec les mots qu'ils utilisent.
+
+Si vous préférez que ce soit fait plutôt qu'expliqué, voyez [notre service de référencement local](/fr/referencement-local).

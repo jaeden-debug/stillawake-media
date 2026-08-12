@@ -1,8 +1,8 @@
 ---
-title: "Refaire son site web sans perdre son référencement"
+title: "Le plan de redirections : ce qui décide si une refonte garde son trafic"
 date: "2026-08-12"
 updated: "2026-08-12"
-excerpt: "La plupart des chutes de trafic après une refonte sont évitables. Voici les cinq causes réelles, la cartographie de redirections qui les prévient, et la marche à suivre avant, pendant et après la mise en ligne."
+excerpt: "Les chutes de trafic après une refonte viennent presque toutes des URL non redirigées. Voici comment bâtir la cartographie de redirections, ce qu'elle doit contenir, et comment la vérifier avant la mise en ligne."
 category: "SEO"
 featured: false
 author: "Jaeden Doody"
@@ -139,3 +139,5 @@ Une refonte ne fait pas perdre de trafic. Ce sont les URL non redirigées, le co
 La partie qui protège votre référencement se joue avant la première maquette : lister ce que vous avez, mesurer ce que ça vaut, et décider explicitement du sort de chaque page. C'est une journée de travail sur un site moyen, et c'est la différence entre une refonte qui accélère la croissance et une refonte dont on met un an à se remettre.
 
 Si vous ne retenez qu'une chose : la cartographie des redirections n'est pas une tâche technique de fin de projet. C'est le document de cadrage.
+
+Si vous préférez que ce soit fait plutôt qu'expliqué, voyez [notre service de refonte de site web](/fr/refonte-site-web).

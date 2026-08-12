@@ -7,7 +7,12 @@ export const metadata: Metadata = {
   description:
     "StillAwake Media builds local SEO systems that improve Google Maps visibility, search rankings, trust signals, and lead generation for modern businesses.",
   alternates: {
-    canonical: "/local-seo",
+    canonical: "https://stillawakemedia.com/local-seo",
+    languages: {
+      "en-CA": "https://stillawakemedia.com/local-seo",
+      "fr-CA": "https://stillawakemedia.com/fr/referencement-local",
+      "x-default": "https://stillawakemedia.com/local-seo",
+    },
   },
 };
 

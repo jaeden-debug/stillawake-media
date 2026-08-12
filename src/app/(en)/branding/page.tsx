@@ -9,7 +9,12 @@ export const metadata: Metadata = {
   description: "StillAwake Media builds premium brand identity systems, positioning, logo direction, typography, color strategy, messaging, and digital assets that help modern businesses stand out online.",
 
   alternates: {
-    canonical: "/branding",
+    canonical: "https://stillawakemedia.com/branding",
+    languages: {
+      "en-CA": "https://stillawakemedia.com/branding",
+      "fr-CA": "https://stillawakemedia.com/fr/image-de-marque",
+      "x-default": "https://stillawakemedia.com/branding",
+    },
   },
 
   robots: {

@@ -7,7 +7,12 @@ export const metadata: Metadata = {
   description:
     "StillAwake Media builds premium Framer websites that feel high-end, load fast, stay easy to edit, and support SEO, conversion, and long-term brand growth.",
   alternates: {
-    canonical: "/framer-development",
+    canonical: "https://stillawakemedia.com/framer-development",
+    languages: {
+      "en-CA": "https://stillawakemedia.com/framer-development",
+      "fr-CA": "https://stillawakemedia.com/fr/developpement-framer",
+      "x-default": "https://stillawakemedia.com/framer-development",
+    },
   },
 };
 

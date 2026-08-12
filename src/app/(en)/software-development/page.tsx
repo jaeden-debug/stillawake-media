@@ -7,7 +7,12 @@ export const metadata: Metadata = {
   description: "StillAwake Media builds custom software, dashboards, portals, web applications, AI workflows, and scalable digital systems for modern businesses.",
 
   alternates: {
-    canonical: "/software-development",
+    canonical: "https://stillawakemedia.com/software-development",
+    languages: {
+      "en-CA": "https://stillawakemedia.com/software-development",
+      "fr-CA": "https://stillawakemedia.com/fr/developpement-logiciel",
+      "x-default": "https://stillawakemedia.com/software-development",
+    },
   },
 
   robots: {

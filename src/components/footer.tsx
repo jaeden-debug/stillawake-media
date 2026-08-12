@@ -20,6 +20,10 @@ const montreal = [
   ["Agence SEO Montréal", "/fr/agence-seo-montreal"],
   ["Maintenance Site Web", "/fr/maintenance-site-web"],
   ["Refonte de site web", "/fr/refonte-site-web"],
+  ["Développement logiciel", "/fr/developpement-logiciel"],
+  ["Image de marque", "/fr/image-de-marque"],
+  ["Automatisation IA", "/fr/automatisation-ia"],
+  ["Référencement local", "/fr/referencement-local"],
   ["Tarifs", "/fr/tarifs"],
 ];
 

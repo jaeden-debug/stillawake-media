@@ -44,6 +44,11 @@ const pageLastModified: Record<string, string> = {
   "fr/refonte-site-web": "2026-08-12",
   "shopify-vs-woocommerce": "2026-08-12",
   "fr/shopify-vs-woocommerce": "2026-08-12",
+  "fr/developpement-logiciel": "2026-08-12",
+  "fr/image-de-marque": "2026-08-12",
+  "fr/automatisation-ia": "2026-08-12",
+  "fr/referencement-local": "2026-08-12",
+  "fr/developpement-framer": "2026-08-12",
 };
 
 /** EN ↔ FR pairs — surfaces hreflang directly in the sitemap so both
@@ -60,6 +65,11 @@ const languagePairs: Record<string, string> = {
   "website-cost-canada": "fr/prix-site-web-quebec",
   "website-redesign": "fr/refonte-site-web",
   "shopify-vs-woocommerce": "fr/shopify-vs-woocommerce",
+  "software-development": "fr/developpement-logiciel",
+  branding: "fr/image-de-marque",
+  "ai-automation": "fr/automatisation-ia",
+  "local-seo": "fr/referencement-local",
+  "framer-development": "fr/developpement-framer",
 };
 const frToEn = Object.fromEntries(Object.entries(languagePairs).map(([en, fr]) => [fr, en]));
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button, InternalLinks } from "@/components/site";
+import { jaedenDoody } from "@/data/people/jaeden-doody";
 
 export const metadata: Metadata = {
   title: "About StillAwake Media | Digital Infrastructure Studio",
@@ -200,12 +201,23 @@ export default function About() {
             .
           </p>
 
-          <Link
-            href="/founder/jaeden-doody"
-            className="mt-10 inline-flex rounded-full bg-[#D71920] px-6 py-4 font-bold"
-          >
-            Read Jaeden&apos;s story →
-          </Link>
+          <div className="mt-10 flex flex-wrap gap-3">
+            <Link
+              href="/founder/jaeden-doody"
+              className="inline-flex rounded-full bg-[#D71920] px-6 py-4 font-bold"
+            >
+              Read Jaeden&apos;s story →
+            </Link>
+
+            <a
+              href={jaedenDoody.linkedin}
+              target="_blank"
+              rel="me noopener"
+              className="inline-flex rounded-full border border-white/10 px-6 py-4 font-bold text-[#C7B9B9] transition hover:text-white"
+            >
+              Jaeden on LinkedIn →
+            </a>
+          </div>
         </div>
       </section>
 

@@ -197,6 +197,15 @@ export default function Page() {
               Voir le travail →
             </Link>
 
+            <a
+              href={person.linkedin}
+              target="_blank"
+              rel="me noopener"
+              className="rounded-full border border-white/10 px-6 py-4 font-bold text-[#C7B9B9] transition hover:text-white"
+            >
+              Suivre sur LinkedIn →
+            </a>
+
             <Link href="/founder/jaeden-doody" lang="en-CA" className="rounded-full border border-white/10 px-6 py-4 font-bold text-[#C7B9B9] transition hover:text-white">
               English version →
             </Link>

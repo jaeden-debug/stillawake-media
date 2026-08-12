@@ -82,6 +82,20 @@ export const jaedenDoody = {
    * https://zylx.ai/authors/jaeden-doody still returns 404; add it once live.
    */
   sameAs: ["https://www.linkedin.com/in/jaedendoody"] as string[],
+
+  /**
+   * Jaeden's personal LinkedIn, for visible on-page links.
+   *
+   * Deliberately NOT added to the StillAwake Organization's sameAs, and
+   * deliberately not placed in the site-wide footer. A personal profile linked
+   * from every page reads to a crawler as the *company's* profile, which is
+   * how a Person and an Organization entity get conflated. Every link below
+   * sits in copy that names him, so the association stays unambiguous.
+   *
+   * Rendered with rel="me" — the standard signal that a link points to another
+   * profile of the same person.
+   */
+  linkedin: "https://www.linkedin.com/in/jaedendoody",
 } as const;
 
 /**

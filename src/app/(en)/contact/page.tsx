@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ContactForm } from "@/components/contact-form";
+import { jaedenDoody } from "@/data/people/jaeden-doody";
 import { Section } from "@/components/site";
 
 export const metadata: Metadata = {
@@ -24,6 +26,26 @@ export default function Contact() {
             <p className="text-xl leading-9 text-[#C7B9B9]">
               Tell us what you want to build: a premium website, stronger brand,
               SEO growth system, AI automation, software tool, or complete digital infrastructure upgrade.
+            </p>
+
+            <p className="mt-6 text-base leading-8 text-[#8F8585]">
+              Prefer to reach the founder directly? Jaeden Doody is on{" "}
+              <a
+                href={jaedenDoody.linkedin}
+                target="_blank"
+                rel="me noopener"
+                className="text-white underline decoration-[#D71920] underline-offset-4"
+              >
+                LinkedIn
+              </a>
+              , or read{" "}
+              <Link
+                href={jaedenDoody.path}
+                className="text-white underline decoration-[#D71920] underline-offset-4"
+              >
+                his background
+              </Link>
+              .
             </p>
           </div>
           <ContactForm />

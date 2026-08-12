@@ -46,6 +46,7 @@ const relatedArticles = [
   ["/stillawake-times/how-website-speed-directly-impacts-revenue-and-seo-rankings", "How Website Speed Impacts Revenue & SEO"],
   ["/stillawake-times/what-makes-a-luxury-brand-website-feel-premium", "What Makes a Luxury Brand Website Feel Premium"],
   ["/stillawake-times/framer-seo-guide", "Framer SEO Guide"],
+  ["/stillawake-times/core-web-vitals-guide", "Core Web Vitals: How to Actually Fix Them"],
 ];
 
 const caseStudies: [string, string, string, string][] = [

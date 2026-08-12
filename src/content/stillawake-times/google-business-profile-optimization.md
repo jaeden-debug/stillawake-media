@@ -1,6 +1,7 @@
 ---
 title: "Google Business Profile Optimization: Complete Guide for Businesses"
 date: "2026-05-24"
+updated: "2026-08-12"
 excerpt: "Your Google Business Profile is the single most important free marketing asset a local business has. This complete guide covers every optimization lever — from categories and service descriptions to photos, posts, reviews, and the technical signals most businesses miss entirely."
 category: "Local SEO"
 featured: true
@@ -23,6 +24,10 @@ This guide covers every element of GBP optimization — not just the basics, but
 Google Business Profile (GBP) optimization is the process of systematically completing, refining, and maintaining your business listing on Google to improve visibility in Google Maps and local search results, increase click-through rates, and convert more visitors into calls, direction requests, and website visits.
 
 ---
+
+## The Measured Local Result Behind This Guide
+
+Updated August 2026: local SEO is judged by positions, not promises, so here is a first-party data point. TravelDesign By Lisa — a Montréal service business we took from zero organic clicks — now holds page-1 positions on its local queries (average position ~7.9, Google Search Console), with the profile work in this guide as one part of a complete local system: technically sound site, intent-matched pages, consistent citations. The sourced breakdown is in the [case study](/work/lisa-travel-design). Serving Québec? This guide also exists as a [Québec-French edition](/fr/fiche-google-entreprise) written for how businesses here actually search.
 
 ## Why Your Google Business Profile Matters More Than You Think
 

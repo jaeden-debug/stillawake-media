@@ -1,6 +1,7 @@
 ---
 title: "Shopify SEO: How Ecommerce Brands Actually Grow Organically"
 date: "2026-05-24"
+updated: "2026-08-12"
 excerpt: "Most Shopify stores are entirely dependent on paid ads. The ones that aren't — that have built strong organic search visibility — have done something different with their SEO. This guide covers the complete Shopify SEO system: from technical foundations to content strategy to conversion optimization."
 category: "Shopify"
 featured: true
@@ -25,6 +26,10 @@ Building that organic channel on Shopify requires understanding both the platfor
 Yes. Shopify is a capable SEO platform with full metadata control, customizable URL structures, automatic sitemaps, and good performance for most store configurations. Its SEO limitations are specific (the `/collections/` and `/products/` URL prefix structure, duplicate content from product variants) and manageable with the right approach.
 
 ---
+
+## Proof This Works: A Store We Operate
+
+Updated August 2026 — this playbook now has published, first-party numbers behind it. Blackwater Aquatics Canada, a Shopify store we build and operate ourselves, runs exactly the education-led architecture this guide describes: 64 content pages supporting a 17-product catalogue. Measured results (sources and dates published in the [full case study](/work/blackwater-aquatics)): a product page holding page 1 with an 8.61% organic CTR, ~60,000 impressions across the top 12 URLs in a 180-day Search Console window, and a repeat-customer rate up from 5.9% to 27.8% period over period. Orders arrive weekly from organic search with zero ad spend. Everything below is the system that produced those numbers.
 
 ## Shopify's SEO Architecture: What You're Working With
 

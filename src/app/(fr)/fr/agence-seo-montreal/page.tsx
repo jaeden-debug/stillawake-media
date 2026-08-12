@@ -344,8 +344,10 @@ export default function AgenceSeoMontrealPage() {
         links={[
           ["Création de site web à Montréal", "/fr/agence-web-montreal"],
           ["Optimisation IA (AEO)", "/fr/referencement-ia"],
-          ["Maintenance de site web", "/fr/maintenance-site-web"],
-          ["Développement Shopify", "/fr/developpement-shopify"],
+          ["Guide : le SEO expliqué", "/fr/referencement-naturel"],
+          ["Guide : audit SEO", "/fr/audit-seo"],
+          ["Guide : être cité par les IA", "/fr/etre-cite-par-ia"],
+          ["Guide : fiche Google Entreprise", "/fr/fiche-google-entreprise"],
           ["Tarifs", "/fr/tarifs"],
           ["English version", "/seo-montreal"],
         ]}

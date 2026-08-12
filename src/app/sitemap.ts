@@ -61,6 +61,11 @@ const pageLastModified: Record<string, string> = {
   "fr/etude-de-cas-stalkr-navtrl": "2026-08-12",
   "work/blackwater-aquatics": "2026-08-12",
   "fr/etude-de-cas-blackwater-aquatics": "2026-08-12",
+  "fr/fiche-google-entreprise": "2026-08-12",
+  "fr/referencement-naturel": "2026-08-12",
+  "fr/audit-seo": "2026-08-12",
+  "fr/etre-cite-par-ia": "2026-08-12",
+  "fr/boutique-en-ligne-quebec": "2026-08-12",
 };
 
 /** EN ↔ FR pairs — surfaces hreflang directly in the sitemap so both

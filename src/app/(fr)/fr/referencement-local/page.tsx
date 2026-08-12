@@ -195,7 +195,8 @@ export default function ReferencementLocalPage() {
         title="Services connexes"
         links={[
           ["Agence SEO Montréal", "/fr/agence-seo-montreal"],
-          ["Création de site web", "/fr/agence-web-montreal"],
+          ["Guide : fiche Google Entreprise", "/fr/fiche-google-entreprise"],
+          ["Guide : le SEO expliqué", "/fr/referencement-naturel"],
           ["Guide des prix", "/fr/prix-site-web-quebec"],
           ["Tarifs", "/fr/tarifs"],
           ["English version", "/local-seo"],

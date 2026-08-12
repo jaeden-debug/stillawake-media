@@ -149,7 +149,9 @@ export default function AeoPage() {
         links={[
           ["SEO Montréal", "/seo-montreal"],
           ["Local SEO", "/local-seo"],
-          ["Web Design Montréal", "/web-design-montreal"],
+          ["Guide: What is AEO?", "/stillawake-times/what-is-aeo-answer-engine-optimization"],
+          ["Guide: Generative Engine Optimization", "/stillawake-times/what-is-generative-engine-optimization"],
+          ["Guide: Can ChatGPT recommend my business?", "/stillawake-times/can-chatgpt-recommend-my-business"],
           ["Website Maintenance", "/website-maintenance"],
           ["Version française", "/fr/referencement-ia"],
         ]}

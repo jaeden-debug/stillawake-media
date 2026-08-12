@@ -145,6 +145,7 @@ export default function SeoMontrealPage() {
           </div>
           <p className="mt-8 text-sm text-[#C7B9B9]">
             Also see: <Link className="text-[#D71920] underline-offset-4 hover:underline" href="/answer-engine-optimization">AI search optimization (AEO)</Link> ·{" "}
+            <Link className="text-[#D71920] underline-offset-4 hover:underline" href="/stillawake-times/how-much-does-seo-cost-canada">what SEO costs in Canada</Link> ·{" "}
             <Link className="text-[#D71920] underline-offset-4 hover:underline" href="/pricing">all pricing</Link> ·{" "}
             <Link className="text-[#D71920] underline-offset-4 hover:underline" href="/fr/agence-seo-montreal">version française</Link>
           </p>

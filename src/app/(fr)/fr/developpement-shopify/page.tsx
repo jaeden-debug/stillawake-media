@@ -123,6 +123,7 @@ export default function DeveloppementShopifyPage() {
         links={[
           ["Création de site web à Montréal", "/fr/agence-web-montreal"],
           ["Agence SEO Montréal", "/fr/agence-seo-montreal"],
+          ["Guide : boutique en ligne au Québec", "/fr/boutique-en-ligne-quebec"],
           ["Maintenance et dépannage", "/fr/maintenance-site-web"],
           ["Tarifs", "/fr/tarifs"],
           ["English version", "/shopify-development"],

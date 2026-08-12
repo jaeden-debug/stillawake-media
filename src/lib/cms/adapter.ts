@@ -100,6 +100,46 @@ async function queryByTypeSlug(
   }
 }
 
+/**
+ * Route map for the bespoke code-owned pages that accept a CMS content layer
+ * (§75–76). Mirrors CONTENT_LAYER_ROUTES in the .dev repo's src/cms/registry.ts
+ * — keep the two in sync by hand; the layer rows carry route_path set to these
+ * exact values.
+ */
+const CONTENT_LAYER_ROUTES: Record<string, Record<CmsLocale, string>> = {
+  home: { en: "/", fr: "/fr" },
+  about: { en: "/about", fr: "/fr/a-propos" },
+  founder: { en: "/founder/jaeden-doody", fr: "/fr/fondateur/jaeden-doody" },
+  pricing: { en: "/pricing", fr: "/fr/tarifs" },
+  contact: { en: "/contact", fr: "/fr/contact" },
+};
+
+async function queryContentLayer(
+  layerKey: string,
+  locale: CmsLocale,
+): Promise<Record<string, string> | null> {
+  const routePath = CONTENT_LAYER_ROUTES[layerKey]?.[locale];
+  if (!routePath) return null;
+  const db = getCmsClient();
+  if (!db) return null;
+  try {
+    const { data, error } = await db
+      .from("cms_public_content")
+      .select("*")
+      .eq("type", "content_layer")
+      .eq("route_path", routePath)
+      .limit(1);
+    if (error) throw error;
+    const row = (data?.[0] as CmsPublishedContent | undefined) ?? null;
+    if (!row || !isLive(row)) return null;
+    const slots = (row.snapshot?.data as { slots?: Record<string, string> } | null)?.slots;
+    return slots && typeof slots === "object" ? slots : null;
+  } catch (err) {
+    logCmsError(`getContentLayer(${layerKey}, ${locale}) failed`, err);
+    return null;
+  }
+}
+
 async function queryAuthor(id: string): Promise<CmsAuthor | null> {
   const db = getCmsClient();
   if (!db) return null;
@@ -161,10 +201,10 @@ async function queryRelatedFor(contentId: string, limit: number): Promise<CmsPub
     if (error) throw error;
     const relatedIds: string[] = [];
     for (const raw of (data ?? []) as Record<string, unknown>[]) {
-      const from = (raw.from_content_id ?? raw.content_id ?? raw.source_content_id) as
+      const from = (raw.from_id ?? raw.from_content_id ?? raw.content_id ?? raw.source_content_id) as
         | string
         | undefined;
-      const to = (raw.to_content_id ?? raw.related_content_id ?? raw.target_content_id) as
+      const to = (raw.to_id ?? raw.to_content_id ?? raw.related_content_id ?? raw.target_content_id) as
         | string
         | undefined;
       if (from === contentId && to && to !== contentId) relatedIds.push(to);
@@ -284,6 +324,21 @@ export async function getPublishedByTypeSlugConfirmed(
   const cachedResult = await getPublishedByTypeSlug(type, locale, slug);
   if (cachedResult) return cachedResult;
   return queryByTypeSlug(type, locale, slug);
+}
+
+/**
+ * Published slots for a code-owned page's content layer, or null when no layer
+ * is published (pages then render their code literals via slot() fallbacks).
+ */
+export function getContentLayer(
+  layerKey: string,
+  locale: CmsLocale,
+): Promise<Record<string, string> | null> {
+  return unstable_cache(
+    () => queryContentLayer(layerKey, locale),
+    ["cms-layer", layerKey, locale],
+    { revalidate: REVALIDATE, tags: ["cms-content", `cms-layer-${layerKey}-${locale}`] },
+  )();
 }
 
 export function getAuthor(id: string): Promise<CmsAuthor | null> {

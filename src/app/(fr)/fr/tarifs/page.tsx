@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ServiceJsonLd, PriceCard } from "@/components/service-page";
+import { getContentLayer } from "@/lib/cms/adapter";
+import { slot } from "@/lib/cms/layer";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Tarifs | StillAwake Media — Prix affichés, sans appel de vente",
@@ -23,7 +27,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function TarifsPage() {
+export default async function TarifsPage() {
+  const slots = await getContentLayer("pricing", "fr");
   return (
     <main className="bg-black pt-28 text-white">
       <ServiceJsonLd
@@ -47,13 +52,14 @@ export default function TarifsPage() {
         <div className="mx-auto max-w-6xl">
           <p className="mb-6 text-sm uppercase tracking-[0.35em] text-[#D71920]">Tarifs</p>
           <h1 className="max-w-4xl text-5xl font-semibold leading-[1.05] md:text-6xl">
-            Les prix sont sur la page. C&apos;est ça, l&apos;idée.
+            {slot(slots, "hero_title", "Les prix sont sur la page. C'est ça, l'idée.")}
           </h1>
           <p className="mt-8 max-w-3xl text-lg leading-8 text-white/70">
-            La plupart des agences cachent leurs prix derrière un appel de découverte. StillAwake Media les affiche :
-            les services récurrents ont un prix mensuel, le support a des tarifs uniques, et les projets reçoivent une
-            soumission écrite via un formulaire asynchrone — jamais d&apos;appel de vente obligatoire. Tous les prix
-            sont en dollars canadiens.
+            {slot(
+              slots,
+              "hero_intro",
+              "La plupart des agences cachent leurs prix derrière un appel de découverte. StillAwake Media les affiche : les services récurrents ont un prix mensuel, le support a des tarifs uniques, et les projets reçoivent une soumission écrite via un formulaire asynchrone — jamais d'appel de vente obligatoire. Tous les prix sont en dollars canadiens.",
+            )}
           </p>
         </div>
       </section>

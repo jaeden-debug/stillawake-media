@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ServiceJsonLd, PriceCard } from "@/components/service-page";
+import { getContentLayer } from "@/lib/cms/adapter";
+import { slot } from "@/lib/cms/layer";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Pricing | StillAwake Media — Published Rates, No Sales Call",
@@ -22,7 +26,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const slots = await getContentLayer("pricing", "en");
   return (
     <main className="bg-black pt-28 text-white">
       <ServiceJsonLd
@@ -45,12 +50,14 @@ export default function PricingPage() {
         <div className="mx-auto max-w-6xl">
           <p className="mb-6 text-sm uppercase tracking-[0.35em] text-[#D71920]">Pricing</p>
           <h1 className="max-w-4xl text-5xl font-semibold leading-[1.05] md:text-6xl">
-            The prices are on the page. That&apos;s the point.
+            {slot(slots, "hero_title", "The prices are on the page. That's the point.")}
           </h1>
           <p className="mt-8 max-w-3xl text-lg leading-8 text-white/70">
-            Most agencies hide pricing behind a discovery call. StillAwake Media publishes it: recurring services have
-            monthly prices, support has one-time tiers, and project work gets a written custom quote through an async
-            intake — never a mandatory sales call. All prices in Canadian dollars.
+            {slot(
+              slots,
+              "hero_intro",
+              "Most agencies hide pricing behind a discovery call. StillAwake Media publishes it: recurring services have monthly prices, support has one-time tiers, and project work gets a written custom quote through an async intake — never a mandatory sales call. All prices in Canadian dollars.",
+            )}
           </p>
         </div>
       </section>
@@ -81,7 +88,11 @@ export default function PricingPage() {
 
           <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">One-time — emergency support</h2>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
-            A three-question workload check sets the tier; you see the exact price before paying. Never a subscription.
+            {slot(
+              slots,
+              "guarantee_note",
+              "A three-question workload check sets the tier; you see the exact price before paying. Never a subscription.",
+            )}
           </p>
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             <PriceCard

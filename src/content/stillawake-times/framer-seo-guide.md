@@ -431,13 +431,3 @@ The areas requiring extra attention — schema markup, image alt text, semantic 
 
 ---
 
-## Suggested Future Articles to Link Toward
-
-- *Framer vs WordPress* → already in this cluster
-- *What Is Technical SEO?* → already in this cluster
-- *How Website Speed Impacts SEO* → already in this cluster
-- *Framer Development: What You Can Build With Framer* → link to from here
-
----
-
-*StillAwake Media specializes in [Framer development](/framer-development) for businesses that want fast, beautiful, conversion-optimized websites — with [local SEO](/local-seo) built in from the start.*

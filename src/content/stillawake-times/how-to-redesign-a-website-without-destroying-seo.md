@@ -479,13 +479,3 @@ Done right, a redesign protects what you've built and builds something better. D
 
 ---
 
-## Suggested Future Articles to Link Toward
-
-- *How Website Speed Impacts SEO, Conversions & Revenue* → already in this cluster
-- *What Is Technical SEO?* → already in this cluster
-- *How to Audit Your Website for SEO* → link to from here
-- *Website Migration Checklist: Everything You Need Before Launch* → link to from here
-
----
-
-*StillAwake Media handles [website redesigns](/web-design-montreal) with full SEO preservation — from pre-launch audit through post-launch monitoring. We also specialize in [local SEO](/local-seo) and [branding](/branding) for businesses ready to build something worth keeping.*

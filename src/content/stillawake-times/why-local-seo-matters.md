@@ -356,14 +356,3 @@ The cost of not investing in local SEO isn't zero. It's the revenue that goes to
 
 ---
 
-## Suggested Future Articles to Link Toward
-
-- *How to Rank Higher on Google Maps* → already in this cluster
-- *Google Business Profile Optimization: Complete Guide* → already in this cluster
-- *How Much Should a Small Business Spend on Local SEO?* → link to from this article
-- *Local SEO vs. Google Ads: Which Is Right for Your Business?* → link to from this article
-- *How to Find and Fix Your Local Citation Problems* → link to from this article
-
----
-
-*StillAwake Media builds local SEO systems for businesses that want to dominate their markets. We combine [web design](/web-design-montreal), [local SEO](/local-seo), and [branding](/branding) into integrated growth strategies that compound over time.*

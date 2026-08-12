@@ -340,13 +340,3 @@ The businesses with strong brands don't necessarily do better work than their co
 
 ---
 
-## Suggested Future Articles to Link Toward
-
-- *Brand Strategy vs. Brand Identity: What's the Difference?* → link to from here
-- *How to Build a Brand Voice That Converts* → link to from here
-- *Logo Design vs. Brand Design: Why the Difference Matters* → link to from here
-- *Why Most Business Websites Fail to Generate Leads* → already in this cluster
-
----
-
-*StillAwake Media builds [brand identity systems](/branding) for businesses that are ready to move beyond a logo. We combine strategic positioning, visual identity, and [web design](/web-design-montreal) into cohesive brand presences that build trust and command premium pricing. [Contact us](/contact) to start the conversation.*

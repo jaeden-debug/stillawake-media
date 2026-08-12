@@ -46,6 +46,7 @@ const servicesFr = [
 ];
 
 const resourcesFr = [
+  ["Articles", "/fr/articles"],
   ["Réalisations", "/fr/realisations"],
   ["Études de cas", "/fr/etudes-de-cas"],
   ["À propos", "/fr/a-propos"],

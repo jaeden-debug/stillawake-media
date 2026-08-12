@@ -29,6 +29,7 @@ const pageLastModified: Record<string, string> = {
   "fr/a-propos": "2026-08-12",
   "fr/realisations": "2026-08-12",
   "fr/etudes-de-cas": "2026-08-12",
+  "fr/articles": "2026-08-12",
   "web-design-montreal": "2026-05-25",
   "fr/agence-web-montreal": "2026-08-12",
   "seo-montreal": "2026-08-12",
@@ -122,5 +123,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(post.updated || post.date),
   }));
 
-  return [...pages, ...articles];
+  /** French articles live in their own content tree and are written for
+   *  Québec, so they are listed independently rather than paired 1:1. */
+  const articlesFr = getAllPosts("fr").map((post) => ({
+    url: `${siteUrl}/fr/articles/${post.slug}`,
+    lastModified: new Date(post.updated || post.date),
+  }));
+
+  return [...pages, ...articles, ...articlesFr];
 }

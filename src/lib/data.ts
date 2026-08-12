@@ -16,6 +16,7 @@ export const navFr = [
   ["Création Web", "/fr/agence-web-montreal"],
   ["SEO", "/fr/agence-seo-montreal"],
   ["Maintenance", "/fr/maintenance-site-web"],
+  ["Articles", "/fr/articles"],
   ["Tarifs", "/fr/tarifs"],
   ["Contact", "/fr/contact"],
   ["English", "/"],

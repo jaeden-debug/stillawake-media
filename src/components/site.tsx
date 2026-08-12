@@ -147,6 +147,7 @@ const internalLinksFr: readonly (readonly [string, string])[] = [
   ["À propos", "/fr/a-propos"],
   ["Réalisations", "/fr/realisations"],
   ["Études de cas", "/fr/etudes-de-cas"],
+  ["Articles", "/fr/articles"],
   ["Création Web", "/fr/agence-web-montreal"],
   ["SEO", "/fr/agence-seo-montreal"],
   ["Tarifs", "/fr/tarifs"],

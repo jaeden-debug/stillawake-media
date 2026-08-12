@@ -64,6 +64,7 @@ Pricing overview: ${siteUrl}/pricing (français: ${siteUrl}/fr/tarifs)
 - [Articles — The StillAwake Times](${siteUrl}/stillawake-times)
 - [Contact](${siteUrl}/contact)
 - [Published pricing](${siteUrl}/pricing)
+- [French articles](${siteUrl}/fr/articles) — written for Québec, not translated from English
 - [French site](${siteUrl}/fr) — Québec French; every commercial page has a French counterpart
 
 ## Related first-party sites

@@ -6,7 +6,7 @@ const pageUrl = "https://stillawakemedia.com/web-design-montreal";
 
 export const metadata: Metadata = {
   title: "Web Design Montreal | Premium Websites Built for Growth",
-  description: "Premium web design Montreal services built for SEO, speed, trust, conversion, branding, and long-term business growth for modern businesses.",
+  description: "Premium web design in Montreal with published pricing context and measured results: page-1 rankings, 100/100 Lighthouse scores, and four sourced case studies.",
   alternates: {
     canonical: pageUrl,
     languages: {
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Web Design Montreal | StillAwake Media",
     description:
-      "Premium Montreal web design built for trust, SEO, performance, conversion, and modern digital infrastructure.",
+      "Premium Montreal web design proven by measured results — page-1 rankings, perfect Lighthouse scores, sourced case studies.",
     url: pageUrl,
     type: "website",
   },
@@ -29,12 +29,13 @@ export const metadata: Metadata = {
 };
 
 const relatedPages = [
-  ["/montreal-web-designer", "Montreal Web Designer"],
-  ["/web-design-agency-montreal", "Web Design Agency Montreal"],
-  ["/web-development-montreal", "Web Development Montreal"],
   ["/seo-montreal", "SEO Montreal"],
-  ["/website-redesign-montreal", "Website Redesign Montreal"],
-  ["/ecommerce-web-design-montreal", "Ecommerce Web Design Montreal"],
+  ["/website-redesign", "Website Redesign"],
+  ["/shopify-development", "Shopify Development"],
+  ["/framer-development", "Framer Development"],
+  ["/software-development", "Software Development"],
+  ["/branding", "Branding"],
+  ["/work", "Case Studies"],
   ["/fr/agence-web-montreal", "Agence Web Montréal"],
 ];
 
@@ -47,132 +48,82 @@ const relatedArticles = [
   ["/stillawake-times/framer-seo-guide", "Framer SEO Guide"],
 ];
 
+const caseStudies: [string, string, string, string][] = [
+  [
+    "/work/lisa-travel-design",
+    "TravelDesign By Lisa",
+    "0 → page 1 in 8 weeks",
+    "834-URL trilingual platform: ~2,300 SEO defects cleared, 9-minute average sessions, CLS 0.00 and Best Practices 100 measured Aug 2026, page-1 rankings from zero organic clicks.",
+  ],
+  [
+    "/work/bankdemark",
+    "BankDeMark",
+    "Position 1.3 · 100/100/100",
+    "Financial platform holding average position 1.3 on its brand cluster with a perfect measured Lighthouse score — 91 URLs, 13 interactive calculators, money-math verified by 26 golden test cases.",
+  ],
+  [
+    "/work/stalkr-navtrl",
+    "NAVTRL / Stalkr",
+    "31-route site in 19 days",
+    "Marketing engine built alongside a mobile app: 19 intent-targeted landing pages, 34 lifecycle email templates, measured 98/100/100 Lighthouse with a perfect agentic-navigation score.",
+  ],
+  [
+    "/work/blackwater-aquatics",
+    "Blackwater Aquatics",
+    "8.6% CTR product page",
+    "Education-led Shopify build: 64 content pages behind 17 products, ~60,000 impressions on the top 12 URLs, repeat-customer rate up from 5.9% to 27.8%.",
+  ],
+];
+
 const sections = [
   {
     title: "What Web Design Montreal Means Now",
     body: [
-      "Web design in Montreal is no longer about putting a business online. Most serious businesses already have some form of website. The real question is whether that website helps the business compete.",
-      "A modern website needs to create trust quickly, communicate positioning clearly, perform well on mobile, load fast, support search visibility, and move visitors toward action without feeling forced.",
-      "For Montreal businesses, this matters because the market is both local and global. A restaurant, clinic, contractor, consultant, ecommerce brand, startup, or professional service firm is judged against the best digital experiences people use every day.",
-      "StillAwake Media approaches web design as digital infrastructure: design, SEO, performance, branding, and conversion architecture working together instead of being treated as separate pieces."
+      "Most serious Montréal businesses already have a website. The real question is whether it competes: does it rank for the searches your customers actually type, load instantly on a phone, earn trust in the first five seconds, and turn visitors into inquiries?",
+      "StillAwake Media builds websites as growth infrastructure — design, SEO architecture, performance and conversion working as one system instead of a pretty brochure. The proof standard we hold ourselves to is on this page: every claim links to a sourced, dated case study.",
+      "One market fact worth knowing before you brief any agency: in our keyword research for this market (Google Ads Keyword Planner, Canada), searches around web design Montreal cluster to roughly six hundred per month in English, with a parallel French market most agencies ignore. A bilingual build isn't a nice-to-have here — it's reach your competitors are leaving on the table.",
     ],
   },
   {
-    title: "Who This Page Is For",
+    title: "What a Serious Build Includes",
     body: [
-      "This page is for Montreal business owners, founders, operators, consultants, and teams that need more than a basic website.",
-      "It is for businesses that know their current site does not reflect the quality of their work. It is for companies that are tired of generic templates, slow pages, weak mobile UX, poor SEO structure, and websites that look fine but do not generate serious leads.",
-      "It is also for businesses preparing to scale: brands that need stronger positioning, better organic visibility, stronger service pages, ecommerce systems, content hubs, lead capture, analytics, or future custom software integrations.",
-      "The goal is not to sell a design trend. The goal is to build a website that can support business growth."
+      "Strategy before visuals: your offer, your market, and the search demand around it — mapped before the interface is designed. Then original design (never a purchased template), mobile-first UX, SEO-ready structure with clean headings and internal linking, structured data, analytics, and a content architecture that can grow into service pages, articles and landing pages without a rebuild.",
+      "Concretely, that structure is what put TravelDesign By Lisa on page 1: not a trick, but 834 correctly-structured URLs in three languages, ~2,300 technical SEO defects cleared, and dedicated pages matched to real search intent. The architecture is the ranking strategy.",
+      "Every build ships with training and full ownership — code, accounts, content. No hostage-taking.",
     ],
   },
   {
-    title: "What Is Included in Serious Web Design",
+    title: "Performance Is Measured, Not Promised",
     body: [
-      "A serious web design project includes strategy before visuals. The business model, audience, local search opportunity, competitive landscape, offer structure, brand positioning, and conversion goals must be understood before the interface is designed.",
-      "A strong build includes information architecture, mobile-first UX, SEO-ready page structure, clear hierarchy, technical performance, internal linking, visual identity alignment, metadata, schema planning, analytics readiness, and a scalable structure for future content.",
-      "The difference between a surface-level website and a real digital system is the foundation. A basic website may look acceptable for a short time. A real web system can evolve into landing pages, articles, service pillars, ecommerce, automation, dashboards, and software."
+      "Speed and stability are part of trust, and they're testable — so we publish our numbers instead of adjectives. Measured with Chrome Lighthouse (mobile) in August 2026: BankDeMark scores 100/100/100 across performance, accessibility and best practices. NAVTRL scores 98/100/100 with a perfect 100 on agentic navigation — the audit of how well AI assistants can read and navigate a site. Lisa's platform holds CLS 0.00 (zero layout shift) with Best Practices 100.",
+      "Ask any web design agency you're comparing for their live Lighthouse scores on real client work. It's a fast way to separate builders from resellers.",
     ],
   },
   {
-    title: "Why Montreal Businesses Need Better Websites",
+    title: "Built for Google — and for AI Answers",
     body: [
-      "Montreal is full of strong businesses with weak digital presentation. This creates an opportunity for companies willing to invest in quality.",
-      "A website influences how customers perceive professionalism, pricing, trust, and competence. A slow, cluttered, outdated, or generic site can make a strong business feel less credible than it actually is.",
-      "The reverse is also true. A sharp, fast, well-structured website can make a business feel more established, more premium, and more trustworthy before a call ever happens.",
-      "In local markets, that difference matters. People searching for web design Montreal, website design Montreal, SEO Montreal, Shopify Montreal, or service providers in any industry are comparing options quickly. The business that feels clearest and most credible usually wins more attention."
-    ],
-  },
-  {
-    title: "The StillAwake Media Difference",
-    body: [
-      "StillAwake Media is not positioned as a generic website vendor. The work sits at the intersection of premium web design, SEO systems, branding, software thinking, AI automation, and digital infrastructure.",
-      "That matters because modern websites are no longer isolated marketing assets. They connect to search engines, content systems, analytics, CRM tools, ecommerce platforms, social proof, email flows, automation, and future software layers.",
-      "The StillAwake approach is simple: build websites that feel premium on the surface and intelligent underneath. The design should create trust. The structure should support SEO. The performance should feel fast. The messaging should be clear. The system should be able to grow."
-    ],
-  },
-  {
-    title: "SEO Built Into the Foundation",
-    body: [
-      "SEO cannot be treated as something added after launch. The structure of the website determines how easily Google can crawl, understand, and rank the business.",
-      "A Montreal web design project should consider page hierarchy, internal linking, metadata, heading structure, local intent, service pages, bilingual opportunities, content hubs, schema, sitemap logic, and technical performance from the beginning.",
-      "The strongest websites do not rely on one homepage to rank for everything. They build clusters. A main web design Montreal page can connect to Montreal web designer, web design agency Montreal, web development Montreal, SEO Montreal, website redesign Montreal, ecommerce web design Montreal, and French Quebec pages like agence web Montréal.",
-      "This creates a semantic network that helps Google understand the business more deeply."
-    ],
-  },
-  {
-    title: "Performance and Core Web Vitals",
-    body: [
-      "Speed is part of trust. A website that loads slowly feels less professional before the visitor reads a single word.",
-      "Performance affects SEO, mobile usability, bounce rate, conversion rate, and brand perception. A premium website should not feel heavy, unstable, or delayed.",
-      "StillAwake Media treats performance as a design constraint. Image delivery, rendering strategy, layout stability, script weight, hosting, caching, and mobile responsiveness all shape the final experience.",
-      "A high-end website is not only beautiful. It feels immediate."
-    ],
-  },
-  {
-    title: "Conversion Architecture",
-    body: [
-      "A website can be visually strong and still fail if it does not guide behavior.",
-      "Conversion-focused web design is about reducing uncertainty. Visitors should understand what the business does, who it helps, why it is credible, and what step to take next.",
-      "This requires strong hierarchy, concise messaging, strategic calls to action, trust signals, frictionless navigation, clear service positioning, and mobile-first layouts.",
-      "The best conversion systems do not feel aggressive. They feel natural because the page answers questions in the right order."
-    ],
-  },
-  {
-    title: "Branding and Visual Trust",
-    body: [
-      "Branding and web design are inseparable. Typography, spacing, color, imagery, motion, and layout rhythm all communicate value.",
-      "Premium design usually comes from restraint. It does not need to be loud. It needs to feel controlled, intentional, and aligned with the business.",
-      "A Montreal business that wants to charge premium prices cannot afford a digital presence that feels generic. The website should support the level of trust the business wants to command."
-    ],
-  },
-  {
-    title: "Common Web Design Mistakes",
-    body: [
-      "The most common mistake is building around appearance instead of architecture. A pretty homepage is not enough.",
-      "Other common mistakes include weak mobile UX, slow performance, vague messaging, poor internal linking, no SEO structure, generic template sections, unclear calls to action, bad typography, and treating content as an afterthought.",
-      "A website should not be a random collection of sections. It should be a controlled path from attention to trust to action."
-    ],
-  },
-  {
-    title: "How Much Does Web Design Cost in Montreal?",
-    body: [
-      "Web design pricing depends on scope. A simple brochure website, a premium service website, a bilingual local SEO system, a Shopify store, and a custom-coded digital platform are completely different projects.",
-      "Cost is influenced by strategy, branding, number of pages, copywriting, SEO depth, development complexity, CMS needs, integrations, animations, ecommerce, technical requirements, and long-term content architecture.",
-      "The better question is not only how much the website costs. The better question is what the current website is costing the business in lost trust, weak rankings, low conversion rates, and missed opportunities."
-    ],
-  },
-  {
-    title: "Timeline for a Serious Web Design Project",
-    body: [
-      "A serious website project should move through strategy, structure, content planning, design direction, development, optimization, testing, launch, and post-launch refinement.",
-      "Rushing the foundation usually creates problems later. Strong digital systems need enough planning to avoid weak architecture, unclear messaging, and technical debt.",
-      "The timeline depends on complexity, but the process should always protect quality."
-    ],
-  },
-  {
-    title: "Related Montreal Services",
-    body: [
-      "Web design connects naturally with SEO, branding, development, Shopify, Framer, AI automation, and technical performance.",
-      "A business may start with a website but eventually need local SEO, ecommerce optimization, custom software, content systems, bilingual pages, or automation workflows.",
-      "That is why StillAwake Media builds the website as a platform instead of a dead-end asset."
+      "Search is splitting in two: classic Google results, and AI assistants that read the web and answer directly. We build for both. Clean structured data, extractable pricing, llms.txt, and question-shaped content mean your business can be cited when someone asks ChatGPT or Claude who to hire in Montréal — the same discipline documented on our SEO Montréal page and proven by rankings our clients hold today.",
+      "This page's own architecture is the demo: FAQ schema, service schema, bilingual hreflang pairing with its French twin, and internal links that concentrate authority instead of scattering it.",
     ],
   },
 ];
 
+const pricingRows: [string, string, string][] = [
+  ["Professionally built small-business site", "$3,000 – $10,000", "Page count, copywriting, design customization"],
+  ["Custom-designed business site", "$8,000 – $25,000", "Original design, SEO architecture, content systems"],
+  ["Ecommerce / Shopify store", "$5,000 – $30,000+", "Catalogue size, custom theme, integrations, bilingual"],
+  ["Custom web application / SaaS", "$15,000 – $100,000+", "Features, accounts, payments, integrations, scale"],
+];
+
 const faqs = [
-  ["What is web design Montreal?", "Web design Montreal refers to professional website design services for Montreal businesses, including UX, branding, SEO structure, mobile optimization, performance, and conversion-focused layouts."],
-  ["How much does web design cost in Montreal?", "The cost depends on scope, page count, design complexity, SEO requirements, branding, copywriting, ecommerce, integrations, and whether the site is custom-coded or built on a platform like Framer or Shopify."],
-  ["What makes a good Montreal web design company?", "A strong web design partner should understand design, SEO, performance, mobile UX, conversion strategy, branding, and long-term digital infrastructure."],
-  ["Is SEO included in web design?", "It should be. SEO-friendly structure, metadata, headings, internal linking, performance, and crawlability should be planned during the web design process, not after launch."],
-  ["Should my Montreal business have a bilingual website?", "For many Montreal and Quebec businesses, bilingual English and French pages can improve trust, reach, and organic visibility. French pages should be written for Quebec search behavior, not machine translated."],
-  ["What platform is best for web design?", "The best platform depends on the business. Framer can be strong for premium marketing sites, Shopify for ecommerce, and Next.js for high-performance custom systems."],
-  ["How long does a website project take?", "Timelines vary based on scope, content, design complexity, SEO depth, and technical requirements. A serious project should include strategy, design, development, testing, and launch refinement."],
-  ["Can better web design improve conversions?", "Yes. Clear messaging, strong hierarchy, faster performance, better trust signals, and mobile-first UX can all improve the percentage of visitors who take action."],
-  ["Why do template websites underperform?", "Templates often create generic visuals, bloated code, weak differentiation, limited SEO structure, and poor scalability when a business grows."],
-  ["Does website speed matter for SEO?", "Yes. Speed affects user experience, Core Web Vitals, bounce rates, and overall search performance."],
-  ["What is the difference between web design and web development?", "Web design focuses on UX, layout, branding, and visual structure. Web development focuses on code, performance, integrations, infrastructure, and technical implementation."],
-  ["Can StillAwake Media redesign an existing website?", "Yes. Redesign work can improve UX, speed, branding, SEO preservation, structure, and conversion performance."],
+  ["How much does web design cost in Montreal?", "Typical 2026 Canadian market ranges: professionally built small-business sites roughly $3,000–$10,000; custom-designed business sites $8,000–$25,000; ecommerce stores $5,000–$30,000+; custom web applications $15,000 to well past $100,000. These are market observations, not quotes — every StillAwake project gets a written scope with a fixed price before you commit. Full breakdown in our website cost guide."],
+  ["What results has StillAwake Media actually delivered?", "Sourced and dated in our case studies: a trilingual 834-URL platform taken from zero organic clicks to page-1 rankings in 8 weeks; a financial platform holding average position 1.3 with a measured 100/100/100 Lighthouse score; a 31-route marketing site built in 19 days scoring 98/100/100; and a Shopify store whose product page earns an 8.6% organic CTR."],
+  ["Is SEO included in web design?", "In our builds, yes — structure, metadata, headings, internal linking, structured data and performance are designed in from the start, because retrofitting SEO costs more than building it right. Ongoing ranking work is separate: SEO plans are $600–$850 CAD/month, published on the SEO Montréal page."],
+  ["Should my Montreal business have a bilingual website?", "For most, yes. The French-speaking market searches differently (our research measures Québécois say « site web » 2.6× more often than « site internet ») and most competitors serve it badly. We build true French pages written for Québec search behavior — this site itself runs every page in both languages with hreflang."],
+  ["What platform is best for web design?", "It depends on the job, and we build on all three: Framer for premium marketing sites on a tighter budget and timeline, Shopify for ecommerce, and Next.js for high-performance custom systems. The honest comparison is on our Framer and Shopify service pages — we'll recommend the cheaper option when it genuinely fits."],
+  ["How long does a website project take?", "Depends on scope, but our measured reference points: a 31-route marketing site with 19 landing pages shipped in 19 days; a full mobile app went from first commit to TestFlight-ready in 24 days. Serious multi-language platforms take longer. Your written scope includes the timeline with milestones."],
+  ["Can StillAwake Media redesign an existing website?", "Yes — redesigns that preserve existing rankings while fixing UX, speed and structure are covered on our website redesign page, including how we handle redirects so you don't lose the traffic you already earn."],
+  ["Why do template websites underperform?", "Bloated code hurts Core Web Vitals, generic structure gives Google nothing distinctive to rank, and every competitor with the same template dilutes your brand. Our article on custom-coded vs template websites covers the evidence."],
 ];
 
 const jsonLd = {
@@ -184,7 +135,7 @@ const jsonLd = {
       url: pageUrl,
       name: "Web Design Montreal",
       description:
-        "Premium web design Montreal services built for SEO, speed, trust, conversion, branding, and long-term business growth.",
+        "Premium web design Montreal services with published pricing context and measured, sourced results.",
       inLanguage: "en-CA",
     },
     {
@@ -252,23 +203,22 @@ export default function Page() {
           </h1>
 
           <p className="mt-10 max-w-3xl text-lg leading-8 text-[#C7B9B9]">
-            Premium Montreal web design built for trust, speed, SEO, conversion,
-            branding, and long-term digital growth.
+            Premium Montreal web design proven by measured results: page-1 rankings, 100/100 Lighthouse
+            scores, and four case studies where every number is sourced and dated.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
             <Link href="/contact" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-bold text-white">
               Start your project →
             </Link>
-            <Link href="/portfolio" className="rounded-full border border-white/10 px-7 py-4 text-sm font-bold text-[#C7B9B9]">
-              View selected work →
+            <Link href="/work" className="rounded-full border border-white/10 px-7 py-4 text-sm font-bold text-[#C7B9B9]">
+              See measured results →
             </Link>
           </div>
 
           <p className="mt-8 max-w-2xl text-sm leading-7 text-[#888]">
-            Canada-based digital studio serving Montreal businesses with modern
-            websites, SEO systems, branding, ecommerce, software, and digital
-            infrastructure.
+            Canada-based digital studio serving Montréal businesses with modern
+            websites, SEO systems, branding, ecommerce, and custom software.
           </p>
         </div>
       </section>
@@ -283,11 +233,29 @@ export default function Page() {
               What should professional web design in Montreal actually include?
             </h2>
             <p className="mt-8 max-w-4xl text-lg leading-8 text-[#C7B9B9]">
-              Professional web design in Montreal should include strategy, UX,
-              branding, SEO structure, mobile-first layouts, fast performance,
-              conversion-focused content, clean development, analytics readiness,
-              and a scalable architecture that can grow with the business.
+              Strategy, original design, SEO-ready structure, mobile-first UX, fast measured performance,
+              bilingual capability, and a scalable architecture — typically $3,000–$10,000 for a professional
+              small-business site and $8,000–$25,000 for a fully custom one (2026 Canadian market ranges;
+              every StillAwake project gets a fixed written quote).
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 pb-20">
+        <div className="mx-auto max-w-7xl">
+          <p className="mb-4 text-sm uppercase tracking-[.35em] text-[#D71920]">Proof, not promises</p>
+          <h2 className="geist max-w-4xl text-4xl font-black tracking-[-0.06em] md:text-6xl">
+            Four builds. Every number sourced and dated.
+          </h2>
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            {caseStudies.map(([href, name, stat, detail]) => (
+              <Link key={href} href={href} className="glass rounded-[2rem] p-7 transition hover:border-[#D71920]/60">
+                <p className="geist text-2xl font-black tracking-[-0.04em] text-[#D71920]">{stat}</p>
+                <h3 className="mt-2 text-xl font-semibold">{name}</h3>
+                <p className="mt-3 text-sm leading-6 text-[#C7B9B9]">{detail}</p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -297,7 +265,7 @@ export default function Page() {
           <aside className="hidden lg:block">
             <div className="sticky top-28 rounded-4xl border border-white/10 bg-white/4 p-5">
               <p className="mb-4 text-xs uppercase tracking-[.3em] text-[#D71920]">
-                Local Pillars
+                Related Services
               </p>
               <div className="grid gap-3">
                 {relatedPages.map(([href, label]) => (
@@ -324,6 +292,44 @@ export default function Page() {
                 </div>
               </section>
             ))}
+
+            <section className="rounded-[2.5rem] border border-white/10 bg-[#070707] p-8 md:p-12">
+              <h2 className="geist text-4xl font-black leading-[.95] tracking-[-0.06em] md:text-6xl">
+                What Web Design Costs in Montreal
+              </h2>
+              <p className="mt-8 text-base leading-8 text-[#C7B9B9]">
+                Most agencies hide pricing until you book a call. Here are the real 2026 Canadian market
+                ranges — labelled as observations, not quotes, because scope is everything:
+              </p>
+              <div className="mt-8 overflow-x-auto">
+                <table className="w-full min-w-[560px] text-left text-sm">
+                  <thead>
+                    <tr className="border-b border-white/10 text-[#888]">
+                      <th className="py-3 pr-4">Project type</th>
+                      <th className="py-3 pr-4">Typical range (CAD)</th>
+                      <th className="py-3">What moves the price</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-[#C7B9B9]">
+                    {pricingRows.map(([type, range, drivers]) => (
+                      <tr key={type} className="border-b border-white/5">
+                        <td className="py-4 pr-4 font-medium text-white">{type}</td>
+                        <td className="py-4 pr-4">{range}</td>
+                        <td className="py-4">{drivers}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-8 text-base leading-8 text-[#C7B9B9]">
+                Every StillAwake project gets a <strong className="text-white">written scope with a fixed price</strong> before
+                you commit — described through an async form, no mandatory sales call. Ongoing work is published
+                outright: SEO plans at <strong className="text-white">$600–$850 CAD/month</strong> and emergency support
+                at <strong className="text-white">$150–$600 CAD one-time</strong>. Full breakdown in the{" "}
+                <Link href="/website-cost-canada" className="text-[#D71920] underline-offset-4 hover:underline">website cost guide</Link>{" "}
+                and on <Link href="/pricing" className="text-[#D71920] underline-offset-4 hover:underline">pricing</Link>.
+              </p>
+            </section>
           </article>
         </div>
       </section>
@@ -379,15 +385,15 @@ export default function Page() {
           </h2>
           <p className="mt-8 max-w-3xl text-lg leading-8 text-[#E7DFDF]">
             If your current website does not reflect your quality, rank properly,
-            convert visitors, or support future growth, StillAwake Media can help
-            rebuild the system.
+            convert visitors, or support future growth, describe it in our async form
+            and get a written scope with a fixed price — no sales call required.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link href="/contact" className="rounded-full bg-white px-7 py-4 text-sm font-bold text-black">
               Start your project →
             </Link>
-            <Link href="/about" className="rounded-full border border-white/20 px-7 py-4 text-sm font-bold text-white">
-              Learn about StillAwake Media →
+            <Link href="/work" className="rounded-full border border-white/20 px-7 py-4 text-sm font-bold text-white">
+              See the case studies →
             </Link>
           </div>
         </div>
@@ -397,7 +403,7 @@ export default function Page() {
       <MagazineInjection />
       <RelatedReadingInjection />
       <InternalLinks />
-    
+
       <section className="border-t border-white/10 px-6 py-16">
         <div className="mx-auto max-w-7xl rounded-[2rem] border border-[#D71920]/40 bg-[#D71920]/5 p-8">
           <p className="mb-3 text-sm uppercase tracking-[.3em] text-[#D71920]">Proof, not promises</p>

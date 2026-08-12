@@ -42,10 +42,38 @@ const pageLastModified: Record<string, string> = {
   "fr/prix-site-web-quebec": "2026-08-12",
 };
 
+/** EN ↔ FR pairs — surfaces hreflang directly in the sitemap so both
+ *  languages are discovered together (mirrors the on-page alternates). */
+const languagePairs: Record<string, string> = {
+  "": "fr",
+  contact: "fr/contact",
+  pricing: "fr/tarifs",
+  "seo-montreal": "fr/agence-seo-montreal",
+  "website-maintenance": "fr/maintenance-site-web",
+  "answer-engine-optimization": "fr/referencement-ia",
+  "shopify-development": "fr/developpement-shopify",
+  "web-design-montreal": "fr/agence-web-montreal",
+  "website-cost-canada": "fr/prix-site-web-quebec",
+};
+const frToEn = Object.fromEntries(Object.entries(languagePairs).map(([en, fr]) => [fr, en]));
+
+function alternatesFor(page: string) {
+  const en = page in languagePairs ? page : frToEn[page] !== undefined ? frToEn[page] : null;
+  if (en === null) return undefined;
+  const fr = languagePairs[en];
+  return {
+    languages: {
+      "en-CA": en ? `${siteUrl}/${en}` : `${siteUrl}/`,
+      "fr-CA": `${siteUrl}/${fr}`,
+    },
+  };
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = Object.entries(pageLastModified).map(([page, lastModified]) => ({
     url: page ? `${siteUrl}/${page}` : `${siteUrl}/`,
     lastModified: new Date(lastModified),
+    alternates: alternatesFor(page),
   }));
 
   const articles = getAllPosts().map((post) => ({

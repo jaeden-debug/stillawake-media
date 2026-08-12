@@ -6,6 +6,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "start", "--prefix", "/Users/jaedendoody/Documents/Claude/Projects/stillawakemedia.dev"],
       "port": 3000
+    },
+    {
+      "name": "stillawake-com",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "--port", "3005"],
+      "port": 3005
     }
   ]
 }

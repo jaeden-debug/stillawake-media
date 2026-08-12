@@ -23,7 +23,7 @@ Website: ${siteUrl}
 
 ${jaedenDoody.name} is the founder of ${organization.name}, a Montreal-based creator and developer building software, AI systems, and practical business solutions. He came to technology from a background in mechanics, which shaped a diagnostic approach to systems: understand how the system works, trace a failure to its actual cause, then repair or rebuild it.
 
-Founder profile: ${jaedenDoody.url}
+Founder profile: ${jaedenDoody.url} (français: ${siteUrl}/fr/fondateur/jaeden-doody)
 
 ## Entity relationships
 

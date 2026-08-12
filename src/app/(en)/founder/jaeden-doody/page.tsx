@@ -3,12 +3,20 @@ import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 import { siteUrl } from "@/lib/data";
 import { entityIds, ventures } from "@/data/entities";
-import { jaedenDoody as person } from "@/data/people/jaeden-doody";
+import { jaedenDoody as person, personAuthorNames } from "@/data/people/jaeden-doody";
+import { getAllPosts } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Jaeden Doody — Founder of StillAwake Media",
   description: person.shortBio,
-  alternates: { canonical: person.path },
+  alternates: {
+    canonical: person.path,
+    languages: {
+      "en-CA": person.url,
+      "fr-CA": `${siteUrl}/fr/fondateur/jaeden-doody`,
+      "x-default": person.url,
+    },
+  },
   openGraph: {
     title: "Jaeden Doody — Founder of StillAwake Media",
     description: person.shortBio,
@@ -72,6 +80,10 @@ const faqs = [
 ];
 
 export default function Page() {
+  const authoredPosts = getAllPosts().filter((post) =>
+    personAuthorNames.has(post.author)
+  );
+
   /**
    * Entity graph for this page.
    *
@@ -219,6 +231,31 @@ export default function Page() {
             <Link href="/work" className="rounded-full border border-white/10 px-6 py-4 font-bold text-[#C7B9B9] transition hover:text-white">
               See the Work →
             </Link>
+
+            <Link href="/fr/fondateur/jaeden-doody" lang="fr-CA" className="rounded-full border border-white/10 px-6 py-4 font-bold text-[#C7B9B9] transition hover:text-white">
+              Version française →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 pb-4">
+        <div className="mx-auto max-w-7xl">
+          <div className="glass rounded-[2rem] p-8 md:p-10">
+            <h2 className="geist text-2xl font-black tracking-[-0.05em]">
+              Who is Jaeden Doody?
+            </h2>
+            <p className="mt-4 max-w-4xl text-base leading-8 text-[#C7B9B9]">
+              Jaeden Doody is a creator and developer from Montreal, Quebec, and
+              the founder of StillAwake Media, a studio that builds software,
+              websites, ecommerce systems, and AI infrastructure. He came to
+              technology from a background in mechanics, and he builds and
+              operates his own ventures — including ZylX, a business
+              intelligence system for AI; BankDeMark, a connected financial
+              platform; and Blackwater Aquatics Canada, a live ecommerce
+              business — which is where the expertise behind StillAwake&apos;s
+              client work comes from firsthand.
+            </p>
           </div>
         </div>
       </section>
@@ -315,6 +352,50 @@ export default function Page() {
               )
             )}
           </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-20">
+        <div className="mx-auto max-w-7xl rounded-[3rem] border border-white/10 bg-[#070707] p-8 md:p-14">
+          <p className="mb-4 text-sm uppercase tracking-[.35em] text-[#D71920]">
+            The Hours Nobody Sees
+          </p>
+
+          <h2 className="geist max-w-4xl text-4xl font-black leading-[.95] tracking-[-0.06em] md:text-6xl">
+            A shipped product hides most of the work.
+          </h2>
+
+          <p className="mt-6 max-w-3xl text-base leading-8 text-[#C7B9B9]">
+            The visible part of a build is the launch. The real part is the
+            night before it, and the fifty nights before that. An illustrative
+            sequence — not literal timestamps, but a night any builder will
+            recognize:
+          </p>
+
+          <div className="mt-10 max-w-2xl font-mono text-sm leading-7">
+            {[
+              ["11:47 PM", "One bug left before this can ship."],
+              ["12:38 AM", "The bug isn't a bug. The architecture is wrong."],
+              ["1:26 AM", "Architecture rewritten. Half the tests now fail — good, they were testing the wrong thing."],
+              ["2:14 AM", "Tests pass. Deploy."],
+              ["2:17 AM", "Watching it run, notices what it could do next."],
+              ["2:18 AM", "Opens a new file."],
+            ].map(([time, entry]) => (
+              <div key={time} className="flex gap-4 border-l border-[#D71920]/40 py-2 pl-5">
+                <span className="shrink-0 text-[#D71920]">{time}</span>
+                <span className="text-[#C7B9B9]">{entry}</span>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-10 max-w-3xl text-base leading-8 text-[#C7B9B9]">
+            That last line is the important one. The name StillAwake has come to
+            represent exactly this — not sleep deprivation as a badge of honor,
+            but the state of being genuinely unable to leave a problem alone
+            once the next solution is visible. The finished systems on this page
+            are made of hundreds of those small, invisible loops: build, break,
+            trace, learn, rebuild.
+          </p>
         </div>
       </section>
 
@@ -423,6 +504,72 @@ export default function Page() {
       <section className="px-6 py-20">
         <div className="mx-auto max-w-7xl">
           <p className="mb-4 text-sm uppercase tracking-[.35em] text-[#D71920]">
+            Built, Not Claimed
+          </p>
+
+          <h2 className="geist max-w-4xl text-4xl font-black leading-[.95] tracking-[-0.06em] md:text-6xl">
+            The work, with numbers attached.
+          </h2>
+
+          <p className="mt-6 max-w-3xl text-base leading-8 text-[#C7B9B9]">
+            Adjectives are cheap; measurements are not. These four client builds
+            are documented in full case studies where every number carries its
+            source and date.
+          </p>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            {[
+              ["/work/lisa-travel-design", "TravelDesign By Lisa", "An 834-URL trilingual travel platform — custom CMS, client portal, CRM, and an automated eSIM store — taken from zero organic clicks to page-1 rankings, covered by 412 tests."],
+              ["/work/bankdemark", "BankDeMark", "A financial platform whose money math is verified against 26 golden test cases, holding average position 1.3 in search with a measured 100/100/100 Lighthouse score."],
+              ["/work/stalkr-navtrl", "NAVTRL / Stalkr", "A real-time location app — 10,947 lines of TypeScript, sub-3-second sync, hold-to-activate SOS — taken from first commit to TestFlight-ready in 24 days."],
+              ["/work/blackwater-aquatics", "Blackwater Aquatics", "An education-led Shopify store where 64 content pages power 17 products: a page-1 product page at 8.6% CTR and a repeat-customer rate up from 5.9% to 27.8%."],
+            ].map(([href, name, detail]) => (
+              <Link key={href} href={href} className="glass rounded-[2rem] p-7 transition hover:border-[#D71920]/60">
+                <h3 className="geist text-2xl font-black tracking-[-0.05em]">{name}</h3>
+                <p className="mt-3 text-sm leading-7 text-[#C7B9B9]">{detail}</p>
+                <p className="mt-4 text-sm font-bold text-[#D71920]">Read the case study →</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-20">
+        <div className="mx-auto max-w-7xl rounded-[3rem] border border-white/10 bg-[#070707] p-8 md:p-14">
+          <p className="mb-4 text-sm uppercase tracking-[.35em] text-[#D71920]">
+            Technical Range
+          </p>
+
+          <h2 className="geist max-w-4xl text-4xl font-black leading-[.95] tracking-[-0.06em] md:text-6xl">
+            The stack, and what it&apos;s for.
+          </h2>
+
+          <p className="mt-6 max-w-3xl text-base leading-8 text-[#C7B9B9]">
+            Every technology below is in production in the projects on this
+            page — none of it is résumé decoration.
+          </p>
+
+          <div className="mt-10 grid gap-8 md:grid-cols-2">
+            {[
+              ["Web platforms", "TypeScript, React and Next.js — the foundation of StillAwake's sites and platforms, including this one. Used for server-rendered, SEO-sound systems rather than single-page demos."],
+              ["Mobile", "React Native with Expo — one codebase shipping iOS and Android, proven by Stalkr's real-time location engine."],
+              ["Data & security", "Supabase and PostgreSQL with row-level security on every table — including location data and financial records, where a missing policy is not a detail."],
+              ["Payments & commerce", "Stripe for subscriptions, checkout and reconciliation; Shopify and Liquid for ecommerce, operated firsthand through Blackwater Aquatics."],
+              ["AI systems", "AI model integration with engineered guardrails — ZylX connects business systems to AI assistants through the Model Context Protocol, built so assistants answer from real data instead of guessing."],
+              ["Search & measurement", "Structured data, entity graphs, hreflang architecture, Search Console and Lighthouse — treated as engineering, with published, dated measurements."],
+            ].map(([area, detail]) => (
+              <div key={area}>
+                <h3 className="geist text-xl font-black tracking-[-0.04em] text-white">{area}</h3>
+                <p className="mt-3 text-sm leading-7 text-[#C7B9B9]">{detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-20">
+        <div className="mx-auto max-w-7xl">
+          <p className="mb-4 text-sm uppercase tracking-[.35em] text-[#D71920]">
             Areas of Work
           </p>
 
@@ -502,6 +649,72 @@ export default function Page() {
           <p className="geist mt-10 text-sm font-bold tracking-[-0.02em] text-[#8F8585]">
             — Jaeden Doody, Founder, StillAwake Media
           </p>
+        </div>
+      </section>
+
+      <section className="px-6 py-20">
+        <div className="mx-auto max-w-7xl">
+          <p className="mb-4 text-sm uppercase tracking-[.35em] text-[#D71920]">
+            Currently Exploring
+          </p>
+
+          <h2 className="geist max-w-4xl text-4xl font-black leading-[.95] tracking-[-0.06em] md:text-6xl">
+            What I&apos;m building now.
+          </h2>
+
+          <div className="mt-8 max-w-3xl space-y-6 text-base leading-8 text-[#C7B9B9]">
+            <p>
+              The current center of gravity is ZylX and the question underneath
+              it: how do you give an AI assistant real, verified business
+              context — so it answers from what is actually true about a
+              company instead of improvising? That pulls in AI agents, the
+              Model Context Protocol, business intelligence, and the
+              guardrail engineering that keeps an assistant honest.
+            </p>
+            <p>
+              Alongside it: StillAwake&apos;s async-first client system — an
+              acquisition, onboarding and delivery pipeline that runs in
+              English and French without mandatory sales calls — and the
+              ongoing research into AI-search visibility (AEO) that
+              StillAwake publishes and applies for clients.
+            </p>
+          </div>
+
+          <p className="mt-8 text-sm text-[#8F8585]">Last updated: August 12, 2026</p>
+        </div>
+      </section>
+
+      <section className="px-6 py-20">
+        <div className="mx-auto max-w-7xl">
+          <p className="mb-4 text-sm uppercase tracking-[.35em] text-[#D71920]">
+            Writing &amp; Research
+          </p>
+
+          <h2 className="geist max-w-4xl text-4xl font-black leading-[.95] tracking-[-0.06em] md:text-6xl">
+            Written by Jaeden Doody.
+          </h2>
+
+          <p className="mt-6 max-w-3xl text-base leading-8 text-[#C7B9B9]">
+            Articles Jaeden authored in{" "}
+            <Link href="/stillawake-times" className="text-[#D71920] underline-offset-4 hover:underline">
+              The StillAwake Times
+            </Link>
+            . Authorship on this site is literal — pieces he wrote carry his
+            name; everything else is credited to the studio.
+          </p>
+
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
+            {authoredPosts.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/stillawake-times/${post.slug}`}
+                className="glass rounded-[2rem] p-6 transition hover:border-[#D71920]/60"
+              >
+                <h3 className="geist text-xl font-black tracking-[-0.04em]">{post.title}</h3>
+                <p className="mt-3 text-sm text-[#8F8585]">Read article →</p>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -49,7 +49,7 @@ const resourcesFr = [
   ["Portfolio", "/portfolio"],
   ["Études de cas", "/work"],
   ["À propos", "/about"],
-  ["Fondateur", "/founder/jaeden-doody"],
+  ["Fondateur", "/fr/fondateur/jaeden-doody"],
   ["Contact", "/fr/contact"],
   ["English", "/"],
 ];

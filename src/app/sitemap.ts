@@ -24,7 +24,8 @@ const pageLastModified: Record<string, string> = {
   "framer-development": "2026-08-09",
   "shopify-development": "2026-08-09",
   work: "2026-08-09",
-  "founder/jaeden-doody": "2026-08-10",
+  "founder/jaeden-doody": "2026-08-12",
+  "fr/fondateur/jaeden-doody": "2026-08-12",
   "web-design-montreal": "2026-05-25",
   "fr/agence-web-montreal": "2026-08-12",
   "seo-montreal": "2026-08-12",
@@ -82,6 +83,7 @@ const languagePairs: Record<string, string> = {
   "work/bankdemark": "fr/etude-de-cas-bankdemark",
   "work/stalkr-navtrl": "fr/etude-de-cas-stalkr-navtrl",
   "work/blackwater-aquatics": "fr/etude-de-cas-blackwater-aquatics",
+  "founder/jaeden-doody": "fr/fondateur/jaeden-doody",
 };
 const frToEn = Object.fromEntries(Object.entries(languagePairs).map(([en, fr]) => [fr, en]));
 

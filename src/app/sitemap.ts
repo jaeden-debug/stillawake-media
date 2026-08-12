@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/content";
+import { getAllPublishedForSitemap } from "@/lib/cms/adapter";
 import { siteUrl } from "@/lib/data";
 
 /**
@@ -111,7 +112,7 @@ function alternatesFor(page: string) {
   };
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pages = Object.entries(pageLastModified).map(([page, lastModified]) => ({
     url: page ? `${siteUrl}/${page}` : `${siteUrl}/`,
     lastModified: new Date(lastModified),
@@ -130,5 +131,52 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(post.updated || post.date),
   }));
 
-  return [...pages, ...articles, ...articlesFr];
+  /**
+   * CMS-published items. Excludes noindex, the content_layer type, and rows
+   * without a route. Dedupe by URL against file-based entries: a markdown
+   * article superseded by a CMS row with the same slug keeps ONE sitemap
+   * entry, with the CMS lastmod winning. hreflang comes from translation
+   * groups where both locales are published. Adapter failures degrade to []
+   * so a Supabase outage never breaks the sitemap.
+   */
+  const cmsRows = (await getAllPublishedForSitemap()).filter(
+    (item) =>
+      item.route_path != null &&
+      item.type !== "content_layer" &&
+      !item.snapshot?.seo?.noindex,
+  );
+
+  const byGroup = new Map<string, typeof cmsRows>();
+  for (const item of cmsRows) {
+    if (!item.translation_group_id) continue;
+    const group = byGroup.get(item.translation_group_id) ?? [];
+    group.push(item);
+    byGroup.set(item.translation_group_id, group);
+  }
+
+  const cmsEntries = cmsRows.map((item) => {
+    const group = item.translation_group_id ? byGroup.get(item.translation_group_id) : undefined;
+    const en = group?.find((row) => row.locale === "en" && row.route_path);
+    const fr = group?.find((row) => row.locale === "fr" && row.route_path);
+    return {
+      url: `${siteUrl}${item.route_path}`,
+      lastModified: new Date(item.published_at ?? item.publish_at ?? Date.now()),
+      alternates:
+        en && fr
+          ? {
+              languages: {
+                "en-CA": `${siteUrl}${en.route_path}`,
+                "fr-CA": `${siteUrl}${fr.route_path}`,
+              },
+            }
+          : undefined,
+    };
+  });
+
+  const cmsUrls = new Set(cmsEntries.map((entry) => entry.url));
+  const fileEntries = [...pages, ...articles, ...articlesFr].filter(
+    (entry) => !cmsUrls.has(entry.url),
+  );
+
+  return [...fileEntries, ...cmsEntries];
 }

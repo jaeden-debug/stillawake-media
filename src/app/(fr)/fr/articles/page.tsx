@@ -1,10 +1,40 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getAllPosts } from "@/lib/content";
+import { getAllPosts, type PostMeta } from "@/lib/content";
+import { getPublishedArticles } from "@/lib/cms/adapter";
+import { estimateReadTime } from "@/lib/cms/prose";
 import { InternalLinks } from "@/components/site";
 import { siteUrl } from "@/lib/data";
 
 const pageUrl = `${siteUrl}/fr/articles`;
+
+/** ISR pour que les articles publiés via le CMS apparaissent sans redéploiement. */
+export const revalidate = 300;
+
+/** Articles CMS fusionnés avec les fichiers markdown — dédupliqués par slug,
+ *  le CMS gagne. Même forme de carte dans les deux cas. */
+async function getMergedPosts(): Promise<PostMeta[]> {
+  const cms = await getPublishedArticles("fr");
+  const cmsPosts: PostMeta[] = cms.map((item) => {
+    const data = item.snapshot.data ?? {};
+    return {
+      slug: item.slug,
+      title: item.snapshot.title,
+      date: (item.first_published_at ?? item.publish_at ?? item.published_at ?? "").slice(0, 10),
+      updated: undefined,
+      excerpt: item.snapshot.excerpt ?? "",
+      category: typeof data.category === "string" && data.category ? data.category : "Stratégie",
+      featured: Boolean(data.featured),
+      image: typeof data.image === "string" ? data.image : "",
+      readTime: estimateReadTime(item.snapshot.sections ?? [], "fr"),
+      author: "StillAwake Media",
+    };
+  });
+  const cmsSlugs = new Set(cmsPosts.map((post) => post.slug));
+  return [...cmsPosts, ...getAllPosts("fr").filter((post) => !cmsSlugs.has(post.slug))].sort(
+    (a, b) => Number(new Date(b.date)) - Number(new Date(a.date)),
+  );
+}
 
 export const metadata: Metadata = {
   title: "Articles | Stratégie web, SEO et IA pour le Québec",
@@ -21,8 +51,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ArticlesFr() {
-  const posts = getAllPosts("fr");
+export default async function ArticlesFr() {
+  const posts = await getMergedPosts();
   const featured = posts.find((p) => p.featured);
   const rest = posts.filter((p) => p.slug !== featured?.slug);
 

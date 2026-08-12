@@ -1,15 +1,29 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { siteUrl } from "@/lib/data";
 import { entityIds } from "@/data/entities";
 import { jaedenDoody, personAuthorNames } from "@/data/people/jaeden-doody";
 import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/content";
+import { getPublishedByTypeSlugConfirmed, getSiblingOf } from "@/lib/cms/adapter";
+import { fetchDraftByRoute } from "@/lib/cms/draft";
+import {
+  CmsArticle,
+  DraftUnavailable,
+  viewFromDraft,
+  viewFromPublished,
+} from "@/components/cms-article";
 import { InternalLinks } from "@/components/site";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
+
+/** ISR: CMS-published articles appear without a redeploy (§65–68). The
+ *  markdown fallback path renders identically to the previous fully-static
+ *  output — only the caching mode changed. */
+export const revalidate = 300;
 
 export async function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -17,6 +31,65 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
+
+  // Draft preview: per-visitor cookie, never indexable.
+  if ((await draftMode()).isEnabled) {
+    const draft = await fetchDraftByRoute(`/stillawake-times/${slug}`);
+    return {
+      title: draft?.title ?? "Draft Preview",
+      robots: { index: false, follow: false },
+    };
+  }
+
+  // CMS-published wins over the markdown file (dual-read, CMS first).
+  const cms = await getPublishedByTypeSlugConfirmed("article", "en", slug);
+  if (cms) {
+    const title = cms.snapshot.seo?.title || cms.snapshot.title;
+    const description = cms.snapshot.seo?.description || cms.snapshot.excerpt || "";
+    const url = `${siteUrl}/stillawake-times/${cms.slug}`;
+    const sibling = cms.translation_group_id
+      ? await getSiblingOf(cms.translation_group_id, "fr")
+      : null;
+    const languages =
+      sibling?.route_path != null
+        ? {
+            "en-CA": url,
+            "fr-CA": `${siteUrl}${sibling.route_path}`,
+            "x-default": url,
+          }
+        : undefined;
+
+    return {
+      title,
+      description,
+      authors: [{ name: "StillAwake Media", url: siteUrl }],
+      alternates: {
+        canonical: `/stillawake-times/${cms.slug}`,
+        ...(languages ? { languages } : {}),
+      },
+      openGraph: {
+        url,
+        title,
+        description,
+        images: [
+          {
+            url: "/stillawake-media-social-preview.jpeg",
+            width: 1200,
+            height: 630,
+            alt: title,
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: ["/stillawake-media-social-preview.jpeg"],
+      },
+      ...(cms.snapshot.seo?.noindex ? { robots: { index: false, follow: false } } : {}),
+    };
+  }
+
   const post = await getPostBySlug(slug);
   if (!post) return {};
 
@@ -50,6 +123,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params;
+
+  // Draft preview (§54): server-to-server fetch from the .dev writer, rendered
+  // through the same components with a fixed DRAFT PREVIEW banner.
+  if ((await draftMode()).isEnabled) {
+    const draft = await fetchDraftByRoute(`/stillawake-times/${slug}`);
+    if (!draft) return <DraftUnavailable locale="en" />;
+    return <CmsArticle view={viewFromDraft(draft)} locale="en" isDraft />;
+  }
+
+  // Dual-read (§65–68): CMS-published first; a cached miss is confirmed with a
+  // direct query before falling back to the markdown file.
+  const cms = await getPublishedByTypeSlugConfirmed("article", "en", slug);
+  if (cms) {
+    return <CmsArticle view={viewFromPublished(cms)} locale="en" />;
+  }
+
   const post = await getPostBySlug(slug);
   if (!post) notFound();
 

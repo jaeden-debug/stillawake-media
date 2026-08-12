@@ -1,13 +1,25 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { siteUrl } from "@/lib/data";
 import { entityIds } from "@/data/entities";
 import { jaedenDoody, personAuthorNames } from "@/data/people/jaeden-doody";
 import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/content";
+import { getPublishedByTypeSlugConfirmed, getSiblingOf } from "@/lib/cms/adapter";
+import { fetchDraftByRoute } from "@/lib/cms/draft";
+import {
+  CmsArticle,
+  DraftUnavailable,
+  viewFromDraft,
+  viewFromPublished,
+} from "@/components/cms-article";
 import { InternalLinks } from "@/components/site";
 
 type Props = { params: Promise<{ slug: string }> };
+
+/** ISR: CMS-published articles appear without a redeploy (§65–68). */
+export const revalidate = 300;
 
 export async function generateStaticParams() {
   return getAllPosts("fr").map((post) => ({ slug: post.slug }));
@@ -15,6 +27,60 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
+
+  if ((await draftMode()).isEnabled) {
+    const draft = await fetchDraftByRoute(`/fr/articles/${slug}`);
+    return {
+      title: draft?.title ?? "Aperçu du brouillon",
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const cms = await getPublishedByTypeSlugConfirmed("article", "fr", slug);
+  if (cms) {
+    const title = cms.snapshot.seo?.title || cms.snapshot.title;
+    const description = cms.snapshot.seo?.description || cms.snapshot.excerpt || "";
+    const url = `${siteUrl}/fr/articles/${cms.slug}`;
+    const sibling = cms.translation_group_id
+      ? await getSiblingOf(cms.translation_group_id, "en")
+      : null;
+    const languages =
+      sibling?.route_path != null
+        ? {
+            "en-CA": `${siteUrl}${sibling.route_path}`,
+            "fr-CA": url,
+            "x-default": `${siteUrl}${sibling.route_path}`,
+          }
+        : undefined;
+
+    return {
+      title,
+      description,
+      authors: [{ name: "StillAwake Media", url: siteUrl }],
+      alternates: {
+        canonical: `/fr/articles/${cms.slug}`,
+        ...(languages ? { languages } : {}),
+      },
+      openGraph: {
+        url,
+        title,
+        description,
+        type: "article",
+        locale: "fr_CA",
+        images: [
+          { url: "/stillawake-media-social-preview.jpeg", width: 1200, height: 630, alt: title },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: ["/stillawake-media-social-preview.jpeg"],
+      },
+      ...(cms.snapshot.seo?.noindex ? { robots: { index: false, follow: false } } : {}),
+    };
+  }
+
   const post = await getPostBySlug(slug, "fr");
   if (!post) return {};
 
@@ -47,6 +113,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ArticleFr({ params }: Props) {
   const { slug } = await params;
+
+  // Aperçu de brouillon (§54) : contenu chargé serveur-à-serveur depuis .dev.
+  if ((await draftMode()).isEnabled) {
+    const draft = await fetchDraftByRoute(`/fr/articles/${slug}`);
+    if (!draft) return <DraftUnavailable locale="fr" />;
+    return <CmsArticle view={viewFromDraft(draft)} locale="fr" isDraft />;
+  }
+
+  // Dual-read (§65–68) : le CMS publié gagne; un miss en cache est confirmé
+  // par une requête directe avant de retomber sur le fichier markdown.
+  const cms = await getPublishedByTypeSlugConfirmed("article", "fr", slug);
+  if (cms) {
+    return <CmsArticle view={viewFromPublished(cms)} locale="fr" />;
+  }
+
   const post = await getPostBySlug(slug, "fr");
   if (!post) notFound();
 

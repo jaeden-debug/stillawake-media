@@ -64,6 +64,9 @@ export function DraftBanner({ locale }: { locale: CmsLocale }) {
   return (
     <div className="fixed inset-x-0 top-0 z-[100] flex items-center justify-center gap-4 bg-amber-400 px-6 py-2 text-sm font-bold text-black">
       <span>{locale === "fr" ? "APERÇU DU BROUILLON" : "DRAFT PREVIEW"}</span>
+      {/* Route handler, not a page — must be a full request so the draft
+          cookie is cleared server-side. */}
+      {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
       <a href="/api/cms/preview/exit" className="underline underline-offset-4">
         {locale === "fr" ? "Quitter l'aperçu" : "Exit preview"}
       </a>
@@ -86,6 +89,7 @@ export function DraftUnavailable({ locale }: { locale: CmsLocale }) {
                 ? "Le contenu du brouillon n'a pas pu être chargé depuis le CMS. Réessayez, ou quittez l'aperçu."
                 : "The draft content could not be loaded from the CMS. Try again, or exit preview."}
             </p>
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a href="/api/cms/preview/exit" className="mt-8 inline-flex rounded-full bg-[#D71920] px-6 py-4 font-bold">
               {locale === "fr" ? "Quitter l'aperçu →" : "Exit preview →"}
             </a>

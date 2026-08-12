@@ -2,6 +2,16 @@ import { withBotId } from "botid/next/config";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    // Remote hosts CMS content is allowed to serve through next/image:
+    // Unsplash originals and the Supabase CMS media bucket. The CMS renderer
+    // falls back to a plain <img> for any other host.
+    remotePatterns: [
+      { protocol: "https", hostname: "images.unsplash.com" },
+      { protocol: "https", hostname: "plus.unsplash.com" },
+      { protocol: "https", hostname: "qzyzdpjvrecplkenrxhe.supabase.co" },
+    ],
+  },
   experimental: {
     // Required for app/global-not-found.tsx. The site has two root layouts
     // ((en) and (fr)) so there is no single layout Next can compose a global

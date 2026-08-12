@@ -2,8 +2,38 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 
-import { getAllPosts } from "@/lib/content";
+import { getAllPosts, type PostMeta } from "@/lib/content";
+import { getPublishedArticles } from "@/lib/cms/adapter";
+import { estimateReadTime } from "@/lib/cms/prose";
 import { InternalLinks, Section } from "@/components/site";
+
+/** ISR so newly CMS-published articles appear here without a redeploy. */
+export const revalidate = 300;
+
+/** CMS-published articles merged over the markdown set — dedupe by slug, CMS
+ *  wins. Cards keep the exact same shape/layout either way. */
+async function getMergedPosts(): Promise<PostMeta[]> {
+  const cms = await getPublishedArticles("en");
+  const cmsPosts: PostMeta[] = cms.map((item) => {
+    const data = item.snapshot.data ?? {};
+    return {
+      slug: item.slug,
+      title: item.snapshot.title,
+      date: (item.first_published_at ?? item.publish_at ?? item.published_at ?? "").slice(0, 10),
+      updated: undefined,
+      excerpt: item.snapshot.excerpt ?? "",
+      category: typeof data.category === "string" && data.category ? data.category : "Strategy",
+      featured: Boolean(data.featured),
+      image: typeof data.image === "string" ? data.image : "",
+      readTime: estimateReadTime(item.snapshot.sections ?? [], "en"),
+      author: "StillAwake Media",
+    };
+  });
+  const cmsSlugs = new Set(cmsPosts.map((post) => post.slug));
+  return [...cmsPosts, ...getAllPosts().filter((post) => !cmsSlugs.has(post.slug))].sort(
+    (a, b) => Number(new Date(b.date)) - Number(new Date(a.date)),
+  );
+}
 
 export const metadata: Metadata = {
   title: "StillAwake Times | Digital Strategy, SEO & AI Insights",
@@ -14,8 +44,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Blog() {
-  const posts = getAllPosts();
+export default async function Blog() {
+  const posts = await getMergedPosts();
   const featured = posts.find((p) => p.featured);
   const regularPosts = posts.filter((p) => p.slug !== featured?.slug);
 

@@ -105,3 +105,5 @@ Le point commun : gardez la capacité de publier sans développeur. C'est la vra
 Ne migrez pas parce que WordPress a mauvaise presse. Migrez si vous butez sur un plancher de performance, si la maintenance vous coûte plus qu'elle ne rapporte, si vous construisez une application dans un outil de publication, ou si le bilinguisme vous ralentit.
 
 Et si vous migrez, le projet n'est pas le design. C'est la cartographie des redirections.
+
+Si vous préférez que ce soit fait plutôt qu'expliqué, voyez [notre service de refonte et de migration](/fr/refonte-site-web).

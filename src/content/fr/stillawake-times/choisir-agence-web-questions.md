@@ -133,3 +133,5 @@ Un fournisseur sérieux vous posera ces questions. S'il ne les pose pas, c'est u
 Vous n'achetez pas un design. Vous achetez un actif que vous devrez posséder, modifier et faire croître pendant des années.
 
 Les douze questions ci-dessus prennent une heure au total. Elles vous éviteront la version où, dix-huit mois plus tard, vous découvrez que vous ne pouvez ni changer une phrase, ni récupérer votre domaine, ni expliquer pourquoi le trafic ne vient jamais.
+
+Si vous préférez que ce soit fait plutôt qu'expliqué, voyez [nos tarifs affichés](/fr/tarifs).

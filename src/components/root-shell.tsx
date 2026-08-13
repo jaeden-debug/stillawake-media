@@ -12,6 +12,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 /** Microsoft Clarity project (stillawakemedia.com). */
 const CLARITY_PROJECT_ID = "y1xydoz217";
 
+/** Google Analytics 4 measurement ID (stillawakemedia.com). */
+const GA_MEASUREMENT_ID = "G-KE1CWNHY0S";
+
 const title = "StillAwake Media | Web Design, SEO, AI & Software";
 const description =
   "StillAwake Media builds premium websites, SEO systems, branding, AI automation, Shopify stores, and custom software for modern businesses. Ambition Never Sleeps.";
@@ -175,6 +178,20 @@ export function RootShell({
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "${CLARITY_PROJECT_ID}");`}
+        </Script>
+        {/* Google Analytics 4. The loader is async and the config runs from a
+            second script, so dataLayer must be defined in both — gtag() queues
+            into it until gtag.js arrives. */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-config" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '${GA_MEASUREMENT_ID}');`}
         </Script>
         <Header locale={lang.startsWith("fr") ? "fr" : "en"} />
         {children}

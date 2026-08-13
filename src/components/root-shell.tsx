@@ -9,6 +9,9 @@ import { entityIds } from "@/data/entities";
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
+/** Microsoft Clarity project (stillawakemedia.com). */
+const CLARITY_PROJECT_ID = "y1xydoz217";
+
 const title = "StillAwake Media | Web Design, SEO, AI & Software";
 const description =
   "StillAwake Media builds premium websites, SEO systems, branding, AI automation, Shopify stores, and custom software for modern businesses. Ambition Never Sleeps.";
@@ -162,6 +165,17 @@ export function RootShell({
           data-key="U2gzncDcxNZl9k/ub6ypfA"
           strategy="afterInteractive"
         />
+        {/* Microsoft Clarity — session recordings + heatmaps. Kept as the
+            official inline snippet rather than a plain tag <script src>: the
+            stub it defines queues any clarity(...) call made before the tag
+            finishes loading, so nothing is dropped on a fast interaction. */}
+        <Script id="ms-clarity" strategy="afterInteractive">
+          {`(function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "${CLARITY_PROJECT_ID}");`}
+        </Script>
         <Header locale={lang.startsWith("fr") ? "fr" : "en"} />
         {children}
         <Footer locale={lang.startsWith("fr") ? "fr" : "en"} />

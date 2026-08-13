@@ -4,6 +4,7 @@ import PortfolioBrowser from "@/components/portfolio/PortfolioBrowser";
 import { InternalLinks } from "@/components/site";
 import { siteUrl } from "@/lib/data";
 
+import { PageSchema } from "@/components/page-schema";
 const pageUrl = `${siteUrl}/fr/realisations`;
 
 export const metadata: Metadata = {
@@ -31,6 +32,8 @@ export const metadata: Metadata = {
 export default function Realisations() {
   return (
     <main className="pt-28">
+          <PageSchema route="/fr/realisations" />
+
       <PortfolioBrowser locale="fr" />
 
       <section className="px-6 pb-8">

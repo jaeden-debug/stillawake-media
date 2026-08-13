@@ -6,6 +6,7 @@ import { estimateReadTime } from "@/lib/cms/prose";
 import { InternalLinks } from "@/components/site";
 import { siteUrl } from "@/lib/data";
 
+import { PageSchema } from "@/components/page-schema";
 const pageUrl = `${siteUrl}/fr/articles`;
 
 /** ISR pour que les articles publiés via le CMS apparaissent sans redéploiement. */
@@ -58,6 +59,8 @@ export default async function ArticlesFr() {
 
   return (
     <main className="pt-28">
+          <PageSchema route="/fr/articles" />
+
       <section className="relative overflow-hidden px-6 py-24">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_0%,rgba(215,25,32,.22),transparent_35%)]" />
         <div className="relative mx-auto max-w-7xl">

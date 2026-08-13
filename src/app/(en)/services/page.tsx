@@ -3,6 +3,7 @@ import Link from "next/link";
 import { serviceNav, montrealNav } from "@/lib/data";
 import { AuditCta, MagazineInjection, RelatedReadingInjection, InternalLinks } from "@/components/site";
 
+import { PageSchema } from "@/components/page-schema";
 export const metadata: Metadata = {
   title: "StillAwake Media Services | Web, SEO, AI & Software",
   description:
@@ -15,6 +16,8 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <main className="pt-28">
+          <PageSchema route="/services" />
+
       <section className="px-6 py-24">
         <div className="mx-auto max-w-7xl">
           <p className="mb-4 text-sm uppercase tracking-[.35em] text-[#D71920]">

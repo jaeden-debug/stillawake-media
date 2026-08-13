@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
+import { PageSchema } from "@/components/page-schema";
 export const metadata: Metadata = {
   title: "Shopify Development Services | SEO & Conversion Builds",
   description:
@@ -63,6 +64,8 @@ export default function Page() {
 
   return (
     <main className="pt-28">
+          <PageSchema route="/shopify-development" />
+
       <section className="relative overflow-hidden px-6 py-24">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_0%,rgba(215,25,32,.22),transparent_35%)]" />
 

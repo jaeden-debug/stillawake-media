@@ -6,6 +6,7 @@ import { Section } from "@/components/site";
 import { getContentLayer } from "@/lib/cms/adapter";
 import { slot } from "@/lib/cms/layer";
 
+import { PageSchema } from "@/components/page-schema";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
@@ -21,6 +22,8 @@ export default async function Contact() {
   const slots = await getContentLayer("contact", "en");
   return (
     <main className="pt-28">
+          <PageSchema route="/contact" />
+
       <section className="px-6 pt-24 pb-0"><div className="mx-auto max-w-7xl">
         <p className="mb-4 text-sm uppercase tracking-[.3em] text-[#D71920]">Contact</p>
         <h1 className="geist max-w-4xl text-4xl font-black tracking-[-0.06em] md:text-6xl">{slot(slots, "hero_title", "Start a project with StillAwake Media.")}</h1>

@@ -7,6 +7,7 @@ import { getPublishedArticles } from "@/lib/cms/adapter";
 import { estimateReadTime } from "@/lib/cms/prose";
 import { InternalLinks, Section } from "@/components/site";
 
+import { PageSchema } from "@/components/page-schema";
 /** ISR so newly CMS-published articles appear here without a redeploy. */
 export const revalidate = 300;
 
@@ -51,6 +52,8 @@ export default async function Blog() {
 
   return (
     <main className="pt-28">
+          <PageSchema route="/stillawake-times" />
+
 
       <section className="px-6 pt-24 pb-0"><div className="mx-auto max-w-7xl">
         <p className="mb-4 text-sm uppercase tracking-[.3em] text-[#D71920]">Magazine</p>

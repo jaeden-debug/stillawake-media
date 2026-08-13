@@ -3,6 +3,7 @@ import Link from "next/link";
 import PortfolioBrowser from "@/components/portfolio/PortfolioBrowser";
 import { InternalLinks } from "@/components/site";
 
+import { PageSchema } from "@/components/page-schema";
 export const metadata: Metadata = {
   title: "Website Portfolio | Premium Web Design & SEO Projects",
   description:
@@ -20,6 +21,8 @@ export const metadata: Metadata = {
 export default function Portfolio() {
   return (
     <main className="pt-28">
+          <PageSchema route="/portfolio" />
+
       <PortfolioBrowser />
 
       <section className="px-6 pb-8">

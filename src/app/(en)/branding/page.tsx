@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
+import { PageSchema } from "@/components/page-schema";
 export const metadata: Metadata = {
   title:
     "Branding Services | Premium Brand Identity Systems",
@@ -80,6 +81,8 @@ const articles = [
 export default function BrandingPage() {
   return (
     <main className="pt-28">
+          <PageSchema route="/branding" />
+
       <section className="relative overflow-hidden px-6 py-24 md:py-36">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_0%,rgba(215,25,32,.18),transparent_35%)]" />
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 import { siteUrl } from "@/lib/data";
 
+import { PageSchema } from "@/components/page-schema";
 const pageUrl = `${siteUrl}/fr/etudes-de-cas`;
 
 export const metadata: Metadata = {
@@ -76,6 +77,8 @@ const caseStudies: {
 export default function EtudesDeCas() {
   return (
     <main className="pt-28">
+          <PageSchema route="/fr/etudes-de-cas" />
+
       <section className="relative overflow-hidden px-6 py-24">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_0%,rgba(215,25,32,.22),transparent_35%)]" />
 

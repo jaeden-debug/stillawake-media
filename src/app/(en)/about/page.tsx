@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button, InternalLinks } from "@/components/site";
 import { jaedenDoody } from "@/data/people/jaeden-doody";
 
+import { PageSchema } from "@/components/page-schema";
 export const metadata: Metadata = {
   title: "About StillAwake Media | Digital Infrastructure Studio",
   description:
@@ -45,6 +46,8 @@ const process = [
 export default function About() {
   return (
     <main className="overflow-hidden pt-28">
+          <PageSchema route="/about" />
+
       <section className="relative px-6 py-24 md:py-32">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_75%_15%,rgba(215,25,32,.22),transparent_34%),radial-gradient(circle_at_10%_70%,rgba(255,255,255,.06),transparent_30%)]" />
 

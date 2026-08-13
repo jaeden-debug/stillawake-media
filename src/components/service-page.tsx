@@ -24,10 +24,16 @@ export function ServiceJsonLd(props: {
       name: props.name,
       description: props.description,
       provider: { "@id": entityIds.organization },
+      // Montréal first because that is the strongest local signal, then the
+      // markets the studio actually serves remotely. Stopping at "Canada"
+      // read as a geographic restriction rather than a home base.
       areaServed: [
         { "@type": "City", name: "Montréal" },
         { "@type": "AdministrativeArea", name: "Québec" },
         { "@type": "Country", name: "Canada" },
+        { "@type": "Country", name: "United States" },
+        { "@type": "Country", name: "United Kingdom" },
+        { "@type": "Country", name: "Australia" },
       ],
       ...(props.offers?.length
         ? {

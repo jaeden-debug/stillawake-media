@@ -1,11 +1,14 @@
 import type { Metadata } from "next";import Link from "next/link";import {Button,Section,ServiceGrid,PortfolioGrid,BlogCards,InternalLinks} from "@/components/site";import LiveWorkShowcase from "@/components/LiveWorkShowcase";import {services} from "@/lib/data";
+import { PageSchema } from "@/components/page-schema";
 export const metadata: Metadata = {
   title: "StillAwake Media | Web Design, SEO & AI Search — Montréal",
   description:
     "Montréal studio building premium websites, Shopify stores, SEO systems, AI-search (AEO) visibility, and custom software — with transparent pricing and measurable results.",
   alternates: { canonical: "/" },
 };
-export default function Home(){return <main><section className="relative min-h-[100svh] overflow-hidden px-6 pt-6 md:min-h-screen"><video className="heroVideo absolute inset-0 h-screen min-h-screen w-full object-cover opacity-65" src="/stillawakemedia-hero-optimized-small.mp4" poster="/stillawakemedia-hero-poster.jpg" preload="metadata" autoPlay muted loop playsInline/><div className="absolute inset-0 bg-gradient-to-b from-black/40 via-[#050505]/50 to-[#050505]"/><div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_35%,rgba(215,25,32,.25),transparent_35%)]"/><div className="relative z-10 mx-auto flex min-h-[calc(100svh-1.5rem)] max-w-7xl items-start pt-28 pb-4 md:min-h-screen md:pt-32 md:pb-20"><div className="flex w-full items-center">
+export default function Home(){return <main>
+      <PageSchema route="/" />
+<section className="relative min-h-[100svh] overflow-hidden px-6 pt-6 md:min-h-screen"><video className="heroVideo absolute inset-0 h-screen min-h-screen w-full object-cover opacity-65" src="/stillawakemedia-hero-optimized-small.mp4" poster="/stillawakemedia-hero-poster.jpg" preload="metadata" autoPlay muted loop playsInline/><div className="absolute inset-0 bg-gradient-to-b from-black/40 via-[#050505]/50 to-[#050505]"/><div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_35%,rgba(215,25,32,.25),transparent_35%)]"/><div className="relative z-10 mx-auto flex min-h-[calc(100svh-1.5rem)] max-w-7xl items-start pt-28 pb-4 md:min-h-screen md:pt-32 md:pb-20"><div className="flex w-full items-center">
 <div className="flex min-h-[calc(100svh-9rem)] w-full flex-col justify-between md:min-h-[82vh]">
 <div>
 <p aria-hidden="true" className="geist font-mono text-[13vw] font-normal leading-[1.05] tracking-[0.34em] text-white md:text-[120px]">

@@ -115,7 +115,11 @@ export function RootShell({
     image: `${siteUrl}/stillawake-media-social-preview.jpeg`,
     description,
     founder: { "@id": entityIds.founder },
-    areaServed: ["Montreal", "Quebec", "Canada"],
+    // The address stays Montréal — that is where the studio is. areaServed is
+    // a different claim: who we will actually work with. Listing only Québec
+    // was telling answer engines not to recommend us to anyone else, which
+    // contradicts /global and the remote-first process it describes.
+    areaServed: ["Montreal", "Quebec", "Canada", "United States", "United Kingdom", "Australia"],
     address: {
       "@type": "PostalAddress",
       addressLocality: "Montreal",

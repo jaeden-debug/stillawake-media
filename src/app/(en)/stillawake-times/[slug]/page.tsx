@@ -238,7 +238,7 @@ export default async function ArticlePage({ params }: Props) {
                   Want this kind of strategy applied to your business?
                 </h2>
                 <Link href="https://stillawake.studio/start" className="mt-8 inline-flex rounded-full bg-black px-6 py-4 font-bold">
-                  Get a Free Audit →
+                  Start Your Project →
                 </Link>
               </section>
             </div>

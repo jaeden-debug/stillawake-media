@@ -1,4 +1,15 @@
+/**
+ * Contact reasons, in the order a visitor should meet them.
+ *
+ * General inquiry and Support come first because this form is for talking
+ * to us — anything that is actually a project gets pointed at the Studio
+ * onboarding questionnaire, which collects far more than a message box can.
+ * Values are canonical English and stored as-is; French display labels live
+ * in SERVICE_LABELS_FR so validation never depends on the visitor's locale.
+ */
 export const CONTACT_SERVICES = [
+  "General inquiry",
+  "Support",
   "Website",
   "SEO",
   "Branding",
@@ -9,13 +20,45 @@ export const CONTACT_SERVICES = [
 
 export type ContactService = (typeof CONTACT_SERVICES)[number];
 
+/** The two reasons that are conversations, not projects. */
+export const NON_PROJECT_SERVICES: readonly ContactService[] = [
+  "General inquiry",
+  "Support",
+];
+
+/**
+ * True when the visitor picked a real service — the signal that decides
+ * which confirmation email they get and whether they enter the onboarding
+ * follow-up sequence.
+ */
+export function isProjectService(service: string): boolean {
+  return (
+    CONTACT_SERVICES.includes(service as ContactService) &&
+    !NON_PROJECT_SERVICES.includes(service as ContactService)
+  );
+}
+
+export const SERVICE_LABELS_FR: Record<ContactService, string> = {
+  "General inquiry": "Demande générale",
+  Support: "Soutien technique",
+  Website: "Site web",
+  SEO: "SEO",
+  Branding: "Image de marque",
+  "AI automation": "Automatisation IA",
+  "Software/App": "Logiciel / application",
+  Shopify: "Shopify",
+};
+
 export type ContactSubmission = {
   name: string;
   email: string;
   service: ContactService;
   message: string;
+  /** Honeypot — a real submission always leaves this empty. */
   projectReference: string;
   formStartedAt: number;
+  /** Which site the form was submitted from, so replies match. */
+  locale: "en" | "fr";
 };
 
 type ValidationResult =
@@ -29,6 +72,7 @@ const ALLOWED_FIELDS = new Set([
   "message",
   "projectReference",
   "formStartedAt",
+  "locale",
 ]);
 const UNSAFE_CONTROL_CHARACTERS = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/u;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/u;
@@ -54,7 +98,7 @@ export function validateContactSubmission(input: unknown): ValidationResult {
     return { success: false, reason: "unexpected_field" };
   }
 
-  const { name, email, service, message, projectReference, formStartedAt } = input;
+  const { name, email, service, message, projectReference, formStartedAt, locale } = input;
 
   if (typeof name !== "string") return { success: false, reason: "invalid_name" };
   if (typeof email !== "string") return { success: false, reason: "invalid_email" };
@@ -96,6 +140,10 @@ export function validateContactSubmission(input: unknown): ValidationResult {
     return { success: false, reason: "excessive_urls" };
   }
 
+  // Absent or unrecognised locale falls back to English rather than failing:
+  // a missing display preference must never cost us an enquiry.
+  const normalizedLocale = locale === "fr" ? "fr" : "en";
+
   return {
     success: true,
     data: {
@@ -105,6 +153,7 @@ export function validateContactSubmission(input: unknown): ValidationResult {
       message: normalizedMessage,
       projectReference: normalizedReference,
       formStartedAt,
+      locale: normalizedLocale,
     },
   };
 }

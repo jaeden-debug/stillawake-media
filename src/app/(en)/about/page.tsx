@@ -241,7 +241,7 @@ export default function About() {
             </div>
 
             <Link href="https://stillawake.studio/start" className="inline-flex rounded-full bg-black px-7 py-4 font-bold text-white transition hover:scale-[1.02]">
-              Get a Free Audit →
+              Start Your Project →
             </Link>
           </div>
         </div>

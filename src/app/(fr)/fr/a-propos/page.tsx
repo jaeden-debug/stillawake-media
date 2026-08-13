@@ -207,7 +207,7 @@ export default function APropos() {
             </div>
 
             <Link href="https://stillawake.studio/fr/demarrer" className="inline-flex rounded-full bg-black px-7 py-4 font-bold text-white transition hover:scale-[1.02]">
-              Obtenir un audit gratuit →
+              Démarrer mon projet →
             </Link>
           </div>
         </div>

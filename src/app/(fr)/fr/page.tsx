@@ -81,7 +81,7 @@ export default function FrHome() {
                 </p>
 
                 <div className="mt-5 flex items-center gap-3">
-                  <Button href="https://stillawake.studio/fr/demarrer">Audit gratuit</Button>
+                  <Button href="https://stillawake.studio/fr/demarrer">Démarrer un projet</Button>
                   <Link
                     href="/fr/realisations"
                     className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/75 px-4 py-2.5 text-[13px] font-medium tracking-[-0.02em] text-[#C7B9B9] shadow-2xl backdrop-blur-2xl transition hover:bg-black/90 hover:text-white"
@@ -205,7 +205,7 @@ export default function FrHome() {
             Commencez à bâtir avant que vos concurrents se réveillent.
           </h2>
           <Link href="https://stillawake.studio/fr/demarrer" className="mt-8 inline-flex rounded-full bg-black px-6 py-4 font-bold">
-            Obtenir un audit gratuit →
+            Démarrer mon projet →
           </Link>
         </div>
       </section>

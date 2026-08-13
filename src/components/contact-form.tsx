@@ -1,27 +1,39 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { CONTACT_SERVICES } from "@/lib/contact/schema";
+import { CONTACT_SERVICES, SERVICE_LABELS_FR } from "@/lib/contact/schema";
 import { acquireSubmissionLock } from "@/lib/contact/submission-lock";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
 type FormLabels = {
-  name: string; email: string; message: string; submit: string; sending: string;
+  name: string; email: string; service: string; message: string;
+  messagePlaceholder: string; submit: string; sending: string;
   sent: string; failed: string;
+  serviceLabels?: Record<string, string>;
 };
 const EN_LABELS: FormLabels = {
-  name: "Name", email: "Email", message: "Message", submit: "Request Free Audit",
-  sending: "Sending...", sent: "Message sent. We’ll review it shortly.",
+  name: "Name", email: "Email", service: "Reason for contact", message: "Message",
+  messagePlaceholder: "Tell us what you need.",
+  // No longer "Request Free Audit": this form is a conversation, and a real
+  // project is handed to the Studio onboarding questionnaire instead.
+  submit: "Send message",
+  sending: "Sending...", sent: "Message sent. Check your inbox — we’ve sent you a confirmation.",
   failed: "Message failed to send. Please try again.",
 };
 export const FR_LABELS: FormLabels = {
-  name: "Nom", email: "Courriel", message: "Message", submit: "Demander un audit gratuit",
-  sending: "Envoi en cours...", sent: "Message envoyé. Nous vous répondrons rapidement.",
+  name: "Nom", email: "Courriel", service: "Motif du contact", message: "Message",
+  messagePlaceholder: "Dites-nous ce dont vous avez besoin.",
+  submit: "Envoyer le message",
+  sending: "Envoi en cours...", sent: "Message envoyé. Vérifiez votre boîte de réception — une confirmation vous attend.",
   failed: "L'envoi a échoué. Veuillez réessayer.",
+  serviceLabels: SERVICE_LABELS_FR,
 };
 
-export function ContactForm({ labels = EN_LABELS }: { labels?: FormLabels } = {}) {
+export function ContactForm({
+  labels = EN_LABELS,
+  locale = "en",
+}: { labels?: FormLabels; locale?: "en" | "fr" } = {}) {
   const [status, setStatus] = useState<Status>("idle");
   const [notice, setNotice] = useState("");
   const [formStartedAt, setFormStartedAt] = useState(() => Date.now());
@@ -51,6 +63,7 @@ export function ContactForm({ labels = EN_LABELS }: { labels?: FormLabels } = {}
           message: formData.get("message"),
           projectReference: formData.get("projectReference"),
           formStartedAt,
+          locale,
         }),
       });
 
@@ -101,22 +114,29 @@ export function ContactForm({ labels = EN_LABELS }: { labels?: FormLabels } = {}
       </label>
 
       <label className="grid gap-2">
-        <span className="text-sm text-[#C7B9B9]">Service</span>
+        <span className="text-sm text-[#C7B9B9]">{labels.service}</span>
         <select
           name="service"
           className="rounded-2xl border border-white/10 bg-black/40 p-4"
-          defaultValue="Website"
+          // Defaults to General inquiry: this form is for talking to us.
+          // Picking a real service routes them into Studio onboarding.
+          defaultValue="General inquiry"
         >
-          {CONTACT_SERVICES.map((service) => <option key={service}>{service}</option>)}
+          {CONTACT_SERVICES.map((service) => (
+            <option key={service} value={service}>
+              {labels.serviceLabels?.[service] ?? service}
+            </option>
+          ))}
         </select>
       </label>
 
       <label className="grid gap-2">
-        <span className="text-sm text-[#C7B9B9]">What are you building?</span>
+        <span className="text-sm text-[#C7B9B9]">{labels.message}</span>
         <textarea
           name="message"
           required
           maxLength={5_000}
+          placeholder={labels.messagePlaceholder}
           className="min-h-36 rounded-2xl border border-white/10 bg-black/40 p-4"
         />
       </label>

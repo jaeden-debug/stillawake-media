@@ -54,7 +54,7 @@ export default async function ContactFr() {
                 )}`}
               </p>
             </div>
-            <ContactForm labels={FR_LABELS} />
+            <ContactForm labels={FR_LABELS} locale="fr" />
           </div>
         </div>
       </section>

@@ -244,7 +244,7 @@ export async function CmsArticle({
                   href={locale === "fr" ? "/fr/contact" : "/contact"}
                   className="mt-8 inline-flex rounded-full bg-black px-6 py-4 font-bold"
                 >
-                  {locale === "fr" ? "Obtenir un audit gratuit →" : "Get a Free Audit →"}
+                  {locale === "fr" ? "Démarrer mon projet →" : "Start Your Project →"}
                 </Link>
               </section>
             </div>

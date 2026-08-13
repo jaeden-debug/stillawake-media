@@ -84,7 +84,7 @@ export function Header({ locale = "en" }: { locale?: "en" | "fr" }) {
               onClick={() => setOpen(false)}
               className="rounded-full border border-[#D71920]/50 bg-[#D71920]/20 px-4 py-2 text-sm"
             >
-              {locale === "fr" ? "Audit gratuit" : "Free Audit"}
+              {locale === "fr" ? "Démarrer un projet" : "Start a Project"}
             </Link>
 
             <button
@@ -213,7 +213,7 @@ export function AuditCta() {
           href="https://stillawake.studio/start"
           className="mt-10 inline-flex rounded-full bg-white px-7 py-4 text-sm font-bold text-black"
         >
-          Get a Free Audit →
+          Start Your Project →
         </Link>
       </div>
     </section>

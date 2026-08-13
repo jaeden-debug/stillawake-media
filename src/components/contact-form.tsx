@@ -1,7 +1,13 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { CONTACT_SERVICES, SERVICE_LABELS_FR } from "@/lib/contact/schema";
+import {
+  CONTACT_SERVICES,
+  REFERRAL_LABELS_EN,
+  REFERRAL_LABELS_FR,
+  REFERRAL_SOURCES,
+  SERVICE_LABELS_FR,
+} from "@/lib/contact/schema";
 import { acquireSubmissionLock } from "@/lib/contact/submission-lock";
 
 type Status = "idle" | "sending" | "sent" | "error";
@@ -10,7 +16,9 @@ type FormLabels = {
   name: string; email: string; service: string; message: string;
   messagePlaceholder: string; submit: string; sending: string;
   sent: string; failed: string;
+  referral: string; referralSkip: string;
   serviceLabels?: Record<string, string>;
+  referralLabels?: Record<string, string>;
 };
 const EN_LABELS: FormLabels = {
   name: "Name", email: "Email", service: "Reason for contact", message: "Message",
@@ -20,6 +28,8 @@ const EN_LABELS: FormLabels = {
   submit: "Send message",
   sending: "Sending...", sent: "Message sent. Check your inbox — we’ve sent you a confirmation.",
   failed: "Message failed to send. Please try again.",
+  referral: "How did you find us?", referralSkip: "Rather not say",
+  referralLabels: REFERRAL_LABELS_EN,
 };
 export const FR_LABELS: FormLabels = {
   name: "Nom", email: "Courriel", service: "Motif du contact", message: "Message",
@@ -27,7 +37,9 @@ export const FR_LABELS: FormLabels = {
   submit: "Envoyer le message",
   sending: "Envoi en cours...", sent: "Message envoyé. Vérifiez votre boîte de réception — une confirmation vous attend.",
   failed: "L'envoi a échoué. Veuillez réessayer.",
+  referral: "Comment nous avez-vous trouvés?", referralSkip: "Je préfère ne pas le dire",
   serviceLabels: SERVICE_LABELS_FR,
+  referralLabels: REFERRAL_LABELS_FR,
 };
 
 export function ContactForm({
@@ -64,6 +76,7 @@ export function ContactForm({
           projectReference: formData.get("projectReference"),
           formStartedAt,
           locale,
+          referralSource: formData.get("referralSource") || "",
         }),
       });
 
@@ -125,6 +138,23 @@ export function ContactForm({
           {CONTACT_SERVICES.map((service) => (
             <option key={service} value={service}>
               {labels.serviceLabels?.[service] ?? service}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label className="grid gap-2">
+        <span className="text-sm text-[#C7B9B9]">{labels.referral}</span>
+        <select
+          name="referralSource"
+          defaultValue=""
+          className="rounded-2xl border border-white/10 bg-black/40 p-4"
+        >
+          {/* Optional: attribution must never be a barrier to enquiring. */}
+          <option value="">{labels.referralSkip}</option>
+          {REFERRAL_SOURCES.map((s) => (
+            <option key={s} value={s}>
+              {(labels.referralLabels ?? REFERRAL_LABELS_EN)[s]}
             </option>
           ))}
         </select>

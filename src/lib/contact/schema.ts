@@ -38,6 +38,55 @@ export function isProjectService(service: string): boolean {
   );
 }
 
+/**
+ * How they found us, asked at first contact.
+ *
+ * Studio asks the same question, but only people who finish onboarding
+ * ever answer it — the group we already know most about. Asking here
+ * covers everyone. Values match Studio's keys so the two can be counted
+ * together.
+ */
+export const REFERRAL_SOURCES = [
+  "referral",
+  "google",
+  "ai",
+  "instagram",
+  "tiktok",
+  "linkedin",
+  "facebook",
+  "past_client",
+  "saw_work",
+  "other",
+] as const;
+
+export type ReferralSource = (typeof REFERRAL_SOURCES)[number];
+
+export const REFERRAL_LABELS_EN: Record<ReferralSource, string> = {
+  referral: "Someone referred me",
+  google: "Google / search",
+  ai: "ChatGPT / an AI assistant",
+  instagram: "Instagram",
+  tiktok: "TikTok",
+  linkedin: "LinkedIn",
+  facebook: "Facebook",
+  past_client: "We've worked together before",
+  saw_work: "I saw something you built",
+  other: "Somewhere else",
+};
+
+export const REFERRAL_LABELS_FR: Record<ReferralSource, string> = {
+  referral: "Quelqu'un m'a référé",
+  google: "Google / recherche",
+  ai: "ChatGPT / un assistant IA",
+  instagram: "Instagram",
+  tiktok: "TikTok",
+  linkedin: "LinkedIn",
+  facebook: "Facebook",
+  past_client: "On a déjà travaillé ensemble",
+  saw_work: "J'ai vu quelque chose que vous avez bâti",
+  other: "Ailleurs",
+};
+
 export const SERVICE_LABELS_FR: Record<ContactService, string> = {
   "General inquiry": "Demande générale",
   Support: "Soutien technique",
@@ -59,6 +108,8 @@ export type ContactSubmission = {
   formStartedAt: number;
   /** Which site the form was submitted from, so replies match. */
   locale: "en" | "fr";
+  /** How they found us. Optional — never block an enquiry over analytics. */
+  referralSource: ReferralSource | "";
 };
 
 type ValidationResult =
@@ -73,6 +124,7 @@ const ALLOWED_FIELDS = new Set([
   "projectReference",
   "formStartedAt",
   "locale",
+  "referralSource",
 ]);
 const UNSAFE_CONTROL_CHARACTERS = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/u;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/u;
@@ -98,7 +150,8 @@ export function validateContactSubmission(input: unknown): ValidationResult {
     return { success: false, reason: "unexpected_field" };
   }
 
-  const { name, email, service, message, projectReference, formStartedAt, locale } = input;
+  const { name, email, service, message, projectReference, formStartedAt, locale, referralSource } =
+    input;
 
   if (typeof name !== "string") return { success: false, reason: "invalid_name" };
   if (typeof email !== "string") return { success: false, reason: "invalid_email" };
@@ -143,6 +196,11 @@ export function validateContactSubmission(input: unknown): ValidationResult {
   // Absent or unrecognised locale falls back to English rather than failing:
   // a missing display preference must never cost us an enquiry.
   const normalizedLocale = locale === "fr" ? "fr" : "en";
+  // Attribution is nice to have, never a gate: an unrecognised or absent
+  // value becomes empty rather than rejecting the enquiry.
+  const normalizedReferral = REFERRAL_SOURCES.includes(referralSource as ReferralSource)
+    ? (referralSource as ReferralSource)
+    : "";
 
   return {
     success: true,
@@ -154,6 +212,7 @@ export function validateContactSubmission(input: unknown): ValidationResult {
       projectReference: normalizedReference,
       formStartedAt,
       locale: normalizedLocale,
+      referralSource: normalizedReferral,
     },
   };
 }

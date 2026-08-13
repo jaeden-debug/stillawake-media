@@ -14,6 +14,7 @@ const base = {
   message: "We need a new storefront before the holidays.",
   projectReference: "",
   formStartedAt: Date.now(),
+  referralSource: "" as const,
 };
 
 describe("service ordering", () => {
@@ -137,5 +138,66 @@ describe("follow-up", () => {
     const mail = followUpEmail("Dana Reyes", "Site web", "fr");
     expect(mail.html).toMatch(/\/fr\/demarrer/);
     expect(mail.text).toMatch(/répondez/i);
+  });
+});
+
+describe("studio prefill hand-off", () => {
+  it("carries name, email and mapped project type", () => {
+    const mail = clientConfirmation({ ...base, service: "Shopify", locale: "en" }, "en");
+    // Shopify maps to Studio's ecommerce project type.
+    expect(mail.html).toMatch(/type=ecommerce/);
+    expect(mail.html).toMatch(/name=Dana\+Reyes/);
+    expect(mail.html).toMatch(/email=dana%40example\.com/);
+  });
+
+  it("maps each service to the right Studio type", () => {
+    const t = (service: string) => {
+      const m = clientConfirmation({ ...base, service, locale: "en" } as never, "en");
+      return decodeURIComponent((m.text.match(/type=([a-z_]+)/) ?? [])[1] ?? "");
+    };
+    expect(t("Website")).toBe("website");
+    expect(t("Branding")).toBe("brand_experience");
+    expect(t("AI automation")).toBe("ai_system");
+    expect(t("Software/App")).toBe("web_app");
+  });
+
+  it("omits the type for SEO rather than guessing a build", () => {
+    const mail = clientConfirmation({ ...base, service: "SEO", locale: "en" }, "en");
+    expect(mail.html).not.toMatch(/type=/);
+    // Name and email still carry — only the guess is withheld.
+    expect(mail.html).toMatch(/name=Dana/);
+  });
+
+  it("prefills the French route too", () => {
+    const mail = clientConfirmation({ ...base, service: "Website", locale: "fr" }, "fr");
+    expect(mail.html).toMatch(/\/fr\/demarrer\?/);
+    expect(mail.html).toMatch(/type=website/);
+  });
+});
+
+describe("attribution", () => {
+  it("accepts a known source and rejects junk without failing the enquiry", () => {
+    const ok = validateContactSubmission({ ...base, service: "Support", referralSource: "ai" });
+    expect(ok.success && ok.data.referralSource).toBe("ai");
+    const junk = validateContactSubmission({
+      ...base,
+      service: "Support",
+      referralSource: "hacker",
+    });
+    expect(junk.success).toBe(true);
+    expect(junk.success && junk.data.referralSource).toBe("");
+    const absent = validateContactSubmission({ ...base, service: "Support" });
+    expect(absent.success && absent.data.referralSource).toBe("");
+  });
+
+  it("shows the operator how they found us", () => {
+    const mail = operatorNotification({ ...base, service: "SEO", referralSource: "ai" } as never);
+    expect(mail.html).toMatch(/Found us via/);
+    expect(mail.html).toMatch(/ChatGPT/);
+  });
+
+  it("says so plainly when they declined to answer", () => {
+    const mail = operatorNotification({ ...base, service: "SEO", locale: "en" });
+    expect(mail.html).toMatch(/Not answered/);
   });
 });

@@ -42,6 +42,7 @@ export async function recordSubmission(
       message: submission.message,
       language: locale,
       project_reference: submission.projectReference || null,
+      referral_source: submission.referralSource || null,
       // A project enquiry is "prompted" the moment we email them the form.
       status: project ? "prompted" : "new",
     })

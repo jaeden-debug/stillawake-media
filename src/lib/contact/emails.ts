@@ -1,4 +1,9 @@
-import { isProjectService, type ContactSubmission } from "./schema";
+import {
+  REFERRAL_LABELS_EN,
+  isProjectService,
+  type ContactSubmission,
+  type ReferralSource,
+} from "./schema";
 
 /**
  * The two emails a contact submission produces, and how they differ.
@@ -16,9 +21,37 @@ const BRAND = "#D71920";
 const BG = "#050505";
 const PANEL = "#0b0b0b";
 
-export function studioStartUrl(locale: "en" | "fr" = "en"): string {
+/**
+ * Which Studio project type a contact-form service corresponds to, so the
+ * questionnaire can skip its first question. SEO and Support have no
+ * equivalent build type and are deliberately absent — better to let the
+ * client choose than to guess wrong and make them back out.
+ */
+const SERVICE_TO_PROJECT_TYPE: Record<string, string> = {
+  Website: "website",
+  Shopify: "ecommerce",
+  Branding: "brand_experience",
+  "AI automation": "ai_system",
+  "Software/App": "web_app",
+};
+
+export function studioStartUrl(
+  locale: "en" | "fr" = "en",
+  prefill?: { name?: string; email?: string; service?: string }
+): string {
   const base = process.env.STUDIO_START_URL || "https://stillawake.studio/start";
-  return locale === "fr" ? base.replace(/\/start$/, "/fr/demarrer") : base;
+  const url = locale === "fr" ? base.replace(/\/start$/, "/fr/demarrer") : base;
+  if (!prefill) return url;
+
+  // Carry what they already told us. Re-typing a name and email they just
+  // entered is the single biggest drop-off on this hand-off.
+  const q = new URLSearchParams();
+  if (prefill.name) q.set("name", prefill.name.slice(0, 100));
+  if (prefill.email) q.set("email", prefill.email.slice(0, 254));
+  const type = prefill.service ? SERVICE_TO_PROJECT_TYPE[prefill.service] : undefined;
+  if (type) q.set("type", type);
+  const qs = q.toString();
+  return qs ? `${url}?${qs}` : url;
 }
 
 function esc(s: string): string {
@@ -85,8 +118,13 @@ export function clientConfirmation(
     };
   }
 
-  // A real service — hand them the onboarding questionnaire.
-  const url = studioStartUrl(locale);
+  // A real service — hand them the onboarding questionnaire, carrying the
+  // details they just typed so they never enter them twice.
+  const url = studioStartUrl(locale, {
+    name: submission.name,
+    email: submission.email,
+    service: submission.service,
+  });
   const paragraphs = fr
     ? [
         `Merci ${esc(first)} — on a bien reçu votre demande concernant <strong>${esc(submission.service)}</strong>.`,
@@ -128,7 +166,10 @@ export function operatorNotification(
   const statusUrl = `${adminBase}/admin/clients${opts.contactId ? `?focus=${opts.contactId}` : ""}`;
 
   const who = `<strong>${esc(submission.name)}</strong> · ${esc(submission.email)}`;
-  const meta = `Reason: ${esc(submission.service)}${opts.locale === "fr" ? " · FR" : ""}`;
+  const found = submission.referralSource
+    ? REFERRAL_LABELS_EN[submission.referralSource as ReferralSource]
+    : "Not answered";
+  const meta = `Reason: ${esc(submission.service)}${opts.locale === "fr" ? " · FR" : ""} · Found us via: <strong>${esc(found)}</strong>`;
   const message = `<span style="color:#e8e0e0">${esc(submission.message).replace(/\n/g, "<br>")}</span>`;
 
   if (!project) {

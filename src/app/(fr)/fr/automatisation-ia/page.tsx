@@ -91,7 +91,7 @@ export default function AutomatisationIaPage() {
             elle-même sans appels de vente — c&apos;est l&apos;automatisation qui fait le travail.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/fr/contact" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">Décrire mon processus</Link>
+            <Link href="https://stillawake.studio/fr/demarrer" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">Décrire mon processus</Link>
             <Link href="/fr/tarifs" className="rounded-full border border-white/15 px-7 py-4 text-sm font-medium transition hover:border-white/40">Voir les tarifs</Link>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function AutomatisationIaPage() {
             <p className="mt-4 leading-8 text-[#C7B9B9]">
               Point de départ typique : une seule automatisation à haut rendement, livrée vite — pas un chantier de
               six mois. Décrivez le processus qui vous coûte le plus de temps dans le{" "}
-              <Link href="/fr/contact" className="text-[#D71920] underline-offset-4 hover:underline">formulaire</Link>,
+              <Link href="https://stillawake.studio/fr/demarrer" className="text-[#D71920] underline-offset-4 hover:underline">formulaire</Link>,
               et la portée écrite vous dira ce que ça vaut d&apos;automatiser.
             </p>
           </div>

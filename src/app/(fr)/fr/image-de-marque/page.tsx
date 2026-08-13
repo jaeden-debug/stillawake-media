@@ -100,7 +100,7 @@ export default function ImageDeMarquePage() {
             concepts de portfolio, des entreprises qui opèrent avec.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/fr/contact" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">Démarrer ma marque</Link>
+            <Link href="https://stillawake.studio/fr/demarrer" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">Démarrer ma marque</Link>
             <Link href="/fr/realisations" className="rounded-full border border-white/15 px-7 py-4 text-sm font-medium transition hover:border-white/40">Voir le portfolio</Link>
           </div>
         </div>
@@ -165,7 +165,7 @@ export default function ImageDeMarquePage() {
               la portée par courriel — jamais d&apos;appel de vente obligatoire. Les projets combinés
               (marque + site) sont chiffrés ensemble, ce qui évite de payer deux fois la phase de découverte.
             </p>
-            <Link href="/fr/contact" className="mt-8 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Obtenir une soumission</Link>
+            <Link href="https://stillawake.studio/fr/demarrer" className="mt-8 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Obtenir une soumission</Link>
           </div>
         </div>
       </section>

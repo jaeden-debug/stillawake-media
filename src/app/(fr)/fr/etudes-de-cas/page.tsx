@@ -104,7 +104,7 @@ export default function EtudesDeCas() {
           </div>
 
           <div className="mt-10 flex flex-wrap gap-3">
-            <Link href="/fr/contact" className="rounded-full bg-[#D71920] px-6 py-4 font-bold">
+            <Link href="https://stillawake.studio/fr/demarrer" className="rounded-full bg-[#D71920] px-6 py-4 font-bold">
               Démarrer un projet →
             </Link>
             <Link href="/fr/tarifs" className="rounded-full border border-white/10 px-6 py-4 font-bold text-[#C7B9B9] transition hover:text-white">

@@ -78,7 +78,7 @@ export default function AeoPage() {
             anywhere.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/contact" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">
+            <Link href="https://stillawake.studio/start" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">
               Request an AI Visibility Audit
             </Link>
             <Link href="/seo-montreal" className="rounded-full border border-white/15 px-7 py-4 text-sm font-medium transition hover:border-white/40">
@@ -135,7 +135,7 @@ export default function AeoPage() {
               intake; you&apos;ll get a written scope, timeline, and fixed price by email. No discovery call required.
               AEO pairs naturally with our <Link href="/seo-montreal" className="text-[#D71920] underline-offset-4 hover:underline">SEO plans from $600 CAD/month</Link>.
             </p>
-            <Link href="/contact" className="mt-8 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">
+            <Link href="https://stillawake.studio/start" className="mt-8 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">
               Start the Intake
             </Link>
           </div>

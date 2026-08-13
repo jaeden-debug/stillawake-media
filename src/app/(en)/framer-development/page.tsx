@@ -80,7 +80,7 @@ export default function Page() {
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
-            <Link href="/contact" className="rounded-full bg-[#D71920] px-6 py-4 font-bold">
+            <Link href="https://stillawake.studio/start" className="rounded-full bg-[#D71920] px-6 py-4 font-bold">
               Start a Project →
             </Link>
 

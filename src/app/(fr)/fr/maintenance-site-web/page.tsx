@@ -89,7 +89,7 @@ export default function MaintenanceSiteWebPage() {
             depuis Montréal.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/fr/contact" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">
+            <Link href="https://stillawake.studio/fr/demarrer" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">
               Obtenir de l&apos;aide maintenant
             </Link>
             <Link href="/fr/tarifs" className="rounded-full border border-white/15 px-7 py-4 text-sm font-medium transition hover:border-white/40">
@@ -142,7 +142,7 @@ export default function MaintenanceSiteWebPage() {
               Mises à jour, surveillance, sauvegardes et petits correctifs, avec un prix mensuel fixe établi selon votre
               site et votre trafic. Décrivez-nous votre site : vous recevrez une proposition écrite — sans appel.
             </p>
-            <Link href="/fr/contact" className="mt-6 inline-flex rounded-full border border-white/15 px-6 py-3 text-sm transition hover:border-[#D71920]/60">
+            <Link href="https://stillawake.studio/fr/demarrer" className="mt-6 inline-flex rounded-full border border-white/15 px-6 py-3 text-sm transition hover:border-[#D71920]/60">
               Demander une soumission
             </Link>
           </div>

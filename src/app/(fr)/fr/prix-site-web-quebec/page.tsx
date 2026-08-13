@@ -116,7 +116,7 @@ export default function PrixSiteWebQuebecPage() {
               <strong className="text-white">250 $ à 600 $ CAD</strong> (boutique en ligne), paiement unique. Tous les
               détails sur la page <Link href="/fr/tarifs" className="text-[#D71920] underline-offset-4 hover:underline">Tarifs</Link>.
             </p>
-            <Link href="/fr/contact" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">
+            <Link href="https://stillawake.studio/fr/demarrer" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">
               Obtenir une soumission écrite — sans appel
             </Link>
           </div>

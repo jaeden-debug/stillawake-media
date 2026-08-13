@@ -71,7 +71,7 @@ export default function SeoMontrealPage() {
 
           <div className="mt-12 flex flex-wrap gap-4">
             <Link
-              href="/contact"
+              href="https://stillawake.studio/start"
               className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90"
             >
               Start Your SEO Project
@@ -752,7 +752,7 @@ export default function SeoMontrealPage() {
           <p>
             If your business is ready to build a modern SEO system designed for
             long-term growth, visibility, and conversion performance,{" "}
-            <Link href="/contact">start your project</Link>.
+            <Link href="https://stillawake.studio/start">start your project</Link>.
           </p>
 
         </article>

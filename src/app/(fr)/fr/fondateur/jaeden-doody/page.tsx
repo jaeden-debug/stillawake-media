@@ -184,7 +184,7 @@ export default function Page() {
           </div>
 
           <div className="mt-10 flex flex-wrap gap-3">
-            <Link href="/fr/contact" className="rounded-full bg-[#D71920] px-6 py-4 font-bold">
+            <Link href="https://stillawake.studio/fr/demarrer" className="rounded-full bg-[#D71920] px-6 py-4 font-bold">
               Travailler avec StillAwake →
             </Link>
 
@@ -770,7 +770,7 @@ export default function Page() {
             de vente.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/fr/contact" className="rounded-full bg-white px-7 py-4 text-sm font-bold text-black">
+            <Link href="https://stillawake.studio/fr/demarrer" className="rounded-full bg-white px-7 py-4 text-sm font-bold text-black">
               Démarrer un projet →
             </Link>
             <Link href="/fr/etudes-de-cas" className="rounded-full border border-white/20 px-7 py-4 text-sm font-bold text-white">

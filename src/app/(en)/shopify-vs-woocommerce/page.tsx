@@ -115,7 +115,7 @@ export default function ShopifyVsWooPage() {
               if it breaks, our <Link href="/website-maintenance" className="text-[#D71920] underline-offset-4 hover:underline">ecommerce emergency support</Link> has
               published tiers. If your store is inseparable from a large WordPress content operation and someone
               technical owns it: WooCommerce is legitimate. Unsure which fits your case?{" "}
-              <Link href="/contact" className="text-[#D71920] underline-offset-4 hover:underline">Describe your store</Link> and
+              <Link href="https://stillawake.studio/start" className="text-[#D71920] underline-offset-4 hover:underline">Describe your store</Link> and
               you&apos;ll get a written recommendation — even if the answer is &quot;stay where you are.&quot;
             </p>
           </div>

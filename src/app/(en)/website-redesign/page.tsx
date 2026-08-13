@@ -73,7 +73,7 @@ export default function WebsiteRedesignPage() {
             that silently deletes the URLs Google trusted. We treat every redesign as a migration first.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/contact" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">
+            <Link href="https://stillawake.studio/start" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">
               Get a Redesign Plan
             </Link>
             <Link href="/website-cost-canada" className="rounded-full border border-white/15 px-7 py-4 text-sm font-medium transition hover:border-white/40">

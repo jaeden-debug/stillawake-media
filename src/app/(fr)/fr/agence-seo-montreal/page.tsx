@@ -91,7 +91,7 @@ export default function AgenceSeoMontrealPage() {
             mesurables.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/fr/contact" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">
+            <Link href="https://stillawake.studio/fr/demarrer" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">
               Démarrer mon SEO
             </Link>
             <Link href="/fr/realisations" className="rounded-full border border-white/15 px-7 py-4 text-sm font-medium transition hover:border-white/40">
@@ -330,7 +330,7 @@ export default function AgenceSeoMontrealPage() {
               technique, chaque page utile, chaque position gagnée continue de travailler des mois plus tard. Chez
               Blackwater, des commandes arrivent chaque semaine de la recherche organique — sans un dollar de
               publicité. C&apos;est ça, l&apos;actif. Décrivez votre situation dans notre{" "}
-              <Link href="/fr/contact" className="text-[#D71920] underline-offset-4 hover:underline">formulaire</Link>{" "}
+              <Link href="https://stillawake.studio/fr/demarrer" className="text-[#D71920] underline-offset-4 hover:underline">formulaire</Link>{" "}
               et recevez une évaluation écrite : où vous êtes, ce qui bloque, et ce que le forfait ferait dans votre
               cas — sans appel de vente.
             </p>

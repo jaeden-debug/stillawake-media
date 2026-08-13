@@ -237,7 +237,7 @@ export default async function ArticlePage({ params }: Props) {
                 <h2 className="geist max-w-3xl text-4xl font-black leading-[.95] tracking-[-0.06em] md:text-6xl">
                   Want this kind of strategy applied to your business?
                 </h2>
-                <Link href="/contact" className="mt-8 inline-flex rounded-full bg-black px-6 py-4 font-bold">
+                <Link href="https://stillawake.studio/start" className="mt-8 inline-flex rounded-full bg-black px-6 py-4 font-bold">
                   Get a Free Audit →
                 </Link>
               </section>

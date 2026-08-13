@@ -119,7 +119,7 @@ export default function WebsiteCostCanadaPage() {
               <strong className="text-white">$250–$600 CAD one-time</strong> (ecommerce). Full details on the{" "}
               <Link href="/pricing" className="text-[#D71920] underline-offset-4 hover:underline">pricing page</Link>.
             </p>
-            <Link href="/contact" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">
+            <Link href="https://stillawake.studio/start" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">
               Get a Written Quote — No Call Required
             </Link>
           </div>

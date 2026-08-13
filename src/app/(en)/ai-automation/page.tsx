@@ -104,7 +104,7 @@ export default function AIAutomationPage() {
           <div className="mt-10 flex flex-wrap gap-4">
 
             <Link
-              href="/contact"
+              href="https://stillawake.studio/start"
               className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-bold text-white transition hover:scale-[1.02]"
             >
               Start a Project →
@@ -280,7 +280,7 @@ export default function AIAutomationPage() {
             <div className="mt-10 flex flex-wrap gap-4">
 
               <Link
-                href="/contact"
+                href="https://stillawake.studio/start"
                 className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-bold text-white"
               >
                 Start a Project →

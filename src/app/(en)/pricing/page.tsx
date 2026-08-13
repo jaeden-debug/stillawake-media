@@ -137,7 +137,7 @@ export default async function PricingPage() {
 
           <div className="mt-16 rounded-[2rem] bg-[#D71920] p-10">
             <h2 className="geist max-w-2xl text-4xl font-black tracking-[-0.06em]">Skip the sales call. Tell us what you&apos;re building.</h2>
-            <Link href="/contact" className="mt-6 inline-flex rounded-full bg-black px-6 py-4 font-bold">Start a Project →</Link>
+            <Link href="https://stillawake.studio/start" className="mt-6 inline-flex rounded-full bg-black px-6 py-4 font-bold">Start a Project →</Link>
           </div>
         </div>
       </section>

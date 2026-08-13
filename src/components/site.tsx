@@ -210,7 +210,7 @@ export function AuditCta() {
         </p>
 
         <Link
-          href="/contact"
+          href="https://stillawake.studio/start"
           className="mt-10 inline-flex rounded-full bg-white px-7 py-4 text-sm font-bold text-black"
         >
           Get a Free Audit →

@@ -167,7 +167,7 @@ export default function FicheGoogleEntreprisePage() {
               appel de vente.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/fr/contact" className="rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Évaluer ma visibilité locale</Link>
+              <Link href="https://stillawake.studio/fr/demarrer" className="rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Évaluer ma visibilité locale</Link>
               <Link href="/fr/agence-seo-montreal" className="rounded-full border border-white/15 px-6 py-3 text-sm font-medium transition hover:border-white/40">Voir les forfaits SEO</Link>
             </div>
           </div>

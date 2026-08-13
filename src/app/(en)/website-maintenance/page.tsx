@@ -85,7 +85,7 @@ export default function WebsiteMaintenancePage() {
             emergency help — remotely, across Canada, from Montréal.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/contact" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">
+            <Link href="https://stillawake.studio/start" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">
               Get Help Now
             </Link>
             <Link href="/pricing" className="rounded-full border border-white/15 px-7 py-4 text-sm font-medium transition hover:border-white/40">
@@ -139,7 +139,7 @@ export default function WebsiteMaintenancePage() {
               risk profile rather than sold as a one-size-fits-all plan. Tell us about your site and you&apos;ll get a
               written plan with a fixed monthly price. No call required.
             </p>
-            <Link href="/contact" className="mt-6 inline-flex rounded-full border border-white/15 px-6 py-3 text-sm transition hover:border-[#D71920]/60">
+            <Link href="https://stillawake.studio/start" className="mt-6 inline-flex rounded-full border border-white/15 px-6 py-3 text-sm transition hover:border-[#D71920]/60">
               Request a Care Plan Quote
             </Link>
           </div>

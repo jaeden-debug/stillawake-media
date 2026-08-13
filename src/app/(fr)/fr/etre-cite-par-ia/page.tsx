@@ -170,7 +170,7 @@ export default function EtreCiteParIaPage() {
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link href="/fr/referencement-ia" className="rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Le service référencement IA</Link>
-              <Link href="/fr/contact" className="rounded-full border border-white/15 px-6 py-3 text-sm font-medium transition hover:border-white/40">Évaluer ma visibilité IA</Link>
+              <Link href="https://stillawake.studio/fr/demarrer" className="rounded-full border border-white/15 px-6 py-3 text-sm font-medium transition hover:border-white/40">Évaluer ma visibilité IA</Link>
             </div>
           </div>
 

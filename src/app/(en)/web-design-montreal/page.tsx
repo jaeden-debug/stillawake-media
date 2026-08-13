@@ -209,7 +209,7 @@ export default function Page() {
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/contact" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-bold text-white">
+            <Link href="https://stillawake.studio/start" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-bold text-white">
               Start your project →
             </Link>
             <Link href="/work" className="rounded-full border border-white/10 px-7 py-4 text-sm font-bold text-[#C7B9B9]">
@@ -390,7 +390,7 @@ export default function Page() {
             and get a written scope with a fixed price — no sales call required.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/contact" className="rounded-full bg-white px-7 py-4 text-sm font-bold text-black">
+            <Link href="https://stillawake.studio/start" className="rounded-full bg-white px-7 py-4 text-sm font-bold text-black">
               Start your project →
             </Link>
             <Link href="/work" className="rounded-full border border-white/20 px-7 py-4 text-sm font-bold text-white">

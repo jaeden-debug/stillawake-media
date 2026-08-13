@@ -128,7 +128,7 @@ export default async function TarifsPage() {
 
           <div className="mt-16 rounded-[2rem] bg-[#D71920] p-10">
             <h2 className="geist max-w-2xl text-4xl font-black tracking-[-0.06em]">Sautez l&apos;appel de vente. Dites-nous ce que vous bâtissez.</h2>
-            <Link href="/fr/contact" className="mt-6 inline-flex rounded-full bg-black px-6 py-4 font-bold">Démarrer un projet →</Link>
+            <Link href="https://stillawake.studio/fr/demarrer" className="mt-6 inline-flex rounded-full bg-black px-6 py-4 font-bold">Démarrer un projet →</Link>
           </div>
         </div>
       </section>

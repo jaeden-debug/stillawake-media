@@ -77,7 +77,7 @@ export default function RefonteSiteWebPage() {
             confiance. Chez nous, chaque refonte est d&apos;abord une migration.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/fr/contact" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">
+            <Link href="https://stillawake.studio/fr/demarrer" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">
               Obtenir un plan de refonte
             </Link>
             <Link href="/fr/prix-site-web-quebec" className="rounded-full border border-white/15 px-7 py-4 text-sm font-medium transition hover:border-white/40">

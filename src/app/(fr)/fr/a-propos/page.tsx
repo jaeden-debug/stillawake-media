@@ -70,7 +70,7 @@ export default function APropos() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="/fr/contact">Démarrer un projet</Button>
+              <Button href="https://stillawake.studio/fr/demarrer">Démarrer un projet</Button>
               <Link href="/fr/realisations" className="glass inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-[13px] font-medium text-[#C7B9B9] transition hover:bg-white/8 hover:text-white">
                 Voir les réalisations <span className="grid size-7 place-items-center rounded-full bg-white/8 text-white">→</span>
               </Link>
@@ -206,7 +206,7 @@ export default function APropos() {
               </p>
             </div>
 
-            <Link href="/fr/contact" className="inline-flex rounded-full bg-black px-7 py-4 font-bold text-white transition hover:scale-[1.02]">
+            <Link href="https://stillawake.studio/fr/demarrer" className="inline-flex rounded-full bg-black px-7 py-4 font-bold text-white transition hover:scale-[1.02]">
               Obtenir un audit gratuit →
             </Link>
           </div>

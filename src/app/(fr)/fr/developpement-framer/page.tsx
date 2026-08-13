@@ -73,7 +73,7 @@ export default function DeveloppementFramerPage() {
             notre recommandation entre les deux n&apos;a pas de parti pris : on vend les deux.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/fr/contact" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">Décrire mon projet</Link>
+            <Link href="https://stillawake.studio/fr/demarrer" className="rounded-full bg-[#D71920] px-7 py-4 text-sm font-medium transition hover:opacity-90">Décrire mon projet</Link>
             <Link href="/fr/tarifs" className="rounded-full border border-white/15 px-7 py-4 text-sm font-medium transition hover:border-white/40">Voir les tarifs</Link>
           </div>
         </div>
@@ -137,7 +137,7 @@ export default function DeveloppementFramerPage() {
               vente obligatoire. Comparez les approches dans notre{" "}
               <Link href="/fr/prix-site-web-quebec" className="text-[#D71920] underline-offset-4 hover:underline">guide des prix de sites web au Québec</Link>.
             </p>
-            <Link href="/fr/contact" className="mt-8 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Obtenir une soumission</Link>
+            <Link href="https://stillawake.studio/fr/demarrer" className="mt-8 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Obtenir une soumission</Link>
           </div>
         </div>
       </section>

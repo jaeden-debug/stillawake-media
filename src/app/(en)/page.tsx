@@ -13,7 +13,7 @@ STILL<br/><span className="text-[#D71920]">AWAKE</span>
 </p>
 
 <div className="mt-5 flex items-center gap-3">
-<Button href="/contact">Get a Free Audit</Button>
+<Button href="https://stillawake.studio/start">Get a Free Audit</Button>
 <Link href="/portfolio" className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/75 px-4 py-2.5 text-[13px] font-medium tracking-[-0.02em] text-[#C7B9B9] shadow-2xl backdrop-blur-2xl transition hover:bg-black/90 hover:text-white">
 Our Work <span className="grid size-7 place-items-center rounded-full bg-white/[0.08] text-[12px] text-white">→</span>
 </Link>
@@ -72,4 +72,4 @@ We build <span className="text-[#D71920]">bold brands</span>, high-performance w
 </div>
 )}
 </div>
-</Section><Section eyebrow="Portfolio" title="Proof through live digital properties."><PortfolioGrid/><Link className="mt-8 inline-flex text-[#D71920]" href="/portfolio">View full portfolio →</Link></Section><Section eyebrow="StillAwake Times" title="Editorial strategy, web systems, SEO, AI, and premium digital infrastructure."><BlogCards/><Link className="mt-8 inline-flex text-[#D71920]" href="/stillawake-times">Read the magazine →</Link></Section><InternalLinks/><section className="px-6 py-24"><div className="mx-auto max-w-7xl rounded-[2rem] bg-[#D71920] p-10 md:p-16"><h2 className="geist text-5xl font-black tracking-[-0.06em]">Start building before your competitors wake up.</h2><Link href="/contact" className="mt-8 inline-flex rounded-full bg-black px-6 py-4 font-bold">Get a Free Audit →</Link></div></section></main>}
+</Section><Section eyebrow="Portfolio" title="Proof through live digital properties."><PortfolioGrid/><Link className="mt-8 inline-flex text-[#D71920]" href="/portfolio">View full portfolio →</Link></Section><Section eyebrow="StillAwake Times" title="Editorial strategy, web systems, SEO, AI, and premium digital infrastructure."><BlogCards/><Link className="mt-8 inline-flex text-[#D71920]" href="/stillawake-times">Read the magazine →</Link></Section><InternalLinks/><section className="px-6 py-24"><div className="mx-auto max-w-7xl rounded-[2rem] bg-[#D71920] p-10 md:p-16"><h2 className="geist text-5xl font-black tracking-[-0.06em]">Start building before your competitors wake up.</h2><Link href="https://stillawake.studio/start" className="mt-8 inline-flex rounded-full bg-black px-6 py-4 font-bold">Get a Free Audit →</Link></div></section></main>}

@@ -118,7 +118,7 @@ export default function ShopifyVsWooFrPage() {
               et s&apos;il brise, notre <Link href="/fr/maintenance-site-web" className="text-[#D71920] underline-offset-4 hover:underline">dépannage ecommerce</Link> a
               des tarifs affichés. Si votre boutique est indissociable d&apos;une grosse opération de contenu WordPress
               avec un responsable technique : WooCommerce est légitime. Pas certain de votre cas?{" "}
-              <Link href="/fr/contact" className="text-[#D71920] underline-offset-4 hover:underline">Décrivez votre boutique</Link> et
+              <Link href="https://stillawake.studio/fr/demarrer" className="text-[#D71920] underline-offset-4 hover:underline">Décrivez votre boutique</Link> et
               vous recevrez une recommandation écrite — même si la réponse est « restez où vous êtes ».
             </p>
           </div>

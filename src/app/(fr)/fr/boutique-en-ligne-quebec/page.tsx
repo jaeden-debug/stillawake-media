@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "DIY, Shopify, sur mesure : les vraies options pour créer une boutique en ligne au Québec, ce que chacune coûte, et les leçons d'un studio qui opère sa propre boutique — avec un taux de clients récurrents mesuré à 27,8 %.",
   alternates: { canonical: "/fr/boutique-en-ligne-quebec" },
   openGraph: {
-    title: "Créer une boutique en ligne au Québec : le guide honnête | StillAwake Media",
+    title: "Créer une boutique en ligne au Québec : le guide honnête",
     description: "DIY, Shopify ou sur mesure — les vraies options, les vrais coûts, et l'expérience d'un opérateur.",
     url,
     type: "article",

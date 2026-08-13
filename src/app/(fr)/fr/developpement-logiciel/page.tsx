@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Développement logiciel sur mesure | StillAwake Media",
+    title: "Développement logiciel sur mesure",
     description: "SaaS, portails, tableaux de bord — avec trois builds réels et mesurés comme preuve.",
     url: "https://stillawakemedia.com/fr/developpement-logiciel",
     type: "website",

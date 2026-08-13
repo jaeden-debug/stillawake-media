@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Image de marque | StillAwake Media",
+    title: "Image de marque",
     description: "Identité visuelle et systèmes de marque — prouvés par des marques réelles en production.",
     url: "https://stillawakemedia.com/fr/image-de-marque",
     type: "website",

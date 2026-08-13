@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "C'est quoi le SEO? Le référencement naturel expliqué sans jargon : comment Google classe les sites, les trois piliers du travail, les délais réalistes et les mythes à éviter — par un studio qui publie ses résultats mesurés.",
   alternates: { canonical: "/fr/referencement-naturel" },
   openGraph: {
-    title: "Le référencement naturel (SEO), expliqué simplement | StillAwake Media",
+    title: "Le référencement naturel (SEO), expliqué simplement",
     description: "Comment Google classe les sites, les vrais piliers du SEO, et les délais honnêtes.",
     url,
     type: "article",

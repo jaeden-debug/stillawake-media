@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Référencement IA (AEO) | StillAwake Media",
+    title: "Référencement IA (AEO)",
     description: "Optimisation pour moteurs de réponse : entités, données structurées, contenu citable.",
     url: "https://stillawakemedia.com/fr/referencement-ia",
     type: "website",

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Web Design Montreal | StillAwake Media",
+    title: "Web Design Montreal",
     description:
       "Premium Montreal web design proven by measured results — page-1 rankings, perfect Lighthouse scores, sourced case studies.",
     url: pageUrl,

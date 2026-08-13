@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Refonte de site web | StillAwake Media",
+    title: "Refonte de site web",
     description: "Reconstruire le site sans perdre les positions Google. Portée écrite, prix fixe, sans appel de vente.",
     url: "https://stillawakemedia.com/fr/refonte-site-web",
     type: "website",

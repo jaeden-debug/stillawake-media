@@ -8,7 +8,7 @@ import { ArticlesLies } from "@/components/articles-lies";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Tarifs | StillAwake Media — Prix affichés, sans appel de vente",
+  title: "Tarifs — Prix affichés, sans appel de vente",
   description:
     "Tarifs StillAwake Media : forfaits SEO de 600 $ à 850 $ CAD par mois, dépannage d'urgence de 150 $ à 600 $ CAD, et soumissions écrites pour les projets. Transparent, en dollars canadiens.",
   alternates: {
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Tarifs | StillAwake Media",
+    title: "Tarifs",
     description: "Prix affichés pour le SEO, la maintenance et le support. Soumissions écrites pour les projets.",
     url: "https://stillawakemedia.com/fr/tarifs",
     type: "website",

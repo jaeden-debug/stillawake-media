@@ -3,7 +3,7 @@ import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
 export const metadata: Metadata = {
-  title: "Custom Software Development | StillAwake Media",
+  title: "Custom Software Development",
   description: "StillAwake Media builds custom software, dashboards, portals, web applications, AI workflows, and scalable digital systems for modern businesses.",
 
   alternates: {

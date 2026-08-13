@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Études de cas | StillAwake Media",
+    title: "Études de cas",
     description:
       "Le mandat, l'architecture, la structure SEO et les décisions derrière chaque projet StillAwake Media.",
     url: pageUrl,

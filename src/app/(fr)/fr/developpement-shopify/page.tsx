@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Développement Shopify | StillAwake Media",
+    title: "Développement Shopify",
     description: "Création de boutique Shopify, thèmes sur mesure, SEO et support — de Montréal.",
     url: "https://stillawakemedia.com/fr/developpement-shopify",
     type: "website",

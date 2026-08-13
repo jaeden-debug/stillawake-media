@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Étude de cas : TravelDesign By Lisa | StillAwake Media",
+    title: "Étude de cas : TravelDesign By Lisa",
     description: "De zéro clic organique à la page 1 en 8 semaines — chaque chiffre est sourcé.",
     url: "https://stillawakemedia.com/fr/etude-de-cas-lisa-travel-design",
     type: "article",

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Website Redesign | StillAwake Media",
+    title: "Website Redesign",
     description: "Rebuild the site without losing the rankings. Written scope, fixed price, no sales call.",
     url: "https://stillawakemedia.com/website-redesign",
     type: "website",

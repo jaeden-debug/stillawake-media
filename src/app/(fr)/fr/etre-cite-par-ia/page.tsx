@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "Comment faire pour que ChatGPT, Perplexity et les aperçus IA de Google recommandent votre entreprise? Le guide pratique du SEO IA (AEO/GEO) au Québec : ce qui influence les citations, ce qui ne marche pas, et comment tester votre visibilité IA aujourd'hui.",
   alternates: { canonical: "/fr/etre-cite-par-ia" },
   openGraph: {
-    title: "Être cité par ChatGPT et les moteurs IA | StillAwake Media",
+    title: "Être cité par ChatGPT et les moteurs IA",
     description: "Le guide pratique du SEO IA au Québec : citations, recommandations, et ce qui ne marche pas.",
     url,
     type: "article",

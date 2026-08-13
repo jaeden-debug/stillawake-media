@@ -32,6 +32,7 @@ const resources = [
   ["Portfolio", "/portfolio"],
   ["Case Studies", "/work"],
   ["About", "/about"],
+  ["Work with us globally", "/global"],
   ["Founder", "/founder/jaeden-doody"],
   ["Contact", "/contact"],
 ];

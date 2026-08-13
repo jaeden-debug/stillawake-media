@@ -15,6 +15,7 @@ const pageLastModified: Record<string, string> = {
   "": "2026-05-25",
   about: "2026-05-25",
   portfolio: "2026-08-09",
+  global: "2026-08-13",
   services: "2026-08-09",
   "stillawake-times": "2026-05-25",
   contact: "2026-05-25",

@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     "Guides pratiques sur le web, le référencement, l'IA et le commerce en ligne — écrits pour le marché québécois, pas traduits de l'anglais.",
   alternates: { canonical: "/fr/articles" },
   openGraph: {
-    title: "Articles | StillAwake Media",
+    title: "Articles",
     description:
       "Guides pratiques sur le web, le SEO, l'IA et le commerce en ligne, écrits pour le marché québécois.",
     url: pageUrl,

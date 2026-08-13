@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Référencement local Montréal | StillAwake Media",
+    title: "Référencement local Montréal",
     description: "Fiche Google, pages locales, avis et données structurées — avec des positions mesurées.",
     url: "https://stillawakemedia.com/fr/referencement-local",
     type: "website",

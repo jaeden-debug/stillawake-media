@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Étude de cas : BankDeMark | StillAwake Media",
+    title: "Étude de cas : BankDeMark",
     description: "Architecture SEO menée par les calculatrices : positions no 1 et Lighthouse parfait mesuré.",
     url: "https://stillawakemedia.com/fr/etude-de-cas-bankdemark",
     type: "article",

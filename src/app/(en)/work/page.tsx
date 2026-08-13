@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Case Studies | StillAwake Media",
+    title: "Case Studies",
     description:
       "Build breakdowns from StillAwake Media client projects — brief, architecture, SEO structure, and design decisions.",
     url: pageUrl,

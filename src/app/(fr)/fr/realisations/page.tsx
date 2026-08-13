@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Réalisations | StillAwake Media",
+    title: "Réalisations",
     description:
       "Aperçus en direct de sites web, systèmes SEO, marques et infrastructure numérique bâtis par StillAwake Media.",
     url: pageUrl,

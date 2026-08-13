@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Case Study: Blackwater Aquatics | StillAwake Media",
+    title: "Case Study: Blackwater Aquatics",
     description: "Education-led Shopify commerce: content outweighs catalogue 4-to-1, and it sells.",
     url: "https://stillawakemedia.com/work/blackwater-aquatics",
     type: "article",

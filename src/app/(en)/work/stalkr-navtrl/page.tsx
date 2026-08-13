@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Case Study: NAVTRL / Stalkr | StillAwake Media",
+    title: "Case Study: NAVTRL / Stalkr",
     description: "A real-time location app in TestFlight in 24 days — plus the growth engine around it.",
     url: "https://stillawakemedia.com/work/stalkr-navtrl",
     type: "article",

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "referencement montreal",
   ],
   openGraph: {
-    title: "SEO Montreal | StillAwake Media",
+    title: "SEO Montreal",
     description:
       "Technical SEO, local SEO, content architecture, and ranking systems for Montreal businesses.",
     url: "https://stillawakemedia.com/seo-montreal",

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Shopify vs WooCommerce (2026) | StillAwake Media",
+    title: "Shopify vs WooCommerce (2026)",
     description: "An honest comparison from a studio that builds Shopify stores — including when WooCommerce wins.",
     url: "https://stillawakemedia.com/shopify-vs-woocommerce",
     type: "website",

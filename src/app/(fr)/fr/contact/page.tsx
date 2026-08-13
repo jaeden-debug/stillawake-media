@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Contact | StillAwake Media",
+    title: "Contact",
     description: "Démarrez votre projet — réponse par courriel, sans appel de vente.",
     url: "https://stillawakemedia.com/fr/contact",
     type: "website",

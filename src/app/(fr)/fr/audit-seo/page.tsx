@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "Comment faire un audit SEO sérieux : la grille en quatre couches que nous utilisons — indexation, technique, contenu, crédibilité — avec les outils gratuits pour chaque vérification et les pièges des audits automatisés.",
   alternates: { canonical: "/fr/audit-seo" },
   openGraph: {
-    title: "Audit SEO : quoi vérifier, dans quel ordre | StillAwake Media",
+    title: "Audit SEO : quoi vérifier, dans quel ordre",
     description: "La grille d'audit en quatre couches, les outils gratuits, et les pièges à éviter.",
     url,
     type: "article",

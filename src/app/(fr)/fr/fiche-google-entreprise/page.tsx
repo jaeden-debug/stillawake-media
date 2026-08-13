@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "Comment optimiser votre fiche Google Entreprise (Google Business Profile) au Québec : catégories, photos, avis, publications et pièges à éviter — par un studio qui gère de vraies fiches, avec des positions locales mesurées.",
   alternates: { canonical: "/fr/fiche-google-entreprise" },
   openGraph: {
-    title: "Fiche Google Entreprise : le guide québécois | StillAwake Media",
+    title: "Fiche Google Entreprise : le guide québécois",
     description: "Optimiser sa fiche Google au Québec : le guide pratique, sans mythes.",
     url,
     type: "article",

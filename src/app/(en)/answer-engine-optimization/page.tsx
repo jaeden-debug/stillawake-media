@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Answer Engine Optimization (AEO) | StillAwake Media",
+    title: "Answer Engine Optimization (AEO)",
     description: "Get found and cited by AI search — entity graphs, structured data, answer-ready content.",
     url: "https://stillawakemedia.com/answer-engine-optimization",
     type: "website",

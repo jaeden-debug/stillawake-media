@@ -7,7 +7,7 @@ import { slot } from "@/lib/cms/layer";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Pricing | StillAwake Media — Published Rates, No Sales Call",
+  title: "Pricing — Published Rates, No Sales Call",
   description:
     "StillAwake Media pricing: SEO plans $600–$850 CAD/month, emergency website support $150–$600 CAD one-time, and written custom quotes for builds. Transparent, in CAD, no call required.",
   alternates: {
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Pricing | StillAwake Media",
+    title: "Pricing",
     description: "Published pricing for SEO, maintenance, and support. Custom quotes for builds — async, no sales call.",
     url: "https://stillawakemedia.com/pricing",
     type: "website",

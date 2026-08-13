@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Automatisation IA | StillAwake Media",
+    title: "Automatisation IA",
     description: "Des automatisations IA avec garde-fous — en production dans nos propres systèmes.",
     url: "https://stillawakemedia.com/fr/automatisation-ia",
     type: "website",

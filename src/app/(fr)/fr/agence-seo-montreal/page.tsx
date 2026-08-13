@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Agence SEO Montréal | StillAwake Media",
+    title: "Agence SEO Montréal",
     description: "Référencement technique, SEO local et optimisation IA pour entreprises québécoises. Tarifs affichés.",
     url: "https://stillawakemedia.com/fr/agence-seo-montreal",
     type: "website",

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Maintenance de site web | StillAwake Media",
+    title: "Maintenance de site web",
     description: "Entretien de site web et dépannage d'urgence avec tarifs affichés. De Montréal, partout au Québec.",
     url: "https://stillawakemedia.com/fr/maintenance-site-web",
     type: "website",

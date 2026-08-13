@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Développement Framer | StillAwake Media",
+    title: "Développement Framer",
     description: "Sites Framer professionnels — avec un conseil honnête sur quand choisir autre chose.",
     url: "https://stillawakemedia.com/fr/developpement-framer",
     type: "website",

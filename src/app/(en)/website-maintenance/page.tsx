@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Website Maintenance & Emergency Support | StillAwake Media",
+    title: "Website Maintenance & Emergency Support",
     description: "Care plans and same-day emergency website support with published pricing. Montréal-based, Canada-wide.",
     url: "https://stillawakemedia.com/website-maintenance",
     type: "website",

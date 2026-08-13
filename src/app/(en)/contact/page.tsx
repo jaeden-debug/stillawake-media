@@ -10,7 +10,7 @@ import { PageSchema } from "@/components/page-schema";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Contact StillAwake Media | Start a Project",
+  title: "Contact | Start a Project",
   description:
     "Contact StillAwake Media to start a premium website, SEO system, brand identity, AI automation, Shopify build, or custom software project.",
   alternates: {

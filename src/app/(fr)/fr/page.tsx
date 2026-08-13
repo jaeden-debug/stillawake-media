@@ -5,7 +5,7 @@ import LiveWorkShowcase from "@/components/LiveWorkShowcase";
 import { ServiceJsonLd } from "@/components/service-page";
 
 export const metadata: Metadata = {
-  title: "StillAwake Media | Agence web à Montréal — Sites, SEO et IA",
+  title: "Agence web à Montréal — Sites, SEO et IA",
   description:
     "Agence web montréalaise : création de sites web, boutiques Shopify, référencement (SEO), optimisation IA et logiciels sur mesure — avec tarifs affichés et résultats mesurables.",
   alternates: {

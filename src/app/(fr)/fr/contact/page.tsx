@@ -7,7 +7,7 @@ import { PageSchema } from "@/components/page-schema";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Contact | Démarrer un projet avec StillAwake Media",
+  title: "Contact | Démarrer un projet",
   description:
     "Contactez StillAwake Media pour démarrer un site web, un système SEO, une boutique Shopify, une image de marque ou un logiciel sur mesure. Réponse par courriel — sans appel obligatoire.",
   alternates: {

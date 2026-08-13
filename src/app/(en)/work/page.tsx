@@ -6,7 +6,7 @@ import { siteUrl } from "@/lib/data";
 const pageUrl = `${siteUrl}/work`;
 
 export const metadata: Metadata = {
-  title: "Case Studies | How StillAwake Media Builds Client Projects",
+  title: "Case Studies | How We Build Client Projects",
   description:
     "Build breakdowns from StillAwake Media client projects — the brief, the page architecture, the SEO structure, and the design decisions behind each website.",
   alternates: {

@@ -5,7 +5,7 @@ import { jaedenDoody } from "@/data/people/jaeden-doody";
 
 import { PageSchema } from "@/components/page-schema";
 export const metadata: Metadata = {
-  title: "About StillAwake Media | Digital Infrastructure Studio",
+  title: "About the Studio | Digital Infrastructure & Software",
   description:
     "StillAwake Media is a Canada-based digital infrastructure studio building premium websites, SEO systems, branding, AI automation, Shopify experiences, and custom software.",
   alternates: {

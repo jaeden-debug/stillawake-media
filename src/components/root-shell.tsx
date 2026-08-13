@@ -3,14 +3,12 @@ import { Geist, Inter } from "next/font/google";
 import Script from "next/script";
 import { Header } from "@/components/site";
 import { Footer } from "@/components/footer";
+import { ConsentBanner } from "@/components/consent-banner";
 import { siteUrl } from "@/lib/data";
 import { entityIds } from "@/data/entities";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-
-/** Microsoft Clarity project (stillawakemedia.com). */
-const CLARITY_PROJECT_ID = "y1xydoz217";
 
 /** Google Analytics 4 measurement ID (stillawakemedia.com). */
 const GA_MEASUREMENT_ID = "G-KE1CWNHY0S";
@@ -163,25 +161,37 @@ export function RootShell({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(web) }}
         />
+        {/* Google Consent Mode v2 defaults.
+
+            This is a plain inline script, not next/script, precisely because
+            of ordering: it must execute before gtag.js so that GA4's very
+            first request already carries the denied signal. A `beforeInteractive`
+            next/script is hoisted but an inline script as the first child of
+            <body> is unconditionally synchronous, which is the guarantee we
+            need. Everything below it is async and therefore later.
+
+            Defaults are denied. The banner flips analytics_storage to granted
+            only on an explicit Accept. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});`,
+          }}
+        />
+        {/* Ahrefs Web Analytics — ungated. Verified cookieless: it sets no
+            cookies and no visitor identifier, so it measures pages rather
+            than people and does not require consent. */}
         <Script
           src="https://analytics.ahrefs.com/analytics.js"
           data-key="U2gzncDcxNZl9k/ub6ypfA"
           strategy="afterInteractive"
         />
-        {/* Microsoft Clarity — session recordings + heatmaps. Kept as the
-            official inline snippet rather than a plain tag <script src>: the
-            stub it defines queues any clarity(...) call made before the tag
-            finishes loading, so nothing is dropped on a fast interaction. */}
-        <Script id="ms-clarity" strategy="afterInteractive">
-          {`(function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "${CLARITY_PROJECT_ID}");`}
-        </Script>
+        {/* Microsoft Clarity is NOT loaded here. It records sessions and has no
+            consent-mode equivalent, so the tag itself is withheld until the
+            visitor accepts — see ConsentBanner, which injects it on grant. */}
         {/* Google Analytics 4. The loader is async and the config runs from a
             second script, so dataLayer must be defined in both — gtag() queues
-            into it until gtag.js arrives. */}
+            into it until gtag.js arrives. With consent denied it still loads,
+            but sends cookieless pings rather than setting _ga. */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"
@@ -196,6 +206,7 @@ export function RootShell({
         <Header locale={lang.startsWith("fr") ? "fr" : "en"} />
         {children}
         <Footer locale={lang.startsWith("fr") ? "fr" : "en"} />
+        <ConsentBanner locale={lang.startsWith("fr") ? "fr" : "en"} />
       </body>
     </html>
   );

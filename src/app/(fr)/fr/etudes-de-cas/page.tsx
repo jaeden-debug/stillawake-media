@@ -7,7 +7,7 @@ import { PageSchema } from "@/components/page-schema";
 const pageUrl = `${siteUrl}/fr/etudes-de-cas`;
 
 export const metadata: Metadata = {
-  title: "Études de cas | Comment StillAwake Media bâtit ses projets",
+  title: "Études de cas | Comment nous bâtissons nos projets",
   description:
     "Décortiqués de projets StillAwake Media — le mandat, l'architecture des pages, la structure SEO et les décisions de design derrière chaque build.",
   alternates: {

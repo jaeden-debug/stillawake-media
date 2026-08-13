@@ -7,7 +7,7 @@ import { jaedenDoody as person } from "@/data/people/jaeden-doody";
 const frUrl = `${siteUrl}/fr/fondateur/jaeden-doody`;
 
 export const metadata: Metadata = {
-  title: "Jaeden Doody — Fondateur de StillAwake Media",
+  title: "Jaeden Doody — Fondateur",
   description:
     "Jaeden Doody est le fondateur montréalais de StillAwake Media. Créateur et développeur, il bâtit des logiciels, des systèmes d'IA et des solutions d'affaires concrètes.",
   alternates: {

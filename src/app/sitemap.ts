@@ -12,63 +12,65 @@ import { siteUrl } from "@/lib/data";
  * made the signal worthless.
  */
 const pageLastModified: Record<string, string> = {
-  "": "2026-05-25",
-  about: "2026-05-25",
-  portfolio: "2026-08-09",
+  "": "2026-08-13",
+  about: "2026-08-13",
+  portfolio: "2026-08-13",
   global: "2026-08-13",
-  services: "2026-08-09",
-  "stillawake-times": "2026-05-25",
-  contact: "2026-05-25",
-  "software-development": "2026-05-25",
-  branding: "2026-05-25",
-  "local-seo": "2026-05-25",
-  "ai-automation": "2026-05-25",
-  "framer-development": "2026-08-09",
-  "shopify-development": "2026-08-09",
-  work: "2026-08-09",
-  "founder/jaeden-doody": "2026-08-12",
-  "fr/fondateur/jaeden-doody": "2026-08-12",
-  "fr/a-propos": "2026-08-12",
-  "fr/realisations": "2026-08-12",
-  "fr/etudes-de-cas": "2026-08-12",
-  "fr/articles": "2026-08-12",
-  "web-design-montreal": "2026-05-25",
-  "fr/agence-web-montreal": "2026-08-12",
-  "seo-montreal": "2026-08-12",
-  "website-maintenance": "2026-08-12",
-  "answer-engine-optimization": "2026-08-12",
-  pricing: "2026-08-12",
-  "fr/agence-seo-montreal": "2026-08-12",
-  "fr/maintenance-site-web": "2026-08-12",
-  "fr/referencement-ia": "2026-08-12",
-  "fr/developpement-shopify": "2026-08-12",
-  "fr/tarifs": "2026-08-12",
-  fr: "2026-08-12",
-  "fr/contact": "2026-08-12",
-  "website-cost-canada": "2026-08-12",
-  "fr/prix-site-web-quebec": "2026-08-12",
-  "website-redesign": "2026-08-12",
-  "fr/refonte-site-web": "2026-08-12",
-  "shopify-vs-woocommerce": "2026-08-12",
-  "fr/shopify-vs-woocommerce": "2026-08-12",
-  "fr/developpement-logiciel": "2026-08-12",
-  "fr/image-de-marque": "2026-08-12",
-  "fr/automatisation-ia": "2026-08-12",
-  "fr/referencement-local": "2026-08-12",
-  "fr/developpement-framer": "2026-08-12",
-  "work/lisa-travel-design": "2026-08-12",
-  "fr/etude-de-cas-lisa-travel-design": "2026-08-12",
-  "work/bankdemark": "2026-08-12",
-  "fr/etude-de-cas-bankdemark": "2026-08-12",
-  "work/stalkr-navtrl": "2026-08-12",
-  "fr/etude-de-cas-stalkr-navtrl": "2026-08-12",
-  "work/blackwater-aquatics": "2026-08-12",
-  "fr/etude-de-cas-blackwater-aquatics": "2026-08-12",
-  "fr/fiche-google-entreprise": "2026-08-12",
-  "fr/referencement-naturel": "2026-08-12",
-  "fr/audit-seo": "2026-08-12",
-  "fr/etre-cite-par-ia": "2026-08-12",
-  "fr/boutique-en-ligne-quebec": "2026-08-12",
+  services: "2026-08-13",
+  "stillawake-times": "2026-08-13",
+  contact: "2026-08-13",
+  "software-development": "2026-08-13",
+  branding: "2026-08-13",
+  "local-seo": "2026-08-13",
+  "ai-automation": "2026-08-13",
+  "framer-development": "2026-08-13",
+  "shopify-development": "2026-08-13",
+  work: "2026-08-13",
+  "founder/jaeden-doody": "2026-08-13",
+  "fr/fondateur/jaeden-doody": "2026-08-13",
+  "fr/a-propos": "2026-08-13",
+  "fr/realisations": "2026-08-13",
+  "fr/etudes-de-cas": "2026-08-13",
+  "fr/articles": "2026-08-13",
+  "web-design-montreal": "2026-08-13",
+  "fr/agence-web-montreal": "2026-08-13",
+  "seo-montreal": "2026-08-13",
+  "website-maintenance": "2026-08-13",
+  "answer-engine-optimization": "2026-08-13",
+  pricing: "2026-08-13",
+  "fr/agence-seo-montreal": "2026-08-13",
+  "fr/maintenance-site-web": "2026-08-13",
+  "fr/referencement-ia": "2026-08-13",
+  "fr/developpement-shopify": "2026-08-13",
+  "fr/tarifs": "2026-08-13",
+  fr: "2026-08-13",
+  "fr/contact": "2026-08-13",
+  "website-cost-canada": "2026-08-13",
+  "fr/prix-site-web-quebec": "2026-08-13",
+  "website-redesign": "2026-08-13",
+  "fr/refonte-site-web": "2026-08-13",
+  "shopify-vs-woocommerce": "2026-08-13",
+  "fr/shopify-vs-woocommerce": "2026-08-13",
+  "fr/developpement-logiciel": "2026-08-13",
+  "fr/image-de-marque": "2026-08-13",
+  "fr/automatisation-ia": "2026-08-13",
+  "fr/referencement-local": "2026-08-13",
+  "fr/developpement-framer": "2026-08-13",
+  "work/lisa-travel-design": "2026-08-13",
+  "fr/etude-de-cas-lisa-travel-design": "2026-08-13",
+  "work/bankdemark": "2026-08-13",
+  "fr/etude-de-cas-bankdemark": "2026-08-13",
+  "work/stalkr-navtrl": "2026-08-13",
+  "fr/etude-de-cas-stalkr-navtrl": "2026-08-13",
+  "work/blackwater-aquatics": "2026-08-13",
+  "fr/etude-de-cas-blackwater-aquatics": "2026-08-13",
+  "fr/fiche-google-entreprise": "2026-08-13",
+  "fr/referencement-naturel": "2026-08-13",
+  "fr/audit-seo": "2026-08-13",
+  "fr/etre-cite-par-ia": "2026-08-13",
+  "fr/boutique-en-ligne-quebec": "2026-08-13",
+  privacy: "2026-08-13",
+  "fr/confidentialite": "2026-08-13",
 };
 
 /** EN ↔ FR pairs — surfaces hreflang directly in the sitemap so both
@@ -98,6 +100,7 @@ const languagePairs: Record<string, string> = {
   about: "fr/a-propos",
   portfolio: "fr/realisations",
   work: "fr/etudes-de-cas",
+  privacy: "fr/confidentialite",
 };
 const frToEn = Object.fromEntries(Object.entries(languagePairs).map(([en, fr]) => [fr, en]));
 
@@ -105,10 +108,24 @@ function alternatesFor(page: string) {
   const en = page in languagePairs ? page : frToEn[page] !== undefined ? frToEn[page] : null;
   if (en === null) return undefined;
   const fr = languagePairs[en];
+  const enUrl = en ? `${siteUrl}/${en}` : `${siteUrl}/`;
   return {
     languages: {
-      "en-CA": en ? `${siteUrl}/${en}` : `${siteUrl}/`,
+      "en-CA": enUrl,
       "fr-CA": `${siteUrl}/${fr}`,
+      /**
+       * x-default is the page served to a user whose language and region match
+       * neither declared alternate — a German or Brazilian visitor, say. English
+       * is the right fallback for that person, so it points at the EN URL of
+       * this same pair.
+       *
+       * It deliberately does NOT point at /global. x-default names the default
+       * *within this cluster*; sending someone who asked for /shopify-development
+       * to a page about remote engagement would be a redirect, not a language
+       * fallback. Pages with no FR counterpart get no alternates at all, which
+       * is correct — x-default only has meaning inside a cluster.
+       */
+      "x-default": enUrl,
     },
   };
 }

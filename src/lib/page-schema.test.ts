@@ -21,7 +21,10 @@ function graphFor(route: string) {
 
 describe("page schema registry", () => {
   it("covers the routes that had no other schema", () => {
-    expect(entries.length).toBe(17);
+    // 17 pages that originally had none, plus the two privacy pages added
+    // with the consent work. An exact count is deliberate: it forces a
+    // conscious decision whenever a route joins or leaves the registry.
+    expect(entries.length).toBe(19);
   });
 
   it.each(entries.map(([r]) => r))("%s produces a coherent graph", (route) => {

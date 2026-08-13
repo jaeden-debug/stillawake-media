@@ -5,7 +5,7 @@ import { AuditCta, MagazineInjection, RelatedReadingInjection, InternalLinks } f
 
 import { PageSchema } from "@/components/page-schema";
 export const metadata: Metadata = {
-  title: "StillAwake Media Services | Web, SEO, AI & Software",
+  title: "Services | Web, SEO, AI & Custom Software",
   description:
     "Explore StillAwake Media services across web design, SEO, software development, branding, AI automation, Shopify, Framer, and digital strategy.",
   alternates: {

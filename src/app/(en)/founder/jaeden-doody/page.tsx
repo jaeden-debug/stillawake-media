@@ -7,7 +7,7 @@ import { jaedenDoody as person, personAuthorNames } from "@/data/people/jaeden-d
 import { getAllPosts } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Jaeden Doody — Founder of StillAwake Media",
+  title: "Jaeden Doody — Founder",
   description: person.shortBio,
   alternates: {
     canonical: person.path,

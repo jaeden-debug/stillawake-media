@@ -26,4 +26,6 @@ export const PAGE_SCHEMA: Record<string, Omit<PageSchemaInput, "url">> = {
   "/fr/contact": { kind: "contact", name: "Contact", description: "Contactez StillAwake Media pour démarrer un site web, un système SEO, une boutique Shopify, une image de marque ou un logiciel sur mesure. Réponse par courriel — sans appel obligatoire.", locale: "fr" },
   "/fr/etudes-de-cas": { kind: "collection", name: "Études de cas", description: "Décortiqués de projets StillAwake Media — le mandat, l'architecture des pages, la structure SEO et les décisions de design derrière chaque build.", locale: "fr" },
   "/fr/realisations": { kind: "collection", name: "Réalisations", description: "Explorez les réalisations de StillAwake Media : aperçus en direct de sites web, systèmes SEO, marques, expériences ecommerce et infrastructure numérique.", locale: "fr" },
+  "/privacy": { kind: "contact", name: "Privacy Policy", description: "What StillAwake Media collects, which analytics tools run, which cookies are set, how consent works, and how to contact us about your data.", locale: "en" },
+  "/fr/confidentialite": { kind: "contact", name: "Politique de confidentialité", description: "Ce que StillAwake Media recueille, quels outils de mesure fonctionnent, quels témoins sont déposés, comment fonctionne le consentement et comment nous joindre.", locale: "fr" },
 };

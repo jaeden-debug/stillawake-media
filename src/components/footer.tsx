@@ -162,8 +162,8 @@ export function Footer({ locale = "en" }: { locale?: "en" | "fr" }) {
 
           <div className="flex flex-wrap gap-6">
             {(fr
-              ? ([["À propos", "/fr/a-propos"], ["Réalisations", "/fr/realisations"], ["Études de cas", "/fr/etudes-de-cas"], ["Contact", "/fr/contact"]] as const)
-              : ([["About", "/about"], ["Portfolio", "/portfolio"], ["StillAwake Times", "/stillawake-times"], ["Contact", "/contact"]] as const)
+              ? ([["À propos", "/fr/a-propos"], ["Réalisations", "/fr/realisations"], ["Études de cas", "/fr/etudes-de-cas"], ["Contact", "/fr/contact"], ["Confidentialité", "/fr/confidentialite"]] as const)
+              : ([["About", "/about"], ["Portfolio", "/portfolio"], ["StillAwake Times", "/stillawake-times"], ["Contact", "/contact"], ["Privacy", "/privacy"]] as const)
             ).map(([label, href]) => (
               <Link key={href} href={href} className="transition hover:text-white">
                 {label}

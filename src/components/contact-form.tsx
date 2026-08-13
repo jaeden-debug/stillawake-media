@@ -9,6 +9,7 @@ import {
   SERVICE_LABELS_FR,
 } from "@/lib/contact/schema";
 import { acquireSubmissionLock } from "@/lib/contact/submission-lock";
+import { trackContactSubmit } from "@/lib/analytics";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -84,6 +85,10 @@ export function ContactForm({
       if (response.ok) {
         setStatus("sent");
         setNotice(labels.sent);
+        // PRIMARY conversion. Fired only on a 200 from the API, after the
+        // server has accepted and stored the enquiry — not on click, and not
+        // on a failed submit, so the count matches real rows.
+        trackContactSubmit(String(formData.get("service") ?? "unknown"), locale);
         form.reset();
         refreshTimingSignal();
         return;

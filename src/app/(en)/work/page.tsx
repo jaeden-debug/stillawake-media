@@ -3,6 +3,7 @@ import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 import { siteUrl } from "@/lib/data";
 
+import { Testimonials } from "@/components/testimonials";
 const pageUrl = `${siteUrl}/work`;
 
 export const metadata: Metadata = {
@@ -443,6 +444,8 @@ export default function Page() {
           ))}
         </div>
       </div></section>
+
+      <Testimonials placement="work" title="In their words" />
 
       <InternalLinks />
     </main>

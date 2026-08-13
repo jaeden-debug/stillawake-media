@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
+import { Testimonials } from "@/components/testimonials";
 /**
  * The global / United States entry point.
  *
@@ -225,6 +226,8 @@ export default function GlobalPage() {
           </div>
         </div>
       </section>
+
+      <Testimonials placement="global" title="What remote clients say" />
 
       <InternalLinks />
 

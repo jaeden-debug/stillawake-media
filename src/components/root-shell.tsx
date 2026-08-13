@@ -4,6 +4,7 @@ import Script from "next/script";
 import { Header } from "@/components/site";
 import { Footer } from "@/components/footer";
 import { ConsentBanner } from "@/components/consent-banner";
+import { OutboundTracking } from "@/components/outbound-tracking";
 import { siteUrl } from "@/lib/data";
 import { entityIds } from "@/data/entities";
 
@@ -201,12 +202,27 @@ export function RootShell({
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', '${GA_MEASUREMENT_ID}');`}
+  gtag('config', '${GA_MEASUREMENT_ID}', {
+    /* Cross-domain measurement.
+
+       The conversion that matters happens on stillawake.studio, not here.
+       Without link decoration GA4 starts a fresh session at the hand-off and
+       attributes the lead to stillawakemedia.com as a *referral*, destroying
+       the original source — an ad click would be credited to our own site.
+       This decorates outbound Studio links with _gl so the session survives.
+
+       This is the client-side half. The GA4 property must ALSO list both
+       domains under Admin > Data Streams > Configure tag settings, and list
+       both under unwanted referrals. That admin setting is authoritative;
+       this one makes sure the links carry the parameter. */
+    linker: { domains: ['stillawakemedia.com', 'stillawake.studio'], accept_incoming: true }
+  });`}
         </Script>
         <Header locale={lang.startsWith("fr") ? "fr" : "en"} />
         {children}
         <Footer locale={lang.startsWith("fr") ? "fr" : "en"} />
         <ConsentBanner locale={lang.startsWith("fr") ? "fr" : "en"} />
+        <OutboundTracking locale={lang.startsWith("fr") ? "fr" : "en"} />
       </body>
     </html>
   );

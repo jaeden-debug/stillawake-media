@@ -3,6 +3,7 @@ import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
 import { PageSchema } from "@/components/page-schema";
+import { Testimonials } from "@/components/testimonials";
 export const metadata: Metadata = {
   title: "Shopify Development Services | SEO & Conversion Builds",
   description:
@@ -177,6 +178,8 @@ export default function Page() {
           </p>
         </div>
       </section>
+
+      <Testimonials placement="service:shopify" title="What clients say" />
 
       <InternalLinks />
     

@@ -4,6 +4,7 @@ import { ServiceJsonLd, PriceCard } from "@/components/service-page";
 import { getContentLayer } from "@/lib/cms/adapter";
 import { slot } from "@/lib/cms/layer";
 
+import { Testimonials } from "@/components/testimonials";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
@@ -141,6 +142,7 @@ export default async function PricingPage() {
           </div>
         </div>
       </section>
+      <Testimonials placement="pricing" title="What clients say" />
     </main>
   );
 }

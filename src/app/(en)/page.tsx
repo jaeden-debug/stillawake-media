@@ -1,5 +1,6 @@
 import type { Metadata } from "next";import Link from "next/link";import {Button,Section,ServiceGrid,PortfolioGrid,BlogCards,InternalLinks} from "@/components/site";import LiveWorkShowcase from "@/components/LiveWorkShowcase";import {services} from "@/lib/data";
 import { PageSchema } from "@/components/page-schema";
+import { Testimonials } from "@/components/testimonials";
 export const metadata: Metadata = {
   title: "StillAwake Media | Web Design, SEO & AI Search — Montréal",
   description:
@@ -75,4 +76,6 @@ We build <span className="text-[#D71920]">bold brands</span>, high-performance w
 </div>
 )}
 </div>
+      <Testimonials placement="home" title="What clients say" />
+
 </Section><Section eyebrow="Portfolio" title="Proof through live digital properties."><PortfolioGrid/><Link className="mt-8 inline-flex text-[#D71920]" href="/portfolio">View full portfolio →</Link></Section><Section eyebrow="StillAwake Times" title="Editorial strategy, web systems, SEO, AI, and premium digital infrastructure."><BlogCards/><Link className="mt-8 inline-flex text-[#D71920]" href="/stillawake-times">Read the magazine →</Link></Section><InternalLinks/><section className="px-6 py-24"><div className="mx-auto max-w-7xl rounded-[2rem] bg-[#D71920] p-10 md:p-16"><h2 className="geist text-5xl font-black tracking-[-0.06em]">Start building before your competitors wake up.</h2><Link href="https://stillawake.studio/start" className="mt-8 inline-flex rounded-full bg-black px-6 py-4 font-bold">Start Your Project →</Link></div></section></main>}

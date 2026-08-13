@@ -3,6 +3,7 @@ import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
 import { PageSchema } from "@/components/page-schema";
+import { Testimonials } from "@/components/testimonials";
 export const metadata: Metadata = {
   title:
     "AI Automation Services | Custom AI Workflows for Business",
@@ -302,6 +303,8 @@ export default function AIAutomationPage() {
 
         </div>
       </section>
+
+      <Testimonials placement="service:ai-automation" title="What clients say" />
 
       <InternalLinks />
     </main>

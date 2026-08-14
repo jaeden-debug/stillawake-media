@@ -69,6 +69,8 @@ const pageLastModified: Record<string, string> = {
   "fr/audit-seo": "2026-08-13",
   "fr/etre-cite-par-ia": "2026-08-13",
   "fr/boutique-en-ligne-quebec": "2026-08-13",
+  products: "2026-08-13",
+  "fr/produits": "2026-08-13",
   privacy: "2026-08-13",
   "fr/confidentialite": "2026-08-13",
   "tools/llms-txt-generator": "2026-08-13",
@@ -101,6 +103,7 @@ const languagePairs: Record<string, string> = {
   about: "fr/a-propos",
   portfolio: "fr/realisations",
   work: "fr/etudes-de-cas",
+  products: "fr/produits",
   privacy: "fr/confidentialite",
 };
 const frToEn = Object.fromEntries(Object.entries(languagePairs).map(([en, fr]) => [fr, en]));

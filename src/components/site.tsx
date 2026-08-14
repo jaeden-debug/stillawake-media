@@ -77,14 +77,15 @@ export function Header({ locale = "en" }: { locale?: "en" | "fr" }) {
           </div>
 
           <div className="flex items-center gap-2">
-            {/* Locale-aware: French visitors got an English label AND were sent
-                to the English /contact page from every French page. */}
+            {/* Locale-aware destination: French visitors were previously sent to
+                the English /contact page from every French page. The label is
+                "Contact" in both languages — it is the same word in French. */}
             <Link
               href={locale === "fr" ? "/fr/contact" : "/contact"}
               onClick={() => setOpen(false)}
               className="rounded-full border border-[#D71920]/50 bg-[#D71920]/20 px-4 py-2 text-sm"
             >
-              {locale === "fr" ? "Démarrer un projet" : "Start a Project"}
+              Contact
             </Link>
 
             <button

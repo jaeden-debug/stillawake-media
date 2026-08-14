@@ -15,7 +15,23 @@ export type CmsContentType =
   | "location"
   | "comparison"
   | "standard_page"
-  | "content_layer";
+  | "content_layer"
+  | "product";
+
+/**
+ * `data` payload on a product row. Products render as cards on the /products
+ * hub and have no individual public page, so there is no product-level SEO.
+ *
+ * `product_url` is the canonical marketing destination the card links to.
+ * `app_url` is the application/login domain — deliberately NOT the card CTA:
+ * the product's own marketing page owns the explanation and signup funnel.
+ */
+export type CmsProductData = {
+  product_url?: string;
+  app_url?: string;
+  category?: string;
+  sort?: number;
+};
 
 /* ------------------------------------------------------------------ */
 /* Sections                                                            */

@@ -4,7 +4,7 @@ import { ServiceJsonLd, RelatedServices } from "@/components/service-page";
 export const metadata: Metadata = {
   title: "Case Study: Blackwater Aquatics — Education-Led Shopify Commerce",
   description:
-    "How StillAwake Media built a Canadian Shopify store where 64 education pages power a 17-product catalogue: page-1 rankings, an 8.6% CTR product page, and a 27.8% repeat-customer rate.",
+    "How StillAwake Media built a Canadian Shopify store where 64 education pages power a 17-product catalogue: page-1 rankings, an 8.6% CTR product page, and a 33.3% repeat-customer rate. Our own store — every figure sourced and dated.",
   alternates: {
     canonical: "https://stillawakemedia.com/work/blackwater-aquatics",
     languages: {
@@ -21,10 +21,17 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Every figure re-verified against Google Search Console and the Shopify
+ * Admin API on 13 Aug 2026. Window lengths are stated on each metric because
+ * they are not interchangeable — the CTR figure is a 180-day read and the
+ * returning-customer figure is a 30-day read, and comparing either against a
+ * different window produces a different (and wrong) answer.
+ */
 const METRICS: [string, string, string][] = [
-  ["8.6% CTR", "A product page that ranks itself", "The scud-culture product page earned 230 organic clicks at an 8.61% click-through rate (position 8.5) — Google Search Console, 180-day window ending Aug 12, 2026. Product pages almost never do this without content architecture behind them."],
-  ["~60,000", "Impressions on the top 12 pages", "≈890 organic clicks across the top 12 URLs in the same 180-day window, with care guides holding positions 5.7–8 on their queries — one betta-breeding guide alone earned 17,872 impressions."],
-  ["27.8%", "Returning-customer rate", "Up from 5.9% the previous period (Shopify, customer-weighted, 30-day window ending Aug 12, 2026). Education doesn't just rank — it brings buyers back."],
+  ["8.6% CTR", "A product page that ranks itself", "The scud-culture product page earned 233 organic clicks at an 8.55% click-through rate (position 8.5) — Google Search Console, 180-day window ending Aug 13, 2026. Product pages almost never do this without content architecture behind them."],
+  ["59,377", "Impressions on the top 12 pages", "912 organic clicks across the top 12 URLs in the same 180-day window, with care guides holding positions 7.1–8.3 on their queries — one betta-fry guide alone earned 18,457 impressions."],
+  ["33.3%", "Returning-customer rate", "Six of eighteen customers had bought before, up from 5.9% the previous period (Shopify, customer-weighted, 30-day window ending Aug 14, 2026). Education doesn't just rank — it brings buyers back."],
   ["64 : 17", "Pages to products", "Sixty-four education pages and four blogs behind a seventeen-product catalogue. The store is built like a knowledge base that happens to sell — because in a niche, trust is the product."],
   ["4 collections", "Intent-mapped structure", "Collections engineered around real Canadian search intent (live fish food Canada, betta fish Canada) with clean canonical structure — the collection pages rank on their own."],
   ["2 properties", "An ecosystem, not a site", "The companion app SpawnOS (spawnos.app) already earns its own rankings — species guides and aquarium tools feeding the same audience back to the store."],
@@ -36,7 +43,7 @@ export default function BlackwaterCaseStudy() {
       <ServiceJsonLd
         path="/work/blackwater-aquatics"
         name="Case Study: Blackwater Aquatics Canada"
-        description="Education-led Shopify store: 64 content pages powering a 17-product catalogue, page-1 rankings, 8.6% CTR product page, 27.8% repeat-customer rate."
+        description="Education-led Shopify store: 64 content pages powering a 17-product catalogue, page-1 rankings, 8.6% CTR product page, 33.3% repeat-customer rate."
         breadcrumb={[
           ["Home", "/"],
           ["Case Studies", "/work"],
@@ -56,6 +63,16 @@ export default function BlackwaterCaseStudy() {
             trusting anyone. So we built the Shopify store backwards: 64 education pages and a care-guide knowledge
             base first, 17 products supported by them. The result is a store Google treats like an authority and
             customers treat like a resource. Every number below is sourced and dated.
+          </p>
+          {/* Stated up front rather than buried. Anyone can look this up, and
+              a reader who discovers it themselves discounts everything else on
+              the page. Owning the store is also why the data is this complete. */}
+          <p className="mt-6 max-w-3xl rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-sm leading-6 text-[#C7B9B9]">
+            <strong className="text-white">Disclosure:</strong> Blackwater Aquatics Canada is founded and
+            operated by Jaeden Doody, StillAwake Media&apos;s founder. It is our own store, not a client
+            engagement. We publish it because we own every number in it — full Search Console and Shopify
+            access, nothing filtered — and because the architecture is the same one we build for clients.
+            Treat it as proof of method, not as a client reference.
           </p>
         </div>
       </section>
@@ -77,8 +94,8 @@ export default function BlackwaterCaseStudy() {
               This is a small niche store, and we won&apos;t pretend otherwise — no inflated revenue claims, no vanity
               multiples. What the data proves is the model: in a category where a product page normally can&apos;t rank,
               education-led architecture put one on page 1 with an 8.6% click-through rate, holds care guides at
-              positions 5–8 across the niche&apos;s real questions, and more than quadrupled the repeat-customer rate
-              period over period. Orders arrive weekly from organic search. That&apos;s the Shopify playbook we sell —
+              positions 7–8 across the niche&apos;s real questions, and took the repeat-customer rate from 5.9% to
+              33.3% period over period — six returning buyers out of eighteen, on a small base we are not hiding. Orders arrive weekly from organic search. That&apos;s the Shopify playbook we sell —
               running live, measurable, in production.
             </p>
           </div>

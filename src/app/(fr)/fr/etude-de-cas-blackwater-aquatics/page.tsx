@@ -4,7 +4,7 @@ import { ServiceJsonLd, RelatedServices } from "@/components/service-page";
 export const metadata: Metadata = {
   title: "Étude de cas : Blackwater Aquatics — le commerce Shopify mené par l'éducation",
   description:
-    "Comment StillAwake Media a bâti une boutique Shopify canadienne où 64 pages éducatives portent un catalogue de 17 produits : positions en page 1, une fiche produit à 8,6 % de CTR et 27,8 % de clients récurrents.",
+    "Comment StillAwake Media a bâti une boutique Shopify canadienne où 64 pages éducatives portent un catalogue de 17 produits : positions en page 1, une fiche produit à 8,6 % de CTR et 33,3 % de clients récurrents. Notre propre boutique — chaque chiffre daté et sourcé.",
   alternates: {
     canonical: "https://stillawakemedia.com/fr/etude-de-cas-blackwater-aquatics",
     languages: {
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
 };
 
 const METRICS: [string, string, string][] = [
-  ["8,6 % CTR", "Une fiche produit qui se positionne seule", "La fiche produit de culture de scuds a gagné 230 clics organiques avec un taux de clic de 8,61 % (position 8,5) — Google Search Console, fenêtre de 180 jours au 12 août 2026. Une fiche produit n'y arrive presque jamais sans architecture de contenu derrière."],
-  ["~60 000", "Impressions sur les 12 meilleures pages", "≈890 clics organiques sur les 12 meilleures URL dans la même fenêtre, avec des guides d'élevage aux positions 5,7 à 8 — un seul guide de reproduction de bettas a récolté 17 872 impressions."],
-  ["27,8 %", "Taux de clients récurrents", "En hausse depuis 5,9 % à la période précédente (Shopify, pondéré par client, fenêtre de 30 jours au 12 août 2026). L'éducation ne fait pas que se positionner — elle fait revenir les acheteurs."],
+  ["8,6 % CTR", "Une fiche produit qui se positionne seule", "La fiche produit de culture de scuds a gagné 233 clics organiques avec un taux de clic de 8,55 % (position 8,5) — Google Search Console, fenêtre de 180 jours au 13 août 2026. Une fiche produit n'y arrive presque jamais sans architecture de contenu derrière."],
+  ["59 377", "Impressions sur les 12 meilleures pages", "912 clics organiques sur les 12 meilleures URL dans la même fenêtre, avec des guides d'élevage aux positions 7,1 à 8,3 — un seul guide d'alevins de bettas a récolté 18 457 impressions."],
+  ["33,3 %", "Taux de clients récurrents", "Six clients sur dix-huit avaient déjà acheté, en hausse depuis 5,9 % à la période précédente (Shopify, pondéré par client, fenêtre de 30 jours au 14 août 2026). L'éducation ne fait pas que se positionner — elle fait revenir les acheteurs."],
   ["64 : 17", "Pages contre produits", "Soixante-quatre pages éducatives et quatre blogues derrière un catalogue de dix-sept produits. La boutique est bâtie comme une base de connaissances qui vend — parce que dans une niche, la confiance EST le produit."],
   ["4 collections", "Structure alignée sur l'intention", "Des collections conçues autour des vraies recherches canadiennes (nourriture vivante pour poissons, bettas au Canada) avec une structure canonique propre — les pages de collection se positionnent d'elles-mêmes."],
   ["2 propriétés", "Un écosystème, pas un site", "L'application compagnon SpawnOS (spawnos.app) gagne déjà ses propres positions — guides d'espèces et outils d'aquariophilie qui ramènent la même audience vers la boutique."],
@@ -37,7 +37,7 @@ export default function EtudeBlackwater() {
       <ServiceJsonLd
         path="/fr/etude-de-cas-blackwater-aquatics"
         name="Étude de cas : Blackwater Aquatics Canada"
-        description="Boutique Shopify menée par l'éducation : 64 pages de contenu pour 17 produits, positions en page 1, fiche produit à 8,6 % de CTR, 27,8 % de clients récurrents."
+        description="Boutique Shopify menée par l'éducation : 64 pages de contenu pour 17 produits, positions en page 1, fiche produit à 8,6 % de CTR, 33,3 % de clients récurrents."
         breadcrumb={[
           ["Accueil", "/fr"],
           ["Études de cas", "/work"],
@@ -60,6 +60,16 @@ export default function EtudeBlackwater() {
             elles. Résultat : une boutique que Google traite comme une autorité et que les clients traitent comme une
             ressource. Chaque chiffre est sourcé et daté.
           </p>
+          {/* Annoncé d'emblée plutôt qu'enterré : n'importe qui peut le
+              vérifier, et un lecteur qui le découvre seul dévalue tout le
+              reste de la page. */}
+          <p className="mt-6 max-w-3xl rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-sm leading-6 text-[#C7B9B9]">
+            <strong className="text-white">Divulgation :</strong> Blackwater Aquatics Canada est fondée et
+            exploitée par Jaeden Doody, fondateur de StillAwake Media. C&apos;est notre propre boutique, pas
+            un mandat client. Nous la publions parce que nous possédons chaque chiffre — accès complet à
+            Search Console et à Shopify, rien de filtré — et parce que l&apos;architecture est celle que nous
+            bâtissons pour nos clients. À lire comme une preuve de méthode, pas comme une référence client.
+          </p>
         </div>
       </section>
 
@@ -80,8 +90,9 @@ export default function EtudeBlackwater() {
               C&apos;est une petite boutique de niche et nous ne prétendons pas le contraire — pas de revenus gonflés,
               pas de multiples de vanité. Ce que les données prouvent, c&apos;est le modèle : dans une catégorie où une
               fiche produit ne se positionne normalement pas, l&apos;architecture menée par l&apos;éducation en a mis
-              une en page 1 avec 8,6 % de taux de clic, tient les guides aux positions 5 à 8 sur les vraies questions
-              de la niche, et a plus que quadruplé le taux de clients récurrents d&apos;une période à l&apos;autre. Des
+              une en page 1 avec 8,6 % de taux de clic, tient les guides aux positions 7 à 8 sur les vraies questions
+              de la niche, et a fait passer le taux de clients récurrents de 5,9 % à 33,3 % d&apos;une période à
+              l&apos;autre — six acheteurs de retour sur dix-huit, sur une petite base que nous ne cachons pas. Des
               commandes arrivent chaque semaine de la recherche organique. C&apos;est le playbook Shopify que nous
               vendons — en production, mesurable, en direct.
             </p>

@@ -59,6 +59,14 @@ export default function EtudeBankDeMark() {
             de 13 calculatrices et du contenu qui les alimente — puis construit la couche financière avec la rigueur
             que l&apos;argent exige. Chaque chiffre est sourcé et daté.
           </p>
+          {/* Même divulgation que l'étude Blackwater, pour la même raison. */}
+          <p className="mt-6 max-w-3xl rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-sm leading-6 text-[#C7B9B9]">
+            <strong className="text-white">Divulgation :</strong> BankDeMark a été fondée par Jaeden Doody,
+            fondateur de StillAwake Media. C&apos;est une organisation distincte, pas un mandat client. Nous
+            la publions parce que nous pouvons montrer l&apos;ensemble du build — architecture, suite de tests,
+            scores mesurés — sans demander la permission de qui que ce soit. À lire comme une preuve de
+            méthode, pas comme une référence client.
+          </p>
         </div>
       </section>
 

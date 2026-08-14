@@ -28,4 +28,5 @@ export const PAGE_SCHEMA: Record<string, Omit<PageSchemaInput, "url">> = {
   "/fr/realisations": { kind: "collection", name: "Réalisations", description: "Explorez les réalisations de StillAwake Media : aperçus en direct de sites web, systèmes SEO, marques, expériences ecommerce et infrastructure numérique.", locale: "fr" },
   "/privacy": { kind: "contact", name: "Privacy Policy", description: "What StillAwake Media collects, which analytics tools run, which cookies are set, how consent works, and how to contact us about your data.", locale: "en" },
   "/fr/confidentialite": { kind: "contact", name: "Politique de confidentialité", description: "Ce que StillAwake Media recueille, quels outils de mesure fonctionnent, quels témoins sont déposés, comment fonctionne le consentement et comment nous joindre.", locale: "fr" },
+  "/tools/llms-txt-generator": { kind: "service", name: "Free llms.txt Generator + AI Readiness Check", description: "Generate an llms.txt file for your website and see what an answer engine can — and cannot — tell about your business. Free, no signup.", locale: "en", serviceType: "Answer engine optimization" },
 };

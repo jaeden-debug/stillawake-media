@@ -71,6 +71,7 @@ const pageLastModified: Record<string, string> = {
   "fr/boutique-en-ligne-quebec": "2026-08-13",
   privacy: "2026-08-13",
   "fr/confidentialite": "2026-08-13",
+  "tools/llms-txt-generator": "2026-08-13",
 };
 
 /** EN ↔ FR pairs — surfaces hreflang directly in the sitemap so both

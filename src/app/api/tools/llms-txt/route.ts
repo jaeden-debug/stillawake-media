@@ -98,6 +98,24 @@ export async function POST(request: Request) {
     );
   }
 
+  /**
+   * Re-derive the origin from where the homepage actually landed.
+   *
+   * Typing `anthropic.com` redirects to `www.anthropic.com`, and the sitemap
+   * then lists `https://www.anthropic.com/...`. Filtering those against the
+   * origin the user typed discards every one of them, so the tool analysed a
+   * single page and reported a low score for a site that had done nothing
+   * wrong. Apex-to-www is one of the most common configurations on the web,
+   * so this was failing on a large share of real input.
+   */
+  try {
+    const landed = new URL(home.url);
+    origin = landed.origin;
+    domain = landed.hostname;
+  } catch {
+    // Keep the validated origin if the resolved URL is somehow unparseable.
+  }
+
   const existing = await safeFetch(`${origin}/llms.txt`);
   const hasExistingLlmsTxt =
     !!existing && existing.status === 200 && existing.body.trim().length > 0;

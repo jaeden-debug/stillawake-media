@@ -196,10 +196,10 @@ export default function Page() {
             custom themes, speed, structured data, and the SEO that makes a store findable.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="/work" className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">Read the case studies</a>
-            <a href="/portfolio" className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">Open the live stores</a>
-            <a href="/website-maintenance" className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">Ecommerce emergency support ($250–$600)</a>
-            <a href="/fr/developpement-shopify" className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">Version française</a>
+            <Link href="/work" className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">Read the case studies</Link>
+            <Link href="/portfolio" className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">Open the live stores</Link>
+            <Link href="/website-maintenance" className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">Ecommerce emergency support ($250–$600)</Link>
+            <Link href="/fr/developpement-shopify" className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">Version française</Link>
           </div>
         </div>
       </section>
@@ -212,7 +212,7 @@ export default function Page() {
             Blackwater Aquatics Canada: 64 education pages powering a 17-product Shopify store — page-1 rankings,
             ~60,000 impressions on the top pages, and a repeat rate that more than quadrupled. Sourced and dated.
           </p>
-          <a href="/work/blackwater-aquatics" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Read the case study →</a>
+          <Link href="/work/blackwater-aquatics" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Read the case study →</Link>
         </div>
       </section>
     </main>

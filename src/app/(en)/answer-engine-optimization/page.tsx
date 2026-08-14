@@ -91,7 +91,7 @@ export default function AeoPage() {
       <section className="px-6 py-20">
         <div className="mx-auto max-w-7xl">
           <h2 className="geist max-w-4xl text-4xl font-black tracking-[-0.06em] md:text-5xl">
-            AEO, GEO, AI SEO — the terms are messy. The work isn't.
+            AEO, GEO, AI SEO — the terms are messy. The work isn&apos;t.
           </h2>
           <p className="mt-4 max-w-3xl leading-8 text-[#C7B9B9]">
             You&apos;ll see answer engine optimization (AEO), generative engine optimization (GEO), AI search

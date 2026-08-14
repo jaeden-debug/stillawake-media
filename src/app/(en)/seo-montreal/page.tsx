@@ -766,7 +766,7 @@ export default function SeoMontrealPage() {
             TravelDesign By Lisa: 834-URL trilingual build, ~2,300 SEO defects cleared, 9-minute average sessions,
             CLS 0.00 and Best Practices 100 measured Aug 2026. Every number sourced and dated in the case study.
           </p>
-          <a href="/work/lisa-travel-design" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Read the case study →</a>
+          <Link href="/work/lisa-travel-design" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Read the case study →</Link>
         </div>
       </section>
     </main>

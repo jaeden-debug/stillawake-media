@@ -360,9 +360,9 @@ export default function AgenceSeoMontrealPage() {
           <h2 className="geist max-w-3xl text-3xl font-black tracking-[-0.06em]">De zéro clic organique à la page 1 en 8 semaines — mesuré.</h2>
           <p className="mt-4 max-w-3xl leading-8 text-[#C7B9B9]">
             TravelDesign By Lisa : plateforme trilingue de 834 URL, ~2 300 défauts SEO corrigés, sessions moyennes de
-            9 minutes, CLS 0,00 et Bonnes pratiques 100 mesurés en août 2026. Chaque chiffre est sourcé et daté dans l'étude de cas.
+            9 minutes, CLS 0,00 et Bonnes pratiques 100 mesurés en août 2026. Chaque chiffre est sourcé et daté dans l&apos;étude de cas.
           </p>
-          <a href="/fr/etude-de-cas-lisa-travel-design" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Lire l'étude de cas →</a>
+          <Link href="/fr/etude-de-cas-lisa-travel-design" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Lire l&apos;étude de cas →</Link>
         </div>
       </section>
     

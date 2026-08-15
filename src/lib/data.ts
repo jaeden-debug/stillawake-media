@@ -5,6 +5,7 @@ export const nav = [
   ["About", "/about"],
   ["Portfolio", "/portfolio"],
   ["Services", "/services"],
+  ["Pricing", "/pricing"],
   ["Products", "/products"],
   ["Montreal", "/web-design-montreal"],
   ["StillAwake Times", "/stillawake-times"],

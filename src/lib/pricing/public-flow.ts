@@ -21,7 +21,7 @@
  * exists in the wire format, so no crafted request can produce a discount.
  */
 
-import { ADDITIONS, BASES, SEO_SCOPES } from "./model";
+import { BASES, SEO_SCOPES } from "./model";
 import type { AdditionId, BaseId, EstimateInput, SeoScopeId } from "./types";
 import { ADDITION_LABELS } from "./labels";
 

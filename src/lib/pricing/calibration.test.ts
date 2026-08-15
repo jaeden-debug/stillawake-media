@@ -2,146 +2,174 @@ import { describe, expect, it } from "vitest";
 
 import { SCENARIOS } from "./calibration";
 import { estimate } from "./engine";
-import { DAY_RATES, MINIMUM } from "./model";
+import { MINIMUM, MIN_IMPLIED_DAY_RATE, PLANNING_DAY_RATE } from "./model";
+import { activeQuestions, isComplete, mapAnswers, type Answers } from "./public-flow";
 import type { Estimate } from "./types";
 
-const priced = new Map<string, Estimate>(SCENARIOS.map((s) => [s.id, estimate(s.input)]));
+const priced = new Map<string, Estimate>(SCENARIOS.map((s) => [s.id, estimate(mapAnswers(s.answers))]));
 const get = (id: string): Estimate => {
   const e = priced.get(id);
-  if (!e) throw new Error(`Scenario "${id}" is missing — calibration coverage regressed.`);
+  if (!e) throw new Error(`Scenario "${id}" missing — calibration coverage regressed.`);
   return e;
 };
 
-describe("calibration coverage", () => {
-  it("prices at least 20 distinct scenarios", () => {
-    expect(SCENARIOS.length).toBeGreaterThanOrEqual(20);
-    expect(new Set(SCENARIOS.map((s) => s.id)).size).toBe(SCENARIOS.length);
-  });
+/** The six that represent most of what walks in. */
+const LOCAL_BUSINESS = ["cafe", "plumber", "dentist", "lawyer", "restaurant", "salon"];
 
-  it("covers every service line", () => {
-    const used = new Set(SCENARIOS.flatMap((s) => s.input.lines.map((l) => l.id)));
-    for (const id of ["brand", "website", "store", "seo", "content", "software", "automation"]) {
-      expect(used, id).toContain(id);
-    }
-  });
-
-  it.each(SCENARIOS)("$id produces a usable estimate", (s) => {
+describe("every scenario is answerable and priceable", () => {
+  it.each(SCENARIOS)("$id completes the real flow", (s) => {
+    expect(isComplete(s.answers), `${s.id} leaves a required question unanswered`).toBe(true);
     const e = get(s.id);
     expect(e.low).toBeGreaterThanOrEqual(MINIMUM);
     expect(e.high).toBeGreaterThan(e.low);
-    expect(e.days.expected).toBeGreaterThan(0);
     expect(e.includes.length).toBeGreaterThan(0);
-    expect(e.drivers.length).toBeGreaterThan(0);
   });
 
-  /**
-   * Every number has to survive the question "how many days is that?" — the
-   * whole point of the rebuild. Checked against the cheapest rate, since a
-   * mix of disciplines can only push the implied rate up.
-   */
-  it.each(SCENARIOS)("$id reconciles to a plausible day count", (s) => {
+  it.each(SCENARIOS)("$id asks no more than six questions", (s) => {
+    // Six is the target. Seven is reachable only by asking for BOTH bookings
+    // and ordering, which earns two integrate-or-build follow-ups.
+    const n = activeQuestions(s.answers).length;
+    expect(n, `${s.id} asked ${n}`).toBeLessThanOrEqual(7);
+  });
+});
+
+/**
+ * THE COMFORT TEST, as an assertion.
+ *
+ * If an ordinary local business would close the page on the number, the model
+ * is wrong. These bounds encode that judgement so it cannot quietly drift back.
+ */
+describe("a local business does not close the page", () => {
+  it.each(LOCAL_BUSINESS)("%s stays inside what a local business can consider", (id) => {
+    const e = get(id);
+    expect(e.high, `${id} tops out at $${e.high.toLocaleString()}`).toBeLessThanOrEqual(20000);
+    expect(e.needsDiscovery, `${id} should get a real number, not a scoping conversation`).toBe(false);
+  });
+
+  it("keeps the four simplest well under five figures", () => {
+    for (const id of ["cafe", "plumber", "dentist", "salon"]) {
+      expect(get(id).high, `${id}`).toBeLessThan(10000);
+    }
+  });
+
+  it("puts the commonest project of all in the centre of the model", () => {
+    // A plumber with six service pages and local search IS the archetype.
+    const e = get("plumber");
+    expect(e.low).toBeGreaterThanOrEqual(4000);
+    expect(e.high).toBeLessThanOrEqual(9000);
+  });
+});
+
+describe("the shape across the range", () => {
+  it("never lets a website approach software", () => {
+    // Measured against a TYPICAL local site, not the most complex one — a big
+    // law firm site and a small internal tool can legitimately be close.
+    expect(get("dashboard").expected).toBeGreaterThan(get("plumber").expected * 2.5);
+    expect(get("dashboard").expected).toBeGreaterThan(get("lawyer").expected);
+    expect(get("portal").expected).toBeGreaterThan(get("dashboard").expected);
+  });
+
+  it("charges the restaurant for connecting its ordering platform, not for building one", () => {
+    // Same shape as the dentist plus an ordering link — must stay close to it.
+    expect(get("restaurant").expected).toBeLessThan(get("dentist").expected * 1.6);
+  });
+
+  it("prices two similarly-shaped local businesses the same", () => {
+    expect(get("salon").expected).toBe(get("dentist").expected);
+  });
+
+  it("charges for locations, which are real scope", () => {
+    expect(get("multi_location").expected).toBeGreaterThan(get("plumber").expected);
+  });
+
+  it("only sends the portal to discovery", () => {
+    const routed = SCENARIOS.filter((s) => get(s.id).needsDiscovery).map((s) => s.id);
+    expect(routed).toEqual(["portal"]);
+  });
+});
+
+describe("the internal check", () => {
+  it.each(SCENARIOS)("$id implies a day rate we can live with", (s) => {
     const e = get(s.id);
-    const impliedRate = e.expected / e.days.expected;
-    expect(impliedRate, `${s.id} implies $${Math.round(impliedRate)}/day`).toBeGreaterThanOrEqual(
-      DAY_RATES.build * 0.9,
-    );
-    expect(impliedRate, `${s.id} implies $${Math.round(impliedRate)}/day`).toBeLessThanOrEqual(
-      DAY_RATES.ai * 1.15,
-    );
+    expect(e.internalRate, `${s.id} implies $${e.internalRate}/day`).toBeGreaterThanOrEqual(MIN_IMPLIED_DAY_RATE);
+    expect(e.internalRate, `${s.id} implies $${e.internalRate}/day`).toBeLessThanOrEqual(PLANNING_DAY_RATE * 1.1);
   });
 
-  /** A range wider than 2.5× is a shrug, not an estimate. */
-  it.each(SCENARIOS.filter((s) => !s.input.undefinedScope))("$id keeps the range decision-useful", (s) => {
-    const spread = get(s.id).high / get(s.id).low;
-    expect(spread, `${s.id} spread ${spread.toFixed(2)}×`).toBeLessThanOrEqual(2.5);
+  it.each(SCENARIOS)("$id keeps the range decision-useful", (s) => {
+    const e = get(s.id);
+    const spread = e.high / e.low;
+    expect(spread, `${s.id} spread ${spread.toFixed(2)}×`).toBeLessThanOrEqual(2.2);
     expect(spread).toBeGreaterThan(1.1);
   });
-});
 
-describe("the product tier is reachable by a small business", () => {
-  it("puts a launched site at the floor", () => {
-    const e = get("launch_local");
-    expect(e.tier).toBe("launch");
-    expect(e.low).toBe(MINIMUM);
-    expect(e.high).toBeLessThanOrEqual(4000);
-  });
-
-  it("keeps the most common small sale in the product tier", () => {
-    // A Launch site plus the search foundations every build already lays.
-    expect(get("launch_with_seo").tier).toBe("launch");
-    expect(get("launch_with_seo").high).toBeLessThanOrEqual(4000);
-  });
-
-  it("leaves a real gap between the product and a custom project", () => {
-    // The line between buying a product and hiring a studio. If these ever
-    // meet, the Launch product is being sold as a discounted custom build.
-    expect(get("custom_site").low).toBeGreaterThan(get("launch_local").high * 1.8);
-  });
-});
-
-describe("agrees with what the site already publishes", () => {
-  it("puts a custom business site in the published $8,000–25,000 band", () => {
-    const e = get("custom_site");
-    expect(e.low).toBeGreaterThanOrEqual(8000);
-    expect(e.high).toBeLessThanOrEqual(25000);
-  });
-
-  it("keeps a real store above a brochure site", () => {
-    expect(get("store_proper").low).toBeGreaterThan(get("custom_site").low);
-  });
-});
-
-describe("the routing decisions", () => {
-  it("scopes every software build rather than quoting it", () => {
-    for (const id of ["internal_tool", "client_portal", "saas_platform", "travel_system"]) {
-      expect(get(id).needsDiscovery, id).toBe(true);
-    }
-  });
-
-  it("still quotes a well-understood mid-market website", () => {
-    expect(get("custom_site_midmarket").needsDiscovery).toBe(false);
-  });
-
-  it("charges a mid-market firm ~3× for the identical deliverable", () => {
-    const multiple = get("custom_site_midmarket").expected / get("custom_site_solo").expected;
-    expect(multiple).toBeGreaterThan(2.6);
-    expect(multiple).toBeLessThan(3.6);
-  });
-
-  it("keeps a Lisa-shaped system out of the quoting path entirely", () => {
-    const e = get("travel_system");
-    expect(e.needsDiscovery).toBe(true);
-    // Independently estimated at $180k–300k for that scope; the model agrees.
-    expect(e.expected).toBeGreaterThan(150000);
-  });
-});
-
-describe("depth separates what one word cannot", () => {
-  it("separates a link to an ordering platform from a full ordering stack", () => {
-    expect(get("restaurant_full_ordering").expected).toBeGreaterThan(get("restaurant_local").expected * 1.5);
-  });
-
-  it("separates the readings of booking", () => {
-    expect(get("booking_custom").expected).toBeGreaterThan(get("booking_link").expected * 1.4);
-  });
-
-  it("separates connecting two tools from an AI system", () => {
-    expect(get("automation_intelligent").expected).toBeGreaterThan(get("automation_connect").expected * 3);
-  });
-
-  it("prices strategy above execution", () => {
-    // Positioning is advisory work; a refresh is production work.
-    const positioning = SCENARIOS.find((s) => s.id === "full_positioning")!;
-    expect(positioning.input.lines.some((l) => l.id === "brand" && l.depth === "positioning")).toBe(true);
-    expect(get("full_positioning").expected).toBeGreaterThan(get("brand_refresh_only").expected * 5);
-  });
-});
-
-describe("recurring stays out of the build price", () => {
   it.each(SCENARIOS)("$id publishes only approved monthly prices", (s) => {
     for (const r of get(s.id).recurring) {
-      if (r.monthly === null) continue;
-      expect([600, 850]).toContain(r.monthly);
+      if (r.monthly !== null) expect([600, 850]).toContain(r.monthly);
     }
+  });
+});
+
+/**
+ * THE GUARDRAILS.
+ *
+ * These test the pricing PRINCIPLES rather than today's figures, so prices can
+ * be tuned without rewriting the suite — but the philosophy cannot regress.
+ */
+describe("pricing principles", () => {
+  it("a simple local site never routes to discovery", () => {
+    for (const id of ["cafe", "plumber", "salon"]) expect(get(id).needsDiscovery, id).toBe(false);
+  });
+
+  it("company size is not an input the flow even has", () => {
+    // The only complexity options are things that create work. If a headcount
+    // question is ever added, this fails.
+    const ids = new Set(SCENARIOS.flatMap((s) => Object.keys(s.answers)));
+    for (const banned of ["employees", "company_size", "headcount", "staff"]) {
+      expect(ids, `"${banned}" reached the answers`).not.toContain(banned);
+    }
+  });
+
+  it("an existing booking integration is nothing like a booking system", () => {
+    const connect = estimate(
+      mapAnswers({ goal: "new_website", needs: ["bookings"], "how.bookings": "integrate", size: "standard" }),
+    );
+    const build = estimate(
+      mapAnswers({ goal: "new_website", needs: ["bookings"], "how.bookings": "build", size: "standard" }),
+    );
+    expect(build.expected).toBeGreaterThan(connect.expected * 1.8);
+    expect(build.needsDiscovery).toBe(true);
+    expect(connect.needsDiscovery).toBe(false);
+  });
+
+  it("an existing ordering integration is nothing like an ordering platform", () => {
+    const connect = estimate(
+      mapAnswers({ goal: "new_website", needs: ["ordering"], "how.ordering": "integrate", size: "standard" }),
+    );
+    const build = estimate(
+      mapAnswers({ goal: "new_website", needs: ["ordering"], "how.ordering": "build", size: "standard" }),
+    );
+    expect(build.expected).toBeGreaterThan(connect.expected * 1.8);
+  });
+
+  it("a normal Shopify setup is nothing like custom ecommerce software", () => {
+    const shopify = estimate(mapAnswers({ goal: "store", kind: "standard" }));
+    const custom = estimate(mapAnswers({ goal: "store", kind: "custom" }));
+    expect(shopify.needsDiscovery).toBe(false);
+    expect(custom.expected).toBeGreaterThan(shopify.expected * 2.5);
+  });
+
+  it("budget never secretly manipulates the quote", () => {
+    const base: Answers = { goal: "new_website", needs: ["explain"], size: "standard" };
+    const prices = ["under_5k", "5_15k", "15_50k", "50k_plus", "unsure"].map(
+      (budget) => estimate(mapAnswers({ ...base, budget })).expected,
+    );
+    expect(new Set(prices).size).toBe(1);
+  });
+
+  it("EN and FR run one engine, so the price cannot differ by language", () => {
+    // Locale never enters the model — it is applied to labels only. Proven by
+    // the input containing no locale at all.
+    const input = mapAnswers({ goal: "new_website", size: "standard" });
+    expect(JSON.stringify(input)).not.toMatch(/locale|lang|"en"|"fr"/);
   });
 });

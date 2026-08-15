@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { estimate, PricingInputError } from "@/lib/pricing/engine";
-import { CAVEAT_LABELS, DEPTH_LABELS, LINE_LABELS, formatCad, labelForKey, type Locale } from "@/lib/pricing/labels";
+import { BASE_LABELS, CAVEAT_LABELS, DISCOVERY_REASONS, formatCad, labelForKey, type Locale } from "@/lib/pricing/labels";
 import { DISCOVERY } from "@/lib/pricing/model";
 import { isComplete, mapAnswers, sanitizeAnswers } from "@/lib/pricing/public-flow";
 
@@ -64,10 +64,11 @@ export async function POST(request: Request) {
     const input = mapAnswers(answers);
     const result = estimate(input);
 
-    /** "Custom website · Research-led SEO" — what they asked for, in their words. */
-    const summary = input.lines.map(
-      (l) => DEPTH_LABELS[`${l.id}.${l.depth}`]?.[locale] ?? LINE_LABELS[l.id]?.[locale] ?? l.id,
-    );
+    /** "A full business website · Bookings" — what they asked for, in their words. */
+    const summary = [
+      BASE_LABELS[input.base]?.[locale] ?? input.base,
+      ...(input.additions ?? []).map((a) => labelForKey(a.id, locale)),
+    ];
 
     return NextResponse.json(
       {
@@ -76,7 +77,12 @@ export async function POST(request: Request) {
         currency: "CAD",
         tier: result.tier,
         needsDiscovery: result.needsDiscovery,
+        // The reason is shown instead of a bare refusal to quote.
+        discoveryReason: result.discoveryReason
+          ? (DISCOVERY_REASONS[result.discoveryReason]?.[locale] ?? null)
+          : null,
         discoveryFromLabel: formatCad(DISCOVERY.from, locale),
+        excludes: result.excludes.map((key) => labelForKey(key, locale)),
         summary,
         includes: [...new Set(result.includes)].map((key) => labelForKey(key, locale)),
         drivers: result.drivers.map((key) => labelForKey(key, locale)),

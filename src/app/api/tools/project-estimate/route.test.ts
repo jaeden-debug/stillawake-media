@@ -24,18 +24,10 @@ function post(body: unknown): Promise<Response> {
 }
 
 /** The Launch product: the smallest complete path through the flow. */
-const LAUNCH = {
-  services: ["website"],
-  "depth.website": "launch",
-  timing: "flexible",
-};
+const LAUNCH = { goal: "new_website", size: "small" };
 
-/** A custom project, so the range and tier differ from the product. */
-const CUSTOM = {
-  services: ["website"],
-  "depth.website": "custom",
-  timing: "flexible",
-};
+/** A normal local-business project. */
+const CUSTOM = { goal: "new_website", needs: ["explain", "leads"], size: "standard" };
 
 describe("public estimate endpoint", () => {
   it("prices a complete set of answers", async () => {
@@ -53,12 +45,12 @@ describe("public estimate endpoint", () => {
   it("never leaks the internal figures or the derivation", async () => {
     const res = await post({ answers: LAUNCH, locale: "en" });
     const body = await res.json();
-    for (const forbidden of ["expected", "lines", "modelChecksum", "days", "bands", "margin"]) {
+    for (const forbidden of ["expected", "lines", "modelChecksum", "days", "internalRate", "margin"]) {
       expect(body, `leaked "${forbidden}"`).not.toHaveProperty(forbidden);
     }
     // Day counts, rates and multipliers are the operator's business. Matching
     // on names rather than figures: 2500 is a legitimate published price.
-    expect(JSON.stringify(body)).not.toMatch(/dayRate|day_rate|multiplier|discipline|factor|orgFactor/i);
+    expect(JSON.stringify(body)).not.toMatch(/dayRate|day_rate|multiplier|planning|internalRate/i);
   });
 
   it("returns French copy for a French request", async () => {
@@ -66,7 +58,7 @@ describe("public estimate endpoint", () => {
     const body = await res.json();
     // Québec French puts the symbol after the number.
     expect(body.discoveryFromLabel).toMatch(/\s\$$/);
-    expect(body.summary.join(" ")).toMatch(/site/i);
+    expect(body.summary.join(" ").toLowerCase()).toMatch(/pages|site/);
   });
 
   it("prices EN and FR identically — only the words change", async () => {
@@ -80,11 +72,12 @@ describe("public estimate endpoint", () => {
   it("ignores an unknown locale rather than failing", async () => {
     const res = await post({ answers: LAUNCH, locale: "de" });
     expect(res.status).toBe(200);
-    expect((await res.json()).summary[0]).toMatch(/focused site/i);
+    expect((await res.json()).summary[0]).toMatch(/core pages/i);
   });
 
   it("rejects an incomplete set of answers", async () => {
-    const res = await post({ answers: { services: ["website"] }, locale: "en" });
+    // `goal` alone leaves `size` unanswered on the website path.
+    const res = await post({ answers: { goal: "new_website" }, locale: "en" });
     expect(res.status).toBe(400);
   });
 
@@ -111,8 +104,8 @@ describe("tampering", () => {
         high: 2,
         discount: 0.99,
         pricingVersion: "1999.01.1",
-        lines: [{ id: "free_website" }],
-        DAY_RATES: { build: 1 },
+        base: "free_website",
+        PLANNING_DAY_RATE: 1,
       })
     ).json();
     expect(tampered.low).toBe(clean.low);
@@ -124,7 +117,7 @@ describe("tampering", () => {
     const clean = await (await post({ answers: LAUNCH, locale: "en" })).json();
     const forged = await (
       await post({
-        answers: { ...LAUNCH, "depth.website": "free", timing: "free" },
+        answers: { ...LAUNCH, size: "free" },
         locale: "en",
       })
     ).json();
@@ -138,16 +131,16 @@ describe("tampering", () => {
   });
 
   it("resists prototype pollution in the answers object", async () => {
-    const res = await post({ answers: JSON.parse('{"__proto__":{"services":["store"]}}'), locale: "en" });
+    const res = await post({ answers: JSON.parse('{"__proto__":{"goal":"store"}}'), locale: "en" });
     expect(res.status).toBe(400);
-    expect(({} as Record<string, unknown>).services).toBeUndefined();
+    expect(({} as Record<string, unknown>).goal).toBeUndefined();
   });
 });
 
 describe("recurring services", () => {
   it("keeps monthly fees out of the build range and withholds unapproved prices", async () => {
     const body = await (await post({ answers: LAUNCH, locale: "en" })).json();
-    expect(body.high).toBeLessThanOrEqual(4000);
+    expect(body.high).toBeLessThanOrEqual(4500);
     const care = body.recurring.find((r: { label: string }) => r.label === "Website care plan");
     expect(care.monthly).toBeNull();
     expect(care.monthlyLabel).toBeNull();
@@ -177,22 +170,23 @@ describe("rate limiting", () => {
 describe("routing", () => {
   it("routes a software build to discovery instead of a range", async () => {
     const body = await (
-      await post({
-        answers: { services: ["software"], "depth.software": "internal_tool", timing: "flexible" },
-        locale: "en",
-      })
+      await post({ answers: { goal: "software", kind: "portal" }, locale: "en" })
     ).json();
     expect(body.needsDiscovery).toBe(true);
-    expect(body.tier).toBe("systems");
-    expect(body.discoveryFromLabel).toBe("CA$3,500");
+    expect(body.tier).toBe("discovery");
+    // The reason is shown rather than a bare refusal to quote.
+    expect(body.discoveryReason).toMatch(/scoped before it is priced/i);
+    expect(body.discoveryFromLabel).toBe("CA$2,500");
   });
 
   it("keeps a custom project quotable and above the product", async () => {
     const launch = await (await post({ answers: LAUNCH, locale: "en" })).json();
     const custom = await (await post({ answers: CUSTOM, locale: "en" })).json();
-    expect(custom.tier).toBe("custom");
+    expect(custom.tier).toBe("project");
     expect(custom.needsDiscovery).toBe(false);
-    expect(custom.low).toBeGreaterThan(launch.high * 1.8);
+    // A continuous ladder: the small tier's ceiling is the standard tier's
+    // floor. Sized by content, so continuity is correct here.
+    expect(custom.low).toBeGreaterThanOrEqual(launch.high);
   });
 
   /** Budget routes; it must never move the number. */
@@ -207,13 +201,25 @@ describe("routing", () => {
   });
 
   it("says so when the work sits above the stated budget", async () => {
-    const body = await (await post({ answers: { ...CUSTOM, budget: "under_5k" }, locale: "en" })).json();
-    expect(body.budgetSignal).toBe("above");
+    // A dashboard against an under-$5,000 budget genuinely does not meet;
+    // a $4,000–7,000 site against the same budget overlaps and must NOT flag.
+    const clear = await (await post({ answers: { goal: "software", kind: "dashboard", budget: "under_5k" }, locale: "en" })).json();
+    expect(clear.budgetSignal).toBe("above");
+    const overlapping = await (await post({ answers: { ...CUSTOM, budget: "under_5k" }, locale: "en" })).json();
+    expect(overlapping.budgetSignal).toBeNull();
   });
 
   /** Telling someone their budget exceeds the work invites them to spend more. */
   it("never volunteers that the budget is larger than the work", async () => {
     const body = await (await post({ answers: { ...LAUNCH, budget: "50k_plus" }, locale: "en" })).json();
     expect(body.budgetSignal).toBeNull();
+  });
+});
+
+describe("what is NOT included", () => {
+  it("names the exclusions, which matter more than another inclusion bullet", async () => {
+    const body = await (await post({ answers: CUSTOM, locale: "en" })).json();
+    expect(body.excludes.length).toBeGreaterThan(0);
+    expect(body.excludes.join(" ")).toMatch(/third-party|hosting/i);
   });
 });

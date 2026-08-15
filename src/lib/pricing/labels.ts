@@ -1,126 +1,90 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════
  * SHARED PRICING KERNEL — 5 of 5 · LABELS
- *
  * CANONICAL SOURCE: stillawake-media (.com). Synced to .dev.
  * ═══════════════════════════════════════════════════════════════════════════
  *
- * Every key the engine can emit, in English and Québec French. The engine
- * returns keys and never prose, so both public languages and the internal
- * estimator read the same model without any of them carrying its own wording.
- *
- * The French is written for Québec, not translated from the English:
- * "soumission", "cueillette", "prise de rendez-vous" and "mandat" are what a
- * Québec business actually says.
+ * The engine returns keys and never prose, so both languages and the internal
+ * estimator read one model. French is written for Québec, not translated.
  */
 
 export type Locale = "en" | "fr";
 type L = { en: string; fr: string };
 const t = (en: string, fr: string): L => ({ en, fr });
 
-export const LINE_LABELS: Record<string, L> = {
-  brand: t("Brand & positioning", "Marque et positionnement"),
-  website: t("Website", "Site web"),
-  store: t("Online store", "Boutique en ligne"),
-  seo: t("Search visibility", "Visibilité dans les recherches"),
-  content: t("Content", "Contenu"),
-  software: t("Custom software", "Logiciel sur mesure"),
-  automation: t("Automation & AI", "Automatisation et IA"),
+/** What the project is, in the client's words. */
+export const BASE_LABELS: Record<string, L> = {
+  website_small: t("A few core pages", "Quelques pages essentielles"),
+  website_standard: t("A full business website", "Un site d'entreprise complet"),
+  website_large: t("A larger site", "Un site plus grand"),
+  store_standard: t("An online store", "Une boutique en ligne"),
+  store_large: t("A larger online store", "Une boutique en ligne plus grande"),
+  store_custom: t("Custom commerce", "Commerce sur mesure"),
+  brand_refresh: t("Brand refresh", "Rafraîchissement de marque"),
+  brand_identity: t("Brand identity", "Identité de marque"),
+  brand_positioning: t("Brand positioning", "Positionnement de marque"),
+  seo_engagement: t("Search engagement", "Mandat de référencement"),
+  software_dashboard: t("Business dashboard", "Tableau de bord d'entreprise"),
+  software_portal: t("Customer portal", "Portail client"),
+  software_platform: t("Platform", "Plateforme"),
+  automation_connect: t("Connect two tools", "Connecter deux outils"),
+  automation_workflow: t("Automate a process", "Automatiser un processus"),
+  automation_ai: t("AI system", "Système d'IA"),
 };
 
-/** One line each, in the client's terms — used under the option in the flow. */
-export const LINE_BLURBS: Record<string, L> = {
-  brand: t("How you look and what you stand for", "Votre image et ce que vous représentez"),
-  website: t("The site itself", "Le site lui-même"),
-  store: t("Selling online", "Vendre en ligne"),
-  seo: t("Being found on Google and in AI answers", "Être trouvé sur Google et dans les réponses IA"),
-  content: t("Words, articles, and how they get published", "Textes, articles et publication"),
-  software: t("A tool, portal or system built for you", "Un outil, portail ou système sur mesure"),
-  automation: t("Work your team stops doing by hand", "Du travail que votre équipe cesse de faire à la main"),
-};
-
-/** Depth options, keyed `line.depth`. */
-export const DEPTH_LABELS: Record<string, L> = {
-  "brand.refresh": t("Tidy up what we already have", "Rafraîchir ce qu'on a déjà"),
-  "brand.identity": t("A proper identity — logo, type, colour, how it's applied", "Une vraie identité — logo, typo, couleurs, application"),
-  "brand.positioning": t("Full positioning — naming, messaging, identity, launch", "Positionnement complet — nom, message, identité, lancement"),
-
-  "website.launch": t("A focused site — a few key pages, launched fast", "Un site ciblé — quelques pages clés, lancé rapidement"),
-  "website.custom": t("A full site, designed for us and built properly", "Un site complet, conçu pour nous et bien bâti"),
-  "website.flagship": t("A large or unusual site", "Un grand site ou quelque chose d'inhabituel"),
-
-  "store.simple": t("A straightforward catalogue", "Un catalogue simple"),
-  "store.proper": t("A real store — catalogue, operations, the lot", "Une vraie boutique — catalogue, opérations, tout"),
-  "store.custom_commerce": t("Custom commerce — subscriptions, systems, integrations", "Commerce sur mesure — abonnements, systèmes, intégrations"),
-
-  "seo.foundations": t("Get the foundations right as we build", "Bien poser les fondations pendant la construction"),
-  "seo.research": t("Research and target the terms that matter", "Rechercher et cibler les bons termes"),
-  "seo.programme": t("A full programme with a plan and a baseline", "Un programme complet avec plan et point de référence"),
-
-  "content.structure": t("We write it — you structure and publish it", "On l'écrit — vous le structurez et le publiez"),
-  "content.produce": t("You write it for us", "Vous l'écrivez pour nous"),
-  "content.pipeline": t("Build a system that produces it at scale", "Bâtir un système qui en produit à grande échelle"),
-
-  "software.internal_tool": t("An internal tool for our team", "Un outil interne pour notre équipe"),
-  "software.customer_product": t("Something our customers log into", "Quelque chose où nos clients se connectent"),
-  "software.platform": t("A platform anyone can sign up for", "Une plateforme ouverte aux inscriptions"),
-
-  "automation.connect": t("Connect two things, reliably", "Connecter deux choses, de façon fiable"),
-  "automation.process": t("Automate a process, with a human check", "Automatiser un processus, avec validation humaine"),
-  "automation.intelligent": t("A system that exercises judgement", "Un système qui exerce un jugement"),
-};
-
-export const ADDON_LABELS: Record<string, L> = {
-  bookings: t("Bookings or reservations", "Prise de rendez-vous ou réservations"),
+export const ADDITION_LABELS: Record<string, L> = {
+  bookings: t("Bookings or appointments", "Rendez-vous ou réservations"),
+  "bookings.integrate": t("Connect the booking tool we already use", "Connecter l'outil de réservation qu'on utilise déjà"),
+  "bookings.build": t("Build us a scheduling system", "Nous bâtir un système de réservation"),
   ordering: t("Online ordering", "Commande en ligne"),
-  accounts: t("Customer accounts", "Comptes clients"),
-  payments: t("Taking payments", "Paiements"),
+  "ordering.integrate": t("Connect the ordering platform we already use", "Connecter la plateforme de commande qu'on utilise déjà"),
+  "ordering.build": t("Build us an ordering system", "Nous bâtir un système de commande"),
+  payments: t("Take payments", "Accepter des paiements"),
+  accounts: t("Customer logins", "Comptes clients"),
+  sell_products: t("Sell a few products", "Vendre quelques produits"),
   multi_location: t("Several locations", "Plusieurs emplacements"),
+  connect_tools: t("Connect the tools we already use", "Connecter les outils qu'on utilise déjà"),
+  connect_internal: t("Connect our own internal system", "Connecter notre propre système interne"),
+  content_migration: t("Move content from our old site", "Transférer le contenu de notre ancien site"),
+  accessibility: t("Accessibility or compliance requirements", "Exigences d'accessibilité ou de conformité"),
+  stakeholders: t("Several people need to approve it", "Plusieurs personnes doivent l'approuver"),
   custom_functionality: t("Something custom we haven't described", "Quelque chose de sur mesure non décrit ici"),
-
-  "bookings.link": t("Link out to a tool we already use", "Lien vers un outil qu'on utilise déjà"),
-  "bookings.embedded": t("Built into the site, using an existing system", "Intégré au site, avec un système existant"),
-  "bookings.custom": t("Our own availability rules and calendar", "Nos propres règles de disponibilité et calendrier"),
-  "ordering.link": t("Link out to a platform we already use", "Lien vers une plateforme qu'on utilise déjà"),
-  "ordering.onsite": t("Customers order and pay on our site", "Les clients commandent et paient sur notre site"),
-  "ordering.full": t("Ordering, delivery, pickup and our till system", "Commande, livraison, cueillette et notre caisse"),
 };
 
-export const ORG_LABELS: Record<string, L> = {
-  approvals: t("More than a couple of people need to approve it", "Plus de deux personnes doivent l'approuver"),
-  compliance: t("We have accessibility or compliance requirements", "On a des exigences d'accessibilité ou de conformité"),
-  integrations: t("It needs to connect to systems we already run", "Ça doit se connecter à nos systèmes existants"),
-  training: t("Our team will need training and documentation", "Notre équipe aura besoin de formation et de documentation"),
-};
-
-/** Plain-language explanation of what each factor buys. */
-export const ORG_BLURBS: Record<string, L> = {
-  approvals: t("Review rounds with several stakeholders", "Cycles de révision avec plusieurs parties prenantes"),
-  compliance: t("Conformance work and real testing", "Travail de conformité et tests réels"),
-  integrations: t("Systems we cannot see inside before starting", "Systèmes qu'on ne peut pas voir de l'intérieur avant de commencer"),
-  training: t("Sessions and documentation your team can use", "Sessions et documentation utilisables par votre équipe"),
-};
-
-export const TIER_LABELS: Record<string, L> = {
-  launch: t("Launch", "Lancement"),
-  custom: t("Custom project", "Projet sur mesure"),
-  systems: t("System build", "Construction de système"),
+export const SEO_LABELS: Record<string, L> = {
+  "seo.none": t("No extra search work", "Aucun travail de référencement supplémentaire"),
+  "seo.local": t("Local search setup", "Configuration du référencement local"),
+  "seo.content_strategy": t("Search strategy and content plan", "Stratégie de recherche et plan de contenu"),
 };
 
 export const INCLUDE_LABELS: Record<string, L> = {
-  starter_layout: t("Our proven layout, set up for you", "Notre gabarit éprouvé, configuré pour vous"),
-  your_brand_applied: t("Your existing brand applied", "Votre image de marque appliquée"),
-  up_to_five_pages: t("Up to 5 pages", "Jusqu'à 5 pages"),
-  one_revision_round: t("One round of revisions", "Une ronde de révisions"),
-  original_design: t("Original design, made for you", "Design original, fait pour vous"),
-  custom_responsive_build: t("Custom responsive build", "Site sur mesure adapté au mobile"),
+  polished_design: t("Polished design", "Design soigné"),
+  custom_design: t("Custom design, made for you", "Design sur mesure, fait pour vous"),
   design_system: t("A design system, not just pages", "Un système de design, pas juste des pages"),
+  up_to_five_pages: t("Up to 5 pages", "Jusqu'à 5 pages"),
+  home_about_contact: t("Home, about and contact", "Accueil, à propos et contact"),
+  service_pages: t("3–8 service or content pages", "3 à 8 pages de services ou de contenu"),
+  many_service_pages: t("Many service or content pages", "Plusieurs pages de services ou de contenu"),
   content_structure: t("Content structure and hierarchy", "Structure et hiérarchie du contenu"),
+  responsive: t("Works properly on phones", "Fonctionne bien sur mobile"),
   contact_form: t("Contact form", "Formulaire de contact"),
-  analytics_search_console: t("Analytics and Search Console", "Analytique et Search Console"),
-  technical_seo_foundation: t("Technical SEO foundation", "Fondations SEO techniques"),
+  lead_forms: t("Contact and enquiry forms", "Formulaires de contact et de demande"),
   cms_editing: t("Edit the content yourself", "Modifiez le contenu vous-même"),
-  deployment: t("Deployment and launch", "Mise en ligne"),
+  analytics_search_console: t("Analytics and Search Console", "Analytique et Search Console"),
+  technical_seo: t("Technical SEO foundation", "Fondations SEO techniques"),
+  schema: t("Structured data", "Données structurées"),
+  social_links: t("Social links", "Liens vers les réseaux sociaux"),
+  deployment: t("Launch and handover", "Mise en ligne et transfert"),
+  storefront_setup: t("Storefront set up", "Boutique configurée"),
+  theme_customised: t("Theme customised to your brand", "Thème adapté à votre marque"),
+  custom_theme: t("Custom theme", "Thème sur mesure"),
+  product_templates: t("Product page templates", "Gabarits de fiches produits"),
+  normal_catalogue: t("Your catalogue loaded", "Votre catalogue chargé"),
+  large_catalogue: t("A large catalogue loaded", "Un grand catalogue chargé"),
+  payments_setup: t("Payments set up", "Paiements configurés"),
+  shipping_tax_config: t("Shipping and tax set up", "Livraison et taxes configurées"),
+  operations_workflow: t("Operations workflow", "Flux opérationnel"),
+  custom_commerce: t("Custom commerce engine", "Moteur de commerce sur mesure"),
   logo_refinement: t("Logo refinement", "Raffinement du logo"),
   logo_system: t("Logo system", "Système de logo"),
   colour_type: t("Colour and typography", "Couleurs et typographie"),
@@ -130,35 +94,24 @@ export const INCLUDE_LABELS: Record<string, L> = {
   market_positioning: t("Market positioning", "Positionnement de marché"),
   naming_messaging: t("Naming and messaging", "Nom et message"),
   launch_assets: t("Launch assets", "Actifs de lancement"),
-  storefront_build: t("Storefront build", "Construction de la boutique"),
-  custom_storefront: t("Custom storefront", "Boutique sur mesure"),
-  product_templates: t("Product page templates", "Gabarits de fiches produits"),
-  cart_checkout: t("Cart and checkout", "Panier et paiement"),
-  payments_setup: t("Payment setup", "Configuration des paiements"),
-  shipping_tax_config: t("Shipping and tax setup", "Configuration livraison et taxes"),
-  ecommerce_seo_foundation: t("Ecommerce SEO foundation", "Fondations SEO pour boutique"),
-  operations_workflow: t("Operations workflow", "Flux opérationnel"),
-  schema_markup: t("Structured data", "Données structurées"),
+  technical_audit: t("Technical audit", "Audit technique"),
   keyword_research: t("Keyword and topic research", "Recherche de mots-clés et de sujets"),
   information_architecture: t("Information architecture", "Architecture de l'information"),
   onpage_optimization: t("On-page optimization", "Optimisation on-page"),
   measurement_baseline: t("Measurement baseline", "Point de référence des mesures"),
-  technical_audit: t("Technical audit", "Audit technique"),
+  local_seo_setup: t("Local search setup", "Configuration du référencement local"),
+  google_business_profile: t("Google Business Profile", "Fiche d'établissement Google"),
+  location_schema: t("Location structured data", "Données structurées d'emplacement"),
   content_plan: t("Content plan", "Plan de contenu"),
-  written_content: t("Written content", "Contenu rédigé"),
-  editorial_schema: t("Editorial content model", "Modèle de contenu éditorial"),
-  cms_workflow: t("CMS workflow", "Flux de travail CMS"),
-  content_automation: t("Content automation", "Automatisation du contenu"),
-  internal_linking_system: t("Internal linking system", "Système de maillage interne"),
-  metadata_system: t("Metadata system", "Système de métadonnées"),
-  publishing_workflow: t("Publishing workflow", "Flux de publication"),
+  internal_linking: t("Internal linking", "Maillage interne"),
   authentication: t("User logins", "Connexion des utilisateurs"),
   roles_permissions: t("Roles and permissions", "Rôles et permissions"),
   database_design: t("Database design", "Conception de la base de données"),
   core_screens: t("Core screens", "Écrans principaux"),
+  reporting: t("Reporting", "Rapports"),
+  admin_crud: t("Admin management screens", "Écrans de gestion administrateur"),
   customer_surface: t("Customer-facing area", "Espace client"),
   multiple_surfaces: t("Multiple application areas", "Plusieurs sections applicatives"),
-  admin_crud: t("Admin management screens", "Écrans de gestion administrateur"),
   admin_surface: t("Admin area", "Section administration"),
   hosting_environment: t("Hosting environment", "Environnement d'hébergement"),
   data_ingestion: t("Data intake", "Réception des données"),
@@ -170,14 +123,21 @@ export const INCLUDE_LABELS: Record<string, L> = {
   error_handling: t("Error handling", "Gestion des erreurs"),
 };
 
+/** Named so a prospect knows what was not counted. */
+export const EXCLUDE_LABELS: Record<string, L> = {
+  third_party_fees: t("Third-party fees (hosting, domains, platform plans)", "Frais de tiers (hébergement, domaines, forfaits de plateforme)"),
+  stock_media: t("Stock photography or video", "Photos ou vidéos de banque"),
+  ongoing_services: t("Ongoing services — quoted separately", "Services récurrents — chiffrés séparément"),
+  paid_advertising: t("Paid advertising budget", "Budget publicitaire"),
+};
+
 export const MISC_LABELS: Record<string, L> = {
-  organisation: t("Working with your organisation", "Travailler avec votre organisation"),
+  stakeholders: t("Extra review rounds", "Rondes de révision supplémentaires"),
   rush: t("Compressed timeline", "Échéancier serré"),
   range_aggregation: t("Range aggregation", "Agrégation de la fourchette"),
   minimum: t("Minimum engagement", "Mandat minimum"),
   unknown_external_system: t("Unknown external system", "Système externe inconnu"),
   undefined_scope: t("Scope not yet defined", "Portée encore à définir"),
-  discovery: t("Paid discovery", "Cadrage payant"),
 };
 
 export const RECURRING_LABELS: Record<string, L> = {
@@ -190,30 +150,48 @@ export const RECURRING_LABELS: Record<string, L> = {
 
 export const CAVEAT_LABELS: Record<string, L> = {
   unknown_external_system: t(
-    "This connects to a system we have not seen inside yet. Rather than guess how hard that will be, we widened the top of the range.",
-    "Ça se connecte à un système dont nous n'avons pas encore vu l'intérieur. Plutôt que de deviner la difficulté, nous avons élargi le haut de la fourchette.",
+    "This connects to a system we have not seen inside yet, so the top of the range is wider rather than guessed at.",
+    "Ça se connecte à un système dont on n'a pas encore vu l'intérieur, alors le haut de la fourchette est plus large plutôt que deviné.",
   ),
   undefined_scope: t(
-    "Parts of the scope are still open. The range is wider to reflect that, and it narrows once the scope is written down.",
-    "Une partie de la portée reste à définir. La fourchette est plus large pour en tenir compte et se resserrera une fois la portée écrite.",
+    "Parts of this are still open. The range reflects that, and narrows once the scope is written down.",
+    "Une partie reste à définir. La fourchette en tient compte et se resserrera une fois la portée écrite.",
   ),
   rush: t(
     "A compressed timeline costs real money — it moves the whole range, not just the top.",
-    "Un échéancier serré coûte réellement plus cher — ça déplace toute la fourchette, pas seulement le haut.",
+    "Un échéancier serré coûte réellement plus cher — ça déplace toute la fourchette.",
   ),
 };
 
-/** Resolves any engine key against every table, in collision order. */
+/** Why the estimate routed to discovery, in the client's terms. */
+export const DISCOVERY_REASONS: Record<string, L> = {
+  software_requirements: t(
+    "Software like this is scoped before it is priced. The requirements are the expensive part and they do not exist yet — so we find them out properly rather than guess at a number.",
+    "Un logiciel comme celui-ci se cadre avant d'être chiffré. Les exigences sont la partie coûteuse et elles n'existent pas encore — on les établit correctement plutôt que de deviner un chiffre.",
+  ),
+  building_not_integrating: t(
+    "You asked us to build the system, not connect one you already use. That is a software project, and it gets scoped first.",
+    "Vous nous demandez de bâtir le système, pas d'en connecter un que vous utilisez déjà. C'est un projet logiciel, et il se cadre d'abord.",
+  ),
+  scope_undefined: t(
+    "You told us parts of this are still being worked out. A written scope is worth more to you right now than a number we would have to revise.",
+    "Vous nous dites qu'une partie reste à définir. Une portée écrite vous vaut plus qu'un chiffre qu'on devrait réviser.",
+  ),
+  phase_it: t(
+    "At this size the useful advice is to phase the work rather than quote all of it at once. Discovery decides what comes first.",
+    "À cette taille, le bon conseil est de découper le travail en phases plutôt que de tout chiffrer d'un coup. Le cadrage détermine par où commencer.",
+  ),
+};
+
 export function labelForKey(key: string, locale: Locale): string {
   return (
-    DEPTH_LABELS[key]?.[locale] ??
-    ADDON_LABELS[key]?.[locale] ??
-    LINE_LABELS[key]?.[locale] ??
-    ORG_LABELS[key]?.[locale] ??
+    BASE_LABELS[key]?.[locale] ??
+    ADDITION_LABELS[key]?.[locale] ??
+    SEO_LABELS[key]?.[locale] ??
     MISC_LABELS[key]?.[locale] ??
     INCLUDE_LABELS[key]?.[locale] ??
+    EXCLUDE_LABELS[key]?.[locale] ??
     RECURRING_LABELS[key]?.[locale] ??
-    TIER_LABELS[key]?.[locale] ??
     key
   );
 }

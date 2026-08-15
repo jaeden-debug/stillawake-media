@@ -11,7 +11,7 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Tarifs — Prix affichés, sans appel de vente",
   description:
-    "Tarifs StillAwake Media : sites Lancement à partir de 2 500 $ CAD, projets sur mesure à partir de 8 000 $, cadrage payant à partir de 3 500 $, forfaits SEO de 600 $ à 850 $ par mois et dépannage d'urgence de 150 $ à 600 $. Publiés, en dollars canadiens.",
+    "Tarifs StillAwake Media : sites à partir de 2 500 $ CAD, un site d'entreprise complet de 4 000 $ à 7 000 $, cadrage payant à partir de 2 500 $, forfaits SEO de 600 $ à 850 $ par mois et dépannage d'urgence de 150 $ à 600 $. Publiés, en dollars canadiens.",
   alternates: {
     canonical: "https://stillawakemedia.com/fr/tarifs",
     languages: {
@@ -38,7 +38,7 @@ export default async function TarifsPage() {
         name="Tarifs des services StillAwake Media"
         description="Tarifs affichés : forfaits SEO mensuels, dépannage d'urgence à paiement unique, et travaux sur devis."
         offers={[
-          { name: "Site Lancement", price: MINIMUM },
+          { name: "Site web", price: MINIMUM },
           { name: "Cadrage de projet", price: DISCOVERY.from },
           { name: "Croissance SEO — Essentiel", price: 600, interval: "MONTH" },
           { name: "Croissance SEO — Avancé", price: 850, interval: "MONTH" },
@@ -62,7 +62,7 @@ export default async function TarifsPage() {
             {slot(
               slots,
               "hero_intro",
-              "La plupart des agences cachent leurs prix derrière un appel de découverte. StillAwake Media les affiche. Chaque prix de projet est chiffré de la même façon — des jours de travail à un taux journalier publié — pour qu'un prix fixe soit un vrai chiffre plutôt qu'une devinette. Les petits mandats sont un produit à prix fixe, les projets sur mesure reçoivent une portée écrite, et tout ce qu'un formulaire ne peut pas chiffrer honnêtement commence par un cadrage payant. Tous les prix sont en dollars canadiens.",
+              "La plupart des agences cachent leurs prix derrière un appel de découverte. StillAwake Media les affiche. Un site d'entreprise professionnel — les pages, formulaires, mesures et fondations de recherche dont toute entreprise a besoin — coûte de 4 000 $ à 7 000 $, et un site plus petit part de 2 500 $. On ne vous facture pas plus parce que votre entreprise compte plus d'employés; on facture le travail que votre projet demande réellement. Tout ce qu'un formulaire ne peut pas cadrer honnêtement commence par un cadrage payant. Tous les prix sont en dollars canadiens.",
             )}
           </p>
         </div>
@@ -81,38 +81,38 @@ export default async function TarifsPage() {
           </p>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             <PriceCard
-              name="Lancement"
-              price={`${MINIMUM.toLocaleString("fr-CA")} $ CAD`}
-              cadence="prix fixe"
+              name="Site web"
+              price={`à partir de ${MINIMUM.toLocaleString("fr-CA")} $ CAD`}
+              cadence="un site d'entreprise complet : 4 000 $ à 7 000 $"
               items={[
-                "Notre gabarit éprouvé, votre image de marque",
-                "Jusqu'à 5 pages",
-                "Analytique, Search Console, SEO technique",
-                "Une ronde de révisions",
-                "Portée fixe — c'est ce qui rend le prix possible",
+                "Design sur mesure, conçu pour vous",
+                "Accueil, à propos, contact et vos pages de services",
+                "Formulaires, analytique et Search Console",
+                "SEO technique et données structurées",
+                "Vous modifiez le contenu vous-même",
               ]}
               cta={["Chiffrer", "/fr/outils/calculateur-cout-projet"]}
+              highlight
             />
             <PriceCard
-              name="Projet sur mesure"
-              price="à partir de 8 000 $ CAD"
+              name="Boutique ou système"
+              price="à partir de 5 000 $ CAD"
               cadence="portée écrite, prix fixe"
               items={[
-                "Conçu pour vous, pas appliqué sur vous",
-                "Chiffré en jours à un taux publié",
-                "Portée écrite avant tout engagement",
+                "Shopify bien configuré, à partir de 5 000 $",
+                "Tableaux de bord à partir de 14 000 $",
+                "Chiffré selon le travail, pas selon vos effectifs",
                 "Sans appel de vente obligatoire",
               ]}
               cta={["Obtenir une fourchette", "/fr/outils/calculateur-cout-projet"]}
-              highlight
             />
             <PriceCard
               name="Cadrage"
               price={`à partir de ${DISCOVERY.from.toLocaleString("fr-CA")} $ CAD`}
               cadence="crédité sur la construction"
               items={[
-                "Pour les systèmes qu'un formulaire ne peut pas chiffrer",
-                "Portée écrite et architecture",
+                "Pour les logiciels et ce qui prend encore forme",
+                "Une portée écrite et une architecture",
                 "Un prix de construction fixe à la fin",
                 "Les frais sont déduits de la construction",
               ]}

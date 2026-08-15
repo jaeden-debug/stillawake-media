@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { PageSchema } from "@/components/page-schema";
 import { ProjectCalculator } from "@/components/tools/project-calculator";
-import { DAY_RATES, DISCOVERY, MINIMUM, PRICING_VERSION } from "@/lib/pricing/model";
+import { DISCOVERY, MINIMUM, PRICING_VERSION } from "@/lib/pricing/model";
 
 const url = "https://stillawakemedia.com/fr/outils/calculateur-cout-projet";
 const enUrl = "https://stillawakemedia.com/tools/project-cost-calculator";
@@ -77,13 +77,13 @@ export default function CalculateurCoutProjetPage() {
 
           <div className="mt-7 space-y-6 text-[#C7B9B9]">
             <div>
-              <h3 className="font-semibold text-white">Chaque prix, c&apos;est des jours de travail × un taux</h3>
+              <h3 className="font-semibold text-white">Un projet normal, un prix normal</h3>
               <p className="mt-2">
-                Pas une moyenne du marché, pas un chiffre rond qui nous plaisait. Le modèle estime
-                combien de jours prend chaque partie du mandat et multiplie par un taux —{" "}
-                {DAY_RATES.build.toLocaleString("fr-CA")} $ par jour pour la construction, davantage pour
-                les systèmes, l&apos;IA et la stratégie. Vous achetez un prix fixe, mais ce prix doit
-                être chiffré, sinon c&apos;est une devinette.
+                Le modèle part d&apos;un vrai projet — un site d&apos;entreprise professionnel avec les
+                pages, formulaires, mesures et fondations de recherche dont toute entreprise a besoin —
+                puis ajoute seulement ce que vous avez demandé. Ce n&apos;est pas un calcul théorique
+                d&apos;effort d&apos;agence, et votre projet ne coûte pas plus cher parce que votre
+                entreprise compte plus d&apos;employés.
               </p>
             </div>
 

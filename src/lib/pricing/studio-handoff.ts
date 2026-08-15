@@ -31,9 +31,9 @@ import { studioTypeFor, type Answers } from "./public-flow";
 
 /** Studio's `pages_scale` buckets, from its own discovery definitions. */
 const PAGES_SCALE: Record<string, string> = {
-  launch: "1_5",
-  custom: "5_15",
-  flagship: "15_50",
+  website_small: "1_5",
+  website_standard: "5_15",
+  website_large: "15_50",
 };
 
 /** Base64url so the value survives a query string without escaping. */
@@ -62,28 +62,24 @@ export type HandoffContext = {
 export function studioSeed(ctx: HandoffContext): Record<string, unknown> {
   const { input } = ctx;
   const seed: Record<string, unknown> = {};
-  const line = (id: string) => input.lines.find((l) => l.id === id);
+  const base = input.base;
+  const has = (id: string) => (input.additions ?? []).some((a) => a.id === id);
 
-  seed.project_type = studioTypeFor(input.lines);
+  seed.project_type = studioTypeFor(base);
 
-  const website = line("website");
-  const store = line("store");
+  // Brand and search work happens on something that already exists; a build
+  // is new until Studio hears otherwise.
+  if (base.startsWith("website") || base.startsWith("store")) seed.new_or_existing = "new";
+  else if (base === "seo_engagement" || base.startsWith("brand")) seed.new_or_existing = "existing";
 
-  // Studio's new / existing / rebuild, inferred from what they are buying.
-  // A brand or SEO engagement with no build is work on something that already
-  // exists; anything else is new until they tell Studio otherwise.
-  if (website || store) seed.new_or_existing = "new";
-  else if (line("seo") || line("brand") || line("content")) seed.new_or_existing = "existing";
-
-  if (website && PAGES_SCALE[website.depth]) seed.pages_scale = PAGES_SCALE[website.depth];
+  if (PAGES_SCALE[base]) seed.pages_scale = PAGES_SCALE[base];
 
   const features: string[] = [];
-  if (website && website.depth !== "launch") features.push("cms");
-  if (line("content")) features.push("blog");
-  if (line("seo")) features.push("seo");
-  const addons = input.lines.flatMap((l) => l.addons ?? []);
-  if (addons.some((a) => a.id === "accounts")) features.push("customer_login");
-  if (addons.some((a) => a.id === "multi_location")) features.push("local_seo");
+  features.push("cms");
+  if (has("accounts")) features.push("customer_login");
+  if (has("multi_location")) features.push("local_seo");
+  if (input.seo === "local") features.push("local_seo");
+  if (input.seo === "content_strategy") features.push("seo");
   if (features.length) seed.site_features = [...new Set(features)];
 
   return seed;
@@ -102,7 +98,7 @@ export function studioHandoffUrl(ctx: HandoffContext): string {
   const params = new URLSearchParams();
 
   // Kept for Studio deploys that predate the `sa` reader.
-  params.set("type", studioTypeFor(ctx.input.lines));
+  params.set("type", studioTypeFor(ctx.input.base));
   const seed = encode(studioSeed(ctx));
   if (seed) params.set("sa", seed);
   params.set("sa_est", `${ctx.low}-${ctx.high}`);

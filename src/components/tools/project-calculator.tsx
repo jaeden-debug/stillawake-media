@@ -33,7 +33,7 @@ const UI: Record<Locale, {
   drivers: string; ongoing: string; ongoingNote: string; quoted: string; perMonth: string;
   launchNote: string; customNote: string; discoveryTitle: string; discoveryBody: string;
   discoveryCta: string; discoveryFrom: string; budgetAbove: string; notQuote: string; cta: string;
-  ctaNote: string; restart: string; error: string; model: string;
+  ctaNote: string; restart: string; error: string; notIncluded: string; model: string;
 }> = {
   en: {
     of: "of",
@@ -67,6 +67,7 @@ const UI: Record<Locale, {
     ctaNote: "Your answers carry across — you will not be asked any of this twice.",
     restart: "Start over",
     error: "We could not work that out. Try again in a moment.",
+    notIncluded: "Not included",
     model: "Pricing model",
   },
   fr: {
@@ -103,6 +104,7 @@ const UI: Record<Locale, {
     ctaNote: "Vos réponses vous suivent — on ne vous redemandera rien de tout ça.",
     restart: "Recommencer",
     error: "On n'a pas pu calculer ça. Réessayez dans un instant.",
+    notIncluded: "Non inclus",
     model: "Modèle tarifaire",
   },
 };
@@ -113,9 +115,11 @@ type Copy = (typeof UI)["en"];
 type Result = {
   low: number;
   high: number;
-  tier: "launch" | "custom" | "systems";
+  tier: "launch" | "project" | "discovery";
   needsDiscovery: boolean;
+  discoveryReason: string | null;
   discoveryFromLabel: string;
+  excludes: string[];
   summary: string[];
   includes: string[];
   drivers: string[];
@@ -551,6 +555,20 @@ function ResultCard({
             )}
           </section>
         </div>
+
+        {result.excludes.length > 0 && (
+          <div className="mt-8 border-t border-white/10 pt-6">
+            <h3 className="text-[11px] uppercase tracking-[0.3em] text-[#8C8080]">{T.notIncluded}</h3>
+            <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+              {result.excludes.map((x) => (
+                <li key={x} className="flex gap-2.5 text-sm text-[#8C8080]">
+                  <span aria-hidden className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-white/20" />
+                  {x}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         {result.caveats.length > 0 && (
           <div className="mt-8 space-y-2.5 border-t border-white/10 pt-6">

@@ -11,7 +11,7 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Pricing — Published Rates, No Sales Call",
   description:
-    "StillAwake Media pricing: Launch websites from $2,500 CAD, custom projects from $8,000, paid discovery from $3,500, SEO plans $600–$850 CAD/month and emergency support $150–$600 one-time. Published, in CAD, no sales call.",
+    "StillAwake Media pricing: websites from $2,500 CAD, a full business website $4,000–$7,000, paid discovery from $2,500, SEO plans $600–$850 CAD/month and emergency support $150–$600 one-time. Published, in CAD, no sales call.",
   alternates: {
     canonical: "https://stillawakemedia.com/pricing",
     languages: {
@@ -37,7 +37,7 @@ export default async function PricingPage() {
         name="StillAwake Media Services Pricing"
         description="Published pricing for StillAwake Media services: monthly SEO plans, one-time emergency website support tiers, and custom-quoted design/development work."
         offers={[
-          { name: "Launch Website", price: MINIMUM },
+          { name: "Website", price: MINIMUM },
           { name: "Project Discovery", price: DISCOVERY.from },
           { name: "SEO Growth — Essentials", price: 600, interval: "MONTH" },
           { name: "SEO Growth — Advanced", price: 850, interval: "MONTH" },
@@ -60,7 +60,7 @@ export default async function PricingPage() {
             {slot(
               slots,
               "hero_intro",
-              "Most agencies hide pricing behind a discovery call. StillAwake Media publishes it. Every project price is costed the same way — days of work at a published day rate — so a fixed price is a real number rather than a guess. Small work is a fixed-price product, custom work gets a written scope, and anything large enough that a form could not honestly price it starts with paid discovery. All prices in Canadian dollars.",
+              "Most agencies hide pricing behind a discovery call. StillAwake Media publishes it. A professional business website — the pages, forms, analytics and search foundations any business needs — is $4,000 to $7,000, and a smaller site starts at $2,500. You are not charged more because your company has more people in it; you are charged for the work your project actually involves. Anything a form cannot honestly scope starts with paid discovery. All prices in Canadian dollars.",
             )}
           </p>
         </div>
@@ -79,38 +79,38 @@ export default async function PricingPage() {
           </p>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             <PriceCard
-              name="Launch"
-              price={`$${MINIMUM.toLocaleString("en-CA")} CAD`}
-              cadence="fixed price"
+              name="Website"
+              price={`from $${MINIMUM.toLocaleString("en-CA")} CAD`}
+              cadence="a full business site is $4,000–$7,000"
               items={[
-                "Our proven layout, your brand applied",
-                "Up to 5 pages",
-                "Analytics, Search Console, technical SEO",
-                "One round of revisions",
-                "Fixed scope — that is what makes the price",
+                "Custom design, built for you",
+                "Home, about, contact and your service pages",
+                "Forms, analytics and Search Console",
+                "Technical SEO and structured data",
+                "You edit the content yourself",
               ]}
               cta={["Price it", "/tools/project-cost-calculator"]}
+              highlight
             />
             <PriceCard
-              name="Custom project"
-              price="from $8,000 CAD"
+              name="Store or system"
+              price="from $5,000 CAD"
               cadence="written scope, fixed price"
               items={[
-                "Designed for you, not applied to you",
-                "Costed in days at a published rate",
-                "Written scope before any commitment",
+                "Shopify set up properly, from $5,000",
+                "Business dashboards from $14,000",
+                "Priced for the work, not your headcount",
                 "No mandatory sales call",
               ]}
               cta={["Get a range", "/tools/project-cost-calculator"]}
-              highlight
             />
             <PriceCard
               name="Discovery"
               price={`from $${DISCOVERY.from.toLocaleString("en-CA")} CAD`}
               cadence="credited against the build"
               items={[
-                "For systems a form cannot price",
-                "Written scope and architecture",
+                "For software and anything still taking shape",
+                "A written scope and architecture",
                 "A fixed build price at the end",
                 "The fee comes off the build",
               ]}

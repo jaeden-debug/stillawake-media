@@ -3,197 +3,198 @@
  * SHARED PRICING KERNEL — 1 of 5
  *
  * CANONICAL SOURCE: stillawake-media (.com) `src/lib/pricing/`.
- * A byte-identical copy is generated into stillawakemedia.dev by
- * `scripts/sync-pricing.mjs`. Never hand-edit the .dev copy — `model.test.ts`
- * in both repos recomputes the checksum and fails if you do.
+ * Synced byte-identical into stillawakemedia.dev by `scripts/sync-pricing.mjs`.
  * ═══════════════════════════════════════════════════════════════════════════
  *
- * EVERY PRICE HERE IS DERIVED FROM DAYS OF WORK.
+ * WE PRICE WHAT WE SELL, AND WE TRACK WHAT IT COSTS US. THOSE ARE TWO NUMBERS.
  *
- * StillAwake sells fixed-price engagements, never hours — but a fixed price
- * you cannot cost is a guess. So the model estimates effort in days, multiplies
- * by a discipline day rate, and the fixed price falls out of that. The client
- * buys an outcome; the day model is what makes the outcome profitable to
- * deliver. Any band that cannot be traced back to "N days at $R" is a number
- * somebody made up.
+ * The previous model (2026.08.2) computed `days × day rate × org multiplier`
+ * and published the result. It was internally consistent and commercially
+ * wrong: a twelve-person law firm asking for a website saw $39,000–60,000,
+ * and would have closed the page long before anyone explained the arithmetic.
  *
- * Days are BANDS, never points, because scope uncertainty is a property of the
- * work itself. A custom availability engine is genuinely 3–7 days depending on
- * what the rules turn out to be, and a model that says "5" is lying.
+ * Three things caused that, and this file is shaped to prevent all three.
+ *
+ *   1. Organisational complexity multiplied the ENTIRE project. Two checkboxes
+ *      doubled work that stakeholders never touch. Complexity is now additive
+ *      and specific: accessibility is a fixed amount of conformance work, not
+ *      +45% of everything.
+ *
+ *   2. The day rate behaved as a retail formula, so 5.5 days set a $9,900
+ *      floor under every custom site. StillAwake's speed is a competitive
+ *      advantage, not a reason to charge agency prices for agency headcount we
+ *      do not carry. Every element now carries a SELL PRICE directly; `days`
+ *      rides alongside as an internal check.
+ *
+ *   3. Integration was priced like construction. Connecting the ordering
+ *      platform a restaurant already runs is not building one. That
+ *      distinction is now structural — see `AdditionSpec.kind`.
+ *
+ * The day estimate has not gone away. `internalRate` on every estimate reports
+ * what the price implies per day, the internal estimator shows it against the
+ * planning rate, and a test fails if any element implies less than the floor.
+ * That is the honest role for a day rate: catching underpricing, not setting
+ * retail.
  */
 
-/** A day-count band. Invariant: low <= expected <= high. */
-export type Days = { low: number; expected: number; high: number };
-
-/** A money band in whole CAD, always days × rate. */
+/** A money band in whole CAD — what a client is quoted. */
 export type Band = { low: number; expected: number; high: number };
 
-/**
- * Day rates by discipline.
- *
- * Not four different people — four different kinds of work, which the market
- * prices differently. Advisory rates above execution everywhere, because
- * judgement is what is scarce.
- */
-export type Discipline = "build" | "systems" | "ai" | "advisory";
+/** A day-count band — what it costs us. Internal only, never published. */
+export type Days = { low: number; expected: number; high: number };
+
+/** Everything priced carries both: what we sell it for, and what it takes. */
+export type Priced = { price: Band; days: Days };
 
 /**
- * What StillAwake is being asked to do. These COMBINE — a client can want
- * positioning and a site and an SEO programme, and pricing that as one
- * "project type" was the flaw in the previous model. Nothing here is mutually
- * exclusive.
+ * What the project fundamentally is. Exactly one is chosen, and it sets the
+ * centre of the estimate — everything else is an addition to it.
  */
-export type ServiceLineId =
-  | "brand"
-  | "website"
-  | "store"
-  | "seo"
-  | "content"
-  | "software"
-  | "automation";
+export type BaseId =
+  | "website_small"
+  | "website_standard"
+  | "website_large"
+  | "store_standard"
+  | "store_large"
+  | "store_custom"
+  | "brand_refresh"
+  | "brand_identity"
+  | "brand_positioning"
+  | "seo_engagement"
+  | "software_dashboard"
+  | "software_portal"
+  | "software_platform"
+  | "automation_connect"
+  | "automation_workflow"
+  | "automation_ai";
 
-/** How deep the work goes on a given line. Keys are line-specific. */
-export type DepthId = string;
-
-export type DepthSpec = {
-  id: DepthId;
-  days: Days;
-  /** Overrides the line's discipline where this depth is a different kind of work. */
-  discipline?: Discipline;
+export type BaseSpec = Priced & {
+  id: BaseId;
+  /** What the client actually receives. Drives the "includes" list. */
+  includes: string[];
+  /** Additions this base can carry. */
+  additions: AdditionId[];
   /**
-   * A fixed-scope product rather than a custom engagement. Productized depths
-   * are sold at a published price with hard limits — that is what makes them
-   * viable at a price no custom engagement could reach.
+   * Requirements are the product here, so no questionnaire can price it
+   * honestly. Routes to paid discovery whatever the number says.
    */
+  alwaysDiscovery?: boolean;
+  /** A fixed-scope product sold at a published price with hard limits. */
   productized?: boolean;
-  /**
-   * Lines that already include this work. Selecting SEO foundations alongside
-   * a website is not an extra purchase — every build lays them — and charging
-   * for it would be billing twice for one job.
-   */
-  absorbedBy?: ServiceLineId[];
 };
 
-export type ServiceLineSpec = {
-  id: ServiceLineId;
-  discipline: Discipline;
-  depths: DepthSpec[];
-  /** Add-ons this line can carry. Only offered above a productized depth. */
-  addons?: AddonId[];
-};
-
-export type AddonId =
+export type AdditionId =
   | "bookings"
   | "ordering"
-  | "accounts"
   | "payments"
+  | "accounts"
+  | "sell_products"
   | "multi_location"
+  | "connect_tools"
+  | "connect_internal"
+  | "content_migration"
+  | "accessibility"
+  | "stakeholders"
   | "custom_functionality";
 
-export type AddonSpec = {
-  id: AddonId;
-  days: Days;
+/**
+ * THE DISTINCTION THAT MATTERS MOST.
+ *
+ * `integrate` — wiring up something that already exists and already works.
+ *   Calendly, Toast, Stripe Checkout, their CRM. Configuration, styling,
+ *   testing. Usually under a day, and priced like it.
+ *
+ * `build` — creating the thing. A scheduling engine, an ordering platform, a
+ *   billing system. That is software, and software routes to discovery.
+ *
+ * The old model collapsed these into one "ordering" line at eight days, which
+ * is how a restaurant with a working Toast account got quoted $40,000.
+ */
+export type AdditionKind = "integrate" | "build" | "scope" | "process";
+
+export type AdditionSpec = {
+  id: AdditionId;
+  kind: AdditionKind;
+  /** Flat addition. Omitted when the addition is proportional (see `share`). */
+  price?: Band;
+  days?: Days;
   /**
-   * Where one word covers builds an order of magnitude apart, the flow asks a
-   * follow-up instead of averaging. "Booking" spans a Calendly link and a
-   * multi-resource availability engine; no single band is honest about both.
+   * Proportional additions, as a fraction of the base. Only used where the
+   * work genuinely scales with the project — stakeholder review rounds do,
+   * accessibility conformance does not.
    */
-  variants?: { id: string; days: Days }[];
-  discipline?: Discipline;
+  share?: number;
+  /** Where one word covers integration AND construction, the flow must ask. */
+  variants?: { id: string; kind: AdditionKind; price: Band; days: Days; alwaysDiscovery?: boolean }[];
   /** Targets a system we cannot see inside before starting. Widens HIGH only. */
   externalSystem?: boolean;
+  /** Bases that already include this, so it is never charged twice. */
+  includedIn?: BaseId[];
 };
 
-/**
- * What makes an organisation expensive to work with — the honest mechanism for
- * charging a mid-market firm more than an owner-operator.
- *
- * Not a proxy for company size and not a wallet test. Each of these is real,
- * itemisable work: review rounds with several stakeholders, conformance
- * testing, integration against systems we do not control, training and
- * documentation. A solo operator selects none of them and pays the base price.
- */
-export type OrgFactorId = "approvals" | "compliance" | "integrations" | "training";
+/** Search scope, sold alongside any base. Technical foundations are included in every base. */
+export type SeoScopeId = "none" | "local" | "content_strategy";
 
-export type OrgFactorSpec = {
-  id: OrgFactorId;
-  /** Multiplier on the whole engagement. */
-  factor: number;
-  /** True when it also widens the top of the range. */
-  addsUncertainty?: boolean;
-};
+export type SeoScopeSpec = Priced & { id: SeoScopeId; includes: string[] };
 
-/** Which of the three products the engagement lands in. */
-export type Tier = "launch" | "custom" | "systems";
-
-export type LineSelection = {
-  id: ServiceLineId;
-  depth: DepthId;
-  addons?: { id: AddonId; variant?: string }[];
-};
+export type Tier = "launch" | "project" | "discovery";
 
 export type EstimateInput = {
-  lines: LineSelection[];
-  org?: OrgFactorId[];
+  base: BaseId;
+  additions?: { id: AdditionId; variant?: string }[];
+  seo?: SeoScopeId;
   /**
-   * Optional, and it routes — it never sets the price. Someone who says $3,000
-   * sees the Launch product at its published price; someone who says $50,000
-   * sees the custom range at the same published rates. This exists so we
-   * propose the right scope, not a bigger one.
+   * Optional, and it routes — it never sets the price. Our rates are
+   * published; a stated budget only tells us which scope to propose.
    */
   budget?: "under_5k" | "5_15k" | "15_50k" | "50k_plus" | "unsure";
-  /** Client cannot describe the scope yet — widens HIGH only. */
+  /** They have told us the scope is still open. Widens HIGH and routes to discovery. */
   undefinedScope?: boolean;
-  /** A real deadline that compresses the schedule. Costs real money. */
   rush?: boolean;
 };
 
 export type LineItem = {
-  /** Stable key for i18n lookup; never a user-facing string. */
   key: string;
-  kind: "line" | "addon" | "org" | "risk" | "aggregation" | "minimum";
+  kind: "base" | "addition" | "seo" | "complexity" | "risk" | "aggregation" | "minimum";
   band: Band;
   days?: Days;
-  discipline?: Discipline;
-  /** Machine-readable reason, resolved to prose by the caller's locale. */
+  /** integrate vs build, so the internal breakdown shows which was priced. */
+  addKind?: AdditionKind;
   note?: string;
 };
 
 export type Estimate = {
   pricingVersion: string;
   modelChecksum: string;
-  /** Rounded, client-safe. Low rounds down, high up — never narrower than computed. */
+  /** Rounded and client-safe. Low rounds down, high up. */
   low: number;
   high: number;
-  /** Internal midpoint. NEVER exposed on the public surface. */
+  /** Internal midpoint. NEVER published. */
   expected: number;
-  /** Total effort, so any band can be checked against "N days at $R". */
+  /** Internal effort estimate. NEVER published. */
   days: Days;
-  tier: Tier;
   /**
-   * True when the engagement is too large to quote honestly from a form. The
-   * public surface shows a starting figure and sells paid discovery instead of
-   * pretending a questionnaire can scope a platform.
+   * What the price implies per day. The honest role of a day rate: a check
+   * against underpricing, not the formula that sets retail.
    */
+  internalRate: number;
+  tier: Tier;
   needsDiscovery: boolean;
-  /** Full derivation. Internal only. */
+  /** Why discovery was triggered, so the reason can be shown rather than a bare refusal. */
+  discoveryReason: string | null;
   lines: LineItem[];
-  /** Keys ranked by contribution to `expected`. */
   drivers: string[];
-  /** Keys of what the engagement includes. */
   includes: string[];
-  /** Recurring options, separated from build cost. Unapproved prices are null. */
+  /** Named so a prospect knows what was NOT counted. */
+  excludes: string[];
   recurring: { id: string; monthly: number | null }[];
   minimumApplied: boolean;
-  /** Machine-readable caveats. */
   caveats: string[];
-  /** Set when the answers and the stated budget do not meet. */
-  budgetSignal: "fits" | "above" | "below" | null;
+  budgetSignal: "above" | null;
 };
 
 export type RecurringSpec = {
   id: string;
-  /** CAD per month, or null when no APPROVED public price exists. */
   monthly: number | null;
   /** Mirrors Supabase `service_products.active`. Only `true` may be published. */
   approved: boolean;

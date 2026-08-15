@@ -5,56 +5,44 @@
  * CANONICAL SOURCE: stillawake-media (.com). Synced to .dev.
  * ═══════════════════════════════════════════════════════════════════════════
  *
- * Pure, deterministic, dependency-free — the same input always produces the
- * same estimate, which is what makes a stored estimate reproducible from its
- * `pricing_version` years later.
+ * Pure, deterministic, dependency-free.
  *
- * ORDER OF OPERATIONS — load-bearing, not incidental:
+ *   base + additions + search scope + proportional process + risk
  *
- *   1. each service line at its depth → days × discipline rate
- *   2. add-ons, at their chosen variant where the word is ambiguous
- *   3. organisational complexity — the honest enterprise multiple
- *   4. rush — real cost, so it scales the whole band
- *   5. independent items combined in quadrature
- *   6. risk — widens HIGH only, never invents effort
- *   7. minimum, rounding, tier, discovery routing
+ * Additions are FLAT amounts, not multipliers on the whole project. That is
+ * the correction at the heart of this version: the only proportional term left
+ * is stakeholder review, capped at 8%, because review rounds genuinely scale
+ * with the project while accessibility conformance does not.
  *
- * Steps 1–4 are reported as deltas that sum to the linear total, and step 5
- * emits the single reconciling line — so the internal breakdown always adds up
- * to the number shown.
+ * Days ride alongside the money the whole way and never influence it. They
+ * exist so `internalRate` can report what the price implies per day.
  */
 
 import {
-  ADDONS,
+  ADDITIONS,
   AGGREGATION_EXPONENT,
+  BASES,
+  BASE_RECURRING,
   BUDGET_BANDS,
-  DAY_RATES,
-  DEPTH_INCLUDES,
-  DISCOVERY_ALWAYS_LINES,
-  DISCOVERY_DEPTHS,
-  DISCOVERY_THRESHOLD,
-  LINE_RECURRING,
+  DISCOVERY_SIZE_THRESHOLD,
+  EXCLUSIONS,
   MINIMUM,
   MODEL_CHECKSUM,
-  ORG_FACTORS,
   PRICING_VERSION,
   RECURRING_BY_ID,
   RISK,
   ROUNDING,
-  SERVICE_LINES,
+  SEO_SCOPES,
 } from "./model";
 import type {
-  AddonId,
+  AdditionId,
   Band,
+  BaseId,
   Days,
-  Discipline,
   Estimate,
   EstimateInput,
   LineItem,
-  LineSelection,
-  OrgFactorId,
-  ServiceLineId,
-  Tier,
+  SeoScopeId,
 } from "./types";
 
 /** Thrown for any input the model does not recognise. Never leaks internals. */
@@ -68,19 +56,11 @@ export class PricingInputError extends Error {
 const ZERO: Band = { low: 0, expected: 0, high: 0 };
 const ZERO_DAYS: Days = { low: 0, expected: 0, high: 0 };
 
-const addBands = (...bands: Band[]): Band =>
+const add = (...bands: Band[]): Band =>
   bands.reduce((a, b) => ({ low: a.low + b.low, expected: a.expected + b.expected, high: a.high + b.high }), ZERO);
-
 const addDays = (...ds: Days[]): Days =>
   ds.reduce((a, b) => ({ low: a.low + b.low, expected: a.expected + b.expected, high: a.high + b.high }), ZERO_DAYS);
-
 const scale = (b: Band, f: number): Band => ({ low: b.low * f, expected: b.expected * f, high: b.high * f });
-
-/** The only place days become money. */
-const toMoney = (d: Days, discipline: Discipline): Band => {
-  const rate = DAY_RATES[discipline];
-  return { low: d.low * rate, expected: d.expected * rate, high: d.high * rate };
-};
 
 function stepFor(value: number): number {
   for (const r of ROUNDING) if (value <= r.upTo) return r.step;
@@ -89,15 +69,12 @@ function stepFor(value: number): number {
 const roundDown = (v: number) => Math.floor(v / stepFor(v)) * stepFor(v);
 const roundUp = (v: number) => Math.ceil(v / stepFor(v)) * stepFor(v);
 
-/**
- * Combines independent items around their shared expected value.
- * With one item this returns that item's own band unchanged.
- */
+/** Independent items combine around their shared expected value. */
 function aggregate(items: Band[]): Band {
   const expected = items.reduce((s, b) => s + b.expected, 0);
-  const p = AGGREGATION_EXPONENT;
+  const e = AGGREGATION_EXPONENT;
   const dev = (pick: (b: Band) => number) =>
-    Math.pow(items.reduce((s, b) => s + Math.pow(Math.max(0, pick(b)), p), 0), 1 / p);
+    Math.pow(items.reduce((s, b) => s + Math.pow(Math.max(0, pick(b)), e), 0), 1 / e);
   return {
     low: expected - dev((b) => b.expected - b.low),
     expected,
@@ -105,298 +82,235 @@ function aggregate(items: Band[]): Band {
   };
 }
 
-const depthOf = (line: ServiceLineId, depth: string) =>
-  SERVICE_LINES[line]?.depths.find((d) => d.id === depth);
-
 /**
  * Validates untrusted input against the model.
  *
- * Every id is checked against the model's own tables rather than a duplicated
- * list, so an unknown line, a depth that line does not offer, or an add-on it
- * does not carry is rejected instead of silently defaulting to something
- * cheap. Nothing else on the object is read, so injected fields cannot reach
- * the calculation.
+ * Every id is checked against the model's own tables, so an unknown base, an
+ * addition the base does not carry, or an unknown variant is rejected rather
+ * than silently defaulting to something cheap. Nothing else on the object is
+ * read, so injected fields cannot reach the calculation.
  */
 export function validateInput(raw: unknown): EstimateInput {
   if (typeof raw !== "object" || raw === null) throw new PricingInputError("Invalid request.");
   const o = raw as Record<string, unknown>;
 
-  if (!Array.isArray(o.lines) || o.lines.length === 0) {
+  const base = o.base;
+  if (typeof base !== "string" || !Object.hasOwn(BASES, base)) {
     throw new PricingInputError("Tell us what you need.");
   }
-  if (o.lines.length > 7) throw new PricingInputError("Too many services.");
+  const spec = BASES[base as BaseId];
 
-  const seen = new Set<string>();
-  const lines: LineSelection[] = [];
-
-  for (const entry of o.lines) {
-    if (typeof entry !== "object" || entry === null) throw new PricingInputError("Invalid service.");
-    const l = entry as Record<string, unknown>;
-    const id = l.id;
-    if (typeof id !== "string" || !Object.hasOwn(SERVICE_LINES, id)) {
-      throw new PricingInputError(`Unknown service: ${String(id)}`);
-    }
-    if (seen.has(id)) continue;
-    seen.add(id);
-
-    const spec = SERVICE_LINES[id as ServiceLineId];
-    const depth = typeof l.depth === "string" ? l.depth : spec.depths[0].id;
-    if (!spec.depths.some((d) => d.id === depth)) {
-      throw new PricingInputError(`Unsupported level for ${id}.`);
-    }
-
-    const addons: { id: AddonId; variant?: string }[] = [];
-    if (l.addons !== undefined) {
-      if (!Array.isArray(l.addons)) throw new PricingInputError("Invalid options.");
-      if (l.addons.length > 8) throw new PricingInputError("Too many options.");
-      const seenAddon = new Set<string>();
-      for (const a of l.addons) {
-        if (typeof a !== "object" || a === null) throw new PricingInputError("Invalid option.");
-        const ao = a as Record<string, unknown>;
-        const aid = ao.id;
-        if (typeof aid !== "string" || !Object.hasOwn(ADDONS, aid)) {
-          throw new PricingInputError(`Unknown option: ${String(aid)}`);
-        }
-        // An add-on must actually belong to the line that carries it.
-        if (!spec.addons?.includes(aid as AddonId)) {
-          throw new PricingInputError(`${aid} does not apply to ${id}.`);
-        }
-        if (seenAddon.has(aid)) continue;
-        seenAddon.add(aid);
-
-        const addonSpec = ADDONS[aid as AddonId];
-        let variant: string | undefined;
-        if (ao.variant !== undefined) {
-          if (typeof ao.variant !== "string" || !addonSpec.variants?.some((v) => v.id === ao.variant)) {
-            throw new PricingInputError(`Unsupported option level for ${aid}.`);
-          }
-          variant = ao.variant;
-        }
-        addons.push({ id: aid as AddonId, variant });
+  const additions: { id: AdditionId; variant?: string }[] = [];
+  if (o.additions !== undefined) {
+    if (!Array.isArray(o.additions)) throw new PricingInputError("Invalid options.");
+    if (o.additions.length > 12) throw new PricingInputError("Too many options.");
+    const seen = new Set<string>();
+    for (const entry of o.additions) {
+      if (typeof entry !== "object" || entry === null) throw new PricingInputError("Invalid option.");
+      const a = entry as Record<string, unknown>;
+      const id = a.id;
+      if (typeof id !== "string" || !Object.hasOwn(ADDITIONS, id)) {
+        throw new PricingInputError(`Unknown option: ${String(id)}`);
       }
-    }
-
-    lines.push({ id: id as ServiceLineId, depth, addons });
-  }
-
-  const org: OrgFactorId[] = [];
-  if (o.org !== undefined) {
-    if (!Array.isArray(o.org)) throw new PricingInputError("Invalid organisation details.");
-    for (const f of o.org) {
-      if (typeof f === "string" && Object.hasOwn(ORG_FACTORS, f) && !org.includes(f as OrgFactorId)) {
-        org.push(f as OrgFactorId);
+      if (!spec.additions.includes(id as AdditionId)) {
+        throw new PricingInputError(`${id} does not apply here.`);
       }
+      if (seen.has(id)) continue;
+      seen.add(id);
+
+      const addSpec = ADDITIONS[id as AdditionId];
+      let variant: string | undefined;
+      if (a.variant !== undefined) {
+        if (typeof a.variant !== "string" || !addSpec.variants?.some((v) => v.id === a.variant)) {
+          throw new PricingInputError(`Unsupported option for ${id}.`);
+        }
+        variant = a.variant;
+      }
+      additions.push({ id: id as AdditionId, variant });
     }
   }
 
+  const seo =
+    typeof o.seo === "string" && Object.hasOwn(SEO_SCOPES, o.seo) ? (o.seo as SeoScopeId) : "none";
   const budget =
     typeof o.budget === "string" && (Object.hasOwn(BUDGET_BANDS, o.budget) || o.budget === "unsure")
       ? (o.budget as EstimateInput["budget"])
       : undefined;
 
-  return { lines, org, budget, undefinedScope: o.undefinedScope === true, rush: o.rush === true };
+  return {
+    base: base as BaseId,
+    additions,
+    seo,
+    budget,
+    undefinedScope: o.undefinedScope === true,
+    rush: o.rush === true,
+  };
 }
 
-/** Computes a full internal estimate. Callers decide what to expose. */
 export function estimate(input: EstimateInput): Estimate {
-  if (!input.lines?.length) throw new PricingInputError("Tell us what you need.");
+  const base = Object.hasOwn(BASES, input.base) ? BASES[input.base] : undefined;
+  if (!base) throw new PricingInputError("Tell us what you need.");
 
+  const lines: LineItem[] = [];
   const items: Band[] = [];
-  const reported: LineItem[] = [];
   const externalHighs: number[] = [];
-  const includes: string[] = [];
-  const recurringIds = new Set<string>();
-  let totalDays: Days = ZERO_DAYS;
-  let productizedOnly = true;
+  const includes = [...base.includes];
+  const caveats: string[] = [];
+  let days = base.days;
+  let discoveryReason: string | null = null;
 
-  const selectedLineIds = new Set(input.lines.map((l) => l.id));
-  const seenLines = new Set<string>();
-  for (const sel of input.lines) {
-    const spec = Object.hasOwn(SERVICE_LINES, sel.id) ? SERVICE_LINES[sel.id] : undefined;
-    if (!spec) throw new PricingInputError(`Unknown service: ${sel.id}`);
-    if (seenLines.has(sel.id)) continue;
-    seenLines.add(sel.id);
+  lines.push({ key: base.id, kind: "base", band: base.price, days: base.days });
+  items.push(base.price);
+  if (base.alwaysDiscovery) discoveryReason = "software_requirements";
 
-    const depth = depthOf(sel.id, sel.depth);
-    if (!depth) throw new PricingInputError(`Unsupported level for ${sel.id}.`);
+  /* ── additions: flat, and integration is not construction ──────────────── */
+  let proportionalShare = 0;
+  const seen = new Set<string>();
+  for (const sel of input.additions ?? []) {
+    const spec = Object.hasOwn(ADDITIONS, sel.id) ? ADDITIONS[sel.id] : undefined;
+    if (!spec) throw new PricingInputError(`Unknown option: ${sel.id}`);
+    if (!base.additions.includes(sel.id)) throw new PricingInputError(`${sel.id} does not apply here.`);
+    if (seen.has(sel.id)) continue;
+    seen.add(sel.id);
 
-    /* Absorbed work is reported at zero rather than dropped, so the client can
-       see it is included rather than wondering whether it was forgotten. It
-       also must not flip the tier: a Launch site plus the SEO foundations that
-       Launch already includes is still the Launch product. */
-    const absorbed = depth.absorbedBy?.some((l) => selectedLineIds.has(l)) ?? false;
-    if (absorbed) {
-      reported.push({
-        key: `${sel.id}.${depth.id}`,
-        kind: "line",
-        band: ZERO,
-        days: ZERO_DAYS,
-        note: "included_in_build",
-      });
-      includes.push(...(DEPTH_INCLUDES[`${sel.id}.${depth.id}`] ?? []));
-      for (const r of LINE_RECURRING[sel.id] ?? []) recurringIds.add(r);
+    // Proportional process work is applied after the flat items are known.
+    if (spec.share !== undefined) {
+      proportionalShare += spec.share;
+      includes.push(sel.id);
       continue;
     }
 
-    if (!depth.productized) productizedOnly = false;
+    // A variant addition MUST resolve. Averaging "connect the tool they have"
+    // with "build them one" is exactly the error this model exists to fix.
+    const variant = spec.variants?.find((v) => v.id === sel.variant) ?? null;
+    if (spec.variants && !variant) throw new PricingInputError(`${sel.id} needs a level.`);
 
-    const discipline = depth.discipline ?? spec.discipline;
-    const band = toMoney(depth.days, discipline);
+    const price = variant?.price ?? spec.price;
+    const dayCost = variant?.days ?? spec.days;
+    if (!price || !dayCost) throw new PricingInputError(`${sel.id} is not priced.`);
 
-    reported.push({
-      key: `${sel.id}.${depth.id}`,
-      kind: "line",
-      band,
-      days: depth.days,
-      discipline,
+    lines.push({
+      key: variant ? `${sel.id}.${variant.id}` : sel.id,
+      kind: "addition",
+      band: price,
+      days: dayCost,
+      addKind: variant?.kind ?? spec.kind,
     });
+    items.push(price);
+    days = addDays(days, dayCost);
+    includes.push(variant ? `${sel.id}.${variant.id}` : sel.id);
+    if (spec.externalSystem) externalHighs.push(price.high);
+    if (variant?.alwaysDiscovery && !discoveryReason) discoveryReason = "building_not_integrating";
+  }
+
+  /* ── search scope ──────────────────────────────────────────────────────── */
+  const seoId = input.seo ?? "none";
+  const seo = SEO_SCOPES[seoId] ?? SEO_SCOPES.none;
+  if (seo.price.expected > 0) {
+    lines.push({ key: `seo.${seo.id}`, kind: "seo", band: seo.price, days: seo.days });
+    items.push(seo.price);
+    days = addDays(days, seo.days);
+    includes.push(...seo.includes);
+  }
+
+  /* ── proportional process (stakeholder review only) ────────────────────── */
+  const flat = add(...items);
+  if (proportionalShare > 0) {
+    const band = scale(flat, proportionalShare);
+    lines.push({ key: "stakeholders", kind: "complexity", band, note: `${Math.round(proportionalShare * 100)}%` });
     items.push(band);
-    totalDays = addDays(totalDays, depth.days);
-    includes.push(...(DEPTH_INCLUDES[`${sel.id}.${depth.id}`] ?? []));
-    for (const r of LINE_RECURRING[sel.id] ?? []) recurringIds.add(r);
-
-    for (const addon of sel.addons ?? []) {
-      const aSpec = Object.hasOwn(ADDONS, addon.id) ? ADDONS[addon.id] : undefined;
-      if (!aSpec) throw new PricingInputError(`Unknown option: ${addon.id}`);
-      if (!spec.addons?.includes(addon.id)) {
-        throw new PricingInputError(`${addon.id} does not apply to ${sel.id}.`);
-      }
-      // An add-on with variants MUST resolve to one — averaging a tenfold
-      // spread is exactly the dishonesty the variants exist to prevent.
-      const variant = aSpec.variants?.find((v) => v.id === addon.variant) ?? null;
-      if (aSpec.variants && !variant) {
-        throw new PricingInputError(`${addon.id} needs a level.`);
-      }
-      const aDays = variant?.days ?? aSpec.days;
-      const aDiscipline = aSpec.discipline ?? spec.discipline;
-      const aBand = toMoney(aDays, aDiscipline);
-
-      reported.push({
-        key: variant ? `${addon.id}.${variant.id}` : addon.id,
-        kind: "addon",
-        band: aBand,
-        days: aDays,
-        discipline: aDiscipline,
-      });
-      items.push(aBand);
-      totalDays = addDays(totalDays, aDays);
-      includes.push(addon.id);
-      if (aSpec.externalSystem) externalHighs.push(aBand.high);
-      productizedOnly = false;
-    }
+    days = { low: days.low * (1 + proportionalShare), expected: days.expected * (1 + proportionalShare), high: days.high * (1 + proportionalShare) };
   }
 
-  const base = addBands(...items);
-
-  /* ── 3. organisational complexity ──────────────────────────────────────── */
-  const caveats: string[] = [];
-  let orgFactor = 1;
-  for (const id of input.org ?? []) {
-    const f = Object.hasOwn(ORG_FACTORS, id) ? ORG_FACTORS[id] : undefined;
-    if (!f) continue;
-    orgFactor *= f.factor;
-    if (f.addsUncertainty) caveats.push("unknown_external_system");
-  }
-  let running = base;
-  if (orgFactor !== 1) {
-    const delta = scale(running, orgFactor - 1);
-    reported.push({
-      key: "organisation",
-      kind: "org",
-      band: delta,
-      days: {
-        low: totalDays.low * (orgFactor - 1),
-        expected: totalDays.expected * (orgFactor - 1),
-        high: totalDays.high * (orgFactor - 1),
-      },
-      note: (input.org ?? []).join(","),
-    });
-    running = addBands(running, delta);
-    productizedOnly = false;
-  }
-
-  /* ── 4. rush ───────────────────────────────────────────────────────────── */
+  /* ── rush: real cost, so it moves the whole band ───────────────────────── */
   const rushPct = input.rush ? RISK.rushAll : 0;
+  const linear = add(...items);
   if (rushPct > 0) {
-    const delta = scale(running, rushPct);
-    reported.push({ key: "rush", kind: "risk", band: delta });
-    running = addBands(running, delta);
+    const band = scale(linear, rushPct);
+    lines.push({ key: "rush", kind: "risk", band });
+    items.push(band);
     caveats.push("rush");
-    productizedOnly = false;
   }
 
-  /* ── 5. aggregation ────────────────────────────────────────────────────── */
-  const globalFactor = orgFactor * (1 + rushPct);
-  const aggregated = aggregate(items.map((b) => scale(b, globalFactor)));
-  reported.push({
+  /* ── aggregate independent items ───────────────────────────────────────── */
+  const scaled = items.map((b) => (rushPct > 0 ? scale(b, 1) : b));
+  const aggregated = aggregate(scaled);
+  const linearTotal = add(...items);
+  lines.push({
     key: "range_aggregation",
     kind: "aggregation",
-    band: { low: aggregated.low - running.low, expected: 0, high: aggregated.high - running.high },
+    band: { low: aggregated.low - linearTotal.low, expected: 0, high: aggregated.high - linearTotal.high },
     note: `${items.length}_independent_items`,
   });
   let total = aggregated;
 
-  /* ── 6. risk widens the top ────────────────────────────────────────────── */
+  /* ── risk widens the top, never invents effort ─────────────────────────── */
   if (externalHighs.length > 0) {
-    const add = externalHighs.reduce((a, b) => a + b, 0) * globalFactor * RISK.unknownSystemHighShare;
-    reported.push({ key: "unknown_external_system", kind: "risk", band: { low: 0, expected: 0, high: add } });
-    total = { ...total, high: total.high + add };
-    if (!caveats.includes("unknown_external_system")) caveats.push("unknown_external_system");
+    const amount = externalHighs.reduce((a, b) => a + b, 0) * RISK.unknownSystemHighShare;
+    lines.push({ key: "unknown_external_system", kind: "risk", band: { low: 0, expected: 0, high: amount } });
+    total = { ...total, high: total.high + amount };
+    caveats.push("unknown_external_system");
   }
   if (input.undefinedScope) {
-    const add = total.high * RISK.undefinedScopeHighShare;
-    reported.push({ key: "undefined_scope", kind: "risk", band: { low: 0, expected: 0, high: add } });
-    total = { ...total, high: total.high + add };
+    const amount = total.high * RISK.undefinedScopeHighShare;
+    lines.push({ key: "undefined_scope", kind: "risk", band: { low: 0, expected: 0, high: amount } });
+    total = { ...total, high: total.high + amount };
     caveats.push("undefined_scope");
+    if (!discoveryReason) discoveryReason = "scope_undefined";
   }
 
-  /* ── 7. minimum, rounding, tier ────────────────────────────────────────── */
+  /* ── minimum, rounding ─────────────────────────────────────────────────── */
   let minimumApplied = false;
   if (total.low < MINIMUM) {
     total = { ...total, low: MINIMUM };
     minimumApplied = true;
-    reported.push({ key: "minimum", kind: "minimum", band: ZERO, note: String(MINIMUM) });
+    lines.push({ key: "minimum", kind: "minimum", band: ZERO, note: String(MINIMUM) });
   }
   total = {
     low: total.low,
-    expected: Math.max(total.expected, total.low * 1.1),
-    high: Math.max(total.high, total.low * 1.1 * 1.15),
+    expected: Math.max(total.expected, total.low * 1.08),
+    high: Math.max(total.high, total.low * 1.08 * 1.12),
   };
 
   const low = Math.max(MINIMUM, roundDown(total.low));
   const high = Math.max(roundUp(total.high), low + stepFor(low));
   const expected = Math.min(Math.max(Math.round(total.expected), low), high);
 
-  const needsDiscovery =
-    // Sheer size: past here the useful advice is "phase it", not a number.
-    expected >= DISCOVERY_THRESHOLD ||
-    input.lines.some((l) => DISCOVERY_ALWAYS_LINES.includes(l.id)) ||
-    input.lines.some((l) => DISCOVERY_DEPTHS.includes(`${l.id}.${l.depth}`)) ||
-    // They told us the scope is still open. Quoting it would be theatre.
-    input.undefinedScope === true;
-  const tier: Tier = needsDiscovery ? "systems" : productizedOnly ? "launch" : "custom";
+  /* ── discovery: uncertainty and architecture risk, plus sheer size ─────── */
+  if (!discoveryReason && expected >= DISCOVERY_SIZE_THRESHOLD) discoveryReason = "phase_it";
+  const needsDiscovery = discoveryReason !== null;
+  /* Launch is a PRODUCT: one published price, hard caps. The moment anything
+     is added to it — an option, a search scope — it stops being that product
+     and becomes a small project with a range. Calling it "fixed price" while
+     showing a range would be the tool contradicting itself. */
+  const isProduct =
+    base.productized === true && (input.additions?.length ?? 0) === 0 && seoId === "none";
+  const tier = needsDiscovery ? "discovery" : isProduct ? "launch" : "project";
 
-  const drivers = reported
+  const drivers = lines
     .filter((l) => l.band.expected > 0 && l.kind !== "minimum" && l.kind !== "risk")
     .sort((a, b) => b.band.expected - a.band.expected)
     .slice(0, 4)
     .map((l) => l.key);
 
-  // Advanced contains Essentials, so never offer both.
+  const recurringIds = new Set(BASE_RECURRING[base.id] ?? []);
+  if (seoId !== "none") recurringIds.add(seoId === "content_strategy" ? "seo-advanced" : "seo-essentials");
   if (recurringIds.has("seo-advanced")) recurringIds.delete("seo-essentials");
   const recurring = [...recurringIds]
     .map((id) => RECURRING_BY_ID[id])
     .filter((r): r is NonNullable<typeof r> => Boolean(r))
     .map((r) => ({ id: r.id, monthly: r.approved ? r.monthly : null }));
 
-  /* Budget routes, it never prices. This only reports whether the answers and
-     the stated budget meet, so the UI can offer a smaller scope rather than
-     quietly quoting a different number. */
   let budgetSignal: Estimate["budgetSignal"] = null;
   if (input.budget && input.budget !== "unsure" && Object.hasOwn(BUDGET_BANDS, input.budget)) {
-    const band = BUDGET_BANDS[input.budget];
-    budgetSignal = low > band.high ? "above" : high < band.low ? "below" : "fits";
+    if (low > BUDGET_BANDS[input.budget].high) budgetSignal = "above";
   }
+
+  const roundedDays = {
+    low: Math.round(days.low * 10) / 10,
+    expected: Math.round(days.expected * 10) / 10,
+    high: Math.round(days.high * 10) / 10,
+  };
 
   return {
     pricingVersion: PRICING_VERSION,
@@ -404,16 +318,15 @@ export function estimate(input: EstimateInput): Estimate {
     low,
     high,
     expected,
-    days: {
-      low: Math.round(totalDays.low * globalFactor * 10) / 10,
-      expected: Math.round(totalDays.expected * globalFactor * 10) / 10,
-      high: Math.round(totalDays.high * globalFactor * 10) / 10,
-    },
+    days: roundedDays,
+    internalRate: roundedDays.expected > 0 ? Math.round(expected / roundedDays.expected) : 0,
     tier,
     needsDiscovery,
-    lines: reported,
+    discoveryReason,
+    lines,
     drivers,
     includes: [...new Set(includes)],
+    excludes: EXCLUSIONS,
     recurring,
     minimumApplied,
     caveats,

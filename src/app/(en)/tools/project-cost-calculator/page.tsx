@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { PageSchema } from "@/components/page-schema";
 import { ProjectCalculator } from "@/components/tools/project-calculator";
-import { DAY_RATES, DISCOVERY, MINIMUM, PRICING_VERSION } from "@/lib/pricing/model";
+import { DISCOVERY, MINIMUM, PRICING_VERSION } from "@/lib/pricing/model";
 
 const url = "https://stillawakemedia.com/tools/project-cost-calculator";
 const frUrl = "https://stillawakemedia.com/fr/outils/calculateur-cout-projet";
@@ -73,12 +73,12 @@ export default function ProjectCostCalculatorPage() {
 
           <div className="mt-7 space-y-6 text-[#C7B9B9]">
             <div>
-              <h3 className="font-semibold text-white">Every price is days of work × a day rate</h3>
+              <h3 className="font-semibold text-white">A normal project is a normal price</h3>
               <p className="mt-2">
-                Not a market average and not a round number we liked. The model estimates how many days
-                each part of the job takes and multiplies by a rate — ${DAY_RATES.build.toLocaleString("en-CA")} a
-                day for build work, more for systems, AI and strategy. You are buying a fixed price, but
-                that price has to be costed or it is just a guess.
+                The model starts from a real project — a professional business website with the pages,
+                forms, analytics and search foundations any business needs — and adds only what you
+                actually asked for. It is not a theoretical calculation of agency effort, and it does
+                not price your project higher because your company has more people in it.
               </p>
             </div>
 

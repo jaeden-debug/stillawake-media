@@ -6,10 +6,12 @@ import Link from "next/link";
 import {
   activeQuestions,
   isComplete,
+  mapAnswers,
   type Answers,
   type Locale,
   type Question,
 } from "@/lib/pricing/public-flow";
+import { studioHandoffUrl } from "@/lib/pricing/studio-handoff";
 import {
   trackCalculatorCompleted,
   trackCalculatorStarted,
@@ -98,8 +100,6 @@ type Result = {
   studioType: string;
 };
 
-const STUDIO_START = "https://stillawake.studio/start";
-
 export function ProjectCalculator({ locale }: { locale: Locale }) {
   const T = UI[locale];
   const [answers, setAnswers] = useState<Answers>({});
@@ -176,9 +176,16 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
   }
 
   if (state === "done" && result) {
-    const studioHref = `${STUDIO_START}?type=${encodeURIComponent(result.studioType)}${
-      locale === "fr" ? "&lang=fr" : ""
-    }`;
+    // Everything they just told us, translated into the Studio intake's own
+    // vocabulary, so the next screen does not re-ask any of it.
+    const studioHref = studioHandoffUrl({
+      answers,
+      input: mapAnswers(answers),
+      low: result.low,
+      high: result.high,
+      pricingVersion: result.pricingVersion,
+      locale,
+    });
     return (
       <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-7 md:p-10">
         <p className="text-[11px] uppercase tracking-[0.3em] text-[#D71920]">{T.heading}</p>

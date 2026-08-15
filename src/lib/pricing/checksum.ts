@@ -17,12 +17,23 @@
  * repo's suite fails; the only way to change a price is to edit the canonical
  * file and re-run `scripts/sync-pricing.mjs`, which rewrites both.
  *
- * Known limit, stated plainly: this catches hand-editing, not a stale sync.
- * If .com's model changes and the script is never run, .dev keeps an older
- * model that still passes its own test. The mitigation is that every stored
- * estimate records both `pricing_version` and `model_checksum`, so a drifted
- * estimate is identifiable after the fact. A private package or submodule is
- * the real fix once there is a reason to pay for one.
+ * A STALE SYNC is the other failure, and it is caught somewhere else on
+ * purpose. Nothing inside .dev can detect that .com has moved on — .dev has no
+ * way to see what .com says. So that check lives in the canonical repo, where
+ * every pricing change necessarily happens:
+ *
+ *   · `sync.test.ts` (.com) compares both copies file by file and asserts the
+ *     versions match, skipping visibly when .dev is not on disk
+ *   · `prebuild` runs `sync-pricing.mjs --check`, so a local production build
+ *     refuses to ship a stale sync — and whoever changed a price is by
+ *     definition the person with both repos checked out
+ *
+ * What remains uncovered is narrow and worth naming: a CI or Vercel build has
+ * no .dev checkout, so the cross-repo assertion skips there. That is why every
+ * stored estimate also records `pricing_version` and `model_checksum` — if a
+ * mismatch ever did ship, the affected estimates are identifiable rather than
+ * merely suspected. A private package remains the tidier answer once there is
+ * a reason to pay for the publishing step.
  */
 
 import { createHash } from "node:crypto";

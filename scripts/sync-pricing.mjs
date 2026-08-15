@@ -27,7 +27,14 @@ const devDir =
   process.env.PRICING_DEV_DIR ??
   resolve(here, "..", "..", "Documents", "Claude", "Projects", "stillawakemedia.dev", "src", "lib", "pricing");
 
-const FILES = ["types.ts", "model.ts", "engine.ts", "checksum.ts", "labels.ts", "payments.ts"];
+/* Studio needs the kernel too, so the intake can offer a rough estimate from
+   the answers someone has already given. It only ever runs it on the server —
+   shipping model.ts to a browser would publish the whole price list. */
+const studioDir =
+  process.env.PRICING_STUDIO_DIR ??
+  resolve(here, "..", "..", "Documents", "Claude", "Projects", "stillawake.studio", "src", "lib", "pricing");
+
+const FILES = ["types.ts", "model.ts", "engine.ts", "checksum.ts", "labels.ts", "payments.ts", "intake-mapping.ts", "breakdown.ts"];
 const CHECKSUM_LINE = /export const MODEL_CHECKSUM = "[^"]*";/;
 
 /** Must stay identical to `modelChecksum` in checksum.ts. */
@@ -61,21 +68,29 @@ if (stamped !== model) {
   model = stamped;
 }
 
-if (!existsSync(devDir)) {
-  if (checkOnly) {
-    console.log(`.dev copy not reachable at ${devDir} — skipping cross-repo check.`);
-  } else {
-    mkdirSync(devDir, { recursive: true });
-  }
-}
+/* Both consumers of the kernel. Studio is optional in the sense that a machine
+   without it checked out should not fail the check — but when it is there, it
+   must match byte for byte like .dev does. */
+const targets = [
+  { name: ".dev", dir: devDir },
+  { name: "studio", dir: studioDir },
+];
 
-if (existsSync(devDir)) {
+for (const { name, dir } of targets) {
+  if (!existsSync(dir)) {
+    if (checkOnly) {
+      console.log(`${name} copy not reachable at ${dir} — skipping cross-repo check.`);
+      continue;
+    }
+    mkdirSync(dir, { recursive: true });
+  }
+
   for (const file of FILES) {
     const source = file === "model.ts" ? model : readFileSync(join(canonicalDir, file), "utf8");
-    const target = join(devDir, file);
+    const target = join(dir, file);
     const current = existsSync(target) ? readFileSync(target, "utf8") : null;
     if (current === source) continue;
-    if (checkOnly) problems.push(`${file} differs in .dev`);
+    if (checkOnly) problems.push(`${file} differs in ${name}`);
     else {
       writeFileSync(target, source, "utf8");
       console.log(`synced ${file} → ${target}`);

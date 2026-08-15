@@ -39,6 +39,8 @@ const UI: Record<Locale, {
   towardLower: string; lowMeans: string; highMeans: string; couldAdd: string; model: string;
   payToggle: string; payTitle: string; payEach: string; payPlural: (n: number) => string;
   payNote: string; payDisclaimer: string; payLonger: string;
+  shareTitle: string; shareCopy: string; shareCopied: string; shareEmail: string;
+  shareNative: string;
 }> = {
   en: {
     of: "of",
@@ -77,6 +79,11 @@ const UI: Record<Locale, {
       "For planning only. These figures are divided from the estimated project range above and are not a quote, a credit approval or an offer of financing. Actual payment options are set out in your written proposal and agreement.",
     payLonger:
       "Business clients can ask about a longer schedule in the written proposal.",
+    shareTitle: "Share this estimate",
+    shareCopy: "Copy link",
+    shareCopied: "Link copied",
+    shareEmail: "Email it",
+    shareNative: "Share",
     cta: "Get a real project estimate",
     ctaNote: "Your answers carry across — you will not be asked any of this twice.",
     restart: "Start over",
@@ -130,6 +137,11 @@ const UI: Record<Locale, {
       "À titre indicatif seulement. Ces montants sont divisés à partir de la fourchette estimée ci-dessus : ce n'est ni une soumission, ni une approbation de crédit, ni une offre de financement. Les options de paiement réelles sont établies dans votre proposition écrite et votre entente.",
     payLonger:
       "Les entreprises peuvent demander un échéancier plus long dans la proposition écrite.",
+    shareTitle: "Partager cette estimation",
+    shareCopy: "Copier le lien",
+    shareCopied: "Lien copié",
+    shareEmail: "Envoyer par courriel",
+    shareNative: "Partager",
     cta: "Obtenir une vraie estimation",
     ctaNote: "Vos réponses vous suivent — on ne vous redemandera rien de tout ça.",
     restart: "Recommencer",
@@ -717,6 +729,8 @@ function ResultCard({
             {T.restart}
           </button>
         </div>
+
+        <ShareEstimate result={result} T={T} locale={locale} />
         <p className="mt-3 text-xs text-[#8C8080]">{T.ctaNote}</p>
 
         <p className="mt-7 text-[10px] uppercase tracking-[0.25em] text-[#5a5252]">
@@ -821,6 +835,93 @@ function PaymentOptions({
           </p>
         </div>
       )}
+    </div>
+  );
+}
+
+/**
+ * Share the estimate.
+ *
+ * The link carries the ANSWER KEYS, not the price — the same rule the rest of
+ * the calculator follows. A recipient's browser asks the server for the range,
+ * so a shared URL cannot be edited into a different number and then screenshot
+ * as though we had quoted it.
+ *
+ * Red on white text because these have to be findable on a dark card that is
+ * already carrying a red primary CTA; a ghost button here disappears.
+ */
+function ShareEstimate({
+  result,
+  T,
+  locale,
+}: {
+  result: Result;
+  T: (typeof UI)[Locale];
+  locale: Locale;
+}) {
+  const [copied, setCopied] = useState(false);
+  const [canNativeShare, setCanNativeShare] = useState(false);
+  const [url, setUrl] = useState("");
+
+  useEffect(() => {
+    setUrl(window.location.href);
+    setCanNativeShare(typeof navigator !== "undefined" && typeof navigator.share === "function");
+  }, []);
+
+  const subject = locale === "fr" ? "Notre estimation de projet" : "Our project estimate";
+  const range = `${formatCad(result.low, locale)} – ${formatCad(result.high, locale)}`;
+  const body =
+    locale === "fr"
+      ? `Fourchette estimée : ${range}\n\n${url}`
+      : `Estimated range: ${range}\n\n${url}`;
+
+  const RED =
+    "inline-flex min-h-11 items-center gap-2 rounded-full bg-[#D71920] px-5 py-2.5 text-sm font-bold text-white transition hover:brightness-110";
+
+  return (
+    <div className="mt-7 border-t border-white/10 pt-6">
+      <p className="text-[11px] uppercase tracking-[0.28em] text-[#8C8080]">{T.shareTitle}</p>
+      <div className="mt-3 flex flex-wrap items-center gap-2.5">
+        <button
+          type="button"
+          onClick={() => {
+            void navigator.clipboard.writeText(url).then(() => {
+              setCopied(true);
+              setTimeout(() => setCopied(false), 2000);
+            });
+          }}
+          className={`${FOCUS} ${RED}`}
+        >
+          {copied ? T.shareCopied : T.shareCopy}
+          <span aria-hidden>{copied ? "✓" : "⧉"}</span>
+        </button>
+
+        <a
+          href={`mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`}
+          className={`${FOCUS} ${RED}`}
+        >
+          {T.shareEmail}
+          <span aria-hidden>→</span>
+        </a>
+
+        {canNativeShare && (
+          <button
+            type="button"
+            onClick={() => {
+              void navigator.share({ title: subject, text: `${subject}: ${range}`, url }).catch(() => {
+                /* The user dismissed the sheet. Not an error worth reporting. */
+              });
+            }}
+            className={`${FOCUS} ${RED}`}
+          >
+            {T.shareNative}
+            <span aria-hidden>↗</span>
+          </button>
+        )}
+      </div>
+      <p aria-live="polite" className="sr-only">
+        {copied ? T.shareCopied : ""}
+      </p>
     </div>
   );
 }

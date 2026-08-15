@@ -26,13 +26,27 @@ export const metadata: Metadata = {
     canonical: url,
     languages: { "fr-CA": url, "en-CA": enUrl, "x-default": enUrl },
   },
+  /* Comme en anglais : la carte de partage décrit l'ESTIMATION, pas l'outil. */
   openGraph: {
-    title: "Calculateur de coût de projet web",
-    description:
-      "Répondez à quelques questions en langage clair et obtenez une fourchette réaliste en dollars canadiens pour un site, une boutique, un mandat SEO ou un logiciel sur mesure.",
+    title: "Votre estimation de projet StillAwake",
+    description: "Voyez la portée de votre projet, l'investissement estimé et les prochaines étapes.",
     url,
     type: "website",
     locale: "fr_CA",
+    images: [
+      {
+        url: "https://stillawakemedia.com/og-project-estimate.jpg",
+        width: 1200,
+        height: 630,
+        alt: "StillAwake Media — estimation de projet",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Votre estimation de projet StillAwake",
+    description: "Voyez la portée de votre projet, l'investissement estimé et les prochaines étapes.",
+    images: ["https://stillawakemedia.com/og-project-estimate.jpg"],
   },
 };
 

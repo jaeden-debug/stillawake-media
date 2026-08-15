@@ -25,12 +25,28 @@ export const metadata: Metadata = {
     canonical: url,
     languages: { "en-CA": url, "fr-CA": frUrl, "x-default": url },
   },
+  /* The share card is written for the RESULT, not the tool: what gets shared is
+     almost always someone's estimate, and "Website & Project Cost Calculator"
+     describes the page they left rather than the thing they are showing you. */
   openGraph: {
-    title: "Website & Project Cost Calculator",
-    description:
-      "Answer a few questions in plain language and get a realistic CAD range for a website, store, SEO programme or custom software project.",
+    title: "Your StillAwake Project Estimate",
+    description: "See your project scope, estimated investment, and next steps.",
     url,
     type: "website",
+    images: [
+      {
+        url: "https://stillawakemedia.com/og-project-estimate.jpg",
+        width: 1200,
+        height: 630,
+        alt: "StillAwake Media — project estimate",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Your StillAwake Project Estimate",
+    description: "See your project scope, estimated investment, and next steps.",
+    images: ["https://stillawakemedia.com/og-project-estimate.jpg"],
   },
 };
 

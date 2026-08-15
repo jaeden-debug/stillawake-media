@@ -6,6 +6,13 @@
  * ever copies of ACTIVE, approved Studio prices — draft/unapproved products
  * carry price: null and present as custom quotes. Never invent a price here;
  * update Studio first, then mirror it.
+ *
+ * PROJECT pricing does NOT live here. Since 2026.08.2 every build price is
+ * derived from the day model in `src/lib/pricing/model.ts` — the Launch
+ * product, the custom floor and paid discovery all come from there, and this
+ * registry would only be a second place for them to drift. Entries below with
+ * `billing: "custom"` mean "priced by the model, scoped in writing", not
+ * "phone us".
  */
 
 export type ServiceEntry = {

@@ -34,7 +34,7 @@ const FAQ: [string, string][] = [
   ],
   [
     "Combien coûte l'entretien d'un site web?",
-    "Après la construction : hébergement et domaine (souvent 10 $ à 100 $ et plus par mois), maintenance et mises à jour, et le travail de croissance comme le SEO. À titre de référence, nos tarifs affichés : dépannage d'urgence de 150 $ à 600 $ CAD (paiement unique) et forfaits SEO de 600 $ à 850 $ CAD par mois.",
+    "Après la construction : hébergement et domaine (souvent 10 $ à 100 $ et plus par mois), maintenance et mises à jour, et le travail de croissance comme le SEO. Nos prix sont affichés : site Lancement à portée fixe 2 500 $ CAD, projets sur mesure à partir de 8 000 $, cadrage payant à partir de 3 500 $, forfaits SEO de 600 $ à 850 $ par mois et dépannage d'urgence de 150 $ à 600 $.",
   ],
   [
     "Un site pas cher, est-ce une mauvaise idée?",
@@ -110,10 +110,15 @@ export default function PrixSiteWebQuebecPage() {
           <div className="mt-12 rounded-[2rem] border border-[#D71920]/40 bg-[#D71920]/5 p-8">
             <h2 className="geist text-3xl font-black tracking-[-0.06em]">Ce que StillAwake affiche vraiment</h2>
             <p className="mt-4 max-w-3xl leading-8 text-[#C7B9B9]">
-              Les projets sur mesure sont soumissionnés par écrit — mais nos tarifs récurrents et de support sont
-              publics : forfaits SEO de <strong className="text-white">600 $ à 850 $ CAD par mois</strong>, dépannage
-              d&apos;urgence de <strong className="text-white">150 $ à 400 $ CAD</strong> (site sur mesure) ou{" "}
-              <strong className="text-white">250 $ à 600 $ CAD</strong> (boutique en ligne), paiement unique. Tous les
+              Nos prix sont affichés plutôt que fournis sur demande. Un site{" "}
+              <strong className="text-white">Lancement à portée fixe coûte 2 500 $ CAD</strong>, un{" "}
+              <strong className="text-white">projet sur mesure part de 8 000 $</strong>, et tout ce qu&apos;un
+              formulaire ne peut pas chiffrer honnêtement commence par un{" "}
+              <strong className="text-white">cadrage payant à partir de 3 500 $</strong>, crédité sur la
+              construction. Le récurrent et le support sont publics aussi : forfaits SEO de{" "}
+              <strong className="text-white">600 $ à 850 $ CAD par mois</strong>, dépannage d&apos;urgence de{" "}
+              <strong className="text-white">150 $ à 400 $ CAD</strong> (site sur mesure) ou{" "}
+              <strong className="text-white">250 $ à 600 $ CAD</strong> (boutique), paiement unique. Tous les
               détails sur la page <Link href="/fr/tarifs" className="text-[#D71920] underline-offset-4 hover:underline">Tarifs</Link>.
             </p>
             <p className="mt-4 max-w-3xl leading-8 text-[#C7B9B9]">

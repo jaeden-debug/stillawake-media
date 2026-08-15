@@ -27,7 +27,7 @@ if (only) {
   console.log(`\n${s.name}\n${"─".repeat(78)}`);
   console.log(`probes: ${s.probes}\n`);
   for (const l of e.lines) {
-    const tier = l.complexity ? ` (${l.complexity})` : "";
+    const tier = l.days ? ` [${l.days.expected}d ${l.discipline ?? ""}]` : "";
     const note = l.note ? `  ← ${l.note}` : "";
     console.log(
       `  ${pad(labelForKey(l.key, "en") + tier, 42)} ${pad(money(Math.round(l.band.low)), 10)} ${pad(
@@ -49,15 +49,16 @@ if (only) {
 }
 
 console.log(
-  `\n${pad("SCENARIO", 52)} ${pad("LOW", 10)} ${pad("EXPECTED", 10)} ${pad("HIGH", 10)} SPREAD`,
+  `\n${pad("SCENARIO", 50)} ${pad("LOW", 9)} ${pad("EXPECTED", 9)} ${pad("HIGH", 9)} ${pad("DAYS", 7)} ${pad("TIER", 8)} SPREAD`,
 );
-console.log("─".repeat(100));
+console.log("─".repeat(112));
 
 for (const s of SCENARIOS) {
   const e = estimate(s.input);
   const spread = (e.high / e.low).toFixed(2) + "×";
+  const tier = e.needsDiscovery ? "DISCOVER" : e.tier;
   console.log(
-    `${pad(s.name, 52)} ${pad(money(e.low), 10)} ${pad(money(e.expected), 10)} ${pad(money(e.high), 10)} ${spread}`,
+    `${pad(s.name, 50)} ${pad(money(e.low), 9)} ${pad(money(e.expected), 9)} ${pad(money(e.high), 9)} ${pad(String(e.days.expected), 7)} ${pad(tier, 8)} ${spread}`,
   );
 }
 console.log();

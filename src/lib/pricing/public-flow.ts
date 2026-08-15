@@ -1,25 +1,24 @@
 /**
- * THE PUBLIC QUESTION FLOW — business language in, model input out.
+ * THE PUBLIC FLOW — a router, not an interrogation.
  *
- * The prospect never names a capability, a complexity tier or a foundation.
- * They answer questions about their business, and this module decides what
- * that implies. That separation is deliberate on two counts:
+ * The previous version asked "what kind of website?" and offered four
+ * overlapping answers as though they were alternatives — a restaurant site
+ * built to rank with a blog is all four at once. Worse, it then asked about
+ * page counts, features and content readiness, which is what the Studio intake
+ * asks. Two forms, same questions, one of them with a price at the end.
  *
- *  1. A restaurant owner who wants online ordering should not have to know
- *     whether they need Shopify, Stripe, an API or a POS integration. They
- *     describe the outcome; the engine works out the implementation.
+ * THE RULE THAT FIXES BOTH: this asks nothing about their business. Onboarding
+ * asks who you are, what you sell and who it is for. This asks only which
+ * service lines, how deep, and what makes their organisation expensive to work
+ * with. Zero intersection, so it cannot feel like a repeat.
  *
- *  2. Security. The browser posts ANSWER KEYS, never prices or capability ids,
- *     so there is no request a client can craft that names a cheaper
- *     capability, a lower tier or a discount — those words do not appear in
- *     the wire format at all.
- *
- * Lives in the shared kernel's folder but is NOT synced to .dev: the internal
- * estimator picks capabilities directly and has no use for the simplified
- * flow. It is public-surface-only, and .com is where it belongs.
+ * Typical paths are 4–6 screens. The browser posts answer keys only — no line,
+ * depth, price or multiplier exists in the wire format, so no crafted request
+ * can produce a discount.
  */
 
-import type { CapabilityId, Complexity, EstimateInput, ScopeSize } from "./types";
+import { ADDONS, ORG_FACTORS, SERVICE_LINES } from "./model";
+import type { AddonId, EstimateInput, LineSelection, OrgFactorId, ServiceLineId } from "./types";
 
 export type Locale = "en" | "fr";
 type L = { en: string; fr: string };
@@ -27,314 +26,178 @@ const t = (en: string, fr: string): L => ({ en, fr });
 
 export type Answers = Record<string, string | string[]>;
 
-export type Option = { key: string; label: L; help?: L };
+export type Option = { key: string; label: L; blurb?: L };
 export type Question = {
   id: string;
   kind: "single" | "multi";
   prompt: L;
   help?: L;
   options: Option[];
-  /** Shown only when this returns true. Keeps the form to what is relevant. */
-  when?: (a: Answers) => boolean;
-  /** A multi question may be skipped; a single one must be answered. */
   optional?: boolean;
 };
 
-const one = (a: Answers, id: string): string => (typeof a[id] === "string" ? (a[id] as string) : "");
-const many = (a: Answers, id: string): string[] => (Array.isArray(a[id]) ? (a[id] as string[]) : []);
-const has = (a: Answers, id: string, key: string) => many(a, id).includes(key);
+const one = (a: Answers, id: string) => (typeof a[id] === "string" ? (a[id] as string) : "");
+const many = (a: Answers, id: string) => (Array.isArray(a[id]) ? (a[id] as string[]) : []);
 
-/**
- * The effective branch.
- *
- * "Not sure" is a first-class answer, not a dead end — Phase 9. Someone who
- * cannot name the technology still knows what they want to be true afterwards,
- * so the outcome question resolves the branch for them and the rest of the
- * flow is identical to having picked it outright.
- */
-export function branchOf(a: Answers): string {
-  const goal = one(a, "goal");
-  if (goal !== "not_sure") return goal;
-  const outcome = one(a, "outcome");
-  return (
-    {
-      found_on_google: "seo",
-      buy_from_us: "sell",
-      look_credible: "website",
-      stop_manual_work: "automate",
-      tool_doesnt_exist: "software",
-    }[outcome] ?? ""
-  );
+/* ── labels used only by the flow ──────────────────────────────────────── */
+
+import { ADDON_LABELS, DEPTH_LABELS, LINE_BLURBS, LINE_LABELS, ORG_BLURBS, ORG_LABELS } from "./labels";
+
+const LINE_ORDER: ServiceLineId[] = [
+  "website",
+  "store",
+  "brand",
+  "seo",
+  "content",
+  "software",
+  "automation",
+];
+
+/** Depth prompts are line-specific so they read as a real question. */
+const DEPTH_PROMPT: Record<ServiceLineId, L> = {
+  brand: t("How far should the brand work go?", "Jusqu'où doit aller le travail de marque?"),
+  website: t("How far should the site go?", "Jusqu'où doit aller le site?"),
+  store: t("How far should the store go?", "Jusqu'où doit aller la boutique?"),
+  seo: t("How far should the search work go?", "Jusqu'où doit aller le travail de référencement?"),
+  content: t("Who is producing the content?", "Qui produit le contenu?"),
+  software: t("Who is it for?", "À qui s'adresse-t-il?"),
+  automation: t("How much should it handle?", "Jusqu'où doit-elle aller?"),
+};
+
+/** Add-ons whose single word covers builds an order of magnitude apart. */
+const VARIANT_PROMPT: Partial<Record<AddonId, L>> = {
+  bookings: t("How should booking work?", "Comment la prise de rendez-vous doit-elle fonctionner?"),
+  ordering: t("How should ordering work?", "Comment la commande doit-elle fonctionner?"),
+};
+
+/** The line that will carry a given add-on, if any is selected. */
+export function ownerOf(addon: AddonId, lines: string[]): ServiceLineId | null {
+  for (const id of LINE_ORDER) {
+    if (!lines.includes(id)) continue;
+    if (SERVICE_LINES[id].addons?.includes(addon)) return id;
+  }
+  return null;
 }
 
-const isBranch = (...names: string[]) => (a: Answers) => names.includes(branchOf(a));
+/** Add-ons offered, given the selected lines and their depths. */
+function offeredAddons(a: Answers): AddonId[] {
+  const lines = many(a, "services");
+  const out: AddonId[] = [];
+  for (const addon of Object.keys(ADDONS) as AddonId[]) {
+    const owner = ownerOf(addon, lines);
+    if (!owner) continue;
+    // The Launch product is fixed-scope by definition. Offering add-ons on it
+    // would quietly turn it back into a custom project.
+    const depth = one(a, `depth.${owner}`);
+    const spec = SERVICE_LINES[owner].depths.find((d) => d.id === depth);
+    if (spec?.productized) continue;
+    out.push(addon);
+  }
+  return out;
+}
 
-export const QUESTIONS: Question[] = [
-  {
-    id: "goal",
-    kind: "single",
-    prompt: t("What are you looking to do?", "Qu'est-ce que vous voulez faire?"),
-    options: [
-      { key: "website", label: t("Build a website", "Créer un site web") },
-      { key: "redesign", label: t("Redesign my website", "Refaire mon site web") },
-      { key: "sell", label: t("Sell online", "Vendre en ligne") },
-      { key: "seo", label: t("Be found on Google", "Être trouvé sur Google") },
-      { key: "automate", label: t("Automate part of my business", "Automatiser une partie de mon entreprise") },
-      { key: "software", label: t("Build custom software", "Créer un logiciel sur mesure") },
-      { key: "not_sure", label: t("I'm not sure yet", "Je ne sais pas encore") },
-    ],
-  },
-  {
-    id: "outcome",
-    kind: "single",
-    when: (a) => one(a, "goal") === "not_sure",
-    prompt: t("What would success look like?", "À quoi ressemblerait le succès?"),
-    help: t(
-      "You don't need to know what to build. Tell us what should be true afterwards.",
-      "Pas besoin de savoir quoi construire. Dites-nous ce qui devrait être vrai après.",
-    ),
-    options: [
-      { key: "found_on_google", label: t("More people find us on Google", "Plus de gens nous trouvent sur Google") },
-      { key: "buy_from_us", label: t("People can buy or order from us online", "Les gens peuvent acheter ou commander en ligne") },
-      { key: "look_credible", label: t("We look credible and people get in touch", "On a l'air crédible et les gens nous contactent") },
-      { key: "stop_manual_work", label: t("Our team stops doing something by hand", "Notre équipe arrête de faire quelque chose à la main") },
-      { key: "tool_doesnt_exist", label: t("We need a tool that doesn't exist yet", "On a besoin d'un outil qui n'existe pas encore") },
-    ],
-  },
+/**
+ * The active questions, in order, for the answers so far.
+ *
+ * Generated rather than declared, because the depth questions depend on which
+ * lines were chosen — a static list cannot express "one question per selected
+ * service".
+ */
+export function activeQuestions(a: Answers): Question[] {
+  const qs: Question[] = [];
 
-  /* ── website / redesign ────────────────────────────────────────────────── */
-  {
-    id: "site_kind",
-    kind: "single",
-    when: isBranch("website"),
-    prompt: t("What kind of website?", "Quel type de site web?"),
-    options: [
-      { key: "simple", label: t("A straightforward business website", "Un site d'entreprise simple") },
-      { key: "seo_focused", label: t("A website built to rank on Google", "Un site conçu pour bien se classer sur Google") },
-      { key: "local", label: t("A restaurant or local business", "Un restaurant ou un commerce local") },
-      { key: "content", label: t("A content-heavy website", "Un site riche en contenu") },
-    ],
-  },
-  {
-    id: "size",
-    kind: "single",
-    when: isBranch("website", "redesign", "sell", "seo"),
-    prompt: t("Roughly how many pages?", "Environ combien de pages?"),
-    help: t("A best guess is fine.", "Une estimation approximative suffit."),
-    options: [
-      { key: "small", label: t("A handful — up to 6", "Quelques-unes — jusqu'à 6") },
-      { key: "standard", label: t("7 to 12", "7 à 12") },
-      { key: "large", label: t("13 to 25", "13 à 25") },
-      { key: "very_large", label: t("26 to 60", "26 à 60") },
-      { key: "xl", label: t("More than 60", "Plus de 60") },
-    ],
-  },
-  {
-    id: "needs",
+  qs.push({
+    id: "services",
+    kind: "multi",
+    prompt: t("What do you need?", "De quoi avez-vous besoin?"),
+    help: t("Pick everything that applies — most projects are more than one.", "Choisissez tout ce qui s'applique — la plupart des projets en combinent plusieurs."),
+    options: LINE_ORDER.map((id) => ({
+      key: id,
+      label: LINE_LABELS[id],
+      blurb: LINE_BLURBS[id],
+    })),
+  });
+
+  const selected = many(a, "services").filter((s): s is ServiceLineId =>
+    Object.hasOwn(SERVICE_LINES, s),
+  );
+  if (selected.length === 0) return qs;
+
+  for (const id of LINE_ORDER) {
+    if (!selected.includes(id)) continue;
+    qs.push({
+      id: `depth.${id}`,
+      kind: "single",
+      prompt: DEPTH_PROMPT[id],
+      help: LINE_BLURBS[id],
+      options: SERVICE_LINES[id].depths.map((d) => ({
+        key: d.id,
+        label: DEPTH_LABELS[`${id}.${d.id}`] ?? { en: d.id, fr: d.id },
+      })),
+    });
+  }
+
+  /* Only the ADD-ON questions genuinely depend on the depth answers — a
+     productized Launch offers none. The tail below does not, so it is not
+     gated: keeping it out until every depth was answered made the counter jump
+     from "2 of 2" to "3 of 6" mid-flow, which reads as the form growing while
+     you fill it in. */
+  const depthsAnswered = selected.every((id) => one(a, `depth.${id}`));
+
+  const addons = depthsAnswered ? offeredAddons(a) : [];
+  if (addons.length > 0) {
+    qs.push({
+      id: "addons",
+      kind: "multi",
+      optional: true,
+      prompt: t("Anything else it needs to do?", "Autre chose qu'il doit faire?"),
+      options: addons.map((id) => ({ key: id, label: ADDON_LABELS[id] })),
+    });
+
+    for (const addon of many(a, "addons")) {
+      const spec = Object.hasOwn(ADDONS, addon) ? ADDONS[addon as AddonId] : undefined;
+      if (!spec?.variants || !addons.includes(addon as AddonId)) continue;
+      qs.push({
+        id: `variant.${addon}`,
+        kind: "single",
+        prompt: VARIANT_PROMPT[addon as AddonId] ?? t("How should this work?", "Comment ça doit fonctionner?"),
+        help: t(
+          "This changes the cost more than anything else on the page.",
+          "C'est ce qui influence le plus le coût dans cette page.",
+        ),
+        options: spec.variants.map((v) => ({
+          key: v.id,
+          label: ADDON_LABELS[`${addon}.${v.id}`] ?? { en: v.id, fr: v.id },
+        })),
+      });
+    }
+  }
+
+  /**
+   * The four cost drivers, in one screen.
+   *
+   * Deliberately NOT "how big is your company" — that reads as being sized up
+   * for a bill, and it is only a proxy anyway. Every item here is real,
+   * itemisable work, so a mid-market firm pays more because serving it costs
+   * more, not because it can afford to.
+   */
+  qs.push({
+    id: "org",
     kind: "multi",
     optional: true,
-    when: isBranch("website", "redesign"),
-    prompt: t("What does it need to do?", "Que doit-il faire?"),
-    help: t("Pick everything that applies.", "Choisissez tout ce qui s'applique."),
-    options: [
-      { key: "bookings", label: t("Take bookings or reservations", "Prendre des rendez-vous ou des réservations") },
-      { key: "ordering", label: t("Take orders for food or products", "Prendre des commandes") },
-      { key: "payments", label: t("Take payments online", "Accepter des paiements en ligne") },
-      { key: "accounts", label: t("Let customers have an account", "Permettre aux clients d'avoir un compte") },
-      { key: "bilingual", label: t("Work in English and French", "Fonctionner en anglais et en français") },
-      { key: "blog", label: t("Have a blog or resource section", "Avoir un blogue ou une section ressources") },
-      { key: "self_edit", label: t("Let us edit the content ourselves", "Nous permettre de modifier le contenu nous-mêmes") },
-      { key: "seo", label: t("Be seriously optimised for search", "Être sérieusement optimisé pour la recherche") },
-      { key: "locations", label: t("Cover several locations", "Couvrir plusieurs emplacements") },
-      { key: "custom", label: t("Something custom we haven't described", "Quelque chose de sur mesure non décrit ici") },
-    ],
-  },
-  {
-    id: "booking_depth",
-    kind: "single",
-    when: (a) => has(a, "needs", "bookings"),
-    prompt: t("How should booking work?", "Comment la prise de rendez-vous doit-elle fonctionner?"),
+    prompt: t("Anything about your organisation we should factor in?", "Quelque chose à propos de votre organisation à prendre en compte?"),
     help: t(
-      "This changes the cost more than almost anything else on the page.",
-      "C'est ce qui influence le plus le coût dans cette page.",
+      "These genuinely change the work. Most small businesses pick none.",
+      "Ces éléments changent réellement le travail. La plupart des petites entreprises n'en choisissent aucun.",
     ),
-    options: [
-      { key: "link", label: t("Link out to a tool we already use", "Rediriger vers un outil qu'on utilise déjà") },
-      { key: "embedded", label: t("Built into the site, using an existing system", "Intégré au site, avec un système existant") },
-      { key: "custom", label: t("Our own availability rules and calendar", "Nos propres règles de disponibilité et calendrier") },
-    ],
-  },
-  {
-    id: "ordering_depth",
-    kind: "single",
-    when: (a) => has(a, "needs", "ordering"),
-    prompt: t("How should ordering work?", "Comment la commande doit-elle fonctionner?"),
-    options: [
-      { key: "link", label: t("Link out to a platform we already use", "Rediriger vers une plateforme qu'on utilise déjà") },
-      { key: "onsite", label: t("Customers order and pay on our site", "Les clients commandent et paient sur notre site") },
-      { key: "full", label: t("Ordering plus delivery, pickup and our till system", "Commande, livraison, cueillette et notre système de caisse") },
-    ],
-  },
+    options: (Object.keys(ORG_FACTORS) as OrgFactorId[]).map((id) => ({
+      key: id,
+      label: ORG_LABELS[id],
+      blurb: ORG_BLURBS[id],
+    })),
+  });
 
-  /* ── sell online ───────────────────────────────────────────────────────── */
-  {
-    id: "sell_what",
-    kind: "single",
-    when: isBranch("sell"),
-    prompt: t("What are you selling?", "Que vendez-vous?"),
-    options: [
-      { key: "physical", label: t("Physical products", "Des produits physiques") },
-      { key: "digital", label: t("Digital products", "Des produits numériques") },
-      { key: "subscription", label: t("Subscriptions or memberships", "Des abonnements ou adhésions") },
-      { key: "services", label: t("Services or bookings", "Des services ou des rendez-vous") },
-    ],
-  },
-  {
-    id: "catalogue",
-    kind: "single",
-    when: isBranch("sell"),
-    prompt: t("How many products?", "Combien de produits?"),
-    options: [
-      { key: "few", label: t("Under 25", "Moins de 25") },
-      { key: "some", label: t("25 to 250", "25 à 250") },
-      { key: "many", label: t("More than 250", "Plus de 250") },
-    ],
-  },
-  {
-    id: "store_needs",
-    kind: "multi",
-    optional: true,
-    when: isBranch("sell"),
-    prompt: t("What else does the store need?", "De quoi d'autre la boutique a-t-elle besoin?"),
-    options: [
-      { key: "accounts", label: t("Customer accounts", "Comptes clients") },
-      { key: "subscriptions", label: t("Recurring or subscription orders", "Commandes récurrentes ou par abonnement") },
-      { key: "inventory", label: t("Stock kept in sync with another system", "Stocks synchronisés avec un autre système") },
-      { key: "pos", label: t("Connect to our in-store till system", "Connexion à notre caisse en magasin") },
-      { key: "delivery", label: t("Delivery and pickup options", "Options de livraison et de cueillette") },
-      { key: "bilingual", label: t("Work in English and French", "Fonctionner en anglais et en français") },
-      { key: "email", label: t("Connect to our email marketing", "Connexion à notre infolettre") },
-      { key: "seo", label: t("Be seriously optimised for search", "Être sérieusement optimisé pour la recherche") },
-    ],
-  },
-
-  /* ── SEO ───────────────────────────────────────────────────────────────── */
-  {
-    id: "has_site",
-    kind: "single",
-    when: isBranch("seo"),
-    prompt: t("Do you already have a website?", "Avez-vous déjà un site web?"),
-    options: [
-      { key: "yes", label: t("Yes, and it stays as it is", "Oui, et il reste tel quel") },
-      { key: "rebuild", label: t("Yes, but it needs rebuilding", "Oui, mais il doit être refait") },
-      { key: "no", label: t("No, not yet", "Non, pas encore") },
-    ],
-  },
-  {
-    id: "seo_needs",
-    kind: "multi",
-    optional: true,
-    when: isBranch("seo"),
-    prompt: t("What matters most?", "Qu'est-ce qui compte le plus?"),
-    options: [
-      { key: "local", label: t("Being found by people nearby", "Être trouvé par les gens à proximité") },
-      { key: "locations", label: t("Several locations or service areas", "Plusieurs emplacements ou zones desservies") },
-      { key: "content", label: t("Publishing content regularly", "Publier du contenu régulièrement") },
-      { key: "scale", label: t("Pages generated at scale", "Des pages générées à grande échelle") },
-      { key: "bilingual", label: t("Ranking in English and French", "Se classer en anglais et en français") },
-    ],
-  },
-
-  /* ── automation ────────────────────────────────────────────────────────── */
-  {
-    id: "automate_what",
-    kind: "multi",
-    when: isBranch("automate"),
-    prompt: t("What should it do for you?", "Que doit-elle faire pour vous?"),
-    help: t(
-      "Describe the outcome — we'll work out what it takes to build.",
-      "Décrivez le résultat — on déterminera ce qu'il faut pour le construire.",
-    ),
-    options: [
-      { key: "documents", label: t("Read documents and pull the information out", "Lire des documents et en extraire l'information") },
-      { key: "sort", label: t("Sort and route things that come in", "Trier et acheminer ce qui entre") },
-      { key: "move_data", label: t("Move information between our tools", "Déplacer l'information entre nos outils") },
-      { key: "answer", label: t("Answer questions from our own information", "Répondre à des questions à partir de nos informations") },
-      { key: "content", label: t("Produce content or drafts", "Produire du contenu ou des ébauches") },
-      { key: "report", label: t("Report on what's happening", "Faire des rapports sur ce qui se passe") },
-    ],
-  },
-  {
-    id: "connects_to",
-    kind: "single",
-    when: isBranch("automate", "software"),
-    prompt: t("What does it need to connect to?", "À quoi doit-elle se connecter?"),
-    help: t(
-      "If we cannot see inside a system before starting, we widen the estimate rather than guess.",
-      "Si on ne peut pas voir l'intérieur d'un système avant de commencer, on élargit l'estimation plutôt que de deviner.",
-    ),
-    options: [
-      { key: "nothing", label: t("Nothing — it stands alone", "Rien — c'est indépendant") },
-      { key: "common", label: t("Common tools most businesses use", "Des outils courants") },
-      { key: "internal", label: t("Our own internal system", "Notre propre système interne") },
-      { key: "unknown", label: t("I'm not sure yet", "Je ne sais pas encore") },
-    ],
-  },
-
-  /* ── custom software ───────────────────────────────────────────────────── */
-  {
-    id: "who_uses",
-    kind: "single",
-    when: isBranch("software"),
-    prompt: t("Who will use it?", "Qui va l'utiliser?"),
-    options: [
-      { key: "team", label: t("Just our team", "Seulement notre équipe") },
-      { key: "team_customers", label: t("Our team and our customers", "Notre équipe et nos clients") },
-      { key: "public", label: t("Anyone who signs up", "N'importe qui s'inscrit") },
-    ],
-  },
-  {
-    id: "software_needs",
-    kind: "multi",
-    optional: true,
-    when: isBranch("software"),
-    prompt: t("What does it need?", "De quoi a-t-il besoin?"),
-    options: [
-      { key: "roles", label: t("Different people see different things", "Différentes personnes voient différentes choses") },
-      { key: "dashboard", label: t("Dashboards and reporting", "Tableaux de bord et rapports") },
-      { key: "documents", label: t("Uploading and managing documents", "Téléversement et gestion de documents") },
-      { key: "payments", label: t("Taking payments", "Accepter des paiements") },
-      { key: "subscriptions", label: t("Recurring billing", "Facturation récurrente") },
-      { key: "notifications", label: t("Emails and notifications", "Courriels et notifications") },
-      { key: "workflows", label: t("Multi-step approval or workflows", "Approbations ou flux en plusieurs étapes") },
-      { key: "portal", label: t("A portal our customers log into", "Un portail où nos clients se connectent") },
-      { key: "bilingual", label: t("Work in English and French", "Fonctionner en anglais et en français") },
-    ],
-  },
-
-  /* ── everyone ──────────────────────────────────────────────────────────── */
-  {
-    id: "content_ready",
-    kind: "single",
-    when: isBranch("website", "redesign", "sell"),
-    prompt: t("Do you have the words and images?", "Avez-vous les textes et les images?"),
-    options: [
-      { key: "ready", label: t("Yes, they're ready", "Oui, ils sont prêts") },
-      { key: "existing", label: t("We have them, but they need reworking", "On les a, mais ils doivent être retravaillés") },
-      { key: "help", label: t("We need help writing them", "On a besoin d'aide pour les écrire") },
-    ],
-  },
-  {
-    id: "clarity",
-    kind: "single",
-    prompt: t("How settled is the scope?", "À quel point la portée est-elle définie?"),
-    options: [
-      { key: "clear", label: t("We know what we want", "On sait ce qu'on veut") },
-      { key: "rough", label: t("We have a rough idea", "On a une idée générale") },
-      { key: "open", label: t("We're still figuring it out", "On est encore en train de le définir") },
-    ],
-  },
-  {
+  qs.push({
     id: "timing",
     kind: "single",
     prompt: t("When do you need it?", "Pour quand en avez-vous besoin?"),
@@ -343,12 +206,36 @@ export const QUESTIONS: Question[] = [
       { key: "planned", label: t("Within a few months", "D'ici quelques mois") },
       { key: "urgent", label: t("There's a hard deadline", "Il y a une échéance ferme") },
     ],
-  },
-];
+  });
 
-/** The questions that actually apply to the answers so far, in order. */
-export function activeQuestions(a: Answers): Question[] {
-  return QUESTIONS.filter((q) => !q.when || q.when(a));
+  /**
+   * Budget ROUTES, it never prices.
+   *
+   * Someone who says $3,000 sees the Launch product at its published price;
+   * someone who says $50,000 sees the custom range at those same published
+   * rates. It exists so we can propose the right scope, not a bigger one —
+   * and on a site whose whole promise is "the prices are on the page",
+   * anything else would be a contradiction.
+   */
+  qs.push({
+    id: "budget",
+    kind: "single",
+    optional: true,
+    prompt: t("Do you have a budget in mind?", "Avez-vous un budget en tête?"),
+    help: t(
+      "Optional, and it never changes the price — our rates are published. It just helps us point you at the right scope.",
+      "Facultatif, et ça ne change jamais le prix — nos tarifs sont publics. Ça nous aide seulement à proposer la bonne envergure.",
+    ),
+    options: [
+      { key: "under_5k", label: t("Under $5,000", "Moins de 5 000 $") },
+      { key: "5_15k", label: t("$5,000 – $15,000", "5 000 $ – 15 000 $") },
+      { key: "15_50k", label: t("$15,000 – $50,000", "15 000 $ – 50 000 $") },
+      { key: "50k_plus", label: t("$50,000+", "50 000 $ et plus") },
+      { key: "unsure", label: t("Not sure yet", "Pas encore certain") },
+    ],
+  });
+
+  return qs;
 }
 
 /** True once every non-optional active question has an answer. */
@@ -363,244 +250,94 @@ export function isComplete(a: Answers): boolean {
 /**
  * Strips anything the flow does not define.
  *
- * Runs server-side before mapping. An unknown question id, an unknown option
- * key, or a multi-select answer sent to a single-choice question is dropped —
- * so the mapper only ever sees vocabulary the flow itself declares.
+ * Runs server-side before mapping, so the mapper only ever sees vocabulary the
+ * flow itself declares. An unknown id, an unknown option, or the wrong shape
+ * for a question's kind is dropped.
  */
 export function sanitizeAnswers(raw: unknown): Answers {
   if (typeof raw !== "object" || raw === null || Array.isArray(raw)) return {};
   const source = raw as Record<string, unknown>;
   const out: Answers = {};
-  for (const q of QUESTIONS) {
-    const value = Object.hasOwn(source, q.id) ? source[q.id] : undefined;
-    if (value === undefined) continue;
-    const valid = new Set(q.options.map((o) => o.key));
-    if (q.kind === "single") {
-      if (typeof value === "string" && valid.has(value)) out[q.id] = value;
-    } else if (Array.isArray(value)) {
-      const picked = value.filter((v): v is string => typeof v === "string" && valid.has(v));
-      if (picked.length) out[q.id] = [...new Set(picked)].slice(0, q.options.length);
+
+  // Questions are generated from answers, so this resolves in passes: take
+  // what is valid now, regenerate, and take what that unlocks.
+  for (let pass = 0; pass < 4; pass += 1) {
+    const before = JSON.stringify(out);
+    for (const q of activeQuestions(out)) {
+      const value = Object.hasOwn(source, q.id) ? source[q.id] : undefined;
+      if (value === undefined) continue;
+      const valid = new Set(q.options.map((o) => o.key));
+      if (q.kind === "single") {
+        if (typeof value === "string" && valid.has(value)) out[q.id] = value;
+      } else if (Array.isArray(value)) {
+        const picked = [...new Set(value.filter((v): v is string => typeof v === "string" && valid.has(v)))];
+        if (picked.length) out[q.id] = picked.slice(0, q.options.length);
+        else delete out[q.id];
+      }
     }
+    if (JSON.stringify(out) === before) break;
   }
   return out;
 }
 
-type Cap = { id: CapabilityId; complexity: Complexity };
-
-/**
- * Turns answers into model input.
- *
- * Every branch resolves to exactly one foundation. Where an answer is
- * genuinely ambiguous about depth, the flow asked a follow-up (booking,
- * ordering) rather than guessing — that follow-up is what the tier reads.
- */
+/** Turns answers into model input. */
 export function mapAnswers(a: Answers): EstimateInput {
-  const branch = branchOf(a);
-  const caps: Cap[] = [];
-  const add = (id: CapabilityId, complexity: Complexity = "standard") => {
-    if (!caps.some((c) => c.id === id)) caps.push({ id, complexity });
-  };
+  const selected = many(a, "services").filter((s): s is ServiceLineId =>
+    Object.hasOwn(SERVICE_LINES, s),
+  );
 
-  let foundation: EstimateInput["foundation"] = "marketing_site";
-  let scope: ScopeSize = (["small", "standard", "large", "very_large", "xl"] as ScopeSize[]).includes(
-    one(a, "size") as ScopeSize,
-  )
-    ? (one(a, "size") as ScopeSize)
-    : "small";
-  let bilingual = false;
+  const chosenAddons = many(a, "addons").filter((x): x is AddonId => Object.hasOwn(ADDONS, x));
+  const offered = new Set(offeredAddons(a));
 
-  /* ── foundation ──────────────────────────────────────────────────────── */
-  if (branch === "redesign") foundation = "website_redesign";
-  else if (branch === "sell") foundation = "ecommerce";
-  else if (branch === "automate") foundation = "ai_automation";
-  else if (branch === "software") {
-    // "Anyone who signs up" is a product, not an internal tool — that is the
-    // line between a portal and a full application, and it is the single
-    // biggest driver on this branch.
-    foundation = one(a, "who_uses") === "team" ? "business_portal" : "custom_application";
-  } else if (branch === "seo") {
-    const site = one(a, "has_site");
-    if (site === "no" || site === "rebuild") {
-      // Someone who needs a site before they can rank is buying a site.
-      foundation = site === "rebuild" ? "website_redesign" : "marketing_site";
-      add("keyword_research");
-      add("advanced_onpage", "moderate");
-      add("schema_markup");
-    } else {
-      foundation = has(a, "seo_needs", "content") || has(a, "seo_needs", "scale")
-        ? "content_system"
-        : "seo_engagement";
-    }
-  } else if (branch === "website") {
-    foundation = "marketing_site";
+  const lines: LineSelection[] = [];
+  for (const id of LINE_ORDER) {
+    if (!selected.includes(id)) continue;
+    const spec = SERVICE_LINES[id];
+    const depth = one(a, `depth.${id}`) || spec.depths[0].id;
+    const valid = spec.depths.some((d) => d.id === depth) ? depth : spec.depths[0].id;
+
+    const addons = chosenAddons
+      .filter((addon) => offered.has(addon) && ownerOf(addon, selected) === id)
+      .map((addon) => {
+        const spec = ADDONS[addon];
+        if (!spec.variants) return { id: addon };
+        const picked = one(a, `variant.${addon}`);
+        // An unanswered variant falls back to the cheapest reading rather than
+        // the average — we never quote high on an ambiguity we failed to ask
+        // about clearly enough.
+        const variant = spec.variants.some((v) => v.id === picked) ? picked : spec.variants[0].id;
+        return { id: addon, variant };
+      });
+
+    lines.push({ id, depth: valid, addons });
   }
 
-  // Page count is meaningless on the software and automation branches, and
-  // letting a stale answer leak across a branch change would silently inflate
-  // the estimate.
-  if (branch === "automate" || branch === "software") scope = "small";
-
-  /* ── website / redesign ──────────────────────────────────────────────── */
-  if (branch === "website" || branch === "redesign") {
-    const kind = one(a, "site_kind");
-    if (kind === "seo_focused") {
-      add("keyword_research");
-      add("advanced_onpage", "moderate");
-      add("schema_markup");
-      add("content_strategy");
-    }
-    if (kind === "local") {
-      add("local_seo", "moderate");
-      add("schema_markup");
-    }
-    if (kind === "content") {
-      add("blog_system");
-      add("cms");
-      add("content_strategy");
-    }
-    if (branch === "redesign") add("content_migration");
-
-    if (has(a, "needs", "self_edit")) add("cms");
-    if (has(a, "needs", "blog")) add("blog_system");
-    if (has(a, "needs", "accounts")) add("customer_accounts");
-    if (has(a, "needs", "locations")) {
-      add("multi_location", "moderate");
-      add("local_seo", "moderate");
-    }
-    if (has(a, "needs", "seo")) {
-      add("keyword_research");
-      add("advanced_onpage", "moderate");
-      add("schema_markup");
-      add("content_strategy");
-    }
-    if (has(a, "needs", "bilingual")) bilingual = true;
-
-    const booking = one(a, "booking_depth");
-    if (booking === "link") add("booking", "standard");
-    if (booking === "embedded") add("booking", "moderate");
-    if (booking === "custom") {
-      add("booking", "advanced");
-      add("notifications");
-    }
-
-    const ordering = one(a, "ordering_depth");
-    if (ordering === "link") add("online_ordering", "standard");
-    if (ordering === "onsite") {
-      add("online_ordering", "moderate");
-      add("notifications");
-    }
-    if (ordering === "full") {
-      add("online_ordering", "moderate");
-      add("delivery_pickup", "moderate");
-      add("pos_integration", "moderate");
-      add("notifications");
-    }
-
-    // "Take payments" on a brochure site means a checkout, not a storefront —
-    // unless they are also ordering, in which case ordering already covers it.
-    if (has(a, "needs", "payments") && !ordering) add("app_payments");
-  }
-
-  /* ── sell online ─────────────────────────────────────────────────────── */
-  if (branch === "sell") {
-    const size = one(a, "catalogue");
-    if (size === "some") add("large_catalogue", "standard");
-    if (size === "many") add("large_catalogue", "moderate");
-    if (one(a, "sell_what") === "subscription") add("subscriptions", "moderate");
-    if (one(a, "sell_what") === "services") add("booking", "moderate");
-
-    if (has(a, "store_needs", "accounts")) add("customer_accounts");
-    if (has(a, "store_needs", "subscriptions")) add("subscriptions", "moderate");
-    if (has(a, "store_needs", "inventory")) add("inventory_sync", "moderate");
-    if (has(a, "store_needs", "pos")) add("pos_integration", "moderate");
-    if (has(a, "store_needs", "delivery")) add("delivery_pickup");
-    if (has(a, "store_needs", "email")) add("email_marketing");
-    if (has(a, "store_needs", "bilingual")) bilingual = true;
-    if (has(a, "store_needs", "seo")) {
-      add("keyword_research");
-      add("advanced_onpage", "moderate");
-      add("schema_markup");
-    }
-  }
-
-  /* ── SEO ─────────────────────────────────────────────────────────────── */
-  if (branch === "seo") {
-    if (has(a, "seo_needs", "local")) add("local_seo", "moderate");
-    if (has(a, "seo_needs", "locations")) {
-      add("multi_location", "moderate");
-      add("local_seo", "advanced");
-    }
-    if (has(a, "seo_needs", "content")) add("content_strategy", "moderate");
-    if (has(a, "seo_needs", "scale")) {
-      add("programmatic_content", "advanced");
-      add("dynamic_content", "moderate");
-    }
-    if (has(a, "seo_needs", "bilingual")) bilingual = true;
-  }
-
-  /* ── automation ──────────────────────────────────────────────────────── */
-  if (branch === "automate") {
-    if (has(a, "automate_what", "documents")) add("document_processing", "moderate");
-    if (has(a, "automate_what", "sort")) add("classification_extraction", "moderate");
-    if (has(a, "automate_what", "move_data")) add("workflow_automation");
-    if (has(a, "automate_what", "answer")) add("ai_assistant", "moderate");
-    if (has(a, "automate_what", "content")) add("content_automation", "moderate");
-    if (has(a, "automate_what", "report")) add("business_intelligence");
-  }
-
-  /* ── custom software ─────────────────────────────────────────────────── */
-  if (branch === "software") {
-    if (has(a, "software_needs", "roles")) add("roles_permissions", "moderate");
-    if (has(a, "software_needs", "dashboard")) add("dashboard_reporting", "moderate");
-    if (has(a, "software_needs", "documents")) add("documents_uploads");
-    if (has(a, "software_needs", "payments")) add("app_payments", "moderate");
-    if (has(a, "software_needs", "subscriptions")) add("subscriptions", "moderate");
-    if (has(a, "software_needs", "notifications")) add("notifications");
-    if (has(a, "software_needs", "workflows")) add("workflow_management", "moderate");
-    if (has(a, "software_needs", "portal")) add("client_portal", "moderate");
-    if (has(a, "software_needs", "bilingual")) bilingual = true;
-  }
-
-  /* ── what it connects to ─────────────────────────────────────────────── */
-  const connects = one(a, "connects_to");
-  if (connects === "common") add("third_party_api", "moderate");
-  if (connects === "internal") add("legacy_system", "advanced");
-
-  /* ── copy ────────────────────────────────────────────────────────────── */
-  const content = one(a, "content_ready");
-  if (content === "help") add("copywriting", scope === "small" ? "standard" : "moderate");
-  if (content === "existing") add("copywriting", "standard");
-
-  /* ── uncertainty ─────────────────────────────────────────────────────── */
-  const clarity = one(a, "clarity");
-  const undefinedScope =
-    clarity === "open" ||
-    connects === "unknown" ||
-    has(a, "needs", "custom") ||
-    (branch === "software" && clarity === "rough");
+  const org = many(a, "org").filter((o): o is OrgFactorId => Object.hasOwn(ORG_FACTORS, o));
+  const budgetRaw = one(a, "budget");
+  const budget = budgetRaw ? (budgetRaw as EstimateInput["budget"]) : undefined;
 
   return {
-    foundation,
-    scope,
-    bilingual,
-    capabilities: caps,
-    undefinedScope,
+    lines,
+    org,
+    budget,
+    undefinedScope: chosenAddons.includes("custom_functionality"),
     rush: one(a, "timing") === "urgent",
   };
 }
 
-/** Studio `project_type` for the intake hand-off. Mirrors PROJECT_TYPE_OPTIONS there. */
-export function studioTypeFor(foundation: EstimateInput["foundation"]): string {
-  return (
-    {
-      marketing_site: "website",
-      website_redesign: "website",
-      ecommerce: "ecommerce",
-      business_portal: "web_app",
-      custom_application: "web_app",
-      ai_automation: "ai_system",
-      seo_engagement: "other",
-      content_system: "other",
-    }[foundation] ?? "other"
-  );
+/** Studio `project_type` for the intake hand-off, from the heaviest line. */
+export function studioTypeFor(lines: LineSelection[]): string {
+  const byPriority: [ServiceLineId, string][] = [
+    ["software", "web_app"],
+    ["store", "ecommerce"],
+    ["automation", "ai_system"],
+    ["website", "website"],
+    ["brand", "brand_experience"],
+    ["content", "other"],
+    ["seo", "other"],
+  ];
+  for (const [line, type] of byPriority) {
+    if (lines.some((l) => l.id === line)) return type;
+  }
+  return "other";
 }

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { PageSchema } from "@/components/page-schema";
 import { ProjectCalculator } from "@/components/tools/project-calculator";
-import { GLOBAL_MINIMUM, PRICING_VERSION } from "@/lib/pricing/model";
+import { DAY_RATES, DISCOVERY, MINIMUM, PRICING_VERSION } from "@/lib/pricing/model";
 
 const url = "https://stillawakemedia.com/fr/outils/calculateur-cout-projet";
 const enUrl = "https://stillawakemedia.com/tools/project-cost-calculator";
@@ -77,12 +77,34 @@ export default function CalculateurCoutProjetPage() {
 
           <div className="mt-7 space-y-6 text-[#C7B9B9]">
             <div>
-              <h3 className="font-semibold text-white">On chiffre des capacités, pas des pages</h3>
+              <h3 className="font-semibold text-white">Chaque prix, c&apos;est des jours de travail × un taux</h3>
               <p className="mt-2">
-                Dix pages simples demandent souvent moins de travail qu&apos;un seul écran
-                d&apos;application. Le modèle part d&apos;une base — la version minimale mais réelle de
-                ce que vous bâtissez — puis chiffre ce que vous ajoutez par-dessus. Le nombre de pages
-                ajuste l&apos;estimation, mais ne la dicte jamais.
+                Pas une moyenne du marché, pas un chiffre rond qui nous plaisait. Le modèle estime
+                combien de jours prend chaque partie du mandat et multiplie par un taux —{" "}
+                {DAY_RATES.build.toLocaleString("fr-CA")} $ par jour pour la construction, davantage pour
+                les systèmes, l&apos;IA et la stratégie. Vous achetez un prix fixe, mais ce prix doit
+                être chiffré, sinon c&apos;est une devinette.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-white">Les services se combinent — ce ne sont pas des catégories</h3>
+              <p className="mt-2">
+                Un site de restaurant conçu pour bien se classer avec un blogue, ce n&apos;est pas une
+                option parmi quatre : c&apos;est quatre types de travail à la fois. Vous choisissez donc
+                tout ce qui s&apos;applique et vous fixez la profondeur de chacun. C&apos;est aussi
+                pourquoi l&apos;estimation peut bouger beaucoup : le coût vit dans la profondeur.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-white">Les grandes organisations coûtent réellement plus cher à servir</h3>
+              <p className="mt-2">
+                Pas parce qu&apos;elles en ont les moyens — parce que plusieurs décideurs, c&apos;est
+                plusieurs rondes de révision, que la conformité demande de vrais tests, et que se
+                connecter à des systèmes qu&apos;on ne voit pas de l&apos;intérieur est réellement plus
+                difficile. C&apos;est détaillable, donc on le détaille. Un propriétaire qui décide seul
+                n&apos;en coche aucun et paie le prix de base.
               </p>
             </div>
 
@@ -124,19 +146,30 @@ export default function CalculateurCoutProjetPage() {
             </div>
 
             <div>
-              <h3 className="font-semibold text-white">Il y a un plancher</h3>
+              <h3 className="font-semibold text-white">Il y a un plancher, et il y a un produit à ce plancher</h3>
               <p className="mt-2">
-                StillAwake Media ne prend pas de mandat de construction sous{" "}
-                {GLOBAL_MINIMUM.toLocaleString("fr-CA")} $. En dessous, le cadrage, la révision et le
-                transfert coûtent plus cher que le travail lui-même. Les plus petits mandats passent par
-                le{" "}
-                <Link
-                  href="/fr/maintenance-site-web"
-                  className="text-[#D71920] underline-offset-4 hover:underline"
-                >
+                Rien n&apos;est construit sous {MINIMUM.toLocaleString("fr-CA")} $ — en dessous, le
+                cadrage, la révision et le transfert coûtent plus cher que le travail. Mais ce plancher
+                est un vrai produit, pas un projet sur mesure au rabais : Lancement, c&apos;est notre
+                gabarit éprouvé avec votre image de marque, jusqu&apos;à cinq pages, une ronde de
+                révisions. C&apos;est justement la portée fixe qui rend le prix possible. Les mandats
+                plus petits passent par le{" "}
+                <Link href="/fr/maintenance-site-web" className="text-[#D71920] underline-offset-4 hover:underline">
                   dépannage ponctuel
                 </Link>
                 , qui a ses propres prix publiés.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-white">Au-delà d&apos;un certain point, on cadre au lieu de chiffrer</h3>
+              <p className="mt-2">
+                Personne ne peut chiffrer honnêtement une plateforme à partir d&apos;un questionnaire —
+                les exigences sont la partie coûteuse et elles n&apos;existent pas encore. Au-delà
+                d&apos;environ 40 000 $, et pour tout logiciel, l&apos;outil propose un cadrage payant
+                plutôt qu&apos;un chiffre confiant. À partir de{" "}
+                {DISCOVERY.from.toLocaleString("fr-CA")} $, ça produit une portée écrite et un prix de
+                construction fixe, et les frais sont déduits de la construction.
               </p>
             </div>
           </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ServiceJsonLd, PriceCard } from "@/components/service-page";
 import { getContentLayer } from "@/lib/cms/adapter";
+import { DISCOVERY, MINIMUM } from "@/lib/pricing/model";
 import { slot } from "@/lib/cms/layer";
 import { ArticlesLies } from "@/components/articles-lies";
 
@@ -10,7 +11,7 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Tarifs — Prix affichés, sans appel de vente",
   description:
-    "Tarifs StillAwake Media : forfaits SEO de 600 $ à 850 $ CAD par mois, dépannage d'urgence de 150 $ à 600 $ CAD, et soumissions écrites pour les projets. Transparent, en dollars canadiens.",
+    "Tarifs StillAwake Media : sites Lancement à partir de 2 500 $ CAD, projets sur mesure à partir de 8 000 $, cadrage payant à partir de 3 500 $, forfaits SEO de 600 $ à 850 $ par mois et dépannage d'urgence de 150 $ à 600 $. Publiés, en dollars canadiens.",
   alternates: {
     canonical: "https://stillawakemedia.com/fr/tarifs",
     languages: {
@@ -37,6 +38,8 @@ export default async function TarifsPage() {
         name="Tarifs des services StillAwake Media"
         description="Tarifs affichés : forfaits SEO mensuels, dépannage d'urgence à paiement unique, et travaux sur devis."
         offers={[
+          { name: "Site Lancement", price: MINIMUM },
+          { name: "Cadrage de projet", price: DISCOVERY.from },
           { name: "Croissance SEO — Essentiel", price: 600, interval: "MONTH" },
           { name: "Croissance SEO — Avancé", price: 850, interval: "MONTH" },
           { name: "Support d'urgence — Site sur mesure", price: 150 },
@@ -59,7 +62,7 @@ export default async function TarifsPage() {
             {slot(
               slots,
               "hero_intro",
-              "La plupart des agences cachent leurs prix derrière un appel de découverte. StillAwake Media les affiche : les services récurrents ont un prix mensuel, le support a des tarifs uniques, et les projets reçoivent une soumission écrite via un formulaire asynchrone — jamais d'appel de vente obligatoire. Tous les prix sont en dollars canadiens.",
+              "La plupart des agences cachent leurs prix derrière un appel de découverte. StillAwake Media les affiche. Chaque prix de projet est chiffré de la même façon — des jours de travail à un taux journalier publié — pour qu'un prix fixe soit un vrai chiffre plutôt qu'une devinette. Les petits mandats sont un produit à prix fixe, les projets sur mesure reçoivent une portée écrite, et tout ce qu'un formulaire ne peut pas chiffrer honnêtement commence par un cadrage payant. Tous les prix sont en dollars canadiens.",
             )}
           </p>
         </div>
@@ -67,7 +70,57 @@ export default async function TarifsPage() {
 
       <section className="px-6 py-16">
         <div className="mx-auto max-w-7xl">
-          <h2 className="geist text-4xl font-black tracking-[-0.06em]">Mensuel — forfaits SEO</h2>
+          <h2 className="geist text-4xl font-black tracking-[-0.06em]">Projets — trois façons d&apos;entrer</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
+            Ce dont vous avez besoin est décidé par le travail, pas par la taille de votre entreprise.
+            Chiffrez votre projet avec le{" "}
+            <Link href="/fr/outils/calculateur-cout-projet" className="text-[#D71920] underline-offset-4 hover:underline">
+              calculateur de coût
+            </Link>{" "}
+            — il utilise le même modèle qu&apos;on emploie pour chiffrer de vrais mandats.
+          </p>
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            <PriceCard
+              name="Lancement"
+              price={`${MINIMUM.toLocaleString("fr-CA")} $ CAD`}
+              cadence="prix fixe"
+              items={[
+                "Notre gabarit éprouvé, votre image de marque",
+                "Jusqu'à 5 pages",
+                "Analytique, Search Console, SEO technique",
+                "Une ronde de révisions",
+                "Portée fixe — c'est ce qui rend le prix possible",
+              ]}
+              cta={["Chiffrer", "/fr/outils/calculateur-cout-projet"]}
+            />
+            <PriceCard
+              name="Projet sur mesure"
+              price="à partir de 8 000 $ CAD"
+              cadence="portée écrite, prix fixe"
+              items={[
+                "Conçu pour vous, pas appliqué sur vous",
+                "Chiffré en jours à un taux publié",
+                "Portée écrite avant tout engagement",
+                "Sans appel de vente obligatoire",
+              ]}
+              cta={["Obtenir une fourchette", "/fr/outils/calculateur-cout-projet"]}
+              highlight
+            />
+            <PriceCard
+              name="Cadrage"
+              price={`à partir de ${DISCOVERY.from.toLocaleString("fr-CA")} $ CAD`}
+              cadence="crédité sur la construction"
+              items={[
+                "Pour les systèmes qu'un formulaire ne peut pas chiffrer",
+                "Portée écrite et architecture",
+                "Un prix de construction fixe à la fin",
+                "Les frais sont déduits de la construction",
+              ]}
+              cta={["Commencer par le cadrage", "https://stillawake.studio/fr/demarrer"]}
+            />
+          </div>
+
+          <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">Mensuel — forfaits SEO</h2>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
             Croissance SEO — Essentiel coûte 600 $ CAD par mois. Croissance SEO — Avancé coûte 850 $ CAD par mois.
           </p>
@@ -107,7 +160,7 @@ export default async function TarifsPage() {
             />
           </div>
 
-          <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">Sur devis — projets</h2>
+          <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">Ce qu&apos;on fait</h2>
           <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {[
               ["Création de site web", "/fr/agence-web-montreal"],

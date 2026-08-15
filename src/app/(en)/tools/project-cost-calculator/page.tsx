@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { PageSchema } from "@/components/page-schema";
 import { ProjectCalculator } from "@/components/tools/project-calculator";
-import { GLOBAL_MINIMUM, PRICING_VERSION } from "@/lib/pricing/model";
+import { DAY_RATES, DISCOVERY, MINIMUM, PRICING_VERSION } from "@/lib/pricing/model";
 
 const url = "https://stillawakemedia.com/tools/project-cost-calculator";
 const frUrl = "https://stillawakemedia.com/fr/outils/calculateur-cout-projet";
@@ -73,12 +73,31 @@ export default function ProjectCostCalculatorPage() {
 
           <div className="mt-7 space-y-6 text-[#C7B9B9]">
             <div>
-              <h3 className="font-semibold text-white">It prices capabilities, not pages</h3>
+              <h3 className="font-semibold text-white">Every price is days of work × a day rate</h3>
               <p className="mt-2">
-                Ten straightforward pages are often less work than one application screen. The model
-                starts from a foundation — the minimum meaningful version of what you are building —
-                and prices what you need on top of it. Page count adjusts the estimate, but it never
-                drives it.
+                Not a market average and not a round number we liked. The model estimates how many days
+                each part of the job takes and multiplies by a rate — ${DAY_RATES.build.toLocaleString("en-CA")} a
+                day for build work, more for systems, AI and strategy. You are buying a fixed price, but
+                that price has to be costed or it is just a guess.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-white">Services combine — they are not a category</h3>
+              <p className="mt-2">
+                A restaurant site built to rank with a blog is not one of four options, it is four kinds
+                of work at once. So you pick everything that applies and set how deep each one goes.
+                That is also why the estimate can move sharply: depth is where the cost lives.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-white">Bigger organisations genuinely cost more to serve</h3>
+              <p className="mt-2">
+                Not because they can afford it — because several stakeholders means several review
+                rounds, compliance means real conformance testing, and connecting to systems we cannot
+                see inside is genuinely harder. Those are itemisable, so we itemise them. An
+                owner-operator who decides in one message selects none of them and pays the base price.
               </p>
             </div>
 
@@ -118,18 +137,28 @@ export default function ProjectCostCalculatorPage() {
             </div>
 
             <div>
-              <h3 className="font-semibold text-white">There is a floor</h3>
+              <h3 className="font-semibold text-white">There is a floor, and there is a product at it</h3>
               <p className="mt-2">
-                StillAwake Media does not take build engagements under CA$
-                {GLOBAL_MINIMUM.toLocaleString("en-CA")}. Below that the scoping, review and handover
-                cost more than the work. Smaller jobs are handled as{" "}
-                <Link
-                  href="/website-maintenance"
-                  className="text-[#D71920] underline-offset-4 hover:underline"
-                >
+                Nothing is built for under CA${MINIMUM.toLocaleString("en-CA")} — below that the scoping,
+                review and handover cost more than the work. But that floor is a real product, not a
+                discounted custom project: Launch is our proven layout with your brand applied, up to
+                five pages, one revision round. Fixed scope is exactly what makes the price possible.
+                Smaller jobs than that are{" "}
+                <Link href="/website-maintenance" className="text-[#D71920] underline-offset-4 hover:underline">
                   one-time support
-                </Link>{" "}
-                instead, which has its own published prices.
+                </Link>
+                , which has its own published prices.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-white">Above a point, we stop quoting and start scoping</h3>
+              <p className="mt-2">
+                Nobody can honestly price a platform from a questionnaire — the requirements are the
+                expensive part and they do not exist yet. So past roughly CA$40,000, and for any
+                software build, the tool offers paid discovery instead of a confident number. That is
+                from CA${DISCOVERY.from.toLocaleString("en-CA")}, it produces a written scope and a fixed
+                build price, and the fee comes off the build.
               </p>
             </div>
           </div>

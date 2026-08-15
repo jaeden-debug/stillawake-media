@@ -1,15 +1,13 @@
 /**
  * CALIBRATION SCENARIOS — the evidence that the model is commercially sane.
  *
- * Not a test fixture that happens to live here: this is the artefact Phase 6
- * asks for. Every scenario is a project someone could actually walk in with,
- * priced by the real engine, and `calibration.test.ts` asserts the properties
- * that must hold across the whole distribution — monotonicity, the published
- * market bands, the minimum, and the specific claims made on
- * /website-cost-canada.
+ * Every scenario is a project someone could walk in with, priced by the real
+ * engine. `calibration.test.ts` asserts the properties that must hold across
+ * the distribution: the day model reconciles, the tiers separate, the
+ * enterprise multiple is real, and nothing is quoted that should be scoped.
  *
- * When a number here looks wrong, fix the MODEL. Never special-case a
- * scenario: a model that needs manual correction per project is not a model.
+ * When a number looks wrong, fix the MODEL — the days or the rate. Never
+ * special-case a scenario.
  *
  * Print the table with:  npx tsx scripts/pricing-report.mts
  */
@@ -18,417 +16,240 @@ import type { EstimateInput } from "./types";
 
 export type Scenario = {
   id: string;
-  /** Plain-language name, as a prospect would describe it. */
   name: string;
-  /** Why this scenario exists — which property of the model it probes. */
+  /** Which property of the model this probes. */
   probes: string;
   input: EstimateInput;
 };
 
-const base = (input: Partial<EstimateInput> & Pick<EstimateInput, "foundation">): EstimateInput => ({
-  scope: "small",
-  bilingual: false,
-  capabilities: [],
-  ...input,
-});
-
 export const SCENARIOS: Scenario[] = [
-  /* ── The brief's named scenarios ───────────────────────────────────────── */
+  /* ── the product tier ──────────────────────────────────────────────────── */
   {
-    id: "A_simple_business_site",
-    name: "Simple business website (Home, About, Services, Contact + a few pages)",
-    probes: "StillAwake's legitimate minimum. Must not be nickel-and-dimed per page.",
-    input: base({ foundation: "marketing_site" }),
+    id: "launch_local",
+    name: "Local business, already branded — a few pages, launched fast",
+    probes: "The productized floor. Must be reachable by a small business.",
+    input: { lines: [{ id: "website", depth: "launch" }] },
   },
   {
-    id: "B_restaurant_seo_site",
-    name: "Restaurant website with local SEO",
-    probes: "Local business build: menu content, maps, structured data, local search.",
-    input: base({
-      foundation: "marketing_site",
-      capabilities: [
-        { id: "local_seo", complexity: "moderate" },
-        { id: "schema_markup", complexity: "standard" },
-        { id: "cms", complexity: "standard" },
-        { id: "copywriting", complexity: "standard" },
+    id: "launch_with_seo",
+    name: "Launch site + search foundations",
+    probes: "The most common small sale. Must stay under the custom tier.",
+    input: {
+      lines: [
+        { id: "website", depth: "launch" },
+        { id: "seo", depth: "foundations" },
       ],
-    }),
-  },
-  {
-    id: "C_restaurant_ordering",
-    name: "Restaurant website + custom online ordering, payments, delivery, POS",
-    probes: "Must be materially above scenario B. Commerce + unknown POS.",
-    input: base({
-      foundation: "marketing_site",
-      capabilities: [
-        { id: "local_seo", complexity: "moderate" },
-        { id: "schema_markup", complexity: "standard" },
-        { id: "cms", complexity: "standard" },
-        { id: "copywriting", complexity: "standard" },
-        { id: "online_ordering", complexity: "moderate" },
-        { id: "delivery_pickup", complexity: "moderate" },
-        { id: "notifications", complexity: "standard" },
-        { id: "pos_integration", complexity: "moderate" },
-      ],
-    }),
-  },
-  {
-    id: "D_seo_business_site",
-    name: "Service company, 10–15 page site built for SEO",
-    probes: "Page-count scope with diminishing returns, plus a full SEO scope.",
-    input: base({
-      foundation: "marketing_site",
-      scope: "large",
-      capabilities: [
-        { id: "keyword_research", complexity: "standard" },
-        { id: "advanced_onpage", complexity: "moderate" },
-        { id: "schema_markup", complexity: "standard" },
-        { id: "local_seo", complexity: "standard" },
-        { id: "content_strategy", complexity: "standard" },
-        { id: "cms", complexity: "standard" },
-        { id: "copywriting", complexity: "moderate" },
-      ],
-    }),
-  },
-  {
-    id: "E_content_engine",
-    name: "Existing site, wants an AI-assisted content and SEO engine",
-    probes: "Content system foundation absorbs CMS/linking/metadata rather than charging for each.",
-    input: base({
-      foundation: "content_system",
-      scope: "standard",
-      capabilities: [
-        { id: "keyword_research", complexity: "moderate" },
-        { id: "content_strategy", complexity: "advanced" },
-        { id: "cms", complexity: "standard" },
-        { id: "content_automation", complexity: "moderate" },
-        { id: "advanced_onpage", complexity: "standard" },
-      ],
-    }),
-  },
-  {
-    id: "F_business_dashboard",
-    name: "Business dashboard — login, customers, orders, roles, reporting",
-    probes: "Portal foundation includes auth/DB/dashboard; only the extras are priced.",
-    input: base({
-      foundation: "business_portal",
-      capabilities: [
-        { id: "authentication", complexity: "standard" },
-        { id: "roles_permissions", complexity: "moderate" },
-        { id: "dashboard_reporting", complexity: "moderate" },
-        { id: "admin_portal", complexity: "standard" },
-        { id: "notifications", complexity: "standard" },
-      ],
-    }),
-  },
-  {
-    id: "G_custom_web_application",
-    name: "Custom web application — roles, workflows, payments, APIs, admin",
-    probes: "Must clear the published $15k custom-application floor with room to spare.",
-    input: base({
-      foundation: "custom_application",
-      capabilities: [
-        { id: "roles_permissions", complexity: "advanced" },
-        { id: "workflow_management", complexity: "advanced" },
-        { id: "app_payments", complexity: "moderate" },
-        { id: "dashboard_reporting", complexity: "advanced" },
-        { id: "third_party_api", complexity: "moderate" },
-        { id: "notifications", complexity: "moderate" },
-      ],
-    }),
-  },
-  {
-    id: "H_ai_automation",
-    name: "AI document automation — upload, extract, classify, approve, act, report",
-    probes: "AI foundation plus AI capabilities; human-in-the-loop is included, not extra.",
-    input: base({
-      foundation: "ai_automation",
-      capabilities: [
-        { id: "document_processing", complexity: "advanced" },
-        { id: "classification_extraction", complexity: "advanced" },
-        { id: "workflow_automation", complexity: "moderate" },
-        { id: "business_intelligence", complexity: "standard" },
-        { id: "documents_uploads", complexity: "standard" },
-      ],
-    }),
+    },
   },
 
-  /* ── Edge cases the brief names in Phase 22 ────────────────────────────── */
+  /* ── the custom tier ───────────────────────────────────────────────────── */
   {
-    id: "landing_page",
-    name: "Single landing page",
-    probes: "Floors at the minimum engagement rather than quoting below it.",
-    input: base({ foundation: "marketing_site" }),
+    id: "custom_site",
+    name: "Custom business website",
+    probes: "Must match the published $8,000–25,000 custom band.",
+    input: { lines: [{ id: "website", depth: "custom" }] },
   },
   {
-    id: "informational_50_pages",
-    name: "50-page informational site",
-    probes: "Page count must not dominate — 50 pages is not 10× a 5-page site.",
-    input: base({
-      foundation: "marketing_site",
-      scope: "very_large",
-      capabilities: [
-        { id: "cms", complexity: "standard" },
-        { id: "copywriting", complexity: "moderate" },
+    id: "clinic_site_seo",
+    name: "Clinic — custom site, research-led SEO, bookings",
+    probes: "The archetypal high-value non-corporate buyer.",
+    input: {
+      lines: [
+        { id: "website", depth: "custom", addons: [{ id: "bookings", variant: "embedded" }] },
+        { id: "seo", depth: "research" },
       ],
-    }),
+    },
   },
   {
-    id: "restaurant_third_party_ordering",
-    name: "Restaurant site + link to a third-party ordering platform",
-    probes: "Same words as scenario C, a fraction of the cost. Complexity must carry that.",
-    input: base({
-      foundation: "marketing_site",
-      capabilities: [
-        { id: "local_seo", complexity: "moderate" },
-        { id: "schema_markup", complexity: "standard" },
-        { id: "cms", complexity: "standard" },
-        { id: "copywriting", complexity: "standard" },
-        { id: "online_ordering", complexity: "standard" },
+    id: "restaurant_local",
+    name: "Restaurant — custom site, local search, link to an ordering platform",
+    probes: "The cheapest reading of ordering.",
+    input: {
+      lines: [
+        { id: "website", depth: "custom" },
+        { id: "store", depth: "simple", addons: [{ id: "ordering", variant: "link" }] },
+        { id: "seo", depth: "foundations" },
       ],
-    }),
+    },
   },
   {
-    id: "bilingual_business_site",
-    name: "Bilingual business website (EN + FR)",
-    probes: "A second language multiplies content scope, not the whole project.",
-    input: base({
-      foundation: "marketing_site",
-      scope: "standard",
-      bilingual: true,
-      capabilities: [
-        { id: "cms", complexity: "standard" },
-        { id: "copywriting", complexity: "standard" },
+    id: "restaurant_full_ordering",
+    name: "Restaurant — ordering, delivery, pickup and their till system",
+    probes: "Must be far above the link version. External system widens the top.",
+    input: {
+      lines: [
+        { id: "website", depth: "custom" },
+        { id: "store", depth: "proper", addons: [{ id: "ordering", variant: "full" }] },
+        { id: "seo", depth: "foundations" },
       ],
-    }),
+    },
   },
   {
-    id: "website_redesign",
-    name: "Website redesign",
-    probes: "Migration and redirects are part of the foundation, not add-ons.",
-    input: base({
-      foundation: "website_redesign",
-      scope: "standard",
-      capabilities: [
-        { id: "content_migration", complexity: "standard" },
-        { id: "cms", complexity: "standard" },
+    id: "brand_and_site",
+    name: "New business — identity and a custom site",
+    probes: "Two lines combining, which the old model could not express.",
+    input: {
+      lines: [
+        { id: "brand", depth: "identity" },
+        { id: "website", depth: "custom" },
       ],
-    }),
+    },
   },
   {
-    id: "redesign_with_seo",
-    name: "Website redesign + serious SEO programme",
-    probes: "Redesign plus SEO must exceed redesign alone.",
-    input: base({
-      foundation: "website_redesign",
-      scope: "large",
-      capabilities: [
-        { id: "content_migration", complexity: "moderate" },
-        { id: "cms", complexity: "standard" },
-        { id: "keyword_research", complexity: "standard" },
-        { id: "advanced_onpage", complexity: "moderate" },
-        { id: "schema_markup", complexity: "standard" },
-        { id: "content_strategy", complexity: "standard" },
+    id: "full_positioning",
+    name: "Positioning, identity, flagship site and a content pipeline",
+    probes: "Four lines. Advisory rate on the strategy work.",
+    input: {
+      lines: [
+        { id: "brand", depth: "positioning" },
+        { id: "website", depth: "flagship" },
+        { id: "content", depth: "pipeline" },
+        { id: "seo", depth: "programme" },
       ],
-    }),
-  },
-  {
-    id: "shopify_store",
-    name: "Shopify store, standard theme, modest catalogue",
-    probes: "Ecommerce floor. Must sit above a comparable brochure site.",
-    input: base({
-      foundation: "ecommerce",
-      capabilities: [{ id: "large_catalogue", complexity: "standard" }],
-    }),
-  },
-  {
-    id: "shopify_custom_theme",
-    name: "Shopify store, custom theme, inventory sync, CRM and email",
-    probes: "Integration stacking plus an external inventory system.",
-    input: base({
-      foundation: "ecommerce",
-      scope: "standard",
-      capabilities: [
-        { id: "large_catalogue", complexity: "moderate" },
-        { id: "customer_accounts", complexity: "standard" },
-        { id: "inventory_sync", complexity: "moderate" },
-        { id: "email_marketing", complexity: "standard" },
-        { id: "crm_integration", complexity: "standard" },
-      ],
-    }),
-  },
-  {
-    id: "subscription_commerce",
-    name: "Subscription ecommerce with customer accounts",
-    probes: "Recurring-revenue commerce sits above a plain store.",
-    input: base({
-      foundation: "ecommerce",
-      capabilities: [
-        { id: "subscriptions", complexity: "moderate" },
-        { id: "customer_accounts", complexity: "moderate" },
-      ],
-    }),
-  },
-  {
-    id: "booking_link",
-    name: "Business site + link to a booking tool",
-    probes: "Cheapest reading of 'booking'.",
-    input: base({
-      foundation: "marketing_site",
-      capabilities: [{ id: "booking", complexity: "standard" }],
-    }),
-  },
-  {
-    id: "booking_embedded",
-    name: "Business site + embedded reservation system",
-    probes: "Middle reading of 'booking'. Must exceed the link version.",
-    input: base({
-      foundation: "marketing_site",
-      capabilities: [{ id: "booking", complexity: "moderate" }],
-    }),
-  },
-  {
-    id: "booking_custom_engine",
-    name: "Business site + custom availability engine with payments",
-    probes: "Most expensive reading of 'booking'. The 15× spread must survive.",
-    input: base({
-      foundation: "marketing_site",
-      capabilities: [
-        { id: "booking", complexity: "advanced" },
-        { id: "notifications", complexity: "standard" },
-        { id: "app_payments", complexity: "standard" },
-      ],
-    }),
+    },
   },
   {
     id: "seo_only",
-    name: "SEO engagement only, no build",
-    probes: "Onboarding sprint plus a monthly plan — never priced as a big build.",
-    input: base({ foundation: "seo_engagement" }),
+    name: "SEO research on an existing site",
+    probes: "Advisory work with no build attached.",
+    input: { lines: [{ id: "seo", depth: "research" }] },
   },
   {
-    id: "multi_location_local_seo",
-    name: "Multi-location local SEO programme",
-    probes: "Location strategy on top of an SEO engagement.",
-    input: base({
-      foundation: "seo_engagement",
-      scope: "standard",
-      capabilities: [
-        { id: "local_seo", complexity: "advanced" },
-        { id: "multi_location", complexity: "moderate" },
-        { id: "schema_markup", complexity: "moderate" },
-      ],
-    }),
+    id: "content_pipeline",
+    name: "Programmatic content pipeline",
+    probes: "A system that produces content, priced as a system.",
+    input: { lines: [{ id: "content", depth: "pipeline" }] },
+  },
+  {
+    id: "store_proper",
+    name: "A real online store",
+    probes: "Commerce above a brochure site.",
+    input: { lines: [{ id: "store", depth: "proper" }] },
+  },
+  {
+    id: "store_subscriptions",
+    name: "Custom commerce with accounts",
+    probes: "Systems rate on custom commerce.",
+    input: {
+      lines: [{ id: "store", depth: "custom_commerce", addons: [{ id: "accounts" }] }],
+    },
+  },
+
+  /* ── organisational complexity: the honest enterprise multiple ─────────── */
+  {
+    id: "custom_site_solo",
+    name: "Custom site — owner decides, no compliance, nothing to integrate",
+    probes: "Base price. Paired with the next scenario.",
+    input: { lines: [{ id: "website", depth: "custom" }], org: [] },
+  },
+  {
+    id: "custom_site_midmarket",
+    name: "The same site for a 50-person firm — committee, AODA, their CRM, training",
+    probes: "Must be ~3× the identical deliverable, itemisable line by line.",
+    input: {
+      lines: [{ id: "website", depth: "custom" }],
+      org: ["approvals", "compliance", "integrations", "training"],
+    },
+  },
+
+  /* ── automation ────────────────────────────────────────────────────────── */
+  {
+    id: "automation_connect",
+    name: "Connect two business tools reliably",
+    probes: "The smallest automation must not price like an AI platform.",
+    input: { lines: [{ id: "automation", depth: "connect" }] },
+  },
+  {
+    id: "automation_intelligent",
+    name: "AI system that reads documents and exercises judgement",
+    probes: "AI rate, and a wide margin over the simple case.",
+    input: { lines: [{ id: "automation", depth: "intelligent" }] },
+  },
+
+  /* ── the systems tier: should stop quoting ─────────────────────────────── */
+  {
+    id: "internal_tool",
+    name: "Internal tool for the team",
+    probes: "Sits at the discovery boundary.",
+    input: { lines: [{ id: "software", depth: "internal_tool" }] },
   },
   {
     id: "client_portal",
-    name: "Client portal with documents, roles and notifications",
-    probes: "Portal foundation plus a genuine second surface.",
-    input: base({
-      foundation: "business_portal",
-      capabilities: [
-        { id: "client_portal", complexity: "moderate" },
-        { id: "documents_uploads", complexity: "standard" },
-        { id: "roles_permissions", complexity: "moderate" },
-        { id: "notifications", complexity: "standard" },
-      ],
-    }),
+    name: "A portal customers log into, with payments",
+    probes: "Must route to paid discovery rather than quote a number.",
+    input: {
+      lines: [{ id: "software", depth: "customer_product", addons: [{ id: "payments" }, { id: "accounts" }] }],
+    },
   },
   {
-    id: "saas_mvp",
-    name: "SaaS MVP — accounts, billing, roles, dashboard, integrations",
-    probes: "Top of the published range. Scope is genuinely open, so the band widens.",
-    input: base({
-      foundation: "custom_application",
+    id: "saas_platform",
+    name: "SaaS platform anyone can sign up for",
+    probes: "Discovery, emphatically.",
+    input: {
+      lines: [{ id: "software", depth: "platform" }],
       undefinedScope: true,
-      capabilities: [
-        { id: "roles_permissions", complexity: "moderate" },
-        { id: "app_payments", complexity: "moderate" },
-        { id: "subscriptions", complexity: "moderate" },
-        { id: "dashboard_reporting", complexity: "moderate" },
-        { id: "third_party_api", complexity: "moderate" },
-        { id: "notifications", complexity: "moderate" },
+    },
+  },
+  {
+    id: "travel_system",
+    name: "Travel operator — portal, quotes, payments, commerce, content, AI",
+    probes: "A Lisa-shaped system. Nobody quotes this off a form.",
+    input: {
+      lines: [
+        { id: "software", depth: "customer_product", addons: [{ id: "payments" }, { id: "accounts" }] },
+        { id: "store", depth: "custom_commerce" },
+        { id: "website", depth: "flagship" },
+        { id: "content", depth: "pipeline" },
+        { id: "automation", depth: "process" },
       ],
-    }),
+      org: ["integrations"],
+    },
+  },
+
+  /* ── edges ─────────────────────────────────────────────────────────────── */
+  {
+    id: "booking_link",
+    name: "Custom site + a link to a booking tool",
+    probes: "Cheapest reading of bookings.",
+    input: {
+      lines: [{ id: "website", depth: "custom", addons: [{ id: "bookings", variant: "link" }] }],
+    },
   },
   {
-    id: "simple_automation",
-    name: "Simple automation — connect two business tools reliably",
-    probes: "The automation foundation must not price a small job like an AI platform.",
-    input: base({
-      foundation: "ai_automation",
-      capabilities: [{ id: "workflow_automation", complexity: "standard" }],
-    }),
+    id: "booking_custom",
+    name: "Custom site + our own availability engine",
+    probes: "Most expensive reading. The spread must survive.",
+    input: {
+      lines: [{ id: "website", depth: "custom", addons: [{ id: "bookings", variant: "custom" }] }],
+    },
   },
   {
-    id: "advanced_automation",
-    name: "Advanced AI pipeline with classification and external systems",
-    probes: "Must clear the simple automation by a wide margin.",
-    input: base({
-      foundation: "ai_automation",
-      capabilities: [
-        { id: "custom_ai_pipeline", complexity: "advanced" },
-        { id: "classification_extraction", complexity: "advanced" },
-        { id: "third_party_api", complexity: "moderate" },
-        { id: "business_intelligence", complexity: "moderate" },
-      ],
-    }),
+    id: "rush_custom_site",
+    name: "Custom site on a hard deadline",
+    probes: "Rush moves the whole band.",
+    input: { lines: [{ id: "website", depth: "custom" }], rush: true },
   },
   {
-    id: "many_integrations",
-    name: "Business site with four integrations",
-    probes: "Interaction premium and the external-system caveat.",
-    input: base({
-      foundation: "marketing_site",
-      scope: "standard",
-      capabilities: [
-        { id: "crm_integration", complexity: "moderate" },
-        { id: "email_marketing", complexity: "standard" },
-        { id: "third_party_api", complexity: "moderate" },
-        { id: "advanced_analytics", complexity: "standard" },
-      ],
-    }),
+    id: "multi_location_seo",
+    name: "Multi-location local search programme",
+    probes: "Advisory SEO with a location add-on.",
+    input: {
+      lines: [{ id: "seo", depth: "programme", addons: [{ id: "multi_location" }] }],
+    },
   },
   {
-    id: "unknown_legacy_integration",
-    name: "Portal that must talk to an undocumented in-house system",
-    probes: "Uncertainty widens the top of the range instead of inventing effort.",
-    input: base({
-      foundation: "business_portal",
+    id: "undefined_custom_work",
+    name: "Custom site with something they cannot yet describe",
+    probes: "Uncertainty widens the top rather than inventing effort.",
+    input: {
+      lines: [{ id: "website", depth: "custom", addons: [{ id: "custom_functionality" }] }],
       undefinedScope: true,
-      capabilities: [
-        { id: "legacy_system", complexity: "complex" },
-        { id: "roles_permissions", complexity: "moderate" },
-      ],
-    }),
+    },
   },
   {
-    id: "programmatic_seo_site",
-    name: "Programmatic content site with generated pages",
-    probes: "Generated pages priced as a pipeline, not as thousands of pages.",
-    input: base({
-      foundation: "content_system",
-      scope: "xl",
-      capabilities: [
-        { id: "programmatic_content", complexity: "advanced" },
-        { id: "dynamic_content", complexity: "moderate" },
-        { id: "keyword_research", complexity: "moderate" },
-      ],
-    }),
-  },
-  {
-    id: "bilingual_ecommerce_rush",
-    name: "Bilingual store on a hard deadline",
-    probes: "Rush moves the whole band; bilingual only touches content scope.",
-    input: base({
-      foundation: "ecommerce",
-      scope: "standard",
-      bilingual: true,
-      rush: true,
-      capabilities: [
-        { id: "large_catalogue", complexity: "standard" },
-        { id: "customer_accounts", complexity: "standard" },
-      ],
-    }),
+    id: "brand_refresh_only",
+    name: "Brand refresh, nothing else",
+    probes: "A small standalone engagement above the minimum.",
+    input: { lines: [{ id: "brand", depth: "refresh" }] },
   },
 ];

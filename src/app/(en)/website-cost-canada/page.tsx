@@ -33,7 +33,7 @@ const FAQ: [string, string][] = [
   ],
   [
     "What does ongoing website ownership cost?",
-    "Beyond the build: hosting and domain (commonly $10–$100+/month), maintenance and updates, and growth work like SEO. For reference, StillAwake Media's published rates are $150–$600 CAD one-time for emergency support and $600–$850 CAD/month for SEO plans; ongoing care plans are quoted in writing to your stack.",
+    "Beyond the build: hosting and domain (commonly $10–$100+/month), maintenance and updates, and growth work like SEO. For reference, StillAwake Media publishes its own prices: a fixed-scope Launch site at $2,500 CAD, custom projects from $8,000, paid discovery from $3,500, SEO plans at $600–$850 CAD/month and emergency support at $150–$600 one-time.",
   ],
   [
     "Is a cheap website a bad idea?",
@@ -113,9 +113,14 @@ export default function WebsiteCostCanadaPage() {
           <div className="mt-12 rounded-[2rem] border border-[#D71920]/40 bg-[#D71920]/5 p-8">
             <h2 className="geist text-3xl font-black tracking-[-0.06em]">What StillAwake actually publishes</h2>
             <p className="mt-4 max-w-3xl leading-8 text-[#C7B9B9]">
-              Custom builds are quoted in writing from your intake — but our recurring and support rates are public:
-              SEO plans cost <strong className="text-white">$600–$850 CAD per month</strong>, emergency website support
-              costs <strong className="text-white">$150–$400 CAD one-time</strong> (custom sites) or{" "}
+              Our own prices are published rather than quoted on request. A fixed-scope{" "}
+              <strong className="text-white">Launch site is $2,500 CAD</strong>, a{" "}
+              <strong className="text-white">custom project starts at $8,000</strong>, and anything large enough
+              that a form could not honestly price it starts with{" "}
+              <strong className="text-white">paid discovery from $3,500</strong>, credited against the build.
+              Recurring and support are public too: SEO plans cost{" "}
+              <strong className="text-white">$600–$850 CAD per month</strong>, emergency support{" "}
+              <strong className="text-white">$150–$400 CAD one-time</strong> (custom sites) or{" "}
               <strong className="text-white">$250–$600 CAD one-time</strong> (ecommerce). Full details on the{" "}
               <Link href="/pricing" className="text-[#D71920] underline-offset-4 hover:underline">pricing page</Link>.
             </p>

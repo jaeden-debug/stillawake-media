@@ -5,52 +5,55 @@
  * CANONICAL SOURCE: stillawake-media (.com). Synced to .dev.
  * ═══════════════════════════════════════════════════════════════════════════
  *
- * Pure, deterministic, dependency-free. The same input always produces the same
- * estimate, which is what makes a stored estimate reproducible from its
+ * Pure, deterministic, dependency-free — the same input always produces the
+ * same estimate, which is what makes a stored estimate reproducible from its
  * `pricing_version` years later.
  *
- * ORDER OF OPERATIONS — the order is load-bearing, not incidental:
+ * ORDER OF OPERATIONS — load-bearing, not incidental:
  *
- *   1. foundation band
- *   2. capability bands (zero where the foundation already includes them)
- *   3. page-count multiplier — content scope only
- *   4. bilingual — fixed implementation + a share of each scope
- *   5. interaction premium — systems that must talk to each other
- *   6. rush — a real cost, so it scales the whole band
- *   7. range aggregation — independent items combined in quadrature
- *   8. risk — widens HIGH only, never invents effort
- *   9. floors, then rounding (low down, high up), floors re-applied
+ *   1. each service line at its depth → days × discipline rate
+ *   2. add-ons, at their chosen variant where the word is ambiguous
+ *   3. organisational complexity — the honest enterprise multiple
+ *   4. rush — real cost, so it scales the whole band
+ *   5. independent items combined in quadrature
+ *   6. risk — widens HIGH only, never invents effort
+ *   7. minimum, rounding, tier, discovery routing
  *
- * Steps 1–6 are reported as deltas that sum exactly to the linear total, and
- * step 7 emits the single reconciling line. So the internal breakdown always
- * adds up to the number shown, which is the whole point of being able to
- * answer "why did this estimate at $X–$Y".
+ * Steps 1–4 are reported as deltas that sum to the linear total, and step 5
+ * emits the single reconciling line — so the internal breakdown always adds up
+ * to the number shown.
  */
 
 import {
+  ADDONS,
   AGGREGATION_EXPONENT,
-  BILINGUAL,
-  CAPABILITY_BY_ID,
-  COMPLEXITY_FACTORS,
-  FOUNDATIONS,
-  INTERACTION,
+  BUDGET_BANDS,
+  DAY_RATES,
+  DEPTH_INCLUDES,
+  DISCOVERY_ALWAYS_LINES,
+  DISCOVERY_THRESHOLD,
+  LINE_RECURRING,
+  MINIMUM,
   MODEL_CHECKSUM,
+  ORG_FACTORS,
   PRICING_VERSION,
   RECURRING_BY_ID,
   RISK,
   ROUNDING,
-  SCOPE_FACTORS,
-  SCOPE_SENSITIVITY,
+  SERVICE_LINES,
 } from "./model";
 import type {
+  AddonId,
   Band,
-  CapabilitySpec,
-  Complexity,
+  Days,
+  Discipline,
   Estimate,
   EstimateInput,
-  FoundationId,
   LineItem,
-  ScopeSize,
+  LineSelection,
+  OrgFactorId,
+  ServiceLineId,
+  Tier,
 } from "./types";
 
 /** Thrown for any input the model does not recognise. Never leaks internals. */
@@ -61,360 +64,334 @@ export class PricingInputError extends Error {
   }
 }
 
-/**
- * Foundations whose cost genuinely scales with how much content there is.
- *
- * Page count is meaningless for a dashboard or an automation pipeline, so
- * those foundations sit outside the scope multiplier entirely. This is the
- * guard against Phase 21's "page count dominates software complexity".
- */
-const CONTENT_BEARING: ReadonlySet<FoundationId> = new Set<FoundationId>([
-  "marketing_site",
-  "website_redesign",
-  "ecommerce",
-  "seo_engagement",
-  "content_system",
-]);
-
-/** Capability groups that scale with content volume rather than app surface. */
-const CONTENT_GROUPS = new Set(["content", "seo"]);
-
 const ZERO: Band = { low: 0, expected: 0, high: 0 };
+const ZERO_DAYS: Days = { low: 0, expected: 0, high: 0 };
 
 const addBands = (...bands: Band[]): Band =>
-  bands.reduce(
-    (a, b) => ({ low: a.low + b.low, expected: a.expected + b.expected, high: a.high + b.high }),
-    ZERO,
-  );
+  bands.reduce((a, b) => ({ low: a.low + b.low, expected: a.expected + b.expected, high: a.high + b.high }), ZERO);
 
-const scaleBand = (b: Band, f: number): Band => ({
-  low: b.low * f,
-  expected: b.expected * f,
-  high: b.high * f,
-});
+const addDays = (...ds: Days[]): Days =>
+  ds.reduce((a, b) => ({ low: a.low + b.low, expected: a.expected + b.expected, high: a.high + b.high }), ZERO_DAYS);
 
-/**
- * Resolves the tier to price at.
- *
- * `validateInput` fills this in for untrusted callers, but the internal
- * estimator builds inputs in code and a missing or unsupported tier must not
- * silently become "whatever indexes to undefined". Absent means the
- * capability's own default; present but unsupported is an error.
- */
-function resolveComplexity(spec: CapabilitySpec, complexity: Complexity | undefined): Complexity {
-  if (complexity === undefined) return spec.allowed[0];
-  if (!spec.allowed.includes(complexity)) {
-    throw new PricingInputError(`Unsupported level for ${spec.id}.`);
-  }
-  return complexity;
-}
+const scale = (b: Band, f: number): Band => ({ low: b.low * f, expected: b.expected * f, high: b.high * f });
 
-/** Resolves a capability to its band at the chosen tier. */
-function capabilityBand(spec: CapabilitySpec, complexity: Complexity): Band {
-  const qualitative = spec.bands?.[complexity];
-  if (qualitative) return qualitative;
-  const [l, e, h] = COMPLEXITY_FACTORS[complexity];
-  return { low: spec.base.low * l, expected: spec.base.expected * e, high: spec.base.high * h };
-}
+/** The only place days become money. */
+const toMoney = (d: Days, discipline: Discipline): Band => {
+  const rate = DAY_RATES[discipline];
+  return { low: d.low * rate, expected: d.expected * rate, high: d.high * rate };
+};
 
 function stepFor(value: number): number {
   for (const r of ROUNDING) if (value <= r.upTo) return r.step;
   return ROUNDING[ROUNDING.length - 1].step;
 }
-
 const roundDown = (v: number) => Math.floor(v / stepFor(v)) * stepFor(v);
 const roundUp = (v: number) => Math.ceil(v / stepFor(v)) * stepFor(v);
 
 /**
- * Combines independent scope items around their shared expected value.
- *
- * With one item this returns that item's own band unchanged, so a simple
- * project is never "narrowed" by a statistical argument that does not apply
- * to it.
+ * Combines independent items around their shared expected value.
+ * With one item this returns that item's own band unchanged.
  */
 function aggregate(items: Band[]): Band {
-  const expected = items.reduce((sum, b) => sum + b.expected, 0);
+  const expected = items.reduce((s, b) => s + b.expected, 0);
   const p = AGGREGATION_EXPONENT;
-  const lowDev = Math.pow(
-    items.reduce((sum, b) => sum + Math.pow(Math.max(0, b.expected - b.low), p), 0),
-    1 / p,
-  );
-  const highDev = Math.pow(
-    items.reduce((sum, b) => sum + Math.pow(Math.max(0, b.high - b.expected), p), 0),
-    1 / p,
-  );
-  return { low: expected - lowDev, expected, high: expected + highDev };
+  const dev = (pick: (b: Band) => number) =>
+    Math.pow(items.reduce((s, b) => s + Math.pow(Math.max(0, pick(b)), p), 0), 1 / p);
+  return {
+    low: expected - dev((b) => b.expected - b.low),
+    expected,
+    high: expected + dev((b) => b.high - b.expected),
+  };
 }
 
+const depthOf = (line: ServiceLineId, depth: string) =>
+  SERVICE_LINES[line]?.depths.find((d) => d.id === depth);
+
 /**
- * Validates an untrusted input against the model.
+ * Validates untrusted input against the model.
  *
- * The public API calls this before anything else. Every enum is checked
- * against the model's own tables rather than a duplicated list, so a
- * capability that does not exist — or exists but does not offer the requested
- * tier — is rejected instead of silently defaulting to something cheap.
- * Unknown keys cannot influence the result because nothing else is read.
+ * Every id is checked against the model's own tables rather than a duplicated
+ * list, so an unknown line, a depth that line does not offer, or an add-on it
+ * does not carry is rejected instead of silently defaulting to something
+ * cheap. Nothing else on the object is read, so injected fields cannot reach
+ * the calculation.
  */
 export function validateInput(raw: unknown): EstimateInput {
   if (typeof raw !== "object" || raw === null) throw new PricingInputError("Invalid request.");
   const o = raw as Record<string, unknown>;
 
-  const foundation = o.foundation;
-  if (typeof foundation !== "string" || !Object.hasOwn(FOUNDATIONS, foundation)) {
-    throw new PricingInputError("Unknown project type.");
+  if (!Array.isArray(o.lines) || o.lines.length === 0) {
+    throw new PricingInputError("Tell us what you need.");
   }
-
-  const scope = o.scope;
-  if (typeof scope !== "string" || !Object.hasOwn(SCOPE_FACTORS, scope)) {
-    throw new PricingInputError("Unknown project size.");
-  }
-
-  const rawCaps = o.capabilities;
-  if (rawCaps !== undefined && !Array.isArray(rawCaps)) {
-    throw new PricingInputError("Invalid capabilities.");
-  }
-  const list = (rawCaps ?? []) as unknown[];
-  // Bounded so a crafted request cannot turn the endpoint into a compute sink.
-  if (list.length > 40) throw new PricingInputError("Too many capabilities.");
+  if (o.lines.length > 7) throw new PricingInputError("Too many services.");
 
   const seen = new Set<string>();
-  const capabilities: EstimateInput["capabilities"] = [];
-  for (const entry of list) {
-    if (typeof entry !== "object" || entry === null) throw new PricingInputError("Invalid capability.");
-    const c = entry as Record<string, unknown>;
-    const id = c.id;
-    if (typeof id !== "string") throw new PricingInputError("Invalid capability.");
-    const spec = Object.hasOwn(CAPABILITY_BY_ID, id) ? CAPABILITY_BY_ID[id] : undefined;
-    if (!spec) throw new PricingInputError(`Unknown capability: ${id}`);
-    if (seen.has(id)) continue; // duplicates are a client bug, not an error
+  const lines: LineSelection[] = [];
+
+  for (const entry of o.lines) {
+    if (typeof entry !== "object" || entry === null) throw new PricingInputError("Invalid service.");
+    const l = entry as Record<string, unknown>;
+    const id = l.id;
+    if (typeof id !== "string" || !Object.hasOwn(SERVICE_LINES, id)) {
+      throw new PricingInputError(`Unknown service: ${String(id)}`);
+    }
+    if (seen.has(id)) continue;
     seen.add(id);
 
-    const complexity = c.complexity ?? spec.allowed[0];
-    if (typeof complexity !== "string" || !spec.allowed.includes(complexity as Complexity)) {
+    const spec = SERVICE_LINES[id as ServiceLineId];
+    const depth = typeof l.depth === "string" ? l.depth : spec.depths[0].id;
+    if (!spec.depths.some((d) => d.id === depth)) {
       throw new PricingInputError(`Unsupported level for ${id}.`);
     }
-    capabilities.push({ id, complexity: complexity as Complexity });
+
+    const addons: { id: AddonId; variant?: string }[] = [];
+    if (l.addons !== undefined) {
+      if (!Array.isArray(l.addons)) throw new PricingInputError("Invalid options.");
+      if (l.addons.length > 8) throw new PricingInputError("Too many options.");
+      const seenAddon = new Set<string>();
+      for (const a of l.addons) {
+        if (typeof a !== "object" || a === null) throw new PricingInputError("Invalid option.");
+        const ao = a as Record<string, unknown>;
+        const aid = ao.id;
+        if (typeof aid !== "string" || !Object.hasOwn(ADDONS, aid)) {
+          throw new PricingInputError(`Unknown option: ${String(aid)}`);
+        }
+        // An add-on must actually belong to the line that carries it.
+        if (!spec.addons?.includes(aid as AddonId)) {
+          throw new PricingInputError(`${aid} does not apply to ${id}.`);
+        }
+        if (seenAddon.has(aid)) continue;
+        seenAddon.add(aid);
+
+        const addonSpec = ADDONS[aid as AddonId];
+        let variant: string | undefined;
+        if (ao.variant !== undefined) {
+          if (typeof ao.variant !== "string" || !addonSpec.variants?.some((v) => v.id === ao.variant)) {
+            throw new PricingInputError(`Unsupported option level for ${aid}.`);
+          }
+          variant = ao.variant;
+        }
+        addons.push({ id: aid as AddonId, variant });
+      }
+    }
+
+    lines.push({ id: id as ServiceLineId, depth, addons });
   }
 
-  return {
-    foundation: foundation as FoundationId,
-    scope: scope as ScopeSize,
-    bilingual: o.bilingual === true,
-    capabilities,
-    undefinedScope: o.undefinedScope === true,
-    rush: o.rush === true,
-  };
-}
+  const org: OrgFactorId[] = [];
+  if (o.org !== undefined) {
+    if (!Array.isArray(o.org)) throw new PricingInputError("Invalid organisation details.");
+    for (const f of o.org) {
+      if (typeof f === "string" && Object.hasOwn(ORG_FACTORS, f) && !org.includes(f as OrgFactorId)) {
+        org.push(f as OrgFactorId);
+      }
+    }
+  }
 
-/**
- * One priced element with its own multipliers attached.
- *
- * `scopeSens` is how much page count moves it (0–1) and `bilingualShare` is
- * how much a second language does. Carrying them per item rather than
- * bucketing everything into "content" and "app" is what stops a 15-page site
- * inflating its SEO lines and a programmatic pipeline being charged per
- * generated page.
- */
-type Item = { band: Band; scopeSens: number; bilingualShare: number };
+  const budget =
+    typeof o.budget === "string" && (Object.hasOwn(BUDGET_BANDS, o.budget) || o.budget === "unsure")
+      ? (o.budget as EstimateInput["budget"])
+      : undefined;
+
+  return { lines, org, budget, undefinedScope: o.undefinedScope === true, rush: o.rush === true };
+}
 
 /** Computes a full internal estimate. Callers decide what to expose. */
 export function estimate(input: EstimateInput): Estimate {
-  const foundation = Object.hasOwn(FOUNDATIONS, input.foundation)
-    ? FOUNDATIONS[input.foundation]
-    : undefined;
-  if (!foundation) throw new PricingInputError("Unknown project type.");
+  if (!input.lines?.length) throw new PricingInputError("Tell us what you need.");
 
-  const lines: LineItem[] = [];
-  const items: Item[] = [];
-  const foundationIsContent = CONTENT_BEARING.has(foundation.id);
-
-  lines.push({ key: foundation.id, kind: "foundation", band: foundation.band });
-  items.push({
-    band: foundation.band,
-    scopeSens: foundationIsContent ? 1 : 0,
-    bilingualShare: foundationIsContent ? BILINGUAL.contentShare : BILINGUAL.appShare,
-  });
-
+  const items: Band[] = [];
+  const reported: LineItem[] = [];
   const externalHighs: number[] = [];
-  let hardCount = 0;
+  const includes: string[] = [];
+  const recurringIds = new Set<string>();
+  let totalDays: Days = ZERO_DAYS;
+  let productizedOnly = true;
 
-  const seen = new Set<string>();
-  for (const sel of input.capabilities) {
-    const spec = Object.hasOwn(CAPABILITY_BY_ID, sel.id) ? CAPABILITY_BY_ID[sel.id] : undefined;
-    if (!spec) throw new PricingInputError(`Unknown capability: ${sel.id}`);
-    // Charging the same capability twice is always a caller bug, and doing it
-    // silently is the worst possible outcome.
-    if (seen.has(sel.id)) continue;
-    seen.add(sel.id);
+  const selectedLineIds = new Set(input.lines.map((l) => l.id));
+  const seenLines = new Set<string>();
+  for (const sel of input.lines) {
+    const spec = Object.hasOwn(SERVICE_LINES, sel.id) ? SERVICE_LINES[sel.id] : undefined;
+    if (!spec) throw new PricingInputError(`Unknown service: ${sel.id}`);
+    if (seenLines.has(sel.id)) continue;
+    seenLines.add(sel.id);
 
-    const complexity = resolveComplexity(spec, sel.complexity);
+    const depth = depthOf(sel.id, sel.depth);
+    if (!depth) throw new PricingInputError(`Unsupported level for ${sel.id}.`);
 
-    // A foundation that already ships this cannot also charge for it.
-    if (spec.includedIn?.includes(foundation.id)) {
-      lines.push({
-        key: sel.id,
-        kind: "capability",
+    /* Absorbed work is reported at zero rather than dropped, so the client can
+       see it is included rather than wondering whether it was forgotten. It
+       also must not flip the tier: a Launch site plus the SEO foundations that
+       Launch already includes is still the Launch product. */
+    const absorbed = depth.absorbedBy?.some((l) => selectedLineIds.has(l)) ?? false;
+    if (absorbed) {
+      reported.push({
+        key: `${sel.id}.${depth.id}`,
+        kind: "line",
         band: ZERO,
-        complexity,
-        group: spec.group,
-        note: "included_in_foundation",
+        days: ZERO_DAYS,
+        note: "included_in_build",
       });
+      includes.push(...(DEPTH_INCLUDES[`${sel.id}.${depth.id}`] ?? []));
+      for (const r of LINE_RECURRING[sel.id] ?? []) recurringIds.add(r);
       continue;
     }
 
-    const b = capabilityBand(spec, complexity);
-    lines.push({ key: sel.id, kind: "capability", band: b, complexity, group: spec.group });
-    items.push({
-      band: b,
-      scopeSens: spec.scopeSensitivity ?? SCOPE_SENSITIVITY[spec.group],
-      bilingualShare: CONTENT_GROUPS.has(spec.group) ? BILINGUAL.contentShare : BILINGUAL.appShare,
+    if (!depth.productized) productizedOnly = false;
+
+    const discipline = depth.discipline ?? spec.discipline;
+    const band = toMoney(depth.days, discipline);
+
+    reported.push({
+      key: `${sel.id}.${depth.id}`,
+      kind: "line",
+      band,
+      days: depth.days,
+      discipline,
     });
+    items.push(band);
+    totalDays = addDays(totalDays, depth.days);
+    includes.push(...(DEPTH_INCLUDES[`${sel.id}.${depth.id}`] ?? []));
+    for (const r of LINE_RECURRING[sel.id] ?? []) recurringIds.add(r);
 
-    if (spec.externalSystem) externalHighs.push(b.high);
-    if (complexity === "advanced" || complexity === "complex") hardCount += 1;
-    if (spec.group === "integration") hardCount += 1;
+    for (const addon of sel.addons ?? []) {
+      const aSpec = Object.hasOwn(ADDONS, addon.id) ? ADDONS[addon.id] : undefined;
+      if (!aSpec) throw new PricingInputError(`Unknown option: ${addon.id}`);
+      if (!spec.addons?.includes(addon.id)) {
+        throw new PricingInputError(`${addon.id} does not apply to ${sel.id}.`);
+      }
+      // An add-on with variants MUST resolve to one — averaging a tenfold
+      // spread is exactly the dishonesty the variants exist to prevent.
+      const variant = aSpec.variants?.find((v) => v.id === addon.variant) ?? null;
+      if (aSpec.variants && !variant) {
+        throw new PricingInputError(`${addon.id} needs a level.`);
+      }
+      const aDays = variant?.days ?? aSpec.days;
+      const aDiscipline = aSpec.discipline ?? spec.discipline;
+      const aBand = toMoney(aDays, aDiscipline);
+
+      reported.push({
+        key: variant ? `${addon.id}.${variant.id}` : addon.id,
+        kind: "addon",
+        band: aBand,
+        days: aDays,
+        discipline: aDiscipline,
+      });
+      items.push(aBand);
+      totalDays = addDays(totalDays, aDays);
+      includes.push(addon.id);
+      if (aSpec.externalSystem) externalHighs.push(aBand.high);
+      productizedOnly = false;
+    }
   }
 
-  /* ── 3. page-count scope, weighted per item ────────────────────────────── */
-  const scopeFactor = SCOPE_FACTORS[input.scope];
-  /** Page-count multiplier for one item. */
-  const scopeOf = (i: Item) => 1 + (scopeFactor - 1) * i.scopeSens;
+  const base = addBands(...items);
 
-  if (scopeFactor !== 1) {
-    const uplift = addBands(...items.map((i) => scaleBand(i.band, scopeOf(i) - 1)));
-    if (uplift.expected > 0) lines.push({ key: input.scope, kind: "scope", band: uplift });
-  }
-
-  /* ── 4. bilingual ──────────────────────────────────────────────────────── */
-  if (input.bilingual) {
-    // Fixed plumbing (routing, hreflang, switcher, dual sitemaps) plus a share
-    // of each item AFTER page count, since more pages means more to adapt.
-    const uplift = addBands(
-      BILINGUAL.implementation,
-      ...items.map((i) => scaleBand(i.band, scopeOf(i) * i.bilingualShare)),
-    );
-    lines.push({ key: "bilingual", kind: "bilingual", band: uplift });
-    // The fixed part is its own independent item; the proportional part rides
-    // along on the items it came from, via `bilingualShare` below.
-    items.push({ band: BILINGUAL.implementation, scopeSens: 0, bilingualShare: 0 });
-  }
-
-  /** Everything except interaction, rush and risk — those come next. */
-  const itemFactor = (i: Item) => scopeOf(i) * (input.bilingual ? 1 + i.bilingualShare : 1);
-
-  const linearBase = addBands(
-    ...lines.filter((l) => l.kind !== "risk" && l.kind !== "minimum").map((l) => l.band),
-  );
-
-  /* ── 5. interaction ────────────────────────────────────────────────────── */
-  const units = Math.max(0, hardCount - 1);
-  const interactionPct = Math.min(INTERACTION.cap, INTERACTION.perUnit * units);
-  let running = linearBase;
-  if (interactionPct > 0) {
-    const b = scaleBand(running, interactionPct);
-    lines.push({ key: "interaction", kind: "interaction", band: b, note: `${units + 1}_interacting_systems` });
-    running = addBands(running, b);
-  }
-
-  /* ── 6. rush ───────────────────────────────────────────────────────────── */
+  /* ── 3. organisational complexity ──────────────────────────────────────── */
   const caveats: string[] = [];
+  let orgFactor = 1;
+  for (const id of input.org ?? []) {
+    const f = Object.hasOwn(ORG_FACTORS, id) ? ORG_FACTORS[id] : undefined;
+    if (!f) continue;
+    orgFactor *= f.factor;
+    if (f.addsUncertainty) caveats.push("unknown_external_system");
+  }
+  let running = base;
+  if (orgFactor !== 1) {
+    const delta = scale(running, orgFactor - 1);
+    reported.push({
+      key: "organisation",
+      kind: "org",
+      band: delta,
+      days: {
+        low: totalDays.low * (orgFactor - 1),
+        expected: totalDays.expected * (orgFactor - 1),
+        high: totalDays.high * (orgFactor - 1),
+      },
+      note: (input.org ?? []).join(","),
+    });
+    running = addBands(running, delta);
+    productizedOnly = false;
+  }
+
+  /* ── 4. rush ───────────────────────────────────────────────────────────── */
   const rushPct = input.rush ? RISK.rushAll : 0;
   if (rushPct > 0) {
-    const b = scaleBand(running, rushPct);
-    lines.push({ key: "rush", kind: "risk", band: b });
-    running = addBands(running, b);
+    const delta = scale(running, rushPct);
+    reported.push({ key: "rush", kind: "risk", band: delta });
+    running = addBands(running, delta);
     caveats.push("rush");
+    productizedOnly = false;
   }
 
-  /* ── 7. range aggregation ──────────────────────────────────────────────── */
-  const globalFactor = (1 + interactionPct) * (1 + rushPct);
-  const scaled = items.map((i) => scaleBand(i.band, itemFactor(i) * globalFactor));
-  const aggregated = aggregate(scaled);
-
-  lines.push({
+  /* ── 5. aggregation ────────────────────────────────────────────────────── */
+  const globalFactor = orgFactor * (1 + rushPct);
+  const aggregated = aggregate(items.map((b) => scale(b, globalFactor)));
+  reported.push({
     key: "range_aggregation",
-    kind: "interaction",
-    band: {
-      low: aggregated.low - running.low,
-      expected: 0,
-      high: aggregated.high - running.high,
-    },
+    kind: "aggregation",
+    band: { low: aggregated.low - running.low, expected: 0, high: aggregated.high - running.high },
     note: `${items.length}_independent_items`,
   });
   let total = aggregated;
 
-  /* ── 8. risk — widens HIGH, never invents effort ───────────────────────── */
+  /* ── 6. risk widens the top ────────────────────────────────────────────── */
   if (externalHighs.length > 0) {
-    const bilingualFactor = input.bilingual ? 1 + BILINGUAL.appShare : 1;
-    const add =
-      externalHighs.reduce((a, b) => a + b, 0) *
-      bilingualFactor *
-      globalFactor *
-      RISK.unknownSystemHighShare;
-    lines.push({ key: "unknown_external_system", kind: "risk", band: { low: 0, expected: 0, high: add } });
+    const add = externalHighs.reduce((a, b) => a + b, 0) * globalFactor * RISK.unknownSystemHighShare;
+    reported.push({ key: "unknown_external_system", kind: "risk", band: { low: 0, expected: 0, high: add } });
     total = { ...total, high: total.high + add };
-    caveats.push("unknown_external_system");
+    if (!caveats.includes("unknown_external_system")) caveats.push("unknown_external_system");
   }
-
   if (input.undefinedScope) {
     const add = total.high * RISK.undefinedScopeHighShare;
-    lines.push({ key: "undefined_scope", kind: "risk", band: { low: 0, expected: 0, high: add } });
+    reported.push({ key: "undefined_scope", kind: "risk", band: { low: 0, expected: 0, high: add } });
     total = { ...total, high: total.high + add };
     caveats.push("undefined_scope");
   }
 
-  /* ── 9. floors ─────────────────────────────────────────────────────────── */
-  const floor = foundation.floor;
+  /* ── 7. minimum, rounding, tier ────────────────────────────────────────── */
   let minimumApplied = false;
-  if (total.low < floor) {
-    total = { ...total, low: floor };
+  if (total.low < MINIMUM) {
+    total = { ...total, low: MINIMUM };
     minimumApplied = true;
-    lines.push({ key: "minimum", kind: "minimum", band: ZERO, note: String(floor) });
+    reported.push({ key: "minimum", kind: "minimum", band: ZERO, note: String(MINIMUM) });
   }
-  // A floor can push LOW past a small EXPECTED; keep the triple ordered and
-  // keep the band wide enough to still read as a range.
   total = {
     low: total.low,
-    expected: Math.max(total.expected, total.low * 1.15),
-    high: Math.max(total.high, total.low * 1.15 * 1.2),
+    expected: Math.max(total.expected, total.low * 1.1),
+    high: Math.max(total.high, total.low * 1.1 * 1.15),
   };
 
-  const low = Math.max(floor, roundDown(total.low));
+  const low = Math.max(MINIMUM, roundDown(total.low));
   const high = Math.max(roundUp(total.high), low + stepFor(low));
   const expected = Math.min(Math.max(Math.round(total.expected), low), high);
 
-  /* ── presentation ──────────────────────────────────────────────────────── */
-  const drivers = lines
+  const needsDiscovery =
+    expected >= DISCOVERY_THRESHOLD ||
+    input.lines.some((l) => DISCOVERY_ALWAYS_LINES.includes(l.id));
+  const tier: Tier = needsDiscovery ? "systems" : productizedOnly ? "launch" : "custom";
+
+  const drivers = reported
     .filter((l) => l.band.expected > 0 && l.kind !== "minimum" && l.kind !== "risk")
     .sort((a, b) => b.band.expected - a.band.expected)
     .slice(0, 4)
     .map((l) => l.key);
 
-  const includes = [
-    // `marketing_site` advertises "up to 6 pages" because that is what its
-    // band buys. Once a larger scope has been paid for, saying so anyway
-    // understates what the client is getting, so the chosen size replaces it.
-    ...foundation.includes.map((key) =>
-      key === "up_to_six_pages" && input.scope !== "small" ? input.scope : key,
-    ),
-    ...input.capabilities
-      .filter((c) => !CAPABILITY_BY_ID[c.id]?.includedIn?.includes(foundation.id))
-      .map((c) => c.id),
-  ];
-
-  const recurringIds = new Set<string>(foundation.suggestedRecurring);
-  const groups = new Set(input.capabilities.map((c) => CAPABILITY_BY_ID[c.id]?.group));
-  if (groups.has("seo")) recurringIds.add("seo-essentials");
-  if (input.capabilities.some((c) => c.id === "content_strategy" || c.id === "programmatic_content")) {
-    recurringIds.add("seo-advanced");
-  }
-  // Never offer both SEO tiers at once — Advanced contains Essentials.
+  // Advanced contains Essentials, so never offer both.
   if (recurringIds.has("seo-advanced")) recurringIds.delete("seo-essentials");
-
   const recurring = [...recurringIds]
     .map((id) => RECURRING_BY_ID[id])
     .filter((r): r is NonNullable<typeof r> => Boolean(r))
     .map((r) => ({ id: r.id, monthly: r.approved ? r.monthly : null }));
+
+  /* Budget routes, it never prices. This only reports whether the answers and
+     the stated budget meet, so the UI can offer a smaller scope rather than
+     quietly quoting a different number. */
+  let budgetSignal: Estimate["budgetSignal"] = null;
+  if (input.budget && input.budget !== "unsure" && Object.hasOwn(BUDGET_BANDS, input.budget)) {
+    const band = BUDGET_BANDS[input.budget];
+    budgetSignal = low > band.high ? "above" : high < band.low ? "below" : "fits";
+  }
 
   return {
     pricingVersion: PRICING_VERSION,
@@ -422,11 +399,19 @@ export function estimate(input: EstimateInput): Estimate {
     low,
     high,
     expected,
-    lines,
+    days: {
+      low: Math.round(totalDays.low * globalFactor * 10) / 10,
+      expected: Math.round(totalDays.expected * globalFactor * 10) / 10,
+      high: Math.round(totalDays.high * globalFactor * 10) / 10,
+    },
+    tier,
+    needsDiscovery,
+    lines: reported,
     drivers,
-    includes,
+    includes: [...new Set(includes)],
     recurring,
     minimumApplied,
     caveats,
+    budgetSignal,
   };
 }

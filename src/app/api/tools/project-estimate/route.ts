@@ -1,28 +1,26 @@
 import { NextResponse } from "next/server";
 
 import { estimate, PricingInputError } from "@/lib/pricing/engine";
-import { CAVEAT_LABELS, formatCad, labelForKey, type Locale } from "@/lib/pricing/labels";
-import { isComplete, mapAnswers, sanitizeAnswers, studioTypeFor } from "@/lib/pricing/public-flow";
-import { FOUNDATIONS } from "@/lib/pricing/model";
+import { CAVEAT_LABELS, DEPTH_LABELS, LINE_LABELS, formatCad, labelForKey, type Locale } from "@/lib/pricing/labels";
+import { DISCOVERY } from "@/lib/pricing/model";
+import { isComplete, mapAnswers, sanitizeAnswers } from "@/lib/pricing/public-flow";
 
 /**
  * Public project estimator.
  *
  * THE SECURITY MODEL, in one paragraph: the browser posts answer keys from the
- * published question flow and nothing else. It cannot name a capability, a
- * complexity tier, a foundation or a price, because none of those words exist
+ * published question flow and nothing else. It cannot name a service line, a
+ * depth, an add-on, a multiplier or a price, because none of those words exist
  * in the request format. `sanitizeAnswers` drops anything the flow does not
  * declare, `mapAnswers` derives the model input, and the engine prices it
- * server-side. There is no request a client can craft that produces a discount,
- * because there is no field that could carry one.
+ * server-side. There is no field a client could use to ask for a discount.
  *
- * WHAT COMES BACK is deliberately less than what the engine computed: a rounded
- * low and high, the drivers, what the build includes, and approved recurring
- * prices. Never `expected`, never the per-capability bands, never a multiplier.
- * Those live on the internal estimator, which is behind an admin session.
+ * WHAT COMES BACK is deliberately less than what the engine computed: the
+ * rounded band, the tier, what it includes, and approved recurring prices.
+ * Never `expected`, never the day counts, never a rate or a multiplier. Those
+ * live on the internal estimator, behind an admin session.
  *
- * Nothing is stored. Someone pricing a hypothetical is not a lead, and keeping
- * their answers would be collecting data we have no use for.
+ * Nothing is stored. Someone pricing a hypothetical is not a lead.
  */
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -66,18 +64,21 @@ export async function POST(request: Request) {
     const input = mapAnswers(answers);
     const result = estimate(input);
 
-    // Deduplicated so the same inclusion cannot appear twice when a foundation
-    // and a capability share a key.
-    const includes = [...new Set(result.includes)].map((key) => labelForKey(key, locale));
+    /** "Custom website · Research-led SEO" — what they asked for, in their words. */
+    const summary = input.lines.map(
+      (l) => DEPTH_LABELS[`${l.id}.${l.depth}`]?.[locale] ?? LINE_LABELS[l.id]?.[locale] ?? l.id,
+    );
 
     return NextResponse.json(
       {
         low: result.low,
         high: result.high,
-        rangeLabel: `${formatCad(result.low, locale)} – ${formatCad(result.high, locale)}`,
         currency: "CAD",
-        projectLabel: labelForKey(result.lines[0]?.key ?? input.foundation, locale),
-        includes,
+        tier: result.tier,
+        needsDiscovery: result.needsDiscovery,
+        discoveryFromLabel: formatCad(DISCOVERY.from, locale),
+        summary,
+        includes: [...new Set(result.includes)].map((key) => labelForKey(key, locale)),
         drivers: result.drivers.map((key) => labelForKey(key, locale)),
         caveats: result.caveats.map((key) => CAVEAT_LABELS[key]?.[locale]).filter(Boolean),
         recurring: result.recurring.map((r) => ({
@@ -85,11 +86,11 @@ export async function POST(request: Request) {
           monthly: r.monthly,
           monthlyLabel: r.monthly !== null ? formatCad(r.monthly, locale) : null,
         })),
-        minimumApplied: result.minimumApplied,
+        // Only ever "above" reaches the client: telling someone their budget is
+        // larger than the work would be an invitation to spend more, which is
+        // the opposite of what asking the question is for.
+        budgetSignal: result.budgetSignal === "above" ? "above" : null,
         pricingVersion: result.pricingVersion,
-        studioType: studioTypeFor(input.foundation),
-        // Named so the client can label the CTA without knowing the model.
-        foundationLabel: labelForKey(FOUNDATIONS[input.foundation].id, locale),
       },
       { headers: { "cache-control": "no-store" } },
     );

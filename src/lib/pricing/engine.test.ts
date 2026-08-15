@@ -1,341 +1,403 @@
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 
+import { modelChecksum } from "./checksum";
 import { PricingInputError, estimate, validateInput } from "./engine";
-import { CAPABILITIES, FOUNDATIONS, GLOBAL_MINIMUM, PRICING_VERSION, SCOPE_FACTORS } from "./model";
-import type { Complexity, EstimateInput, FoundationId } from "./types";
+import {
+  ADDONS,
+  DAY_RATES,
+  DISCOVERY,
+  DISCOVERY_THRESHOLD,
+  MINIMUM,
+  MODEL_CHECKSUM,
+  ORG_FACTORS,
+  PRICING_VERSION,
+  RECURRING,
+  SERVICE_LINES,
+} from "./model";
+import { ADDON_LABELS, DEPTH_LABELS, INCLUDE_LABELS, LINE_LABELS, ORG_LABELS, RECURRING_LABELS } from "./labels";
+import type { EstimateInput, ServiceLineId } from "./types";
 
-const input = (over: Partial<EstimateInput> & Pick<EstimateInput, "foundation">): EstimateInput => ({
-  scope: "small",
-  bilingual: false,
-  capabilities: [],
-  ...over,
+const inp = (over: Partial<EstimateInput> & Pick<EstimateInput, "lines">): EstimateInput => ({ ...over });
+
+/* ── model integrity ─────────────────────────────────────────────────────── */
+
+describe("model integrity", () => {
+  it("carries the checksum of its own source", () => {
+    const source = readFileSync(fileURLToPath(new URL("./model.ts", import.meta.url)), "utf8");
+    expect(MODEL_CHECKSUM).toBe(modelChecksum(source));
+  });
+
+  it("uses a dated version string", () => {
+    expect(PRICING_VERSION).toMatch(/^\d{4}\.\d{2}\.\d+$/);
+  });
+
+  it("rates judgement above execution", () => {
+    expect(DAY_RATES.systems).toBeGreaterThan(DAY_RATES.build);
+    expect(DAY_RATES.advisory).toBeGreaterThan(DAY_RATES.build);
+    expect(DAY_RATES.ai).toBeGreaterThan(DAY_RATES.build);
+  });
+
+  it.each(Object.values(SERVICE_LINES))("$id has ordered, increasing depths", (line) => {
+    let prev = 0;
+    for (const d of line.depths) {
+      expect(d.days.low, `${line.id}.${d.id}`).toBeLessThanOrEqual(d.days.expected);
+      expect(d.days.expected).toBeLessThanOrEqual(d.days.high);
+      expect(d.days.expected, `${line.id}.${d.id} must cost more than the tier below`).toBeGreaterThan(prev);
+      prev = d.days.expected;
+      expect(DEPTH_LABELS[`${line.id}.${d.id}`]?.fr, `${line.id}.${d.id} FR label`).toBeTruthy();
+    }
+  });
+
+  it.each(Object.values(ADDONS))("$id variants increase", (addon) => {
+    if (!addon.variants) return;
+    let prev = 0;
+    for (const v of addon.variants) {
+      expect(v.days.expected, `${addon.id}.${v.id}`).toBeGreaterThan(prev);
+      prev = v.days.expected;
+      expect(ADDON_LABELS[`${addon.id}.${v.id}`]?.fr).toBeTruthy();
+    }
+  });
+
+  it("only lets a line carry add-ons that exist", () => {
+    for (const line of Object.values(SERVICE_LINES)) {
+      for (const a of line.addons ?? []) expect(ADDONS[a], `${line.id} → ${a}`).toBeDefined();
+    }
+  });
+
+  it("labels every line, add-on and org factor in both languages", () => {
+    for (const id of Object.keys(SERVICE_LINES)) {
+      expect(LINE_LABELS[id]?.en).toBeTruthy();
+      expect(LINE_LABELS[id]?.fr).toBeTruthy();
+    }
+    for (const id of Object.keys(ADDONS)) expect(ADDON_LABELS[id]?.fr, id).toBeTruthy();
+    for (const id of Object.keys(ORG_FACTORS)) expect(ORG_LABELS[id]?.fr, id).toBeTruthy();
+  });
+
+  it("labels every inclusion the model can emit", () => {
+    for (const line of Object.values(SERVICE_LINES)) {
+      for (const d of line.depths) {
+        const e = estimate(inp({ lines: [{ id: line.id, depth: d.id }] }));
+        for (const key of e.includes) {
+          expect(INCLUDE_LABELS[key] ?? ADDON_LABELS[key], `label for "${key}"`).toBeDefined();
+        }
+      }
+    }
+  });
+
+  it("mirrors only the approved Studio catalogue prices", () => {
+    expect(RECURRING.filter((r) => r.approved).map((r) => [r.id, r.monthly])).toEqual([
+      ["seo-essentials", 600],
+      ["seo-advanced", 850],
+    ]);
+    for (const r of RECURRING) expect(RECURRING_LABELS[r.id]?.fr, r.id).toBeTruthy();
+  });
 });
 
+/* ── the day model ───────────────────────────────────────────────────────── */
+
+describe("every price is days × a rate", () => {
+  it("prices a single line at exactly its days times its rate", () => {
+    const e = estimate(inp({ lines: [{ id: "website", depth: "custom" }] }));
+    const spec = SERVICE_LINES.website.depths.find((d) => d.id === "custom")!;
+    expect(e.lines[0].band.expected).toBe(spec.days.expected * DAY_RATES.build);
+    expect(e.days.expected).toBe(spec.days.expected);
+  });
+
+  it("uses the advisory rate where the depth says so", () => {
+    const e = estimate(inp({ lines: [{ id: "seo", depth: "research" }] }));
+    expect(e.lines[0].discipline).toBe("advisory");
+    expect(e.lines[0].band.expected).toBe(3.5 * DAY_RATES.advisory);
+  });
+
+  it("reports total days alongside the money", () => {
+    const e = estimate(inp({ lines: [{ id: "website", depth: "custom" }, { id: "brand", depth: "identity" }] }));
+    expect(e.days.expected).toBeCloseTo(5.5 + 6, 5);
+  });
+});
+
+/* ── validation and tampering ────────────────────────────────────────────── */
+
 describe("input validation", () => {
-  it("rejects a foundation the model does not define", () => {
-    expect(() => validateInput({ foundation: "free_website", scope: "small" })).toThrow(PricingInputError);
+  it("rejects an empty or unknown selection", () => {
+    expect(() => validateInput({ lines: [] })).toThrow(PricingInputError);
+    expect(() => validateInput({ lines: [{ id: "free_stuff" }] })).toThrow(PricingInputError);
   });
 
-  it("rejects a capability the model does not define", () => {
+  it("rejects a depth the line does not offer", () => {
+    expect(() => validateInput({ lines: [{ id: "website", depth: "gratis" }] })).toThrow(PricingInputError);
+  });
+
+  it("rejects an add-on the line does not carry", () => {
+    // `bookings` belongs to website, never to seo.
+    expect(() => validateInput({ lines: [{ id: "seo", depth: "research", addons: [{ id: "bookings" }] }] })).toThrow(
+      /does not apply/i,
+    );
+  });
+
+  it("rejects an unknown variant", () => {
     expect(() =>
-      validateInput({ foundation: "marketing_site", scope: "small", capabilities: [{ id: "free_stuff" }] }),
+      validateInput({ lines: [{ id: "website", depth: "custom", addons: [{ id: "bookings", variant: "free" }] }] }),
     ).toThrow(PricingInputError);
   });
 
-  it("rejects a tier the capability does not offer", () => {
-    // `blog_system` deliberately stops at moderate — asking for "complex"
-    // must fail rather than silently fall back to the cheapest tier.
+  it("refuses to average an ambiguous add-on with no level chosen", () => {
+    // "Booking" spans a tenfold range. Guessing the middle is the dishonesty
+    // the variants exist to prevent, so the engine insists on an answer.
     expect(() =>
-      validateInput({
-        foundation: "marketing_site",
-        scope: "small",
-        capabilities: [{ id: "blog_system", complexity: "complex" }],
-      }),
-    ).toThrow(PricingInputError);
+      estimate(inp({ lines: [{ id: "website", depth: "custom", addons: [{ id: "bookings" }] }] })),
+    ).toThrow(/needs a level/i);
   });
 
-  it("rejects a scope size the model does not define", () => {
-    expect(() => validateInput({ foundation: "marketing_site", scope: "free" })).toThrow(PricingInputError);
-  });
-
-  /** The tamper case that matters: a client cannot smuggle prices in. */
-  it("ignores injected pricing fields entirely", () => {
+  it("ignores injected prices, discounts and rates", () => {
     const clean = validateInput({
-      foundation: "marketing_site",
-      scope: "small",
-      capabilities: [{ id: "cms", complexity: "standard", price: 1, band: { low: 0, high: 0 } }],
+      lines: [{ id: "website", depth: "launch", price: 1, dayRate: 10 }],
       low: 1,
       high: 2,
       discount: 0.9,
-      pricingVersion: "1999.01.1",
+      DAY_RATES: { build: 1 },
       __proto__: { evil: true },
     });
     expect(clean).toEqual({
-      foundation: "marketing_site",
-      scope: "small",
-      bilingual: false,
-      capabilities: [{ id: "cms", complexity: "standard" }],
+      lines: [{ id: "website", depth: "launch", addons: [] }],
+      org: [],
+      budget: undefined,
       undefinedScope: false,
       rush: false,
     });
-    const e = estimate(clean);
-    expect(e.low).toBeGreaterThanOrEqual(FOUNDATIONS.marketing_site.floor);
-    expect(e.pricingVersion).toBe(PRICING_VERSION);
+    expect(estimate(clean).low).toBe(MINIMUM);
   });
 
   it("cannot be reached through prototype pollution", () => {
-    expect(() => validateInput({ foundation: "constructor", scope: "small" })).toThrow(PricingInputError);
-    expect(() => validateInput({ foundation: "toString", scope: "small" })).toThrow(PricingInputError);
-    expect(() =>
-      validateInput({ foundation: "marketing_site", scope: "small", capabilities: [{ id: "constructor" }] }),
-    ).toThrow(PricingInputError);
+    expect(() => validateInput({ lines: [{ id: "constructor" }] })).toThrow(PricingInputError);
+    expect(() => validateInput({ lines: [{ id: "toString" }] })).toThrow(PricingInputError);
   });
 
-  it("bounds the capability list", () => {
-    const many = Array.from({ length: 41 }, () => ({ id: "cms" }));
-    expect(() => validateInput({ foundation: "marketing_site", scope: "small", capabilities: many })).toThrow(
+  it("bounds the selection", () => {
+    expect(() => validateInput({ lines: Array.from({ length: 8 }, () => ({ id: "website" })) })).toThrow(
       PricingInputError,
     );
   });
 
-  it("tolerates duplicate selections", () => {
-    const clean = validateInput({
-      foundation: "marketing_site",
-      scope: "small",
-      capabilities: [{ id: "cms" }, { id: "cms" }],
-    });
-    expect(clean.capabilities).toHaveLength(1);
-  });
-
-  it("defaults a capability to its first offered tier", () => {
-    const clean = validateInput({
-      foundation: "marketing_site",
-      scope: "small",
-      capabilities: [{ id: "booking" }],
-    });
-    expect(clean.capabilities[0].complexity).toBe("standard");
-  });
-
-  it("rejects non-object input", () => {
-    for (const bad of [null, "x", 3, [], undefined]) {
-      expect(() => validateInput(bad)).toThrow(PricingInputError);
-    }
+  it("drops an unknown org factor rather than failing", () => {
+    const clean = validateInput({ lines: [{ id: "website", depth: "custom" }], org: ["approvals", "free_pass"] });
+    expect(clean.org).toEqual(["approvals"]);
   });
 });
 
-describe("minimums", () => {
-  it("never quotes a build below the minimum engagement", () => {
-    for (const id of Object.keys(FOUNDATIONS) as FoundationId[]) {
-      const e = estimate(input({ foundation: id }));
-      const expectedFloor = id === "seo_engagement" ? FOUNDATIONS[id].floor : GLOBAL_MINIMUM;
-      expect(e.low, id).toBeGreaterThanOrEqual(expectedFloor);
-      expect(e.low, id).toBeGreaterThanOrEqual(FOUNDATIONS[id].floor);
+/* ── the three tiers ─────────────────────────────────────────────────────── */
+
+describe("tiers and routing", () => {
+  it("puts the productized site at the floor and calls it Launch", () => {
+    const e = estimate(inp({ lines: [{ id: "website", depth: "launch" }] }));
+    expect(e.tier).toBe("launch");
+    expect(e.low).toBe(MINIMUM);
+    expect(e.high).toBeLessThanOrEqual(4000);
+    expect(e.needsDiscovery).toBe(false);
+  });
+
+  it("does not charge twice for foundations a build already lays", () => {
+    const alone = estimate(inp({ lines: [{ id: "website", depth: "launch" }] }));
+    const withSeo = estimate(
+      inp({ lines: [{ id: "website", depth: "launch" }, { id: "seo", depth: "foundations" }] }),
+    );
+    expect(withSeo.low).toBe(alone.low);
+    expect(withSeo.high).toBe(alone.high);
+    // Still Launch: absorbed work must not silently promote the tier.
+    expect(withSeo.tier).toBe("launch");
+    expect(withSeo.lines.find((l) => l.key === "seo.foundations")?.note).toBe("included_in_build");
+  });
+
+  it("charges for SEO foundations when there is no build to absorb them", () => {
+    const e = estimate(inp({ lines: [{ id: "seo", depth: "foundations" }] }));
+    expect(e.low).toBeGreaterThan(0);
+    expect(e.lines[0].note).toBeUndefined();
+  });
+
+  it("puts a custom site in the published $8,000–25,000 band", () => {
+    const e = estimate(inp({ lines: [{ id: "website", depth: "custom" }] }));
+    expect(e.tier).toBe("custom");
+    expect(e.low).toBeGreaterThanOrEqual(8000);
+    expect(e.high).toBeLessThanOrEqual(25000);
+  });
+
+  it("always scopes software before pricing it, whatever the number", () => {
+    for (const depth of ["internal_tool", "customer_product", "platform"]) {
+      const e = estimate(inp({ lines: [{ id: "software", depth }] }));
+      expect(e.needsDiscovery, depth).toBe(true);
+      expect(e.tier).toBe("systems");
     }
   });
 
-  it("puts the bare-minimum website at the published small-business entry point", () => {
-    const e = estimate(input({ foundation: "marketing_site" }));
-    expect(e.low).toBe(3000);
-    expect(e.high).toBe(5000);
-  });
-});
-
-describe("range shape", () => {
-  it("always returns an ordered, non-degenerate range", () => {
-    for (const id of Object.keys(FOUNDATIONS) as FoundationId[]) {
-      const e = estimate(input({ foundation: id, scope: "large" }));
-      expect(e.low, id).toBeLessThan(e.high);
-      expect(e.expected, id).toBeGreaterThanOrEqual(e.low);
-      expect(e.expected, id).toBeLessThanOrEqual(e.high);
-    }
+  it("routes anything past the threshold to discovery", () => {
+    const e = estimate(inp({ lines: [{ id: "brand", depth: "positioning" }, { id: "website", depth: "flagship" }] }));
+    expect(e.expected).toBeGreaterThan(DISCOVERY_THRESHOLD);
+    expect(e.needsDiscovery).toBe(true);
   });
 
-  it("returns whole dollars on round steps", () => {
+  it("keeps a well-understood mid-market website quotable", () => {
+    // ~$30k, but a brochure site is a known deliverable — value alone must not
+    // send it to discovery.
     const e = estimate(
-      input({
-        foundation: "ecommerce",
-        scope: "standard",
-        capabilities: [{ id: "subscriptions", complexity: "moderate" }],
+      inp({
+        lines: [{ id: "website", depth: "custom" }],
+        org: ["approvals", "compliance", "integrations", "training"],
       }),
     );
-    expect(e.low % 250).toBe(0);
-    expect(e.high % 250).toBe(0);
+    expect(e.needsDiscovery).toBe(false);
+    expect(e.tier).toBe("custom");
   });
 
-  it("reconciles every line to the reported total", () => {
-    const e = estimate(
-      input({
-        foundation: "marketing_site",
-        scope: "large",
-        bilingual: true,
-        rush: true,
-        capabilities: [
-          { id: "cms", complexity: "standard" },
-          { id: "local_seo", complexity: "moderate" },
-          { id: "crm_integration", complexity: "moderate" },
-        ],
-      }),
-    );
-    const sum = e.lines.reduce((a, l) => ({ low: a.low + l.band.low, high: a.high + l.band.high }), {
-      low: 0,
-      high: 0,
-    });
-    // Lines sum to the pre-rounding total, so they must bracket the rounded one.
-    expect(sum.low).toBeGreaterThanOrEqual(e.low);
-    expect(sum.low).toBeLessThan(e.low + 250);
-    expect(sum.high).toBeLessThanOrEqual(e.high);
-    expect(sum.high).toBeGreaterThan(e.high - 500);
+  it("prices discovery as a real product", () => {
+    expect(DISCOVERY.from).toBeGreaterThan(0);
+    expect(DISCOVERY.creditedAgainstBuild).toBe(true);
   });
 });
+
+/* ── the enterprise multiple ─────────────────────────────────────────────── */
+
+describe("organisational complexity", () => {
+  it("charges roughly 3× for the same deliverable at a mid-market firm", () => {
+    const solo = estimate(inp({ lines: [{ id: "website", depth: "custom" }] }));
+    const firm = estimate(
+      inp({
+        lines: [{ id: "website", depth: "custom" }],
+        org: ["approvals", "compliance", "integrations", "training"],
+      }),
+    );
+    const multiple = firm.expected / solo.expected;
+    expect(multiple).toBeGreaterThan(2.6);
+    expect(multiple).toBeLessThan(3.6);
+  });
+
+  it("charges nothing extra when none apply", () => {
+    const a = estimate(inp({ lines: [{ id: "website", depth: "custom" }] }));
+    const b = estimate(inp({ lines: [{ id: "website", depth: "custom" }], org: [] }));
+    expect(a.expected).toBe(b.expected);
+  });
+
+  it("is itemised rather than hidden in the total", () => {
+    const e = estimate(inp({ lines: [{ id: "website", depth: "custom" }], org: ["approvals"] }));
+    const line = e.lines.find((l) => l.kind === "org");
+    expect(line).toBeDefined();
+    expect(line!.band.expected).toBeGreaterThan(0);
+    expect(line!.note).toContain("approvals");
+  });
+
+  it("treats integrating with their systems as uncertainty too", () => {
+    const e = estimate(inp({ lines: [{ id: "website", depth: "custom" }], org: ["integrations"] }));
+    expect(e.caveats).toContain("unknown_external_system");
+  });
+});
+
+/* ── monotonicity ────────────────────────────────────────────────────────── */
 
 describe("monotonicity", () => {
-  const baseline = estimate(input({ foundation: "marketing_site" }));
-
-  it("never gets cheaper when a capability is added", () => {
-    for (const cap of CAPABILITIES) {
-      const e = estimate(
-        input({ foundation: "marketing_site", capabilities: [{ id: cap.id, complexity: cap.allowed[0] }] }),
-      );
-      if (cap.includedIn?.includes("marketing_site")) {
-        expect(e.low, cap.id).toBe(baseline.low);
-        continue;
-      }
-      expect(e.low, `${cap.id} low`).toBeGreaterThanOrEqual(baseline.low);
-      expect(e.high, `${cap.id} high`).toBeGreaterThan(baseline.high);
-    }
-  });
-
-  it("never gets cheaper at a harder tier", () => {
-    const TIERS: Complexity[] = ["standard", "moderate", "advanced", "complex"];
-    for (const cap of CAPABILITIES) {
-      const tiers = TIERS.filter((t) => cap.allowed.includes(t));
+  it("never gets cheaper at a deeper level", () => {
+    for (const line of Object.values(SERVICE_LINES)) {
       let prev = 0;
-      for (const tier of tiers) {
-        const e = estimate(
-          input({ foundation: "custom_application", capabilities: [{ id: cap.id, complexity: tier }] }),
-        );
-        expect(e.high, `${cap.id} @ ${tier}`).toBeGreaterThanOrEqual(prev);
+      for (const d of line.depths) {
+        const e = estimate(inp({ lines: [{ id: line.id, depth: d.id }] }));
+        expect(e.high, `${line.id}.${d.id}`).toBeGreaterThanOrEqual(prev);
         prev = e.high;
       }
     }
   });
 
-  it("never gets cheaper as the site grows", () => {
-    const order = ["small", "standard", "large", "very_large", "xl"] as const;
-    let prev = 0;
-    for (const scope of order) {
-      const e = estimate(input({ foundation: "marketing_site", scope, capabilities: [{ id: "cms" }] }));
-      expect(e.high, scope).toBeGreaterThanOrEqual(prev);
-      prev = e.high;
+  it("never gets cheaper when a service is added", () => {
+    const base = estimate(inp({ lines: [{ id: "website", depth: "custom" }] }));
+    for (const id of Object.keys(SERVICE_LINES) as ServiceLineId[]) {
+      if (id === "website") continue;
+      const spec = SERVICE_LINES[id];
+      const depth = spec.depths[0];
+      const e = estimate(inp({ lines: [{ id: "website", depth: "custom" }, { id, depth: depth.id }] }));
+      // SEO foundations are absorbed by the build, so equal is correct there.
+      if (depth.absorbedBy?.includes("website")) expect(e.expected).toBe(base.expected);
+      else expect(e.expected, id).toBeGreaterThan(base.expected);
     }
   });
 
-  it("charges more for a second language", () => {
-    const one = estimate(input({ foundation: "marketing_site", capabilities: [{ id: "copywriting" }] }));
-    const two = estimate(
-      input({ foundation: "marketing_site", bilingual: true, capabilities: [{ id: "copywriting" }] }),
-    );
-    expect(two.expected).toBeGreaterThan(one.expected);
+  it("separates the three readings of booking by an order of magnitude", () => {
+    const price = (variant: string) =>
+      estimate(inp({ lines: [{ id: "website", depth: "custom", addons: [{ id: "bookings", variant }] }] })).expected;
+    expect(price("embedded")).toBeGreaterThan(price("link"));
+    expect(price("custom")).toBeGreaterThan(price("embedded"));
+  });
+
+  it("never quotes below the minimum", () => {
+    for (const line of Object.values(SERVICE_LINES)) {
+      for (const d of line.depths) {
+        expect(estimate(inp({ lines: [{ id: line.id, depth: d.id }] })).low, `${line.id}.${d.id}`).toBeGreaterThanOrEqual(
+          MINIMUM,
+        );
+      }
+    }
   });
 });
 
-describe("foundation inclusions", () => {
-  it("does not charge for what the foundation already ships", () => {
-    const withAuth = estimate(
-      input({ foundation: "business_portal", capabilities: [{ id: "authentication" }] }),
-    );
-    const without = estimate(input({ foundation: "business_portal" }));
-    expect(withAuth.low).toBe(without.low);
-    expect(withAuth.high).toBe(without.high);
+/* ── risk, recurring, determinism ────────────────────────────────────────── */
 
-    const line = withAuth.lines.find((l) => l.key === "authentication");
-    expect(line?.note).toBe("included_in_foundation");
-    expect(line?.band.expected).toBe(0);
-  });
-
-  it("still charges for auth where the foundation has none", () => {
-    const withAuth = estimate(input({ foundation: "marketing_site", capabilities: [{ id: "authentication" }] }));
-    expect(withAuth.expected).toBeGreaterThan(estimate(input({ foundation: "marketing_site" })).expected);
-  });
-});
-
-describe("risk handling", () => {
-  it("widens the top for an unknown external system without inventing effort", () => {
-    const known = estimate(
-      input({ foundation: "ecommerce", capabilities: [{ id: "customer_accounts", complexity: "moderate" }] }),
-    );
-    const unknown = estimate(
-      input({ foundation: "ecommerce", capabilities: [{ id: "pos_integration", complexity: "moderate" }] }),
-    );
-    expect(unknown.caveats).toContain("unknown_external_system");
-    const risk = unknown.lines.find((l) => l.key === "unknown_external_system");
-    expect(risk?.band.low).toBe(0);
-    expect(risk?.band.expected).toBe(0);
-    expect(risk!.band.high).toBeGreaterThan(0);
-    expect(unknown.high / unknown.low).toBeGreaterThan(known.high / known.low);
-  });
-
+describe("risk", () => {
   it("widens only the top when scope is undefined", () => {
-    const defined = estimate(input({ foundation: "business_portal" }));
-    const open = estimate(input({ foundation: "business_portal", undefinedScope: true }));
-    expect(open.low).toBe(defined.low);
-    expect(open.high).toBeGreaterThan(defined.high);
-    expect(open.caveats).toContain("undefined_scope");
+    const a = estimate(inp({ lines: [{ id: "website", depth: "custom" }] }));
+    const b = estimate(inp({ lines: [{ id: "website", depth: "custom" }], undefinedScope: true }));
+    expect(b.low).toBe(a.low);
+    expect(b.high).toBeGreaterThan(a.high);
   });
 
-  it("moves the whole band for a compressed timeline", () => {
-    const normal = estimate(input({ foundation: "ecommerce" }));
-    const rushed = estimate(input({ foundation: "ecommerce", rush: true }));
-    expect(rushed.low).toBeGreaterThan(normal.low);
-    expect(rushed.expected).toBeGreaterThan(normal.expected);
-    expect(rushed.high).toBeGreaterThan(normal.high);
+  it("moves the whole band for a hard deadline", () => {
+    const a = estimate(inp({ lines: [{ id: "website", depth: "custom" }] }));
+    const b = estimate(inp({ lines: [{ id: "website", depth: "custom" }], rush: true }));
+    expect(b.low).toBeGreaterThan(a.low);
+    expect(b.high).toBeGreaterThan(a.high);
   });
 });
 
-describe("recurring services", () => {
-  it("keeps recurring out of the build number", () => {
-    const e = estimate(input({ foundation: "marketing_site" }));
-    expect(e.recurring.length).toBeGreaterThan(0);
-    // A monthly fee must never have been folded into the project total.
-    expect(e.high).toBe(5000);
-  });
-
-  it("publishes an approved price and withholds an unapproved one", () => {
-    const e = estimate(input({ foundation: "marketing_site" }));
-    expect(e.recurring.find((r) => r.id === "seo-essentials")?.monthly).toBe(600);
+describe("recurring and budget", () => {
+  it("keeps monthly fees out of the build price and withholds unapproved ones", () => {
+    const e = estimate(inp({ lines: [{ id: "website", depth: "launch" }] }));
+    expect(e.high).toBeLessThanOrEqual(4000);
     expect(e.recurring.find((r) => r.id === "website-care-plan")?.monthly).toBeNull();
   });
 
   it("never offers both SEO tiers at once", () => {
-    const e = estimate(
-      input({ foundation: "marketing_site", capabilities: [{ id: "content_strategy" }, { id: "local_seo" }] }),
-    );
+    const e = estimate(inp({ lines: [{ id: "seo", depth: "research" }, { id: "content", depth: "pipeline" }] }));
     const ids = e.recurring.map((r) => r.id);
     expect(ids).toContain("seo-advanced");
     expect(ids).not.toContain("seo-essentials");
+  });
+
+  /** Budget routes; it must never move the number. */
+  it("prices identically whatever budget is stated", () => {
+    const prices = (["under_5k", "5_15k", "15_50k", "50k_plus", "unsure"] as const).map(
+      (budget) => estimate(inp({ lines: [{ id: "website", depth: "custom" }], budget })).expected,
+    );
+    expect(new Set(prices).size).toBe(1);
+  });
+
+  it("reports when the work sits above the stated budget", () => {
+    const e = estimate(inp({ lines: [{ id: "website", depth: "custom" }], budget: "under_5k" }));
+    expect(e.budgetSignal).toBe("above");
+    expect(e.low).toBeGreaterThanOrEqual(8000);
   });
 });
 
 describe("determinism", () => {
   it("produces identical output for identical input", () => {
-    const i = input({
-      foundation: "custom_application",
-      scope: "large",
-      bilingual: true,
-      capabilities: [{ id: "roles_permissions", complexity: "advanced" }, { id: "third_party_api" }],
+    const i = inp({
+      lines: [
+        { id: "website", depth: "custom", addons: [{ id: "bookings", variant: "embedded" }] },
+        { id: "seo", depth: "research" },
+      ],
+      org: ["approvals"],
     });
     expect(estimate(i)).toEqual(estimate(i));
   });
 
-  it("stamps the pricing version and model checksum on every estimate", () => {
-    const e = estimate(input({ foundation: "marketing_site" }));
+  it("stamps the version and checksum on every estimate", () => {
+    const e = estimate(inp({ lines: [{ id: "website", depth: "launch" }] }));
     expect(e.pricingVersion).toBe(PRICING_VERSION);
     expect(e.modelChecksum).toMatch(/^[0-9a-f]{16}$/);
-  });
-
-  it("covers every scope size", () => {
-    for (const scope of Object.keys(SCOPE_FACTORS)) {
-      expect(() => estimate(input({ foundation: "marketing_site", scope: scope as never }))).not.toThrow();
-    }
-  });
-});
-
-describe("what the estimate says it includes", () => {
-  it("advertises the page count the client actually chose", () => {
-    const small = estimate(input({ foundation: "marketing_site", scope: "small" }));
-    expect(small.includes).toContain("up_to_six_pages");
-
-    // Saying "up to 6 pages" to someone who selected and paid for 13–25
-    // understates the deliverable.
-    const large = estimate(input({ foundation: "marketing_site", scope: "large" }));
-    expect(large.includes).not.toContain("up_to_six_pages");
-    expect(large.includes).toContain("large");
-  });
-
-  it("never lists the same inclusion twice", () => {
-    const e = estimate(
-      input({ foundation: "content_system", scope: "standard", capabilities: [{ id: "cms" }, { id: "blog_system" }] }),
-    );
-    expect(new Set(e.includes).size).toBe(e.includes.length);
   });
 });

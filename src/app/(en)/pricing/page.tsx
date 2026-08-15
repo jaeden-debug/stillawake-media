@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ServiceJsonLd, PriceCard } from "@/components/service-page";
 import { getContentLayer } from "@/lib/cms/adapter";
+import { DISCOVERY, MINIMUM } from "@/lib/pricing/model";
 import { slot } from "@/lib/cms/layer";
 
 import { Testimonials } from "@/components/testimonials";
@@ -10,7 +11,7 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Pricing — Published Rates, No Sales Call",
   description:
-    "StillAwake Media pricing: SEO plans $600–$850 CAD/month, emergency website support $150–$600 CAD one-time, and written custom quotes for builds. Transparent, in CAD, no call required.",
+    "StillAwake Media pricing: Launch websites from $2,500 CAD, custom projects from $8,000, paid discovery from $3,500, SEO plans $600–$850 CAD/month and emergency support $150–$600 one-time. Published, in CAD, no sales call.",
   alternates: {
     canonical: "https://stillawakemedia.com/pricing",
     languages: {
@@ -36,6 +37,8 @@ export default async function PricingPage() {
         name="StillAwake Media Services Pricing"
         description="Published pricing for StillAwake Media services: monthly SEO plans, one-time emergency website support tiers, and custom-quoted design/development work."
         offers={[
+          { name: "Launch Website", price: MINIMUM },
+          { name: "Project Discovery", price: DISCOVERY.from },
           { name: "SEO Growth — Essentials", price: 600, interval: "MONTH" },
           { name: "SEO Growth — Advanced", price: 850, interval: "MONTH" },
           { name: "Emergency Support — Custom Site", price: 150 },
@@ -57,7 +60,7 @@ export default async function PricingPage() {
             {slot(
               slots,
               "hero_intro",
-              "Most agencies hide pricing behind a discovery call. StillAwake Media publishes it: recurring services have monthly prices, support has one-time tiers, and project work gets a written custom quote through an async intake — never a mandatory sales call. All prices in Canadian dollars.",
+              "Most agencies hide pricing behind a discovery call. StillAwake Media publishes it. Every project price is costed the same way — days of work at a published day rate — so a fixed price is a real number rather than a guess. Small work is a fixed-price product, custom work gets a written scope, and anything large enough that a form could not honestly price it starts with paid discovery. All prices in Canadian dollars.",
             )}
           </p>
         </div>
@@ -65,7 +68,57 @@ export default async function PricingPage() {
 
       <section className="px-6 py-16">
         <div className="mx-auto max-w-7xl">
-          <h2 className="geist text-4xl font-black tracking-[-0.06em]">Monthly — SEO growth plans</h2>
+          <h2 className="geist text-4xl font-black tracking-[-0.06em]">Projects — three ways in</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
+            Which one you need is decided by the work, not by the size of your company. Price your own
+            project with the{" "}
+            <Link href="/tools/project-cost-calculator" className="text-[#D71920] underline-offset-4 hover:underline">
+              cost calculator
+            </Link>{" "}
+            — it runs the same model we scope real work with.
+          </p>
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            <PriceCard
+              name="Launch"
+              price={`$${MINIMUM.toLocaleString("en-CA")} CAD`}
+              cadence="fixed price"
+              items={[
+                "Our proven layout, your brand applied",
+                "Up to 5 pages",
+                "Analytics, Search Console, technical SEO",
+                "One round of revisions",
+                "Fixed scope — that is what makes the price",
+              ]}
+              cta={["Price it", "/tools/project-cost-calculator"]}
+            />
+            <PriceCard
+              name="Custom project"
+              price="from $8,000 CAD"
+              cadence="written scope, fixed price"
+              items={[
+                "Designed for you, not applied to you",
+                "Costed in days at a published rate",
+                "Written scope before any commitment",
+                "No mandatory sales call",
+              ]}
+              cta={["Get a range", "/tools/project-cost-calculator"]}
+              highlight
+            />
+            <PriceCard
+              name="Discovery"
+              price={`from $${DISCOVERY.from.toLocaleString("en-CA")} CAD`}
+              cadence="credited against the build"
+              items={[
+                "For systems a form cannot price",
+                "Written scope and architecture",
+                "A fixed build price at the end",
+                "The fee comes off the build",
+              ]}
+              cta={["Start with discovery", "https://stillawake.studio/start"]}
+            />
+          </div>
+
+          <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">Monthly — SEO growth plans</h2>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
             SEO Growth — Essentials costs $600 CAD per month. SEO Growth — Advanced costs $850 CAD per month.
           </p>
@@ -112,7 +165,12 @@ export default async function PricingPage() {
             />
           </div>
 
-          <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">Custom quote — builds &amp; programs</h2>
+          <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">What we do</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
+            These combine — most projects are more than one. Software and large systems start with
+            discovery rather than a quote, because the requirements are the expensive part and they do
+            not exist yet.
+          </p>
           <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {[
               ["Web Design & Development", "/web-design-montreal"],
@@ -126,7 +184,7 @@ export default async function PricingPage() {
             ].map(([n, h]) => (
               <Link key={h} href={h} className="rounded-[2rem] border border-white/10 p-6 transition hover:border-[#D71920]/60">
                 <h3 className="text-lg font-semibold">{n}</h3>
-                <p className="mt-2 text-sm text-[#C7B9B9]">Written scope + fixed price via async intake.</p>
+                <p className="mt-2 text-sm text-[#C7B9B9]">Written scope, fixed price, no sales call.</p>
               </Link>
             ))}
           </div>

@@ -8,124 +8,140 @@
  * in both repos recomputes the checksum and fails if you do.
  * ═══════════════════════════════════════════════════════════════════════════
  *
- * Everything priced here is a BAND, never a point. That is the central design
- * decision: scope uncertainty is a property of the thing being built, not a
- * fudge factor bolted onto a total. "Booking" is genuinely a 15× spread
- * depending on what the client means, and a model that prices it at one number
- * and then widens the total is lying about where the uncertainty lives.
+ * EVERY PRICE HERE IS DERIVED FROM DAYS OF WORK.
+ *
+ * StillAwake sells fixed-price engagements, never hours — but a fixed price
+ * you cannot cost is a guess. So the model estimates effort in days, multiplies
+ * by a discipline day rate, and the fixed price falls out of that. The client
+ * buys an outcome; the day model is what makes the outcome profitable to
+ * deliver. Any band that cannot be traced back to "N days at $R" is a number
+ * somebody made up.
+ *
+ * Days are BANDS, never points, because scope uncertainty is a property of the
+ * work itself. A custom availability engine is genuinely 3–7 days depending on
+ * what the rules turn out to be, and a model that says "5" is lying.
  */
 
-/** A cost band in whole CAD. Invariant: low <= expected <= high. */
+/** A day-count band. Invariant: low <= expected <= high. */
+export type Days = { low: number; expected: number; high: number };
+
+/** A money band in whole CAD, always days × rate. */
 export type Band = { low: number; expected: number; high: number };
 
 /**
- * Implementation effort tiers.
+ * Day rates by discipline.
  *
- * These describe the SAME capability built to different depths — not
- * different capabilities. "Booking" at `standard` is a styled Calendly embed;
- * at `complex` it is a multi-resource availability engine with payments and
- * overbooking rules. The engine must understand that distinction, so
- * capabilities may declare qualitatively different bands per tier rather than
- * scaling one base (see `CapabilitySpec.bands`).
+ * Not four different people — four different kinds of work, which the market
+ * prices differently. Advisory rates above execution everywhere, because
+ * judgement is what is scarce.
  */
-export type Complexity = "standard" | "moderate" | "advanced" | "complex";
-
-/** The minimum meaningful implementation StillAwake would actually ship. */
-export type FoundationId =
-  | "marketing_site"
-  | "website_redesign"
-  | "ecommerce"
-  | "business_portal"
-  | "custom_application"
-  | "ai_automation"
-  | "seo_engagement"
-  | "content_system";
+export type Discipline = "build" | "systems" | "ai" | "advisory";
 
 /**
- * Capability groups.
- *
- * `content` scope is what a second language and a bigger page count actually
- * multiply. `app` scope is not: translating a dashboard's strings is not the
- * same job as adapting fifteen pages of marketing copy for Québec. The engine
- * relies on this split, so a capability's group is a pricing decision, not a
- * label.
+ * What StillAwake is being asked to do. These COMBINE — a client can want
+ * positioning and a site and an SEO programme, and pricing that as one
+ * "project type" was the flaw in the previous model. Nothing here is mutually
+ * exclusive.
  */
-export type CapabilityGroup =
-  | "content"
+export type ServiceLineId =
+  | "brand"
+  | "website"
+  | "store"
   | "seo"
-  | "commerce"
-  | "business"
-  | "integration"
-  | "ai";
+  | "content"
+  | "software"
+  | "automation";
 
-export type CapabilityId = string;
+/** How deep the work goes on a given line. Keys are line-specific. */
+export type DepthId = string;
 
-export type CapabilitySpec = {
-  id: CapabilityId;
-  group: CapabilityGroup;
-  /** Effort at `standard`. Other tiers scale from this unless overridden. */
-  base: Band;
+export type DepthSpec = {
+  id: DepthId;
+  days: Days;
+  /** Overrides the line's discipline where this depth is a different kind of work. */
+  discipline?: Discipline;
   /**
-   * Qualitative per-tier bands. Present only where a tier means a materially
-   * different build rather than a harder version of the same build. Where
-   * absent, `COMPLEXITY_FACTORS` scales `base`.
+   * A fixed-scope product rather than a custom engagement. Productized depths
+   * are sold at a published price with hard limits — that is what makes them
+   * viable at a price no custom engagement could reach.
    */
-  bands?: Partial<Record<Complexity, Band>>;
-  /** Tiers offered for this capability. First entry is the default. */
-  allowed: Complexity[];
+  productized?: boolean;
   /**
-   * How much page count moves this capability's cost, 0–1. Overrides the
-   * group default. A programmatic content pipeline is 0: the pipeline is the
-   * cost, and the page count it produces is precisely what it makes free.
+   * Lines that already include this work. Selecting SEO foundations alongside
+   * a website is not an extra purchase — every build lays them — and charging
+   * for it would be billing twice for one job.
    */
-  scopeSensitivity?: number;
+  absorbedBy?: ServiceLineId[];
+};
+
+export type ServiceLineSpec = {
+  id: ServiceLineId;
+  discipline: Discipline;
+  depths: DepthSpec[];
+  /** Add-ons this line can carry. Only offered above a productized depth. */
+  addons?: AddonId[];
+};
+
+export type AddonId =
+  | "bookings"
+  | "ordering"
+  | "accounts"
+  | "payments"
+  | "multi_location"
+  | "custom_functionality";
+
+export type AddonSpec = {
+  id: AddonId;
+  days: Days;
   /**
-   * True when the capability targets an external system whose internals we
-   * cannot see before starting. Selecting one widens the HIGH end instead of
-   * inventing implementation effort we have no basis for.
+   * Where one word covers builds an order of magnitude apart, the flow asks a
+   * follow-up instead of averaging. "Booking" spans a Calendly link and a
+   * multi-resource availability engine; no single band is honest about both.
    */
+  variants?: { id: string; days: Days }[];
+  discipline?: Discipline;
+  /** Targets a system we cannot see inside before starting. Widens HIGH only. */
   externalSystem?: boolean;
-  /** Foundations that already include this. Selecting it there costs nothing. */
-  includedIn?: FoundationId[];
 };
 
-/** Page-count tiers. A mild multiplier with diminishing returns, never a per-page price. */
-export type ScopeSize = "small" | "standard" | "large" | "very_large" | "xl";
+/**
+ * What makes an organisation expensive to work with — the honest mechanism for
+ * charging a mid-market firm more than an owner-operator.
+ *
+ * Not a proxy for company size and not a wallet test. Each of these is real,
+ * itemisable work: review rounds with several stakeholders, conformance
+ * testing, integration against systems we do not control, training and
+ * documentation. A solo operator selects none of them and pays the base price.
+ */
+export type OrgFactorId = "approvals" | "compliance" | "integrations" | "training";
 
-export type FoundationSpec = {
-  id: FoundationId;
-  band: Band;
-  /**
-   * Hard floor for this foundation. The engine never quotes below it, and it
-   * is the ONLY floor the engine applies — `GLOBAL_MINIMUM` is a policy
-   * constant the model table is tested against, not a second clamp.
-   */
-  floor: number;
-  /** Groups whose capabilities this foundation already covers at a basic level. */
-  includes: string[];
-  /** Which Studio `project_type` an intake hand-off should carry. */
-  studioType: string;
-  /** Recurring services that genuinely fit this foundation. */
-  suggestedRecurring: string[];
+export type OrgFactorSpec = {
+  id: OrgFactorId;
+  /** Multiplier on the whole engagement. */
+  factor: number;
+  /** True when it also widens the top of the range. */
+  addsUncertainty?: boolean;
 };
 
-export type RecurringSpec = {
-  id: string;
-  /** CAD per month, or null when no APPROVED public price exists. */
-  monthly: number | null;
-  /** Mirrors Supabase `service_products.active`. Only `true` may be published. */
-  approved: boolean;
-  /** Studio catalogue slug this mirrors, where one exists. */
-  studioSlug: string | null;
+/** Which of the three products the engagement lands in. */
+export type Tier = "launch" | "custom" | "systems";
+
+export type LineSelection = {
+  id: ServiceLineId;
+  depth: DepthId;
+  addons?: { id: AddonId; variant?: string }[];
 };
 
-/** Everything the engine needs to produce an estimate. Fully serialisable. */
 export type EstimateInput = {
-  foundation: FoundationId;
-  scope: ScopeSize;
-  bilingual: boolean;
-  /** Omitting `complexity` selects the capability's own default tier. */
-  capabilities: { id: CapabilityId; complexity?: Complexity }[];
+  lines: LineSelection[];
+  org?: OrgFactorId[];
+  /**
+   * Optional, and it routes — it never sets the price. Someone who says $3,000
+   * sees the Launch product at its published price; someone who says $50,000
+   * sees the custom range at the same published rates. This exists so we
+   * propose the right scope, not a bigger one.
+   */
+  budget?: "under_5k" | "5_15k" | "15_50k" | "50k_plus" | "unsure";
   /** Client cannot describe the scope yet — widens HIGH only. */
   undefinedScope?: boolean;
   /** A real deadline that compresses the schedule. Costs real money. */
@@ -135,10 +151,10 @@ export type EstimateInput = {
 export type LineItem = {
   /** Stable key for i18n lookup; never a user-facing string. */
   key: string;
-  kind: "foundation" | "capability" | "scope" | "bilingual" | "interaction" | "risk" | "minimum";
+  kind: "line" | "addon" | "org" | "risk" | "aggregation" | "minimum";
   band: Band;
-  complexity?: Complexity;
-  group?: CapabilityGroup;
+  days?: Days;
+  discipline?: Discipline;
   /** Machine-readable reason, resolved to prose by the caller's locale. */
   note?: string;
 };
@@ -146,21 +162,40 @@ export type LineItem = {
 export type Estimate = {
   pricingVersion: string;
   modelChecksum: string;
-  /** Rounded, client-safe. Low is rounded down, high up — never narrower than computed. */
+  /** Rounded, client-safe. Low rounds down, high up — never narrower than computed. */
   low: number;
   high: number;
   /** Internal midpoint. NEVER exposed on the public surface. */
   expected: number;
+  /** Total effort, so any band can be checked against "N days at $R". */
+  days: Days;
+  tier: Tier;
+  /**
+   * True when the engagement is too large to quote honestly from a form. The
+   * public surface shows a starting figure and sells paid discovery instead of
+   * pretending a questionnaire can scope a platform.
+   */
+  needsDiscovery: boolean;
   /** Full derivation. Internal only. */
   lines: LineItem[];
-  /** Capability/foundation keys ranked by contribution to `expected`. */
+  /** Keys ranked by contribution to `expected`. */
   drivers: string[];
-  /** Keys of what a build at this range includes. */
+  /** Keys of what the engagement includes. */
   includes: string[];
   /** Recurring options, separated from build cost. Unapproved prices are null. */
   recurring: { id: string; monthly: number | null }[];
-  /** True when a floor raised the number above the computed band. */
   minimumApplied: boolean;
-  /** Machine-readable caveats (unknown external systems, undefined scope). */
+  /** Machine-readable caveats. */
   caveats: string[];
+  /** Set when the answers and the stated budget do not meet. */
+  budgetSignal: "fits" | "above" | "below" | null;
+};
+
+export type RecurringSpec = {
+  id: string;
+  /** CAD per month, or null when no APPROVED public price exists. */
+  monthly: number | null;
+  /** Mirrors Supabase `service_products.active`. Only `true` may be published. */
+  approved: boolean;
+  studioSlug: string | null;
 };

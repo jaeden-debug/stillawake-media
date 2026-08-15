@@ -26,17 +26,14 @@
  * mis-seeded — a safe failure, but a silent one, so keep them in step.
  */
 
-import type { EstimateInput, ScopeSize } from "./types";
-import { branchOf, type Answers } from "./public-flow";
-import { studioTypeFor } from "./public-flow";
+import type { EstimateInput } from "./types";
+import { studioTypeFor, type Answers } from "./public-flow";
 
 /** Studio's `pages_scale` buckets, from its own discovery definitions. */
-const PAGES_SCALE: Record<ScopeSize, string> = {
-  small: "1_5",
-  standard: "5_15",
-  large: "15_50",
-  very_large: "15_50",
-  xl: "50_plus",
+const PAGES_SCALE: Record<string, string> = {
+  launch: "1_5",
+  custom: "5_15",
+  flagship: "15_50",
 };
 
 /** Base64url so the value survives a query string without escaping. */
@@ -52,6 +49,7 @@ function encode(payload: unknown): string | null {
 }
 
 export type HandoffContext = {
+  /** Kept for callers and future mappings; the seed reads `input`. */
   answers: Answers;
   input: EstimateInput;
   low: number;
@@ -62,50 +60,31 @@ export type HandoffContext = {
 
 /** The seed object, in Studio's vocabulary. Exported for testing. */
 export function studioSeed(ctx: HandoffContext): Record<string, unknown> {
-  const { answers, input } = ctx;
-  const branch = branchOf(answers);
+  const { input } = ctx;
   const seed: Record<string, unknown> = {};
+  const line = (id: string) => input.lines.find((l) => l.id === id);
 
-  seed.project_type = studioTypeFor(input.foundation);
+  seed.project_type = studioTypeFor(input.lines);
 
-  // Studio's "new / existing / rebuild" maps onto how they reached us.
-  if (branch === "redesign") seed.new_or_existing = "rebuild";
-  else if (branch === "seo") {
-    const site = typeof answers.has_site === "string" ? answers.has_site : "";
-    if (site === "yes") seed.new_or_existing = "existing";
-    if (site === "rebuild") seed.new_or_existing = "rebuild";
-    if (site === "no") seed.new_or_existing = "new";
-  } else if (branch === "website" || branch === "sell") seed.new_or_existing = "new";
+  const website = line("website");
+  const store = line("store");
 
-  // Page count, but only where Studio actually asks it.
-  if (["website", "redesign", "seo"].includes(branch)) {
-    seed.pages_scale = PAGES_SCALE[input.scope];
-  }
+  // Studio's new / existing / rebuild, inferred from what they are buying.
+  // A brand or SEO engagement with no build is work on something that already
+  // exists; anything else is new until they tell Studio otherwise.
+  if (website || store) seed.new_or_existing = "new";
+  else if (line("seo") || line("brand") || line("content")) seed.new_or_existing = "existing";
 
-  // Studio's `site_features` multi, derived from what they told us they need.
+  if (website && PAGES_SCALE[website.depth]) seed.pages_scale = PAGES_SCALE[website.depth];
+
   const features: string[] = [];
-  const needs = Array.isArray(answers.needs) ? answers.needs : [];
-  const seoNeeds = Array.isArray(answers.seo_needs) ? answers.seo_needs : [];
-  if (needs.includes("self_edit")) features.push("cms");
-  if (needs.includes("blog")) features.push("blog");
-  if (input.bilingual) features.push("multilingual");
-  if (needs.includes("seo") || branch === "seo") features.push("seo");
-  if (
-    needs.includes("locations") ||
-    seoNeeds.includes("local") ||
-    seoNeeds.includes("locations") ||
-    answers.site_kind === "local"
-  ) {
-    features.push("local_seo");
-  }
-  if (needs.includes("accounts")) features.push("customer_login");
+  if (website && website.depth !== "launch") features.push("cms");
+  if (line("content")) features.push("blog");
+  if (line("seo")) features.push("seo");
+  const addons = input.lines.flatMap((l) => l.addons ?? []);
+  if (addons.some((a) => a.id === "accounts")) features.push("customer_login");
+  if (addons.some((a) => a.id === "multi_location")) features.push("local_seo");
   if (features.length) seed.site_features = [...new Set(features)];
-
-  // `languages` is a free-text follow-up that only fires when multilingual is
-  // selected, so it is only sent alongside it.
-  if (input.bilingual) {
-    seed.languages = ctx.locale === "fr" ? "Français et anglais" : "English and French";
-  }
 
   return seed;
 }
@@ -123,7 +102,7 @@ export function studioHandoffUrl(ctx: HandoffContext): string {
   const params = new URLSearchParams();
 
   // Kept for Studio deploys that predate the `sa` reader.
-  params.set("type", studioTypeFor(ctx.input.foundation));
+  params.set("type", studioTypeFor(ctx.input.lines));
   const seed = encode(studioSeed(ctx));
   if (seed) params.set("sa", seed);
   params.set("sa_est", `${ctx.low}-${ctx.high}`);

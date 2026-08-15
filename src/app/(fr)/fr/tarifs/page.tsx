@@ -79,6 +79,16 @@ export default async function TarifsPage() {
             </Link>{" "}
             — il utilise le même modèle qu&apos;on emploie pour chiffrer de vrais mandats.
           </p>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
+            Les projets peuvent être répartis en un maximum de quatre versements pendant la
+            réalisation, au même prix total — sans intérêt, sans frais, et rien de plus à payer
+            parce que vous étalez les versements. Le{" "}
+            <Link href="/fr/outils/calculateur-cout-projet" className="text-[#D71920] underline-offset-4 hover:underline">
+              calculateur
+            </Link>{" "}
+            estime à quoi ressemble chaque versement. Les options de paiement sont confirmées dans
+            votre proposition écrite, pas ici.
+          </p>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             <PriceCard
               name="Site web"

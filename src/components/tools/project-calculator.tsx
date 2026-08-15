@@ -4,6 +4,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 
 import { activeQuestions, isComplete, mapAnswers, type Answers, type Locale, type Question } from "@/lib/pricing/public-flow";
+import { formatCad } from "@/lib/pricing/labels";
+import { MIN_PAYMENT, PUBLIC_PAYMENT_COUNTS } from "@/lib/pricing/payments";
 import { studioHandoffUrl } from "@/lib/pricing/studio-handoff";
 import {
   trackCalculatorCompleted,
@@ -35,6 +37,8 @@ const UI: Record<Locale, {
   discoveryCta: string; discoveryFrom: string; budgetAbove: string; notQuote: string; cta: string;
   ctaNote: string; restart: string; error: string; notIncluded: string; rangeMeaning: string;
   towardLower: string; lowMeans: string; highMeans: string; couldAdd: string; model: string;
+  payToggle: string; payTitle: string; payEach: string; payPlural: (n: number) => string;
+  payNote: string; payDisclaimer: string; payLonger: string;
 }> = {
   en: {
     of: "of",
@@ -64,6 +68,15 @@ const UI: Record<Locale, {
     budgetAbove:
       "That sits above the budget you mentioned. Scope moves the price, not the conversation — tell us what matters most and we will propose a smaller first phase at the same rates.",
     notQuote: "A preliminary estimate, not a quote. A real proposal follows a short conversation about scope.",
+    payToggle: "See estimated payment options",
+    payTitle: "Estimated payment options",
+    payEach: "per payment",
+    payPlural: (n: number) => `${n} payments`,
+    payNote: "Same total price either way. No interest, no fees, and no extra cost for paying over time.",
+    payDisclaimer:
+      "For planning only. These figures are divided from the estimated project range above and are not a quote, a credit approval or an offer of financing. Actual payment options are set out in your written proposal and agreement.",
+    payLonger:
+      "Business clients can ask about a longer schedule in the written proposal.",
     cta: "Get a real project estimate",
     ctaNote: "Your answers carry across — you will not be asked any of this twice.",
     restart: "Start over",
@@ -107,6 +120,16 @@ const UI: Record<Locale, {
       "C'est au-dessus du budget que vous avez mentionné. C'est la portée qui change le prix, pas la conversation — dites-nous ce qui compte le plus et on proposera une première phase plus petite, aux mêmes tarifs.",
     notQuote:
       "Une estimation préliminaire, pas une soumission. Une vraie proposition suit une courte discussion sur la portée.",
+    payToggle: "Voir les options de paiement estimées",
+    payTitle: "Options de paiement estimées",
+    payEach: "par versement",
+    payPlural: (n: number) => `${n} versements`,
+    payNote:
+      "Le prix total reste le même. Aucun intérêt, aucuns frais, et rien de plus à payer parce que vous étalez les versements.",
+    payDisclaimer:
+      "À titre indicatif seulement. Ces montants sont divisés à partir de la fourchette estimée ci-dessus : ce n'est ni une soumission, ni une approbation de crédit, ni une offre de financement. Les options de paiement réelles sont établies dans votre proposition écrite et votre entente.",
+    payLonger:
+      "Les entreprises peuvent demander un échéancier plus long dans la proposition écrite.",
     cta: "Obtenir une vraie estimation",
     ctaNote: "Vos réponses vous suivent — on ne vous redemandera rien de tout ça.",
     restart: "Recommencer",
@@ -513,6 +536,10 @@ function ResultCard({
           <p className="mt-4 text-[15px] leading-7 text-[#C7B9B9]">{result.summary.join(" · ")}</p>
         )}
 
+        {!result.needsDiscovery && (
+          <PaymentOptions low={result.low} high={result.high} T={T} locale={locale} />
+        )}
+
         {!result.needsDiscovery && (result.lowAssumption || result.highAssumption) && (
           <div className="mt-6 max-w-2xl rounded-2xl border border-white/10 bg-white/[0.03] p-5">
             <p className="text-sm leading-6 text-[#C7B9B9]">{T.towardLower}</p>
@@ -651,6 +678,104 @@ function ResultCard({
           {T.model} {result.pricingVersion}
         </p>
       </Shell>
+    </div>
+  );
+}
+
+/**
+ * Estimated payment options — collapsed by default.
+ *
+ * WHY THESE SCHEDULES AND NOT OTHERS. The public calculator cannot know who is
+ * reading it, so what it advertises has to be safe for a consumer in the
+ * strictest jurisdiction we researched. Regulation Z §1026.2(a)(17)(i) treats a
+ * plan payable "in more than four installments" as consumer credit even with no
+ * finance charge, so four is the ceiling here. See docs/payment-compliance.md.
+ *
+ * The numbers are divided from the RANGE, never from its midpoint: low ÷ N and
+ * high ÷ N. Dividing the midpoint would turn an estimate into what looks like a
+ * quoted payment, which is the exact impression this section must not create.
+ *
+ * Disclosure is a button with aria-expanded/aria-controls rather than a bare
+ * toggle, so it is announced and operable from the keyboard. Motion sits behind
+ * motion-safe:.
+ */
+function PaymentOptions({
+  low,
+  high,
+  T,
+  locale,
+}: {
+  low: number;
+  high: number;
+  T: (typeof UI)[Locale];
+  locale: Locale;
+}) {
+  const [open, setOpen] = useState(false);
+  const panelId = "payment-options-panel";
+
+  const options = PUBLIC_PAYMENT_COUNTS.map((count) => ({
+    count,
+    low: Math.round(low / count),
+    high: Math.round(high / count),
+  })).filter((o) => o.low >= MIN_PAYMENT);
+
+  if (options.length === 0) return null;
+
+  return (
+    <div className="mt-6 max-w-2xl">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-controls={panelId}
+        className={`${FOCUS} inline-flex min-h-11 items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 py-3 text-sm text-[#C7B9B9] transition hover:border-white/30 hover:text-white`}
+      >
+        {T.payToggle}
+        <span aria-hidden className={`text-xs transition-transform motion-safe:duration-200 ${open ? "rotate-180" : ""}`}>
+          ↓
+        </span>
+      </button>
+
+      {open && (
+        <div
+          id={panelId}
+          className="mt-4 rounded-2xl border border-white/10 bg-black/30 p-5 motion-safe:animate-[sam-rise_.35s_cubic-bezier(.16,1,.3,1)_both] sm:p-6"
+        >
+          <p className="text-[11px] uppercase tracking-[0.25em] text-[#8C8080]">{T.payTitle}</p>
+
+          <dl className="mt-4 space-y-4">
+            {options.map((o) => (
+              <div
+                key={o.count}
+                className="flex flex-col gap-1 border-b border-white/[0.07] pb-4 last:border-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
+              >
+                <dt className="text-sm text-[#C7B9B9]">{T.payPlural(o.count)}</dt>
+                {/* emerald-300 on near-black is ~12:1, comfortably past WCAG AA.
+                    Reusing the design system's existing success green rather
+                    than introducing a second one. */}
+                {/* The figure is one unwrappable unit and the label sits under
+                    it on a narrow phone. Left to wrap freely at 320px the amount
+                    itself broke across three ragged lines. */}
+                <dd className="geist text-lg font-black tabular-nums text-emerald-300 sm:text-xl">
+                  <span className="whitespace-nowrap">
+                    {formatCad(o.low, locale)} <span className="text-emerald-300/50">–</span>{" "}
+                    {formatCad(o.high, locale)}
+                  </span>{" "}
+                  <span className="block text-xs font-medium text-[#8C8080] sm:inline">
+                    {T.payEach}
+                  </span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+
+          <p className="mt-5 text-sm leading-6 text-[#C7B9B9]">{T.payNote}</p>
+          <p className="mt-2 text-xs leading-5 text-[#8C8080]">{T.payLonger}</p>
+          <p className="mt-4 border-t border-white/10 pt-4 text-xs leading-5 text-[#8C8080]">
+            {T.payDisclaimer}
+          </p>
+        </div>
+      )}
     </div>
   );
 }

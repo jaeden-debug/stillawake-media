@@ -77,6 +77,15 @@ export default async function PricingPage() {
             </Link>{" "}
             — it runs the same model we scope real work with.
           </p>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
+            Projects can be split into up to four payments across the build, at the same total
+            price — no interest, no fees, and nothing extra for paying over time. The{" "}
+            <Link href="/tools/project-cost-calculator" className="text-[#D71920] underline-offset-4 hover:underline">
+              calculator
+            </Link>{" "}
+            estimates what each payment looks like. Payment options are confirmed in your written
+            proposal, not here.
+          </p>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             <PriceCard
               name="Website"

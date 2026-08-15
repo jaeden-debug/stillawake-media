@@ -2,8 +2,8 @@
 /**
  * Syncs the canonical pricing kernel from .com to .dev.
  *
- * Run this after ANY edit to src/lib/pricing/{types,model,engine,checksum,labels}.ts.
- * It stamps model.ts with a fresh checksum and copies all five files verbatim
+ * Run this after ANY edit to src/lib/pricing/{types,model,engine,checksum,labels,payments}.ts.
+ * It stamps model.ts with a fresh checksum and copies all six files verbatim
  * into stillawakemedia.dev, which is what makes the copies byte-identical and
  * lets both repos' `model.test.ts` verify the same hash.
  *
@@ -27,7 +27,7 @@ const devDir =
   process.env.PRICING_DEV_DIR ??
   resolve(here, "..", "..", "Documents", "Claude", "Projects", "stillawakemedia.dev", "src", "lib", "pricing");
 
-const FILES = ["types.ts", "model.ts", "engine.ts", "checksum.ts", "labels.ts"];
+const FILES = ["types.ts", "model.ts", "engine.ts", "checksum.ts", "labels.ts", "payments.ts"];
 const CHECKSUM_LINE = /export const MODEL_CHECKSUM = "[^"]*";/;
 
 /** Must stay identical to `modelChecksum` in checksum.ts. */

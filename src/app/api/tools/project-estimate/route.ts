@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { estimate, PricingInputError } from "@/lib/pricing/engine";
-import { BASE_LABELS, CAVEAT_LABELS, DISCOVERY_REASONS, formatCad, labelForKey, type Locale } from "@/lib/pricing/labels";
+import { ASSUMPTION_LABELS, BASE_LABELS, CAVEAT_LABELS, DISCOVERY_REASONS, formatCad, labelForKey, type Locale } from "@/lib/pricing/labels";
 import { DISCOVERY } from "@/lib/pricing/model";
 import { isComplete, mapAnswers, sanitizeAnswers } from "@/lib/pricing/public-flow";
 
@@ -83,6 +83,12 @@ export async function POST(request: Request) {
           : null,
         discoveryFromLabel: formatCad(DISCOVERY.from, locale),
         excludes: result.excludes.map((key) => labelForKey(key, locale)),
+        /* What each end of the range assumes. The bounds are not a confidence
+           interval, and saying so is what turns a spread into information
+           rather than anxiety. */
+        lowAssumption: ASSUMPTION_LABELS[result.lowAssumption]?.[locale] ?? null,
+        highAssumption: ASSUMPTION_LABELS[result.highAssumption]?.[locale] ?? null,
+        possibleAdditions: result.possibleAdditions.map((key) => labelForKey(key, locale)),
         summary,
         includes: [...new Set(result.includes)].map((key) => labelForKey(key, locale)),
         drivers: result.drivers.map((key) => labelForKey(key, locale)),

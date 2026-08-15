@@ -24,17 +24,17 @@ function post(body: unknown): Promise<Response> {
 }
 
 /** The Launch product: the smallest complete path through the flow. */
-const LAUNCH = { goal: "new_website", size: "small" };
+const LAUNCH = { goal: "new_website", content: "ready", size: "small" };
 
 /** A normal local-business project. */
-const CUSTOM = { goal: "new_website", needs: ["explain", "leads"], size: "standard" };
+const CUSTOM = { goal: "new_website", needs: ["explain", "leads"], content: "ready", size: "standard" };
 
 describe("public estimate endpoint", () => {
   it("prices a complete set of answers", async () => {
     const res = await post({ answers: LAUNCH, locale: "en" });
     expect(res.status).toBe(200);
     const body = await res.json();
-    expect(body.low).toBe(2500);
+    expect(body.low).toBe(1800);
     expect(body.tier).toBe("launch");
     expect(body.needsDiscovery).toBe(false);
     expect(body.includes.length).toBeGreaterThan(0);
@@ -127,7 +127,7 @@ describe("tampering", () => {
 
   it("cannot cross the minimum engagement downward", async () => {
     const res = await post({ answers: LAUNCH, locale: "en" });
-    expect((await res.json()).low).toBeGreaterThanOrEqual(2500);
+    expect((await res.json()).low).toBeGreaterThanOrEqual(1800);
   });
 
   it("resists prototype pollution in the answers object", async () => {
@@ -140,7 +140,7 @@ describe("tampering", () => {
 describe("recurring services", () => {
   it("keeps monthly fees out of the build range and withholds unapproved prices", async () => {
     const body = await (await post({ answers: LAUNCH, locale: "en" })).json();
-    expect(body.high).toBeLessThanOrEqual(4500);
+    expect(body.high).toBeLessThanOrEqual(3500);
     const care = body.recurring.find((r: { label: string }) => r.label === "Website care plan");
     expect(care.monthly).toBeNull();
     expect(care.monthlyLabel).toBeNull();
@@ -176,7 +176,7 @@ describe("routing", () => {
     expect(body.tier).toBe("discovery");
     // The reason is shown rather than a bare refusal to quote.
     expect(body.discoveryReason).toMatch(/scoped before it is priced/i);
-    expect(body.discoveryFromLabel).toBe("CA$2,500");
+    expect(body.discoveryFromLabel).toBe("CA$1,800");
   });
 
   it("keeps a custom project quotable and above the product", async () => {
@@ -184,9 +184,11 @@ describe("routing", () => {
     const custom = await (await post({ answers: CUSTOM, locale: "en" })).json();
     expect(custom.tier).toBe("project");
     expect(custom.needsDiscovery).toBe(false);
-    // A continuous ladder: the small tier's ceiling is the standard tier's
-    // floor. Sized by content, so continuity is correct here.
-    expect(custom.low).toBeGreaterThanOrEqual(launch.high);
+    /* The bands OVERLAP by design: an involved small site can cost more than a
+       simple standard one. What must hold is that the bigger tier is bigger at
+       both ends, not that the ranges are disjoint. */
+    expect(custom.low).toBeGreaterThan(launch.low);
+    expect(custom.high).toBeGreaterThan(launch.high);
   });
 
   /** Budget routes; it must never move the number. */
@@ -202,7 +204,7 @@ describe("routing", () => {
 
   it("says so when the work sits above the stated budget", async () => {
     // A dashboard against an under-$5,000 budget genuinely does not meet;
-    // a $4,000–7,000 site against the same budget overlaps and must NOT flag.
+    // a normal local site against the same budget overlaps and must NOT flag.
     const clear = await (await post({ answers: { goal: "software", kind: "dashboard", budget: "under_5k" }, locale: "en" })).json();
     expect(clear.budgetSignal).toBe("above");
     const overlapping = await (await post({ answers: { ...CUSTOM, budget: "under_5k" }, locale: "en" })).json();
@@ -221,5 +223,27 @@ describe("what is NOT included", () => {
     const body = await (await post({ answers: CUSTOM, locale: "en" })).json();
     expect(body.excludes.length).toBeGreaterThan(0);
     expect(body.excludes.join(" ")).toMatch(/third-party|hosting/i);
+  });
+});
+
+describe("the range explains itself", () => {
+  it("says what each end of the range assumes", async () => {
+    const body = await (await post({ answers: CUSTOM, locale: "en" })).json();
+    expect(body.lowAssumption).toBeTruthy();
+    expect(body.highAssumption).toBeTruthy();
+    expect(body.lowAssumption).not.toBe(body.highAssumption);
+  });
+
+  it("suggests what could be added without pushing it", async () => {
+    const body = await (await post({ answers: CUSTOM, locale: "en" })).json();
+    expect(body.possibleAdditions.length).toBeGreaterThan(0);
+  });
+
+  /** The estimate is never presented as a quote. */
+  it("keeps internal diagnostics out of the response", async () => {
+    const body = await (await post({ answers: CUSTOM, locale: "en" })).json();
+    for (const forbidden of ["internalValue", "internalRate", "days", "expected", "lines"]) {
+      expect(body, `leaked "${forbidden}"`).not.toHaveProperty(forbidden);
+    }
   });
 });

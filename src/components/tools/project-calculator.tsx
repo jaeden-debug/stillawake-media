@@ -33,7 +33,8 @@ const UI: Record<Locale, {
   drivers: string; ongoing: string; ongoingNote: string; quoted: string; perMonth: string;
   launchNote: string; customNote: string; discoveryTitle: string; discoveryBody: string;
   discoveryCta: string; discoveryFrom: string; budgetAbove: string; notQuote: string; cta: string;
-  ctaNote: string; restart: string; error: string; notIncluded: string; model: string;
+  ctaNote: string; restart: string; error: string; notIncluded: string; rangeMeaning: string;
+  towardLower: string; lowMeans: string; highMeans: string; couldAdd: string; model: string;
 }> = {
   en: {
     of: "of",
@@ -43,7 +44,7 @@ const UI: Record<Locale, {
     pickOne: "Pick at least one to continue.",
     calculate: "See my estimate",
     calculating: "Working it out",
-    yourEstimate: "Your estimate",
+    yourEstimate: "Estimated project range",
     fixedPrice: "Fixed price",
     startsAround: "Projects like this start around",
     includes: "What that includes",
@@ -54,7 +55,7 @@ const UI: Record<Locale, {
     perMonth: "/mo",
     launchNote:
       "This is our fixed-scope Launch product: our proven layout, your existing brand applied, up to five pages, one round of revisions. The fastest way to get something real online — and because it is a product, the scope is capped.",
-    customNote: "Every project gets a written scope with a fixed price before any commitment. No sales call.",
+    customNote: "Every project gets a written scope with a fixed price before any commitment.",
     discoveryTitle: "This one needs scoping before it can be priced",
     discoveryBody:
       "A form cannot honestly price a system this size. The requirements are the expensive part and they do not exist yet, so we do not guess at them. Paid discovery produces a written scope, an architecture and a fixed build price — and the fee comes off the build.",
@@ -62,12 +63,18 @@ const UI: Record<Locale, {
     discoveryFrom: "Discovery from",
     budgetAbove:
       "That sits above the budget you mentioned. Scope moves the price, not the conversation — tell us what matters most and we will propose a smaller first phase at the same rates.",
-    notQuote: "A planning estimate, not a binding quote. Final pricing depends on confirmed scope.",
-    cta: "Start my project",
+    notQuote: "A preliminary estimate, not a quote. A real proposal follows a short conversation about scope.",
+    cta: "Get a real project estimate",
     ctaNote: "Your answers carry across — you will not be asked any of this twice.",
     restart: "Start over",
     error: "We could not work that out. Try again in a moment.",
     notIncluded: "Not included",
+    rangeMeaning: "What this range means",
+    towardLower:
+      "Most straightforward projects with the scope you selected land toward the lower or middle of this range.",
+    lowMeans: "Toward the lower end",
+    highMeans: "Toward the higher end",
+    couldAdd: "You could also add",
     model: "Pricing model",
   },
   fr: {
@@ -78,7 +85,7 @@ const UI: Record<Locale, {
     pickOne: "Choisissez-en au moins un pour continuer.",
     calculate: "Voir mon estimation",
     calculating: "Calcul en cours",
-    yourEstimate: "Votre estimation",
+    yourEstimate: "Fourchette estimée du projet",
     fixedPrice: "Prix fixe",
     startsAround: "Les projets comme celui-ci commencent autour de",
     includes: "Ce que ça comprend",
@@ -99,12 +106,18 @@ const UI: Record<Locale, {
     budgetAbove:
       "C'est au-dessus du budget que vous avez mentionné. C'est la portée qui change le prix, pas la conversation — dites-nous ce qui compte le plus et on proposera une première phase plus petite, aux mêmes tarifs.",
     notQuote:
-      "Une estimation de planification, pas une soumission ferme. Le prix final dépend de la portée confirmée.",
-    cta: "Démarrer mon projet",
+      "Une estimation préliminaire, pas une soumission. Une vraie proposition suit une courte discussion sur la portée.",
+    cta: "Obtenir une vraie estimation",
     ctaNote: "Vos réponses vous suivent — on ne vous redemandera rien de tout ça.",
     restart: "Recommencer",
     error: "On n'a pas pu calculer ça. Réessayez dans un instant.",
     notIncluded: "Non inclus",
+    rangeMeaning: "Ce que cette fourchette signifie",
+    towardLower:
+      "La plupart des projets simples avec la portée que vous avez choisie se situent dans le bas ou le milieu de cette fourchette.",
+    lowMeans: "Vers le bas de la fourchette",
+    highMeans: "Vers le haut de la fourchette",
+    couldAdd: "Vous pourriez aussi ajouter",
     model: "Modèle tarifaire",
   },
 };
@@ -120,6 +133,9 @@ type Result = {
   discoveryReason: string | null;
   discoveryFromLabel: string;
   excludes: string[];
+  lowAssumption: string | null;
+  highAssumption: string | null;
+  possibleAdditions: string[];
   summary: string[];
   includes: string[];
   drivers: string[];
@@ -460,7 +476,12 @@ function ResultCard({
     locale,
   });
 
-  const badge = result.needsDiscovery ? null : result.tier === "launch" ? T.fixedPrice : T.yourEstimate;
+  /* No badge. The eyebrow already says "estimated project range", and there is
+     no second thing worth saying — every result is a range now, including the
+     entry tier, whose band is genuinely $1,800–$3,000 rather than a fixed
+     price. Calling that "fixed price" while showing one number was the old
+     capped-product framing and it read as a promise we had not made. */
+  const badge = null;
 
   return (
     <div className="motion-safe:animate-[sam-rise_.5s_cubic-bezier(.16,1,.3,1)_both]">
@@ -477,7 +498,7 @@ function ResultCard({
         {result.needsDiscovery && <p className="mt-4 text-sm text-[#8C8080]">{T.startsAround}</p>}
 
         <p className="geist mt-3 text-[2.4rem] font-black leading-[1] tracking-[-0.055em] tabular-nums sm:text-6xl">
-          {result.tier === "launch" || result.needsDiscovery ? (
+          {result.needsDiscovery ? (
             fmt(counted)
           ) : (
             <>
@@ -492,10 +513,24 @@ function ResultCard({
           <p className="mt-4 text-[15px] leading-7 text-[#C7B9B9]">{result.summary.join(" · ")}</p>
         )}
 
-        {result.tier === "launch" && !result.needsDiscovery && (
-          <p className="mt-5 max-w-2xl rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-sm leading-6 text-[#C7B9B9]">
-            {T.launchNote}
-          </p>
+        {!result.needsDiscovery && (result.lowAssumption || result.highAssumption) && (
+          <div className="mt-6 max-w-2xl rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+            <p className="text-sm leading-6 text-[#C7B9B9]">{T.towardLower}</p>
+            <dl className="mt-4 space-y-2.5 text-sm">
+              {result.lowAssumption && (
+                <div className="flex flex-col gap-0.5 sm:flex-row sm:gap-3">
+                  <dt className="shrink-0 text-[#8C8080]">{T.lowMeans}</dt>
+                  <dd className="text-[#C7B9B9]">{result.lowAssumption}</dd>
+                </div>
+              )}
+              {result.highAssumption && (
+                <div className="flex flex-col gap-0.5 sm:flex-row sm:gap-3">
+                  <dt className="shrink-0 text-[#8C8080]">{T.highMeans}</dt>
+                  <dd className="text-[#C7B9B9]">{result.highAssumption}</dd>
+                </div>
+              )}
+            </dl>
+          </div>
         )}
 
         {result.needsDiscovery && (
@@ -555,6 +590,19 @@ function ResultCard({
             )}
           </section>
         </div>
+
+        {result.possibleAdditions.length > 0 && !result.needsDiscovery && (
+          <div className="mt-8 border-t border-white/10 pt-6">
+            <h3 className="text-[11px] uppercase tracking-[0.3em] text-[#8C8080]">{T.couldAdd}</h3>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {result.possibleAdditions.map((a) => (
+                <li key={a} className="rounded-full border border-white/10 px-3 py-1.5 text-[13px] text-[#8C8080]">
+                  {a}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         {result.excludes.length > 0 && (
           <div className="mt-8 border-t border-white/10 pt-6">

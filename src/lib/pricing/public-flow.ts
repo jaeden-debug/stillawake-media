@@ -212,6 +212,22 @@ export function activeQuestions(a: Answers): Question[] {
     }
 
     qs.push({
+      id: "content",
+      kind: "single",
+      prompt: t("How ready is your content?", "Votre contenu est-il prêt?"),
+      help: t(
+        "Words and images. This moves the estimate more than almost anything else.",
+        "Textes et images. C'est ce qui influence le plus l'estimation.",
+      ),
+      options: [
+        { key: "ready", label: t("I already have most of it", "J'ai déjà presque tout") },
+        { key: "help", label: t("I need some help with it", "J'aurais besoin d'un coup de main") },
+        { key: "full", label: t("I need you to handle most of it", "J'ai besoin que vous vous en occupiez") },
+        { key: "unsure", label: t("Not sure yet", "Pas encore certain") },
+      ],
+    });
+
+    qs.push({
       id: "size",
       kind: "single",
       prompt: t("How much content?", "Combien de contenu?"),
@@ -352,6 +368,12 @@ export function mapAnswers(a: Answers): EstimateInput {
   if (needs.includes("sell")) push("sell_products");
   if (needs.includes("connect")) push("connect_tools");
   if (needs.includes("custom")) push("custom_functionality");
+
+  /* Content readiness. "Not sure" takes the middle reading rather than the
+     expensive one — we never quote high on an ambiguity we failed to resolve. */
+  const content = one(a, "content");
+  if (content === "help" || content === "unsure") push("content_help");
+  else if (content === "full") push("content_full");
 
   /* ── real complexity ─────────────────────────────────────────────────── */
   if (complexity.includes("multi_location")) push("multi_location");

@@ -27,6 +27,7 @@ import {
   DISCOVERY_SIZE_THRESHOLD,
   EXCLUSIONS,
   MINIMUM,
+  PLANNING_DAY_RATE,
   MODEL_CHECKSUM,
   PRICING_VERSION,
   RECURRING_BY_ID,
@@ -164,7 +165,9 @@ export function estimate(input: EstimateInput): Estimate {
   if (base.alwaysDiscovery) discoveryReason = "software_requirements";
 
   /* ── additions: flat, and integration is not construction ──────────────── */
-  let proportionalShare = 0;
+  let shareLow = 0;
+  let shareHigh = 0;
+  const proportionalKeys: string[] = [];
   const seen = new Set<string>();
   for (const sel of input.additions ?? []) {
     const spec = Object.hasOwn(ADDITIONS, sel.id) ? ADDITIONS[sel.id] : undefined;
@@ -173,9 +176,13 @@ export function estimate(input: EstimateInput): Estimate {
     if (seen.has(sel.id)) continue;
     seen.add(sel.id);
 
-    // Proportional process work is applied after the flat items are known.
-    if (spec.share !== undefined) {
-      proportionalShare += spec.share;
+    /* Proportional work — review rounds, content production — is applied after
+       the flat items are known, and asymmetrically: the low share is the
+       simple case, the high share is the involved one. */
+    if (spec.shareLow !== undefined || spec.shareHigh !== undefined) {
+      shareLow += spec.shareLow ?? 0;
+      shareHigh += spec.shareHigh ?? spec.shareLow ?? 0;
+      proportionalKeys.push(sel.id);
       includes.push(sel.id);
       continue;
     }
@@ -215,11 +222,25 @@ export function estimate(input: EstimateInput): Estimate {
 
   /* ── proportional process (stakeholder review only) ────────────────────── */
   const flat = add(...items);
-  if (proportionalShare > 0) {
-    const band = scale(flat, proportionalShare);
-    lines.push({ key: "stakeholders", kind: "complexity", band, note: `${Math.round(proportionalShare * 100)}%` });
+  if (shareHigh > 0) {
+    // The share widens the band rather than shifting it: a light content pass
+    // barely moves the floor while a full rewrite lifts the ceiling.
+    const band: Band = {
+      low: flat.low * shareLow,
+      expected: flat.expected * ((shareLow + shareHigh) / 2),
+      high: flat.high * shareHigh,
+    };
+    for (const key of proportionalKeys) {
+      lines.push({
+        key,
+        kind: "complexity",
+        band: proportionalKeys.length === 1 ? band : scale(band, 1 / proportionalKeys.length),
+        note: `${Math.round(shareLow * 100)}–${Math.round(shareHigh * 100)}%`,
+      });
+    }
     items.push(band);
-    days = { low: days.low * (1 + proportionalShare), expected: days.expected * (1 + proportionalShare), high: days.high * (1 + proportionalShare) };
+    const midShare = (shareLow + shareHigh) / 2;
+    days = { low: days.low * (1 + shareLow), expected: days.expected * (1 + midShare), high: days.high * (1 + shareHigh) };
   }
 
   /* ── rush: real cost, so it moves the whole band ───────────────────────── */
@@ -306,6 +327,15 @@ export function estimate(input: EstimateInput): Estimate {
     if (low > BUDGET_BANDS[input.budget].high) budgetSignal = "above";
   }
 
+  /* What a conventional studio would charge for this effort. The gap between
+     it and the public range is the value of our reusable architecture — the
+     internal estimator shows it; a prospect never does. */
+  const internalValue: Band = {
+    low: Math.round(days.low * PLANNING_DAY_RATE),
+    expected: Math.round(days.expected * PLANNING_DAY_RATE),
+    high: Math.round(days.high * PLANNING_DAY_RATE),
+  };
+
   const roundedDays = {
     low: Math.round(days.low * 10) / 10,
     expected: Math.round(days.expected * 10) / 10,
@@ -319,6 +349,10 @@ export function estimate(input: EstimateInput): Estimate {
     high,
     expected,
     days: roundedDays,
+    internalValue,
+    lowAssumption: base.lowAssumption,
+    highAssumption: base.highAssumption,
+    possibleAdditions: base.additions.filter((a) => !(input.additions ?? []).some((x) => x.id === a)).slice(0, 5),
     internalRate: roundedDays.expected > 0 ? Math.round(expected / roundedDays.expected) : 0,
     tier,
     needsDiscovery,

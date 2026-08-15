@@ -11,7 +11,7 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Pricing — Published Rates, No Sales Call",
   description:
-    "StillAwake Media pricing: websites from $2,500 CAD, a full business website $4,000–$7,000, paid discovery from $2,500, SEO plans $600–$850 CAD/month and emergency support $150–$600 one-time. Published, in CAD, no sales call.",
+    "StillAwake Media pricing: websites from $1,800 CAD, a full business website $2,750–$5,750, online stores from $4,250, paid discovery from $1,800, SEO plans $600–$850 CAD/month and emergency support $150–$600 one-time. Published, in CAD, no sales call.",
   alternates: {
     canonical: "https://stillawakemedia.com/pricing",
     languages: {
@@ -60,7 +60,7 @@ export default async function PricingPage() {
             {slot(
               slots,
               "hero_intro",
-              "Most agencies hide pricing behind a discovery call. StillAwake Media publishes it. A professional business website — the pages, forms, analytics and search foundations any business needs — is $4,000 to $7,000, and a smaller site starts at $2,500. You are not charged more because your company has more people in it; you are charged for the work your project actually involves. Anything a form cannot honestly scope starts with paid discovery. All prices in Canadian dollars.",
+              "Most agencies hide pricing behind a discovery call. StillAwake Media publishes it. A professional business website with local search set up runs about $2,750 to $5,750, and a simpler site starts at $1,800. The lower end assumes you supply the content and the scope stays close to what you asked for; the higher end is the same project once there is more original content, more design involvement or more to connect. You are never charged more for having more employees. All prices in Canadian dollars.",
             )}
           </p>
         </div>
@@ -81,7 +81,7 @@ export default async function PricingPage() {
             <PriceCard
               name="Website"
               price={`from $${MINIMUM.toLocaleString("en-CA")} CAD`}
-              cadence="a full business site is $4,000–$7,000"
+              cadence="a full business site with local search: $2,750–$5,750"
               items={[
                 "Custom design, built for you",
                 "Home, about, contact and your service pages",
@@ -94,11 +94,11 @@ export default async function PricingPage() {
             />
             <PriceCard
               name="Store or system"
-              price="from $5,000 CAD"
+              price="from $4,250 CAD"
               cadence="written scope, fixed price"
               items={[
-                "Shopify set up properly, from $5,000",
-                "Business dashboards from $14,000",
+                "Shopify set up properly, from $4,250",
+                "Business dashboards from $12,000",
                 "Priced for the work, not your headcount",
                 "No mandatory sales call",
               ]}

@@ -48,6 +48,8 @@ export const ADDITION_LABELS: Record<string, L> = {
   content_migration: t("Move content from our old site", "Transférer le contenu de notre ancien site"),
   accessibility: t("Accessibility or compliance requirements", "Exigences d'accessibilité ou de conformité"),
   stakeholders: t("Several people need to approve it", "Plusieurs personnes doivent l'approuver"),
+  content_help: t("Help with the writing", "Aide pour la rédaction"),
+  content_full: t("We write the content", "On rédige le contenu"),
   custom_functionality: t("Something custom we haven't described", "Quelque chose de sur mesure non décrit ici"),
 };
 
@@ -96,6 +98,8 @@ export const INCLUDE_LABELS: Record<string, L> = {
   launch_assets: t("Launch assets", "Actifs de lancement"),
   technical_audit: t("Technical audit", "Audit technique"),
   keyword_research: t("Keyword and topic research", "Recherche de mots-clés et de sujets"),
+  competitor_analysis: t("Competitor analysis", "Analyse de la concurrence"),
+  keyword_mapping: t("Basic keyword mapping", "Cartographie de base des mots-clés"),
   information_architecture: t("Information architecture", "Architecture de l'information"),
   onpage_optimization: t("On-page optimization", "Optimisation on-page"),
   measurement_baseline: t("Measurement baseline", "Point de référence des mesures"),
@@ -129,6 +133,61 @@ export const EXCLUDE_LABELS: Record<string, L> = {
   stock_media: t("Stock photography or video", "Photos ou vidéos de banque"),
   ongoing_services: t("Ongoing services — quoted separately", "Services récurrents — chiffrés séparément"),
   paid_advertising: t("Paid advertising budget", "Budget publicitaire"),
+};
+
+/**
+ * What the two ends of the range MEAN. The bounds are not a confidence
+ * interval — saying what each assumes is what turns a spread into information
+ * rather than anxiety.
+ */
+export const ASSUMPTION_LABELS: Record<string, L> = {
+  supplied_content_simple: t(
+    "you supply the words and images, and the scope stays close to what you picked",
+    "vous fournissez les textes et les images, et la portée reste proche de ce que vous avez choisi",
+  ),
+  supplied_content_normal: t(
+    "you supply most of the content and the page structure is straightforward",
+    "vous fournissez l'essentiel du contenu et la structure des pages reste simple",
+  ),
+  clear_structure_supplied_content: t(
+    "the structure is clear up front and most content already exists",
+    "la structure est claire dès le départ et l'essentiel du contenu existe déjà",
+  ),
+  more_pages_or_design: t(
+    "more pages, more design involvement, or content we produce for you",
+    "plus de pages, plus de travail de design, ou du contenu qu'on produit pour vous",
+  ),
+  more_content_and_design: t(
+    "more service pages, original content, and more rounds on the design",
+    "plus de pages de services, du contenu original, et plus de rondes de design",
+  ),
+  original_content_and_architecture: t(
+    "substantial original content and a deeper content architecture",
+    "beaucoup de contenu original et une architecture de contenu plus poussée",
+  ),
+  catalogue_supplied: t(
+    "you supply product information and images, on a standard platform setup",
+    "vous fournissez les informations et images de produits, sur une configuration standard",
+  ),
+  catalogue_and_theme_work: t(
+    "a larger catalogue, more theme work, or operational setup",
+    "un plus grand catalogue, plus de travail sur le thème, ou de la configuration opérationnelle",
+  ),
+  operations_and_theme_work: t(
+    "heavier operations, a custom theme, or unusual fulfilment needs",
+    "des opérations plus lourdes, un thème sur mesure, ou des besoins d'expédition inhabituels",
+  ),
+  existing_assets_usable: t("your existing assets are usable as a starting point", "vos actifs existants servent de point de départ"),
+  clear_direction: t("the direction is clear from the start", "la direction est claire dès le départ"),
+  more_exploration: t("more exploration and more rounds before it lands", "plus d'exploration et plus de rondes avant d'arriver au bon résultat"),
+  single_location_focused: t("one location and a focused set of terms", "un seul emplacement et un ensemble de termes ciblé"),
+  competitive_or_multi_location: t("a competitive market or several locations to cover", "un marché concurrentiel ou plusieurs emplacements à couvrir"),
+  documented_tools: t("the tools involved are documented and behave predictably", "les outils concernés sont documentés et se comportent de façon prévisible"),
+  undocumented_or_messy_data: t("undocumented tools or messy data to work around", "des outils non documentés ou des données à démêler"),
+  more_steps_and_exceptions: t("more steps, and more exceptions to handle", "plus d'étapes et plus d'exceptions à gérer"),
+  known_requirements: t("the requirements are known before we start", "les exigences sont connues avant de commencer"),
+  more_workflows_and_integrations: t("more workflows and more systems to connect", "plus de flux de travail et plus de systèmes à connecter"),
+  scoped_before_build: t("this is scoped in writing before anything is built", "c'est cadré par écrit avant de construire quoi que ce soit"),
 };
 
 export const MISC_LABELS: Record<string, L> = {
@@ -189,6 +248,7 @@ export function labelForKey(key: string, locale: Locale): string {
     ADDITION_LABELS[key]?.[locale] ??
     SEO_LABELS[key]?.[locale] ??
     MISC_LABELS[key]?.[locale] ??
+    ASSUMPTION_LABELS[key]?.[locale] ??
     INCLUDE_LABELS[key]?.[locale] ??
     EXCLUDE_LABELS[key]?.[locale] ??
     RECURRING_LABELS[key]?.[locale] ??

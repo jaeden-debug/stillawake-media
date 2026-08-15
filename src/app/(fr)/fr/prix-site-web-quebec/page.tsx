@@ -34,7 +34,7 @@ const FAQ: [string, string][] = [
   ],
   [
     "Combien coûte l'entretien d'un site web?",
-    "Après la construction : hébergement et domaine (souvent 10 $ à 100 $ et plus par mois), maintenance et mises à jour, et le travail de croissance comme le SEO. Nos prix sont affichés : site d'entreprise professionnel 4 000 $ à 7 000 $ CAD, site plus petit à partir de 2 500 $, boutique en ligne à partir de 5 000 $, cadrage payant à partir de 2 500 $, forfaits SEO de 600 $ à 850 $ par mois et dépannage d'urgence de 150 $ à 600 $.",
+    "Après la construction : hébergement et domaine (souvent 10 $ à 100 $ et plus par mois), maintenance et mises à jour, et le travail de croissance comme le SEO. Nos prix sont affichés : site d'entreprise professionnel environ 2 750 $ à 5 750 $ CAD avec référencement local, site plus simple à partir de 1 800 $, boutique en ligne à partir de 4 250 $, cadrage payant à partir de 1 800 $, forfaits SEO de 600 $ à 850 $ par mois et dépannage d'urgence de 150 $ à 600 $.",
   ],
   [
     "Un site pas cher, est-ce une mauvaise idée?",
@@ -111,11 +111,12 @@ export default function PrixSiteWebQuebecPage() {
             <h2 className="geist text-3xl font-black tracking-[-0.06em]">Ce que StillAwake affiche vraiment</h2>
             <p className="mt-4 max-w-3xl leading-8 text-[#C7B9B9]">
               Nos prix sont affichés plutôt que fournis sur demande. Un{" "}
-              <strong className="text-white">site d&apos;entreprise professionnel coûte 4 000 $ à 7 000 $ CAD</strong>,
-              un site plus petit <strong className="text-white">part de 2 500 $</strong>, une boutique en ligne{" "}
-              <strong className="text-white">à partir de 5 000 $</strong>, et tout ce qu&apos;un formulaire ne peut
+              <strong className="text-white">site d&apos;entreprise professionnel coûte environ 2 750 $ à 5 750 $ CAD</strong>{" "}
+              avec le référencement local, un site plus simple{" "}
+              <strong className="text-white">part de 1 800 $</strong>, une boutique en ligne{" "}
+              <strong className="text-white">à partir de 4 250 $</strong>, et tout ce qu&apos;un formulaire ne peut
               pas cadrer honnêtement commence par un{" "}
-              <strong className="text-white">cadrage payant à partir de 2 500 $</strong>, crédité sur la
+              <strong className="text-white">cadrage payant à partir de 1 800 $</strong>, crédité sur la
               construction. On ne vous facture pas plus parce que vous avez plus d&apos;employés. Le récurrent et le support sont publics aussi : forfaits SEO de{" "}
               <strong className="text-white">600 $ à 850 $ CAD par mois</strong>, dépannage d&apos;urgence de{" "}
               <strong className="text-white">150 $ à 400 $ CAD</strong> (site sur mesure) ou{" "}

@@ -71,10 +71,64 @@ describe("model integrity", () => {
 /* ── the principles, not the numbers ─────────────────────────────────────── */
 
 describe("a normal local business project stays normal", () => {
-  it("centres a full business website in the $4,000–7,000 band", () => {
+  /**
+   * The centre of the model. A normal local-business website has to be
+   * something a plumber will actually consider, so the floor matters more than
+   * the ceiling here.
+   */
+  it("centres a full business website where a local business can reach it", () => {
     const e = estimate(inp({ base: "website_standard" }));
-    expect(e.low).toBeGreaterThanOrEqual(4000);
-    expect(e.high).toBeLessThanOrEqual(7500);
+    expect(e.low).toBeLessThanOrEqual(2500);
+    expect(e.high).toBeLessThanOrEqual(5500);
+  });
+
+  it("makes the entry floor genuinely reachable", () => {
+    const e = estimate(inp({ base: "website_small" }));
+    expect(e.low).toBe(MINIMUM);
+    expect(MINIMUM).toBeLessThanOrEqual(1800);
+  });
+
+  /** ...but the floor must not silently absorb real scope. */
+  it("never lets the entry price contain major scope", () => {
+    const floor = estimate(inp({ base: "website_small" })).low;
+    for (const addition of ["bookings", "payments", "custom_functionality"] as const) {
+      const withScope = estimate(
+        inp({
+          base: "website_small",
+          additions: [addition === "bookings" ? { id: addition, variant: "integrate" } : { id: addition }],
+        }),
+      );
+      expect(withScope.low, `${addition} vanished into the floor`).toBeGreaterThan(floor);
+    }
+    expect(estimate(inp({ base: "website_small", seo: "local" })).low).toBeGreaterThan(floor);
+  });
+
+  /** Content is the biggest hidden variable, so it must cost something. */
+  it("charges more when we write the content than when it is supplied", () => {
+    const supplied = estimate(inp({ base: "website_standard" }));
+    const some = estimate(inp({ base: "website_standard", additions: [{ id: "content_help" }] }));
+    const all = estimate(inp({ base: "website_standard", additions: [{ id: "content_full" }] }));
+    expect(some.expected).toBeGreaterThan(supplied.expected);
+    expect(all.expected).toBeGreaterThan(some.expected);
+    // And it must lift the ceiling more than the floor — a light pass is cheap.
+    expect(all.high - supplied.high).toBeGreaterThan(all.low - supplied.low);
+  });
+
+  /** The mechanism that keeps the floor attractive. */
+  it("moves the ceiling more than the floor when scope is uncertain", () => {
+    const plain = estimate(inp({ base: "website_standard" }));
+    const withBooking = estimate(
+      inp({ base: "website_standard", additions: [{ id: "bookings", variant: "integrate" }] }),
+    );
+    expect(withBooking.high - plain.high).toBeGreaterThan(withBooking.low - plain.low);
+  });
+
+  it("reports internal opportunity value without publishing it", () => {
+    const e = estimate(inp({ base: "website_standard" }));
+    // Our efficiency shows up as a gap between what a studio would charge for
+    // the effort and what we sell it for.
+    expect(e.internalValue.expected).toBeGreaterThan(0);
+    expect(e.internalRate).toBeLessThan(PLANNING_DAY_RATE);
   });
 
   it("never routes a straightforward local site to discovery", () => {

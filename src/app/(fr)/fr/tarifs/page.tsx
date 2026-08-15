@@ -11,7 +11,7 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Tarifs — Prix affichés, sans appel de vente",
   description:
-    "Tarifs StillAwake Media : sites à partir de 2 500 $ CAD, un site d'entreprise complet de 4 000 $ à 7 000 $, cadrage payant à partir de 2 500 $, forfaits SEO de 600 $ à 850 $ par mois et dépannage d'urgence de 150 $ à 600 $. Publiés, en dollars canadiens.",
+    "Tarifs StillAwake Media : sites à partir de 1 800 $ CAD, un site d'entreprise complet de 2 750 $ à 5 750 $, boutiques en ligne à partir de 4 250 $, cadrage payant à partir de 1 800 $, forfaits SEO de 600 $ à 850 $ par mois et dépannage d'urgence de 150 $ à 600 $. Publiés, en dollars canadiens.",
   alternates: {
     canonical: "https://stillawakemedia.com/fr/tarifs",
     languages: {
@@ -62,7 +62,7 @@ export default async function TarifsPage() {
             {slot(
               slots,
               "hero_intro",
-              "La plupart des agences cachent leurs prix derrière un appel de découverte. StillAwake Media les affiche. Un site d'entreprise professionnel — les pages, formulaires, mesures et fondations de recherche dont toute entreprise a besoin — coûte de 4 000 $ à 7 000 $, et un site plus petit part de 2 500 $. On ne vous facture pas plus parce que votre entreprise compte plus d'employés; on facture le travail que votre projet demande réellement. Tout ce qu'un formulaire ne peut pas cadrer honnêtement commence par un cadrage payant. Tous les prix sont en dollars canadiens.",
+              "La plupart des agences cachent leurs prix derrière un appel de découverte. StillAwake Media les affiche. Un site d'entreprise professionnel avec le référencement local configuré coûte environ 2 750 $ à 5 750 $, et un site plus simple part de 1 800 $. Le bas de la fourchette suppose que vous fournissez le contenu et que la portée reste proche de ce que vous avez demandé; le haut, c'est le même projet avec plus de contenu original, plus de travail de design ou plus de choses à connecter. On ne vous facture jamais plus parce que vous avez plus d'employés. Tous les prix sont en dollars canadiens.",
             )}
           </p>
         </div>
@@ -83,7 +83,7 @@ export default async function TarifsPage() {
             <PriceCard
               name="Site web"
               price={`à partir de ${MINIMUM.toLocaleString("fr-CA")} $ CAD`}
-              cadence="un site d'entreprise complet : 4 000 $ à 7 000 $"
+              cadence="un site complet avec référencement local : 2 750 $ à 5 750 $"
               items={[
                 "Design sur mesure, conçu pour vous",
                 "Accueil, à propos, contact et vos pages de services",
@@ -96,11 +96,11 @@ export default async function TarifsPage() {
             />
             <PriceCard
               name="Boutique ou système"
-              price="à partir de 5 000 $ CAD"
+              price="à partir de 4 250 $ CAD"
               cadence="portée écrite, prix fixe"
               items={[
-                "Shopify bien configuré, à partir de 5 000 $",
-                "Tableaux de bord à partir de 14 000 $",
+                "Shopify bien configuré, à partir de 4 250 $",
+                "Tableaux de bord à partir de 12 000 $",
                 "Chiffré selon le travail, pas selon vos effectifs",
                 "Sans appel de vente obligatoire",
               ]}

@@ -33,7 +33,7 @@ const FAQ: [string, string][] = [
   ],
   [
     "What does ongoing website ownership cost?",
-    "Beyond the build: hosting and domain (commonly $10–$100+/month), maintenance and updates, and growth work like SEO. For reference, StillAwake Media publishes its own prices: a professional business website at $4,000–$7,000 CAD, a smaller site from $2,500, an online store from $5,000, paid discovery from $2,500, SEO plans at $600–$850 CAD/month and emergency support at $150–$600 one-time.",
+    "Beyond the build: hosting and domain (commonly $10–$100+/month), maintenance and updates, and growth work like SEO. For reference, StillAwake Media publishes its own prices: a professional business website at about $2,750–$5,750 CAD with local search, a simpler site from $1,800, an online store from $4,250, paid discovery from $1,800, SEO plans at $600–$850 CAD/month and emergency support at $150–$600 one-time.",
   ],
   [
     "Is a cheap website a bad idea?",
@@ -114,10 +114,10 @@ export default function WebsiteCostCanadaPage() {
             <h2 className="geist text-3xl font-black tracking-[-0.06em]">What StillAwake actually publishes</h2>
             <p className="mt-4 max-w-3xl leading-8 text-[#C7B9B9]">
               Our own prices are published rather than quoted on request. A{" "}
-              <strong className="text-white">professional business website is $4,000–$7,000 CAD</strong>, a smaller
-              site <strong className="text-white">starts at $2,500</strong>, an online store{" "}
-              <strong className="text-white">from $5,000</strong>, and anything a form cannot honestly scope starts
-              with <strong className="text-white">paid discovery from $2,500</strong>, credited against the build.
+              <strong className="text-white">professional business website runs about $2,750–$5,750 CAD</strong> with local
+              search set up, a simpler site <strong className="text-white">starts at $1,800</strong>, an online store{" "}
+              <strong className="text-white">from $4,250</strong>, and anything a form cannot honestly scope starts
+              with <strong className="text-white">paid discovery from $1,800</strong>, credited against the build.
               You are not charged more for having more employees.
               Recurring and support are public too: SEO plans cost{" "}
               <strong className="text-white">$600–$850 CAD per month</strong>, emergency support{" "}

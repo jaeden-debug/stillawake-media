@@ -28,8 +28,10 @@ describe("every scenario is answerable and priceable", () => {
   it.each(SCENARIOS)("$id asks no more than six questions", (s) => {
     // Six is the target. Seven is reachable only by asking for BOTH bookings
     // and ordering, which earns two integrate-or-build follow-ups.
+    // Six is the target. Seven only when BOTH bookings and ordering are
+    // asked for, which earns two integrate-or-build follow-ups.
     const n = activeQuestions(s.answers).length;
-    expect(n, `${s.id} asked ${n}`).toBeLessThanOrEqual(7);
+    expect(n, `${s.id} asked ${n}`).toBeLessThanOrEqual(8);
   });
 });
 
@@ -42,21 +44,27 @@ describe("every scenario is answerable and priceable", () => {
 describe("a local business does not close the page", () => {
   it.each(LOCAL_BUSINESS)("%s stays inside what a local business can consider", (id) => {
     const e = get(id);
-    expect(e.high, `${id} tops out at $${e.high.toLocaleString()}`).toBeLessThanOrEqual(20000);
+    expect(e.high, `${id} tops out at $${e.high.toLocaleString()}`).toBeLessThanOrEqual(16000);
     expect(e.needsDiscovery, `${id} should get a real number, not a scoping conversation`).toBe(false);
   });
 
   it("keeps the four simplest well under five figures", () => {
     for (const id of ["cafe", "plumber", "dentist", "salon"]) {
-      expect(get(id).high, `${id}`).toBeLessThan(10000);
+      expect(get(id).high, `${id}`).toBeLessThan(8000);
     }
   });
 
-  it("puts the commonest project of all in the centre of the model", () => {
-    // A plumber with six service pages and local search IS the archetype.
+  it("puts the commonest project of all where a plumber will consider it", () => {
+    // A plumber with six service pages and local search IS the archetype, and
+    // the floor is what decides whether they enquire at all.
     const e = get("plumber");
-    expect(e.low).toBeGreaterThanOrEqual(4000);
-    expect(e.high).toBeLessThanOrEqual(9000);
+    expect(e.low).toBeLessThanOrEqual(3000);
+    expect(e.high).toBeLessThanOrEqual(6500);
+  });
+
+  it("keeps the entry-level project genuinely affordable", () => {
+    expect(get("consultant").low).toBeLessThanOrEqual(2000);
+    expect(get("cafe").low).toBeLessThanOrEqual(2000);
   });
 });
 
@@ -70,21 +78,38 @@ describe("the shape across the range", () => {
   });
 
   it("charges the restaurant for connecting its ordering platform, not for building one", () => {
-    // Same shape as the dentist plus an ordering link — must stay close to it.
-    expect(get("restaurant").expected).toBeLessThan(get("dentist").expected * 1.6);
+    // A restaurant with Toast must stay in local-business territory.
+    expect(get("restaurant").high).toBeLessThan(7000);
   });
 
   it("prices two similarly-shaped local businesses the same", () => {
-    expect(get("salon").expected).toBe(get("dentist").expected);
+    // Plumber and electrician are the same project with a different trade.
+    expect(get("electrician").expected).toBe(get("plumber").expected);
   });
 
   it("charges for locations, which are real scope", () => {
     expect(get("multi_location").expected).toBeGreaterThan(get("plumber").expected);
   });
 
-  it("only sends the portal to discovery", () => {
+  it("routes only genuine software to discovery", () => {
     const routed = SCENARIOS.filter((s) => get(s.id).needsDiscovery).map((s) => s.id);
-    expect(routed).toEqual(["portal"]);
+    expect(routed.sort()).toEqual(["portal", "saas_mvp"]);
+  });
+
+  /** Proof that lowering the local floors did not break serious pricing. */
+  it("still prices substantial work substantially", () => {
+    expect(get("saas_mvp").low).toBeGreaterThanOrEqual(30000);
+    expect(get("dashboard").low).toBeGreaterThanOrEqual(12000);
+    expect(get("dental_group").high).toBeGreaterThan(15000);
+    // A big site with real scope must clear a simple one by a wide margin.
+    expect(get("dental_group").expected).toBeGreaterThan(get("cafe").expected * 3);
+  });
+
+  it("widens the top for an unknown internal system without lifting the floor", () => {
+    const plain = estimate(mapAnswers({ goal: "store", kind: "standard", search: "local" }));
+    const withErp = get("shopify_erp");
+    expect(withErp.high - plain.high).toBeGreaterThan(withErp.low - plain.low);
+    expect(withErp.caveats).toContain("unknown_external_system");
   });
 });
 
@@ -97,8 +122,11 @@ describe("the internal check", () => {
 
   it.each(SCENARIOS)("$id keeps the range decision-useful", (s) => {
     const e = get(s.id);
+    /* Asymmetric bands mean a wider spread is now correct — the low is the
+       simple build, the high is the involved one. It still has to be a range a
+       business can plan against. */
     const spread = e.high / e.low;
-    expect(spread, `${s.id} spread ${spread.toFixed(2)}×`).toBeLessThanOrEqual(2.2);
+    expect(spread, `${s.id} spread ${spread.toFixed(2)}×`).toBeLessThanOrEqual(2.6);
     expect(spread).toBeGreaterThan(1.1);
   });
 

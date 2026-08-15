@@ -98,6 +98,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: post.excerpt,
     alternates: {
       canonical: `/stillawake-times/${post.slug}`,
+      // Only articles that name a counterpart get alternates. Declaring an
+      // en/fr pair that does not point back is worse than declaring none.
+      ...(post.pair
+        ? {
+            languages: {
+              "en-CA": `${siteUrl}/stillawake-times/${post.slug}`,
+              "fr-CA": `${siteUrl}/fr/articles/${post.pair}`,
+              "x-default": `${siteUrl}/stillawake-times/${post.slug}`,
+            },
+          }
+        : {}),
     },
     openGraph: {
       url: `/stillawake-times/${post.slug}`,

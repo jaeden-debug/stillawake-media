@@ -91,7 +91,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     // No `languages` block: these articles are written for Québec and most have
     // no English counterpart, so declaring a bogus en-CA alternate would be
     // worse than declaring none. Pairs get added per-article once both exist.
-    alternates: { canonical: `/fr/articles/${post.slug}` },
+    alternates: {
+      canonical: `/fr/articles/${post.slug}`,
+      // Québec-native pieces have no English twin and correctly declare
+      // nothing; a paired article points both ways.
+      ...(post.pair
+        ? {
+            languages: {
+              "fr-CA": `${siteUrl}/fr/articles/${post.slug}`,
+              "en-CA": `${siteUrl}/stillawake-times/${post.pair}`,
+              "x-default": `${siteUrl}/stillawake-times/${post.pair}`,
+            },
+          }
+        : {}),
+    },
     openGraph: {
       url,
       title: post.title,

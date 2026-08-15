@@ -49,3 +49,19 @@ export function trackStartClick(source: string, locale: "en" | "fr") {
 export function trackPricingCtaClick(plan: string) {
   gtag("event", "pricing_cta_click", { plan });
 }
+
+/**
+ * SECONDARY — movement through the llms.txt cluster.
+ *
+ * The cluster's whole thesis is that a platform guide feeds the tool and the
+ * tool feeds the AEO service page. That is a claim about behaviour, and
+ * without this event it is unfalsifiable: GA4 page views tell us a guide was
+ * read, not whether anyone moved along the path we built for them.
+ *
+ * `from` is the page path, so the same event answers "which guide converts
+ * into tool usage" and "which page sends people to the service page" without
+ * a second event type. Never a conversion.
+ */
+export function trackClusterClick(from: string, to: "tool" | "service" | "guide") {
+  gtag("event", "llms_cluster_click", { from, to });
+}

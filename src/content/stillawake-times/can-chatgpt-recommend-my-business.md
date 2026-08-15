@@ -33,7 +33,7 @@ An assistant naming a business is making a small bet with its credibility. Obser
 
 **Checkable claims.** "Award-winning" is unverifiable; "took a store's repeat-customer rate from 5.9% to 27.8%, source and date published" is a claim a retrieval step can confirm on [our case studies](/work). Specifics survive; adjectives evaporate.
 
-**Machine-readable summaries.** An `llms.txt` file gives AI systems a canonical plain-text summary of your business — who, what, prices, links. Ours is at [/llms.txt](/llms.txt). This is a small, cheap, asymmetric bet: minutes to create, and it's exactly the format an AI agent wants to consume.
+**Machine-readable summaries.** An `llms.txt` file gives AI systems a canonical plain-text summary of your business — who, what, prices, links. Ours is at [/llms.txt](/llms.txt). This is a small, cheap, asymmetric bet: minutes to create, and it's exactly the format an AI agent wants to consume. You can [generate one and check what an answer engine is missing about you](/tools/llms-txt-generator) for free, or follow the platform notes for [Shopify](/tools/llms-txt/shopify), [Next.js](/tools/llms-txt/nextjs) or [WordPress](/tools/llms-txt/wordpress).
 
 **Navigable pages.** Chrome's Lighthouse now includes an *agentic browsing* audit — a measure of how well AI agents can read and navigate a site. After we reformatted our llms.txt, this site measured 100/100 on it. Server-rendered HTML matters here: content that only appears after heavy JavaScript may simply not exist for an AI's crawler.
 
@@ -57,6 +57,6 @@ Record the answers. That's your baseline; it tells you whether your problem is a
 
 ## The honest summary
 
-You can't force your way into AI recommendations, but the influenceable surface is large: consistent entity data, published prices, verifiable claims, llms.txt, server-rendered pages, and independent corroboration. That work compounds — it's the same work that improves your Google visibility, covered in depth in our [Generative Engine Optimization guide](/stillawake-times/what-is-generative-engine-optimization) and [What is AEO?](/stillawake-times/what-is-aeo-answer-engine-optimization)
+You can't force your way into AI recommendations, but the influenceable surface is large: consistent entity data, published prices, verifiable claims, llms.txt, server-rendered pages, and independent corroboration. That work compounds — it's the same work that improves your Google visibility, covered in depth in our [GEO and AEO guide](/stillawake-times/what-is-generative-engine-optimization).
 
 If you'd rather have it done for you, it's a published service: [Answer Engine Optimization](/answer-engine-optimization) — and everything this article recommends is verifiably implemented on the site you're reading.

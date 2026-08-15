@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/content";
 import { getAllPublishedForSitemap } from "@/lib/cms/adapter";
+import { publishedGuides } from "@/data/llms-txt-guides";
+import { REDIRECT_SOURCES } from "@/data/redirects.mjs";
 import { siteUrl } from "@/lib/data";
 
 /**
@@ -73,7 +75,8 @@ const pageLastModified: Record<string, string> = {
   "fr/produits": "2026-08-13",
   privacy: "2026-08-13",
   "fr/confidentialite": "2026-08-13",
-  "tools/llms-txt-generator": "2026-08-13",
+  tools: "2026-08-14",
+  "tools/llms-txt-generator": "2026-08-14",
 };
 
 /** EN ↔ FR pairs — surfaces hreflang directly in the sitemap so both
@@ -146,6 +149,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(post.updated || post.date),
   }));
 
+  /**
+   * Platform implementation guides.
+   *
+   * `publishedGuides()` already excludes drafts and any record that fails the
+   * evidence schema, so this cannot list a URL that renders a thin page — the
+   * sitemap and the router read the same gate. lastmod is the date the
+   * platform facts were verified, which is the only date that means anything
+   * on a page whose value is being current.
+   */
+  const guides = publishedGuides("en").map((guide) => ({
+    url: `${siteUrl}/tools/llms-txt/${guide.slug}`,
+    lastModified: new Date(guide.verifiedDate),
+  }));
+
   /** French articles live in their own content tree and are written for
    *  Québec, so they are listed independently rather than paired 1:1. */
   const articlesFr = getAllPosts("fr").map((post) => ({
@@ -196,9 +213,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
 
   const cmsUrls = new Set(cmsEntries.map((entry) => entry.url));
-  const fileEntries = [...pages, ...articles, ...articlesFr].filter(
+  const fileEntries = [...pages, ...articles, ...articlesFr, ...guides].filter(
     (entry) => !cmsUrls.has(entry.url),
   );
 
-  return [...fileEntries, ...cmsEntries];
+  /**
+   * Never advertise a URL we redirect.
+   *
+   * A retired page can outlive its file: the "What is AEO?" article was
+   * deleted from the content tree and 301'd, but a CMS row for the same slug
+   * kept it in the sitemap, so the sitemap was telling Google to crawl a path
+   * that answered 308. Filtering against the redirect table catches that for
+   * every source — filesystem, CMS or otherwise — instead of special-casing
+   * the one we happened to notice.
+   */
+  const isRedirected = (url: string) =>
+    REDIRECT_SOURCES.has(url.replace(siteUrl, "").replace(/\/$/, "") || "/");
+
+  return [...fileEntries, ...cmsEntries].filter((entry) => !isRedirected(entry.url));
 }

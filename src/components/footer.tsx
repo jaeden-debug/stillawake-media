@@ -29,6 +29,7 @@ const montreal = [
 
 const resources = [
   ["StillAwake Times", "/stillawake-times"],
+  ["Free tools", "/tools"],
   ["Products", "/products"],
   ["Portfolio", "/portfolio"],
   ["Case Studies", "/work"],

@@ -38,7 +38,7 @@ Five factors drive almost all of the variance:
 
 **4. Content production.** Who writes the pages that rank? If content is included, the retainer covers real hours. If it isn't, budget for it separately or expect little movement.
 
-**5. Whether AI-search work is included.** Optimizing for AI Overviews, ChatGPT, and Perplexity — [AEO](/stillawake-times/what-is-aeo-answer-engine-optimization) — is increasingly part of serious SEO. Our Growth plan includes it; many retainers don't mention it at all.
+**5. Whether AI-search work is included.** Optimizing for AI Overviews, ChatGPT, and Perplexity — [AEO](/stillawake-times/what-is-generative-engine-optimization) — is increasingly part of serious SEO. Our Growth plan includes it; many retainers don't mention it at all.
 
 ## What our published plans include
 

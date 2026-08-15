@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { trackStartClick } from "@/lib/analytics";
+import { trackStartClick, trackClusterClick } from "@/lib/analytics";
 
 /**
  * Tracks clicks through to the Studio onboarding.
@@ -25,12 +25,31 @@ export function OutboundTracking({ locale }: { locale: "en" | "fr" }) {
       if (!anchor) return;
 
       const href = anchor.getAttribute("href") ?? "";
+
+      /**
+       * Movement through the llms.txt cluster, tracked on the same delegated
+       * listener rather than a second one. The path is guide → tool → service
+       * page, and only clicks that leave the current section are interesting:
+       * a link from the tool back to the tool tells us nothing.
+       */
+      const from = window.location.pathname;
+      if (href.startsWith("/") && from.startsWith("/tools")) {
+        if (href.startsWith("/tools/llms-txt-generator") && !from.startsWith("/tools/llms-txt-generator")) {
+          trackClusterClick(from, "tool");
+        } else if (href.startsWith("/tools/llms-txt/")) {
+          trackClusterClick(from, "guide");
+        } else if (href === "/answer-engine-optimization" || href.startsWith("/fr/referencement-ia")) {
+          trackClusterClick(from, "service");
+        }
+        return;
+      }
+
       if (!href.includes("stillawake.studio")) return;
 
       // The page the click came from is the useful dimension — it answers
       // "which page persuades people to start", which is the question the
       // content plan actually needs answered.
-      trackStartClick(window.location.pathname, locale);
+      trackStartClick(from, locale);
     }
 
     document.addEventListener("click", onClick, { capture: true });

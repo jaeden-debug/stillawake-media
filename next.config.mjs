@@ -1,4 +1,5 @@
 import { withBotId } from "botid/next/config";
+import { REDIRECTS } from "./src/data/redirects.mjs";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -32,36 +33,7 @@ const nextConfig = {
     ];
   },
   async redirects() {
-    return [
-      { source: "/web-design", destination: "/web-design-montreal", permanent: true },
-      { source: "/technical-seo", destination: "/stillawake-times/what-is-technical-seo", permanent: true },
-      // Cannibalization repair round 2: the four "Montréal" article stubs were
-      // thin commercial-intent duplicates of dedicated service pages. The
-      // service page owns the commercial query; article equity 301s into it.
-      // Top-level legacy sources point straight at the final target (no chains).
-      { source: "/web-development-montreal", destination: "/software-development", permanent: true },
-      { source: "/stillawake-times/web-development-montreal", destination: "/software-development", permanent: true },
-      { source: "/ecommerce-web-design-montreal", destination: "/shopify-development", permanent: true },
-      { source: "/stillawake-times/ecommerce-web-design-montreal", destination: "/shopify-development", permanent: true },
-      { source: "/montreal-web-designer", destination: "/web-design-montreal", permanent: true },
-      { source: "/stillawake-times/montreal-web-designer", destination: "/web-design-montreal", permanent: true },
-      { source: "/web-design-agency-montreal", destination: "/web-design-montreal", permanent: true },
-      { source: "/stillawake-times/web-design-agency-montreal", destination: "/web-design-montreal", permanent: true },
-      { source: "/website-redesign-montreal", destination: "/website-redesign", permanent: true },
-      { source: "/stillawake-times/website-redesign-montreal", destination: "/website-redesign", permanent: true },
-      { source: "/blog/google-business-profile-optimization", destination: "/stillawake-times/google-business-profile-optimization", permanent: true },
-      { source: "/blog/how-to-redesign-a-website-without-destroying-seo", destination: "/stillawake-times/how-to-redesign-a-website-without-destroying-seo", permanent: true },
-      { source: "/stillawake-times/custom-coded-websites-outperform-templates", destination: "/stillawake-times/why-custom-coded-websites-outperform-templates", permanent: true },
-      // Cannibalization repair: these articles duplicated dedicated commercial
-      // pages head-on (near-identical titles/intent). The service page is the
-      // canonical commercial target; the article equity 301s into it.
-      { source: "/stillawake-times/web-design-montreal", destination: "/web-design-montreal", permanent: true },
-      { source: "/stillawake-times/seo-montreal", destination: "/seo-montreal", permanent: true },
-      { source: "/stillawake-times/agence-web-montreal", destination: "/fr/agence-web-montreal", permanent: true },
-      // Near-duplicate merges (same topic, one day apart / same intent):
-      { source: "/stillawake-times/how-website-speed-impacts-seo-conversions-revenue", destination: "/stillawake-times/how-website-speed-directly-impacts-revenue-and-seo-rankings", permanent: true },
-      { source: "/stillawake-times/what-businesses-should-prepare-before-hiring-a-web-design-agency", destination: "/stillawake-times/what-to-know-before-hiring-web-design-agency", permanent: true },
-    ];
+    return REDIRECTS;
   },
 };
 

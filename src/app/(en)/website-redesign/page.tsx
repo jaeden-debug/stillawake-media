@@ -108,6 +108,88 @@ export default function WebsiteRedesignPage() {
         </div>
       </section>
 
+      <section className="border-t border-white/10 px-6 py-20">
+        <div className="mx-auto max-w-7xl">
+          <h2 className="geist max-w-4xl text-4xl font-black tracking-[-0.06em] md:text-5xl">
+            What gets kept, and what gets rebuilt
+          </h2>
+          <p className="mt-4 max-w-3xl leading-8 text-[#C7B9B9]">
+            &quot;Redesign&quot; hides an important question: how much of the existing site survives? Being explicit
+            about it up front is what stops a rebuild from quietly deleting the parts that were working.
+          </p>
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
+            <div className="rounded-[2rem] border border-[#D71920]/40 bg-[#D71920]/5 p-8">
+              <h3 className="text-xl font-semibold">Kept and carried over</h3>
+              <ul className="mt-5 space-y-3 text-sm leading-6 text-[#C7B9B9]">
+                <li>— <strong className="text-white">URLs that earn traffic</strong>, unchanged wherever possible. An address that ranks is an asset, not a design decision.</li>
+                <li>— <strong className="text-white">Content with search history</strong> — moved across and improved, never dropped because it didn&apos;t fit a new template.</li>
+                <li>— <strong className="text-white">Backlink targets.</strong> Any page other sites link to either keeps its URL or gets a direct 301 — never a chain, never the homepage.</li>
+                <li>— <strong className="text-white">Conversion paths that already work</strong>, even if they&apos;re ugly. We measure before replacing them.</li>
+              </ul>
+            </div>
+            <div className="rounded-[2rem] border border-white/10 p-8">
+              <h3 className="text-xl font-semibold">Rebuilt</h3>
+              <ul className="mt-5 space-y-3 text-sm leading-6 text-[#C7B9B9]">
+                <li>— <strong className="text-white">The front-end</strong>, for speed and Core Web Vitals — usually the single biggest measurable gain.</li>
+                <li>— <strong className="text-white">Information architecture</strong>, so each search intent has exactly one page that owns it.</li>
+                <li>— <strong className="text-white">Structured data and metadata</strong>, generally absent or wrong on the outgoing site.</li>
+                <li>— <strong className="text-white">Anything genuinely thin.</strong> Some pages should be merged or retired — that&apos;s a deliberate decision with a redirect, not a deletion.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-white/10 px-6 py-20">
+        <div className="mx-auto max-w-7xl">
+          <h2 className="geist max-w-4xl text-4xl font-black tracking-[-0.06em] md:text-5xl">
+            What a redesign costs
+          </h2>
+          <p className="mt-6 max-w-3xl leading-8 text-[#C7B9B9]">
+            A properly executed redesign generally tracks the same 2026 Canadian ranges as a new build — roughly{" "}
+            <strong className="text-white">$3,000–$10,000</strong> for a small-business site and{" "}
+            <strong className="text-white">$8,000–$25,000</strong> for a fully custom one — because doing it right
+            means re-examining structure, content and technical foundation rather than repainting the old site. Those
+            are market observations, not quotes: every project gets a{" "}
+            <strong className="text-white">written scope with a fixed price</strong> before you commit, described
+            asynchronously with no mandatory sales call. The full breakdown is in the{" "}
+            <Link href="/website-cost-canada" className="text-[#D71920] underline underline-offset-4">
+              Canadian website cost guide
+            </Link>
+            .
+          </p>
+          <div className="mt-10 rounded-[2rem] border border-[#D71920]/40 bg-[#D71920]/5 p-8">
+            <p className="mb-3 text-sm uppercase tracking-[.3em] text-[#D71920]">Proof, not promises</p>
+            <h3 className="geist max-w-3xl text-2xl font-black tracking-[-0.05em]">
+              Zero organic clicks to page 1 in 8 weeks — measured.
+            </h3>
+            <p className="mt-4 max-w-3xl leading-8 text-[#C7B9B9]">
+              On the TravelDesign By Lisa platform, a client rebuild, roughly 2,300 technical defects were cleared
+              across 834 URLs in three languages. Measured afterwards: page-1 positions from a standing start,
+              9-minute average sessions, CLS 0.00 and Best Practices 100 (Chrome Lighthouse, mobile, August 2026).
+              Every figure is sourced and dated in the case study.
+            </p>
+            <Link
+              href="/work/lisa-travel-design"
+              className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90"
+            >
+              Read the case study →
+            </Link>
+          </div>
+          <p className="mt-8 max-w-3xl leading-8 text-[#C7B9B9]">
+            If your current site isn&apos;t ranking and you&apos;re not yet sure a rebuild is the fix, start with the
+            diagnosis instead:{" "}
+            <Link
+              href="/stillawake-times/why-is-my-website-not-ranking-on-google"
+              className="text-[#D71920] underline underline-offset-4"
+            >
+              why isn&apos;t my website ranking on Google?
+            </Link>{" "}
+            walks the nine checks in order. Sometimes the answer is a redirect map, not a redesign.
+          </p>
+        </div>
+      </section>
+
       <FaqBlock title="Redesign questions" items={FAQ} />
 
       <RelatedServices

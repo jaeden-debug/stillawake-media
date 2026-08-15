@@ -143,7 +143,18 @@ export default function SeoMontrealPage() {
               highlight
             />
           </div>
-          <p className="mt-8 text-sm text-[#C7B9B9]">
+          {/* Intent separation, stated for the reader as well as for Google:
+              this page owns local Montréal intent, /seo-canada owns national. */}
+          <p className="mt-8 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
+            <strong className="text-white">Selling across Canada rather than in Montréal?</strong> Local and national
+            search are different jobs — map-pack visibility versus competing country-wide for your service terms. That
+            work is on{" "}
+            <Link className="text-[#D71920] underline underline-offset-4" href="/seo-canada">
+              SEO for Canadian businesses
+            </Link>
+            .
+          </p>
+          <p className="mt-4 text-sm text-[#C7B9B9]">
             Also see: <Link className="text-[#D71920] underline-offset-4 hover:underline" href="/answer-engine-optimization">AI search optimization (AEO)</Link> ·{" "}
             <Link className="text-[#D71920] underline-offset-4 hover:underline" href="/stillawake-times/how-much-does-seo-cost-canada">what SEO costs in Canada</Link> ·{" "}
             <Link className="text-[#D71920] underline-offset-4 hover:underline" href="/pricing">all pricing</Link> ·{" "}

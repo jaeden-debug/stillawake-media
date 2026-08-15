@@ -77,6 +77,10 @@ const pageLastModified: Record<string, string> = {
   "fr/confidentialite": "2026-08-13",
   tools: "2026-08-14",
   "tools/llms-txt-generator": "2026-08-14",
+  // National SEO surface. EN-only by design: Québec-French SEO intent is served
+  // by /fr/agence-seo-montreal, and measured FR national demand ("agence seo
+  // québec", 20/mo) does not justify a separate French national page.
+  "seo-canada": "2026-08-14",
 };
 
 /** EN ↔ FR pairs — surfaces hreflang directly in the sitemap so both

@@ -51,6 +51,10 @@ const systems = [
 
 const articles = [
   {
+    href: "/stillawake-times/custom-software-development-cost-canada",
+    title: "What Custom Software Development Actually Costs in Canada",
+  },
+  {
     href: "/stillawake-times/what-is-custom-software-development",
     title: "What Is Custom Software Development?",
   },

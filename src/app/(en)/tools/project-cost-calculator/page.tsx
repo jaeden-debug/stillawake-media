@@ -62,8 +62,9 @@ export default function ProjectCostCalculatorPage() {
       {/* The calculator gets the first screen to itself. The h1 and the
           explanation live below it: this is a tool page, and the tool being
           above the fold matters more than the prose introducing it. */}
-      <section className="flex min-h-[100svh] items-center justify-center px-5 pb-6 pt-20 sm:px-6 sm:pt-24 [@media(max-height:720px)]:pb-3 [@media(max-height:720px)]:pt-16">
-        <div className="mx-auto w-full max-w-4xl xl:max-w-5xl">
+      <section className="flex min-h-[100svh] items-center justify-center px-5 pb-4 pt-16 sm:px-6 sm:pb-6 sm:pt-24 [@media(max-height:720px)]:pb-3">
+        {/* max-w-2xl is StudioQuestionCard's own width. */}
+        <div className="mx-auto w-full max-w-2xl">
           <ProjectCalculator locale="en" />
         </div>
       </section>

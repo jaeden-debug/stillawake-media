@@ -396,10 +396,10 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
           <h2
             ref={headingRef}
             tabIndex={-1}
-            className={`geist font-black leading-[1.1] tracking-[-0.04em] outline-none [@media(max-height:720px)]:mt-3 [@media(max-height:720px)]:text-xl ${
+            className={`geist font-light leading-snug text-white outline-none ${
               dense
-                ? "mt-5 text-[1.45rem] sm:mt-6 sm:text-3xl [@media(min-height:950px)]:text-4xl"
-                : "mt-6 text-[1.7rem] sm:mt-8 sm:text-4xl [@media(min-height:1050px)]:text-5xl"
+                ? "mt-3 text-2xl sm:mt-5 sm:text-3xl [@media(min-height:950px)]:mt-6"
+                : "mt-4 text-2xl sm:mt-6 sm:text-3xl"
             }`}
           >
             {current.prompt[locale]}
@@ -409,7 +409,7 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
                the screens that cannot spare one — hidden by height, not by a
                flag, so a tall screen keeps the guidance. */
             <p
-              className={`mt-3 max-w-xl text-sm leading-6 text-[#8C8080] [@media(max-height:720px)]:mt-1.5 [@media(max-height:720px)]:text-xs [@media(max-height:720px)]:leading-5 ${
+              className={`mt-2.5 max-w-xl text-sm leading-relaxed text-[#C7B9B9] [@media(max-height:720px)]:mt-1.5 [@media(max-height:720px)]:text-xs ${
                 dense ? "hidden [@media(min-height:950px)]:block" : ""
               }`}
             >
@@ -422,7 +422,7 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
               second column or a scrollbar; an option you have to hunt for is an
               option nobody picks. */}
           <div
-            className={`grid [@media(max-height:720px)]:mt-3 ${dense ? "mt-3" : "mt-4 sm:mt-5"} ${
+            className={`grid [@media(max-height:720px)]:mt-3 ${dense ? "mt-2 [@media(min-height:950px)]:mt-5" : "mt-4 sm:mt-5"} ${
               dense
                 ? "gap-1 [@media(max-height:720px)]:gap-0.5 [@media(min-height:950px)]:gap-2.5"
                 : "gap-2.5 [@media(max-height:720px)]:gap-1.5 [@media(min-height:900px)]:gap-3"
@@ -438,63 +438,39 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
                   key={o.key}
                   type="button"
                   onClick={() => choose(current, o.key)}
+                  role={current.kind === "multi" ? "checkbox" : "radio"}
+                  aria-checked={on}
                   aria-pressed={on}
-                  /* No per-option entrance animation. It ran with fill-mode
-                     `both`, so in a tab where animations never advance — a
-                     background tab, or a browser that pauses them — the options
-                     stayed at opacity 0 and 10px low: invisible, and overflowing
-                     the card's rounded clip. The card still animates in as one
-                     piece, which is the part anyone actually notices. */
-                  className={`${FOCUS} group flex items-start rounded-2xl border text-left transition-all duration-200 ${
+                  /* StudioChoice, verbatim: a right-hand dot rather than a
+                     left checkbox, and colour carrying the state. Padding
+                     still steps down where the screen is short, because the
+                     Studio flow never has to fit twelve options at once. */
+                  className={`group relative w-full rounded-2xl border text-left transition-colors duration-150 ${FOCUS} ${
                     dense
-                      ? "gap-3 px-4 py-2 [@media(max-height:720px)]:py-1 [@media(min-height:950px)]:py-3 [@media(min-height:1100px)]:py-4"
-                      : "gap-3.5 px-4 py-3.5 sm:py-4 [@media(max-height:720px)]:gap-2.5 [@media(max-height:720px)]:py-2.5 [@media(min-height:900px)]:py-5 [@media(min-height:1050px)]:py-6"
+                      ? "px-5 py-2 [@media(max-height:720px)]:py-1.5 [@media(min-height:950px)]:py-4"
+                      : "px-5 py-4 [@media(max-height:720px)]:py-2.5 [@media(min-height:1100px)]:py-5"
                   } ${
                     on
-                      ? "border-[#D71920] bg-[#D71920]/[0.09] shadow-[0_0_0_1px_rgba(215,25,32,.32),0_18px_40px_-24px_rgba(215,25,32,.65)]"
-                      : "border-white/10 bg-white/[0.02] hover:-translate-y-px hover:border-white/25 hover:bg-white/[0.045]"
+                      ? "border-[#D71920]/70 bg-[#D71920]/[0.08] shadow-[0_0_30px_-12px_rgba(215,25,32,0.5)]"
+                      : "border-white/10 bg-white/[0.03] hover:border-white/25 hover:bg-white/[0.05]"
                   }`}
                 >
                   <span
-                    aria-hidden
-                    className={`mt-0.5 grid shrink-0 place-items-center border transition-all duration-200 ${
-                      dense ? "h-4 w-4 [@media(min-height:950px)]:h-5 [@media(min-height:950px)]:w-5" : "h-5 w-5"
-                    } ${
-                      current.kind === "multi" ? "rounded-md" : "rounded-full"
-                    } ${on ? "border-[#D71920] bg-[#D71920]" : "border-white/25 group-hover:border-white/45"}`}
+                    className={`block pr-6 text-[15px] leading-snug ${
+                      on ? "text-white" : "text-[#C7B9B9] group-hover:text-white"
+                    }`}
                   >
-                    <svg
-                      viewBox="0 0 12 12"
-                      className={`h-3 w-3 transition-all duration-200 ${on ? "scale-100 opacity-100" : "scale-50 opacity-0"}`}
-                      fill="none"
-                      stroke="white"
-                      strokeWidth="2.2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M2.5 6.3 4.8 8.6 9.5 3.9" />
-                    </svg>
+                    {o.label[locale]}
                   </span>
-                  <span className="min-w-0">
-                    <span
-                      className={`block font-medium leading-snug ${
-                        dense
-                          ? "text-[0.9rem] [@media(max-height:720px)]:text-[0.8rem] [@media(min-height:950px)]:text-[1rem]"
-                          : "text-[0.95rem] [@media(max-height:720px)]:text-[0.85rem] [@media(min-height:900px)]:text-[1.05rem]"
-                      } ${on ? "text-white" : "text-[#DDD2D2]"}`}
-                    >
-                      {o.label[locale]}
-                    </span>
-                    {/* The blurb is the first thing to go on a crowded list —
-                        losing a hint costs less than losing an option. */}
-                    {o.blurb && !dense && (
-                      <span
-                        className="mt-1 block text-[13px] leading-snug text-[#8C8080] [@media(max-height:720px)]:hidden"
-                      >
-                        {o.blurb[locale]}
-                      </span>
-                    )}
-                  </span>
+                  {o.blurb && !dense && (
+                    <span className="mt-1 block pr-6 text-xs text-[#8a8a8a]">{o.blurb[locale]}</span>
+                  )}
+                  <span
+                    aria-hidden
+                    className={`absolute right-4 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full transition-all duration-150 ${
+                      on ? "bg-[#D71920] shadow-[0_0_10px_rgba(215,25,32,0.8)]" : "bg-white/15"
+                    }`}
+                  />
                 </button>
               );
             })}
@@ -506,7 +482,7 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
       {/* Footer stays pinned outside the scroll region: on a short screen the
           advance button used to sit below the fold of a twelve-option list. */}
       {(current?.kind === "multi" && !onLast) || (onLast && complete) || state === "error" ? (
-        <div className="shrink-0 border-t border-white/10 pt-4 [@media(max-height:720px)]:pt-3 [@media(min-height:950px)]:pt-5">
+        <div className="shrink-0 border-t border-white/10 pt-3 [@media(max-height:720px)]:pt-3 [@media(min-height:950px)]:pt-5">
           {current?.kind === "multi" && !onLast && (
             <>
               <button
@@ -604,8 +580,10 @@ function Shell({
   return (
     <div ref={cardRef} className={steady ? "flex w-full justify-center" : "flex justify-center py-6"}>
       <div
-        className={`relative w-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.055] to-white/[0.015] shadow-[0_30px_80px_-40px_rgba(0,0,0,.9)] ${
-          steady ? "flex flex-col p-5 sm:p-8 [@media(max-height:720px)]:p-4 [@media(min-height:900px)]:p-9 [@media(min-height:1050px)]:p-10" : "p-6 sm:p-9"
+        className={`studio-glass relative w-full overflow-hidden rounded-3xl backdrop-blur-[36px] backdrop-saturate-[1.3] max-sm:backdrop-blur-[20px] max-sm:backdrop-saturate-[1.2] ${
+          steady
+            ? "flex flex-col px-6 py-8 sm:px-10 sm:py-12 [@media(max-height:720px)]:px-5 [@media(max-height:720px)]:py-6"
+            : "px-6 py-8 sm:px-10 sm:py-12"
         }`}
       >
         {/* One soft light source behind the card. Purely decorative. */}

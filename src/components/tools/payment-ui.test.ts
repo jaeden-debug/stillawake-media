@@ -199,8 +199,44 @@ describe("the card resizes cleanly but never moves the screen", () => {
   it("scales the rows with the height actually available", () => {
     /* Option count alone cannot see that a 1200px desktop has room to spare,
        which is how a long list ended up at phone density on a large screen. */
-    expect(src).toMatch(/\[@media\(min-height:950px\)\]:py-3/);
-    expect(src).toMatch(/\[@media\(min-height:1100px\)\]:py-4/);
+    expect(src).toMatch(/\[@media\(min-height:950px\)\]:py-4/);
+  });
+});
+
+describe("the card is the Studio intake card", () => {
+  it("uses the Studio glass surface, not a lookalike", () => {
+    expect(src).toMatch(/studio-glass/);
+  });
+
+  it("applies the blur as a utility, because the raw rule gets stripped", () => {
+    /* This build's CSS pipeline drops a bare backdrop-filter from a plain
+       rule, which silently cost us the glass the first time. */
+    expect(src).toMatch(/backdrop-blur-\[36px\] backdrop-saturate-\[1\.3\]/);
+  });
+
+  it("matches StudioQuestionCard's padding and radius", () => {
+    expect(src).toMatch(/rounded-3xl/);
+    expect(src).toMatch(/px-6 py-8 sm:px-10 sm:py-12/);
+  });
+
+  it("matches StudioChoice: right-hand dot, no left checkbox", () => {
+    const optionBlock = src.slice(src.indexOf("current.options.map"), src.indexOf("Footer stays pinned"));
+    expect(optionBlock).toMatch(/absolute right-4 top-1\/2 h-2 w-2/);
+    expect(optionBlock).toMatch(/rounded-2xl/);
+    expect(optionBlock).toMatch(/text-\[15px\]/);
+    expect(optionBlock).not.toMatch(/<svg/);
+  });
+
+  it("matches StudioChoice's selected and resting states", () => {
+    expect(src).toMatch(/border-\[#D71920\]\/70 bg-\[#D71920\]\/\[0\.08\]/);
+    expect(src).toMatch(/border-white\/10 bg-white\/\[0\.03\]/);
+  });
+
+  it("uses the Studio heading weight, not the .com display weight", () => {
+    /* Studio's prompt is font-light at 30px; .com's display type is black. */
+    const heading = src.slice(src.indexOf("ref={headingRef}") - 400, src.indexOf("ref={headingRef}") + 400);
+    expect(heading).toMatch(/font-light/);
+    expect(heading).not.toMatch(/font-black/);
   });
 
   it("shortens rows on a short viewport rather than clipping them", () => {

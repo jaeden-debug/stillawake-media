@@ -397,13 +397,22 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
             ref={headingRef}
             tabIndex={-1}
             className={`geist font-black leading-[1.1] tracking-[-0.04em] outline-none [@media(max-height:720px)]:mt-3 [@media(max-height:720px)]:text-xl ${
-              dense ? "mt-5 text-[1.45rem] sm:mt-6 sm:text-3xl" : "mt-6 text-[1.7rem] sm:mt-8 sm:text-4xl"
+              dense
+                ? "mt-5 text-[1.45rem] sm:mt-6 sm:text-3xl [@media(min-height:950px)]:text-4xl"
+                : "mt-6 text-[1.7rem] sm:mt-8 sm:text-4xl [@media(min-height:1050px)]:text-5xl"
             }`}
           >
             {current.prompt[locale]}
           </h2>
-          {current.help && !dense && (
-            <p className="mt-3 max-w-xl text-sm leading-6 text-[#8C8080] [@media(max-height:720px)]:mt-1.5 [@media(max-height:720px)]:text-xs [@media(max-height:720px)]:leading-5">
+          {current.help && (
+            /* On a long list this line competes with a row, so it goes only on
+               the screens that cannot spare one — hidden by height, not by a
+               flag, so a tall screen keeps the guidance. */
+            <p
+              className={`mt-3 max-w-xl text-sm leading-6 text-[#8C8080] [@media(max-height:720px)]:mt-1.5 [@media(max-height:720px)]:text-xs [@media(max-height:720px)]:leading-5 ${
+                dense ? "hidden [@media(min-height:950px)]:block" : ""
+              }`}
+            >
               {current.help[locale]}
             </p>
           )}
@@ -413,10 +422,10 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
               second column or a scrollbar; an option you have to hunt for is an
               option nobody picks. */}
           <div
-            className={`mt-4 grid sm:mt-5 [@media(max-height:720px)]:mt-3 ${
+            className={`grid [@media(max-height:720px)]:mt-3 ${dense ? "mt-3" : "mt-4 sm:mt-5"} ${
               dense
-                ? "gap-1 [@media(max-height:720px)]:gap-0.5"
-                : "gap-2 sm:gap-2.5 [@media(max-height:720px)]:gap-1.5"
+                ? "gap-1 [@media(max-height:720px)]:gap-0.5 [@media(min-height:950px)]:gap-2.5"
+                : "gap-2.5 [@media(max-height:720px)]:gap-1.5 [@media(min-height:900px)]:gap-3"
             }`}
           >
             {current.options.map((o) => {
@@ -438,8 +447,8 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
                      piece, which is the part anyone actually notices. */
                   className={`${FOCUS} group flex items-start rounded-2xl border text-left transition-all duration-200 ${
                     dense
-                      ? "gap-2.5 px-3 py-1.5 [@media(max-height:720px)]:py-1"
-                      : "gap-3.5 p-3.5 sm:p-4 [@media(max-height:720px)]:gap-2.5 [@media(max-height:720px)]:p-2.5"
+                      ? "gap-3 px-4 py-2 [@media(max-height:720px)]:py-1 [@media(min-height:950px)]:py-3 [@media(min-height:1100px)]:py-4"
+                      : "gap-3.5 px-4 py-3.5 sm:py-4 [@media(max-height:720px)]:gap-2.5 [@media(max-height:720px)]:py-2.5 [@media(min-height:900px)]:py-5 [@media(min-height:1050px)]:py-6"
                   } ${
                     on
                       ? "border-[#D71920] bg-[#D71920]/[0.09] shadow-[0_0_0_1px_rgba(215,25,32,.32),0_18px_40px_-24px_rgba(215,25,32,.65)]"
@@ -449,7 +458,7 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
                   <span
                     aria-hidden
                     className={`mt-0.5 grid shrink-0 place-items-center border transition-all duration-200 ${
-                      dense ? "h-4 w-4" : "h-5 w-5"
+                      dense ? "h-4 w-4 [@media(min-height:950px)]:h-5 [@media(min-height:950px)]:w-5" : "h-5 w-5"
                     } ${
                       current.kind === "multi" ? "rounded-md" : "rounded-full"
                     } ${on ? "border-[#D71920] bg-[#D71920]" : "border-white/25 group-hover:border-white/45"}`}
@@ -470,8 +479,8 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
                     <span
                       className={`block font-medium leading-snug ${
                         dense
-                          ? "text-[0.85rem] [@media(max-height:720px)]:text-[0.8rem]"
-                          : "text-[0.95rem] [@media(max-height:720px)]:text-[0.85rem]"
+                          ? "text-[0.9rem] [@media(max-height:720px)]:text-[0.8rem] [@media(min-height:950px)]:text-[1rem]"
+                          : "text-[0.95rem] [@media(max-height:720px)]:text-[0.85rem] [@media(min-height:900px)]:text-[1.05rem]"
                       } ${on ? "text-white" : "text-[#DDD2D2]"}`}
                     >
                       {o.label[locale]}
@@ -497,7 +506,7 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
       {/* Footer stays pinned outside the scroll region: on a short screen the
           advance button used to sit below the fold of a twelve-option list. */}
       {(current?.kind === "multi" && !onLast) || (onLast && complete) || state === "error" ? (
-        <div className="shrink-0 border-t border-white/10 pt-5 [@media(max-height:720px)]:pt-3">
+        <div className="shrink-0 border-t border-white/10 pt-4 [@media(max-height:720px)]:pt-3 [@media(min-height:950px)]:pt-5">
           {current?.kind === "multi" && !onLast && (
             <>
               <button
@@ -596,7 +605,7 @@ function Shell({
     <div ref={cardRef} className={steady ? "flex w-full justify-center" : "flex justify-center py-6"}>
       <div
         className={`relative w-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.055] to-white/[0.015] shadow-[0_30px_80px_-40px_rgba(0,0,0,.9)] ${
-          steady ? "flex flex-col p-5 sm:p-8 [@media(max-height:720px)]:p-4" : "p-6 sm:p-9"
+          steady ? "flex flex-col p-5 sm:p-8 [@media(max-height:720px)]:p-4 [@media(min-height:900px)]:p-9 [@media(min-height:1050px)]:p-10" : "p-6 sm:p-9"
         }`}
       >
         {/* One soft light source behind the card. Purely decorative. */}

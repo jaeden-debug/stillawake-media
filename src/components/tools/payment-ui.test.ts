@@ -190,10 +190,17 @@ describe("the card resizes cleanly but never moves the screen", () => {
     expect(optionsGrid).not.toMatch(/grid-cols-2/);
   });
 
-  it("drops the instruction line on a long list", () => {
-    /* On a twelve-option screen it costs a row of its own, and the options
-       already say what to do. */
-    expect(src).toMatch(/\{current\.help && !dense &&/);
+  it("hides the instruction line by height, not by a flag", () => {
+    /* On a long list it costs a row, but only where rows are scarce — a tall
+       screen keeps the guidance. */
+    expect(src).toMatch(/dense \? "hidden \[@media\(min-height:950px\)\]:block" : ""/);
+  });
+
+  it("scales the rows with the height actually available", () => {
+    /* Option count alone cannot see that a 1200px desktop has room to spare,
+       which is how a long list ended up at phone density on a large screen. */
+    expect(src).toMatch(/\[@media\(min-height:950px\)\]:py-3/);
+    expect(src).toMatch(/\[@media\(min-height:1100px\)\]:py-4/);
   });
 
   it("shortens rows on a short viewport rather than clipping them", () => {

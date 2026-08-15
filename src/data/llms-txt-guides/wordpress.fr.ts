@@ -36,7 +36,7 @@ export const wordpressGuideFr: PlatformGuide = {
     "Ce que font vraiment les extensions llms.txt sur WordPress — Yoast écrit un fichier physique rafraîchi une fois par semaine, plafonné à cinq entrées par type de contenu — et pourquoi un site bilingue Polylang ou WPML n'obtient qu'un seul fichier, quoi qu'il arrive.",
 
   intro:
-    "Trois chemins mènent à un llms.txt sur WordPress : laisser une extension de référencement le générer, en installer une qui sert l'adresse dynamiquement, ou déposer vous-même un fichier à la racine web. Ils ne sont pas équivalents et l'écran de réglages ne montre pas la différence. Yoast SEO, par exemple, écrit un vrai fichier sur le disque et le met à jour par une tâche planifiée hebdomadaire — pas à la publication — en ne retenant que les cinq éléments les plus récemment modifiés par type de contenu. C'est un choix défendable, mais ce n'est pas ce que « génération automatique » évoque. Et sur un site bilingue, un quatrième problème apparaît.",
+    "Trois chemins mènent à un llms.txt sur WordPress : laisser une extension de référencement le générer, en installer une qui sert l'adresse dynamiquement, ou déposer vous-même un fichier à la racine web. Ils ne sont pas équivalents et l'écran de réglages ne montre pas la différence. Yoast SEO, par exemple, écrit un vrai fichier sur le disque et le met à jour par une tâche planifiée hebdomadaire — pas à la publication — en ne retenant que les cinq éléments les plus récemment modifiés par type de contenu, publiés dans les douze derniers mois, en donnant priorité au contenu phare (« cornerstone »). C'est un choix défendable, mais ce n'est pas ce que « génération automatique » évoque. Et sur un site bilingue, un quatrième problème apparaît.",
 
   supportStatus: {
     kind: "plugin",
@@ -124,7 +124,7 @@ Les heures d'ouverture et le numéro d'urgence sont publiés sur la page Contact
     {
       title: "Yoast n'écrase pas un llms.txt déjà présent",
       body:
-        "Si un fichier existe déjà à la racine web, Yoast le laisse tranquille. C'est le comportement prudent souhaitable, et il produit une situation déroutante : vous activez la fonctionnalité, le réglage indique qu'elle est active, et le contenu de /llms.txt ne bouge jamais. Vérifiez ce qui est réellement servi avant de conclure à un bogue.",
+        "Si un fichier existe déjà à la racine web, Yoast le laisse tranquille. C'est le comportement prudent souhaitable, et il produit une situation déroutante : vous activez la fonctionnalité, le réglage indique qu'elle est active, et le contenu de /llms.txt ne bouge jamais. Vérifiez ce qui est réellement servi avant de conclure à un bogue. À l\'inverse, si une autre extension sert llms.txt dynamiquement, il n\'y a aucun fichier sur le disque à respecter : Yoast écrit le sien, et c\'est celui-là qui est affiché — sa spécification le dit explicitement. Le mécanisme vient du serveur web, pas de WordPress : un fichier présent à la racine documentaire est servi avant que la requête n\'atteigne PHP, donc la règle de réécriture de l\'autre extension ne s\'exécute jamais. Une configuration d\'hébergement qui force tout à passer par PHP inverserait ce comportement.",
     },
     {
       title: "Seuls les cinq éléments les plus récents par type de contenu sont retenus",
@@ -170,7 +170,7 @@ Les heures d'ouverture et le numéro d'urgence sont publiés sur la page Contact
     "llms.txt n'est qu'une proposition : aucun moteur n'est tenu de l'honorer. John Mueller, de Google, a publiquement mis en doute l'intérêt du format et noté que les modèles ne cherchent pas activement ces fichiers — à garder en tête avant de payer une extension sur la foi de promesses de classement.",
   ],
 
-  verifiedDate: "2026-08-14",
+  verifiedDate: "2026-08-15",
   sources: [
     {
       label: "Portail développeur Yoast — spécification fonctionnelle de llms.txt",

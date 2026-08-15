@@ -109,9 +109,9 @@ Phone and emergency hours are published on the contact page.
         "Yoast's llms.txt is generated once and then updated by a weekly scheduled action. That is fine for a stable business site and misleading if you assumed 'automatic' meant 'on publish'. If you have just launched a page you want represented, it will not appear immediately — and if your WP-Cron is unreliable, as it is on sites with little traffic or with DISABLE_WP_CRON set, the refresh may not run when you expect at all.",
     },
     {
-      title: "Yoast will not overwrite an existing llms.txt",
+      title: "Yoast will not overwrite a file on disk — but it does outrank a plugin",
       body:
-        "If a file already exists at the web root, Yoast leaves it alone, and a dynamically served file takes priority over its generated one. This is the right conservative behaviour and it produces a confusing outcome: you enable the feature, the setting says it is on, and the file at /llms.txt never changes because something else is already serving that path. Check what is actually being served before concluding the feature is broken.",
+        "Two different situations get conflated here, and they resolve in opposite directions. If a physical llms.txt already sits at the web root, Yoast leaves it alone — its spec says it makes sure not to overwrite it — so you can enable the feature, see the setting switched on, and watch /llms.txt never change. But if another plugin is serving llms.txt dynamically, there is no file on disk for Yoast to respect: it writes its own physical file, and that file is what visitors get. Yoast's spec states this outright — the generated file 'has higher prio, it will be displayed'. The mechanism is the web server, not WordPress: under the standard configuration an existing file at the document root is served before the request is ever handed to PHP, so the other plugin's rewrite rule never runs. That is a server-configuration behaviour, not a WordPress rule — a host that routes every request through PHP unconditionally would invert it — so check what is actually being served rather than reasoning from which plugin you enabled last.",
     },
     {
       title: "Only the five most recent items per content type are included",
@@ -161,7 +161,7 @@ Phone and emergency hours are published on the contact page.
     "llms.txt is a proposed convention, not a standard any engine is obliged to honour. Google's John Mueller has publicly questioned the proposal and noted that LLMs are not actively looking for these files — worth keeping in view before paying for a plugin on the strength of ranking claims.",
   ],
 
-  verifiedDate: "2026-08-14",
+  verifiedDate: "2026-08-15",
   sources: [
     {
       label: "Yoast developer portal — llms.txt functional specification",

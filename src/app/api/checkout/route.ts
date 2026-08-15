@@ -124,10 +124,12 @@ export async function POST(request: Request) {
       ...(mode === "payment"
         ? { customer_creation: "always" as const, invoice_creation: { enabled: true } }
         : {}),
-      /* Subscriptions need the address stored on the customer so renewals are
-         taxed the same way the first charge was. */
+      /* `customer_update` is deliberately NOT set. It only applies when an
+         existing customer is passed in; Checkout creates the customer here and
+         stores the collected billing address on it, so renewals are taxed the
+         same way the first charge was. */
       ...(mode === "subscription"
-        ? { customer_update: undefined, subscription_data: { metadata: { item: String(payload.item) } } }
+        ? { subscription_data: { metadata: { item: String(payload.item) } } }
         : {}),
       metadata: { item: String(payload.item), lookup_key: lookupKey, locale },
       success_url: `${siteUrl}${paths.success}?session_id={CHECKOUT_SESSION_ID}`,

@@ -58,8 +58,8 @@ export default function CalculateurCoutProjetPage() {
       {/* Même structure qu'en anglais : la carte partage un écran avec une
           intro volontairement courte, et le long texte passe en dessous. */}
       {/* Le calculateur occupe le premier écran; le h1 et le texte suivent. */}
-      <section className="flex h-[100svh] flex-col px-5 pb-6 pt-20 sm:px-6 sm:pt-24">
-        <div className="mx-auto flex w-full min-h-0 max-w-3xl flex-1 flex-col">
+      <section className="flex min-h-[100svh] items-center justify-center px-5 pb-6 pt-20 sm:px-6 sm:pt-24 [@media(max-height:720px)]:pb-3 [@media(max-height:720px)]:pt-16">
+        <div className="mx-auto w-full max-w-3xl">
           <ProjectCalculator locale="fr" />
         </div>
       </section>

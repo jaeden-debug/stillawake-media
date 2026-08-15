@@ -347,6 +347,9 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
     return <ResultCard result={result} locale={locale} T={T} answers={answers} onRestart={restart} />;
   }
 
+  /* Past six options a single column cannot fit the card on a phone, so the
+     list switches to two tighter columns instead of gaining a scrollbar. */
+  const dense = (current?.options.length ?? 0) > 6;
   const picked = current?.kind === "multi" ? ((answers[current.id] as string[] | undefined)?.length ?? 0) : 0;
   const blocked = current?.kind === "multi" && !current.optional && picked === 0;
 
@@ -387,19 +390,32 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
         <div
           key={current.id}
           ref={scrollRef}
-          className="-mx-2 min-h-0 flex-1 overflow-y-auto overscroll-contain px-2 [scrollbar-color:rgba(255,255,255,.18)_transparent] [scrollbar-width:thin] motion-safe:animate-[sam-rise_.45s_cubic-bezier(.16,1,.3,1)_both]"
+          className="motion-safe:animate-[sam-rise_.45s_cubic-bezier(.16,1,.3,1)_both]"
         >
           <h2
             ref={headingRef}
             tabIndex={-1}
-            className="geist mt-8 text-[1.7rem] font-black leading-[1.1] tracking-[-0.04em] outline-none sm:text-4xl"
+            className="geist mt-6 text-[1.7rem] font-black leading-[1.1] tracking-[-0.04em] outline-none sm:mt-8 sm:text-4xl [@media(max-height:720px)]:mt-3 [@media(max-height:720px)]:text-xl"
           >
             {current.prompt[locale]}
           </h2>
-          {current.help && <p className="mt-3 max-w-xl text-sm leading-6 text-[#8C8080]">{current.help[locale]}</p>}
+          {current.help && (
+            <p className="mt-3 max-w-xl text-sm leading-6 text-[#8C8080] [@media(max-height:720px)]:mt-1.5 [@media(max-height:720px)]:text-xs [@media(max-height:720px)]:leading-5">
+              {current.help[locale]}
+            </p>
+          )}
 
-          <div className="mt-7 grid gap-2.5">
-            {current.options.map((o, i) => {
+          {/* Every option visible, no scrolling. A long list goes to two
+              columns and tighter rows rather than running off the bottom —
+              an option you have to scroll to find is an option nobody picks. */}
+          <div
+            className={`mt-4 grid sm:mt-5 [@media(max-height:720px)]:mt-3 ${
+              dense
+                ? "grid-cols-2 gap-1.5 sm:gap-2"
+                : "gap-2 sm:gap-2.5 [@media(max-height:720px)]:gap-1.5"
+            }`}
+          >
+            {current.options.map((o) => {
               const on =
                 current.kind === "single"
                   ? answers[current.id] === o.key
@@ -410,8 +426,17 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
                   type="button"
                   onClick={() => choose(current, o.key)}
                   aria-pressed={on}
-                  style={{ animationDelay: `${Math.min(i * 45, 300)}ms` }}
-                  className={`${FOCUS} group flex items-start gap-3.5 rounded-2xl border p-4 text-left transition-all duration-200 motion-safe:animate-[sam-rise_.5s_cubic-bezier(.16,1,.3,1)_both] sm:p-5 ${
+                  /* No per-option entrance animation. It ran with fill-mode
+                     `both`, so in a tab where animations never advance — a
+                     background tab, or a browser that pauses them — the options
+                     stayed at opacity 0 and 10px low: invisible, and overflowing
+                     the card's rounded clip. The card still animates in as one
+                     piece, which is the part anyone actually notices. */
+                  className={`${FOCUS} group flex items-start rounded-2xl border text-left transition-all duration-200 ${
+                    dense
+                      ? "gap-2 p-2.5 [@media(max-height:720px)]:p-2"
+                      : "gap-3.5 p-3.5 sm:p-4 [@media(max-height:720px)]:gap-2.5 [@media(max-height:720px)]:p-2.5"
+                  } ${
                     on
                       ? "border-[#D71920] bg-[#D71920]/[0.09] shadow-[0_0_0_1px_rgba(215,25,32,.32),0_18px_40px_-24px_rgba(215,25,32,.65)]"
                       : "border-white/10 bg-white/[0.02] hover:-translate-y-px hover:border-white/25 hover:bg-white/[0.045]"
@@ -419,7 +444,9 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
                 >
                   <span
                     aria-hidden
-                    className={`mt-0.5 grid h-5 w-5 shrink-0 place-items-center border transition-all duration-200 ${
+                    className={`mt-0.5 grid shrink-0 place-items-center border transition-all duration-200 ${
+                      dense ? "h-4 w-4" : "h-5 w-5"
+                    } ${
                       current.kind === "multi" ? "rounded-md" : "rounded-full"
                     } ${on ? "border-[#D71920] bg-[#D71920]" : "border-white/25 group-hover:border-white/45"}`}
                   >
@@ -436,10 +463,24 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
                     </svg>
                   </span>
                   <span className="min-w-0">
-                    <span className={`block text-[0.95rem] font-medium leading-snug ${on ? "text-white" : "text-[#DDD2D2]"}`}>
+                    <span
+                      className={`block font-medium leading-snug ${
+                        dense
+                          ? "text-[0.8rem]"
+                          : "text-[0.95rem] [@media(max-height:720px)]:text-[0.85rem]"
+                      } ${on ? "text-white" : "text-[#DDD2D2]"}`}
+                    >
                       {o.label[locale]}
                     </span>
-                    {o.blurb && <span className="mt-1 block text-[13px] leading-snug text-[#8C8080]">{o.blurb[locale]}</span>}
+                    {/* The blurb is the first thing to go on a crowded list —
+                        losing a hint costs less than losing an option. */}
+                    {o.blurb && !dense && (
+                      <span
+                        className="mt-1 block text-[13px] leading-snug text-[#8C8080] [@media(max-height:720px)]:hidden"
+                      >
+                        {o.blurb[locale]}
+                      </span>
+                    )}
                   </span>
                 </button>
               );
@@ -452,7 +493,7 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
       {/* Footer stays pinned outside the scroll region: on a short screen the
           advance button used to sit below the fold of a twelve-option list. */}
       {(current?.kind === "multi" && !onLast) || (onLast && complete) || state === "error" ? (
-        <div className="shrink-0 border-t border-white/10 pt-5">
+        <div className="shrink-0 border-t border-white/10 pt-5 [@media(max-height:720px)]:pt-3">
           {current?.kind === "multi" && !onLast && (
             <>
               <button
@@ -510,6 +551,16 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
 const FOCUS =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D71920]";
 
+/*
+ * SHORT-VIEWPORT CLASSES ARE WRITTEN OUT IN FULL, EVERY TIME.
+ *
+ * Tailwind scans source text for complete class names, so a prefix built by
+ * concatenation generates no CSS at all — the styles silently do not exist. A
+ * landscape phone or a 568px handset cannot show five full-size options AND
+ * keep the card centred, so on those the rows get shorter rather than the card
+ * getting a scrollbar; a hidden option is one nobody picks.
+ */
+
 /**
  * Card chrome, shared by the question and result states so they feel continuous.
  *
@@ -538,10 +589,10 @@ function Shell({
   cardRef?: React.RefObject<HTMLDivElement | null>;
 }) {
   return (
-    <div ref={cardRef} className={steady ? "flex h-full items-center justify-center" : "flex justify-center py-6"}>
+    <div ref={cardRef} className={steady ? "flex w-full justify-center" : "flex justify-center py-6"}>
       <div
         className={`relative w-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.055] to-white/[0.015] shadow-[0_30px_80px_-40px_rgba(0,0,0,.9)] ${
-          steady ? "flex h-full max-h-[34rem] min-h-[18rem] flex-col p-5 sm:p-8" : "p-6 sm:p-9"
+          steady ? "flex flex-col p-5 sm:p-8 [@media(max-height:720px)]:p-4" : "p-6 sm:p-9"
         }`}
       >
         {/* One soft light source behind the card. Purely decorative. */}
@@ -885,6 +936,35 @@ function PaymentOptions({
 }
 
 /**
+ * Copy text, with a fallback for the cases the async Clipboard API refuses.
+ *
+ * navigator.clipboard requires a secure context AND a focused document, so it
+ * rejects outright when the page is not frontmost — which is exactly when
+ * someone is arranging windows to paste the thing somewhere. The old selection
+ * trick still works there. Returns whether it truly copied.
+ */
+async function copyToClipboard(text: string): Promise<boolean> {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.cssText = "position:fixed;top:0;left:0;opacity:0;pointer-events:none";
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand("copy");
+      ta.remove();
+      return ok;
+    } catch {
+      return false;
+    }
+  }
+}
+
+/**
  * Share the estimate.
  *
  * The link carries the ANSWER KEYS, not the price — the same rule the rest of
@@ -923,13 +1003,6 @@ function ShareEstimate({
 
   const subject = locale === "fr" ? "Notre estimation de projet" : "Our project estimate";
   const range = `${formatCad(result.low, locale)} – ${formatCad(result.high, locale)}`;
-  const mailto = () => {
-    const body =
-      locale === "fr"
-        ? `Fourchette estimée : ${range}\n\n${currentUrl()}`
-        : `Estimated range: ${range}\n\n${currentUrl()}`;
-    return `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  };
 
   const RED =
     "inline-flex min-h-11 items-center gap-2 rounded-full bg-[#D71920] px-5 py-2.5 text-sm font-bold text-white transition hover:brightness-110";
@@ -941,21 +1014,41 @@ function ShareEstimate({
         <button
           type="button"
           onClick={() => {
-            void navigator.clipboard.writeText(currentUrl()).then(() => {
+            void copyToClipboard(currentUrl()).then((ok) => {
+              /* Only claim success when it actually copied. Flashing the tick
+                 regardless would tell someone the link is on their clipboard
+                 when it is not. */
+              if (!ok) return;
               setCopied(true);
               setTimeout(() => setCopied(false), 2000);
             });
           }}
           className={`${FOCUS} ${RED}`}
         >
-          {copied ? T.shareCopied : T.shareCopy}
-          <span aria-hidden>{copied ? "✓" : "⧉"}</span>
+          {/* Two overlapping squares, becoming a tick once copied. Drawn rather
+              than typed so it keeps its weight against the bold label instead
+              of rendering as whatever glyph the platform substitutes. */}
+          <svg
+            aria-hidden
+            viewBox="0 0 16 16"
+            className="h-4 w-4 shrink-0"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.7"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            {copied ? (
+              <path d="M3 8.5 6.2 11.7 13 4.9" />
+            ) : (
+              <>
+                <rect x="5.6" y="5.6" width="8.4" height="8.4" rx="1.8" />
+                <path d="M10.9 3.1a1.8 1.8 0 0 0-1.3-1.1H3.8A1.8 1.8 0 0 0 2 3.8v5.8c0 .6.4 1.1 1 1.3" />
+              </>
+            )}
+          </svg>
+          {T.shareCopy}
         </button>
-
-        <a href={mailto()} className={`${FOCUS} ${RED}`}>
-          {T.shareEmail}
-          <span aria-hidden>→</span>
-        </a>
 
         {canNativeShare && (
           <button

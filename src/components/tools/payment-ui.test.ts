@@ -150,57 +150,67 @@ describe("payments are not shown where they would mislead", () => {
   });
 });
 
-describe("the form does not resize between questions", () => {
-  it("gives question screens a constant, viewport-capped height", () => {
-    /* Option counts vary from 4 to 12, and sizing the card to each one moved
-       the page ~200px on every answer. */
-    expect(src).toMatch(/h-full max-h-\[34rem\] min-h-\[18rem\]/);
-  });
-
-  it("measures the page against svh, not vh", () => {
-    /* On iOS and Android `vh` is the LARGE viewport — it counts space behind
-       the address bar, so a vh-sized section is clipped until the bar
-       collapses. The card sizes off the section, so the unit lives there. */
+describe("the card resizes cleanly but never moves the screen", () => {
+  it("centres the card rather than pinning it to a fixed height", () => {
+    /* The requirement is a fixed CENTRE, not a fixed height: a card that grows
+       symmetrically about its middle leaves the centre where it was, so the
+       page never scrolls under the reader. */
     for (const page of [
       "src/app/(en)/tools/project-cost-calculator/page.tsx",
       "src/app/(fr)/fr/outils/calculateur-cout-projet/page.tsx",
     ]) {
       const p = readFileSync(fileURLToPath(new URL(`../../../${page}`, import.meta.url)), "utf8");
-      expect(p, page).toMatch(/h-\[100svh\]/);
-      expect(p, page).not.toMatch(/h-\[100vh\]/);
+      expect(p, page).toMatch(/min-h-\[100svh\] items-center justify-center/);
     }
   });
 
-  it("centres the question card in the space it is given", () => {
-    const shell = src.slice(src.indexOf("function Shell"), src.indexOf("function ResultCard"));
-    expect(shell).toMatch(/flex h-full items-center justify-center/);
+  it("measures the page against svh, not vh", () => {
+    /* On iOS and Android `vh` is the LARGE viewport — it counts space behind
+       the address bar, so a vh-sized section is clipped until the bar hides. */
+    for (const page of [
+      "src/app/(en)/tools/project-cost-calculator/page.tsx",
+      "src/app/(fr)/fr/outils/calculateur-cout-projet/page.tsx",
+    ]) {
+      const p = readFileSync(fileURLToPath(new URL(`../../../${page}`, import.meta.url)), "utf8");
+      expect(p, page).toMatch(/min-h-\[100svh\]/);
+      expect(p, page).not.toMatch(/\[100vh\]/);
+    }
   });
 
-  it("scrolls the options inside the card rather than growing it", () => {
-    expect(src).toMatch(/min-h-0 flex-1 overflow-y-auto overscroll-contain/);
+  it("never scrolls the options — a hidden option is one nobody picks", () => {
+    expect(src).not.toMatch(/overflow-y-auto/);
+    expect(src).not.toMatch(/overscroll-contain/);
   });
 
-  it("resets the option list to the top on each new question", () => {
-    expect(src).toMatch(/scrollRef\.current\?\.scrollTo\(\{ top: 0 \}\)/);
+  it("goes to two tighter columns instead of overflowing on a long list", () => {
+    expect(src).toMatch(/const dense = \(current\?\.options\.length \?\? 0\) > 6/);
+    expect(src).toMatch(/grid-cols-2/);
   });
 
-  it("keeps the advance button out of the scrolling region", () => {
-    /* On a short screen it used to sit below the fold of a 12-option list. */
+  it("shortens rows on a short viewport rather than clipping them", () => {
+    /* Written out in full: Tailwind scans source text, so a prefix built by
+       concatenation would generate no CSS at all. */
+    const hits = src.match(/\[@media\(max-height:720px\)\]:/g) ?? [];
+    expect(hits.length).toBeGreaterThanOrEqual(6);
+  });
+
+  it("does not stagger the options in", () => {
+    /* fill-mode `both` left them at opacity 0 wherever animations do not
+       advance — a background tab — and pushed the last row past the card's
+       rounded clip. */
+    const optionBlock = src.slice(src.indexOf("current.options.map"), src.indexOf("</button>"));
+    expect(optionBlock).not.toMatch(/animationDelay/);
+    expect(optionBlock).not.toMatch(/sam-rise/);
+  });
+
+  it("keeps the advance button out of the option list", () => {
     const footer = src.slice(src.indexOf("Footer stays pinned"));
     expect(footer.slice(0, 900)).toMatch(/shrink-0 border-t/);
   });
 
-  it("lets the result card size itself — it is read, not stepped through", () => {
-    expect(src).toMatch(/<Shell steady cardRef=\{shellRef\}>/);
-    expect(src).toMatch(/<Shell>\s*<div className="flex flex-wrap items-center gap-3">/);
-  });
-
   it("plants the card in the viewport once, not on every answer", () => {
-    /* Re-centring on each answer would yank the page under someone who had
-       scrolled deliberately to read the help text. */
     expect(src).toMatch(/const planted = useRef\(false\)/);
     expect(src).toMatch(/if \(!planted\.current && safeIndex > 0 && shellRef\.current\)/);
-    expect(src).toMatch(/block: "center"/);
   });
 
   it("honours reduced motion when it scrolls", () => {
@@ -211,7 +221,6 @@ describe("the form does not resize between questions", () => {
   it("puts share directly under the number, not below the detail sections", () => {
     const payAt = src.indexOf("<PaymentOptions low=");
     const shareAt = src.indexOf("<ShareEstimate");
-    /* The USE, not the import at the top of the file. */
     const ctaAt = src.indexOf("onClick={() => trackStudioFromEstimate");
     expect(shareAt).toBeGreaterThan(payAt);
     expect(shareAt).toBeLessThan(ctaAt);
@@ -228,6 +237,28 @@ describe("share buttons are visible and reachable", () => {
     expect(block).toMatch(/bg-\[#D71920\][^"`]*text-white/);
   });
 
+  it("offers copy and share only — no email button", () => {
+    const block = src.slice(src.indexOf("function ShareEstimate"));
+    expect(block).toMatch(/T\.shareCopy/);
+    expect(block).toMatch(/T\.shareNative/);
+    expect(block).not.toMatch(/mailto:/);
+    expect(block).not.toMatch(/T\.shareEmail/);
+  });
+
+  it("swaps the copy icon for a tick, and only on a real copy", () => {
+    const block = src.slice(src.indexOf("function ShareEstimate"));
+    expect(block).toMatch(/copied \? \(/);
+    expect(block).toMatch(/<rect/);
+    expect(block).toMatch(/if \(!ok\) return;/);
+  });
+
+  it("falls back when the Clipboard API refuses", () => {
+    /* It rejects without document focus, which is exactly when someone is
+       arranging windows in order to paste. */
+    expect(src).toMatch(/async function copyToClipboard/);
+    expect(src).toMatch(/document\.execCommand\("copy"\)/);
+  });
+
   it("keeps a 44px touch target", () => {
     const block = src.slice(src.indexOf("function ShareEstimate"));
     expect(block).toMatch(/min-h-11/);
@@ -239,7 +270,7 @@ describe("share buttons are visible and reachable", () => {
   });
 
   it("defines share copy in both languages", () => {
-    for (const key of ["shareTitle", "shareCopy", "shareCopied", "shareEmail", "shareNative"]) {
+    for (const key of ["shareTitle", "shareCopy", "shareNative"]) {
       const hits = src.match(new RegExp(`^\\s{4}${key}:`, "gm")) ?? [];
       expect(hits.length, `${key} should be defined twice (en + fr)`).toBe(2);
     }

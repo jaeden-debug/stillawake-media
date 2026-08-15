@@ -77,26 +77,29 @@ export const DAY_RATES: Record<Discipline, number> = {
 export const MINIMUM = 2500;
 
 /**
- * Above this expected value, a form cannot honestly scope the work.
+ * DISCOVERY IS ABOUT UNKNOWNS, NOT SIZE.
  *
- * Agencies do not quote platforms off a questionnaire — they sell a paid
- * discovery phase that produces a specification, then price the build from it.
- * Past this line the calculator stops emitting a range and starts selling
- * discovery, because a confident number here would be the least honest thing
- * on the page.
+ * A $50,000 website is still a website — a known deliverable with a known
+ * shape, quotable from a form with an honest range. A $30,000 application is
+ * not, because its requirements are the expensive part and they do not exist
+ * yet. Value alone was the wrong trigger twice over: at $40,000 it sent a law
+ * firm's brochure site to discovery while a small internal tool sailed through
+ * with a confident number.
+ *
+ * So the triggers are the four things that genuinely defeat a questionnaire:
+ * software, automation past the simplest kind, a scope the client says is
+ * still open, and sheer size — where the real advice is to phase the work
+ * rather than to quote all of it at once.
  */
-export const DISCOVERY_THRESHOLD = 40000;
+export const DISCOVERY_THRESHOLD = 75000;
 
 /**
- * Software is ALWAYS scoped before it is priced, whatever the number says.
- *
- * A $30,000 website is a well-understood deliverable and quotable from a form.
- * A $30,000 application is not: the requirements are the expensive part and
- * they do not exist yet. Value alone was the wrong trigger — it sent a
- * mid-market brochure site to discovery while letting a small internal tool
- * through with a confident number.
+ * Lines whose requirements ARE the product, so no form can price them.
+ * Automation past `connect` qualifies for exactly the same reason software
+ * does: the hard part is deciding what it should do.
  */
 export const DISCOVERY_ALWAYS_LINES: ServiceLineId[] = ["software"];
+export const DISCOVERY_DEPTHS: string[] = ["automation.process", "automation.intelligent"];
 
 /**
  * Paid discovery: a real product, credited against the build that follows.
@@ -407,4 +410,4 @@ export const LINE_RECURRING: Partial<Record<ServiceLineId, string[]>> = {
  * `model.test.ts` recomputes it, so an unsynced hand-edit fails the suite in
  * whichever repo it happened.
  */
-export const MODEL_CHECKSUM = "ad57e5ce4780883d";
+export const MODEL_CHECKSUM = "fb7d4043e5eeddfc";

@@ -31,6 +31,7 @@ import {
   DAY_RATES,
   DEPTH_INCLUDES,
   DISCOVERY_ALWAYS_LINES,
+  DISCOVERY_DEPTHS,
   DISCOVERY_THRESHOLD,
   LINE_RECURRING,
   MINIMUM,
@@ -367,8 +368,12 @@ export function estimate(input: EstimateInput): Estimate {
   const expected = Math.min(Math.max(Math.round(total.expected), low), high);
 
   const needsDiscovery =
+    // Sheer size: past here the useful advice is "phase it", not a number.
     expected >= DISCOVERY_THRESHOLD ||
-    input.lines.some((l) => DISCOVERY_ALWAYS_LINES.includes(l.id));
+    input.lines.some((l) => DISCOVERY_ALWAYS_LINES.includes(l.id)) ||
+    input.lines.some((l) => DISCOVERY_DEPTHS.includes(`${l.id}.${l.depth}`)) ||
+    // They told us the scope is still open. Quoting it would be theatre.
+    input.undefinedScope === true;
   const tier: Tier = needsDiscovery ? "systems" : productizedOnly ? "launch" : "custom";
 
   const drivers = reported

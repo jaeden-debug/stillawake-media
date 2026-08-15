@@ -230,9 +230,48 @@ describe("tiers and routing", () => {
     }
   });
 
-  it("routes anything past the threshold to discovery", () => {
-    const e = estimate(inp({ lines: [{ id: "brand", depth: "positioning" }, { id: "website", depth: "flagship" }] }));
+  /**
+   * Discovery triggers on UNKNOWNS, not on value. A big website is still a
+   * website; an application is not, whatever it costs.
+   */
+  it("routes past the size threshold, where the advice is to phase it", () => {
+    const e = estimate(
+      inp({
+        lines: [
+          { id: "brand", depth: "positioning" },
+          { id: "website", depth: "flagship" },
+          { id: "content", depth: "pipeline" },
+          { id: "seo", depth: "programme" },
+        ],
+      }),
+    );
     expect(e.expected).toBeGreaterThan(DISCOVERY_THRESHOLD);
+    expect(e.needsDiscovery).toBe(true);
+  });
+
+  it("still quotes a large but well-understood marketing project", () => {
+    // A law firm's site plus an SEO programme, with partner sign-off and
+    // accessibility. Expensive, but nothing about it is unknown.
+    const e = estimate(
+      inp({
+        lines: [{ id: "website", depth: "custom" }, { id: "seo", depth: "programme" }],
+        org: ["approvals", "compliance"],
+      }),
+    );
+    expect(e.expected).toBeGreaterThan(35000);
+    expect(e.needsDiscovery).toBe(false);
+    expect(e.tier).toBe("custom");
+  });
+
+  it("scopes an automation past the simplest kind, like software", () => {
+    expect(estimate(inp({ lines: [{ id: "automation", depth: "connect" }] })).needsDiscovery).toBe(false);
+    for (const depth of ["process", "intelligent"]) {
+      expect(estimate(inp({ lines: [{ id: "automation", depth }] })).needsDiscovery, depth).toBe(true);
+    }
+  });
+
+  it("scopes anything the client says is still open", () => {
+    const e = estimate(inp({ lines: [{ id: "website", depth: "custom" }], undefinedScope: true }));
     expect(e.needsDiscovery).toBe(true);
   });
 

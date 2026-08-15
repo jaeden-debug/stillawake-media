@@ -122,7 +122,11 @@ export default async function TarifsPage() {
           </div>
 
           <p className="mt-10 text-sm text-[#C7B9B9]">
-            Avant de commencer, lisez le guide :{" "}
+            Avant de commencer,{" "}
+            <Link href="/fr/outils/calculateur-cout-projet" className="text-[#D71920] underline-offset-4 hover:underline">
+              chiffrez votre projet avec notre calculateur
+            </Link>{" "}
+            — il utilise le modèle qu&apos;on emploie à l&apos;interne — ou lisez le guide :{" "}
             <Link href="/fr/prix-site-web-quebec" className="text-[#D71920] underline-offset-4 hover:underline">Combien coûte un site web au Québec?</Link>
           </p>
 

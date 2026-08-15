@@ -132,7 +132,11 @@ export default async function PricingPage() {
           </div>
 
           <p className="mt-10 text-sm text-[#C7B9B9]">
-            Wondering what a build should cost before you start? Read the guide:{" "}
+            Wondering what a build should cost before you start?{" "}
+            <Link href="/tools/project-cost-calculator" className="text-[#D71920] underline-offset-4 hover:underline">
+              Price your project with our calculator
+            </Link>{" "}
+            — it runs the model we use internally — or read the guide:{" "}
             <Link href="/website-cost-canada" className="text-[#D71920] underline-offset-4 hover:underline">How much does a website cost in Canada?</Link>
           </p>
 

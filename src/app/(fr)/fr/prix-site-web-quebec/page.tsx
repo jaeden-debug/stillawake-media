@@ -116,6 +116,17 @@ export default function PrixSiteWebQuebecPage() {
               <strong className="text-white">250 $ à 600 $ CAD</strong> (boutique en ligne), paiement unique. Tous les
               détails sur la page <Link href="/fr/tarifs" className="text-[#D71920] underline-offset-4 hover:underline">Tarifs</Link>.
             </p>
+            <p className="mt-4 max-w-3xl leading-8 text-[#C7B9B9]">
+              Les fourchettes ci-dessus sont des observations de marché. Pour une fourchette bâtie à
+              partir de votre projet réel plutôt que du marché,{" "}
+              <Link
+                href="/fr/outils/calculateur-cout-projet"
+                className="text-[#D71920] underline-offset-4 hover:underline"
+              >
+                utilisez le calculateur de coût de projet
+              </Link>{" "}
+              — il utilise le même modèle tarifaire qu&apos;on emploie pour chiffrer de vrais mandats.
+            </p>
             <Link href="https://stillawake.studio/fr/demarrer" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">
               Obtenir une soumission écrite — sans appel
             </Link>

@@ -80,6 +80,22 @@ export default function ToolsPage() {
             <p className="mt-4 text-sm text-[#8C8080]">Free · no signup · nothing stored →</p>
           </Link>
 
+          <Link
+            href="/tools/project-cost-calculator"
+            className="mt-5 block rounded-xl border border-white/10 bg-white/[0.03] p-7 transition hover:border-[#D71920]/50"
+          >
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#D71920]">Live</p>
+            <h3 className="geist mt-4 text-2xl font-black tracking-[-0.05em]">
+              Website &amp; project cost calculator
+            </h3>
+            <p className="mt-3 text-[#C7B9B9]">
+              Runs the same pricing model we use internally to scope real work, so the range it returns
+              is the range we would start from. Asks about your business rather than about technology —
+              you never have to guess whether you need Shopify, an API or a booking engine.
+            </p>
+            <p className="mt-4 text-sm text-[#8C8080]">Free · no signup · nothing stored →</p>
+          </Link>
+
           <p className="mt-8 text-sm text-[#8C8080]">
             More tools will appear here as we build them. We would rather publish one that does something
             useful than five that generate files.

@@ -119,6 +119,17 @@ export default function WebsiteCostCanadaPage() {
               <strong className="text-white">$250–$600 CAD one-time</strong> (ecommerce). Full details on the{" "}
               <Link href="/pricing" className="text-[#D71920] underline-offset-4 hover:underline">pricing page</Link>.
             </p>
+            <p className="mt-4 max-w-3xl leading-8 text-[#C7B9B9]">
+              The bands above are market observations. For a range built from your actual project rather
+              than from the market,{" "}
+              <Link
+                href="/tools/project-cost-calculator"
+                className="text-[#D71920] underline-offset-4 hover:underline"
+              >
+                use the project cost calculator
+              </Link>{" "}
+              — it runs the same pricing model we scope real work with.
+            </p>
             <Link href="https://stillawake.studio/start" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">
               Get a Written Quote — No Call Required
             </Link>

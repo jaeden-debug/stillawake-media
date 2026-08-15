@@ -83,6 +83,8 @@ const pageLastModified: Record<string, string> = {
   "seo-canada": "2026-08-14",
   "fr/outils": "2026-08-15",
   "fr/outils/generateur-llms-txt": "2026-08-15",
+  "tools/project-cost-calculator": "2026-08-15",
+  "fr/outils/calculateur-cout-projet": "2026-08-15",
 };
 
 /** EN ↔ FR pairs — surfaces hreflang directly in the sitemap so both
@@ -115,6 +117,7 @@ const languagePairs: Record<string, string> = {
   products: "fr/produits",
   tools: "fr/outils",
   "tools/llms-txt-generator": "fr/outils/generateur-llms-txt",
+  "tools/project-cost-calculator": "fr/outils/calculateur-cout-projet",
   privacy: "fr/confidentialite",
 };
 const frToEn = Object.fromEntries(Object.entries(languagePairs).map(([en, fr]) => [fr, en]));
@@ -152,9 +155,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     alternates: alternatesFor(page),
   }));
 
+  /**
+   * Article pairing is verified in BOTH directions before hreflang is emitted.
+   * A one-sided `pair:` value would advertise an alternate that does not point
+   * back, which Google ignores at best — so an unreciprocated pair is treated
+   * as no pair at all rather than trusted.
+   */
+  const frBySlug = new Map(getAllPosts("fr").map((p) => [p.slug, p]));
+  const enBySlug = new Map(getAllPosts().map((p) => [p.slug, p]));
+  const pairedAlternates = (slug: string, pair: string | undefined, locale: "en" | "fr") => {
+    if (!pair) return undefined;
+    const other = locale === "en" ? frBySlug.get(pair) : enBySlug.get(pair);
+    if (!other || other.pair !== slug) return undefined;
+    const enUrl = locale === "en"
+      ? `${siteUrl}/stillawake-times/${slug}`
+      : `${siteUrl}/stillawake-times/${pair}`;
+    const frUrl = locale === "en"
+      ? `${siteUrl}/fr/articles/${pair}`
+      : `${siteUrl}/fr/articles/${slug}`;
+    return { languages: { "en-CA": enUrl, "fr-CA": frUrl, "x-default": enUrl } };
+  };
+
   const articles = getAllPosts().map((post) => ({
     url: `${siteUrl}/stillawake-times/${post.slug}`,
     lastModified: new Date(post.updated || post.date),
+    alternates: pairedAlternates(post.slug, post.pair, "en"),
   }));
 
   /**
@@ -188,6 +213,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articlesFr = getAllPosts("fr").map((post) => ({
     url: `${siteUrl}/fr/articles/${post.slug}`,
     lastModified: new Date(post.updated || post.date),
+    alternates: pairedAlternates(post.slug, post.pair, "fr"),
   }));
 
   /**

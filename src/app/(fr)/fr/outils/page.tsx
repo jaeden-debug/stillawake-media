@@ -63,6 +63,23 @@ export default function OutilsPage() {
             <p className="mt-6 text-sm font-bold text-[#D71920]">Ouvrir l&apos;outil →</p>
           </Link>
 
+          <Link
+            href="/fr/outils/calculateur-cout-projet"
+            className="mt-6 block rounded-[2rem] border border-white/10 bg-[#070707] p-8 transition hover:border-[#D71920]/60 md:p-10"
+          >
+            <p className="text-xs uppercase tracking-[.3em] text-[#D71920]">Budget</p>
+            <h2 className="geist mt-4 text-3xl font-black tracking-[-0.05em]">
+              Calculateur de coût de projet
+            </h2>
+            <p className="mt-4 leading-8 text-[#C7B9B9]">
+              Utilise le même modèle tarifaire qu&apos;on emploie à l&apos;interne pour chiffrer de vrais
+              mandats. Les questions portent sur votre entreprise, pas sur la technologie — vous
+              n&apos;avez jamais à deviner s&apos;il vous faut Shopify, une API ou un moteur de
+              réservation.
+            </p>
+            <p className="mt-6 text-sm font-bold text-[#D71920]">Ouvrir l&apos;outil →</p>
+          </Link>
+
           {guides.length > 0 && (
             <div className="mt-12">
               <h2 className="geist text-2xl font-black tracking-[-0.05em]">

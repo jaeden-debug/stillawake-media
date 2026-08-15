@@ -3,6 +3,9 @@ import { isPublishable } from "@/lib/llms-txt-guides/types";
 import { shopifyGuide } from "./shopify";
 import { nextjsGuide } from "./nextjs";
 import { wordpressGuide } from "./wordpress";
+import { shopifyGuideFr } from "./shopify.fr";
+import { nextjsGuideFr } from "./nextjs.fr";
+import { wordpressGuideFr } from "./wordpress.fr";
 
 /**
  * The registry.
@@ -17,7 +20,14 @@ import { wordpressGuide } from "./wordpress";
  * has verified their behaviour against primary documentation, not because the
  * system cannot express them.
  */
-const ALL_GUIDES: PlatformGuide[] = [shopifyGuide, nextjsGuide, wordpressGuide];
+const ALL_GUIDES: PlatformGuide[] = [
+  shopifyGuide,
+  nextjsGuide,
+  wordpressGuide,
+  shopifyGuideFr,
+  nextjsGuideFr,
+  wordpressGuideFr,
+];
 
 /** Every record, including drafts. For tests and tooling only — never routing. */
 export function allGuides(): PlatformGuide[] {

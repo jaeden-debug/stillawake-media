@@ -120,7 +120,12 @@ export default function EtreCiteParIaPage() {
             <p>
               Le fichier llms.txt est un résumé en texte simple de votre entreprise — qui, quoi, à quel prix, avec
               liens — placé à la racine de votre site pour les systèmes d&apos;IA. Le nôtre est à{" "}
-              <a href="/llms.txt" className="text-[#D71920] underline underline-offset-4">stillawakemedia.com/llms.txt</a>.
+              <a href="/llms.txt" className="text-[#D71920] underline underline-offset-4">stillawakemedia.com/llms.txt</a>.{" "}
+              Vous pouvez générer le vôtre — et voir les lacunes d&apos;entité que votre site laisse
+              ouvertes — avec notre{" "}
+              <Link href="/fr/outils/generateur-llms-txt" className="text-[#D71920] underline underline-offset-4">
+                générateur llms.txt gratuit
+              </Link>.
               Donnée mesurée : quand nous avons reformaté le nôtre avec de vrais liens, le score de « navigation
               agentique » de notre site — l&apos;audit Lighthouse de Chrome qui mesure la capacité des agents IA à
               lire un site — est passé de 67 à 100. Petit fichier, effet mesurable.

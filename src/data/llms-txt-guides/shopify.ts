@@ -43,7 +43,7 @@ export const shopifyGuide: PlatformGuide = {
   fileLocation:
     "Served by Shopify at https://yourstore.com/llms.txt. If you override it, the template lives at theme/templates/llms.txt.liquid (Online Store → Themes → Edit code → Templates).",
   implementationMethod:
-    "Liquid template with a fallback chain. Shopify resolves /llms.txt to templates/llms.txt.liquid if present, then templates/agents.md.liquid, then its own generated default.",
+    "Liquid template with a fallback chain. Shopify resolves /llms.txt to templates/llms.txt.liquid if present, then templates/agents.md.liquid, then its own generated default. That precedence governs /llms.txt only — /agents.md and /llms-full.txt are unaffected by an llms.txt.liquid override.",
 
   prerequisites: [
     "A published Shopify storefront (the files are served on the live domain, not on a password-protected store).",
@@ -81,9 +81,17 @@ export const shopifyGuide: PlatformGuide = {
 
   example: {
     caption:
-      "A minimal llms.txt.liquid override. Note that it uses only `agents` and `request` — the objects Shopify actually exposes at this path.",
+      "A minimal llms.txt.liquid override, using only properties Shopify documents for this path (verified against shopify.dev on 2026-08-15). There is no `agents.content` property — several guides show one, and it renders empty.",
     language: "liquid",
-    content: `{{ agents.content }}
+    content: `# {{ agents.store_name }}
+
+{{ agents.store_url }}
+
+## Machine endpoints
+
+- Sitemap: {{ agents.sitemap_url }}
+- MCP endpoint: {{ agents.mcp_endpoint_url }}
+- UCP discovery: {{ agents.ucp_discovery_url }}
 
 ## About this store
 
@@ -154,7 +162,7 @@ Domain: {{ request.host }}
     "llms.txt is a proposed convention. Shopify serving it does not mean any assistant is obliged to read it, and no engine has committed to using it as a ranking or citation input.",
   ],
 
-  verifiedDate: "2026-08-14",
+  verifiedDate: "2026-08-15",
   sources: [
     {
       label: "Shopify — llms.txt.liquid template reference",

@@ -9,7 +9,14 @@ export const metadata: Metadata = {
   title: "Free llms.txt Generator + AI Readiness Check",
   description:
     "Generate an llms.txt file for your website and see what an answer engine can — and cannot — tell about your business. Free, no signup, no email required.",
-  alternates: { canonical: url, languages: { "en-CA": url, "x-default": url } },
+  alternates: {
+    canonical: url,
+    languages: {
+      "en-CA": url,
+      "fr-CA": "https://stillawakemedia.com/fr/outils/generateur-llms-txt",
+      "x-default": url,
+    },
+  },
   openGraph: {
     title: "Free llms.txt Generator + AI Readiness Check",
     description:

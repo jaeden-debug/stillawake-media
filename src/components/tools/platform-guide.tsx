@@ -56,6 +56,49 @@ export function PlatformGuideView({ guide }: { guide: PlatformGuide }) {
     day: "numeric",
   });
 
+  /**
+   * Route bases and chrome copy follow the record's own locale, so a French
+   * guide can never link a reader into the English cluster (or vice versa).
+   */
+  const fr = guide.locale === "fr";
+  const base = fr ? "/fr/outils" : "/tools";
+  const generatorPath = fr ? "/fr/outils/generateur-llms-txt" : "/tools/llms-txt-generator";
+  const guidePath = (slug: string) => `${base}/llms-txt/${slug}`;
+  const founderPath = fr ? "/fr/fondateur/jaeden-doody" : "/founder/jaeden-doody";
+  const chrome = fr
+    ? {
+        tools: "Outils",
+        ctaHeading: "Voyez ce qu'un moteur de réponse peut réellement dire de votre site",
+        ctaBody:
+          "Publier le fichier, c'est la moitié facile. Notre outil gratuit lit votre site comme un assistant le ferait et signale les faits manquants — propriétaire, prix, zone desservie, moyen de contact — parce que ce sont eux qui vous empêchent d'être décrit correctement, avec ou sans llms.txt.",
+        ctaButton: "Analyser mon site — gratuit",
+        sources: "Sources",
+        sourcesNote: (d: string) =>
+          `Les faits sur cette plateforme proviennent de la documentation ci-dessous, vérifiée le ${d}.`,
+        other: "Autres plateformes",
+        otherPrefix: "llms.txt sur",
+        byline: (platform: string, d: string) => (
+          `, fondateur de StillAwake Media, qui construit et maintient les implémentations ${platform} décrites ici. Implémentation vérifiée le ${d}.`
+        ),
+        writtenBy: "Rédigé et vérifié techniquement par",
+      }
+    : {
+        tools: "Tools",
+        ctaHeading: "See what an answer engine can actually tell about your site",
+        ctaBody:
+          "Publishing the file is the easy half. Our free checker reads your site the way an assistant would and reports which facts are missing — owner, pricing, service area, contact route — because those are what stop you being described accurately, with or without an llms.txt.",
+        ctaButton: "Check your site — free",
+        sources: "Sources",
+        sourcesNote: (d: string) =>
+          `Platform facts on this page come from the documentation below, checked on ${d}.`,
+        other: "Other platforms",
+        otherPrefix: "llms.txt on",
+        byline: (platform: string, d: string) => (
+          `, founder of StillAwake Media, who builds and maintains the ${platform} implementations described here. Implementation verified ${d}.`
+        ),
+        writtenBy: "Written and technically verified by",
+      };
+
   return (
     <main className="bg-black text-white">
       <section className="px-6 pt-32 pb-10">
@@ -63,13 +106,13 @@ export function PlatformGuideView({ guide }: { guide: PlatformGuide }) {
           <nav aria-label="Breadcrumb" className="text-xs text-[#8C8080]">
             <ol className="flex flex-wrap items-center gap-2">
               <li>
-                <Link href="/tools" className="hover:text-white">
-                  Tools
+                <Link href={base} className="hover:text-white">
+                  {chrome.tools}
                 </Link>
               </li>
               <li aria-hidden="true">/</li>
               <li>
-                <Link href="/tools/llms-txt-generator" className="hover:text-white">
+                <Link href={generatorPath} className="hover:text-white">
                   llms.txt
                 </Link>
               </li>
@@ -160,19 +203,17 @@ export function PlatformGuideView({ guide }: { guide: PlatformGuide }) {
           {/* One CTA, after the answer — not interleaved through the instructions. */}
           <div className="mt-16 rounded-xl border border-white/10 bg-white/[0.03] p-7">
             <h2 className="geist text-2xl font-black tracking-[-0.05em]">
-              See what an answer engine can actually tell about your site
+              {chrome.ctaHeading}
             </h2>
             <p className="mt-3 text-[#C7B9B9]">
-              Publishing the file is the easy half. Our free checker reads your site the way an assistant
-              would and reports which facts are missing — owner, pricing, service area, contact route —
-              because those are what stop you being described accurately, with or without an llms.txt.
+              {chrome.ctaBody}
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
-                href="/tools/llms-txt-generator"
+                href={generatorPath}
                 className="rounded-full bg-[#D71920] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#b5141b]"
               >
-                Check your site — free
+                {chrome.ctaButton}
               </Link>
               {guide.relatedServices.map((s) => (
                 <Link
@@ -186,9 +227,9 @@ export function PlatformGuideView({ guide }: { guide: PlatformGuide }) {
             </div>
           </div>
 
-          <h2 className="geist mt-16 text-3xl font-black tracking-[-0.06em]">Sources</h2>
+          <h2 className="geist mt-16 text-3xl font-black tracking-[-0.06em]">{chrome.sources}</h2>
           <p className="mt-3 text-sm text-[#8C8080]">
-            Platform facts on this page come from the documentation below, checked on {verified}.
+            {chrome.sourcesNote(verified)}
           </p>
           <ul className="mt-5 space-y-3">
             {guide.sources.map((s) => (
@@ -207,27 +248,26 @@ export function PlatformGuideView({ guide }: { guide: PlatformGuide }) {
             ))}
           </ul>
 
-          <h2 className="geist mt-16 text-3xl font-black tracking-[-0.06em]">Other platforms</h2>
+          <h2 className="geist mt-16 text-3xl font-black tracking-[-0.06em]">{chrome.other}</h2>
           <ul className="mt-5 flex flex-wrap gap-3">
             {guide.relatedGuides.map((slug) => (
               <li key={slug}>
                 <Link
-                  href={`/tools/llms-txt/${slug}`}
+                  href={guidePath(slug)}
                   className="inline-block rounded-full border border-white/20 px-5 py-2.5 text-sm text-[#C7B9B9] transition hover:border-white/50 hover:text-white"
                 >
-                  llms.txt on {slug === "nextjs" ? "Next.js" : slug === "wordpress" ? "WordPress" : "Shopify"}
+                  {chrome.otherPrefix} {slug === "nextjs" ? "Next.js" : slug === "wordpress" ? "WordPress" : "Shopify"}
                 </Link>
               </li>
             ))}
           </ul>
 
           <p className="mt-14 border-t border-white/10 pt-6 text-sm text-[#8C8080]">
-            Written and technically verified by{" "}
-            <Link href="/founder/jaeden-doody" className="text-[#C7B9B9] underline underline-offset-4 hover:text-white">
+            {chrome.writtenBy}{" "}
+            <Link href={founderPath} className="text-[#C7B9B9] underline underline-offset-4 hover:text-white">
               Jaeden Doody
             </Link>
-            , founder of StillAwake Media, who builds and maintains the {guide.platform} implementations
-            described here. Implementation verified {verified}.
+            {chrome.byline(guide.platform, verified)}
           </p>
         </div>
       </section>

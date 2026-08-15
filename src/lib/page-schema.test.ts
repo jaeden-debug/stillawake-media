@@ -25,7 +25,7 @@ describe("page schema registry", () => {
     // the consent work, the llms.txt tool, and the /tools index added with
     // the platform-guide cluster. An exact count is deliberate: it forces a
     // conscious decision whenever a route joins or leaves.
-    expect(entries.length).toBe(21);
+    expect(entries.length).toBe(23);
   });
 
   it.each(entries.map(([r]) => r))("%s produces a coherent graph", (route) => {

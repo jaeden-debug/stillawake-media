@@ -9,7 +9,14 @@ export const metadata: Metadata = {
   title: "Free Technical Tools for Web and AI Search",
   description:
     "Free tools and implementation guides from StillAwake Media — starting with an llms.txt generator that reports what an answer engine cannot determine about your business. No signup, no email.",
-  alternates: { canonical: url, languages: { "en-CA": url, "x-default": url } },
+  alternates: {
+    canonical: url,
+    languages: {
+      "en-CA": url,
+      "fr-CA": "https://stillawakemedia.com/fr/outils",
+      "x-default": url,
+    },
+  },
   openGraph: {
     title: "Free Technical Tools — StillAwake Media",
     description:

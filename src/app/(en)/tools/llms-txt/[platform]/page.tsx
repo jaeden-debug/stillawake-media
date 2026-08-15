@@ -29,10 +29,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!guide) return {};
 
   const url = `${siteUrl}/tools/llms-txt/${guide.slug}`;
+  // Only claim a French counterpart when one is actually published.
+  const fr = getPublishedGuide(guide.slug, "fr");
+  const frUrl = fr ? `${siteUrl}/fr/outils/llms-txt/${fr.slug}` : null;
   return {
     title: guide.title,
     description: guide.description,
-    alternates: { canonical: url, languages: { "en-CA": url, "x-default": url } },
+    alternates: {
+      canonical: url,
+      languages: frUrl
+        ? { "en-CA": url, "fr-CA": frUrl, "x-default": url }
+        : { "en-CA": url, "x-default": url },
+    },
     openGraph: {
       title: guide.title,
       description: guide.description,

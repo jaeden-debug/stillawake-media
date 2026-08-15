@@ -81,6 +81,8 @@ const pageLastModified: Record<string, string> = {
   // by /fr/agence-seo-montreal, and measured FR national demand ("agence seo
   // québec", 20/mo) does not justify a separate French national page.
   "seo-canada": "2026-08-14",
+  "fr/outils": "2026-08-15",
+  "fr/outils/generateur-llms-txt": "2026-08-15",
 };
 
 /** EN ↔ FR pairs — surfaces hreflang directly in the sitemap so both
@@ -111,6 +113,8 @@ const languagePairs: Record<string, string> = {
   portfolio: "fr/realisations",
   work: "fr/etudes-de-cas",
   products: "fr/produits",
+  tools: "fr/outils",
+  "tools/llms-txt-generator": "fr/outils/generateur-llms-txt",
   privacy: "fr/confidentialite",
 };
 const frToEn = Object.fromEntries(Object.entries(languagePairs).map(([en, fr]) => [fr, en]));
@@ -167,6 +171,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(guide.verifiedDate),
   }));
 
+  /** Same evidence gate, French cluster. Paired to the EN guide by shared slug. */
+  const guidesFr = publishedGuides("fr").map((guide) => ({
+    url: `${siteUrl}/fr/outils/llms-txt/${guide.slug}`,
+    lastModified: new Date(guide.verifiedDate),
+    alternates: {
+      languages: {
+        "en-CA": `${siteUrl}/tools/llms-txt/${guide.slug}`,
+        "fr-CA": `${siteUrl}/fr/outils/llms-txt/${guide.slug}`,
+      },
+    },
+  }));
+
   /** French articles live in their own content tree and are written for
    *  Québec, so they are listed independently rather than paired 1:1. */
   const articlesFr = getAllPosts("fr").map((post) => ({
@@ -217,7 +233,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
 
   const cmsUrls = new Set(cmsEntries.map((entry) => entry.url));
-  const fileEntries = [...pages, ...articles, ...articlesFr, ...guides].filter(
+  const fileEntries = [...pages, ...articles, ...articlesFr, ...guides, ...guidesFr].filter(
     (entry) => !cmsUrls.has(entry.url),
   );
 

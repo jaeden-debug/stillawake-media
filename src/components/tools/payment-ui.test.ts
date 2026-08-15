@@ -135,6 +135,15 @@ describe("EN and FR parity", () => {
   });
 });
 
+describe("the headline range breaks cleanly", () => {
+  it("never strands a dangling dash on the result", () => {
+    const at = src.indexOf("{fmt(counted)}");
+    const block = src.slice(at - 200, at + 400);
+    expect(block).toMatch(/whitespace-nowrap/);
+    expect(block).not.toMatch(/<span className="text-\[#8C8080\]"> – <\/span>/);
+  });
+});
+
 describe("payments are not shown where they would mislead", () => {
   it("hides the section on discovery-routed results", () => {
     expect(src).toMatch(/!result\.needsDiscovery && \(\s*<PaymentOptions/);
@@ -145,20 +154,26 @@ describe("the form does not resize between questions", () => {
   it("gives question screens a constant, viewport-capped height", () => {
     /* Option counts vary from 4 to 12, and sizing the card to each one moved
        the page ~200px on every answer. */
-    expect(src).toMatch(/h-\[min\(44rem,calc\(100svh-3rem\)\)\]/);
+    expect(src).toMatch(/h-full max-h-\[34rem\] min-h-\[18rem\]/);
   });
 
-  it("measures against svh, not vh", () => {
+  it("measures the page against svh, not vh", () => {
     /* On iOS and Android `vh` is the LARGE viewport — it counts space behind
-       the address bar, so the card is clipped until the bar collapses. */
-    const shell = src.slice(src.indexOf("function Shell"), src.indexOf("function ResultCard"));
-    expect(shell).toMatch(/svh/);
-    expect(shell).not.toMatch(/\d+vh\b/);
+       the address bar, so a vh-sized section is clipped until the bar
+       collapses. The card sizes off the section, so the unit lives there. */
+    for (const page of [
+      "src/app/(en)/tools/project-cost-calculator/page.tsx",
+      "src/app/(fr)/fr/outils/calculateur-cout-projet/page.tsx",
+    ]) {
+      const p = readFileSync(fileURLToPath(new URL(`../../../${page}`, import.meta.url)), "utf8");
+      expect(p, page).toMatch(/h-\[100svh\]/);
+      expect(p, page).not.toMatch(/h-\[100vh\]/);
+    }
   });
 
-  it("centres the question card in the viewport", () => {
+  it("centres the question card in the space it is given", () => {
     const shell = src.slice(src.indexOf("function Shell"), src.indexOf("function ResultCard"));
-    expect(shell).toMatch(/min-h-\[100svh\] items-center justify-center/);
+    expect(shell).toMatch(/flex h-full items-center justify-center/);
   });
 
   it("scrolls the options inside the card rather than growing it", () => {
@@ -176,7 +191,57 @@ describe("the form does not resize between questions", () => {
   });
 
   it("lets the result card size itself — it is read, not stepped through", () => {
-    expect(src).toMatch(/<Shell steady>/);
+    expect(src).toMatch(/<Shell steady cardRef=\{shellRef\}>/);
     expect(src).toMatch(/<Shell>\s*<div className="flex flex-wrap items-center gap-3">/);
+  });
+
+  it("plants the card in the viewport once, not on every answer", () => {
+    /* Re-centring on each answer would yank the page under someone who had
+       scrolled deliberately to read the help text. */
+    expect(src).toMatch(/const planted = useRef\(false\)/);
+    expect(src).toMatch(/if \(!planted\.current && safeIndex > 0 && shellRef\.current\)/);
+    expect(src).toMatch(/block: "center"/);
+  });
+
+  it("honours reduced motion when it scrolls", () => {
+    const hits = src.match(/prefers-reduced-motion: reduce/g) ?? [];
+    expect(hits.length).toBeGreaterThanOrEqual(2);
+  });
+
+  it("puts share directly under the number, not below the detail sections", () => {
+    const payAt = src.indexOf("<PaymentOptions low=");
+    const shareAt = src.indexOf("<ShareEstimate");
+    /* The USE, not the import at the top of the file. */
+    const ctaAt = src.indexOf("onClick={() => trackStudioFromEstimate");
+    expect(shareAt).toBeGreaterThan(payAt);
+    expect(shareAt).toBeLessThan(ctaAt);
+  });
+
+  it("brings the result to the top of the screen", () => {
+    expect(src).toMatch(/block: "start"/);
+  });
+});
+
+describe("share buttons are visible and reachable", () => {
+  it("uses solid red with white text, not a ghost button", () => {
+    const block = src.slice(src.indexOf("function ShareEstimate"));
+    expect(block).toMatch(/bg-\[#D71920\][^"`]*text-white/);
+  });
+
+  it("keeps a 44px touch target", () => {
+    const block = src.slice(src.indexOf("function ShareEstimate"));
+    expect(block).toMatch(/min-h-11/);
+  });
+
+  it("announces the copy result to a screen reader", () => {
+    const block = src.slice(src.indexOf("function ShareEstimate"));
+    expect(block).toMatch(/aria-live="polite"/);
+  });
+
+  it("defines share copy in both languages", () => {
+    for (const key of ["shareTitle", "shareCopy", "shareCopied", "shareEmail", "shareNative"]) {
+      const hits = src.match(new RegExp(`^\\s{4}${key}:`, "gm")) ?? [];
+      expect(hits.length, `${key} should be defined twice (en + fr)`).toBe(2);
+    }
   });
 });

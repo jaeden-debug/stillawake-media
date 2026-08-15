@@ -55,31 +55,40 @@ export default function ProjectCostCalculatorPage() {
     <main className="bg-black text-white">
       <PageSchema route="/tools/project-cost-calculator" />
 
-      <section className="px-6 pb-10 pt-32">
-        <div className="mx-auto max-w-3xl">
-          <p className="text-[11px] uppercase tracking-[0.3em] text-[#D71920]">Free tool</p>
-          <h1 className="geist mt-6 text-5xl font-black leading-[0.95] tracking-[-0.05em] md:text-6xl">
-            What would your project actually cost?
-          </h1>
-          <p className="mt-7 text-lg text-[#C7B9B9]">
-            Most cost calculators are lead-capture forms wearing a number. This one runs the same
-            pricing model StillAwake Media uses internally to scope real work, so the range you get is
-            the range we would start from — not a figure designed to get you on a call.
-          </p>
-          <p className="mt-5 text-[#C7B9B9]">
-            It asks about your business, not about technology. You do not need to know whether you need
-            Shopify, an API or a booking engine; describe what should happen and the model works out
-            what that takes to build.
-          </p>
-          <p className="mt-5 text-sm text-[#8C8080]">
-            Free · no signup · no email · nothing stored. All figures in Canadian dollars.
-          </p>
+      {/* The card shares one viewport with a deliberately short intro. The long
+          explanation moved below it: three paragraphs above the fold pushed the
+          calculator 800px down the page, so nobody ever saw it without
+          scrolling, and it could never be centred on screen. */}
+      {/* The calculator gets the first screen to itself. The h1 and the
+          explanation live below it: this is a tool page, and the tool being
+          above the fold matters more than the prose introducing it. */}
+      <section className="flex h-[100svh] flex-col px-5 pb-6 pt-20 sm:px-6 sm:pt-24">
+        <div className="mx-auto flex w-full min-h-0 max-w-3xl flex-1 flex-col">
+          <ProjectCalculator locale="en" />
         </div>
       </section>
 
-      <section className="px-6 pb-16">
+      <section className="border-t border-white/10 px-6 py-16">
         <div className="mx-auto max-w-3xl">
-          <ProjectCalculator locale="en" />
+          <p className="text-[11px] uppercase tracking-[0.3em] text-[#D71920]">Free tool</p>
+          <h1 className="geist mt-5 text-4xl font-black leading-[0.95] tracking-[-0.05em] md:text-5xl">
+            What would your project actually cost?
+          </h1>
+          <div className="mt-6 space-y-5 text-[#C7B9B9]">
+            <p className="text-lg">
+              Most cost calculators are lead-capture forms wearing a number. This one runs the same
+              pricing model StillAwake Media uses internally to scope real work, so the range you get
+              is the range we would start from — not a figure designed to get you on a call.
+            </p>
+            <p>
+              It asks about your business, not about technology. You do not need to know whether you
+              need Shopify, an API or a booking engine; describe what should happen and the model
+              works out what that takes to build.
+            </p>
+            <p className="text-sm text-[#8C8080]">
+              Free · no signup · no email · nothing stored. All figures in Canadian dollars.
+            </p>
+          </div>
         </div>
       </section>
 

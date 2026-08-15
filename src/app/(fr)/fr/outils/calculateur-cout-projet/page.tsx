@@ -55,33 +55,39 @@ export default function CalculateurCoutProjetPage() {
     <main className="bg-black text-white">
       <PageSchema route="/fr/outils/calculateur-cout-projet" />
 
-      <section className="px-6 pb-10 pt-32">
-        <div className="mx-auto max-w-3xl">
-          <p className="text-[11px] uppercase tracking-[0.3em] text-[#D71920]">Outil gratuit</p>
-          <h1 className="geist mt-6 text-5xl font-black leading-[0.95] tracking-[-0.05em] md:text-6xl">
-            Combien coûterait vraiment votre projet?
-          </h1>
-          <p className="mt-7 text-lg text-[#C7B9B9]">
-            La plupart des calculateurs de coûts sont des formulaires de collecte déguisés en chiffre.
-            Celui-ci utilise le même modèle tarifaire que StillAwake Media utilise à l&apos;interne pour
-            chiffrer de vrais mandats. La fourchette que vous obtenez, c&apos;est celle d&apos;où on
-            partirait — pas un chiffre conçu pour vous amener au téléphone.
-          </p>
-          <p className="mt-5 text-[#C7B9B9]">
-            Les questions portent sur votre entreprise, pas sur la technologie. Pas besoin de savoir si
-            ça vous prend Shopify, une API ou un moteur de réservation : décrivez ce qui doit se passer,
-            et le modèle détermine ce que ça implique de construire.
-          </p>
-          <p className="mt-5 text-sm text-[#8C8080]">
-            Gratuit · sans inscription · sans courriel · rien n&apos;est conservé. Tous les montants sont
-            en dollars canadiens.
-          </p>
+      {/* Même structure qu'en anglais : la carte partage un écran avec une
+          intro volontairement courte, et le long texte passe en dessous. */}
+      {/* Le calculateur occupe le premier écran; le h1 et le texte suivent. */}
+      <section className="flex h-[100svh] flex-col px-5 pb-6 pt-20 sm:px-6 sm:pt-24">
+        <div className="mx-auto flex w-full min-h-0 max-w-3xl flex-1 flex-col">
+          <ProjectCalculator locale="fr" />
         </div>
       </section>
 
-      <section className="px-6 pb-16">
+      <section className="border-t border-white/10 px-6 py-16">
         <div className="mx-auto max-w-3xl">
-          <ProjectCalculator locale="fr" />
+          <p className="text-[11px] uppercase tracking-[0.3em] text-[#D71920]">Outil gratuit</p>
+          <h1 className="geist mt-5 text-4xl font-black leading-[0.95] tracking-[-0.05em] md:text-5xl">
+            Combien coûterait vraiment votre projet?
+          </h1>
+          <div className="mt-6 space-y-5 text-[#C7B9B9]">
+            <p className="text-lg">
+              La plupart des calculateurs de coûts sont des formulaires de collecte déguisés en
+              chiffre. Celui-ci utilise le même modèle tarifaire que StillAwake Media utilise à
+              l&apos;interne pour chiffrer de vrais mandats. La fourchette que vous obtenez,
+              c&apos;est celle d&apos;où on partirait — pas un chiffre conçu pour vous amener au
+              téléphone.
+            </p>
+            <p>
+              Les questions portent sur votre entreprise, pas sur la technologie. Pas besoin de savoir
+              si ça vous prend Shopify, une API ou un moteur de réservation : décrivez ce qui doit se
+              passer, et le modèle détermine ce que ça implique de construire.
+            </p>
+            <p className="text-sm text-[#8C8080]">
+              Gratuit · sans inscription · sans courriel · rien n&apos;est conservé. En dollars
+              canadiens.
+            </p>
+          </div>
         </div>
       </section>
 

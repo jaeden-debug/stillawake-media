@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 
 import { activeQuestions, isComplete, mapAnswers, type Answers, type Locale, type Question } from "@/lib/pricing/public-flow";
@@ -242,6 +242,11 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
      to start at the top — otherwise answering a long question leaves the next
      one already scrolled halfway down. */
   const scrollRef = useRef<HTMLDivElement>(null);
+  /* The card itself, so the flow can plant it in the middle of the screen. */
+  const shellRef = useRef<HTMLDivElement>(null);
+  /* Planting happens once. Re-centring on every answer would yank the page
+     under someone who had deliberately scrolled to read the help text. */
+  const planted = useRef(false);
 
   const questions = useMemo(() => activeQuestions(answers), [answers]);
   // Answering can retract later questions, so the cursor must never point past
@@ -256,6 +261,27 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: 0 });
     headingRef.current?.focus({ preventScroll: true });
+
+    /* The card lives below the page intro, so at rest it sits several hundred
+       pixels down. Once someone actually starts answering, put it in the middle
+       of the screen and leave it there — the height is constant, so from that
+       point on nothing moves and they never have to scroll back to it.
+       Gated on safeIndex > 0 because this effect also runs on mount, and
+       yanking the page down before anyone has touched the thing is worse than
+       leaving it where it is. */
+    if (!planted.current && safeIndex > 0 && shellRef.current) {
+      planted.current = true;
+      const box = shellRef.current.getBoundingClientRect();
+      const alreadyCentred = box.top > -40 && box.top < window.innerHeight * 0.25;
+      if (!alreadyCentred) {
+        shellRef.current.scrollIntoView({
+          block: "center",
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "auto"
+            : "smooth",
+        });
+      }
+    }
   }, [safeIndex, state]);
 
   const advance = useCallback(() => setIndex((i) => i + 1), []);
@@ -332,7 +358,7 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
   const progress = totalKnown ? ((safeIndex + 1) / questions.length) * 100 : 8;
 
   return (
-    <Shell steady>
+    <Shell steady cardRef={shellRef}>
       <div className="flex shrink-0 items-center justify-between gap-4 text-[11px] uppercase tracking-[0.28em] text-[#8C8080]">
         <span className="tabular-nums">
           {totalKnown ? `${safeIndex + 1} ${T.of} ${questions.length}` : safeIndex + 1}
@@ -502,18 +528,20 @@ const FOCUS =
  * The result state deliberately opts out: it is long-form content someone reads
  * and scrolls, not a step in a sequence.
  */
-function Shell({ children, steady = false }: { children: React.ReactNode; steady?: boolean }) {
+function Shell({
+  children,
+  steady = false,
+  cardRef,
+}: {
+  children: React.ReactNode;
+  steady?: boolean;
+  cardRef?: React.RefObject<HTMLDivElement | null>;
+}) {
   return (
-    <div
-      className={
-        steady
-          ? "flex min-h-[100svh] items-center justify-center py-6"
-          : "flex justify-center py-6"
-      }
-    >
+    <div ref={cardRef} className={steady ? "flex h-full items-center justify-center" : "flex justify-center py-6"}>
       <div
         className={`relative w-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.055] to-white/[0.015] shadow-[0_30px_80px_-40px_rgba(0,0,0,.9)] ${
-          steady ? "flex h-[min(44rem,calc(100svh-3rem))] flex-col p-6 sm:p-9" : "p-6 sm:p-9"
+          steady ? "flex h-full max-h-[34rem] min-h-[18rem] flex-col p-5 sm:p-8" : "p-6 sm:p-9"
         }`}
       >
         {/* One soft light source behind the card. Purely decorative. */}
@@ -542,6 +570,17 @@ function ResultCard({
   onRestart: () => void;
 }) {
   const counted = useCountUp(result.low);
+  const topRef = useRef<HTMLDivElement>(null);
+
+  /* The result runs well past a screen, so centring it would land the reader in
+     the middle of the scope list with the price above the fold line. Put its top
+     at the top of the screen instead. */
+  useEffect(() => {
+    topRef.current?.scrollIntoView({
+      block: "start",
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    });
+  }, []);
   const fmt = (n: number) =>
     locale === "fr"
       ? `${new Intl.NumberFormat("fr-CA").format(n)} $`
@@ -564,7 +603,7 @@ function ResultCard({
   const badge = null;
 
   return (
-    <div className="motion-safe:animate-[sam-rise_.5s_cubic-bezier(.16,1,.3,1)_both]">
+    <div ref={topRef} className="scroll-mt-24 motion-safe:animate-[sam-rise_.5s_cubic-bezier(.16,1,.3,1)_both]">
       <Shell>
         <div className="flex flex-wrap items-center gap-3">
           <p className="text-[11px] uppercase tracking-[0.3em] text-[#D71920]">{T.yourEstimate}</p>
@@ -582,9 +621,12 @@ function ResultCard({
             fmt(counted)
           ) : (
             <>
-              {fmt(counted)}
-              <span className="text-[#8C8080]"> – </span>
-              {fmt(result.high)}
+              {/* Break BEFORE the dash. Left alone this strands a dangling "–"
+                  at the end of the first line on any narrow card. */}
+              {fmt(counted)}{" "}
+              <span className="whitespace-nowrap">
+                <span className="text-[#8C8080]">–</span>&nbsp;{fmt(result.high)}
+              </span>
             </>
           )}
         </p>
@@ -596,6 +638,11 @@ function ResultCard({
         {!result.needsDiscovery && (
           <PaymentOptions low={result.low} high={result.high} T={T} locale={locale} />
         )}
+
+        {/* Directly under the number. Sharing is a reaction to seeing the
+            price, and the detail sections below run to well over a thousand
+            pixels — at the bottom of the card these were never found. */}
+        <ShareEstimate result={result} T={T} locale={locale} />
 
         {!result.needsDiscovery && (result.lowAssumption || result.highAssumption) && (
           <div className="mt-6 max-w-2xl rounded-2xl border border-white/10 bg-white/[0.03] p-5">
@@ -729,8 +776,6 @@ function ResultCard({
             {T.restart}
           </button>
         </div>
-
-        <ShareEstimate result={result} T={T} locale={locale} />
         <p className="mt-3 text-xs text-[#8C8080]">{T.ctaNote}</p>
 
         <p className="mt-7 text-[10px] uppercase tracking-[0.25em] text-[#5a5252]">
@@ -860,20 +905,31 @@ function ShareEstimate({
   locale: Locale;
 }) {
   const [copied, setCopied] = useState(false);
-  const [canNativeShare, setCanNativeShare] = useState(false);
-  const [url, setUrl] = useState("");
 
-  useEffect(() => {
-    setUrl(window.location.href);
-    setCanNativeShare(typeof navigator !== "undefined" && typeof navigator.share === "function");
-  }, []);
+  /* The URL is read at click time rather than held in state — it cannot change
+     under us here, and storing it would mean a render pass that exists only to
+     learn something the browser already knows. */
+  const currentUrl = () => (typeof window === "undefined" ? "" : window.location.href);
+
+  /* Whether the OS share sheet exists is a browser capability, not app state.
+     useSyncExternalStore is how you read one without a hydration mismatch and
+     without setting state inside an effect. The server answer is "no", so the
+     button is absent in the HTML and appears once hydrated. */
+  const canNativeShare = useSyncExternalStore(
+    () => () => {},
+    () => typeof navigator !== "undefined" && typeof navigator.share === "function",
+    () => false,
+  );
 
   const subject = locale === "fr" ? "Notre estimation de projet" : "Our project estimate";
   const range = `${formatCad(result.low, locale)} – ${formatCad(result.high, locale)}`;
-  const body =
-    locale === "fr"
-      ? `Fourchette estimée : ${range}\n\n${url}`
-      : `Estimated range: ${range}\n\n${url}`;
+  const mailto = () => {
+    const body =
+      locale === "fr"
+        ? `Fourchette estimée : ${range}\n\n${currentUrl()}`
+        : `Estimated range: ${range}\n\n${currentUrl()}`;
+    return `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
 
   const RED =
     "inline-flex min-h-11 items-center gap-2 rounded-full bg-[#D71920] px-5 py-2.5 text-sm font-bold text-white transition hover:brightness-110";
@@ -885,7 +941,7 @@ function ShareEstimate({
         <button
           type="button"
           onClick={() => {
-            void navigator.clipboard.writeText(url).then(() => {
+            void navigator.clipboard.writeText(currentUrl()).then(() => {
               setCopied(true);
               setTimeout(() => setCopied(false), 2000);
             });
@@ -896,10 +952,7 @@ function ShareEstimate({
           <span aria-hidden>{copied ? "✓" : "⧉"}</span>
         </button>
 
-        <a
-          href={`mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`}
-          className={`${FOCUS} ${RED}`}
-        >
+        <a href={mailto()} className={`${FOCUS} ${RED}`}>
           {T.shareEmail}
           <span aria-hidden>→</span>
         </a>
@@ -908,9 +961,11 @@ function ShareEstimate({
           <button
             type="button"
             onClick={() => {
-              void navigator.share({ title: subject, text: `${subject}: ${range}`, url }).catch(() => {
-                /* The user dismissed the sheet. Not an error worth reporting. */
-              });
+              void navigator
+                .share({ title: subject, text: `${subject}: ${range}`, url: currentUrl() })
+                .catch(() => {
+                  /* The user dismissed the sheet. Not an error worth reporting. */
+                });
             }}
             className={`${FOCUS} ${RED}`}
           >

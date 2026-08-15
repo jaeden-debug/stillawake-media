@@ -182,9 +182,18 @@ describe("the card resizes cleanly but never moves the screen", () => {
     expect(src).not.toMatch(/overscroll-contain/);
   });
 
-  it("goes to two tighter columns instead of overflowing on a long list", () => {
+  it("keeps one option per row — never a second column", () => {
+    /* A stacked list is read top to bottom and nothing gets missed. Long lists
+       get shorter rows instead. */
     expect(src).toMatch(/const dense = \(current\?\.options\.length \?\? 0\) > 6/);
-    expect(src).toMatch(/grid-cols-2/);
+    const optionsGrid = src.slice(src.indexOf("One option per row"), src.indexOf("current.options.map"));
+    expect(optionsGrid).not.toMatch(/grid-cols-2/);
+  });
+
+  it("drops the instruction line on a long list", () => {
+    /* On a twelve-option screen it costs a row of its own, and the options
+       already say what to do. */
+    expect(src).toMatch(/\{current\.help && !dense &&/);
   });
 
   it("shortens rows on a short viewport rather than clipping them", () => {

@@ -347,8 +347,9 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
     return <ResultCard result={result} locale={locale} T={T} answers={answers} onRestart={restart} />;
   }
 
-  /* Past six options a single column cannot fit the card on a phone, so the
-     list switches to two tighter columns instead of gaining a scrollbar. */
+  /* Long lists keep one option per row and shrink the rows instead. Twelve
+     stacked rows at full size do not fit a phone, and the alternatives — a
+     second column or a scrollbar — both make options easy to miss. */
   const dense = (current?.options.length ?? 0) > 6;
   const picked = current?.kind === "multi" ? ((answers[current.id] as string[] | undefined)?.length ?? 0) : 0;
   const blocked = current?.kind === "multi" && !current.optional && picked === 0;
@@ -395,23 +396,26 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
           <h2
             ref={headingRef}
             tabIndex={-1}
-            className="geist mt-6 text-[1.7rem] font-black leading-[1.1] tracking-[-0.04em] outline-none sm:mt-8 sm:text-4xl [@media(max-height:720px)]:mt-3 [@media(max-height:720px)]:text-xl"
+            className={`geist font-black leading-[1.1] tracking-[-0.04em] outline-none [@media(max-height:720px)]:mt-3 [@media(max-height:720px)]:text-xl ${
+              dense ? "mt-5 text-[1.45rem] sm:mt-6 sm:text-3xl" : "mt-6 text-[1.7rem] sm:mt-8 sm:text-4xl"
+            }`}
           >
             {current.prompt[locale]}
           </h2>
-          {current.help && (
+          {current.help && !dense && (
             <p className="mt-3 max-w-xl text-sm leading-6 text-[#8C8080] [@media(max-height:720px)]:mt-1.5 [@media(max-height:720px)]:text-xs [@media(max-height:720px)]:leading-5">
               {current.help[locale]}
             </p>
           )}
 
-          {/* Every option visible, no scrolling. A long list goes to two
-              columns and tighter rows rather than running off the bottom —
-              an option you have to scroll to find is an option nobody picks. */}
+          {/* One option per row, always — a stacked list is read top to bottom
+              and nothing is missed. Long lists get shorter rows rather than a
+              second column or a scrollbar; an option you have to hunt for is an
+              option nobody picks. */}
           <div
             className={`mt-4 grid sm:mt-5 [@media(max-height:720px)]:mt-3 ${
               dense
-                ? "grid-cols-2 gap-1.5 sm:gap-2"
+                ? "gap-1 [@media(max-height:720px)]:gap-0.5"
                 : "gap-2 sm:gap-2.5 [@media(max-height:720px)]:gap-1.5"
             }`}
           >
@@ -434,7 +438,7 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
                      piece, which is the part anyone actually notices. */
                   className={`${FOCUS} group flex items-start rounded-2xl border text-left transition-all duration-200 ${
                     dense
-                      ? "gap-2 p-2.5 [@media(max-height:720px)]:p-2"
+                      ? "gap-2.5 px-3 py-1.5 [@media(max-height:720px)]:py-1"
                       : "gap-3.5 p-3.5 sm:p-4 [@media(max-height:720px)]:gap-2.5 [@media(max-height:720px)]:p-2.5"
                   } ${
                     on
@@ -466,7 +470,7 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
                     <span
                       className={`block font-medium leading-snug ${
                         dense
-                          ? "text-[0.8rem]"
+                          ? "text-[0.85rem] [@media(max-height:720px)]:text-[0.8rem]"
                           : "text-[0.95rem] [@media(max-height:720px)]:text-[0.85rem]"
                       } ${on ? "text-white" : "text-[#DDD2D2]"}`}
                     >

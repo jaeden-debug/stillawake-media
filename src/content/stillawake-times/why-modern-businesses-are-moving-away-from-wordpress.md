@@ -310,4 +310,8 @@ Moving off WordPress is not a decision to make lightly or prematurely. But for b
 
 ---
 
+Deciding what to move *to* is a separate question from deciding to move, and it has its own resource: [what technology you should use for your website](/choosing-website-technology) sets out the five levels of complexity and the requirement that justifies each one.
+
+---
+
 *StillAwake Media builds on [Framer](/framer-development), [Next.js](/software-development), and modern stacks — and manages WordPress-to-modern migrations for businesses ready to move forward.*

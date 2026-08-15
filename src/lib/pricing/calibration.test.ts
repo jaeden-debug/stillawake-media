@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { SCENARIOS } from "./calibration";
 import { estimate } from "./engine";
-import { MINIMUM, MIN_IMPLIED_DAY_RATE, PLANNING_DAY_RATE } from "./model";
+import { MINIMUM, MIN_IMPLIED_DAY_RATE, PLANNING_DAY_RATE, RECURRING } from "./model";
 import { activeQuestions, isComplete, mapAnswers, type Answers } from "./public-flow";
 import type { Estimate } from "./types";
 
@@ -130,9 +130,12 @@ describe("the internal check", () => {
     expect(spread).toBeGreaterThan(1.1);
   });
 
+  /* Derived from the catalogue, so approving a row is one edit in model.ts
+     rather than a number to chase through the scenario suite as well. */
   it.each(SCENARIOS)("$id publishes only approved monthly prices", (s) => {
+    const approved = RECURRING.filter((r) => r.approved).map((r) => r.monthly);
     for (const r of get(s.id).recurring) {
-      if (r.monthly !== null) expect([600, 850]).toContain(r.monthly);
+      if (r.monthly !== null) expect(approved).toContain(r.monthly);
     }
   });
 });

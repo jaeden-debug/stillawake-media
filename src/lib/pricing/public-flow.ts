@@ -81,11 +81,30 @@ const isWebsite = (a: Answers) => ["new_website", "redesign"].includes(goalOf(a)
 
 /* ── 2. what does it need to do ──────────────────────────────────────────── */
 
-/** Plain outcomes. The mapping to additions happens in `mapAnswers`, not here. */
+/**
+ * Plain outcomes. The mapping to additions happens in `mapAnswers`, not here.
+ *
+ * TWO OF THESE PRICE AT ZERO, AND THAT IS DELIBERATE.
+ *
+ * `content_updates` and (in the complexity list) `multilingual` are read only
+ * by `src/lib/architecture/` — the layer that recommends what a project should
+ * be BUILT ON, which is a different question from what it costs. They ride
+ * inside questions the flow already asks rather than earning screens of their
+ * own, because this flow is capped at six questions on purpose and two extra
+ * screens is a worse trade than two extra checkboxes.
+ *
+ * `mapAnswers` below does not read either one, so neither moves a quote. The
+ * recommendation says so out loud where it matters — using an answer we do not
+ * charge for, without mentioning that, would be the dishonest version.
+ */
 const NEEDS: Option[] = [
   { key: "explain", label: t("Explain what we do", "Expliquer ce qu'on fait") },
   { key: "leads", label: t("Get enquiries and leads", "Générer des demandes") },
   { key: "menu", label: t("Show menus, services or pricing", "Afficher menus, services ou prix") },
+  /* The CMS decision, in the client's own terms. A site nobody will ever edit
+     should not be sold a content system; a site whose owner posts weekly
+     should never have to email us to publish. */
+  { key: "content_updates", label: t("Let us update it ourselves, regularly", "Nous permettre de le mettre à jour nous-mêmes, régulièrement") },
   { key: "bookings", label: t("Take bookings or appointments", "Prendre des rendez-vous") },
   { key: "ordering", label: t("Take orders", "Prendre des commandes") },
   { key: "sell", label: t("Sell products", "Vendre des produits") },
@@ -110,6 +129,10 @@ const SIZES: Option[] = [
 
 const COMPLEXITY: Option[] = [
   { key: "multi_location", label: t("We have several locations", "On a plusieurs emplacements") },
+  /* Architecture-only, like `content_updates` above — a second language is a
+     routing and content-model decision made on day one, not a translation task
+     bolted on later. It genuinely belongs on a list headed "real complexity". */
+  { key: "multilingual", label: t("It has to work in more than one language", "Ça doit fonctionner dans plus d'une langue") },
   { key: "connect_internal", label: t("It has to connect to our own internal system", "Ça doit se connecter à notre système interne") },
   { key: "accessibility", label: t("We have accessibility or compliance requirements", "On a des exigences d'accessibilité ou de conformité") },
   { key: "stakeholders", label: t("Several people need to approve it", "Plusieurs personnes doivent l'approuver") },

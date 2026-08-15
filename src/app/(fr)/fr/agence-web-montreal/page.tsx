@@ -328,6 +328,7 @@ export default function Page() {
       <RelatedServices
         title="Continuez en français"
         links={[
+          ["Quel type de site pour votre entreprise ?", "/fr/guide-site-web-entreprise"],
           ["Agence SEO Montréal", "/fr/agence-seo-montreal"],
           ["Maintenance de site web", "/fr/maintenance-site-web"],
           ["Développement Shopify", "/fr/developpement-shopify"],

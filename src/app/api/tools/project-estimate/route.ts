@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 
+import { recommend } from "@/lib/architecture/engine";
+import { present } from "@/lib/architecture/present";
+import { requirementsFrom } from "@/lib/architecture/requirements";
 import { estimate, PricingInputError } from "@/lib/pricing/engine";
 import { ASSUMPTION_LABELS, BASE_LABELS, CAVEAT_LABELS, DISCOVERY_REASONS, formatCad, labelForKey, type Locale } from "@/lib/pricing/labels";
 import { DISCOVERY } from "@/lib/pricing/model";
@@ -64,6 +67,28 @@ export async function POST(request: Request) {
     const input = mapAnswers(answers);
     const result = estimate(input);
 
+    /**
+     * The architecture recommendation runs on the SAME answers and shares
+     * nothing else with the estimate.
+     *
+     * Two separate models on one questionnaire, on purpose. What a project
+     * costs and what it should be built on are different questions: a
+     * bilingual brochure site and a single-language one price identically and
+     * want different tooling, and a Shopify store and a headless storefront
+     * can want the same stack an order of magnitude apart in price. Coupling
+     * them would mean every pricing recalibration silently moved the technical
+     * advice, which is precisely the drift that makes advice untrustworthy.
+     *
+     * It is also non-fatal. A prospect asked for a price; if the recommender
+     * throws, they still get one.
+     */
+    let architecture = null;
+    try {
+      architecture = present(recommend(requirementsFrom(answers)), locale);
+    } catch {
+      architecture = null;
+    }
+
     /** "A full business website · Bookings" — what they asked for, in their words. */
     const summary = [
       BASE_LABELS[input.base]?.[locale] ?? input.base,
@@ -103,6 +128,10 @@ export async function POST(request: Request) {
         // the opposite of what asking the question is for.
         budgetSignal: result.budgetSignal === "above" ? "above" : null,
         pricingVersion: result.pricingVersion,
+        /* Already localised — unlike the pricing fields, which are keys the
+           route resolves above. The recommender owns its own label tables, so
+           it renders itself and hands back finished copy. */
+        architecture,
       },
       { headers: { "cache-control": "no-store" } },
     );

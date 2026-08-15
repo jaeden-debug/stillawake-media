@@ -200,11 +200,60 @@ export const MISC_LABELS: Record<string, L> = {
 };
 
 export const RECURRING_LABELS: Record<string, L> = {
+  "managed-hosting": t("Managed hosting", "Hébergement géré"),
+  "website-care-plan": t("Website care plan", "Forfait d'entretien"),
+  "seo-starter": t("SEO Growth — Starter", "Croissance SEO — Départ"),
   "seo-essentials": t("SEO Growth — Essentials", "Croissance SEO — Essentiel"),
   "seo-advanced": t("SEO Growth — Advanced", "Croissance SEO — Avancé"),
-  "website-care-plan": t("Website care plan", "Forfait d'entretien"),
-  "managed-hosting": t("Managed hosting", "Hébergement géré"),
   "content-creation": t("Content production", "Production de contenu"),
+};
+
+/** One-time fixed-price entry services. */
+export const ONE_TIME_LABELS: Record<string, L> = {
+  "site-audit": t("Website health audit", "Audit de santé du site"),
+  "llms-txt-setup": t("llms.txt & AI-readiness setup", "Configuration llms.txt et prêt-pour-l'IA"),
+  "gbp-setup": t("Google Business Profile setup", "Configuration de la fiche d'établissement Google"),
+  "speed-fix": t("Speed & Core Web Vitals fix", "Correction de vitesse et Core Web Vitals"),
+};
+
+export const ONE_TIME_DESCRIPTIONS: Record<string, L> = {
+  "site-audit": t(
+    "A written read of what is actually wrong with your site — technical health, search visibility and what is costing you enquiries. A report, not changes.",
+    "Un rapport écrit sur ce qui cloche vraiment sur votre site — santé technique, visibilité en recherche et ce qui vous coûte des demandes. Un rapport, pas des modifications.",
+  ),
+  "llms-txt-setup": t(
+    "An llms.txt file and the entity markup that lets ChatGPT, Claude, Perplexity and AI Overviews describe your business correctly instead of guessing.",
+    "Un fichier llms.txt et le balisage d'entité qui permet à ChatGPT, Claude, Perplexity et aux aperçus IA de décrire votre entreprise correctement plutôt que de deviner.",
+  ),
+  "gbp-setup": t(
+    "Your Google Business Profile claimed, filled in properly, categorised and connected to your site — the single highest-leverage local search asset.",
+    "Votre fiche d'établissement Google revendiquée, remplie correctement, catégorisée et reliée à votre site — l'actif de recherche locale le plus rentable.",
+  ),
+  "speed-fix": t(
+    "Core Web Vitals brought into the green: images, render-blocking assets, layout shift and the largest paint. Measured before and after.",
+    "Les Core Web Vitals ramenés au vert : images, ressources bloquantes, décalage de mise en page et affichage principal. Mesuré avant et après.",
+  ),
+};
+
+/** Emergency support: the track, then the rung within it. */
+export const EMERGENCY_LABELS: Record<string, L> = {
+  custom_site: t("Emergency Support — Custom Site", "Soutien d'urgence — Site sur mesure"),
+  ecommerce: t("Emergency Support — Ecommerce", "Soutien d'urgence — Commerce en ligne"),
+  "custom_site.quick_fix": t("Quick fix", "Correction rapide"),
+  "custom_site.priority": t("Priority incident", "Incident prioritaire"),
+  "custom_site.heavy": t("Heavy incident", "Incident majeur"),
+  "ecommerce.triage": t("Store triage", "Triage de boutique"),
+  "ecommerce.priority": t("Priority incident", "Incident prioritaire"),
+  "ecommerce.critical": t("Business-critical", "Critique pour l'entreprise"),
+};
+
+export const EMERGENCY_DESCRIPTIONS: Record<string, L> = {
+  "custom_site.quick_fix": t("One contained issue, fixed same day", "Un problème circonscrit, corrigé le jour même"),
+  "custom_site.priority": t("Something broken and costing you business", "Quelque chose de brisé qui vous coûte des affaires"),
+  "custom_site.heavy": t("Multiple pages or systems affected", "Plusieurs pages ou systèmes touchés"),
+  "ecommerce.triage": t("Checkout or catalogue issue diagnosed and fixed", "Problème de paiement ou de catalogue diagnostiqué et corrigé"),
+  "ecommerce.priority": t("Revenue-impacting store failure", "Panne de boutique qui affecte les revenus"),
+  "ecommerce.critical": t("Store down, drop-everything response", "Boutique hors service, intervention immédiate"),
 };
 
 export const CAVEAT_LABELS: Record<string, L> = {
@@ -252,6 +301,8 @@ export function labelForKey(key: string, locale: Locale): string {
     INCLUDE_LABELS[key]?.[locale] ??
     EXCLUDE_LABELS[key]?.[locale] ??
     RECURRING_LABELS[key]?.[locale] ??
+    ONE_TIME_LABELS[key]?.[locale] ??
+    EMERGENCY_LABELS[key]?.[locale] ??
     key
   );
 }

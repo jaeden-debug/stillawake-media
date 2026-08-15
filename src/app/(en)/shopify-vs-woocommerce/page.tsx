@@ -127,6 +127,7 @@ export default function ShopifyVsWooPage() {
       <RelatedServices
         title="Keep going"
         links={[
+          ["Do you even need a store? (setup guide)", "/website-setup-guide"],
           ["Shopify Development", "/shopify-development"],
           ["Shopify Website Cost", "/website-cost-canada"],
           ["Website Redesign (migrations)", "/website-redesign"],

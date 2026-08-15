@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 
 import { POST } from "./route";
+import { RECURRING } from "@/lib/pricing/model";
+import { RECURRING_LABELS } from "@/lib/pricing/labels";
 
 /**
  * The public contract.
@@ -138,12 +140,27 @@ describe("tampering", () => {
 });
 
 describe("recurring services", () => {
-  it("keeps monthly fees out of the build range and withholds unapproved prices", async () => {
+  /**
+   * The care plan was a draft row until 2026-08-15 and this test asserted it
+   * came back withheld. It is now an approved $150 product, so what matters
+   * here is the other half of the contract: a monthly fee is quoted alongside
+   * the build, never folded into the build's range.
+   */
+  it("quotes the approved monthly fee alongside the build, not inside it", async () => {
     const body = await (await post({ answers: LAUNCH, locale: "en" })).json();
     expect(body.high).toBeLessThanOrEqual(3500);
     const care = body.recurring.find((r: { label: string }) => r.label === "Website care plan");
-    expect(care.monthly).toBeNull();
-    expect(care.monthlyLabel).toBeNull();
+    expect(care.monthly).toBe(150);
+    expect(care.monthlyLabel).toBe("CA$150");
+  });
+
+  /** Whatever the catalogue says today, the client must never see a draft price. */
+  it("never returns a price for an unapproved catalogue row", async () => {
+    const body = await (await post({ answers: LAUNCH, locale: "en" })).json();
+    const draftLabels = RECURRING.filter((r) => !r.approved).map((r) => RECURRING_LABELS[r.id].en);
+    for (const row of body.recurring as { label: string; monthly: number | null }[]) {
+      if (draftLabels.includes(row.label)) expect(row.monthly, row.label).toBeNull();
+    }
   });
 });
 

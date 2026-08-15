@@ -2,16 +2,83 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ServiceJsonLd, PriceCard } from "@/components/service-page";
 import { getContentLayer } from "@/lib/cms/adapter";
-import { DISCOVERY, MINIMUM } from "@/lib/pricing/model";
+import { DISCOVERY, EMERGENCY, MINIMUM, ONE_TIME, RECURRING } from "@/lib/pricing/model";
+import {
+  EMERGENCY_DESCRIPTIONS,
+  EMERGENCY_LABELS,
+  ONE_TIME_DESCRIPTIONS,
+  ONE_TIME_LABELS,
+  RECURRING_LABELS,
+} from "@/lib/pricing/labels";
 import { slot } from "@/lib/cms/layer";
 import { ArticlesLies } from "@/components/articles-lies";
 
 export const revalidate = 300;
 
+/** Québec French puts the symbol after the number, with a space. */
+const money = (n: number) => `${n.toLocaleString("fr-CA")} $ CAD`;
+
+const MONTHLY = RECURRING.filter((r) => r.approved && r.monthly !== null);
+const ONE_TIME_SERVICES = Object.values(ONE_TIME).filter((s) => s.approved);
+
+/** Les trois chiffres d'entrée, dérivés pour que la copie ne périme pas. */
+const ENTRY_MONTHLY = Math.min(...MONTHLY.map((r) => r.monthly!));
+const ENTRY_ONE_TIME = Math.min(...ONE_TIME_SERVICES.map((s) => s.price));
+const EMERGENCY_CEILING = Math.max(
+  ...Object.values(EMERGENCY).flatMap((t) => t.tiers.map((tier) => tier.price)),
+);
+
+const MONTHLY_ITEMS: Record<string, string[]> = {
+  "managed-hosting": [
+    "Hébergement rapide sur notre infrastructure",
+    "SSL, DNS et surveillance de disponibilité",
+    "Sauvegardes quotidiennes",
+    "On s'occupe de la plateforme, vous ne la voyez jamais",
+  ],
+  "website-care-plan": [
+    "Tout l'hébergement géré",
+    "Mises à jour logicielles et des dépendances",
+    "Petites modifications de contenu et de texte",
+    "Si ça brise, on répare — sans frais d'incident",
+  ],
+  "seo-starter": [
+    "Suivi de la Search Console",
+    "Une correction on-page par mois",
+    "Un rapport mensuel réellement lisible",
+    "Le vrai point d'entrée — pas un Essentiel réduit",
+  ],
+  "seo-essentials": [
+    "SEO technique",
+    "Optimisation des pages",
+    "Suivi Search Console",
+    "Rapport mensuel",
+  ],
+  "seo-advanced": [
+    "Tout Essentiel",
+    "Optimisation IA (AEO)",
+    "Optimisation des entités",
+    "Stratégie de contenu",
+  ],
+  "content-creation": [
+    "Articles et textes de pages rédigés pour vous",
+    "Recherchés selon ce que les gens cherchent vraiment",
+    "Publiés, maillés à l'interne et mesurés",
+    "S'ajoute à un forfait SEO — ce n'en est pas un",
+  ],
+};
+
+const MONTHLY_CTA: Record<string, [string, string]> = {
+  "managed-hosting": ["Choisir l'hébergement", "/fr/maintenance-site-web"],
+  "website-care-plan": ["Choisir l'entretien", "/fr/maintenance-site-web"],
+  "seo-starter": ["Choisir Départ", "/fr/agence-seo-montreal"],
+  "seo-essentials": ["Choisir Essentiel", "/fr/agence-seo-montreal"],
+  "seo-advanced": ["Choisir Avancé", "/fr/agence-seo-montreal"],
+  "content-creation": ["Choisir la production de contenu", "/fr/contact"],
+};
+
 export const metadata: Metadata = {
   title: "Tarifs — Prix affichés, sans appel de vente",
-  description:
-    "Tarifs StillAwake Media : sites à partir de 1 800 $ CAD, un site d'entreprise complet de 2 750 $ à 5 750 $, boutiques en ligne à partir de 4 250 $, cadrage payant à partir de 1 800 $, forfaits SEO de 600 $ à 850 $ par mois et dépannage d'urgence de 150 $ à 600 $. Publiés, en dollars canadiens.",
+  description: `Tarifs StillAwake Media : forfaits mensuels à partir de ${ENTRY_MONTHLY} $ CAD, services à prix fixe à partir de ${ENTRY_ONE_TIME} $, sites à partir de 1 800 $ CAD, un site d'entreprise complet de 2 750 $ à 5 750 $, boutiques en ligne à partir de 4 250 $, cadrage payant à partir de 1 800 $ et dépannage d'urgence de ${ENTRY_ONE_TIME} $ à ${EMERGENCY_CEILING} $. Publiés, en dollars canadiens.`,
   alternates: {
     canonical: "https://stillawakemedia.com/fr/tarifs",
     languages: {
@@ -40,10 +107,16 @@ export default async function TarifsPage() {
         offers={[
           { name: "Site web", price: MINIMUM },
           { name: "Cadrage de projet", price: DISCOVERY.from },
-          { name: "Croissance SEO — Essentiel", price: 600, interval: "MONTH" },
-          { name: "Croissance SEO — Avancé", price: 850, interval: "MONTH" },
-          { name: "Support d'urgence — Site sur mesure", price: 150 },
-          { name: "Support d'urgence — Ecommerce", price: 250 },
+          ...MONTHLY.map((r) => ({
+            name: RECURRING_LABELS[r.id].fr,
+            price: r.monthly!,
+            interval: "MONTH" as const,
+          })),
+          ...ONE_TIME_SERVICES.map((s) => ({ name: ONE_TIME_LABELS[s.id].fr, price: s.price })),
+          ...Object.values(EMERGENCY).map((track) => ({
+            name: EMERGENCY_LABELS[track.id].fr,
+            price: track.tiers[0].price,
+          })),
         ]}
         breadcrumb={[
           ["Accueil", "/"],
@@ -62,7 +135,7 @@ export default async function TarifsPage() {
             {slot(
               slots,
               "hero_intro",
-              "La plupart des agences cachent leurs prix derrière un appel de découverte. StillAwake Media les affiche. Un site d'entreprise professionnel avec le référencement local configuré coûte environ 2 750 $ à 5 750 $, et un site plus simple part de 1 800 $. Le bas de la fourchette suppose que vous fournissez le contenu et que la portée reste proche de ce que vous avez demandé; le haut, c'est le même projet avec plus de contenu original, plus de travail de design ou plus de choses à connecter. On ne vous facture jamais plus parce que vous avez plus d'employés. Tous les prix sont en dollars canadiens.",
+              `La plupart des agences cachent leurs prix derrière un appel de découverte. StillAwake Media les affiche. Un site d'entreprise professionnel avec le référencement local configuré coûte environ 2 750 $ à 5 750 $, et un site plus simple part de 1 800 $. Le bas de la fourchette suppose que vous fournissez le contenu et que la portée reste proche de ce que vous avez demandé; le haut, c'est le même projet avec plus de contenu original, plus de travail de design ou plus de choses à connecter. Si un projet complet n'est pas encore pour vous, les services à prix fixe partent de ${ENTRY_ONE_TIME} $ et les forfaits mensuels de ${ENTRY_MONTHLY} $. On ne vous facture jamais plus parce que vous avez plus d'employés. Tous les prix sont en dollars canadiens.`,
             )}
           </p>
         </div>
@@ -130,44 +203,93 @@ export default async function TarifsPage() {
             />
           </div>
 
-          <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">Mensuel — forfaits SEO</h2>
+          <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">
+            Paiement unique — points de départ à prix fixe
+          </h2>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
-            Croissance SEO — Essentiel coûte 600 $ CAD par mois. Croissance SEO — Avancé coûte 850 $ CAD par mois.
+            Pas encore prêt pour un projet. Ces prix sont fixes — pas une fourchette, pas une
+            estimation, et pas une consultation qui se transforme en soumission. Vous payez le
+            montant affiché et vous obtenez la chose.
+          </p>
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {ONE_TIME_SERVICES.map((service) => (
+              <PriceCard
+                key={service.id}
+                name={ONE_TIME_LABELS[service.id].fr}
+                price={money(service.price)}
+                cadence="paiement unique"
+                items={[ONE_TIME_DESCRIPTIONS[service.id].fr]}
+                cta={["Réserver", "https://stillawake.studio/fr/demarrer"]}
+              />
+            ))}
+          </div>
+
+          <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">Mensuel — garder le site en vie</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
+            Les forfaits commencent à {money(MONTHLY[0].monthly!)} par mois. Chacun est un palier
+            complet, pas une version amputée de celui du dessus — on monte quand le travail
+            l&apos;exige, pas parce que le petit forfait a été rendu volontairement pénible.
           </p>
           <div className="mt-8 grid gap-6 md:grid-cols-2">
-            <PriceCard
-              name="Croissance SEO — Essentiel"
-              price="600 $ CAD"
-              cadence="par mois"
-              items={["SEO technique", "Optimisation des pages", "Suivi Search Console", "Rapport mensuel"]}
-              cta={["Choisir Essentiel", "/fr/agence-seo-montreal"]}
-            />
-            <PriceCard
-              name="Croissance SEO — Avancé"
-              price="850 $ CAD"
-              cadence="par mois"
-              items={["Tout Essentiel", "Optimisation IA (AEO)", "Optimisation des entités", "Stratégie de contenu"]}
-              cta={["Choisir Avancé", "/fr/agence-seo-montreal"]}
-              highlight
-            />
+            {MONTHLY.filter((r) => r.group === "care").map((plan) => (
+              <PriceCard
+                key={plan.id}
+                name={RECURRING_LABELS[plan.id].fr}
+                price={money(plan.monthly!)}
+                cadence="par mois"
+                items={MONTHLY_ITEMS[plan.id]}
+                cta={MONTHLY_CTA[plan.id]}
+              />
+            ))}
+          </div>
+
+          <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">Mensuel — forfaits de croissance</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
+            Départ est un vrai forfait à petite échelle, pas un essai. La production de contenu fait
+            exception volontairement : elle rédige du nouveau matériel plutôt que d&apos;optimiser
+            l&apos;existant, alors elle s&apos;ajoute à un forfait SEO plutôt que de le remplacer.
+          </p>
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {MONTHLY.filter((r) => r.group === "seo" || r.group === "content").map((plan) => (
+              <PriceCard
+                key={plan.id}
+                name={RECURRING_LABELS[plan.id].fr}
+                price={money(plan.monthly!)}
+                cadence="par mois"
+                items={MONTHLY_ITEMS[plan.id]}
+                cta={MONTHLY_CTA[plan.id]}
+                highlight={plan.id === "seo-essentials"}
+              />
+            ))}
           </div>
 
           <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">Paiement unique — support d&apos;urgence</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
+            Trois questions établissent le palier; vous voyez le prix exact avant de payer. Jamais
+            un abonnement.
+          </p>
           <div className="mt-8 grid gap-6 md:grid-cols-2">
-            <PriceCard
-              name="Urgence — Site sur mesure"
-              price="150 $ – 400 $ CAD"
-              cadence="paiement unique"
-              items={["150 $ correctif rapide", "250 $ incident prioritaire", "400 $ incident majeur", "Réponse le jour même (heures d'affaires)"]}
-              cta={["Obtenir de l'aide", "/fr/maintenance-site-web"]}
-            />
-            <PriceCard
-              name="Urgence — Boutique en ligne"
-              price="250 $ – 600 $ CAD"
-              cadence="paiement unique"
-              items={["250 $ triage", "400 $ incident prioritaire", "600 $ critique", "Shopify et sur mesure"]}
-              cta={["Réparer ma boutique", "/fr/maintenance-site-web"]}
-            />
+            {Object.values(EMERGENCY).map((track) => {
+              const prices = track.tiers.map((t) => t.price);
+              return (
+                <PriceCard
+                  key={track.id}
+                  name={EMERGENCY_LABELS[track.id].fr}
+                  price={`${Math.min(...prices)} $ – ${Math.max(...prices)} $ CAD`}
+                  cadence="paiement unique"
+                  items={track.tiers.map(
+                    (tier) =>
+                      `${EMERGENCY_LABELS[`${track.id}.${tier.id}`].fr} — ${tier.price} $ : ${
+                        EMERGENCY_DESCRIPTIONS[`${track.id}.${tier.id}`].fr
+                      }`,
+                  )}
+                  cta={[
+                    track.id === "ecommerce" ? "Réparer ma boutique" : "Obtenir de l'aide",
+                    "/fr/maintenance-site-web",
+                  ]}
+                />
+              );
+            })}
           </div>
 
           <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">Ce qu&apos;on fait</h2>

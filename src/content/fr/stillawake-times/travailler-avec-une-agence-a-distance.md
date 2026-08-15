@@ -83,6 +83,8 @@ Le travail à distance ne réussit pas parce que les outils sont bons. Il réuss
 
 Quand ces trois conditions sont réunies, c'est plus rigoureux qu'un projet mené en réunions, pour une raison simple : rien ne repose sur la mémoire de personne.
 
+Le corollaire vaut aussi pour l'infrastructure : à distance ou non, les comptes devraient être à votre nom et l'agence devrait n'y être qu'invitée. Le détail est dans [notre guide sur la propriété d'un site web](/fr/propriete-site-web).
+
 ---
 
 Décrivez votre projet par écrit sur [stillawake.studio/fr/demarrer](https://stillawake.studio/fr/demarrer) et vous recevez une portée écrite en retour — ce qui est aussi un premier échantillon de la façon dont nous travaillons. Aucun appel de vente.

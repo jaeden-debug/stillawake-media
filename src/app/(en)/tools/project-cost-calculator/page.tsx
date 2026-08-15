@@ -84,7 +84,15 @@ export default function ProjectCostCalculatorPage() {
             <p>
               It asks about your business, not about technology. You do not need to know whether you
               need Shopify, an API or a booking engine; describe what should happen and the model
-              works out what that takes to build.
+              works out what that takes to build. If you are not yet sure what the project should
+              consist of, start with the{" "}
+              <Link
+                href="/website-setup-guide"
+                className="text-[#D71920] underline-offset-4 hover:underline"
+              >
+                website setup guide
+              </Link>{" "}
+              and come back with requirements.
             </p>
             <p className="text-sm text-[#8C8080]">
               Free · no signup · no email · nothing stored. All figures in Canadian dollars.
@@ -200,6 +208,9 @@ export default function ProjectCostCalculatorPage() {
           <h2 className="geist text-3xl font-black tracking-[-0.05em]">Read further</h2>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             {[
+              ["What kind of website does my business need?", "/website-setup-guide"],
+              ["What technology should I use for my website?", "/choosing-website-technology"],
+              ["Do I actually need custom software?", "/do-i-need-custom-software"],
               ["How much does a website cost in Canada?", "/website-cost-canada"],
               ["How much does SEO cost in Canada?", "/stillawake-times/how-much-does-seo-cost-canada"],
               [

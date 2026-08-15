@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 
+import type { PresentedRecommendation } from "@/lib/architecture/present";
 import { activeQuestions, isComplete, mapAnswers, type Answers, type Locale, type Question } from "@/lib/pricing/public-flow";
 import { formatCad } from "@/lib/pricing/labels";
 import { MIN_PAYMENT, PUBLIC_PAYMENT_COUNTS } from "@/lib/pricing/payments";
@@ -41,6 +42,10 @@ const UI: Record<Locale, {
   payNote: string; payDisclaimer: string; payLonger: string;
   shareTitle: string; shareCopy: string; shareCopied: string; shareEmail: string;
   shareNative: string;
+  setupTitle: string; setupWhy: string; setupComplexity: string; setupConfidence: string;
+  setupYouManage: string; setupWeHandle: string; setupNotNeeded: string; setupNotNeededNote: string;
+  setupAlternative: string; setupAltWhy: string; setupOpen: string; setupTech: string;
+  setupTechNote: string; setupRead: string; setupVersion: string; setupWhyThis: string;
 }> = {
   en: {
     of: "of",
@@ -96,6 +101,23 @@ const UI: Record<Locale, {
     highMeans: "Toward the higher end",
     couldAdd: "You could also add",
     model: "Pricing model",
+    setupTitle: "What we'd actually build",
+    setupWhy: "Why it fits",
+    setupComplexity: "Complexity",
+    setupConfidence: "How firmly we'd hold this",
+    setupYouManage: "What you'll be able to manage",
+    setupWeHandle: "What StillAwake handles",
+    setupNotNeeded: "Why we aren't adding more",
+    setupNotNeededNote:
+      "A good recommendation contains fewer things, not more. Each of these is something we would not build for you, and the reason why.",
+    setupAlternative: "The alternative we considered",
+    setupAltWhy: "Why we didn't choose it",
+    setupOpen: "What could still change this",
+    setupTech: "View technical details",
+    setupTechNote: "The stack, layer by layer. Nothing here changes the recommendation above.",
+    setupRead: "Worth reading next",
+    setupVersion: "Recommendation model",
+    setupWhyThis: "Why this setup, and not a bigger one",
   },
   fr: {
     of: "sur",
@@ -154,6 +176,23 @@ const UI: Record<Locale, {
     highMeans: "Vers le haut de la fourchette",
     couldAdd: "Vous pourriez aussi ajouter",
     model: "Modèle tarifaire",
+    setupTitle: "Ce qu'on bâtirait réellement",
+    setupWhy: "Pourquoi ça convient",
+    setupComplexity: "Complexité",
+    setupConfidence: "À quel point on y tient",
+    setupYouManage: "Ce que vous pourrez gérer",
+    setupWeHandle: "Ce dont StillAwake s'occupe",
+    setupNotNeeded: "Pourquoi on n'en ajoute pas plus",
+    setupNotNeededNote:
+      "Une bonne recommandation contient moins de choses, pas plus. Chacune d'elles est quelque chose qu'on ne vous bâtirait pas, avec la raison.",
+    setupAlternative: "L'option qu'on a envisagée",
+    setupAltWhy: "Pourquoi on ne l'a pas retenue",
+    setupOpen: "Ce qui pourrait encore changer ça",
+    setupTech: "Voir les détails techniques",
+    setupTechNote: "La pile, couche par couche. Rien ici ne change la recommandation ci-dessus.",
+    setupRead: "À lire ensuite",
+    setupVersion: "Modèle de recommandation",
+    setupWhyThis: "Pourquoi cette configuration, et pas une plus grosse",
   },
 };
 
@@ -178,6 +217,8 @@ type Result = {
   recurring: { label: string; monthly: number | null; monthlyLabel: string | null }[];
   budgetSignal: "fits" | "above" | "below" | null;
   pricingVersion: string;
+  /** Null when the recommender failed. The estimate still stands on its own. */
+  architecture: PresentedRecommendation | null;
 };
 
 const KEYFRAMES = `
@@ -350,7 +391,24 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
   /* Long lists keep one option per row and shrink the rows instead. Twelve
      stacked rows at full size do not fit a phone, and the alternatives — a
      second column or a scrollbar — both make options easy to miss. */
-  const dense = (current?.options.length ?? 0) > 6;
+  const optionCount = current?.options.length ?? 0;
+  const dense = optionCount > 6;
+  /**
+   * A third tier, for the one list that outgrew the second.
+   *
+   * "What does the website need to do?" now carries thirteen options, and at
+   * thirteen the dense layout pushed the Continue button 49px below the fold
+   * on a 720px-tall viewport — which is the exact failure the last several
+   * rounds of work on this card were fixing. The rule stays what it was: no
+   * second column and no scrollbar, because an option you have to hunt for is
+   * an option nobody picks. So the rows get shorter instead.
+   *
+   * The floor is deliberate. At `[@media(max-height:720px)]` a row is ~31px
+   * tall, which clears the 24px minimum target size (WCAG 2.5.8 AA) with room
+   * to spare; a fourth tier below this one would not, so the next list that
+   * outgrows this needs a different answer rather than tighter padding.
+   */
+  const veryDense = optionCount > 12;
   const picked = current?.kind === "multi" ? ((answers[current.id] as string[] | undefined)?.length ?? 0) : 0;
   const blocked = current?.kind === "multi" && !current.optional && picked === 0;
 
@@ -423,9 +481,11 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
               option nobody picks. */}
           <div
             className={`grid [@media(max-height:720px)]:mt-3 ${dense ? "mt-2 [@media(min-height:950px)]:mt-5" : "mt-4 sm:mt-5"} ${
-              dense
-                ? "gap-1 [@media(max-height:720px)]:gap-0.5 [@media(min-height:950px)]:gap-2.5"
-                : "gap-2.5 [@media(max-height:720px)]:gap-1.5 [@media(min-height:900px)]:gap-3"
+              veryDense
+                ? "gap-1 [@media(max-height:850px)]:gap-px [@media(min-height:950px)]:gap-2"
+                : dense
+                  ? "gap-1 [@media(max-height:720px)]:gap-0.5 [@media(min-height:950px)]:gap-2.5"
+                  : "gap-2.5 [@media(max-height:720px)]:gap-1.5 [@media(min-height:900px)]:gap-3"
             }`}
           >
             {current.options.map((o) => {
@@ -446,9 +506,11 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
                      still steps down where the screen is short, because the
                      Studio flow never has to fit twelve options at once. */
                   className={`group relative w-full rounded-2xl border text-left transition-colors duration-150 ${FOCUS} ${
-                    dense
-                      ? "px-5 py-2 [@media(max-height:720px)]:py-1.5 [@media(min-height:950px)]:py-4"
-                      : "px-5 py-4 [@media(max-height:720px)]:py-2.5 [@media(min-height:1100px)]:py-5"
+                    veryDense
+                      ? "px-5 py-1.5 [@media(max-height:850px)]:py-1 [@media(min-height:950px)]:py-3.5"
+                      : dense
+                        ? "px-5 py-2 [@media(max-height:720px)]:py-1.5 [@media(min-height:950px)]:py-4"
+                        : "px-5 py-4 [@media(max-height:720px)]:py-2.5 [@media(min-height:1100px)]:py-5"
                   } ${
                     on
                       ? "border-[#D71920]/70 bg-[#D71920]/[0.08] shadow-[0_0_30px_-12px_rgba(215,25,32,0.5)]"
@@ -582,7 +644,7 @@ function Shell({
       <div
         className={`studio-glass relative w-full overflow-hidden rounded-3xl backdrop-blur-[36px] backdrop-saturate-[1.3] max-sm:backdrop-blur-[20px] max-sm:backdrop-saturate-[1.2] ${
           steady
-            ? "flex flex-col px-6 py-8 sm:px-10 sm:py-12 [@media(max-height:720px)]:px-5 [@media(max-height:720px)]:py-6"
+            ? "flex flex-col px-6 py-8 sm:px-10 sm:py-12 [@media(max-height:720px)]:px-5 [@media(max-height:720px)]:py-5"
             : "px-6 py-8 sm:px-10 sm:py-12"
         }`}
       >
@@ -723,6 +785,8 @@ function ResultCard({
           </p>
         )}
 
+        {result.architecture && <RecommendedSetup setup={result.architecture} T={T} />}
+
         <div className="mt-9 grid gap-8 border-t border-white/10 pt-8 sm:grid-cols-2">
           <section>
             <h3 className="text-[11px] uppercase tracking-[0.3em] text-[#8C8080]">{T.includes}</h3>
@@ -825,6 +889,218 @@ function ResultCard({
         </p>
       </Shell>
     </div>
+  );
+}
+
+/**
+ * THE RECOMMENDED SETUP.
+ *
+ * This is the part of the result that is worth more than the price, and the
+ * reason it is written the way it is: a prospect who has just been shown a
+ * number is about to ask "and what would you actually build?". Answering that
+ * with "Next.js, Supabase, Sanity, Stripe" tells them nothing they can act on.
+ * Answering it with "a website you can edit yourself — and no database, no
+ * logins and no payment setup, because nothing here needs them" tells them
+ * what they are buying AND what they are not being sold.
+ *
+ * So the order is deliberate:
+ *
+ *   what it is → why it fits → what you can manage → what we handle →
+ *   WHAT WE ARE NOT ADDING → the alternative we rejected → the stack
+ *
+ * "Why we aren't adding more" sits above the technical panel because it is the
+ * section that earns the trust. Anyone can list technologies. Naming the four
+ * we deliberately left out, with reasons, is checkable.
+ *
+ * The stack lives behind a disclosure with aria-expanded/aria-controls, so it
+ * is operable from the keyboard and announced properly — and so nobody who did
+ * not ask for proper nouns is shown any.
+ */
+function RecommendedSetup({ setup, T }: { setup: PresentedRecommendation; T: Copy }) {
+  const [open, setOpen] = useState(false);
+  const panelId = "architecture-technical-panel";
+
+  return (
+    <section className="mt-9 border-t border-white/10 pt-8">
+      <p className="text-[11px] uppercase tracking-[0.3em] text-[#D71920]">{T.setupTitle}</p>
+
+      <h3 className="geist mt-4 text-2xl font-black leading-tight tracking-[-0.04em] sm:text-3xl">
+        {setup.headline}
+      </h3>
+      <p className="mt-4 max-w-2xl text-[15px] leading-7 text-[#C7B9B9]">{setup.summary}</p>
+
+      {/* Straight into the technology guide's section for this exact answer.
+          Sits directly under the recommendation because "why this?" is the
+          next thing anyone thinks, and it should not require scrolling. */}
+      <Link
+        href={setup.whyThisHref}
+        className={`${FOCUS} mt-4 inline-flex items-center gap-1.5 text-sm text-[#D71920] underline-offset-4 transition hover:underline`}
+      >
+        {T.setupWhyThis} <span aria-hidden>→</span>
+      </Link>
+
+      {/* Complexity and confidence sit together: a reader deciding whether to
+          trust this needs both, and neither means much alone. */}
+      <dl className="mt-6 flex flex-wrap gap-x-10 gap-y-4">
+        <div>
+          <dt className="text-[11px] uppercase tracking-[0.25em] text-[#8C8080]">{T.setupComplexity}</dt>
+          <dd className="geist mt-1.5 text-lg font-black tracking-[-0.03em]">{setup.complexity}</dd>
+        </div>
+        <div className="max-w-md">
+          <dt className="text-[11px] uppercase tracking-[0.25em] text-[#8C8080]">{T.setupConfidence}</dt>
+          <dd className="geist mt-1.5 text-lg font-black tracking-[-0.03em]">{setup.confidence}</dd>
+          <dd className="mt-1 text-xs leading-5 text-[#8C8080]">{setup.confidenceNote}</dd>
+        </div>
+      </dl>
+
+      {setup.reasons.length > 0 && (
+        <div className="mt-8">
+          <h4 className="text-[11px] uppercase tracking-[0.3em] text-[#8C8080]">{T.setupWhy}</h4>
+          <ul className="mt-4 space-y-2.5">
+            {setup.reasons.map((r) => (
+              <li key={r} className="flex max-w-2xl gap-2.5 text-sm leading-6 text-[#C7B9B9]">
+                <span aria-hidden className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-[#D71920]" />
+                {r}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {(setup.clientManages.length > 0 || setup.studioHandles.length > 0) && (
+        <div className="mt-8 grid gap-8 sm:grid-cols-2">
+          {setup.clientManages.length > 0 && (
+            <section>
+              <h4 className="text-[11px] uppercase tracking-[0.3em] text-[#8C8080]">{T.setupYouManage}</h4>
+              <ul className="mt-4 space-y-2">
+                {setup.clientManages.map((c) => (
+                  <li key={c} className="flex gap-2.5 text-sm text-[#C7B9B9]">
+                    <span aria-hidden className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-emerald-300/70" />
+                    {c}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+          {setup.studioHandles.length > 0 && (
+            <section>
+              <h4 className="text-[11px] uppercase tracking-[0.3em] text-[#8C8080]">{T.setupWeHandle}</h4>
+              <ul className="mt-4 space-y-2">
+                {setup.studioHandles.map((s) => (
+                  <li key={s} className="flex gap-2.5 text-sm text-[#C7B9B9]">
+                    <span aria-hidden className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-white/30" />
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+        </div>
+      )}
+
+      {/* The section that makes the rest believable. */}
+      {setup.notNeeded.length > 0 && (
+        <div className="mt-8 rounded-2xl border border-emerald-300/20 bg-emerald-300/[0.04] p-5 sm:p-6">
+          <h4 className="text-[11px] uppercase tracking-[0.3em] text-emerald-300/80">{T.setupNotNeeded}</h4>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-[#C7B9B9]">{T.setupNotNeededNote}</p>
+          <dl className="mt-5 space-y-4">
+            {setup.notNeeded.map((n) => (
+              <div key={n.label}>
+                <dt className="text-sm font-semibold text-white">{n.label}</dt>
+                <dd className="mt-1 max-w-2xl text-sm leading-6 text-[#8C8080]">{n.why}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      )}
+
+      {setup.alternative && (
+        <div className="mt-8 max-w-2xl rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+          <h4 className="text-[11px] uppercase tracking-[0.3em] text-[#8C8080]">{T.setupAlternative}</h4>
+          <p className="mt-3 text-sm font-semibold text-white">{setup.alternative.label}</p>
+          <p className="mt-2 text-[11px] uppercase tracking-[0.25em] text-[#8C8080]">{T.setupAltWhy}</p>
+          <p className="mt-1.5 text-sm leading-6 text-[#C7B9B9]">{setup.alternative.why}</p>
+        </div>
+      )}
+
+      {setup.openQuestions.length > 0 && (
+        <div className="mt-8 max-w-2xl">
+          <h4 className="text-[11px] uppercase tracking-[0.3em] text-[#8C8080]">{T.setupOpen}</h4>
+          <ul className="mt-4 space-y-2.5">
+            {setup.openQuestions.map((q) => (
+              <li key={q} className="flex gap-2.5 text-sm leading-6 text-[#8C8080]">
+                <span aria-hidden className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-amber-300/60" />
+                {q}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <div className="mt-8">
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls={panelId}
+          className={`${FOCUS} inline-flex min-h-11 items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 py-3 text-sm text-[#C7B9B9] transition hover:border-white/30 hover:text-white`}
+        >
+          {T.setupTech}
+          <span aria-hidden className={`text-xs transition-transform motion-safe:duration-200 ${open ? "rotate-180" : ""}`}>
+            ↓
+          </span>
+        </button>
+
+        {open && (
+          <div
+            id={panelId}
+            className="mt-4 max-w-2xl rounded-2xl border border-white/10 bg-black/30 p-5 motion-safe:animate-[sam-rise_.35s_cubic-bezier(.16,1,.3,1)_both] sm:p-6"
+          >
+            <p className="text-xs leading-5 text-[#8C8080]">{T.setupTechNote}</p>
+            <dl className="mt-5 space-y-4">
+              {setup.technical.map((row) => (
+                <div key={row.layer} className="border-b border-white/[0.07] pb-4 last:border-0 last:pb-0">
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                    <dt className="text-sm text-[#8C8080]">{row.layer}</dt>
+                    <dd
+                      className={`text-sm font-semibold ${
+                        row.choice ? "text-white" : "text-emerald-300"
+                      }`}
+                    >
+                      {row.choice ?? row.status}
+                    </dd>
+                  </div>
+                  {row.why && <p className="mt-1.5 text-xs leading-5 text-[#8C8080]">{row.why}</p>}
+                </div>
+              ))}
+            </dl>
+          </div>
+        )}
+      </div>
+
+      {/* Contextual, never four identical calls to action. A Shopify answer and
+          a customer-portal answer have almost nothing useful in common. */}
+      {setup.links.length > 0 && (
+        <div className="mt-8">
+          <h4 className="text-[11px] uppercase tracking-[0.3em] text-[#8C8080]">{T.setupRead}</h4>
+          <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
+            {setup.links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className={`${FOCUS} rounded-xl border border-white/10 px-4 py-3 text-sm text-[#C7B9B9] transition hover:border-[#D71920]/50 hover:text-white`}
+              >
+                {l.label} <span aria-hidden>→</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <p className="mt-7 text-[10px] uppercase tracking-[0.25em] text-[#5a5252]">
+        {T.setupVersion} {setup.version}
+      </p>
+    </section>
   );
 }
 

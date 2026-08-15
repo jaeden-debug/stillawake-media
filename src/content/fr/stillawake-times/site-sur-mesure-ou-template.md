@@ -100,4 +100,6 @@ La bonne question n'est pas « lequel est le meilleur ». C'est : dans deux ans,
 
 Si la réponse est « rien de particulier », prenez le gabarit et investissez la différence dans du contenu. Si la réponse commence par « j'aimerais que le site puisse… », vous avez votre réponse.
 
+Si la question devient « sur mesure, oui, mais sur quoi? », c'est une autre décision, et elle a sa propre ressource : [quelle technologie choisir pour son site web](/fr/choisir-technologie-site-web).
+
 Si vous préférez que ce soit fait plutôt qu'expliqué, voyez [notre service de création de site web](/fr/agence-web-montreal).

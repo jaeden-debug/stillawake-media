@@ -80,6 +80,57 @@ export default function OutilsPage() {
             <p className="mt-6 text-sm font-bold text-[#D71920]">Ouvrir l&apos;outil →</p>
           </Link>
 
+          <Link
+            href="/fr/guide-site-web-entreprise"
+            className="mt-6 block rounded-[2rem] border border-white/10 bg-[#070707] p-8 transition hover:border-[#D71920]/60 md:p-10"
+          >
+            <p className="text-xs uppercase tracking-[.3em] text-[#D71920]">Guide</p>
+            <h2 className="geist mt-4 text-3xl font-black tracking-[-0.05em]">
+              Quel type de site web pour votre entreprise ?
+            </h2>
+            <p className="mt-4 leading-8 text-[#C7B9B9]">
+              La question que le calculateur suppose déjà réglée. Vingt-quatre énoncés sur votre
+              entreprise, neuf types de sites, et une lecture honnête de ce que vos réponses
+              indiquent — y compris quand la réponse est « moins que ce que vous alliez acheter ».
+            </p>
+            <p className="mt-6 text-sm font-bold text-[#D71920]">Ouvrir le guide →</p>
+          </Link>
+
+          <Link
+            href="/fr/choisir-technologie-site-web"
+            className="mt-6 block rounded-[2rem] border border-white/10 bg-[#070707] p-8 transition hover:border-[#D71920]/60 md:p-10"
+          >
+            <p className="text-xs uppercase tracking-[.3em] text-[#D71920]">Guide</p>
+            <h2 className="geist mt-4 text-3xl font-black tracking-[-0.05em]">
+              Quelle technologie choisir pour son site web ?
+            </h2>
+            <p className="mt-4 leading-8 text-[#C7B9B9]">
+              La décision qui suit celle d&apos;au-dessus. Une échelle de simplicité à cinq niveaux,
+              neuf situations d&apos;affaires et une comparaison sur quinze critères entre
+              constructeurs hébergés, Webflow, WordPress, Shopify et développement sur mesure —
+              écrite pour vous éviter d&apos;acheter une machinerie que vos besoins n&apos;ont jamais
+              demandée.
+            </p>
+            <p className="mt-6 text-sm font-bold text-[#D71920]">Ouvrir le guide →</p>
+          </Link>
+
+          <Link
+            href="/fr/logiciel-sur-mesure-ou-solution-existante"
+            className="mt-6 block rounded-[2rem] border border-white/10 bg-[#070707] p-8 transition hover:border-[#D71920]/60 md:p-10"
+          >
+            <p className="text-xs uppercase tracking-[.3em] text-[#D71920]">Guide</p>
+            <h2 className="geist mt-4 text-3xl font-black tracking-[-0.05em]">
+              Avez-vous vraiment besoin d&apos;un logiciel sur mesure ?
+            </h2>
+            <p className="mt-4 leading-8 text-[#C7B9B9]">
+              La question qui vient avant toutes les autres. Acheter, configurer, intégrer, étendre
+              ou bâtir — dans cet ordre, avec une règle : on ne descend d&apos;un échelon qu&apos;en
+              nommant ce que celui du dessus ne pouvait pas faire. Écrit par un studio qui développe
+              du sur-mesure, et qui commence donc par les arguments contre.
+            </p>
+            <p className="mt-6 text-sm font-bold text-[#D71920]">Ouvrir le guide →</p>
+          </Link>
+
           {guides.length > 0 && (
             <div className="mt-12">
               <h2 className="geist text-2xl font-black tracking-[-0.05em]">

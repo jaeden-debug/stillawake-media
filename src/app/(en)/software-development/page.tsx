@@ -51,6 +51,14 @@ const systems = [
 
 const articles = [
   {
+    href: "/do-i-need-custom-software",
+    title: "Do You Actually Need Custom Software? The Honest Test",
+  },
+  {
+    href: "/website-setup-guide",
+    title: "Do You Need Software, or a Website? Work It Out First",
+  },
+  {
     href: "/stillawake-times/custom-software-development-cost-canada",
     title: "What Custom Software Development Actually Costs in Canada",
   },

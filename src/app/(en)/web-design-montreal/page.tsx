@@ -328,7 +328,9 @@ export default function Page() {
                 outright: SEO plans at <strong className="text-white">$600–$850 CAD/month</strong> and emergency support
                 at <strong className="text-white">$150–$600 CAD one-time</strong>. Full breakdown in the{" "}
                 <Link href="/website-cost-canada" className="text-[#D71920] underline-offset-4 hover:underline">website cost guide</Link>{" "}
-                and on <Link href="/pricing" className="text-[#D71920] underline-offset-4 hover:underline">pricing</Link>.
+                and on <Link href="/pricing" className="text-[#D71920] underline-offset-4 hover:underline">pricing</Link>. What
+                the scope should contain in the first place is worked out in the{" "}
+                <Link href="/website-setup-guide" className="text-[#D71920] underline-offset-4 hover:underline">website setup guide</Link>.
               </p>
             </section>
           </article>

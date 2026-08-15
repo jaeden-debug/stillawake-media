@@ -185,9 +185,19 @@ describe("the card resizes cleanly but never moves the screen", () => {
   it("keeps one option per row — never a second column", () => {
     /* A stacked list is read top to bottom and nothing gets missed. Long lists
        get shorter rows instead. */
-    expect(src).toMatch(/const dense = \(current\?\.options\.length \?\? 0\) > 6/);
+    expect(src).toMatch(/const dense = optionCount > 6/);
     const optionsGrid = src.slice(src.indexOf("One option per row"), src.indexOf("current.options.map"));
     expect(optionsGrid).not.toMatch(/grid-cols-2/);
+  });
+
+  it("has a third density tier, because one list outgrew the second", () => {
+    /* "What does the website need to do?" carries thirteen options since the
+       architecture layer added its CMS question to it. At thirteen the dense
+       layout pushed Continue below the fold on a 720px viewport — measured at
+       49px over — which is the failure the rest of this file exists to catch.
+       The answer stays shorter rows rather than a scrollbar or a column. */
+    expect(src).toMatch(/const veryDense = optionCount > 12/);
+    expect(src).toMatch(/veryDense\s*\n?\s*\? "px-5 py-1\.5/);
   });
 
   it("hides the instruction line by height, not by a flag", () => {

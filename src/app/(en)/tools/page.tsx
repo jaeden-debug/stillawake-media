@@ -96,6 +96,57 @@ export default function ToolsPage() {
             <p className="mt-4 text-sm text-[#8C8080]">Free · no signup · nothing stored →</p>
           </Link>
 
+          <Link
+            href="/website-setup-guide"
+            className="mt-5 block rounded-xl border border-white/10 bg-white/[0.03] p-7 transition hover:border-[#D71920]/50"
+          >
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#D71920]">Guide</p>
+            <h3 className="geist mt-4 text-2xl font-black tracking-[-0.05em]">
+              What kind of website does your business need?
+            </h3>
+            <p className="mt-3 text-[#C7B9B9]">
+              The question the cost calculator assumes you have already answered. Twenty-four
+              statements about your business, nine shapes a website can take, and an honest reading
+              of which one your answers point at — including when the answer is &quot;less than you
+              were about to buy&quot;.
+            </p>
+            <p className="mt-4 text-sm text-[#8C8080]">Free · no signup · nothing stored →</p>
+          </Link>
+
+          <Link
+            href="/choosing-website-technology"
+            className="mt-5 block rounded-xl border border-white/10 bg-white/[0.03] p-7 transition hover:border-[#D71920]/50"
+          >
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#D71920]">Guide</p>
+            <h3 className="geist mt-4 text-2xl font-black tracking-[-0.05em]">
+              What technology should you build it on?
+            </h3>
+            <p className="mt-3 text-[#C7B9B9]">
+              The decision after the one above. A five-level simplicity ladder, nine business
+              situations, and a fifteen-criterion comparison of builders, Webflow, WordPress, Shopify
+              and custom builds — written to stop you buying a level of machinery your requirements
+              never asked for.
+            </p>
+            <p className="mt-4 text-sm text-[#8C8080]">Free · no signup · nothing stored →</p>
+          </Link>
+
+          <Link
+            href="/do-i-need-custom-software"
+            className="mt-5 block rounded-xl border border-white/10 bg-white/[0.03] p-7 transition hover:border-[#D71920]/50"
+          >
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#D71920]">Guide</p>
+            <h3 className="geist mt-4 text-2xl font-black tracking-[-0.05em]">
+              Do you actually need custom software?
+            </h3>
+            <p className="mt-3 text-[#C7B9B9]">
+              The question that runs before all of the above. Buy, configure, integrate, extend or
+              build — in that order, with the rule that you may only move down a rung by naming what
+              the rung above could not do. Written by a studio that builds custom software, which is
+              why it starts with the case against.
+            </p>
+            <p className="mt-4 text-sm text-[#8C8080]">Free · no signup · nothing stored →</p>
+          </Link>
+
           <p className="mt-8 text-sm text-[#8C8080]">
             More tools will appear here as we build them. We would rather publish one that does something
             useful than five that generate files.

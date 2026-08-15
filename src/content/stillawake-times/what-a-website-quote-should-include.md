@@ -73,6 +73,8 @@ Ask the question directly: *on the day this ends, what do I have, and in whose n
 
 You want, in writing: the repository, in an account you own; the hosting account, in your name; the domain registrar, in your name; the analytics and Search Console properties, owned by you. Transfer conditional on final payment is normal and fair. Transfer that never happens — because the platform is proprietary, or because "we host it for you" — means you are renting.
 
+If you want the full version of that list — every account a website involves, who should hold each one, who pays for it, and what actually happens when a supplier relationship ends — it is laid out in [our guide to website ownership](/website-ownership).
+
 ### 10. Post-launch support window and what comes after
 
 How long after launch are bugs fixed for free, and what counts as a bug versus a change? Thirty days is common and reasonable. Then state what ongoing support costs. Ours is published: [maintenance plans](/website-maintenance) and emergency work at **$150–$600 CAD** one-time, depending on scope, alongside the rest of [our pricing](/pricing).

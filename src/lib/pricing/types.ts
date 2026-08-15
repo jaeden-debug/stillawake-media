@@ -220,10 +220,59 @@ export type Estimate = {
   budgetSignal: "above" | null;
 };
 
+/**
+ * What KIND of monthly service this is, and therefore where it belongs on a
+ * page. Explicit because the alternative — inferring it from the id prefix —
+ * silently mis-files anything whose name does not start the expected way, and
+ * a $1,200 content retainer appearing under "keeping it running" is not a
+ * cosmetic error.
+ */
+export type RecurringGroup =
+  /** Keeping an existing site alive: hosting, care. */
+  | "care"
+  /** Search work sold as a monthly plan. */
+  | "seo"
+  /** Producing new material. Adjacent to SEO, priced and scoped separately. */
+  | "content";
+
 export type RecurringSpec = {
   id: string;
   monthly: number | null;
+  group: RecurringGroup;
   /** Mirrors Supabase `service_products.active`. Only `true` may be published. */
   approved: boolean;
   studioSlug: string | null;
+};
+
+/**
+ * A FIXED-PRICE product. No band, because there is nothing to estimate: the
+ * scope is capped by definition and the price is the same for everyone.
+ *
+ * This is what can exist in Stripe. A band cannot — `$2,200–$4,800` is not a
+ * price, it is a range, and the only honest way to sell banded work is a
+ * written proposal that fixes a number first.
+ */
+export type FixedPriceSpec = {
+  id: string;
+  /** CAD, one-time. */
+  price: number;
+  /** Roughly what it takes to deliver — the check on the price, as everywhere else. */
+  days: number;
+  /** Only `true` may be published or sold. */
+  approved: boolean;
+  /** Stripe product metadata key, and the Studio catalogue slug. */
+  studioSlug: string | null;
+};
+
+/** One rung of a tiered one-time service. Tier is set before payment, never after. */
+export type EmergencyTierSpec = {
+  id: string;
+  price: number;
+  days: number;
+};
+
+export type EmergencyTrackSpec = {
+  id: string;
+  studioSlug: string;
+  tiers: EmergencyTierSpec[];
 };

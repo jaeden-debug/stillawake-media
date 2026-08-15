@@ -33,6 +33,24 @@ export default function Page() {
             Framer, and Montreal-focused digital infrastructure.
           </p>
 
+          <p className="mt-5 max-w-3xl text-lg leading-8 text-[#C7B9B9]">
+            Not sure which of these you need?{" "}
+            <Link
+              href="/website-setup-guide"
+              className="text-[#D71920] underline-offset-4 hover:underline"
+            >
+              Work out what your website should actually consist of
+            </Link>{" "}
+            before you buy any of it — then{" "}
+            <Link
+              href="/choosing-website-technology"
+              className="text-[#D71920] underline-offset-4 hover:underline"
+            >
+              decide what to build it on
+            </Link>
+            .
+          </p>
+
           <div className="mt-14 grid gap-5 md:grid-cols-2">
             {[...serviceNav, ...montrealNav].map(([label, href]) => (
               <Link

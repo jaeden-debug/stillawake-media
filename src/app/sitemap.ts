@@ -85,6 +85,40 @@ const pageLastModified: Record<string, string> = {
   "fr/outils/generateur-llms-txt": "2026-08-15",
   "tools/project-cost-calculator": "2026-08-15",
   "fr/outils/calculateur-cout-projet": "2026-08-15",
+  // Ownership resource. Bilingual pair: EN targets measured `website
+  // ownership` demand; FR exists for trust and AI citation rather than
+  // volume — Québec demand for the intent is effectively zero.
+  "website-ownership": "2026-08-15",
+  "fr/propriete-site-web": "2026-08-15",
+  // Website setup guide. Bilingual pair, and the two are targeted separately:
+  // EN carries the measured planning vocabulary ("types of websites" 880/mo
+  // US, "lead generation website" 1,900/mo US, "website planning" 390/mo US,
+  // all LOW competition), FR carries the Québec market's own words ("site
+  // vitrine", "site transactionnel") rather than translations of the EN terms.
+  "website-setup-guide": "2026-08-15",
+  "fr/guide-site-web-entreprise": "2026-08-15",
+  // The technology decision resource — the "what should it be built on" half
+  // of the pair above. Measured EN demand is a long tail of 10/mo phrasings
+  // plus "webflow vs wordpress" (210/mo CA, LOW) and "custom website
+  // development" (110/mo CA, LOW), which is why it is one consolidation hub
+  // rather than a page per comparison. The FR counterpart has no measured
+  // volume at all and is published for bilingual parity, assistant citation
+  // and to support the French calculator — stated on the page file itself.
+  "choosing-website-technology": "2026-08-15",
+  "fr/choisir-technologie-site-web": "2026-08-15",
+  // The custom-software decision resource — the question that runs BEFORE the
+  // two pairs above: does any of this need building at all? Deliberately not
+  // aimed at the head terms, which this site already owns: "custom software
+  // development" (260/mo CA, LOW) belongs to /software-development and the
+  // definitional query to the Times article. This targets the unowned
+  // decision intent — "build vs buy software", "off the shelf vs custom
+  // software", "when to build custom software", each ~10/mo at effectively
+  // zero competition — plus the planning vocabulary that does carry volume
+  // ("custom business software" 140/mo CA, "custom software solutions"
+  // 90/mo CA, both LOW). FR head terms belong to /fr/developpement-logiciel,
+  // so the French URL carries the decision too.
+  "do-i-need-custom-software": "2026-08-15",
+  "fr/logiciel-sur-mesure-ou-solution-existante": "2026-08-15",
 };
 
 /** EN ↔ FR pairs — surfaces hreflang directly in the sitemap so both
@@ -118,6 +152,10 @@ const languagePairs: Record<string, string> = {
   tools: "fr/outils",
   "tools/llms-txt-generator": "fr/outils/generateur-llms-txt",
   "tools/project-cost-calculator": "fr/outils/calculateur-cout-projet",
+  "website-ownership": "fr/propriete-site-web",
+  "website-setup-guide": "fr/guide-site-web-entreprise",
+  "choosing-website-technology": "fr/choisir-technologie-site-web",
+  "do-i-need-custom-software": "fr/logiciel-sur-mesure-ou-solution-existante",
   privacy: "fr/confidentialite",
 };
 const frToEn = Object.fromEntries(Object.entries(languagePairs).map(([en, fr]) => [fr, en]));

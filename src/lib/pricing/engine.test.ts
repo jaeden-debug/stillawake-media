@@ -8,15 +8,27 @@ import {
   ADDITIONS,
   BASES,
   DISCOVERY,
+  EMERGENCY,
   MINIMUM,
   MIN_IMPLIED_DAY_RATE,
   MODEL_CHECKSUM,
+  ONE_TIME,
   PLANNING_DAY_RATE,
   PRICING_VERSION,
   RECURRING,
   SEO_SCOPES,
 } from "./model";
-import { ADDITION_LABELS, BASE_LABELS, EXCLUDE_LABELS, INCLUDE_LABELS, RECURRING_LABELS } from "./labels";
+import {
+  ADDITION_LABELS,
+  BASE_LABELS,
+  EMERGENCY_DESCRIPTIONS,
+  EMERGENCY_LABELS,
+  EXCLUDE_LABELS,
+  INCLUDE_LABELS,
+  ONE_TIME_DESCRIPTIONS,
+  ONE_TIME_LABELS,
+  RECURRING_LABELS,
+} from "./labels";
 import type { BaseId, EstimateInput } from "./types";
 
 const inp = (o: Partial<EstimateInput> & Pick<EstimateInput, "base">): EstimateInput => ({ ...o });
@@ -59,12 +71,100 @@ describe("model integrity", () => {
     }
   });
 
+  /**
+   * The published ladder, pinned deliberately. Approving a catalogue row is a
+   * business decision with a price attached, so it should require editing a
+   * test that names the price — not slip through because a boolean flipped.
+   *
+   * Revised 2026-08-15: hosting and the care plan were approved, a $250
+   * starter SEO rung added, and content production approved at $1,200 — taking
+   * the ladder from two rungs ($600–$850) to six ($40–$1,200).
+   */
   it("publishes only the approved Studio prices", () => {
     expect(RECURRING.filter((r) => r.approved).map((r) => [r.id, r.monthly])).toEqual([
+      ["managed-hosting", 40],
+      ["website-care-plan", 150],
+      ["seo-starter", 250],
       ["seo-essentials", 600],
       ["seo-advanced", 850],
+      ["content-creation", 1200],
     ]);
     for (const r of RECURRING) expect(RECURRING_LABELS[r.id]?.fr, r.id).toBeTruthy();
+  });
+
+  /**
+   * Every plan needs a group, because the pages file them by it. This replaced
+   * an `id.startsWith("seo-")` check that would have quietly filed content
+   * production — a $1,200 writing retainer — under "keeping it running".
+   */
+  it("groups every recurring plan", () => {
+    for (const r of RECURRING) {
+      expect(["care", "seo", "content"], `${r.id}`).toContain(r.group);
+    }
+    /* Each group a page renders must actually have something in it. */
+    for (const group of ["care", "seo", "content"]) {
+      expect(
+        RECURRING.filter((r) => r.approved && r.group === group).length,
+        `no approved plan in group "${group}" — a page section would render empty`,
+      ).toBeGreaterThan(0);
+    }
+  });
+
+  /** The ladder only works as an upgrade path if it actually ascends. */
+  it("keeps the recurring ladder monotonic", () => {
+    const approved = RECURRING.filter((r) => r.approved).map((r) => r.monthly!);
+    expect(approved).toEqual([...approved].sort((a, b) => a - b));
+    expect(new Set(approved).size, "two plans at the same price is not a ladder").toBe(approved.length);
+  });
+
+  /**
+   * A draft row carries a candidate price the operator can see internally. The
+   * engine must never hand one to a prospect — that would be quoting a price
+   * StillAwake has not agreed to charge.
+   */
+  it("withholds every unapproved catalogue price from an estimate", () => {
+    const unapproved = new Set(RECURRING.filter((r) => !r.approved).map((r) => r.id));
+    for (const id of Object.keys(BASES) as BaseId[]) {
+      for (const r of estimate(inp({ base: id })).recurring) {
+        if (unapproved.has(r.id)) expect(r.monthly, `${id} → ${r.id}`).toBeNull();
+      }
+    }
+  });
+
+  it("labels and prices every one-time service in both languages", () => {
+    for (const s of Object.values(ONE_TIME)) {
+      expect(ONE_TIME_LABELS[s.id]?.fr, s.id).toBeTruthy();
+      expect(ONE_TIME_DESCRIPTIONS[s.id]?.fr, s.id).toBeTruthy();
+      /* Same tripwire as the bases: nothing may imply a giveaway day rate. */
+      expect(s.price / s.days, `${s.id}`).toBeGreaterThanOrEqual(MIN_IMPLIED_DAY_RATE);
+      expect(s.price / s.days, `${s.id}`).toBeLessThanOrEqual(PLANNING_DAY_RATE * 1.1);
+    }
+  });
+
+  it("keeps every emergency track ordered and labelled", () => {
+    for (const track of Object.values(EMERGENCY)) {
+      expect(EMERGENCY_LABELS[track.id]?.fr, track.id).toBeTruthy();
+      const prices = track.tiers.map((t) => t.price);
+      expect(prices, `${track.id} tiers must ascend`).toEqual([...prices].sort((a, b) => a - b));
+      for (const tier of track.tiers) {
+        const key = `${track.id}.${tier.id}`;
+        expect(EMERGENCY_LABELS[key]?.fr, key).toBeTruthy();
+        expect(EMERGENCY_DESCRIPTIONS[key]?.fr, key).toBeTruthy();
+        expect(tier.price / tier.days, key).toBeGreaterThanOrEqual(MIN_IMPLIED_DAY_RATE);
+      }
+    }
+  });
+
+  /**
+   * Emergency support is the only thing sold while a client is panicking, so
+   * the ecommerce track must never undercut the custom-site one for the same
+   * urgency — a store outage is strictly more expensive to be wrong about.
+   */
+  it("prices an ecommerce emergency at or above the equivalent site emergency", () => {
+    const site = EMERGENCY.custom_site.tiers.map((t) => t.price);
+    const store = EMERGENCY.ecommerce.tiers.map((t) => t.price);
+    expect(store.length).toBe(site.length);
+    store.forEach((price, i) => expect(price).toBeGreaterThan(site[i]));
   });
 });
 

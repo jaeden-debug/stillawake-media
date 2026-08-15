@@ -130,6 +130,7 @@ export default function ShopifyVsWooFrPage() {
       <RelatedServices
         title="Continuez"
         links={[
+          ["Vous faut-il vraiment une boutique ?", "/fr/guide-site-web-entreprise"],
           ["Développement Shopify", "/fr/developpement-shopify"],
           ["Guide des prix", "/fr/prix-site-web-quebec"],
           ["Refonte de site web (migrations)", "/fr/refonte-site-web"],

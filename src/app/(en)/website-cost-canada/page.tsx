@@ -151,6 +151,7 @@ export default function WebsiteCostCanadaPage() {
           ["Web Design Montréal", "/web-design-montreal"],
           ["Shopify Development", "/shopify-development"],
           ["All Pricing", "/pricing"],
+          ["Who Owns Your Website?", "/website-ownership"],
           ["How Much Does SEO Cost in Canada?", "/stillawake-times/how-much-does-seo-cost-canada"],
           ["Website Maintenance", "/website-maintenance"],
           ["Version française", "/fr/prix-site-web-quebec"],

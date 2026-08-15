@@ -2,11 +2,38 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ServiceJsonLd, PriceCard, FaqBlock, RelatedServices } from "@/components/service-page";
 import { ArticlesLies } from "@/components/articles-lies";
+import { RECURRING } from "@/lib/pricing/model";
+import { RECURRING_LABELS } from "@/lib/pricing/labels";
+
+/** Les paliers SEO, dans l'ordre du catalogue. Départ ajouté le 2026-08-15. */
+const SEO_PLANS = RECURRING.filter((r) => r.approved && r.group === "seo");
+const SEO_FLOOR = SEO_PLANS[0].monthly!;
+const SEO_CEILING = SEO_PLANS.at(-1)!.monthly!;
+
+const SEO_PLAN_ITEMS: Record<string, string[]> = {
+  "seo-starter": [
+    "Suivi de la Search Console",
+    "Une correction on-page par mois",
+    "Rapport mensuel clair",
+    "Le vrai point d'entrée — pas un Essentiel réduit",
+  ],
+  "seo-essentials": [
+    "SEO technique",
+    "Optimisation des pages",
+    "Suivi Google Search Console",
+    "Rapport mensuel clair",
+  ],
+  "seo-advanced": [
+    "Tout le forfait Essentiel",
+    "Optimisation moteurs IA (AEO)",
+    "Optimisation des entités",
+    "Stratégie de contenu",
+  ],
+};
 
 export const metadata: Metadata = {
   title: "Agence SEO Montréal | Référencement avec tarifs affichés",
-  description:
-    "Agence SEO à Montréal : référencement technique, SEO local et optimisation IA avec tarifs affichés — forfaits de 600 $ à 850 $ CAD par mois. Sans appel de vente obligatoire.",
+  description: `Agence SEO à Montréal : référencement technique, SEO local et optimisation IA avec tarifs affichés — forfaits de ${SEO_FLOOR} $ à ${SEO_CEILING} $ CAD par mois. Sans appel de vente obligatoire.`,
   alternates: {
     canonical: "https://stillawakemedia.com/fr/agence-seo-montreal",
     languages: {
@@ -27,7 +54,7 @@ export const metadata: Metadata = {
 const FAQ: [string, string][] = [
   [
     "Combien coûtent vos services SEO?",
-    "Nos forfaits SEO sont affichés : Croissance SEO Essentiel coûte 600 $ CAD par mois et Croissance SEO Avancé coûte 850 $ CAD par mois. Pas de frais cachés, pas d'appel de vente obligatoire — le forfait Avancé ajoute l'optimisation pour les moteurs IA (AEO), le travail d'entités et la stratégie de contenu.",
+    `Nos forfaits SEO sont affichés et vont de ${SEO_FLOOR} $ à ${SEO_CEILING} $ CAD par mois : ${SEO_PLANS.map((r) => `${RECURRING_LABELS[r.id].fr} à ${r.monthly} $`).join(", ")}. Pas de frais cachés, pas d'appel de vente obligatoire — le forfait Avancé ajoute l'optimisation pour les moteurs IA (AEO), le travail d'entités et la stratégie de contenu.`,
   ],
   [
     "Qu'est-ce que le référencement naturel (SEO)?",
@@ -65,10 +92,13 @@ export default function AgenceSeoMontrealPage() {
       <ServiceJsonLd
         path="/fr/agence-seo-montreal"
         name="Agence SEO Montréal — Référencement naturel et local"
-        description="Services de référencement (SEO) à Montréal : SEO technique, référencement local et optimisation IA, avec forfaits mensuels affichés de 600 $ à 850 $ CAD."
+        description={`Services de référencement (SEO) à Montréal : SEO technique, référencement local et optimisation IA, avec forfaits mensuels affichés de ${SEO_FLOOR} $ à ${SEO_CEILING} $ CAD.`}
         offers={[
-          { name: "Croissance SEO — Essentiel", price: 600, interval: "MONTH" },
-          { name: "Croissance SEO — Avancé", price: 850, interval: "MONTH" },
+          ...SEO_PLANS.map((r) => ({
+            name: RECURRING_LABELS[r.id].fr,
+            price: r.monthly!,
+            interval: "MONTH" as const,
+          })),
         ]}
         breadcrumb={[
           ["Accueil", "/"],
@@ -105,24 +135,21 @@ export default function AgenceSeoMontrealPage() {
         <div className="mx-auto max-w-7xl">
           <h2 className="geist max-w-4xl text-4xl font-black tracking-[-0.06em] md:text-5xl">Forfaits mensuels. Prix en dollars canadiens.</h2>
           <p className="mt-4 max-w-3xl text-[#C7B9B9]">
-            Croissance SEO — Essentiel coûte 600 $ CAD par mois. Croissance SEO — Avancé coûte 850 $ CAD par mois.
+            Trois paliers, tous mensuels et sans engagement. Départ est un vrai forfait à petite
+            échelle, pas un essai ni un Essentiel amputé.
           </p>
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            <PriceCard
-              name="Croissance SEO — Essentiel"
-              price="600 $ CAD"
-              cadence="par mois"
-              items={["SEO technique", "Optimisation des pages", "Suivi Google Search Console", "Rapport mensuel clair"]}
-              cta={["Choisir Essentiel", "/fr/contact"]}
-            />
-            <PriceCard
-              name="Croissance SEO — Avancé"
-              price="850 $ CAD"
-              cadence="par mois"
-              items={["Tout le forfait Essentiel", "Optimisation moteurs IA (AEO)", "Optimisation des entités", "Stratégie de contenu"]}
-              cta={["Choisir Avancé", "/fr/contact"]}
-              highlight
-            />
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {SEO_PLANS.map((plan) => (
+              <PriceCard
+                key={plan.id}
+                name={RECURRING_LABELS[plan.id].fr}
+                price={`${plan.monthly} $ CAD`}
+                cadence="par mois"
+                items={SEO_PLAN_ITEMS[plan.id]}
+                cta={[`Choisir ${RECURRING_LABELS[plan.id].fr.split(" — ")[1]}`, "/fr/contact"]}
+                highlight={plan.id === "seo-essentials"}
+              />
+            ))}
           </div>
         </div>
       </section>

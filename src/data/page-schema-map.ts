@@ -1,4 +1,12 @@
 import type { PageSchemaInput } from "@/lib/page-schema";
+import { faqFor } from "@/data/website-ownership";
+import { EN as EN_SETUP } from "@/lib/website-setup/en";
+import { FR as FR_SETUP } from "@/lib/website-setup/fr";
+import { EN as EN_TECH } from "@/lib/tech-stack/en";
+import { FR as FR_TECH } from "@/lib/tech-stack/fr";
+import { PATHS as TECH_PATHS } from "@/lib/tech-stack/types";
+import { EN as EN_CUSTOM } from "@/lib/custom-software/en";
+import { FR as FR_CUSTOM } from "@/lib/custom-software/fr";
 
 /**
  * Every static page, and what it is.
@@ -94,5 +102,122 @@ export const PAGE_SCHEMA: Record<string, Omit<PageSchemaInput, "url">> = {
         a: "Non. Les services récurrents sont présentés séparément de la construction. Les prix mensuels publiés de StillAwake Media sont Croissance SEO — Essentiel à 600 $ CAD par mois et Croissance SEO — Avancé à 850 $ CAD par mois; les forfaits d'entretien et l'hébergement sont sur soumission écrite.",
       },
     ],
+  },
+  /**
+   * The ownership resource. `article` rather than `service` on purpose — it
+   * explains a relationship rather than selling one, and the Article type
+   * carries the author attribution that makes an E-E-A-T claim on a page
+   * whose whole value is being trusted.
+   *
+   * The FAQs are imported rather than retyped: this registry and the visible
+   * FAQ block on the page render the same sixteen answers, so a correction
+   * to one cannot leave the other stating something different to a crawler.
+   */
+  "/website-ownership": {
+    kind: "article",
+    name: "Website Ownership: Who Owns the Domain, Hosting, Code & Accounts",
+    description:
+      "Who should own the domain, hosting, source code, CMS, database, Stripe, Shopify and analytics when an agency builds your website — who pays for what, and what happens if you stop working together.",
+    locale: "en",
+    dateModified: "2026-08-15",
+    faqs: faqFor("en"),
+  },
+  "/fr/propriete-site-web": {
+    kind: "article",
+    name: "Propriété d'un site web : qui possède le domaine, le code et les comptes",
+    description:
+      "Qui devrait posséder le nom de domaine, l'hébergement, le code source, le CMS, la base de données, Stripe, Shopify et l'analytique quand une agence bâtit votre site — qui paie quoi, et ce qui arrive si vous cessez de travailler ensemble.",
+    locale: "fr",
+    dateModified: "2026-08-15",
+    faqs: faqFor("fr"),
+  },
+  /**
+   * The website setup guide, EN and FR.
+   *
+   * `article` rather than `service`: it decides what a business needs, and it
+   * has to be able to conclude "less than you were about to buy" — a Service
+   * node would quietly make the page an offer.
+   *
+   * Name, description and FAQs are read from the same content packs the pages
+   * render, so the registry cannot describe the page differently from the page.
+   * The FR entry is not a translation of the EN one; both are authored.
+   */
+  [EN_SETUP.path]: {
+    kind: "article",
+    name: EN_SETUP.meta.title,
+    description: EN_SETUP.meta.description,
+    locale: "en",
+    dateModified: "2026-08-15",
+    faqs: EN_SETUP.faqs,
+  },
+  [FR_SETUP.path]: {
+    kind: "article",
+    name: FR_SETUP.meta.title,
+    description: FR_SETUP.meta.description,
+    locale: "fr",
+    dateModified: "2026-08-15",
+    faqs: FR_SETUP.faqs,
+  },
+  /**
+   * The technology decision resource, EN and FR.
+   *
+   * `article` for the same reason as the setup guide: it decides what a
+   * business should build on, and it has to be free to answer "a hosted
+   * builder, and no project" — which a Service node would quietly contradict.
+   *
+   * The breadcrumb hangs it off the setup guide rather than off a service
+   * page, because that is the real reading order: requirements first, then
+   * technology. Name, description and FAQs come from the same content packs
+   * the pages render.
+   */
+  [TECH_PATHS.en]: {
+    kind: "article",
+    name: EN_TECH.chrome.meta.title,
+    description: EN_TECH.chrome.meta.description,
+    locale: "en",
+    dateModified: "2026-08-15",
+    crumbs: [{ name: EN_SETUP.meta.title, path: EN_SETUP.path }],
+    faqs: EN_TECH.chrome.faq,
+  },
+  [TECH_PATHS.fr]: {
+    kind: "article",
+    name: FR_TECH.chrome.meta.title,
+    description: FR_TECH.chrome.meta.description,
+    locale: "fr",
+    dateModified: "2026-08-15",
+    crumbs: [{ name: FR_SETUP.meta.title, path: FR_SETUP.path }],
+    faqs: FR_TECH.chrome.faq,
+  },
+  /**
+   * The custom-software decision resource, EN and FR.
+   *
+   * `article`, not `service`, and the distinction is load-bearing: this page's
+   * job is to talk most readers OUT of a custom build, and a Service node
+   * declaring "custom software development" on a page whose answer is usually
+   * "buy something" would contradict its own content in structured data.
+   * The service intent is served by /software-development, which is where the
+   * Service node lives.
+   *
+   * The breadcrumb hangs off the setup guide for the same reason the
+   * technology page does — requirements first, then whether anything needs
+   * building at all.
+   */
+  [EN_CUSTOM.path]: {
+    kind: "article",
+    name: EN_CUSTOM.meta.title,
+    description: EN_CUSTOM.meta.description,
+    locale: "en",
+    dateModified: "2026-08-15",
+    crumbs: [{ name: EN_SETUP.meta.title, path: EN_SETUP.path }],
+    faqs: EN_CUSTOM.faq.map(([q, a]) => ({ q, a })),
+  },
+  [FR_CUSTOM.path]: {
+    kind: "article",
+    name: FR_CUSTOM.meta.title,
+    description: FR_CUSTOM.meta.description,
+    locale: "fr",
+    dateModified: "2026-08-15",
+    crumbs: [{ name: FR_SETUP.meta.title, path: FR_SETUP.path }],
+    faqs: FR_CUSTOM.faq.map(([q, a]) => ({ q, a })),
   },
 };

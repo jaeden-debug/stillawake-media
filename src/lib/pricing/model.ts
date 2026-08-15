@@ -17,7 +17,13 @@
  * THE CENTRE OF THE MODEL is a professional local-business website: home,
  * about, contact, three to eight service pages, responsive, forms, analytics,
  * Search Console, schema, technical SEO, CMS editing, launch. That is
- * $4,000–7,000, and everything else is calibrated outward from it.
+ * `website_standard` at $2,200–$4,800, and everything else is calibrated
+ * outward from it. The figure the site PUBLISHES is $2,750–$5,750, because the
+ * headline scenario adds local search setup — quoting the bare base against a
+ * page that quotes the realistic one is how a comment goes stale.
+ *
+ * (It said $4,000–7,000 until 2026-08-15, describing a revision that had
+ * already been superseded. If you change a band, change this paragraph.)
  *
  * THE BANDS ARE ASYMMETRIC, AND THAT IS THE WHOLE MECHANISM.
  *
@@ -47,6 +53,17 @@
  * CHANGING PRICES
  * Edit the values, bump PRICING_VERSION, run `node scripts/sync-pricing.mjs`,
  * then `npm test` in both repos.
+ *
+ * A price has FOUR homes, and the tests only cover the first two:
+ *   1. here — the model
+ *   2. the pages, which render from it (never hardcode; the tests enforce it)
+ *   3. Stripe — see stripe-catalogue.ts. Prices there are IMMUTABLE, so a
+ *      change means creating a new price and moving the `sa_*_cad` lookup key
+ *      onto it, not editing the old one.
+ *   4. published CMS slots, which override the page copy at runtime and are
+ *      invisible to every test in both repos. Run .dev's
+ *      `scripts/cms/check-pricing-layer.mts` after any change here; it fails
+ *      if a live slot quotes a figure this file no longer publishes.
  */
 
 import type {
@@ -56,12 +73,14 @@ import type {
   BaseId,
   BaseSpec,
   Days,
+  EmergencyTrackSpec,
+  FixedPriceSpec,
   RecurringSpec,
   SeoScopeId,
   SeoScopeSpec,
 } from "./types";
 
-export const PRICING_VERSION = "2026.08.4";
+export const PRICING_VERSION = "2026.08.5";
 export const CURRENCY = "CAD";
 
 const p = (low: number, expected: number, high: number): Band => ({ low, expected, high });
@@ -557,15 +576,98 @@ export const EXCLUSIONS = ["third_party_fees", "stock_media", "ongoing_services"
 
 /**
  * RECURRING — mirrored from Supabase `service_products`, verified 2026-08-14.
- * Unchanged here; subscriptions are the next exercise. Only `approved` rows
- * may ever be published.
+ * Only `approved` rows may ever be published.
+ *
+ * REVISED 2026-08-15. The ladder used to be two rungs, both above $600, and
+ * the cheapest thing StillAwake sold was a $1,800 project. A business that
+ * wanted to start small had nothing to buy. It now runs $40 → $850, and the
+ * bottom three rungs are what a local business actually says yes to first.
+ *
+ * `seo-starter` at $250 is ~1.3 hours a month at the planning rate. That is
+ * genuinely thin, and it is deliberate: it buys monitoring, one on-page fix
+ * and the report. It is not a discounted Essentials and the published copy
+ * must never imply it is — the honest upgrade path is the point of having it.
+ *
+ * `content-creation` at $1,200 was approved 2026-08-15 and is now the top
+ * rung. It is NOT an SEO plan — it produces material, and it is grouped and
+ * described separately so nobody reads it as "Advanced with more of the same".
+ *
+ * THE LADDER IS NOW FULLY APPROVED, which means `published-prices.test.ts` has
+ * no draft row left to exercise its unapproved-price guard. That guard is
+ * still correct and still runs; it simply has nothing to catch until the next
+ * candidate price is drafted. Do not delete it on the grounds that it looks
+ * vacuous.
  */
 export const RECURRING: RecurringSpec[] = [
-  { id: "seo-essentials", monthly: 600, approved: true, studioSlug: "seo-essentials" },
-  { id: "seo-advanced", monthly: 850, approved: true, studioSlug: "seo-advanced" },
-  { id: "website-care-plan", monthly: 150, approved: false, studioSlug: "website-care-plan" },
-  { id: "managed-hosting", monthly: 40, approved: false, studioSlug: "managed-hosting" },
-  { id: "content-creation", monthly: 1200, approved: false, studioSlug: "content-creation" },
+  { id: "managed-hosting", monthly: 40, group: "care", approved: true, studioSlug: "managed-hosting" },
+  { id: "website-care-plan", monthly: 150, group: "care", approved: true, studioSlug: "website-care-plan" },
+  { id: "seo-starter", monthly: 250, group: "seo", approved: true, studioSlug: "seo-starter" },
+  { id: "seo-essentials", monthly: 600, group: "seo", approved: true, studioSlug: "seo-essentials" },
+  { id: "seo-advanced", monthly: 850, group: "seo", approved: true, studioSlug: "seo-advanced" },
+  { id: "content-creation", monthly: 1200, group: "content", approved: true, studioSlug: "content-creation" },
+];
+
+/**
+ * ONE-TIME FIXED-PRICE SERVICES — the entry products.
+ *
+ * These exist because the project floor is $1,800 and that is a real decision
+ * (see MINIMUM), not an oversight. Someone who is not ready to spend $1,800
+ * should still have something to buy, and a $150 audit that tells them the
+ * truth about their site is a better first transaction than a discount on a
+ * build they are not ready for.
+ *
+ * FIXED, not banded, and that is what makes them sellable in Stripe. Each is
+ * scoped tightly enough that the price genuinely does not move — the moment
+ * one of these needs a range it has stopped being this product and become a
+ * project, which is what `seo_engagement` and the bases are for.
+ */
+export const ONE_TIME: Record<string, FixedPriceSpec> = {
+  "site-audit": { id: "site-audit", price: 150, days: 0.15, approved: true, studioSlug: "site-audit" },
+  "llms-txt-setup": { id: "llms-txt-setup", price: 250, days: 0.25, approved: true, studioSlug: "llms-txt-setup" },
+  "gbp-setup": { id: "gbp-setup", price: 250, days: 0.25, approved: true, studioSlug: "gbp-setup" },
+  "speed-fix": { id: "speed-fix", price: 400, days: 0.4, approved: true, studioSlug: "speed-fix" },
+};
+
+/**
+ * EMERGENCY SUPPORT — moved into the kernel 2026-08-15.
+ *
+ * These prices were live on two pages and in Stripe for months while existing
+ * NOWHERE in this model. Three hand-maintained copies of the same six numbers,
+ * with no test binding them, is exactly the drift `published-prices.test.ts`
+ * was written to catch — it just could not see these, because there was
+ * nothing to compare the pages against.
+ *
+ * The tier is set by a three-question workload check BEFORE payment. It is
+ * never revised upward after the work starts; if the incident turns out to be
+ * bigger than the tier bought, that is a new engagement with a new price, not
+ * a surprise on an invoice.
+ */
+export const EMERGENCY: Record<string, EmergencyTrackSpec> = {
+  custom_site: {
+    id: "custom_site",
+    studioSlug: "emergency-custom-site",
+    tiers: [
+      { id: "quick_fix", price: 150, days: 0.15 },
+      { id: "priority", price: 250, days: 0.25 },
+      { id: "heavy", price: 400, days: 0.4 },
+    ],
+  },
+  ecommerce: {
+    id: "ecommerce",
+    studioSlug: "emergency-ecommerce",
+    tiers: [
+      { id: "triage", price: 250, days: 0.25 },
+      { id: "priority", price: 400, days: 0.4 },
+      { id: "critical", price: 600, days: 0.6 },
+    ],
+  },
+};
+
+/** Every approved fixed one-time price, for the tests and the Stripe catalogue. */
+export const APPROVED_ONE_TIME_PRICES: number[] = [
+  ...Object.values(ONE_TIME).filter((s) => s.approved).map((s) => s.price),
+  ...Object.values(EMERGENCY).flatMap((track) => track.tiers.map((t) => t.price)),
+  DISCOVERY.from,
 ];
 
 export const RECURRING_BY_ID: Record<string, RecurringSpec> = Object.fromEntries(
@@ -586,4 +688,4 @@ export const BASE_RECURRING: Partial<Record<BaseId, string[]>> = {
   software_platform: ["website-care-plan"],
 };
 
-export const MODEL_CHECKSUM = "e49f098fe5ee2001";
+export const MODEL_CHECKSUM = "2e02cf3e5ab2ed58";

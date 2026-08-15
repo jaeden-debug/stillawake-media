@@ -134,4 +134,6 @@ Vous n'achetez pas un design. Vous achetez un actif que vous devrez posséder, m
 
 Les douze questions ci-dessus prennent une heure au total. Elles vous éviteront la version où, dix-huit mois plus tard, vous découvrez que vous ne pouvez ni changer une phrase, ni récupérer votre domaine, ni expliquer pourquoi le trafic ne vient jamais.
 
+Sur la question de la propriété en particulier — quels comptes doivent être à votre nom, lesquels peuvent légitimement varier selon le contrat, et ce qui arrive à chacun quand un mandat se termine — le portrait complet est dans [notre guide sur la propriété d'un site web](/fr/propriete-site-web).
+
 Si vous préférez que ce soit fait plutôt qu'expliqué, voyez [nos tarifs affichés](/fr/tarifs).

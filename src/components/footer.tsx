@@ -30,6 +30,8 @@ const montreal = [
 const resources = [
   ["StillAwake Times", "/stillawake-times"],
   ["Free tools", "/tools"],
+  ["Website ownership", "/website-ownership"],
+  ["Do I need custom software?", "/do-i-need-custom-software"],
   ["Products", "/products"],
   ["Portfolio", "/portfolio"],
   ["Case Studies", "/work"],
@@ -52,6 +54,8 @@ const resourcesFr = [
   ["Articles", "/fr/articles"],
   ["Produits", "/fr/produits"],
   ["Outils", "/fr/outils"],
+  ["Propriété d’un site web", "/fr/propriete-site-web"],
+  ["Logiciel sur mesure?", "/fr/logiciel-sur-mesure-ou-solution-existante"],
   ["Réalisations", "/fr/realisations"],
   ["Études de cas", "/fr/etudes-de-cas"],
   ["À propos", "/fr/a-propos"],

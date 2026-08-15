@@ -2,8 +2,8 @@ import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
-import { RECURRING } from "./model";
-import { RECURRING_LABELS } from "./labels";
+import { APPROVED_ONE_TIME_PRICES, EMERGENCY, ONE_TIME, RECURRING } from "./model";
+import { ONE_TIME_LABELS, RECURRING_LABELS } from "./labels";
 
 /**
  * Published copy must not contradict the pricing model.
@@ -80,7 +80,15 @@ describe("published copy agrees with the pricing model", () => {
    */
   it("quotes the approved monthly prices correctly wherever it names them", () => {
     const approved = RECURRING.filter((r) => r.approved);
-    const approvedAmounts = new Set(approved.map((r) => r.monthly));
+    /**
+     * Any approved price may legitimately sit beside a plan name — a card that
+     * reads "care plan $150/mo, or a one-off audit at $150" is correct copy.
+     * What must never appear is a figure StillAwake does not actually charge.
+     */
+    const approvedAmounts = new Set<number | null>([
+      ...approved.map((r) => r.monthly),
+      ...APPROVED_ONE_TIME_PRICES,
+    ]);
     const WINDOW = 60;
 
     for (const product of approved) {
@@ -116,16 +124,156 @@ describe("published copy agrees with the pricing model", () => {
   /**
    * Draft catalogue rows carry candidate prices the operator can see, but
    * publishing one would be inventing a price StillAwake has not agreed to
-   * charge. $40 hosting and $1,200 content are the two most likely to leak.
+   * charge.
+   *
+   * As of 2026-08-15 the whole ladder is approved, so this currently guards
+   * nothing — deliberately. It is derived from the model rather than
+   * hardcoded, which means the next drafted price is protected the moment it
+   * is added, with no test to remember to write. Do not delete it for looking
+   * vacuous; that is the point.
    */
   it("never publishes an unapproved catalogue price", () => {
+    const unapproved = RECURRING.filter((r) => !r.approved && r.monthly !== null);
+
     for (const { path, body } of [...FILES, ...PAGES]) {
-      expect(body, `${path} mentions the unapproved hosting price`).not.toMatch(
-        /\$40\s*(CAD)?\s*(\/|per )\s*month/i,
-      );
-      expect(body, `${path} mentions the unapproved content price`).not.toMatch(
-        /\$1,?200\s*(CAD)?\s*(\/|per )\s*month/i,
-      );
+      for (const row of unapproved) {
+        const amount = row.monthly!.toLocaleString("en-US");
+        const pattern = new RegExp(
+          `\\$${amount.replace(",", ",?")}\\s*(CAD)?\\s*(\\/|per )\\s*month`,
+          "i",
+        );
+        expect(body, `${path} publishes the unapproved price for ${row.id}`).not.toMatch(pattern);
+      }
+    }
+  });
+
+  /**
+   * EMERGENCY SUPPORT lived only in JSX and in Stripe until 2026-08-15 — three
+   * hand-kept copies of six numbers with nothing comparing them. These two
+   * tests are the comparison that was missing.
+   */
+  describe("emergency support matches the kernel", () => {
+    const TIERS = Object.values(EMERGENCY).flatMap((track) =>
+      track.tiers.map((tier) => ({ ...tier, track: track.id })),
+    );
+    const TIER_PRICES = new Set(TIERS.map((t) => t.price));
+
+    /**
+     * The pages that SELL emergency support render every figure from EMERGENCY,
+     * so the strongest thing to assert is the absence of a hardcoded one. A
+     * literal reappearing here is someone quietly re-introducing the fourth
+     * copy of these numbers.
+     */
+    const RENDERED = [
+      "src/app/(en)/pricing/page.tsx",
+      "src/app/(fr)/fr/tarifs/page.tsx",
+      "src/app/(en)/website-maintenance/page.tsx",
+      "src/app/(fr)/fr/maintenance-site-web/page.tsx",
+    ].map((path) => ({ path, body: readFileSync(path, "utf8") }));
+
+    it.each(RENDERED)("$path hardcodes no emergency price", ({ body }) => {
+      for (const price of TIER_PRICES) {
+        /**
+         * "$150" (en) or "150 $" (fr) written out as a literal, not computed.
+         *
+         * The French form needs both lookbehinds: Québec French separates
+         * thousands with a space, so "4 250 $" ends in the exact characters
+         * "250 $" and a naive \b would flag every store price on the page.
+         */
+        expect(body, `hardcodes $${price} — render it from EMERGENCY instead`).not.toMatch(
+          new RegExp(`(\\$\\s?${price}\\b|(?<!\\d)(?<!\\d )${price}\\s?\\$(?!\\{))`),
+        );
+      }
+    });
+
+    it("renders each emergency track from the kernel on both locales", () => {
+      for (const { path, body } of RENDERED) {
+        expect(body, `${path} no longer reads EMERGENCY`).toMatch(/EMERGENCY/);
+      }
+    });
+
+    /**
+     * Prose is still hand-written, and prose is where a remembered price gets
+     * typed. Any figure sitting next to the word "emergency" has to be one we
+     * actually charge.
+     */
+    it("quotes no invented figure beside the word emergency", () => {
+      const WINDOW = 130;
+      /**
+       * Prose only. The rendering pages are covered by the stronger check
+       * above, and scanning their source here matches the IDENTIFIER
+       * `EMERGENCY` rather than the English word — which drags the whole
+       * pricing kernel import into the window and reports figures that exist
+       * nowhere in the published copy.
+       */
+      const PROSE = [...FILES, ...PAGES.filter((p) => /website-cost-canada|prix-site-web/.test(p.path))];
+
+      for (const { path, body } of PROSE) {
+        for (const hit of body.matchAll(/\b(emergency|urgence)\b/g)) {
+          const at = hit.index ?? 0;
+          const window = body.slice(Math.max(0, at - WINDOW), at + WINDOW);
+          /* "$150" and Québec French's "1 500 $". Both patterns must OPEN on a
+             digit: `[\d,]+` happily matches a bare comma or run of spaces,
+             which Number() then reports as a phantom $0 nobody wrote. */
+          const amounts = [
+            ...window.matchAll(/\$\s?(\d[\d,]*)/g),
+            ...window.matchAll(/(\d[\d ,]*)\s\$/g),
+          ].map((m) => Number(m[1].replace(/[,\s]/g, "")));
+
+          for (const amount of amounts) {
+            /* Care plans and monthly figures legitimately sit in the same
+               paragraph — what must not appear is an emergency-shaped price
+               that is not an emergency price. */
+            if (amount > 1000) continue;
+            expect(
+              [...TIER_PRICES, ...APPROVED_ONE_TIME_PRICES, ...RECURRING.map((r) => r.monthly)],
+              `${path}: $${amount} appears beside "${hit[0]}" but is not a price we charge`,
+            ).toContain(amount);
+          }
+        }
+      }
+    });
+  });
+
+  /**
+   * The one-time entry products are the cheapest thing StillAwake sells, which
+   * makes them the ones most likely to be quoted from memory in an article.
+   */
+  it("quotes the one-time services at their kernel price wherever it names them", () => {
+    const approvedFigures = new Set<number>([
+      ...APPROVED_ONE_TIME_PRICES,
+      ...RECURRING.filter((r) => r.approved).map((r) => r.monthly!),
+    ]);
+    const WINDOW = 50;
+
+    for (const service of Object.values(ONE_TIME).filter((s) => s.approved)) {
+      const name = ONE_TIME_LABELS[service.id].en;
+      for (const { path, body } of [...FILES, ...PAGES]) {
+        for (const hit of body.matchAll(new RegExp(escapeRegExp(name), "g"))) {
+          const at = hit.index ?? 0;
+          const window = body.slice(Math.max(0, at - WINDOW), at + hit[0].length + WINDOW);
+          const amounts = [...window.matchAll(/\$\s?([\d,]+)/g)].map((m) =>
+            Number(m[1].replace(/,/g, "")),
+          );
+          if (amounts.length === 0) continue;
+
+          expect(
+            amounts,
+            `${path}: "${name}" appears near ${amounts.map((a) => `$${a}`).join(", ")} — its own price is missing`,
+          ).toContain(service.price);
+
+          for (const amount of amounts) {
+            expect(
+              approvedFigures,
+              `${path}: "${name}" appears near unapproved figure $${amount}`,
+            ).toContain(amount);
+          }
+        }
+      }
     }
   });
 });
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}

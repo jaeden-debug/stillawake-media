@@ -82,7 +82,15 @@ export default function CalculateurCoutProjetPage() {
             <p>
               Les questions portent sur votre entreprise, pas sur la technologie. Pas besoin de savoir
               si ça vous prend Shopify, une API ou un moteur de réservation : décrivez ce qui doit se
-              passer, et le modèle détermine ce que ça implique de construire.
+              passer, et le modèle détermine ce que ça implique de construire. Si vous ne savez pas
+              encore de quoi le projet devrait être fait, commencez par le{" "}
+              <Link
+                href="/fr/guide-site-web-entreprise"
+                className="text-[#D71920] underline-offset-4 hover:underline"
+              >
+                guide de planification
+              </Link>{" "}
+              et revenez avec des exigences.
             </p>
             <p className="text-sm text-[#8C8080]">
               Gratuit · sans inscription · sans courriel · rien n&apos;est conservé. En dollars
@@ -206,6 +214,9 @@ export default function CalculateurCoutProjetPage() {
           <h2 className="geist text-3xl font-black tracking-[-0.05em]">Pour aller plus loin</h2>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             {[
+              ["Quel type de site web pour votre entreprise?", "/fr/guide-site-web-entreprise"],
+              ["Quelle technologie choisir pour son site web?", "/fr/choisir-technologie-site-web"],
+              ["Logiciel sur mesure ou solution existante?", "/fr/logiciel-sur-mesure-ou-solution-existante"],
               ["Combien coûte un site web au Québec?", "/fr/prix-site-web-quebec"],
               ["Tarifs publiés — sans appel de vente", "/fr/tarifs"],
               ["Refonte de site web", "/fr/refonte-site-web"],

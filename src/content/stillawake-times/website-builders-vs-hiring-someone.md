@@ -94,6 +94,8 @@ A site is a conversion surface. If nothing arrives at it, its quality is irrelev
 
 The best outcome of this article is a reader who confidently stays on a builder for another two years. That is a correct decision more often than my industry admits.
 
+If you have decided to hire someone and the open question is now *what they should build it on*, that decision has its own resource: [what technology you should use for your website](/choosing-website-technology).
+
 ---
 
 If you have hit one of the three ceilings and want to know what escaping it actually costs, describe the site in writing — pages, platform, integrations, where it hurts. You get a written fixed-price scope back and no sales call: **[stillawake.studio/start](https://stillawake.studio/start)**. If the scope says stay where you are, it will say that.

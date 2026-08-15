@@ -112,4 +112,6 @@ Le domaine est le seul actif numérique réellement irremplaçable. Le site peut
 
 Mettez-le à votre nom, activez le renouvellement automatique, gardez l'accès. Le reste se corrige.
 
+Le domaine et l'hébergement ne sont que deux des comptes d'un site web. Pour la carte complète — code source, CMS, base de données, Stripe, Shopify, analytique, qui paie quoi et qui détient quoi — voyez [notre guide sur la propriété d'un site web](/fr/propriete-site-web).
+
 Si vous préférez que ce soit fait plutôt qu'expliqué, voyez [notre service de maintenance et de support](/fr/maintenance-site-web).

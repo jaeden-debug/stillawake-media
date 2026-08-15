@@ -44,6 +44,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const sibling = cms.translation_group_id
       ? await getSiblingOf(cms.translation_group_id, "en")
       : null;
+    /** Same precedence as the EN route: CMS sibling first, markdown `pair` second. */
+    const filePair = (await getPostBySlug(slug, "fr"))?.pair;
     const languages =
       sibling?.route_path != null
         ? {
@@ -51,7 +53,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             "fr-CA": url,
             "x-default": `${siteUrl}${sibling.route_path}`,
           }
-        : undefined;
+        : filePair
+          ? {
+              "en-CA": `${siteUrl}/stillawake-times/${filePair}`,
+              "fr-CA": url,
+              "x-default": `${siteUrl}/stillawake-times/${filePair}`,
+            }
+          : undefined;
 
     return {
       title,

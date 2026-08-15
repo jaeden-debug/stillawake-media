@@ -50,6 +50,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const sibling = cms.translation_group_id
       ? await getSiblingOf(cms.translation_group_id, "fr")
       : null;
+    /**
+     * Pairing precedence: a CMS translation sibling wins, because that is the
+     * writer's own model. When there is none — the common case for articles
+     * that predate the CMS — the markdown `pair` declaration is honoured, so a
+     * genuine counterpart is not silently unpaired just because the row moved
+     * into the CMS.
+     */
+    const filePair = (await getPostBySlug(slug))?.pair;
     const languages =
       sibling?.route_path != null
         ? {
@@ -57,7 +65,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             "fr-CA": `${siteUrl}${sibling.route_path}`,
             "x-default": url,
           }
-        : undefined;
+        : filePair
+          ? {
+              "en-CA": url,
+              "fr-CA": `${siteUrl}/fr/articles/${filePair}`,
+              "x-default": url,
+            }
+          : undefined;
 
     return {
       title,

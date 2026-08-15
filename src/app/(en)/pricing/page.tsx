@@ -201,7 +201,7 @@ export default async function PricingPage() {
                 "A fixed build price at the end",
                 "The fee comes off the build",
               ]}
-              cta={["Start with discovery", "https://stillawake.studio/start"]}
+              buy={{ item: "project-discovery", label: "Start with discovery" }}
             />
           </div>
 
@@ -220,7 +220,7 @@ export default async function PricingPage() {
                 price={money(service.price)}
                 cadence="one-time"
                 items={[ONE_TIME_DESCRIPTIONS[service.id].en]}
-                cta={["Book it", "https://stillawake.studio/start"]}
+                buy={{ item: service.id, label: "Book it" }}
               />
             ))}
           </div>
@@ -239,7 +239,7 @@ export default async function PricingPage() {
                 price={money(plan.monthly!)}
                 cadence="per month"
                 items={MONTHLY_ITEMS[plan.id]}
-                cta={MONTHLY_CTA[plan.id]}
+                buy={{ item: plan.id, label: MONTHLY_CTA[plan.id][0] }}
               />
             ))}
           </div>
@@ -258,7 +258,7 @@ export default async function PricingPage() {
                 price={money(plan.monthly!)}
                 cadence="per month"
                 items={MONTHLY_ITEMS[plan.id]}
-                cta={MONTHLY_CTA[plan.id]}
+                buy={{ item: plan.id, label: MONTHLY_CTA[plan.id][0] }}
                 highlight={plan.id === "seo-essentials"}
               />
             ))}

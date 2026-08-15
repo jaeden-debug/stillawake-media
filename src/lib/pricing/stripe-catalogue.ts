@@ -65,6 +65,61 @@ export const DISCOVERY_LOOKUP_KEY = "sa_project_discovery_cad";
  */
 export const INSTALMENT_LOOKUP_KEY = "sa_project_instalment_cad";
 
+/**
+ * WHAT A STRANGER MAY BUY WITHOUT A HUMAN IN THE LOOP.
+ *
+ * This is an ALLOWLIST, and the checkout route accepts nothing outside it. The
+ * request format has no field for a price, an amount or a Stripe id — only a
+ * catalogue id from this list — so there is no way for a client to ask for a
+ * different number than the one published.
+ *
+ * TWO DELIBERATE EXCLUSIONS, both of which would be bugs if they crept in:
+ *
+ *   · `project-instalment` — a custom-amount price. Whoever names the amount
+ *     sets the price, so a public endpoint that accepted it would let a
+ *     stranger pay $4 for a $12,000 build. It is only ever invoiced against a
+ *     signed proposal, by us.
+ *
+ *   · every EMERGENCY tier — the published copy on both maintenance pages
+ *     says a three-question workload check sets the tier before payment. A
+ *     self-serve button would make that copy false, and would let someone in a
+ *     panic buy the wrong tier for an incident we have not looked at. We
+ *     triage, then send a payment link.
+ *
+ * Adding an id here is a decision to let it be bought unattended. Its test
+ * asserts these two stay out.
+ */
+export const PUBLIC_CHECKOUT_ITEMS: string[] = [
+  "managed-hosting",
+  "website-care-plan",
+  "seo-starter",
+  "seo-essentials",
+  "seo-advanced",
+  "content-creation",
+  "site-audit",
+  "llms-txt-setup",
+  "gbp-setup",
+  "speed-fix",
+  "project-discovery",
+];
+
+/** Stripe `mode` for a checkout session. Recurring plans subscribe; the rest are one-off. */
+export function checkoutMode(item: string): "subscription" | "payment" {
+  return item in RECURRING_LOOKUP_KEYS ? "subscription" : "payment";
+}
+
+/**
+ * Resolve a catalogue id to its lookup key, or null if it is not publicly
+ * purchasable. Returning null rather than throwing keeps the route's failure
+ * path a plain 404 — an unknown id and a deliberately-excluded one are the
+ * same answer to a stranger, and that is intentional.
+ */
+export function publicLookupKey(item: unknown): string | null {
+  if (typeof item !== "string" || !PUBLIC_CHECKOUT_ITEMS.includes(item)) return null;
+  if (item === "project-discovery") return DISCOVERY_LOOKUP_KEY;
+  return RECURRING_LOOKUP_KEYS[item] ?? ONE_TIME_LOOKUP_KEYS[item] ?? null;
+}
+
 /** Everything sellable, for the completeness test and for admin tooling. */
 export function allLookupKeys(): string[] {
   return [

@@ -199,7 +199,7 @@ export default async function TarifsPage() {
                 "Un prix de construction fixe à la fin",
                 "Les frais sont déduits de la construction",
               ]}
-              cta={["Commencer par le cadrage", "https://stillawake.studio/fr/demarrer"]}
+              buy={{ item: "project-discovery", label: "Commencer par le cadrage", locale: "fr" }}
             />
           </div>
 
@@ -219,7 +219,7 @@ export default async function TarifsPage() {
                 price={money(service.price)}
                 cadence="paiement unique"
                 items={[ONE_TIME_DESCRIPTIONS[service.id].fr]}
-                cta={["Réserver", "https://stillawake.studio/fr/demarrer"]}
+                buy={{ item: service.id, label: "Réserver", locale: "fr" }}
               />
             ))}
           </div>
@@ -238,7 +238,7 @@ export default async function TarifsPage() {
                 price={money(plan.monthly!)}
                 cadence="par mois"
                 items={MONTHLY_ITEMS[plan.id]}
-                cta={MONTHLY_CTA[plan.id]}
+                buy={{ item: plan.id, label: MONTHLY_CTA[plan.id][0], locale: "fr" }}
               />
             ))}
           </div>
@@ -257,7 +257,7 @@ export default async function TarifsPage() {
                 price={money(plan.monthly!)}
                 cadence="par mois"
                 items={MONTHLY_ITEMS[plan.id]}
-                cta={MONTHLY_CTA[plan.id]}
+                buy={{ item: plan.id, label: MONTHLY_CTA[plan.id][0], locale: "fr" }}
                 highlight={plan.id === "seo-essentials"}
               />
             ))}

@@ -6,6 +6,7 @@ excerpt: "La lenteur d'un site ne se paie pas en points de score Lighthouse, mai
 category: "Performance"
 featured: false
 author: "Jaeden Doody"
+pair: "how-website-speed-directly-impacts-revenue-and-seo-rankings"
 ---
 
 La conversation sur la vitesse d'un site tourne presque toujours autour d'un score. Quelqu'un lance un outil, obtient 63 sur 100, et le chiffre devient l'objectif.

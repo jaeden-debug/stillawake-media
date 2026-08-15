@@ -6,6 +6,7 @@ excerpt: "Les chutes de trafic après une refonte viennent presque toutes des UR
 category: "SEO"
 featured: false
 author: "Jaeden Doody"
+pair: "how-to-redesign-a-website-without-destroying-seo"
 ---
 
 La refonte est le moment où les entreprises perdent le plus de trafic organique — et presque toujours pour des raisons qui n'ont rien à voir avec le design.

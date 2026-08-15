@@ -7,6 +7,7 @@ category: "Web Design"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 author: "StillAwake Media"
+pair: "refonte-site-web-sans-perdre-seo"
 ---
 
 # How to Redesign a Website Without Destroying Your SEO

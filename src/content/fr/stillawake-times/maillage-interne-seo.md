@@ -6,6 +6,7 @@ excerpt: "Les liens internes décident quelles pages Google considère important
 category: "SEO"
 featured: false
 author: "Jaeden Doody"
+pair: "why-internal-linking-is-one-of-the-most-powerful-seo-strategies"
 ---
 
 Le maillage interne est le seul levier SEO qui soit à la fois gratuit, entièrement sous votre contrôle, et systématiquement négligé.

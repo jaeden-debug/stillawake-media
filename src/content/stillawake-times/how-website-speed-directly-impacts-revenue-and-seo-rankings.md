@@ -6,6 +6,7 @@ category: "Web Performance"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 author: "StillAwake Media"
+pair: "vitesse-site-web-revenus"
 ---
 
 # How Website Speed Directly Impacts Revenue & SEO Rankings

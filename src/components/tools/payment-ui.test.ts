@@ -140,3 +140,43 @@ describe("payments are not shown where they would mislead", () => {
     expect(src).toMatch(/!result\.needsDiscovery && \(\s*<PaymentOptions/);
   });
 });
+
+describe("the form does not resize between questions", () => {
+  it("gives question screens a constant, viewport-capped height", () => {
+    /* Option counts vary from 4 to 12, and sizing the card to each one moved
+       the page ~200px on every answer. */
+    expect(src).toMatch(/h-\[min\(44rem,calc\(100svh-3rem\)\)\]/);
+  });
+
+  it("measures against svh, not vh", () => {
+    /* On iOS and Android `vh` is the LARGE viewport — it counts space behind
+       the address bar, so the card is clipped until the bar collapses. */
+    const shell = src.slice(src.indexOf("function Shell"), src.indexOf("function ResultCard"));
+    expect(shell).toMatch(/svh/);
+    expect(shell).not.toMatch(/\d+vh\b/);
+  });
+
+  it("centres the question card in the viewport", () => {
+    const shell = src.slice(src.indexOf("function Shell"), src.indexOf("function ResultCard"));
+    expect(shell).toMatch(/min-h-\[100svh\] items-center justify-center/);
+  });
+
+  it("scrolls the options inside the card rather than growing it", () => {
+    expect(src).toMatch(/min-h-0 flex-1 overflow-y-auto overscroll-contain/);
+  });
+
+  it("resets the option list to the top on each new question", () => {
+    expect(src).toMatch(/scrollRef\.current\?\.scrollTo\(\{ top: 0 \}\)/);
+  });
+
+  it("keeps the advance button out of the scrolling region", () => {
+    /* On a short screen it used to sit below the fold of a 12-option list. */
+    const footer = src.slice(src.indexOf("Footer stays pinned"));
+    expect(footer.slice(0, 900)).toMatch(/shrink-0 border-t/);
+  });
+
+  it("lets the result card size itself — it is read, not stepped through", () => {
+    expect(src).toMatch(/<Shell steady>/);
+    expect(src).toMatch(/<Shell>\s*<div className="flex flex-wrap items-center gap-3">/);
+  });
+});

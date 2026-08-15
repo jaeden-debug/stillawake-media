@@ -226,6 +226,10 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
   const [result, setResult] = useState<Result | null>(null);
   const started = useRef(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  /* The options list scrolls inside a fixed-height card, so a new question has
+     to start at the top — otherwise answering a long question leaves the next
+     one already scrolled halfway down. */
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const questions = useMemo(() => activeQuestions(answers), [answers]);
   // Answering can retract later questions, so the cursor must never point past
@@ -238,6 +242,7 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
   // Moving the focus announces the new question to a screen reader and keeps
   // it in frame on a phone.
   useEffect(() => {
+    scrollRef.current?.scrollTo({ top: 0 });
     headingRef.current?.focus({ preventScroll: true });
   }, [safeIndex, state]);
 
@@ -315,8 +320,8 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
   const progress = totalKnown ? ((safeIndex + 1) / questions.length) * 100 : 8;
 
   return (
-    <Shell>
-      <div className="flex items-center justify-between gap-4 text-[11px] uppercase tracking-[0.28em] text-[#8C8080]">
+    <Shell steady>
+      <div className="flex shrink-0 items-center justify-between gap-4 text-[11px] uppercase tracking-[0.28em] text-[#8C8080]">
         <span className="tabular-nums">
           {totalKnown ? `${safeIndex + 1} ${T.of} ${questions.length}` : safeIndex + 1}
         </span>
@@ -327,7 +332,7 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
         )}
       </div>
 
-      <div className="mt-4 h-px w-full overflow-hidden bg-white/10">
+      <div className="mt-4 h-px w-full shrink-0 overflow-hidden bg-white/10">
         <div
           className="h-px bg-[#D71920] motion-safe:transition-[width] motion-safe:duration-500 motion-safe:ease-out"
           style={{ width: `${progress}%` }}
@@ -341,7 +346,11 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
 
       {current && (
         // Keying on the question id restarts the entrance animation per screen.
-        <div key={current.id} className="motion-safe:animate-[sam-rise_.45s_cubic-bezier(.16,1,.3,1)_both]">
+        <div
+          key={current.id}
+          ref={scrollRef}
+          className="-mx-2 min-h-0 flex-1 overflow-y-auto overscroll-contain px-2 [scrollbar-color:rgba(255,255,255,.18)_transparent] [scrollbar-width:thin] motion-safe:animate-[sam-rise_.45s_cubic-bezier(.16,1,.3,1)_both]"
+        >
           <h2
             ref={headingRef}
             tabIndex={-1}
@@ -399,28 +408,33 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
             })}
           </div>
 
-          {current.kind === "multi" && !onLast && (
-            <div className="mt-6">
+        </div>
+      )}
+
+      {/* Footer stays pinned outside the scroll region: on a short screen the
+          advance button used to sit below the fold of a twelve-option list. */}
+      {(current?.kind === "multi" && !onLast) || (onLast && complete) || state === "error" ? (
+        <div className="shrink-0 border-t border-white/10 pt-5">
+          {current?.kind === "multi" && !onLast && (
+            <>
               <button
                 type="button"
                 onClick={advance}
                 disabled={blocked}
-                className={`${FOCUS} inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm transition hover:border-[#D71920]/60 hover:bg-white/[0.04] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-white/15 disabled:hover:bg-transparent`}
+                className={`${FOCUS} inline-flex min-h-11 items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm transition hover:border-[#D71920]/60 hover:bg-white/[0.04] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-white/15 disabled:hover:bg-transparent`}
               >
                 {picked || !current.optional ? T.next : T.skip} <span aria-hidden>→</span>
               </button>
               {blocked && <p className="mt-3 text-xs text-[#8C8080]">{T.pickOne}</p>}
-            </div>
+            </>
           )}
-        </div>
-      )}
 
       {onLast && complete && (
         <button
           type="button"
           onClick={submit}
           disabled={state === "loading"}
-          className={`${FOCUS} group mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#D71920] px-8 py-4 text-sm font-bold text-white transition hover:brightness-110 disabled:opacity-70 sm:w-auto`}
+          className={`${FOCUS} group inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#D71920] px-8 py-4 text-sm font-bold text-white transition hover:brightness-110 disabled:opacity-70 sm:w-auto`}
         >
           {state === "loading" ? (
             <>
@@ -445,10 +459,12 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
       )}
 
       {state === "error" && (
-        <p role="alert" className="mt-4 text-sm text-[#ff6b70]">
-          {T.error}
-        </p>
-      )}
+            <p role="alert" className="mt-4 text-sm text-[#ff6b70]">
+              {T.error}
+            </p>
+          )}
+        </div>
+      ) : null}
     </Shell>
   );
 }
@@ -456,17 +472,46 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
 const FOCUS =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D71920]";
 
-/** Card chrome, shared by the question and result states so they feel continuous. */
-function Shell({ children }: { children: React.ReactNode }) {
+/**
+ * Card chrome, shared by the question and result states so they feel continuous.
+ *
+ * `steady` is what stops the screen jumping. Question screens have wildly
+ * different option counts — twelve on "what do you need?", four on "how ready is
+ * your content?" — and letting the card size itself to each one moved the whole
+ * page by ~200px on every answer. In steady mode the card takes a constant
+ * height instead, and the options scroll inside it.
+ *
+ * The height is capped against the viewport, so the card never grows past the
+ * screen: at 320x720 it used to render 781px tall and simply did not fit. `svh`
+ * rather than `vh` because on iOS and Android `vh` is the LARGE viewport, which
+ * counts space behind the address bar — the card would be clipped until the user
+ * scrolled and the bar collapsed.
+ *
+ * The result state deliberately opts out: it is long-form content someone reads
+ * and scrolls, not a step in a sequence.
+ */
+function Shell({ children, steady = false }: { children: React.ReactNode; steady?: boolean }) {
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.055] to-white/[0.015] p-6 shadow-[0_30px_80px_-40px_rgba(0,0,0,.9)] sm:p-9">
-      {/* One soft light source behind the card. Purely decorative. */}
+    <div
+      className={
+        steady
+          ? "flex min-h-[100svh] items-center justify-center py-6"
+          : "flex justify-center py-6"
+      }
+    >
       <div
-        aria-hidden
-        className="pointer-events-none absolute -top-32 left-1/2 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-[#D71920]/10 blur-3xl"
-      />
-      <div className="relative">{children}</div>
-      <style>{KEYFRAMES}</style>
+        className={`relative w-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.055] to-white/[0.015] shadow-[0_30px_80px_-40px_rgba(0,0,0,.9)] ${
+          steady ? "flex h-[min(44rem,calc(100svh-3rem))] flex-col p-6 sm:p-9" : "p-6 sm:p-9"
+        }`}
+      >
+        {/* One soft light source behind the card. Purely decorative. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-32 left-1/2 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-[#D71920]/10 blur-3xl"
+        />
+        <div className={steady ? "relative flex min-h-0 flex-1 flex-col" : "relative"}>{children}</div>
+        <style>{KEYFRAMES}</style>
+      </div>
     </div>
   );
 }

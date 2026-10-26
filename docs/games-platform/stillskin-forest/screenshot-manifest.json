@@ -1,0 +1,1946 @@
+{
+  "game": "stillskin-forest",
+  "generatedFrom": "src/data/games/stillskin-forest/media.ts",
+  "assets": [
+    {
+      "id": "stillskin-forest-hero",
+      "filename": "stillskin-forest-hero.webp",
+      "src": "/games/stillskin-forest/branding/stillskin-forest-hero.webp",
+      "gameId": "stillskin-forest",
+      "target": "/games/stillskin-forest",
+      "description": "Cinematic main game hero. Real dusk lighting. Survivors are clones of one test avatar.",
+      "alt": "Two survivors with headlamps on a forest trail at dusk, a lantern post in the foreground",
+      "use": "hero",
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      },
+      "aspectRatio": "16:9",
+      "priority": "P0",
+      "captureInstructions": "Wide establishing shot at dusk with 2–4 survivors, headlamps on, forest and Stillwater rooftops in depth. Leave the left third darker for headline text. Hide all HUD and development UI.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-thumbnail",
+      "filename": "stillskin-forest-thumbnail.webp",
+      "src": "/games/stillskin-forest/branding/stillskin-forest-thumbnail.webp",
+      "gameId": "stillskin-forest",
+      "target": "/games",
+      "description": "Primary horizontal game thumbnail. Blackthorn Asylum above Green Lake, daylight.",
+      "alt": "Blackthorn Asylum above Green Lake in Stillskin Forest",
+      "use": "thumbnail",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P0",
+      "captureInstructions": "Strongest single image of the game, readable at 400px wide. Hide all HUD and development UI.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-icon",
+      "filename": "stillskin-forest-icon.webp",
+      "src": "/games/stillskin-forest/branding/stillskin-forest-icon.webp",
+      "gameId": "stillskin-forest",
+      "target": "/games",
+      "description": "Square game icon. Square crop of the Walker's head from the capture booth.",
+      "alt": "Stillskin Forest Walker infected face",
+      "use": "icon",
+      "dimensions": {
+        "width": 512,
+        "height": 512
+      },
+      "aspectRatio": "1:1",
+      "priority": "P0",
+      "captureInstructions": "Square crop of a single strong subject (an infected silhouette or the asylum). Must read at 64px.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-cover",
+      "filename": "stillskin-forest-cover.webp",
+      "src": "/games/stillskin-forest/branding/stillskin-forest-cover.webp",
+      "gameId": "stillskin-forest",
+      "target": "/games/stillskin-forest",
+      "description": "Game cover artwork",
+      "alt": "Stillskin Forest cover art",
+      "use": "cover",
+      "dimensions": {
+        "width": 1200,
+        "height": 1600
+      },
+      "aspectRatio": "3:4",
+      "priority": "P1",
+      "captureInstructions": "Portrait cover composition with room for the title at the top.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-gameplay-overview",
+      "filename": "stillskin-forest-gameplay-overview.webp",
+      "src": "/games/stillskin-forest/branding/stillskin-forest-gameplay-overview.webp",
+      "gameId": "stillskin-forest",
+      "target": "/games/stillskin-forest",
+      "description": "Wide gameplay overview",
+      "alt": "A survivor scavenging a Stillwater street by day",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Third-person, mid-day, a survivor looting with the town behind. Hide all HUD and development UI.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-team-survival",
+      "filename": "stillskin-forest-team-survival.webp",
+      "src": "/games/stillskin-forest/branding/stillskin-forest-team-survival.webp",
+      "gameId": "stillskin-forest",
+      "target": "/games/stillskin-forest/wiki/multiplayer/co-op-survival",
+      "description": "Cooperative survivors",
+      "alt": "Four survivors holding a doorway together at night",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Squad of 3–4 players covering each other at night. Needs real players or test accounts.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-night-chase",
+      "filename": "stillskin-forest-night-chase.webp",
+      "src": "/games/stillskin-forest/branding/stillskin-forest-night-chase.webp",
+      "gameId": "stillskin-forest",
+      "target": "/games/stillskin-forest",
+      "description": "Infected pursuit. Night exposure lifted +1.4 EV for legibility.",
+      "alt": "A survivor sprinting from infected through the forest at night",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P0",
+      "captureInstructions": "Over-the-shoulder chase at night with 2–3 infected visible. Hide all HUD and development UI.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-trailer-poster",
+      "filename": "stillskin-forest-trailer-poster.webp",
+      "src": "/games/stillskin-forest/branding/stillskin-forest-trailer-poster.webp",
+      "gameId": "stillskin-forest",
+      "target": "/games/stillskin-forest",
+      "description": "Trailer thumbnail",
+      "alt": "Stillskin Forest trailer poster",
+      "use": "trailer-poster",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Only needed once a trailer exists.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-campgrounds",
+      "filename": "stillskin-forest-campgrounds.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-campgrounds.webp",
+      "gameId": "stillskin-forest",
+      "target": "campgrounds",
+      "description": "Main campground. Campground lake, dock and cabin, daylight (not dusk).",
+      "alt": "Cabins around the campground lake in Stillskin Forest",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P0",
+      "captureInstructions": "Cabins reflected across the lake at dusk. Hide all HUD and development UI.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-daytime",
+      "filename": "stillskin-forest-daytime.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-daytime.webp",
+      "gameId": "stillskin-forest",
+      "target": "day-night-cycle",
+      "description": "Peaceful forest in daylight. Pine forest around the cabin row, daylight.",
+      "alt": "Sunlit pine forest in Stillskin Forest",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Mid-morning, Day 1 lighting.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-nighttime",
+      "filename": "stillskin-forest-nighttime.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-nighttime.webp",
+      "gameId": "stillskin-forest",
+      "target": "day-night-cycle",
+      "description": "Forest at night",
+      "alt": "Moonlit pine forest at night in Stillskin Forest",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Same framing as the daytime shot, at night, headlamp off.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-cabins",
+      "filename": "stillskin-forest-cabins.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-cabins.webp",
+      "gameId": "stillskin-forest",
+      "target": "campgrounds",
+      "description": "Cabin area",
+      "alt": "Wooden camping cabins in the Stillskin Forest campground",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Close on the cabin row.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-trails",
+      "filename": "stillskin-forest-trails.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-trails.webp",
+      "gameId": "stillskin-forest",
+      "target": "forest-trail",
+      "description": "Forest trails",
+      "alt": "The lantern-lit forest trail toward Stillwater",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Trail with lanterns and the signpost.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-stillwater",
+      "filename": "stillskin-forest-stillwater.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-stillwater.webp",
+      "gameId": "stillskin-forest",
+      "target": "stillwater",
+      "description": "Stillwater town overview. Elevated view over Stillwater, St. Agnes Hospital and the park.",
+      "alt": "Main Street in the abandoned town of Stillwater",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P0",
+      "captureInstructions": "Elevated view down Main Street, wrecks and streetlights visible. Hide all HUD and development UI.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-welcome-sign",
+      "filename": "stillskin-forest-welcome-sign.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-welcome-sign.webp",
+      "gameId": "stillskin-forest",
+      "target": "stillwater",
+      "description": "Welcome to Stillwater sign",
+      "alt": "The Welcome to Stillwater sign with the population crossed out to zero",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Close on the sign.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-hospital",
+      "filename": "stillskin-forest-hospital.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-hospital.webp",
+      "gameId": "stillskin-forest",
+      "target": "st-agnes-hospital",
+      "description": "St. Agnes Hospital. St. Agnes Hospital exterior with ambulance.",
+      "alt": "St. Agnes Hospital and an abandoned ambulance",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P0",
+      "captureInstructions": "Hospital entrance with the ER canopy and ambulance.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-morgue",
+      "filename": "stillskin-forest-morgue.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-morgue.webp",
+      "gameId": "stillskin-forest",
+      "target": "morgue",
+      "description": "Morgue",
+      "alt": "The drawer wall and autopsy tables in the St. Agnes morgue",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Inside the morgue, drawer wall in frame.",
+      "spoiler": false,
+      "liveAvailability": "secret",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-freezer",
+      "filename": "stillskin-forest-freezer.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-freezer.webp",
+      "gameId": "stillskin-forest",
+      "target": "pine-general-store",
+      "description": "Walk-in freezer",
+      "alt": "Meat hooks in the walk-in freezer behind the general store",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Inside the freezer.",
+      "spoiler": false,
+      "liveAvailability": "secret",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-diner",
+      "filename": "stillskin-forest-diner.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-diner.webp",
+      "gameId": "stillskin-forest",
+      "target": "rosies-diner",
+      "description": "Rosie's Diner",
+      "alt": "The exterior of Rosie's Diner in Stillwater",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Exterior with neon sign at dusk.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-general-store",
+      "filename": "stillskin-forest-general-store.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-general-store.webp",
+      "gameId": "stillskin-forest",
+      "target": "pine-general-store",
+      "description": "Pine General Store",
+      "alt": "Pine General Store on Stillwater's main street",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Store front.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-houses",
+      "filename": "stillskin-forest-houses.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-houses.webp",
+      "gameId": "stillskin-forest",
+      "target": "houses-of-stillwater",
+      "description": "Residential buildings",
+      "alt": "Boarded-up houses on a Stillwater street",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Elm Street porches.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-attic",
+      "filename": "stillskin-forest-attic.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-attic.webp",
+      "gameId": "stillskin-forest",
+      "target": "houses-of-stillwater",
+      "description": "Tommy's attic",
+      "alt": "A circle of dolls in an attic in Stillwater",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Attic with the doll circle and rocking chair.",
+      "spoiler": false,
+      "liveAvailability": "secret",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-rooftops",
+      "filename": "stillskin-forest-rooftops.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-rooftops.webp",
+      "gameId": "stillskin-forest",
+      "target": "st-agnes-hospital",
+      "description": "Rooftop traversal",
+      "alt": "A survivor on the hospital roof above Stillwater",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Hospital roof sandbag nest.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-hidden-study",
+      "filename": "stillskin-forest-hidden-study.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-hidden-study.webp",
+      "gameId": "stillskin-forest",
+      "target": "houses-of-stillwater",
+      "description": "Hidden study",
+      "alt": "A hidden study behind a bookshelf",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Inside Paul's study.",
+      "spoiler": false,
+      "liveAvailability": "secret",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-storm-drain",
+      "filename": "stillskin-forest-storm-drain.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-storm-drain.webp",
+      "gameId": "stillskin-forest",
+      "target": "storm-drain",
+      "description": "Storm drain",
+      "alt": "The storm drain tunnel under Memorial Park",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Tunnel interior with headlamp light.",
+      "spoiler": false,
+      "liveAvailability": "secret",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-memorial-park",
+      "filename": "stillskin-forest-memorial-park.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-memorial-park.webp",
+      "gameId": "stillskin-forest",
+      "target": "memorial-park",
+      "description": "Memorial Park",
+      "alt": "Memorial Park's gazebo and broken fountain",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Gazebo, playground and fountain.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-police-car",
+      "filename": "stillskin-forest-police-car.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-police-car.webp",
+      "gameId": "stillskin-forest",
+      "target": "stillwater",
+      "description": "Police car",
+      "alt": "A police roadblock with flashing lights at the edge of Stillwater",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Roadblock at night with lights on.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-wrecked-vehicles",
+      "filename": "stillskin-forest-wrecked-vehicles.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-wrecked-vehicles.webp",
+      "gameId": "stillskin-forest",
+      "target": "stillwater",
+      "description": "Wrecked vehicles",
+      "alt": "Burning car wrecks on a Stillwater street",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Burning wrecks at night.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-blackthorn-asylum",
+      "filename": "stillskin-forest-blackthorn-asylum.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-blackthorn-asylum.webp",
+      "gameId": "stillskin-forest",
+      "target": "blackthorn-asylum",
+      "description": "Asylum exterior. Asylum facade by day; a night version is still outstanding.",
+      "alt": "Blackthorn Asylum at the top of the hill",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P0",
+      "captureInstructions": "Asylum front with the green lamp over the doors.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-asylum-interior",
+      "filename": "stillskin-forest-asylum-interior.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-asylum-interior.webp",
+      "gameId": "stillskin-forest",
+      "target": "blackthorn-asylum",
+      "description": "Asylum interior",
+      "alt": "The admissions hall inside Blackthorn Asylum",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Admissions hall and stairs.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-graveyard",
+      "filename": "stillskin-forest-graveyard.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-graveyard.webp",
+      "gameId": "stillskin-forest",
+      "target": "graveyard",
+      "description": "Graveyard. Headstones are small and partly hidden by terrain grass in the current build.",
+      "alt": "The Blackthorn graveyard and its angel statue",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Angel statue in frame.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-chapel",
+      "filename": "stillskin-forest-chapel.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-chapel.webp",
+      "gameId": "stillskin-forest",
+      "target": "chapel",
+      "description": "Chapel. Chapel interior.",
+      "alt": "The chapel beside the Blackthorn graveyard",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Chapel exterior.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-crypt-cave",
+      "filename": "stillskin-forest-crypt-cave.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-crypt-cave.webp",
+      "gameId": "stillskin-forest",
+      "target": "crypt-cave",
+      "description": "Crypt cave",
+      "alt": "The green-lit chamber at the bottom of the crypt cave",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Green-lit chamber.",
+      "spoiler": true,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-ritual-circle",
+      "filename": "stillskin-forest-ritual-circle.webp",
+      "src": "/games/stillskin-forest/quests/stillskin-forest-ritual-circle.webp",
+      "gameId": "stillskin-forest",
+      "target": "the-rite-of-stillness",
+      "description": "Ritual circle",
+      "alt": "The ritual circle in the Blackthorn cafeteria",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Cafeteria circle with candles.",
+      "spoiler": true,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-hollow",
+      "filename": "stillskin-forest-hollow.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-hollow.webp",
+      "gameId": "stillskin-forest",
+      "target": "the-hollow",
+      "description": "Hollow environment",
+      "alt": "Green crystals lighting the Weeping Gallery underground",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Weeping Gallery and chasm.",
+      "spoiler": true,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-green-lake",
+      "filename": "stillskin-forest-green-lake.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-green-lake.webp",
+      "gameId": "stillskin-forest",
+      "target": "green-lake",
+      "description": "Green Lake. Same master as the thumbnail, cropped lower and to the lake.",
+      "alt": "Green Lake below Blackthorn Asylum",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P0",
+      "captureInstructions": "Lake with the asylum above, fog and green water.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-green-lake-dock",
+      "filename": "stillskin-forest-green-lake-dock.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-green-lake-dock.webp",
+      "gameId": "stillskin-forest",
+      "target": "green-lake",
+      "description": "Sampling dock",
+      "alt": "The abandoned sampling dock on Green Lake",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Dock and condemned-water sign.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-green-lake-drain",
+      "filename": "stillskin-forest-green-lake-drain.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-green-lake-drain.webp",
+      "gameId": "stillskin-forest",
+      "target": "green-lake",
+      "description": "Asylum drainage outlet",
+      "alt": "The corroded asylum drain outlet at Green Lake",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Drain outlet.",
+      "spoiler": true,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-walker",
+      "filename": "stillskin-forest-walker.webp",
+      "src": "/games/stillskin-forest/enemies/stillskin-forest-walker.webp",
+      "gameId": "stillskin-forest",
+      "target": "walker",
+      "description": "Walker. Walker in the capture booth (clean documentation).",
+      "alt": "A Walker infected in Stillskin Forest",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P0",
+      "captureInstructions": "Full body, three-quarter view, readable silhouette.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-runner",
+      "filename": "stillskin-forest-runner.webp",
+      "src": "/games/stillskin-forest/enemies/stillskin-forest-runner.webp",
+      "gameId": "stillskin-forest",
+      "target": "runner",
+      "description": "Runner. Capture booth.",
+      "alt": "A Runner infected mid-sprint",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Mid-run.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-screamer",
+      "filename": "stillskin-forest-screamer.webp",
+      "src": "/games/stillskin-forest/enemies/stillskin-forest-screamer.webp",
+      "gameId": "stillskin-forest",
+      "target": "screamer",
+      "description": "Screamer. Capture booth.",
+      "alt": "A Screamer infected calling the horde",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Mid-scream if possible.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-brute",
+      "filename": "stillskin-forest-brute.webp",
+      "src": "/games/stillskin-forest/enemies/stillskin-forest-brute.webp",
+      "gameId": "stillskin-forest",
+      "target": "brute",
+      "description": "Brute. Capture booth.",
+      "alt": "A Brute, the largest infected, at night",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Low angle to sell its size.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-watcher",
+      "filename": "stillskin-forest-watcher.webp",
+      "src": "/games/stillskin-forest/enemies/stillskin-forest-watcher.webp",
+      "gameId": "stillskin-forest",
+      "target": "watcher",
+      "description": "Watcher",
+      "alt": "The Watcher standing at the tree line with glowing eyes",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Distant, at the tree line, at night.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-infected-horde",
+      "filename": "stillskin-forest-infected-horde.webp",
+      "src": "/games/stillskin-forest/enemies/stillskin-forest-infected-horde.webp",
+      "gameId": "stillskin-forest",
+      "target": "enemy-comparison",
+      "description": "Infected horde. Infected massing outside the general store at dawn.",
+      "alt": "A horde of infected on a Stillwater street at night",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Night horde.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-zombie-chase",
+      "filename": "stillskin-forest-zombie-chase.webp",
+      "src": "/games/stillskin-forest/enemies/stillskin-forest-zombie-chase.webp",
+      "gameId": "stillskin-forest",
+      "target": "detection-and-noise",
+      "description": "Zombie chase",
+      "alt": "Infected chasing a survivor",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Chase from behind the infected.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-zombie-investigation",
+      "filename": "stillskin-forest-zombie-investigation.webp",
+      "src": "/games/stillskin-forest/enemies/stillskin-forest-zombie-investigation.webp",
+      "gameId": "stillskin-forest",
+      "target": "detection-and-noise",
+      "description": "Zombie investigation",
+      "alt": "An infected searching where a survivor was last seen",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Infected in search state.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-baseball-bat",
+      "filename": "stillskin-forest-baseball-bat.webp",
+      "src": "/games/stillskin-forest/weapons/stillskin-forest-baseball-bat.webp",
+      "gameId": "stillskin-forest",
+      "target": "baseball-bat",
+      "description": "Baseball Bat",
+      "alt": "The Baseball Bat",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Item on a plain surface or in hand, first person.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-machete",
+      "filename": "stillskin-forest-machete.webp",
+      "src": "/games/stillskin-forest/weapons/stillskin-forest-machete.webp",
+      "gameId": "stillskin-forest",
+      "target": "machete",
+      "description": "Machete",
+      "alt": "The Machete",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Same framing as the bat.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-hammer",
+      "filename": "stillskin-forest-hammer.webp",
+      "src": "/games/stillskin-forest/weapons/stillskin-forest-hammer.webp",
+      "gameId": "stillskin-forest",
+      "target": "hammer",
+      "description": "Hammer",
+      "alt": "The Hammer",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Same framing as the bat.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-crowbar",
+      "filename": "stillskin-forest-crowbar.webp",
+      "src": "/games/stillskin-forest/weapons/stillskin-forest-crowbar.webp",
+      "gameId": "stillskin-forest",
+      "target": "crowbar",
+      "description": "Crowbar",
+      "alt": "The Crowbar",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Same framing as the bat.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-pistol",
+      "filename": "stillskin-forest-pistol.webp",
+      "src": "/games/stillskin-forest/weapons/stillskin-forest-pistol.webp",
+      "gameId": "stillskin-forest",
+      "target": "pistol",
+      "description": "Pistol",
+      "alt": "The Pistol",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "First-person aimed down sights.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-shotgun",
+      "filename": "stillskin-forest-shotgun.webp",
+      "src": "/games/stillskin-forest/weapons/stillskin-forest-shotgun.webp",
+      "gameId": "stillskin-forest",
+      "target": "shotgun",
+      "description": "Shotgun",
+      "alt": "The Shotgun",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "First-person, two-handed.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-signal-remote",
+      "filename": "stillskin-forest-signal-remote.webp",
+      "src": "/games/stillskin-forest/weapons/stillskin-forest-signal-remote.webp",
+      "gameId": "stillskin-forest",
+      "target": "signal-remote",
+      "description": "Signal Remote",
+      "alt": "The Signal Remote freezing nearby infected",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Mid-pulse with frozen infected.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-weapon-combat",
+      "filename": "stillskin-forest-weapon-combat.webp",
+      "src": "/games/stillskin-forest/weapons/stillskin-forest-weapon-combat.webp",
+      "gameId": "stillskin-forest",
+      "target": "weapons-compared",
+      "description": "Weapon combat",
+      "alt": "A survivor fighting infected with a melee weapon",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Third-person mid-swing.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-weapon-inventory",
+      "filename": "stillskin-forest-weapon-inventory.webp",
+      "src": "/games/stillskin-forest/weapons/stillskin-forest-weapon-inventory.webp",
+      "gameId": "stillskin-forest",
+      "target": "inventory-and-hotbar",
+      "description": "Weapon inventory",
+      "alt": "The backpack panel with weapons",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Backpack open. HUD allowed for this one.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-food",
+      "filename": "stillskin-forest-food.webp",
+      "src": "/games/stillskin-forest/items/stillskin-forest-food.webp",
+      "gameId": "stillskin-forest",
+      "target": "food",
+      "description": "Food items. Canned beans used instead of the Bag of Chips, whose texture shows a real third-party brand.",
+      "alt": "Canned beans, a food item in Stillskin Forest",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "The three snacks together.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-first-aid-kit",
+      "filename": "stillskin-forest-first-aid-kit.webp",
+      "src": "/games/stillskin-forest/items/stillskin-forest-first-aid-kit.webp",
+      "gameId": "stillskin-forest",
+      "target": "first-aid-kit",
+      "description": "First Aid Kit",
+      "alt": "A First Aid Kit",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Item close-up.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-lantern",
+      "filename": "stillskin-forest-lantern.webp",
+      "src": "/games/stillskin-forest/items/stillskin-forest-lantern.webp",
+      "gameId": "stillskin-forest",
+      "target": "lantern",
+      "description": "Lantern",
+      "alt": "A placed lantern lighting a room",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Placed lantern at night.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-sprinting",
+      "filename": "stillskin-forest-sprinting.webp",
+      "src": "/games/stillskin-forest/mechanics/stillskin-forest-sprinting.webp",
+      "gameId": "stillskin-forest",
+      "target": "stamina-and-sprinting",
+      "description": "Sprinting",
+      "alt": "A survivor sprinting",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Sprint with FOV widening.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-stamina",
+      "filename": "stillskin-forest-stamina.webp",
+      "src": "/games/stillskin-forest/mechanics/stillskin-forest-stamina.webp",
+      "gameId": "stillskin-forest",
+      "target": "stamina-and-sprinting",
+      "description": "Stamina bar",
+      "alt": "The stamina bar while sprinting",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "HUD allowed: stamina bar visible.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-health",
+      "filename": "stillskin-forest-health.webp",
+      "src": "/games/stillskin-forest/mechanics/stillskin-forest-health.webp",
+      "gameId": "stillskin-forest",
+      "target": "health-and-healing",
+      "description": "Health",
+      "alt": "The health bar flashing after a hit",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "HUD allowed.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-inventory",
+      "filename": "stillskin-forest-inventory.webp",
+      "src": "/games/stillskin-forest/mechanics/stillskin-forest-inventory.webp",
+      "gameId": "stillskin-forest",
+      "target": "inventory-and-hotbar",
+      "description": "Inventory",
+      "alt": "The backpack inventory panel",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "HUD allowed.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-hotbar",
+      "filename": "stillskin-forest-hotbar.webp",
+      "src": "/games/stillskin-forest/mechanics/stillskin-forest-hotbar.webp",
+      "gameId": "stillskin-forest",
+      "target": "inventory-and-hotbar",
+      "description": "Hotbar",
+      "alt": "The hotbar with items and ammo counts",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "HUD allowed.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-headlamp",
+      "filename": "stillskin-forest-headlamp.webp",
+      "src": "/games/stillskin-forest/mechanics/stillskin-forest-headlamp.webp",
+      "gameId": "stillskin-forest",
+      "target": "headlamp",
+      "description": "Headlamp. Night exposure lifted +2.2 EV for legibility.",
+      "alt": "A survivor with a headlamp outside St. Agnes Hospital at night",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Night, beam visible.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-locker-hiding",
+      "filename": "stillskin-forest-locker-hiding.webp",
+      "src": "/games/stillskin-forest/mechanics/stillskin-forest-locker-hiding.webp",
+      "gameId": "stillskin-forest",
+      "target": "hiding",
+      "description": "Locker hiding. Survivor stepping into the hospital locker.",
+      "alt": "A survivor stepping into a hospital locker",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P0",
+      "captureInstructions": "Third-person entering a locker.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-locker-view",
+      "filename": "stillskin-forest-locker-view.webp",
+      "src": "/games/stillskin-forest/mechanics/stillskin-forest-locker-view.webp",
+      "gameId": "stillskin-forest",
+      "target": "hiding",
+      "description": "Locker view. Peek view through the locker slats.",
+      "alt": "The view out through the slats of a locker",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Peek camera through slats.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-dread-encounter",
+      "filename": "stillskin-forest-dread-encounter.webp",
+      "src": "/games/stillskin-forest/mechanics/stillskin-forest-dread-encounter.webp",
+      "gameId": "stillskin-forest",
+      "target": "the-dread-encounter",
+      "description": "Dread Encounter. Real hide view from inside the hospital locker; the hide prompt is cropped out.",
+      "alt": "An infected walking up to the locker, seen through the slats from inside",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P0",
+      "captureInstructions": "Infected walking up to the hide.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-dread-encounter-closeup",
+      "filename": "stillskin-forest-dread-encounter-closeup.webp",
+      "src": "/games/stillskin-forest/mechanics/stillskin-forest-dread-encounter-closeup.webp",
+      "gameId": "stillskin-forest",
+      "target": "the-dread-encounter",
+      "description": "Dread Encounter close-up",
+      "alt": "An infected staring through a locker grate",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "From inside, the face at the grate.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-revive",
+      "filename": "stillskin-forest-revive.webp",
+      "src": "/games/stillskin-forest/mechanics/stillskin-forest-revive.webp",
+      "gameId": "stillskin-forest",
+      "target": "downed-and-revive",
+      "description": "Revive",
+      "alt": "A survivor reviving a downed teammate",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Two players, revive in progress.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-downed",
+      "filename": "stillskin-forest-downed.webp",
+      "src": "/games/stillskin-forest/mechanics/stillskin-forest-downed.webp",
+      "gameId": "stillskin-forest",
+      "target": "downed-and-revive",
+      "description": "Downed",
+      "alt": "A downed survivor on the ground",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Downed state.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-ghost-spectator",
+      "filename": "stillskin-forest-ghost-spectator.webp",
+      "src": "/games/stillskin-forest/mechanics/stillskin-forest-ghost-spectator.webp",
+      "gameId": "stillskin-forest",
+      "target": "death-ghosts-and-the-finale",
+      "description": "Ghost spectator",
+      "alt": "A blue ghost spectator watching teammates",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Ghost mode.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-end-run",
+      "filename": "stillskin-forest-end-run.webp",
+      "src": "/games/stillskin-forest/mechanics/stillskin-forest-end-run.webp",
+      "gameId": "stillskin-forest",
+      "target": "death-ghosts-and-the-finale",
+      "description": "End of run",
+      "alt": "Survivors' stat cards on the hospital roof",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Rooftop lineup with cards.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-zombie-dance",
+      "filename": "stillskin-forest-zombie-dance.webp",
+      "src": "/games/stillskin-forest/mechanics/stillskin-forest-zombie-dance.webp",
+      "gameId": "stillskin-forest",
+      "target": "death-ghosts-and-the-finale",
+      "description": "Zombie dance",
+      "alt": "Infected dancing around the survivors on the hospital roof",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Finale dance.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-building",
+      "filename": "stillskin-forest-building.webp",
+      "src": "/games/stillskin-forest/mechanics/stillskin-forest-building.webp",
+      "gameId": "stillskin-forest",
+      "target": "doors-and-building",
+      "description": "Building",
+      "alt": "Planks nailed across a doorway",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Barricaded doorway.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-blood-moon",
+      "filename": "stillskin-forest-blood-moon.webp",
+      "src": "/games/stillskin-forest/nights/stillskin-forest-blood-moon.webp",
+      "gameId": "stillskin-forest",
+      "target": "blood-moon",
+      "description": "Blood Moon",
+      "alt": "A red Blood Moon over the forest",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Red sky, moon in frame.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-heavy-fog",
+      "filename": "stillskin-forest-heavy-fog.webp",
+      "src": "/games/stillskin-forest/nights/stillskin-forest-heavy-fog.webp",
+      "gameId": "stillskin-forest",
+      "target": "heavy-fog",
+      "description": "Heavy Fog",
+      "alt": "Dense grey fog in Stillwater",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Street disappearing into fog.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-infected-surge",
+      "filename": "stillskin-forest-infected-surge.webp",
+      "src": "/games/stillskin-forest/nights/stillskin-forest-infected-surge.webp",
+      "gameId": "stillskin-forest",
+      "target": "infected-surge",
+      "description": "Infected Surge",
+      "alt": "A surge of infected flooding a street",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Many infected.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-silent-night",
+      "filename": "stillskin-forest-silent-night.webp",
+      "src": "/games/stillskin-forest/nights/stillskin-forest-silent-night.webp",
+      "gameId": "stillskin-forest",
+      "target": "silent-night",
+      "description": "Silent Night",
+      "alt": "Cold, clear moonlight over a silent forest",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Blue moonlight, nothing moving.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-sisters-rosary",
+      "filename": "stillskin-forest-sisters-rosary.webp",
+      "src": "/games/stillskin-forest/lore/stillskin-forest-sisters-rosary.webp",
+      "gameId": "stillskin-forest",
+      "target": "sisters-rosary",
+      "description": "The Sister's Rosary",
+      "alt": "The Sister's Rosary",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Relic where it lies.",
+      "spoiler": true,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-miners-lantern",
+      "filename": "stillskin-forest-miners-lantern.webp",
+      "src": "/games/stillskin-forest/lore/stillskin-forest-miners-lantern.webp",
+      "gameId": "stillskin-forest",
+      "target": "miners-lantern",
+      "description": "The Miner's Lantern",
+      "alt": "The Miner's Lantern burning green",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "In the crypt chamber.",
+      "spoiler": true,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-angels-tear",
+      "filename": "stillskin-forest-angels-tear.webp",
+      "src": "/games/stillskin-forest/lore/stillskin-forest-angels-tear.webp",
+      "gameId": "stillskin-forest",
+      "target": "angels-tear",
+      "description": "The Angel's Tear",
+      "alt": "The Angel's Tear",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "At the grave.",
+      "spoiler": true,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-dr-vances-ring",
+      "filename": "stillskin-forest-dr-vances-ring.webp",
+      "src": "/games/stillskin-forest/lore/stillskin-forest-dr-vances-ring.webp",
+      "gameId": "stillskin-forest",
+      "target": "dr-vances-ring",
+      "description": "Dr. Vance's Ring",
+      "alt": "Dr. Vance's Ring",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "In Vance's office.",
+      "spoiler": true,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-admission-ledger",
+      "filename": "stillskin-forest-admission-ledger.webp",
+      "src": "/games/stillskin-forest/quests/stillskin-forest-admission-ledger.webp",
+      "gameId": "stillskin-forest",
+      "target": "blackthorn-admission-ledger",
+      "description": "Admission ledger",
+      "alt": "The Blackthorn Admission Ledger under a loose board",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "captureInstructions": "Ledger in the gazebo.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-story-documents",
+      "filename": "stillskin-forest-story-documents.webp",
+      "src": "/games/stillskin-forest/lore/stillskin-forest-story-documents.webp",
+      "gameId": "stillskin-forest",
+      "target": "notes-and-tapes",
+      "description": "Story documents",
+      "alt": "The note reader open on a story note",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Note UI open. HUD allowed.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-ritual",
+      "filename": "stillskin-forest-ritual.webp",
+      "src": "/games/stillskin-forest/quests/stillskin-forest-ritual.webp",
+      "gameId": "stillskin-forest",
+      "target": "the-rite-of-stillness",
+      "description": "The ritual",
+      "alt": "Candles lighting during the Rite of Stillness",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Ritual in progress.",
+      "spoiler": true,
+      "liveAvailability": "live",
+      "status": "missing"
+    },
+    {
+      "id": "stillskin-forest-hollow-heart",
+      "filename": "stillskin-forest-hollow-heart.webp",
+      "src": "/games/stillskin-forest/quests/stillskin-forest-hollow-heart.webp",
+      "gameId": "stillskin-forest",
+      "target": "the-heart-of-stillskin",
+      "description": "The Heart",
+      "alt": "The pulsing Heart of Stillskin in its cavern",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Heart cavern.",
+      "spoiler": true,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-chase-golden-hour",
+      "filename": "stillskin-forest-chase-golden-hour.webp",
+      "src": "/games/stillskin-forest/branding/stillskin-forest-chase-golden-hour.webp",
+      "gameId": "stillskin-forest",
+      "target": "/games/stillskin-forest",
+      "description": "Infected pursuit in late-afternoon light. Extra capture.",
+      "alt": "A survivor running from infected down a Stillwater street at golden hour",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Extra capture supplied by the capture session.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-night-chase-alt",
+      "filename": "stillskin-forest-night-chase-alt.webp",
+      "src": "/games/stillskin-forest/branding/stillskin-forest-night-chase-alt.webp",
+      "gameId": "stillskin-forest",
+      "target": "/games/stillskin-forest",
+      "description": "Night pursuit, second frame. Extra capture.",
+      "alt": "A survivor fleeing infected past a lamp post at night",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Extra capture supplied by the capture session.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-enemy-lineup",
+      "filename": "stillskin-forest-enemy-lineup.webp",
+      "src": "/games/stillskin-forest/enemies/stillskin-forest-enemy-lineup.webp",
+      "gameId": "stillskin-forest",
+      "target": "enemy-comparison",
+      "description": "All four infected types side by side. Extra capture.",
+      "alt": "Walker, Runner, Screamer and Brute infected side by side",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Extra capture supplied by the capture session.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-hospital-interior",
+      "filename": "stillskin-forest-hospital-interior.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-hospital-interior.webp",
+      "gameId": "stillskin-forest",
+      "target": "st-agnes-hospital",
+      "description": "St. Agnes Hospital waiting room. Extra capture.",
+      "alt": "The waiting room inside St. Agnes Hospital at night",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Extra capture supplied by the capture session.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-chapel-interior-alt",
+      "filename": "stillskin-forest-chapel-interior-alt.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-chapel-interior-alt.webp",
+      "gameId": "stillskin-forest",
+      "target": "chapel",
+      "description": "Chapel interior, second angle. Extra capture.",
+      "alt": "Stone walls and doorway inside the Blackthorn chapel",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Extra capture supplied by the capture session.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-walker-detail",
+      "filename": "stillskin-forest-walker-detail.webp",
+      "src": "/games/stillskin-forest/enemies/stillskin-forest-walker-detail.webp",
+      "gameId": "stillskin-forest",
+      "target": "walker",
+      "description": "Walker close-up. Extra capture.",
+      "alt": "Close-up of a Walker infected's face",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Extra capture supplied by the capture session.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-brute-detail",
+      "filename": "stillskin-forest-brute-detail.webp",
+      "src": "/games/stillskin-forest/enemies/stillskin-forest-brute-detail.webp",
+      "gameId": "stillskin-forest",
+      "target": "brute",
+      "description": "Brute close-up. Extra capture.",
+      "alt": "Close-up of the Brute infected",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Extra capture supplied by the capture session.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-hospital-night",
+      "filename": "stillskin-forest-hospital-night.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-hospital-night.webp",
+      "gameId": "stillskin-forest",
+      "target": "st-agnes-hospital",
+      "description": "St. Agnes Hospital at night. Extra capture.",
+      "alt": "St. Agnes Hospital and ambulance at night",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Extra capture supplied by the capture session.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-energy-bar",
+      "filename": "stillskin-forest-energy-bar.webp",
+      "src": "/games/stillskin-forest/items/stillskin-forest-energy-bar.webp",
+      "gameId": "stillskin-forest",
+      "target": "food",
+      "description": "Energy bar. Extra capture.",
+      "alt": "An energy bar item",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Extra capture supplied by the capture session.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-canned-beans",
+      "filename": "stillskin-forest-canned-beans.webp",
+      "src": "/games/stillskin-forest/items/stillskin-forest-canned-beans.webp",
+      "gameId": "stillskin-forest",
+      "target": "food",
+      "description": "Canned beans. Extra capture.",
+      "alt": "A can of beans item",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Extra capture supplied by the capture session.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-batteries",
+      "filename": "stillskin-forest-batteries.webp",
+      "src": "/games/stillskin-forest/items/stillskin-forest-batteries.webp",
+      "gameId": "stillskin-forest",
+      "target": "headlamp",
+      "description": "Headlamp batteries. Extra capture.",
+      "alt": "Batteries for the headlamp",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Extra capture supplied by the capture session.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    }
+  ]
+}

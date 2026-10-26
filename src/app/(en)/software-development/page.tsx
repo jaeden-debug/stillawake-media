@@ -111,7 +111,7 @@ export default function SoftwareDevelopmentPage() {
             </Link>
 
             <Link
-              href="/portfolio"
+              href="/our-work"
               className="rounded-full border border-white/10 px-7 py-4 text-sm font-bold text-[#C7B9B9] transition hover:border-white/30 hover:text-white"
             >
               View Work →

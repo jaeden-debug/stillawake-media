@@ -33,6 +33,11 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // Portfolio 2.0: /portfolio became /our-work. Games have one canonical
+      // home under /games, so a portfolio URL for a game points there.
+      { source: "/portfolio", destination: "/our-work", permanent: true },
+      { source: "/our-work/stillskin-forest", destination: "/games/stillskin-forest", permanent: true },
+      { source: "/our-work/llms-txt-generator", destination: "/tools/llms-txt-generator", permanent: true },
       { source: "/web-design", destination: "/web-design-montreal", permanent: true },
       { source: "/technical-seo", destination: "/stillawake-times/what-is-technical-seo", permanent: true },
       // Cannibalization repair round 2: the four "Montréal" article stubs were

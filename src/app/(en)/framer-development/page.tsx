@@ -87,7 +87,7 @@ export default function Page() {
               Start a Project →
             </Link>
 
-            <Link href="/portfolio" className="rounded-full border border-white/10 px-6 py-4 font-bold text-[#C7B9B9] transition hover:text-white">
+            <Link href="/our-work" className="rounded-full border border-white/10 px-6 py-4 font-bold text-[#C7B9B9] transition hover:text-white">
               View Work →
             </Link>
           </div>

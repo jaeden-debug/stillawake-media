@@ -49,3 +49,36 @@ export function trackStartClick(source: string, locale: "en" | "fr") {
 export function trackPricingCtaClick(plan: string) {
   gtag("event", "pricing_cta_click", { plan });
 }
+
+/**
+ * SECONDARY — discovery diagnostics for the portfolio, games and wiki.
+ * None of these is a conversion. A Roblox outbound click means someone left
+ * for the Roblox page, not that they played.
+ */
+
+/** A site, portfolio or wiki search the visitor paused on. `results: 0`
+ *  doubles as the missing-content report: it lists what people looked for
+ *  and didn't find. */
+export function trackSiteSearch(scope: string, query: string, results: number) {
+  gtag("event", "site_search", {
+    search_scope: scope,
+    search_term: query.slice(0, 100),
+    results,
+    no_results: results === 0,
+  });
+}
+
+/**
+ * A click on any element carrying `data-track`. Lets server components mark
+ * CTAs without becoming client components: the delegated listener in
+ * OutboundTracking reads the attributes.
+ */
+export function trackTaggedClick(name: string, params: Record<string, string>) {
+  gtag("event", name, params);
+}
+
+/** First page of a session arriving from a known AI assistant. Most AI
+ *  traffic sends no referrer at all, so this undercounts by design. */
+export function trackAiReferral(source: string, landing: string) {
+  gtag("event", "ai_referral", { ai_source: source, landing_page: landing });
+}

@@ -3,7 +3,8 @@ export const siteUrl = "https://stillawakemedia.com";
 export const nav = [
   ["Home", "/"],
   ["About", "/about"],
-  ["Portfolio", "/portfolio"],
+  ["Our Work", "/our-work"],
+  ["Games", "/games"],
   ["Services", "/services"],
   ["Montreal", "/web-design-montreal"],
   ["StillAwake Times", "/stillawake-times"],

@@ -88,7 +88,7 @@ export default function Page() {
               Start a Project →
             </Link>
 
-            <Link href="/portfolio" className="rounded-full border border-white/10 px-6 py-4 font-bold text-[#C7B9B9] transition hover:text-white">
+            <Link href="/our-work" className="rounded-full border border-white/10 px-6 py-4 font-bold text-[#C7B9B9] transition hover:text-white">
               View Work →
             </Link>
           </div>
@@ -197,7 +197,7 @@ export default function Page() {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a href="/work" className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">Read the case studies</a>
-            <a href="/portfolio" className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">Open the live stores</a>
+            <a href="/our-work" className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">Open the live stores</a>
             <a href="/website-maintenance" className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">Ecommerce emergency support ($250–$600)</a>
             <a href="/fr/developpement-shopify" className="rounded-full border border-white/10 px-4 py-2 text-sm transition hover:border-[#D71920]/60 hover:text-white">Version française</a>
           </div>

@@ -1,6 +1,21 @@
 import { PAGE_SCHEMA } from "@/data/page-schema-map";
-import { buildPageSchema } from "@/lib/page-schema";
+import { buildPageSchema, type PageSchemaInput } from "@/lib/page-schema";
 import { siteUrl } from "@/lib/data";
+
+/**
+ * Same JSON-LD, for routes generated at build time rather than listed in the
+ * registry. The registry is keyed by literal route and cannot describe a
+ * `[platform]` segment, so programmatic pages pass their own input — derived
+ * from the same record that produced the page, which keeps the two in step.
+ */
+export function InlinePageSchema({ input }: { input: PageSchemaInput }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(buildPageSchema(input)) }}
+    />
+  );
+}
 
 /**
  * Drops the page-level JSON-LD for a route.

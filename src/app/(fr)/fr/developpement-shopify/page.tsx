@@ -139,7 +139,7 @@ export default function DeveloppementShopifyPage() {
             Blackwater Aquatics Canada : 64 pages éducatives derrière une boutique Shopify de 17 produits — positions
             en page 1, ~60 000 impressions sur les meilleures pages, et un taux de fidélité plus que quadruplé. Sourcé et daté.
           </p>
-          <a href="/fr/etude-de-cas-blackwater-aquatics" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Lire l'étude de cas →</a>
+          <Link href="/fr/etude-de-cas-blackwater-aquatics" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Lire l&apos;étude de cas →</Link>
         </div>
       </section>
     

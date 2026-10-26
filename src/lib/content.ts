@@ -23,6 +23,16 @@ export type PostMeta = {
   date: string;
   /** Last substantive content revision (YYYY-MM-DD). Drives dateModified + sitemap lastmod. */
   updated?: string;
+  /**
+   * Slug of this article's counterpart in the other locale.
+   *
+   * Set on BOTH sides of a pair. Its presence is what allows the routes to
+   * emit reciprocal hreflang: an article without it declares no alternates at
+   * all, which is correct for the Québec-native pieces that have no English
+   * twin. A one-sided value would advertise an alternate that does not point
+   * back, so the sitemap cross-checks both directions before pairing.
+   */
+  pair?: string;
   excerpt: string;
   category: string;
   featured: boolean;
@@ -98,6 +108,7 @@ export function getAllPosts(locale: Locale = "en"): PostMeta[] {
         title: data.title || slug,
         date: data.date || "2026-05-24",
         updated: data.updated || undefined,
+        pair: typeof data.pair === "string" && data.pair.trim() ? data.pair.trim() : undefined,
         excerpt: data.excerpt || content.slice(0, 180),
         category: data.category || "Strategy",
         featured: Boolean(data.featured),
@@ -126,6 +137,7 @@ export async function getPostBySlug(slug: string, locale: Locale = "en"): Promis
     title: data.title || slug,
     date: data.date || "2026-05-24",
     updated: data.updated || undefined,
+    pair: typeof data.pair === "string" && data.pair.trim() ? data.pair.trim() : undefined,
     excerpt: data.excerpt || content.slice(0, 180),
     category: data.category || "Strategy",
     featured: Boolean(data.featured),

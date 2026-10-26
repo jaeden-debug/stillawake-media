@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button, Section, ServiceGridFr, PortfolioGrid, InternalLinks } from "@/components/site";
+import { CalculatorBand } from "@/components/tools/calculator-band";
 import LiveWorkShowcase from "@/components/LiveWorkShowcase";
 import { ServiceJsonLd } from "@/components/service-page";
 
@@ -83,10 +84,10 @@ export default function FrHome() {
                 <div className="mt-5 flex items-center gap-3">
                   <Button href="https://stillawake.studio/fr/demarrer">Démarrer un projet</Button>
                   <Link
-                    href="/fr/realisations"
+                    href="/fr/outils/calculateur-cout-projet"
                     className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/75 px-4 py-2.5 text-[13px] font-medium tracking-[-0.02em] text-[#C7B9B9] shadow-2xl backdrop-blur-2xl transition hover:bg-black/90 hover:text-white"
                   >
-                    Nos réalisations <span className="grid size-7 place-items-center rounded-full bg-white/[0.08] text-[12px] text-white">→</span>
+                    Combien ça coûte? <span className="grid size-7 place-items-center rounded-full bg-white/[0.08] text-[12px] text-white">→</span>
                   </Link>
                 </div>
               </div>
@@ -197,6 +198,7 @@ export default function FrHome() {
         <Link className="mt-8 inline-flex text-[#D71920]" href="/fr/etudes-de-cas">Voir toutes les études de cas →</Link>
       </Section>
 
+      <CalculatorBand locale="fr" />
       <InternalLinks locale="fr" />
 
       <section className="px-6 py-24">

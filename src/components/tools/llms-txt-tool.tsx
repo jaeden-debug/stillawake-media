@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { Finding } from "@/lib/llms-txt/analyze";
+import { TOOL_STRINGS, findingCopy, type ToolLocale } from "./llms-txt-strings";
 
 type Result = {
   domain: string;
@@ -19,7 +20,13 @@ const LEVEL_STYLE: Record<Finding["level"], string> = {
 };
 const LEVEL_MARK: Record<Finding["level"], string> = { ok: "✓", warn: "!", fail: "✕" };
 
-export function LlmsTxtTool() {
+/**
+ * Locale-aware only in its copy. The analysis, crawling, SSRF protection and
+ * rate limiting all live behind /api/tools/llms-txt and are identical for
+ * every locale — this component never branches on locale for behaviour.
+ */
+export function LlmsTxtTool({ locale = "en" }: { locale?: ToolLocale } = {}) {
+  const t = TOOL_STRINGS[locale];
   const [url, setUrl] = useState("");
   const [state, setState] = useState<"idle" | "running" | "done" | "error">("idle");
   const [error, setError] = useState("");
@@ -39,7 +46,7 @@ export function LlmsTxtTool() {
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error ?? "Something went wrong.");
+        setError(data.error ?? t.genericError);
         setState("error");
         return;
       }
@@ -47,7 +54,7 @@ export function LlmsTxtTool() {
       setEdited(data.llmsTxt);
       setState("done");
     } catch {
-      setError("Could not reach the checker. Try again.");
+      setError(t.networkError);
       setState("error");
     }
   }
@@ -74,13 +81,13 @@ export function LlmsTxtTool() {
     <div>
       <form onSubmit={run} className="flex flex-col gap-3 sm:flex-row">
         <label className="sr-only" htmlFor="site-url">
-          Website address
+          {t.urlLabel}
         </label>
         <input
           id="site-url"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-          placeholder="yourcompany.com"
+          placeholder={t.placeholder}
           required
           maxLength={300}
           autoCapitalize="off"
@@ -93,7 +100,7 @@ export function LlmsTxtTool() {
           disabled={state === "running"}
           className="shrink-0 rounded-full bg-[#D71920] px-8 py-4 font-bold text-white transition hover:opacity-90 disabled:opacity-60"
         >
-          {state === "running" ? "Checking…" : "Check my site"}
+          {state === "running" ? t.submitting : t.submit}
         </button>
       </form>
 
@@ -105,7 +112,7 @@ export function LlmsTxtTool() {
 
       {state === "running" && (
         <p className="mt-6 text-sm text-[#C7B9B9]">
-          Reading your homepage, sitemap and up to twelve pages. This takes a few seconds.
+          {t.running}
         </p>
       )}
 
@@ -114,10 +121,10 @@ export function LlmsTxtTool() {
           <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
             <p className="geist text-5xl font-black tracking-[-0.04em] text-[#D71920]">
               {result.score}
-              <span className="text-2xl text-white/40">/100</span>
+              <span className="text-2xl text-white/40">{t.scoreSuffix}</span>
             </p>
             <p className="text-[#C7B9B9]">
-              AI readiness for <span className="text-white">{result.domain}</span> · {result.pagesAnalyzed} pages read
+              {t.readinessFor} <span className="text-white">{result.domain}</span> · {t.pagesRead(result.pagesAnalyzed)}
             </p>
           </div>
 
@@ -125,19 +132,19 @@ export function LlmsTxtTool() {
               for; the gaps are the thing they can act on. */}
           <section>
             <h2 className="geist text-2xl font-black tracking-[-0.03em] text-white">
-              What an answer engine can and cannot tell about you
+              {t.findingsHeading}
             </h2>
             <div className="mt-5 space-y-3">
               {result.findings.map((f) => (
                 <div
-                  key={f.label}
+                  key={f.id}
                   className={`rounded-2xl border p-4 ${LEVEL_STYLE[f.level]}`}
                 >
                   <p className="font-bold text-white">
                     <span aria-hidden className="mr-2 opacity-70">{LEVEL_MARK[f.level]}</span>
-                    {f.label}
+                    {findingCopy(f, t).label}
                   </p>
-                  <p className="mt-1 text-sm leading-6 text-[#C7B9B9]">{f.why}</p>
+                  <p className="mt-1 text-sm leading-6 text-[#C7B9B9]">{findingCopy(f, t).why}</p>
                 </div>
               ))}
             </div>
@@ -146,7 +153,7 @@ export function LlmsTxtTool() {
           <section>
             <div className="flex flex-wrap items-center justify-between gap-3">
               <h2 className="geist text-2xl font-black tracking-[-0.03em] text-white">
-                Your llms.txt
+                {t.fileHeading}
               </h2>
               <div className="flex gap-3">
                 <button
@@ -154,23 +161,23 @@ export function LlmsTxtTool() {
                   onClick={copy}
                   className="rounded-full border border-white/20 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-white/10"
                 >
-                  {copied ? "Copied" : "Copy"}
+                  {copied ? t.copied : t.copy}
                 </button>
                 <button
                   type="button"
                   onClick={download}
                   className="rounded-full border border-white/20 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-white/10"
                 >
-                  Download
+                  {t.download}
                 </button>
               </div>
             </div>
             <p className="mt-3 text-sm text-[#C7B9B9]">
-              Edit it before you publish. Save it at{" "}
+              {t.saveItAt}{" "}
               <code className="text-white">https://{result.domain}/llms.txt</code>.
             </p>
             <label className="sr-only" htmlFor="llms-output">
-              Generated llms.txt content
+              {t.outputLabel}
             </label>
             <textarea
               id="llms-output"
@@ -185,18 +192,16 @@ export function LlmsTxtTool() {
           {gaps.length > 0 && (
             <section className="rounded-[2rem] bg-[#D71920] p-8 md:p-10">
               <h2 className="geist text-3xl font-black tracking-[-0.04em] text-white">
-                {gaps.length} {gaps.length === 1 ? "gap" : "gaps"} worth fixing
+                {t.gapsHeading(gaps.length)}
               </h2>
               <p className="mt-3 max-w-2xl text-white/90">
-                Publishing the file is the easy half. The findings above are the reason
-                an assistant would still struggle to describe or recommend you. That is
-                the work we do.
+                {t.gapsBody}
               </p>
               <Link
-                href="/answer-engine-optimization"
+                href={t.gapsHref}
                 className="mt-7 inline-flex rounded-full bg-black px-6 py-4 font-bold text-white"
               >
-                How we fix these →
+                {t.gapsCta}
               </Link>
             </section>
           )}

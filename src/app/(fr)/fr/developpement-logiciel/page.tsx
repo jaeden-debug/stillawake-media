@@ -170,6 +170,8 @@ export default function DeveloppementLogicielPage() {
       <RelatedServices
         title="Services connexes"
         links={[
+          ["Avez-vous vraiment besoin de sur-mesure ?", "/fr/logiciel-sur-mesure-ou-solution-existante"],
+          ["Un logiciel ou un site ? Le guide", "/fr/guide-site-web-entreprise"],
           ["Création de site web", "/fr/agence-web-montreal"],
           ["Automatisation IA", "/fr/automatisation-ia"],
           ["Maintenance de site web", "/fr/maintenance-site-web"],

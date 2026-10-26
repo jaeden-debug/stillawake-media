@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/content";
 import { getAllPublishedForSitemap } from "@/lib/cms/adapter";
+import { publishedGuides } from "@/data/llms-txt-guides";
+import { REDIRECT_SOURCES } from "@/data/redirects.mjs";
 import { siteUrl } from "@/lib/data";
 import { projectsWithDetailPage } from "@/data/portfolio/projects";
 import { gameBundles } from "@/data/games";
@@ -82,9 +84,54 @@ const pageLastModified: Record<string, string> = {
   "fr/audit-seo": "2026-08-13",
   "fr/etre-cite-par-ia": "2026-08-13",
   "fr/boutique-en-ligne-quebec": "2026-08-13",
+  products: "2026-08-13",
+  "fr/produits": "2026-08-13",
   privacy: "2026-08-13",
   "fr/confidentialite": "2026-08-13",
-  "tools/llms-txt-generator": "2026-08-13",
+  tools: "2026-08-14",
+  "tools/llms-txt-generator": "2026-08-14",
+  // National SEO surface. EN-only by design: Québec-French SEO intent is served
+  // by /fr/agence-seo-montreal, and measured FR national demand ("agence seo
+  // québec", 20/mo) does not justify a separate French national page.
+  "seo-canada": "2026-08-14",
+  "fr/outils": "2026-08-15",
+  "fr/outils/generateur-llms-txt": "2026-08-15",
+  "tools/project-cost-calculator": "2026-08-15",
+  "fr/outils/calculateur-cout-projet": "2026-08-15",
+  // Ownership resource. Bilingual pair: EN targets measured `website
+  // ownership` demand; FR exists for trust and AI citation rather than
+  // volume — Québec demand for the intent is effectively zero.
+  "website-ownership": "2026-08-15",
+  "fr/propriete-site-web": "2026-08-15",
+  // Website setup guide. Bilingual pair, and the two are targeted separately:
+  // EN carries the measured planning vocabulary ("types of websites" 880/mo
+  // US, "lead generation website" 1,900/mo US, "website planning" 390/mo US,
+  // all LOW competition), FR carries the Québec market's own words ("site
+  // vitrine", "site transactionnel") rather than translations of the EN terms.
+  "website-setup-guide": "2026-08-15",
+  "fr/guide-site-web-entreprise": "2026-08-15",
+  // The technology decision resource — the "what should it be built on" half
+  // of the pair above. Measured EN demand is a long tail of 10/mo phrasings
+  // plus "webflow vs wordpress" (210/mo CA, LOW) and "custom website
+  // development" (110/mo CA, LOW), which is why it is one consolidation hub
+  // rather than a page per comparison. The FR counterpart has no measured
+  // volume at all and is published for bilingual parity, assistant citation
+  // and to support the French calculator — stated on the page file itself.
+  "choosing-website-technology": "2026-08-15",
+  "fr/choisir-technologie-site-web": "2026-08-15",
+  // The custom-software decision resource — the question that runs BEFORE the
+  // two pairs above: does any of this need building at all? Deliberately not
+  // aimed at the head terms, which this site already owns: "custom software
+  // development" (260/mo CA, LOW) belongs to /software-development and the
+  // definitional query to the Times article. This targets the unowned
+  // decision intent — "build vs buy software", "off the shelf vs custom
+  // software", "when to build custom software", each ~10/mo at effectively
+  // zero competition — plus the planning vocabulary that does carry volume
+  // ("custom business software" 140/mo CA, "custom software solutions"
+  // 90/mo CA, both LOW). FR head terms belong to /fr/developpement-logiciel,
+  // so the French URL carries the decision too.
+  "do-i-need-custom-software": "2026-08-15",
+  "fr/logiciel-sur-mesure-ou-solution-existante": "2026-08-15",
 };
 
 /** EN ↔ FR pairs — surfaces hreflang directly in the sitemap so both
@@ -114,6 +161,14 @@ const languagePairs: Record<string, string> = {
   about: "fr/a-propos",
   "our-work": "fr/realisations",
   work: "fr/etudes-de-cas",
+  products: "fr/produits",
+  tools: "fr/outils",
+  "tools/llms-txt-generator": "fr/outils/generateur-llms-txt",
+  "tools/project-cost-calculator": "fr/outils/calculateur-cout-projet",
+  "website-ownership": "fr/propriete-site-web",
+  "website-setup-guide": "fr/guide-site-web-entreprise",
+  "choosing-website-technology": "fr/choisir-technologie-site-web",
+  "do-i-need-custom-software": "fr/logiciel-sur-mesure-ou-solution-existante",
   privacy: "fr/confidentialite",
 };
 const frToEn = Object.fromEntries(Object.entries(languagePairs).map(([en, fr]) => [fr, en]));
@@ -151,9 +206,57 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     alternates: alternatesFor(page),
   }));
 
+  /**
+   * Article pairing is verified in BOTH directions before hreflang is emitted.
+   * A one-sided `pair:` value would advertise an alternate that does not point
+   * back, which Google ignores at best — so an unreciprocated pair is treated
+   * as no pair at all rather than trusted.
+   */
+  const frBySlug = new Map(getAllPosts("fr").map((p) => [p.slug, p]));
+  const enBySlug = new Map(getAllPosts().map((p) => [p.slug, p]));
+  const pairedAlternates = (slug: string, pair: string | undefined, locale: "en" | "fr") => {
+    if (!pair) return undefined;
+    const other = locale === "en" ? frBySlug.get(pair) : enBySlug.get(pair);
+    if (!other || other.pair !== slug) return undefined;
+    const enUrl = locale === "en"
+      ? `${siteUrl}/stillawake-times/${slug}`
+      : `${siteUrl}/stillawake-times/${pair}`;
+    const frUrl = locale === "en"
+      ? `${siteUrl}/fr/articles/${pair}`
+      : `${siteUrl}/fr/articles/${slug}`;
+    return { languages: { "en-CA": enUrl, "fr-CA": frUrl, "x-default": enUrl } };
+  };
+
   const articles = getAllPosts().map((post) => ({
     url: `${siteUrl}/stillawake-times/${post.slug}`,
     lastModified: new Date(post.updated || post.date),
+    alternates: pairedAlternates(post.slug, post.pair, "en"),
+  }));
+
+  /**
+   * Platform implementation guides.
+   *
+   * `publishedGuides()` already excludes drafts and any record that fails the
+   * evidence schema, so this cannot list a URL that renders a thin page — the
+   * sitemap and the router read the same gate. lastmod is the date the
+   * platform facts were verified, which is the only date that means anything
+   * on a page whose value is being current.
+   */
+  const guides = publishedGuides("en").map((guide) => ({
+    url: `${siteUrl}/tools/llms-txt/${guide.slug}`,
+    lastModified: new Date(guide.verifiedDate),
+  }));
+
+  /** Same evidence gate, French cluster. Paired to the EN guide by shared slug. */
+  const guidesFr = publishedGuides("fr").map((guide) => ({
+    url: `${siteUrl}/fr/outils/llms-txt/${guide.slug}`,
+    lastModified: new Date(guide.verifiedDate),
+    alternates: {
+      languages: {
+        "en-CA": `${siteUrl}/tools/llms-txt/${guide.slug}`,
+        "fr-CA": `${siteUrl}/fr/outils/llms-txt/${guide.slug}`,
+      },
+    },
   }));
 
   /** French articles live in their own content tree and are written for
@@ -161,6 +264,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articlesFr = getAllPosts("fr").map((post) => ({
     url: `${siteUrl}/fr/articles/${post.slug}`,
     lastModified: new Date(post.updated || post.date),
+    alternates: pairedAlternates(post.slug, post.pair, "fr"),
   }));
 
   /**
@@ -206,11 +310,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
 
   const cmsUrls = new Set(cmsEntries.map((entry) => entry.url));
-  const fileEntries = [...pages, ...articles, ...articlesFr].filter(
+  const fileEntries = [...pages, ...articles, ...articlesFr, ...guides, ...guidesFr].filter(
     (entry) => !cmsUrls.has(entry.url),
   );
 
-  return [...fileEntries, ...projectEntries(), ...gameEntries(), ...cmsEntries];
+  /**
+   * Never advertise a URL we redirect.
+   *
+   * A retired page can outlive its file: the "What is AEO?" article was
+   * deleted from the content tree and 301'd, but a CMS row for the same slug
+   * kept it in the sitemap, so the sitemap was telling Google to crawl a path
+   * that answered 308. Filtering against the redirect table catches that for
+   * every source — filesystem, CMS or otherwise — instead of special-casing
+   * the one we happened to notice.
+   */
+  const isRedirected = (url: string) =>
+    REDIRECT_SOURCES.has(url.replace(siteUrl, "").replace(/\/$/, "") || "/");
+
+  return [...fileEntries, ...projectEntries(), ...gameEntries(), ...cmsEntries].filter(
+    (entry) => !isRedirected(entry.url),
+  );
 }
 
 /** One page per project that has no canonical home elsewhere. */

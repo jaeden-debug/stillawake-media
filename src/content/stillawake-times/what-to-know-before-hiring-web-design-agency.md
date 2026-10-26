@@ -164,6 +164,8 @@ An agency without a clear post-launch relationship model is designed to hand off
 - "If we stop working with you, what access do we retain?"
 - "Who owns the content, images, and design assets?"
 
+The answers you are looking for, account by account, are in [our guide to website ownership](/website-ownership) — including which of these are genuine commercial choices and which should never vary.
+
 ### About Post-Launch Support
 
 - "What's your maintenance and support offering after launch?"

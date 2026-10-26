@@ -85,13 +85,35 @@ export default function AeoPage() {
               Classic SEO Services
             </Link>
           </div>
+
+          <p className="mt-10 max-w-3xl text-white/60">
+            Want to see where you stand before talking to anyone? Our{" "}
+            <Link href="/tools/llms-txt-generator" className="text-[#D71920] underline-offset-4 hover:underline">
+              free llms.txt generator and AI readiness check
+            </Link>{" "}
+            reads your site the way an assistant would and reports which facts it cannot find — owner,
+            pricing, service area, contact route. If you just need the file itself, we keep verified
+            implementation notes for{" "}
+            <Link href="/tools/llms-txt/shopify" className="text-white/80 underline-offset-4 hover:underline">
+              Shopify
+            </Link>
+            ,{" "}
+            <Link href="/tools/llms-txt/nextjs" className="text-white/80 underline-offset-4 hover:underline">
+              Next.js
+            </Link>{" "}
+            and{" "}
+            <Link href="/tools/llms-txt/wordpress" className="text-white/80 underline-offset-4 hover:underline">
+              WordPress
+            </Link>
+            .
+          </p>
         </div>
       </section>
 
       <section className="px-6 py-20">
         <div className="mx-auto max-w-7xl">
           <h2 className="geist max-w-4xl text-4xl font-black tracking-[-0.06em] md:text-5xl">
-            AEO, GEO, AI SEO — the terms are messy. The work isn't.
+            AEO, GEO, AI SEO — the terms are messy. The work isn&apos;t.
           </h2>
           <p className="mt-4 max-w-3xl leading-8 text-[#C7B9B9]">
             You&apos;ll see answer engine optimization (AEO), generative engine optimization (GEO), AI search
@@ -149,9 +171,12 @@ export default function AeoPage() {
         links={[
           ["SEO Montréal", "/seo-montreal"],
           ["Local SEO", "/local-seo"],
-          ["Guide: What is AEO?", "/stillawake-times/what-is-aeo-answer-engine-optimization"],
-          ["Guide: Generative Engine Optimization", "/stillawake-times/what-is-generative-engine-optimization"],
+          ["Free llms.txt generator", "/tools/llms-txt-generator"],
+          ["Guide: GEO and AEO explained", "/stillawake-times/what-is-generative-engine-optimization"],
           ["Guide: Can ChatGPT recommend my business?", "/stillawake-times/can-chatgpt-recommend-my-business"],
+          ["llms.txt on Shopify", "/tools/llms-txt/shopify"],
+          ["llms.txt in Next.js", "/tools/llms-txt/nextjs"],
+          ["llms.txt on WordPress", "/tools/llms-txt/wordpress"],
           ["Website Maintenance", "/website-maintenance"],
           ["Version française", "/fr/referencement-ia"],
         ]}

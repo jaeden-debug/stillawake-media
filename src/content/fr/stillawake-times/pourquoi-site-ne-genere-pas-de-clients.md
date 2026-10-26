@@ -6,6 +6,7 @@ excerpt: "Un site qui reçoit du trafic sans produire de demandes a presque touj
 category: "Conversion"
 featured: false
 author: "Jaeden Doody"
+pair: "why-most-business-websites-fail-to-generate-leads"
 ---
 
 « On a du trafic mais ça ne convertit pas » est la phrase la plus fréquente dans les discussions de refonte. La conclusion qu'on en tire est presque toujours la même : le site est démodé, il faut le refaire.

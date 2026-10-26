@@ -2,15 +2,88 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ServiceJsonLd, PriceCard } from "@/components/service-page";
 import { getContentLayer } from "@/lib/cms/adapter";
+import { DISCOVERY, EMERGENCY, MINIMUM, ONE_TIME, RECURRING } from "@/lib/pricing/model";
+import {
+  EMERGENCY_DESCRIPTIONS,
+  EMERGENCY_LABELS,
+  ONE_TIME_DESCRIPTIONS,
+  ONE_TIME_LABELS,
+  RECURRING_LABELS,
+} from "@/lib/pricing/labels";
 import { slot } from "@/lib/cms/layer";
 
 import { Testimonials } from "@/components/testimonials";
 export const revalidate = 300;
 
+const money = (n: number) => `$${n.toLocaleString("en-CA")} CAD`;
+
+/**
+ * Everything on this page comes out of the pricing kernel. Emergency tiers in
+ * particular used to be hand-typed here, in the French page, and in Stripe —
+ * three copies of six numbers with nothing keeping them equal.
+ */
+const MONTHLY = RECURRING.filter((r) => r.approved && r.monthly !== null);
+const ONE_TIME_SERVICES = Object.values(ONE_TIME).filter((s) => s.approved);
+
+/** The three numbers the page leads with. Derived, so the copy cannot go stale. */
+const ENTRY_MONTHLY = Math.min(...MONTHLY.map((r) => r.monthly!));
+const ENTRY_ONE_TIME = Math.min(...ONE_TIME_SERVICES.map((s) => s.price));
+const EMERGENCY_CEILING = Math.max(
+  ...Object.values(EMERGENCY).flatMap((t) => t.tiers.map((tier) => tier.price)),
+);
+
+/** What each monthly plan actually buys. Keyed by catalogue id, not position. */
+const MONTHLY_ITEMS: Record<string, string[]> = {
+  "managed-hosting": [
+    "Fast hosting on our infrastructure",
+    "SSL, DNS and uptime monitoring",
+    "Daily backups",
+    "We handle the platform, you never see it",
+  ],
+  "website-care-plan": [
+    "Everything in managed hosting",
+    "Software and dependency updates",
+    "Small content and copy edits",
+    "Something breaks, we fix it — no incident fee",
+  ],
+  "seo-starter": [
+    "Search Console monitoring",
+    "One on-page fix a month",
+    "Monthly report you can actually read",
+    "The honest entry point — not a smaller Essentials",
+  ],
+  "seo-essentials": [
+    "Technical SEO",
+    "On-page optimization",
+    "Google Search Console monitoring",
+    "Monthly report",
+  ],
+  "seo-advanced": [
+    "Everything in Essentials",
+    "AI-search (AEO) optimization",
+    "Entity optimization",
+    "Content strategy",
+  ],
+  "content-creation": [
+    "Articles and page copy written for you",
+    "Researched against what people actually search",
+    "Published, internally linked and measured",
+    "Pairs with an SEO plan — it is not one",
+  ],
+};
+
+const MONTHLY_CTA: Record<string, [string, string]> = {
+  "managed-hosting": ["Start hosting", "/website-maintenance"],
+  "website-care-plan": ["Start a care plan", "/website-maintenance"],
+  "seo-starter": ["Start with Starter", "/seo-montreal"],
+  "seo-essentials": ["Start Essentials", "/seo-montreal"],
+  "seo-advanced": ["Start Advanced", "/seo-montreal"],
+  "content-creation": ["Start content production", "/contact"],
+};
+
 export const metadata: Metadata = {
   title: "Pricing — Published Rates, No Sales Call",
-  description:
-    "StillAwake Media pricing: SEO plans $600–$850 CAD/month, emergency website support $150–$600 CAD one-time, and written custom quotes for builds. Transparent, in CAD, no call required.",
+  description: `StillAwake Media pricing: monthly plans from ${money(ENTRY_MONTHLY)}, fixed-price services from ${money(ENTRY_ONE_TIME)}, websites from $1,800 CAD, a full business website $2,750–$5,750, online stores from $4,250, paid discovery from $1,800 and emergency support $${ENTRY_ONE_TIME}–$${EMERGENCY_CEILING} one-time. Published, in CAD, no sales call.`,
   alternates: {
     canonical: "https://stillawakemedia.com/pricing",
     languages: {
@@ -36,10 +109,18 @@ export default async function PricingPage() {
         name="StillAwake Media Services Pricing"
         description="Published pricing for StillAwake Media services: monthly SEO plans, one-time emergency website support tiers, and custom-quoted design/development work."
         offers={[
-          { name: "SEO Growth — Essentials", price: 600, interval: "MONTH" },
-          { name: "SEO Growth — Advanced", price: 850, interval: "MONTH" },
-          { name: "Emergency Support — Custom Site", price: 150 },
-          { name: "Emergency Support — Ecommerce", price: 250 },
+          { name: "Website", price: MINIMUM },
+          { name: "Project Discovery", price: DISCOVERY.from },
+          ...MONTHLY.map((r) => ({
+            name: RECURRING_LABELS[r.id].en,
+            price: r.monthly!,
+            interval: "MONTH" as const,
+          })),
+          ...ONE_TIME_SERVICES.map((s) => ({ name: ONE_TIME_LABELS[s.id].en, price: s.price })),
+          ...Object.values(EMERGENCY).map((track) => ({
+            name: EMERGENCY_LABELS[track.id].en,
+            price: track.tiers[0].price,
+          })),
         ]}
         breadcrumb={[
           ["Home", "/"],
@@ -57,7 +138,7 @@ export default async function PricingPage() {
             {slot(
               slots,
               "hero_intro",
-              "Most agencies hide pricing behind a discovery call. StillAwake Media publishes it: recurring services have monthly prices, support has one-time tiers, and project work gets a written custom quote through an async intake — never a mandatory sales call. All prices in Canadian dollars.",
+              `Most agencies hide pricing behind a discovery call. StillAwake Media publishes it. A professional business website with local search set up runs about $2,750 to $5,750, and a simpler site starts at $1,800. The lower end assumes you supply the content and the scope stays close to what you asked for; the higher end is the same project once there is more original content, more design involvement or more to connect. If a build is not where you are yet, fixed-price services start at $${ENTRY_ONE_TIME} and monthly plans at $${ENTRY_MONTHLY}. You are never charged more for having more employees. All prices in Canadian dollars.`,
             )}
           </p>
         </div>
@@ -65,26 +146,122 @@ export default async function PricingPage() {
 
       <section className="px-6 py-16">
         <div className="mx-auto max-w-7xl">
-          <h2 className="geist text-4xl font-black tracking-[-0.06em]">Monthly — SEO growth plans</h2>
+          <h2 className="geist text-4xl font-black tracking-[-0.06em]">Projects — three ways in</h2>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
-            SEO Growth — Essentials costs $600 CAD per month. SEO Growth — Advanced costs $850 CAD per month.
+            Which one you need is decided by the work, not by the size of your company. Price your own
+            project with the{" "}
+            <Link href="/tools/project-cost-calculator" className="text-[#D71920] underline-offset-4 hover:underline">
+              cost calculator
+            </Link>{" "}
+            — it runs the same model we scope real work with.
           </p>
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
+            Projects can be split into up to four payments across the build, at the same total
+            price — no interest, no fees, and nothing extra for paying over time. The{" "}
+            <Link href="/tools/project-cost-calculator" className="text-[#D71920] underline-offset-4 hover:underline">
+              calculator
+            </Link>{" "}
+            estimates what each payment looks like. Payment options are confirmed in your written
+            proposal, not here.
+          </p>
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
             <PriceCard
-              name="SEO Growth — Essentials"
-              price="$600 CAD"
-              cadence="per month"
-              items={["Technical SEO", "On-page optimization", "Google Search Console monitoring", "Monthly report"]}
-              cta={["Start Essentials", "/seo-montreal"]}
-            />
-            <PriceCard
-              name="SEO Growth — Advanced"
-              price="$850 CAD"
-              cadence="per month"
-              items={["Everything in Essentials", "AI-search (AEO) optimization", "Entity optimization", "Content strategy"]}
-              cta={["Start Advanced", "/seo-montreal"]}
+              name="Website"
+              price={`from $${MINIMUM.toLocaleString("en-CA")} CAD`}
+              cadence="a full business site with local search: $2,750–$5,750"
+              items={[
+                "Custom design, built for you",
+                "Home, about, contact and your service pages",
+                "Forms, analytics and Search Console",
+                "Technical SEO and structured data",
+                "You edit the content yourself",
+              ]}
+              cta={["Price it", "/tools/project-cost-calculator"]}
               highlight
             />
+            <PriceCard
+              name="Store or system"
+              price="from $4,250 CAD"
+              cadence="written scope, fixed price"
+              items={[
+                "Shopify set up properly, from $4,250",
+                "Business dashboards from $12,000",
+                "Priced for the work, not your headcount",
+                "No mandatory sales call",
+              ]}
+              cta={["Get a range", "/tools/project-cost-calculator"]}
+            />
+            <PriceCard
+              name="Discovery"
+              price={`from $${DISCOVERY.from.toLocaleString("en-CA")} CAD`}
+              cadence="credited against the build"
+              items={[
+                "For software and anything still taking shape",
+                "A written scope and architecture",
+                "A fixed build price at the end",
+                "The fee comes off the build",
+              ]}
+              buy={{ item: "project-discovery", label: "Start with discovery" }}
+            />
+          </div>
+
+          <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">
+            One-time — fixed-price starting points
+          </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
+            Not ready for a build. These are fixed — not a range, not an estimate, and not a
+            consultation that turns into a quote. You pay the number you see and you get the thing.
+          </p>
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {ONE_TIME_SERVICES.map((service) => (
+              <PriceCard
+                key={service.id}
+                name={ONE_TIME_LABELS[service.id].en}
+                price={money(service.price)}
+                cadence="one-time"
+                items={[ONE_TIME_DESCRIPTIONS[service.id].en]}
+                buy={{ item: service.id, label: "Book it" }}
+              />
+            ))}
+          </div>
+
+          <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">Monthly — keeping it running</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
+            Plans start at {money(MONTHLY[0].monthly!)} a month. Each one is the whole rung, not a
+            trimmed version of the one above it — you move up when the work calls for it, not
+            because the small plan was made deliberately annoying.
+          </p>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {MONTHLY.filter((r) => r.group === "care").map((plan) => (
+              <PriceCard
+                key={plan.id}
+                name={RECURRING_LABELS[plan.id].en}
+                price={money(plan.monthly!)}
+                cadence="per month"
+                items={MONTHLY_ITEMS[plan.id]}
+                buy={{ item: plan.id, label: MONTHLY_CTA[plan.id][0] }}
+              />
+            ))}
+          </div>
+
+          <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">Monthly — growth plans</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
+            Starter is a real plan at a small size, not a trial. Content production is the odd one
+            out on purpose — it writes new material rather than optimising what exists, so it sits
+            alongside an SEO plan rather than replacing one.
+          </p>
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {MONTHLY.filter((r) => r.group === "seo" || r.group === "content").map((plan) => (
+              <PriceCard
+                key={plan.id}
+                name={RECURRING_LABELS[plan.id].en}
+                price={money(plan.monthly!)}
+                cadence="per month"
+                items={MONTHLY_ITEMS[plan.id]}
+                buy={{ item: plan.id, label: MONTHLY_CTA[plan.id][0] }}
+                highlight={plan.id === "seo-essentials"}
+              />
+            ))}
           </div>
 
           <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">One-time — emergency support</h2>
@@ -96,23 +273,32 @@ export default async function PricingPage() {
             )}
           </p>
           <div className="mt-8 grid gap-6 md:grid-cols-2">
-            <PriceCard
-              name="Emergency Support — Custom Site"
-              price="$150–$400 CAD"
-              cadence="one-time"
-              items={["$150 quick fix", "$250 priority incident", "$400 heavy incident", "Same-day response in business hours"]}
-              cta={["Get Help", "/website-maintenance"]}
-            />
-            <PriceCard
-              name="Emergency Support — Ecommerce"
-              price="$250–$600 CAD"
-              cadence="one-time"
-              items={["$250 store triage", "$400 priority incident", "$600 business-critical", "Shopify & custom stacks"]}
-              cta={["Fix My Store", "/website-maintenance"]}
-            />
+            {Object.values(EMERGENCY).map((track) => {
+              const prices = track.tiers.map((t) => t.price);
+              return (
+                <PriceCard
+                  key={track.id}
+                  name={EMERGENCY_LABELS[track.id].en}
+                  price={`$${Math.min(...prices)}–$${Math.max(...prices)} CAD`}
+                  cadence="one-time"
+                  items={track.tiers.map(
+                    (tier) =>
+                      `${EMERGENCY_LABELS[`${track.id}.${tier.id}`].en} — $${tier.price}: ${
+                        EMERGENCY_DESCRIPTIONS[`${track.id}.${tier.id}`].en
+                      }`,
+                  )}
+                  cta={[track.id === "ecommerce" ? "Fix My Store" : "Get Help", "/website-maintenance"]}
+                />
+              );
+            })}
           </div>
 
-          <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">Custom quote — builds &amp; programs</h2>
+          <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">What we do</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
+            These combine — most projects are more than one. Software and large systems start with
+            discovery rather than a quote, because the requirements are the expensive part and they do
+            not exist yet.
+          </p>
           <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {[
               ["Web Design & Development", "/web-design-montreal"],
@@ -126,13 +312,17 @@ export default async function PricingPage() {
             ].map(([n, h]) => (
               <Link key={h} href={h} className="rounded-[2rem] border border-white/10 p-6 transition hover:border-[#D71920]/60">
                 <h3 className="text-lg font-semibold">{n}</h3>
-                <p className="mt-2 text-sm text-[#C7B9B9]">Written scope + fixed price via async intake.</p>
+                <p className="mt-2 text-sm text-[#C7B9B9]">Written scope, fixed price, no sales call.</p>
               </Link>
             ))}
           </div>
 
           <p className="mt-10 text-sm text-[#C7B9B9]">
-            Wondering what a build should cost before you start? Read the guide:{" "}
+            Wondering what a build should cost before you start?{" "}
+            <Link href="/tools/project-cost-calculator" className="text-[#D71920] underline-offset-4 hover:underline">
+              Price your project with our calculator
+            </Link>{" "}
+            — it runs the model we use internally — or read the guide:{" "}
             <Link href="/website-cost-canada" className="text-[#D71920] underline-offset-4 hover:underline">How much does a website cost in Canada?</Link>
           </p>
 

@@ -37,12 +37,33 @@ export type EntityFacts = {
   schemaTypes: string[];
 };
 
+/**
+ * Stable identity for each check, independent of its wording.
+ *
+ * The English `label`/`why` below are the canonical copy. Presentation layers
+ * that render in another language key off `id` (and `value` for the part that
+ * is data rather than prose) instead of trying to translate the string — so
+ * rewording an English finding can never silently desynchronize a translation.
+ */
+export type FindingId =
+  | "organization"
+  | "description"
+  | "pricing"
+  | "area-served"
+  | "contact"
+  | "founder"
+  | "same-as"
+  | "llms-txt";
+
 export type Finding = {
+  id: FindingId;
   level: "ok" | "warn" | "fail";
   /** What was or was not found. */
   label: string;
   /** Why it matters to an answer engine, in one sentence. */
   why: string;
+  /** The detected value interpolated into `label`, when there is one. */
+  value?: string;
 };
 
 export type Analysis = {
@@ -233,8 +254,10 @@ export function analyzeEntity(
 export function buildFindings(facts: EntityFacts): { findings: Finding[]; score: number } {
   const checks: (Finding & { weight: number; passed: boolean })[] = [
     {
+      id: "organization",
       passed: !!facts.organizationName,
       weight: 25,
+      value: facts.organizationName || undefined,
       level: facts.organizationName ? "ok" : "fail",
       label: facts.organizationName
         ? `Organization identified: ${facts.organizationName}`
@@ -242,6 +265,7 @@ export function buildFindings(facts: EntityFacts): { findings: Finding[]; score:
       why: "Without a named Organization in structured data, an answer engine has to guess who the site belongs to from prose — and usually declines to name you at all.",
     },
     {
+      id: "description",
       passed: !!facts.description,
       weight: 15,
       level: facts.description ? "ok" : "fail",
@@ -249,6 +273,7 @@ export function buildFindings(facts: EntityFacts): { findings: Finding[]; score:
       why: "This is the sentence an assistant reuses when someone asks what you do. Without one it writes its own, from whatever text it happens to read first.",
     },
     {
+      id: "pricing",
       passed: facts.hasPricingSignal,
       weight: 20,
       level: facts.hasPricingSignal ? "ok" : "warn",
@@ -258,8 +283,10 @@ export function buildFindings(facts: EntityFacts): { findings: Finding[]; score:
       why: "Assistants are asked what things cost constantly. A site with no number on it cannot be the answer, so a competitor who publishes one gets quoted instead.",
     },
     {
+      id: "area-served",
       passed: facts.areaServed.length > 0,
       weight: 12,
+      value: facts.areaServed.length > 0 ? facts.areaServed.join(", ") : undefined,
       level: facts.areaServed.length > 0 ? "ok" : "warn",
       label:
         facts.areaServed.length > 0
@@ -268,6 +295,7 @@ export function buildFindings(facts: EntityFacts): { findings: Finding[]; score:
       why: "Where you will work is one of the first filters applied to a recommendation. Leaving it unstated means being excluded from location-shaped questions.",
     },
     {
+      id: "contact",
       passed: facts.hasContactSignal,
       weight: 10,
       level: facts.hasContactSignal ? "ok" : "warn",
@@ -275,15 +303,19 @@ export function buildFindings(facts: EntityFacts): { findings: Finding[]; score:
       why: "A recommendation that cannot be acted on is rarely made. Engines favour entities a reader can actually reach.",
     },
     {
+      id: "founder",
       passed: !!facts.founder,
       weight: 8,
+      value: facts.founder || undefined,
       level: facts.founder ? "ok" : "warn",
       label: facts.founder ? `Founder identified: ${facts.founder}` : "No founder or author entity",
       why: "A named person attached to an organization is one of the stronger trust signals available, and it links your entity to their public profiles.",
     },
     {
+      id: "same-as",
       passed: facts.sameAs.length > 0,
       weight: 5,
+      value: facts.sameAs.length > 0 ? String(facts.sameAs.length) : undefined,
       level: facts.sameAs.length > 0 ? "ok" : "warn",
       label:
         facts.sameAs.length > 0
@@ -292,6 +324,7 @@ export function buildFindings(facts: EntityFacts): { findings: Finding[]; score:
       why: "sameAs is how you tell an engine that the entity here and the one on LinkedIn or Crunchbase are the same thing rather than two similarly named ones.",
     },
     {
+      id: "llms-txt",
       passed: facts.hasExistingLlmsTxt,
       weight: 5,
       level: facts.hasExistingLlmsTxt ? "ok" : "warn",
@@ -303,7 +336,7 @@ export function buildFindings(facts: EntityFacts): { findings: Finding[]; score:
   const total = checks.reduce((s, c) => s + c.weight, 0);
   const earned = checks.reduce((s, c) => s + (c.passed ? c.weight : 0), 0);
   return {
-    findings: checks.map(({ level, label, why }) => ({ level, label, why })),
+    findings: checks.map(({ id, level, label, why, value }) => ({ id, level, label, why, value })),
     score: Math.round((earned / total) * 100),
   };
 }

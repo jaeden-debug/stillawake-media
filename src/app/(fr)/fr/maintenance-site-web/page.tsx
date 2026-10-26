@@ -2,11 +2,24 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ServiceJsonLd, PriceCard, FaqBlock, RelatedServices } from "@/components/service-page";
 import { ArticlesLies } from "@/components/articles-lies";
+import { EMERGENCY, RECURRING_BY_ID } from "@/lib/pricing/model";
+import { EMERGENCY_DESCRIPTIONS, EMERGENCY_LABELS, RECURRING_LABELS } from "@/lib/pricing/labels";
+
+/** Same kernel as the English page — see its comment. */
+const tierPrices = (id: keyof typeof EMERGENCY) => EMERGENCY[id].tiers.map((t) => t.price);
+const listPrices = (id: keyof typeof EMERGENCY) => {
+  const prices = tierPrices(id).map((p) => `${p} $`);
+  return `${prices.slice(0, -1).join(", ")} ou ${prices.at(-1)} CAD`;
+};
+const bandLabel = (id: keyof typeof EMERGENCY) =>
+  `${Math.min(...tierPrices(id))} $ – ${Math.max(...tierPrices(id))} $ CAD`;
+
+const CARE = RECURRING_BY_ID["website-care-plan"];
+const HOSTING = RECURRING_BY_ID["managed-hosting"];
 
 export const metadata: Metadata = {
   title: "Maintenance de site web et support d'urgence | Tarifs affichés",
-  description:
-    "Maintenance de site web et support d'urgence le jour même, de Montréal pour tout le Québec. Dépannage à partir de 150 $ CAD, tarifs affichés avant le paiement.",
+  description: `Maintenance de site web et support d'urgence le jour même, de Montréal pour tout le Québec. Forfaits d'entretien à partir de ${HOSTING.monthly} $ CAD par mois et dépannage à partir de ${Math.min(...tierPrices("custom_site"))} $ CAD, tarifs affichés avant le paiement.`,
   alternates: {
     canonical: "https://stillawakemedia.com/fr/maintenance-site-web",
     languages: {
@@ -27,7 +40,7 @@ export const metadata: Metadata = {
 const FAQ: [string, string][] = [
   [
     "Combien coûte un dépannage d'urgence?",
-    "Le support d'urgence pour un site sur mesure coûte 150 $, 250 $ ou 400 $ CAD (paiement unique) selon l'ampleur du problème : correctif rapide, incident prioritaire ou incident majeur. Pour une boutique en ligne, c'est 250 $, 400 $ ou 600 $ CAD. Trois questions déterminent le niveau — vous voyez le prix exact avant de payer.",
+    `Le support d'urgence pour un site sur mesure coûte ${listPrices("custom_site")} (paiement unique) selon l'ampleur du problème : correctif rapide, incident prioritaire ou incident majeur. Pour une boutique en ligne, c'est ${listPrices("ecommerce")}. Trois questions déterminent le niveau — vous voyez le prix exact avant de payer.`,
   ],
   [
     "Qu'est-ce qui compte comme une urgence?",
@@ -43,7 +56,7 @@ const FAQ: [string, string][] = [
   ],
   [
     "Offrez-vous des forfaits de maintenance mensuels?",
-    "Oui — mises à jour, surveillance, sauvegardes et petits correctifs, avec un prix mensuel fixe établi selon votre site. Décrivez-nous votre site et vous recevrez une proposition écrite, sans appel obligatoire.",
+    `Oui, et le prix est affiché. L'hébergement géré coûte ${HOSTING.monthly} $ CAD par mois. Le forfait d'entretien coûte ${CARE.monthly} $ CAD par mois et comprend l'hébergement, les mises à jour, la surveillance, les sauvegardes et les petites modifications de contenu — sur un forfait, un bris n'entraîne aucuns frais d'incident. Les configurations plus lourdes restent chiffrées individuellement.`,
   ],
   [
     "Travaillez-vous ailleurs qu'à Montréal?",
@@ -59,12 +72,14 @@ export default function MaintenanceSiteWebPage() {
         name="Maintenance de site web et support d'urgence"
         description="Forfaits d'entretien de site web et support d'urgence le jour même avec tarifs affichés, offerts à distance depuis Montréal."
         offers={[
-          { name: "Support d'urgence — Site sur mesure (Correctif rapide)", price: 150 },
-          { name: "Support d'urgence — Site sur mesure (Incident prioritaire)", price: 250 },
-          { name: "Support d'urgence — Site sur mesure (Incident majeur)", price: 400 },
-          { name: "Support d'urgence — Ecommerce (Triage de boutique)", price: 250 },
-          { name: "Support d'urgence — Ecommerce (Incident prioritaire)", price: 400 },
-          { name: "Support d'urgence — Ecommerce (Critique)", price: 600 },
+          ...Object.values(EMERGENCY).flatMap((t) =>
+            t.tiers.map((tier) => ({
+              name: `${EMERGENCY_LABELS[t.id].fr} (${EMERGENCY_LABELS[`${t.id}.${tier.id}`].fr})`,
+              price: tier.price,
+            })),
+          ),
+          { name: RECURRING_LABELS["managed-hosting"].fr, price: HOSTING.monthly!, interval: "MONTH" as const },
+          { name: RECURRING_LABELS["website-care-plan"].fr, price: CARE.monthly!, interval: "MONTH" as const },
         ]}
         breadcrumb={[
           ["Accueil", "/"],
@@ -105,42 +120,74 @@ export default function MaintenanceSiteWebPage() {
             Support d&apos;urgence : paiement unique, jamais d&apos;abonnement.
           </h2>
           <p className="mt-4 max-w-3xl text-[#C7B9B9]">
-            Le support d&apos;urgence pour un site sur mesure coûte de 150 $ à 400 $ CAD; pour une boutique en ligne, de
-            250 $ à 600 $ CAD. Trois questions établissent le niveau et le prix s&apos;affiche avant le paiement.
+            Le support d&apos;urgence pour un site sur mesure coûte de {bandLabel("custom_site")}; pour une
+            boutique en ligne, de {bandLabel("ecommerce")}. Trois questions établissent le niveau et le
+            prix s&apos;affiche avant le paiement.
+          </p>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {Object.values(EMERGENCY).map((t) => (
+              <PriceCard
+                key={t.id}
+                name={EMERGENCY_LABELS[t.id].fr}
+                price={bandLabel(t.id as keyof typeof EMERGENCY)}
+                cadence="paiement unique"
+                items={[
+                  ...t.tiers.map(
+                    (tier) =>
+                      `${EMERGENCY_LABELS[`${t.id}.${tier.id}`].fr} — ${tier.price} $ : ${
+                        EMERGENCY_DESCRIPTIONS[`${t.id}.${tier.id}`].fr
+                      }`,
+                  ),
+                  t.id === "ecommerce"
+                    ? "Shopify et ecommerce sur mesure"
+                    : "Résumé d'incident et recommandations inclus",
+                ]}
+                cta={[t.id === "ecommerce" ? "Réparer ma boutique" : "Démarrer un dépannage", "/fr/contact"]}
+                highlight
+              />
+            ))}
+          </div>
+
+          <h2 className="geist mt-16 max-w-4xl text-4xl font-black tracking-[-0.06em]">
+            Forfaits d&apos;entretien. Affichés, pas sur demande.
+          </h2>
+          <p className="mt-4 max-w-3xl text-[#C7B9B9]">
+            Un forfait, c&apos;est la façon économique d&apos;obtenir le même résultat : les correctifs
+            qui coûteraient un dépannage sont simplement inclus. Un seul incident majeur par année
+            coûte plus cher que le forfait.
           </p>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             <PriceCard
-              name="Urgence — Site sur mesure"
-              price="150 $ – 400 $ CAD"
-              cadence="paiement unique"
+              name={RECURRING_LABELS["managed-hosting"].fr}
+              price={`${HOSTING.monthly} $ CAD`}
+              cadence="par mois"
               items={[
-                "Correctif rapide — 150 $ : un problème ciblé, réglé le jour même",
-                "Incident prioritaire — 250 $ : un bris qui nuit à vos affaires",
-                "Incident majeur — 400 $ : plusieurs pages ou systèmes touchés",
-                "Résumé d'incident et recommandations inclus",
+                "Hébergement rapide sur notre infrastructure",
+                "SSL, DNS et surveillance de disponibilité",
+                "Sauvegardes quotidiennes",
+                "La plateforme gérée, pour ne plus y penser",
               ]}
-              cta={["Démarrer un dépannage", "/fr/contact"]}
-              highlight
+              cta={["Choisir l'hébergement", "https://stillawake.studio/fr/demarrer"]}
             />
             <PriceCard
-              name="Urgence — Boutique en ligne"
-              price="250 $ – 600 $ CAD"
-              cadence="paiement unique"
+              name={RECURRING_LABELS["website-care-plan"].fr}
+              price={`${CARE.monthly} $ CAD`}
+              cadence="par mois"
               items={[
-                "Triage de boutique — 250 $ : problème de paiement ou de catalogue réglé",
-                "Incident prioritaire — 400 $ : bris qui coupe vos ventes",
-                "Critique — 600 $ : boutique en panne, intervention immédiate",
-                "Shopify et ecommerce sur mesure",
+                "Tout l'hébergement géré",
+                "Mises à jour logicielles et des dépendances",
+                "Petites modifications de contenu et de texte",
+                "Si ça brise, on répare — sans frais d'incident",
               ]}
-              cta={["Réparer ma boutique", "/fr/contact"]}
+              cta={["Choisir l'entretien", "https://stillawake.studio/fr/demarrer"]}
               highlight
             />
           </div>
           <div className="mt-10 rounded-[2rem] border border-white/10 p-8">
-            <h3 className="geist text-2xl font-black tracking-[-0.05em]">Forfaits d&apos;entretien mensuels</h3>
-            <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
-              Mises à jour, surveillance, sauvegardes et petits correctifs, avec un prix mensuel fixe établi selon votre
-              site et votre trafic. Décrivez-nous votre site : vous recevrez une proposition écrite — sans appel.
+            <p className="max-w-3xl text-sm leading-7 text-[#C7B9B9]">
+              Les configurations plus lourdes, à fort trafic ou à risque particulier restent
+              chiffrées individuellement — mais le forfait affiché est le point de départ, pas un
+              prix d&apos;appel.
             </p>
             <Link href="https://stillawake.studio/fr/demarrer" className="mt-6 inline-flex rounded-full border border-white/15 px-6 py-3 text-sm transition hover:border-[#D71920]/60">
               Demander une soumission
@@ -154,6 +201,7 @@ export default function MaintenanceSiteWebPage() {
       <RelatedServices
         title="Services connexes"
         links={[
+          ["Propriété d’un site web", "/fr/propriete-site-web"],
           ["Agence SEO Montréal", "/fr/agence-seo-montreal"],
           ["Création de site web", "/fr/agence-web-montreal"],
           ["Développement Shopify", "/fr/developpement-shopify"],

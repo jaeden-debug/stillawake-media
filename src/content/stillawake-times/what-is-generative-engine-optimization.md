@@ -1,7 +1,8 @@
 ---
-title: "Generative Engine Optimization (GEO): The Complete Guide"
+title: "Generative Engine Optimization (GEO) and AEO: The Complete Guide"
 date: "2026-08-12"
-excerpt: "GEO is the practice of making your business visible and citable inside AI-generated answers — ChatGPT, Perplexity, Gemini, and Google's AI Overviews. This guide explains how generative engines choose their sources, and the exact playbook we run on our own sites, with measured results."
+updated: "2026-08-14"
+excerpt: "GEO and AEO are the practice of making your business visible and citable inside AI-generated answers — ChatGPT, Perplexity, Gemini, and Google's AI Overviews. This guide defines both terms, explains how generative engines choose their sources, and documents the exact playbook we run on our own sites, with measured results."
 category: "AI Search"
 featured: true
 author: "Jaeden Doody"
@@ -25,7 +26,17 @@ The three terms overlap, and vendors blur them constantly. Here's the honest bre
 | **AEO** | Direct answers (featured snippets, AI answers) | Your content *is* the answer shown |
 | **GEO** | Generated responses (ChatGPT, Perplexity, AI Overviews) | Your business is *cited or recommended inside* the generated text |
 
-In practice they share a foundation — crawlable structure, structured data, genuinely useful content — and diverge at the top. SEO rewards authority and relevance signals accumulated over time. GEO additionally rewards *extractability*: facts an engine can lift out cleanly, attribute confidently, and reproduce without hedging. We cover the answer-engine layer separately in [What is AEO?](/stillawake-times/what-is-aeo-answer-engine-optimization)
+In practice they share a foundation — crawlable structure, structured data, genuinely useful content — and diverge at the top. SEO rewards authority and relevance signals accumulated over time. GEO additionally rewards *extractability*: facts an engine can lift out cleanly, attribute confidently, and reproduce without hedging.
+
+### What is AEO, specifically?
+
+**AEO — Answer Engine Optimization — is the practice of structuring your content and business information so that answer engines select it when composing a direct answer.** An "answer engine" is any system that responds to a question with an answer instead of a list of links: Google's featured snippets and AI Overviews, voice assistants, and conversational AI like ChatGPT, Perplexity, and Claude.
+
+The one-sentence version: **SEO gets you ranked; AEO gets you quoted.**
+
+The practical difference from classic SEO is what you are competing with. In SEO the unit of competition is the page, and the question is "is this page relevant and authoritative?" In AEO the unit is the passage or the individual fact, and the question is "can this be quoted confidently, out of context?" A page can rank well and still be unquotable — buried answers, vague claims, pricing hidden behind a contact form.
+
+AEO and GEO are not rival disciplines. AEO is the content layer: direct answers, self-contained passages, extractable facts. GEO extends it into machine infrastructure: entity graphs, structured data, llms.txt, agentic navigability. Serious work does both, which is why they are covered together here rather than sold as two products.
 
 ## How generative engines actually choose sources
 
@@ -77,6 +88,20 @@ Worth stating plainly, because GEO is attracting the same snake oil SEO did in 2
 - **Fabricated statistics** to look citation-worthy. Models cross-reference. Getting caught in one invented number contaminates everything else you publish.
 - **Mass-generated thin pages.** Generative engines are literally built from models that recognize generic AI text. Publishing it to impress them is feeding a detector its own training data.
 - **"GEO tools" that promise placement.** Nobody can guarantee inclusion in a generated answer, the same way nobody could ever guarantee a #1 ranking. Anyone selling certainty is selling something else.
+- **FAQ schema spam.** Adding FAQPage markup to questions that are invisible on the page was already against Google's rules for snippets, and it does nothing for AI systems either. Worth knowing: Google restricted FAQ rich results to authoritative government and health sites back in 2023. FAQ markup remains valid semantic structure — it is not a rich-result play for a business site.
+- **Keyword stuffing with question phrases.** Engines select for answer quality, not question density.
+
+## A quick self-audit
+
+Five questions that reveal most of the gap:
+
+1. Does each commercial page answer its core question in the first paragraph — or does the answer arrive after eight paragraphs of throat-clearing?
+2. Can a machine find your prices in plain text?
+3. Would your key paragraphs make sense quoted alone, with attribution?
+4. Do all your pages agree about your business name, location, and services?
+5. Ask ChatGPT and Perplexity the questions your customers ask. Are you in the answers? Are your *competitors*?
+
+That last test is the whole game in miniature — it's free, takes ten minutes, and tells you where you stand today. If you want the first four checked automatically, our [free llms.txt generator and AI readiness check](/tools/llms-txt-generator) reads your site the way an assistant would and reports which of those facts it cannot find.
 
 ## How to measure GEO
 
@@ -90,5 +115,7 @@ Honest answer: measurement is immature. What we actually track:
 ## Where to start
 
 If you do only three things: publish an llms.txt with your real services and prices, add a direct-answer paragraph to the top of every commercial page, and fix your entity graph so every page agrees about who you are. Those three moves cover most of the distance, and they're all verifiable.
+
+For the first one, we publish a [free llms.txt generator](/tools/llms-txt-generator) that also reports which business facts an answer engine cannot find on your site — the gaps matter more than the file. If you want the file itself on a specific stack, we keep verified implementation notes for [Shopify](/tools/llms-txt/shopify), [Next.js](/tools/llms-txt/nextjs) and [WordPress](/tools/llms-txt/wordpress), including the platform-specific behaviour that generic guides get wrong.
 
 If you want it done for you, this is literally our service — the approach above is documented commercially on our [answer engine optimization](/answer-engine-optimization) page, with published pricing, and applied to every build in [our case studies](/work).

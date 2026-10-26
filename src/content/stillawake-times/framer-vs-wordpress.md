@@ -449,5 +449,7 @@ WordPress isn't going away, and it's the right tool for specific scenarios. But 
 
 > **Building or rebuilding your website?** [Talk to StillAwake Media about Framer development](/framer-development) — we design and build Framer sites that rank, convert, and represent your brand at its best.
 
+If you are not yet sure the choice is even between these two, the broader decision — hosted builder, CMS, custom front end or an application — is worked through in [what technology you should use for your website](/choosing-website-technology).
+
 ---
 

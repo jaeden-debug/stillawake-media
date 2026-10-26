@@ -22,9 +22,14 @@ function graphFor(route: string) {
 describe("page schema registry", () => {
   it("covers the routes that had no other schema", () => {
     // 17 pages that originally had none, plus the two privacy pages from
-    // the consent work and the llms.txt tool. An exact count is deliberate:
-    // it forces a conscious decision whenever a route joins or leaves.
-    expect(entries.length).toBe(20);
+    // the consent work, the llms.txt tool, and the /tools index added with
+    // the platform-guide cluster, plus the EN and FR project cost calculator,
+    // plus the EN and FR website-ownership resource, plus the EN and FR
+    // website setup guide, plus the EN and FR technology decision resource,
+    // plus the EN and FR custom-software decision resource.
+    // An exact count is deliberate: it forces a conscious decision whenever a
+    // route joins or leaves.
+    expect(entries.length).toBe(33);
   });
 
   it.each(entries.map(([r]) => r))("%s produces a coherent graph", (route) => {

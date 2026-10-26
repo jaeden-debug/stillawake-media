@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { siteUrl } from "@/lib/data";
 import { entityIds } from "@/data/entities";
+import { BuyButton } from "@/components/buy-button";
 
 /**
  * Shared building blocks for commercial service pages. Structure is shared;
@@ -89,21 +90,41 @@ export function ServiceJsonLd(props: {
   );
 }
 
-/** Semantic, extraction-friendly price presentation. */
+/**
+ * Semantic, extraction-friendly price presentation.
+ *
+ * `cta` is a link; `buy` starts a Stripe Checkout session. A card may have one
+ * or the other. Passing `buy` is a statement that this exact thing can be
+ * bought unattended at the price shown — the route enforces that
+ * independently, so a card cannot sell something the allowlist excludes.
+ *
+ * The tax note is not decoration. Every price is `tax_behavior: exclusive`, so
+ * a Canadian buyer sees GST/QST added at checkout; a card that shows "$150"
+ * and then charges $172.46 without warning is a nasty surprise at exactly the
+ * wrong moment.
+ */
 export function PriceCard(props: {
   name: string;
   price: string; // e.g. "$600 CAD"
   cadence: string; // "per month" | "one-time" | "custom quote"
   items: string[];
-  cta: [string, string];
+  cta?: [string, string];
+  buy?: { item: string; label: string; locale?: "en" | "fr" };
   highlight?: boolean;
 }) {
+  const taxNote = props.buy
+    ? props.buy.locale === "fr"
+      ? "Taxes en sus"
+      : "Plus applicable tax"
+    : null;
+
   return (
     <div className={`rounded-[2rem] border p-8 ${props.highlight ? "border-[#D71920]/60 bg-[#D71920]/5" : "border-white/10 bg-white/[0.03]"}`}>
       <h3 className="geist text-2xl font-black tracking-[-0.05em]">{props.name}</h3>
       <p className="mt-4 text-4xl font-black">
         {props.price} <span className="text-base font-normal text-[#C7B9B9]">{props.cadence}</span>
       </p>
+      {taxNote && <p className="mt-1 text-xs text-[#C7B9B9]">{taxNote}</p>}
       <ul className="mt-6 space-y-2 text-sm leading-6 text-[#C7B9B9]">
         {props.items.map((x) => (
           <li key={x} className="flex gap-2">
@@ -111,9 +132,13 @@ export function PriceCard(props: {
           </li>
         ))}
       </ul>
-      <Link href={props.cta[1]} className="mt-8 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">
-        {props.cta[0]}
-      </Link>
+      {props.buy ? (
+        <BuyButton item={props.buy.item} label={props.buy.label} locale={props.buy.locale} />
+      ) : props.cta ? (
+        <Link href={props.cta[1]} className="mt-8 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">
+          {props.cta[0]}
+        </Link>
+      ) : null}
     </div>
   );
 }

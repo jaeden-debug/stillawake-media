@@ -1,11 +1,31 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ServiceJsonLd, PriceCard, FaqBlock, RelatedServices } from "@/components/service-page";
+import { EMERGENCY, RECURRING_BY_ID } from "@/lib/pricing/model";
+import { EMERGENCY_DESCRIPTIONS, EMERGENCY_LABELS, RECURRING_LABELS } from "@/lib/pricing/labels";
+
+/**
+ * Emergency tiers and the care plan come from the pricing kernel. They used to
+ * be typed by hand here, on /pricing, and in Stripe — the FAQ answer below is
+ * generated for the same reason, because a hand-written sentence listing six
+ * prices is the single most likely thing on this page to go stale.
+ */
+const track = (id: keyof typeof EMERGENCY) => EMERGENCY[id];
+const tierPrices = (id: keyof typeof EMERGENCY) => track(id).tiers.map((t) => t.price);
+const listPrices = (id: keyof typeof EMERGENCY) => {
+  const prices = tierPrices(id).map((p) => `$${p}`);
+  return `${prices.slice(0, -1).join(", ")}, or ${prices.at(-1)} CAD`;
+};
+const bandLabel = (id: keyof typeof EMERGENCY) =>
+  `$${Math.min(...tierPrices(id))}–$${Math.max(...tierPrices(id))} CAD`;
+
+const CARE = RECURRING_BY_ID["website-care-plan"];
+const HOSTING = RECURRING_BY_ID["managed-hosting"];
 
 export const metadata: Metadata = {
   title: "Website Maintenance & Emergency Support | Transparent Pricing",
   description:
-    "Website maintenance and same-day emergency support from StillAwake Media in Montréal, serving all of Canada remotely. Emergency fixes from $150 CAD with published tier pricing.",
+    `Website maintenance and same-day emergency support from StillAwake Media in Montréal, serving all of Canada remotely. Care plans from $${HOSTING.monthly} CAD per month and emergency fixes from $${Math.min(...tierPrices("custom_site"))} CAD, with published tier pricing.`,
   alternates: {
     canonical: "https://stillawakemedia.com/website-maintenance",
     languages: {
@@ -25,7 +45,7 @@ export const metadata: Metadata = {
 const FAQ: [string, string][] = [
   [
     "How much does emergency website support cost?",
-    "Emergency support for a custom website costs $150, $250, or $400 CAD one-time depending on workload: a quick fix, a priority incident, or a heavy incident affecting several systems. Ecommerce emergencies are $250, $400, or $600 CAD. A short questionnaire sets the tier before you pay — the price is shown before checkout.",
+    `Emergency support for a custom website costs ${listPrices("custom_site")} one-time depending on workload: a quick fix, a priority incident, or a heavy incident affecting several systems. Ecommerce emergencies are ${listPrices("ecommerce")}. A short questionnaire sets the tier before you pay — the price is shown before checkout.`,
   ],
   [
     "What counts as an emergency?",
@@ -41,7 +61,7 @@ const FAQ: [string, string][] = [
   ],
   [
     "Do you offer monthly maintenance plans?",
-    "Yes — ongoing care plans covering updates, monitoring, backups, and small fixes are quoted to your stack and traffic. Tell us about your site and we'll send a plan; no call required.",
+    `Yes, and the price is published. Managed hosting is $${HOSTING.monthly} CAD per month. The website care plan is $${CARE.monthly} CAD per month and includes hosting, software updates, monitoring, backups, and small content edits — if something breaks on a care plan there is no separate incident fee. Larger stacks are still quoted individually.`,
   ],
   [
     "Do you work outside Montréal?",
@@ -57,12 +77,14 @@ export default function WebsiteMaintenancePage() {
         name="Website Maintenance & Emergency Support"
         description="Ongoing website care plans and same-day emergency website support with published one-time tier pricing, delivered remotely from Montréal, Canada."
         offers={[
-          { name: "Emergency Support — Custom Site (Quick fix)", price: 150 },
-          { name: "Emergency Support — Custom Site (Priority incident)", price: 250 },
-          { name: "Emergency Support — Custom Site (Heavy incident)", price: 400 },
-          { name: "Emergency Support — Ecommerce (Store triage)", price: 250 },
-          { name: "Emergency Support — Ecommerce (Priority incident)", price: 400 },
-          { name: "Emergency Support — Ecommerce (Business-critical)", price: 600 },
+          ...Object.values(EMERGENCY).flatMap((t) =>
+            t.tiers.map((tier) => ({
+              name: `${EMERGENCY_LABELS[t.id].en} (${EMERGENCY_LABELS[`${t.id}.${tier.id}`].en})`,
+              price: tier.price,
+            })),
+          ),
+          { name: RECURRING_LABELS["managed-hosting"].en, price: HOSTING.monthly!, interval: "MONTH" as const },
+          { name: RECURRING_LABELS["website-care-plan"].en, price: CARE.monthly!, interval: "MONTH" as const },
         ]}
         breadcrumb={[
           ["Home", "/"],
@@ -102,47 +124,72 @@ export default function WebsiteMaintenancePage() {
           </h2>
           <p className="mt-4 max-w-3xl text-[#C7B9B9]">
             A three-question workload check sets your tier and you see the exact price before paying. Emergency support
-            for a custom website costs $150–$400 CAD one-time; ecommerce emergencies cost $250–$600 CAD one-time.
+            for a custom website costs {bandLabel("custom_site")} one-time; ecommerce emergencies cost{" "}
+            {bandLabel("ecommerce")} one-time.
+          </p>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {Object.values(EMERGENCY).map((t) => (
+              <PriceCard
+                key={t.id}
+                name={EMERGENCY_LABELS[t.id].en}
+                price={bandLabel(t.id as keyof typeof EMERGENCY)}
+                cadence="one-time"
+                items={[
+                  ...t.tiers.map(
+                    (tier) =>
+                      `${EMERGENCY_LABELS[`${t.id}.${tier.id}`].en} — $${tier.price}: ${
+                        EMERGENCY_DESCRIPTIONS[`${t.id}.${tier.id}`].en
+                      }`,
+                  ),
+                  t.id === "ecommerce"
+                    ? "Shopify and custom ecommerce stacks"
+                    : "Incident summary + prevention notes included",
+                ]}
+                cta={[t.id === "ecommerce" ? "Fix My Store" : "Start Emergency Support", "/contact"]}
+                highlight
+              />
+            ))}
+          </div>
+
+          <h2 className="geist mt-16 max-w-4xl text-4xl font-black tracking-[-0.06em]">
+            Ongoing care plans. Published, not quoted.
+          </h2>
+          <p className="mt-4 max-w-3xl text-[#C7B9B9]">
+            A care plan is the cheaper way to buy the same outcome: on a plan, the fixes that would
+            otherwise be an emergency ticket are simply included. One heavy incident a year costs
+            more than the plan does.
           </p>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             <PriceCard
-              name="Emergency Support — Custom Site"
-              price="$150–$400 CAD"
-              cadence="one-time"
+              name={RECURRING_LABELS["managed-hosting"].en}
+              price={`$${HOSTING.monthly} CAD`}
+              cadence="per month"
               items={[
-                "Quick fix — $150: one contained issue, fixed same day",
-                "Priority incident — $250: something broken and costing you business",
-                "Heavy incident — $400: multiple pages or systems affected",
-                "Incident summary + prevention notes included",
+                "Fast hosting on our infrastructure",
+                "SSL, DNS and uptime monitoring",
+                "Daily backups",
+                "The platform handled, so you never think about it",
               ]}
-              cta={["Start Emergency Support", "/contact"]}
-              highlight
+              cta={["Start hosting", "https://stillawake.studio/start"]}
             />
             <PriceCard
-              name="Emergency Support — Ecommerce"
-              price="$250–$600 CAD"
-              cadence="one-time"
+              name={RECURRING_LABELS["website-care-plan"].en}
+              price={`$${CARE.monthly} CAD`}
+              cadence="per month"
               items={[
-                "Store triage — $250: checkout or catalogue issue diagnosed and fixed",
-                "Priority incident — $400: revenue-impacting store failure",
-                "Business-critical — $600: store down, drop-everything response",
-                "Shopify and custom ecommerce stacks",
+                "Everything in managed hosting",
+                "Software and dependency updates",
+                "Small content and copy edits",
+                "Something breaks, we fix it — no incident fee",
               ]}
-              cta={["Fix My Store", "/contact"]}
+              cta={["Start a care plan", "https://stillawake.studio/start"]}
               highlight
             />
           </div>
-          <div className="mt-10 rounded-[2rem] border border-white/10 p-8">
-            <h3 className="geist text-2xl font-black tracking-[-0.05em]">Ongoing care plans</h3>
-            <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
-              Monthly maintenance — updates, monitoring, backups, and small fixes — is quoted to your stack, traffic, and
-              risk profile rather than sold as a one-size-fits-all plan. Tell us about your site and you&apos;ll get a
-              written plan with a fixed monthly price. No call required.
-            </p>
-            <Link href="https://stillawake.studio/start" className="mt-6 inline-flex rounded-full border border-white/15 px-6 py-3 text-sm transition hover:border-[#D71920]/60">
-              Request a Care Plan Quote
-            </Link>
-          </div>
+          <p className="mt-6 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
+            Larger stacks, heavy traffic or unusual risk profiles are still quoted individually —
+            but the published plan is the starting point, not a teaser rate.
+          </p>
         </div>
       </section>
 
@@ -174,6 +221,7 @@ export default function WebsiteMaintenancePage() {
       <RelatedServices
         title="Related services"
         links={[
+          ["Who Owns Your Website?", "/website-ownership"],
           ["SEO Montréal", "/seo-montreal"],
           ["Shopify Development", "/shopify-development"],
           ["Web Design Montréal", "/web-design-montreal"],

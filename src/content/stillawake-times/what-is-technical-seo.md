@@ -7,6 +7,7 @@ category: "Technical SEO"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
 author: "Jaeden Doody"
+pair: "seo-technique-guide-complet"
 ---
 
 # What Is Technical SEO? (Complete Business Guide)

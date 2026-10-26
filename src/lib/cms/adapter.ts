@@ -76,6 +76,40 @@ async function queryArticles(locale: CmsLocale): Promise<CmsPublishedContent[]> 
   }
 }
 
+/**
+ * Products for the hub, ordered by the editor-controlled `data.sort`.
+ *
+ * Sort lives in the published snapshot, so reordering in the CMS only moves
+ * cards once the change is published — same trust boundary as any other edit.
+ * Rows missing a sort fall to the end rather than colliding at 0.
+ */
+async function queryProducts(locale: CmsLocale): Promise<CmsPublishedContent[]> {
+  const db = getCmsClient();
+  if (!db) return [];
+  try {
+    const { data, error } = await db
+      .from("cms_public_content")
+      .select("*")
+      .eq("type", "product")
+      .eq("locale", locale);
+    if (error) throw error;
+    const rows = ((data ?? []) as CmsPublishedContent[]).filter(isLive);
+    return rows.sort((a, b) => {
+      const sortOf = (r: CmsPublishedContent) => {
+        const v = (r.snapshot?.data as { sort?: unknown } | null)?.sort;
+        return typeof v === "number" && Number.isFinite(v) ? v : Number.MAX_SAFE_INTEGER;
+      };
+      const delta = sortOf(a) - sortOf(b);
+      if (delta !== 0) return delta;
+      // Stable tiebreak so duplicate sort values can't shuffle between renders.
+      return (a.snapshot?.title ?? "").localeCompare(b.snapshot?.title ?? "");
+    });
+  } catch (err) {
+    logCmsError(`getPublishedProducts(${locale}) failed`, err);
+    return [];
+  }
+}
+
 async function queryByTypeSlug(
   type: CmsContentType,
   locale: CmsLocale,
@@ -300,6 +334,13 @@ export function getPublishedArticles(locale: CmsLocale): Promise<CmsPublishedCon
   return unstable_cache(() => queryArticles(locale), ["cms-articles", locale], {
     revalidate: REVALIDATE,
     tags: ["cms-content", "cms-article"],
+  })();
+}
+
+export function getPublishedProducts(locale: CmsLocale): Promise<CmsPublishedContent[]> {
+  return unstable_cache(() => queryProducts(locale), ["cms-products", locale], {
+    revalidate: REVALIDATE,
+    tags: ["cms-content", "cms-product"],
   })();
 }
 

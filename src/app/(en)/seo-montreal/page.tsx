@@ -1,6 +1,32 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PriceCard, ServiceJsonLd } from "@/components/service-page";
+import { RECURRING } from "@/lib/pricing/model";
+import { RECURRING_LABELS } from "@/lib/pricing/labels";
+
+/** The SEO rungs, in catalogue order. Starter was added 2026-08-15. */
+const SEO_PLANS = RECURRING.filter((r) => r.approved && r.group === "seo");
+
+const SEO_PLAN_ITEMS: Record<string, string[]> = {
+  "seo-starter": [
+    "Search Console monitoring",
+    "One on-page fix a month",
+    "Monthly report you can actually read",
+    "The honest entry point — not a smaller Essentials",
+  ],
+  "seo-essentials": [
+    "Technical SEO",
+    "On-page optimization",
+    "Google Search Console monitoring",
+    "Monthly report",
+  ],
+  "seo-advanced": [
+    "Everything in Essentials",
+    "AI-search (AEO) optimization",
+    "Entity optimization",
+    "Content strategy",
+  ],
+};
 
 export const metadata: Metadata = {
   title: "SEO Montreal | Technical SEO & Local SEO Services",
@@ -44,10 +70,13 @@ export default function SeoMontrealPage() {
       <ServiceJsonLd
         path="/seo-montreal"
         name="SEO Montreal — Technical & Local SEO Services"
-        description="Monthly SEO plans for Montréal businesses: technical SEO, local visibility, content architecture, and AI-search optimization, from $600 CAD per month."
+        description={`Monthly SEO plans for Montréal businesses: technical SEO, local visibility, content architecture, and AI-search optimization, from $${SEO_PLANS[0].monthly} CAD per month.`}
         offers={[
-          { name: "SEO Growth — Essentials", price: 600, interval: "MONTH" },
-          { name: "SEO Growth — Advanced", price: 850, interval: "MONTH" },
+          ...SEO_PLANS.map((r) => ({
+            name: RECURRING_LABELS[r.id].en,
+            price: r.monthly!,
+            interval: "MONTH" as const,
+          })),
         ]}
         breadcrumb={[["Home", "/"], ["Services", "/services"], ["SEO Montreal", "/seo-montreal"]]}
       />
@@ -122,28 +151,35 @@ export default function SeoMontrealPage() {
             SEO plans with the price on the page.
           </h2>
           <p className="mt-4 max-w-3xl text-[#C7B9B9]">
-            SEO Growth — Essentials costs $600 CAD per month. SEO Growth — Advanced costs $850 CAD per month. Both are
-            month-to-month plans in Canadian dollars with a written monthly report — no discovery call required to see
-            the price.
+            Three rungs, all month-to-month, all in Canadian dollars with a written monthly report —
+            no discovery call required to see the price. Starter is a real plan at a small size, not
+            a trial and not a trimmed Essentials.
           </p>
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            <PriceCard
-              name="SEO Growth — Essentials"
-              price="$600 CAD"
-              cadence="per month"
-              items={["Technical SEO", "On-page optimization", "Google Search Console monitoring", "Monthly report"]}
-              cta={["Start Essentials", "/contact"]}
-            />
-            <PriceCard
-              name="SEO Growth — Advanced"
-              price="$850 CAD"
-              cadence="per month"
-              items={["Everything in Essentials", "AI-search (AEO) optimization", "Entity optimization", "Content strategy"]}
-              cta={["Start Advanced", "/contact"]}
-              highlight
-            />
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {SEO_PLANS.map((plan) => (
+              <PriceCard
+                key={plan.id}
+                name={RECURRING_LABELS[plan.id].en}
+                price={`$${plan.monthly} CAD`}
+                cadence="per month"
+                items={SEO_PLAN_ITEMS[plan.id]}
+                cta={[`Start ${RECURRING_LABELS[plan.id].en.split(" — ")[1]}`, "/contact"]}
+                highlight={plan.id === "seo-essentials"}
+              />
+            ))}
           </div>
-          <p className="mt-8 text-sm text-[#C7B9B9]">
+          {/* Intent separation, stated for the reader as well as for Google:
+              this page owns local Montréal intent, /seo-canada owns national. */}
+          <p className="mt-8 max-w-3xl text-sm leading-7 text-[#C7B9B9]">
+            <strong className="text-white">Selling across Canada rather than in Montréal?</strong> Local and national
+            search are different jobs — map-pack visibility versus competing country-wide for your service terms. That
+            work is on{" "}
+            <Link className="text-[#D71920] underline underline-offset-4" href="/seo-canada">
+              SEO for Canadian businesses
+            </Link>
+            .
+          </p>
+          <p className="mt-4 text-sm text-[#C7B9B9]">
             Also see: <Link className="text-[#D71920] underline-offset-4 hover:underline" href="/answer-engine-optimization">AI search optimization (AEO)</Link> ·{" "}
             <Link className="text-[#D71920] underline-offset-4 hover:underline" href="/stillawake-times/how-much-does-seo-cost-canada">what SEO costs in Canada</Link> ·{" "}
             <Link className="text-[#D71920] underline-offset-4 hover:underline" href="/pricing">all pricing</Link> ·{" "}
@@ -766,7 +802,7 @@ export default function SeoMontrealPage() {
             TravelDesign By Lisa: 834-URL trilingual build, ~2,300 SEO defects cleared, 9-minute average sessions,
             CLS 0.00 and Best Practices 100 measured Aug 2026. Every number sourced and dated in the case study.
           </p>
-          <a href="/work/lisa-travel-design" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Read the case study →</a>
+          <Link href="/work/lisa-travel-design" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Read the case study →</Link>
         </div>
       </section>
     </main>

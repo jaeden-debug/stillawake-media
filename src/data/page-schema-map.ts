@@ -1,4 +1,12 @@
 import type { PageSchemaInput } from "@/lib/page-schema";
+import { faqFor } from "@/data/website-ownership";
+import { EN as EN_SETUP } from "@/lib/website-setup/en";
+import { FR as FR_SETUP } from "@/lib/website-setup/fr";
+import { EN as EN_TECH } from "@/lib/tech-stack/en";
+import { FR as FR_TECH } from "@/lib/tech-stack/fr";
+import { PATHS as TECH_PATHS } from "@/lib/tech-stack/types";
+import { EN as EN_CUSTOM } from "@/lib/custom-software/en";
+import { FR as FR_CUSTOM } from "@/lib/custom-software/fr";
 
 /**
  * Every static page, and what it is.
@@ -28,5 +36,188 @@ export const PAGE_SCHEMA: Record<string, Omit<PageSchemaInput, "url">> = {
   "/fr/realisations": { kind: "collection", name: "Réalisations", description: "Sites web, applications, jeux, outils, composants et logiciels bâtis par StillAwake Media. Parcourez chaque projet par catégorie ou lisez l'étude de cas.", locale: "fr" },
   "/privacy": { kind: "contact", name: "Privacy Policy", description: "What StillAwake Media collects, which analytics tools run, which cookies are set, how consent works, and how to contact us about your data.", locale: "en" },
   "/fr/confidentialite": { kind: "contact", name: "Politique de confidentialité", description: "Ce que StillAwake Media recueille, quels outils de mesure fonctionnent, quels témoins sont déposés, comment fonctionne le consentement et comment nous joindre.", locale: "fr" },
-  "/tools/llms-txt-generator": { kind: "service", name: "Free llms.txt Generator + AI Readiness Check", description: "Generate an llms.txt file for your website and see what an answer engine can — and cannot — tell about your business. Free, no signup.", locale: "en", serviceType: "Answer engine optimization" },
+  "/tools": { kind: "collection", name: "Free Technical Tools", description: "Free tools and implementation guides from StillAwake Media for checking how search crawlers and AI assistants read your website. No signup, no email.", locale: "en" },
+  "/tools/llms-txt-generator": { kind: "service", name: "Free llms.txt Generator + AI Readiness Check", description: "Generate an llms.txt file for your website and see what an answer engine can — and cannot — tell about your business. Free, no signup.", locale: "en", serviceType: "Answer engine optimization", crumbs: [{ name: "Tools", path: "/tools" }] },
+  "/fr/outils": { kind: "collection", name: "Outils techniques gratuits", description: "Outils gratuits et guides d'implémentation de StillAwake Media pour vérifier comment les robots de recherche et les assistants IA lisent votre site. Sans inscription.", locale: "fr" },
+  "/fr/outils/generateur-llms-txt": { kind: "service", name: "Générateur llms.txt gratuit + vérification de lisibilité IA", description: "Générez un fichier llms.txt pour votre site et découvrez ce qu'un moteur de réponse peut — ou ne peut pas — dire de votre entreprise. Gratuit, sans inscription.", locale: "fr", serviceType: "Answer engine optimization", crumbs: [{ name: "Outils", path: "/fr/outils" }] },
+  /**
+   * The FAQs are the load-bearing part here. Keyword Planner puts "website
+   * design cost", "website development cost", "cost to build a website" and
+   * "web design cost" each at 100–1K/month — one intent, budgeting, so one
+   * page. Answer engines quote these near-verbatim, which is why the first
+   * one carries the actual figures and the second one says outright that this
+   * is not a quote: being cited alongside a fabricated commitment would be
+   * worse than not being cited.
+   */
+  "/tools/project-cost-calculator": {
+    kind: "service",
+    name: "Website & Project Cost Calculator",
+    description:
+      "Estimate what a website, online store, SEO programme or custom software project would cost in Canada, using StillAwake Media's real pricing model. Free, no signup, figures in CAD.",
+    locale: "en",
+    serviceType: "Project cost estimation",
+    crumbs: [{ name: "Tools", path: "/tools" }],
+    faqs: [
+      {
+        q: "How much does a website cost in Canada?",
+        a: "A professionally built small-business website in Canada generally starts around CA$3,000 and runs to about CA$10,000. A custom-designed business site with SEO architecture runs roughly CA$8,000–$25,000, an online store CA$6,500–$30,000, and a custom web application from about CA$15,000 upward. StillAwake Media's minimum build engagement is CA$2,500.",
+      },
+      {
+        q: "Is this a quote?",
+        a: "No. It is a planning estimate produced by the same pricing model StillAwake Media uses internally to scope work. Final pricing depends on confirmed scope and integrations, and every engagement gets a written scope with a fixed price before any commitment.",
+      },
+      {
+        q: "Why is the estimate a range rather than a single number?",
+        a: "Because the scope is not confirmed yet. The range reflects genuine uncertainty in the work: where a project connects to a system we have not seen inside, the top of the range widens rather than a cost being invented for it. The range narrows once the scope is written down.",
+      },
+      {
+        q: "Does the estimate include monthly costs?",
+        a: "No. Recurring services are shown separately from the build. StillAwake Media's published monthly prices are SEO Growth — Essentials at CA$600 per month and SEO Growth — Advanced at CA$850 per month; care plans and hosting are quoted in writing.",
+      },
+    ],
+  },
+  "/fr/outils/calculateur-cout-projet": {
+    kind: "service",
+    name: "Calculateur de coût de projet web",
+    description:
+      "Estimez ce que coûterait un site web, une boutique en ligne, un mandat SEO ou un logiciel sur mesure au Québec, à partir du modèle tarifaire réel de StillAwake Media. Gratuit, sans inscription, en dollars canadiens.",
+    locale: "fr",
+    serviceType: "Estimation de coût de projet",
+    crumbs: [{ name: "Outils", path: "/fr/outils" }],
+    faqs: [
+      {
+        q: "Combien coûte un site web au Québec?",
+        a: "Un site d'entreprise fait par des professionnels part généralement d'environ 3 000 $ et va jusqu'à environ 10 000 $. Un site sur mesure avec architecture SEO se situe entre 8 000 $ et 25 000 $, une boutique en ligne entre 6 500 $ et 30 000 $, et une application web sur mesure à partir d'environ 15 000 $. Le mandat de construction minimum de StillAwake Media est de 2 500 $.",
+      },
+      {
+        q: "Est-ce une soumission?",
+        a: "Non. C'est une estimation de planification produite par le même modèle tarifaire que StillAwake Media utilise à l'interne. Le prix final dépend de la portée confirmée et des intégrations, et chaque mandat reçoit une portée écrite avec un prix fixe avant tout engagement.",
+      },
+      {
+        q: "Pourquoi une fourchette plutôt qu'un seul chiffre?",
+        a: "Parce que la portée n'est pas encore confirmée. La fourchette reflète l'incertitude réelle du travail : quand un projet se connecte à un système qu'on n'a pas vu de l'intérieur, le haut de la fourchette s'élargit plutôt que d'inventer un coût. La fourchette se resserre une fois la portée écrite.",
+      },
+      {
+        q: "Les frais mensuels sont-ils inclus?",
+        a: "Non. Les services récurrents sont présentés séparément de la construction. Les prix mensuels publiés de StillAwake Media sont Croissance SEO — Essentiel à 600 $ CAD par mois et Croissance SEO — Avancé à 850 $ CAD par mois; les forfaits d'entretien et l'hébergement sont sur soumission écrite.",
+      },
+    ],
+  },
+  /**
+   * The ownership resource. `article` rather than `service` on purpose — it
+   * explains a relationship rather than selling one, and the Article type
+   * carries the author attribution that makes an E-E-A-T claim on a page
+   * whose whole value is being trusted.
+   *
+   * The FAQs are imported rather than retyped: this registry and the visible
+   * FAQ block on the page render the same sixteen answers, so a correction
+   * to one cannot leave the other stating something different to a crawler.
+   */
+  "/website-ownership": {
+    kind: "article",
+    name: "Website Ownership: Who Owns the Domain, Hosting, Code & Accounts",
+    description:
+      "Who should own the domain, hosting, source code, CMS, database, Stripe, Shopify and analytics when an agency builds your website — who pays for what, and what happens if you stop working together.",
+    locale: "en",
+    dateModified: "2026-08-15",
+    faqs: faqFor("en"),
+  },
+  "/fr/propriete-site-web": {
+    kind: "article",
+    name: "Propriété d'un site web : qui possède le domaine, le code et les comptes",
+    description:
+      "Qui devrait posséder le nom de domaine, l'hébergement, le code source, le CMS, la base de données, Stripe, Shopify et l'analytique quand une agence bâtit votre site — qui paie quoi, et ce qui arrive si vous cessez de travailler ensemble.",
+    locale: "fr",
+    dateModified: "2026-08-15",
+    faqs: faqFor("fr"),
+  },
+  /**
+   * The website setup guide, EN and FR.
+   *
+   * `article` rather than `service`: it decides what a business needs, and it
+   * has to be able to conclude "less than you were about to buy" — a Service
+   * node would quietly make the page an offer.
+   *
+   * Name, description and FAQs are read from the same content packs the pages
+   * render, so the registry cannot describe the page differently from the page.
+   * The FR entry is not a translation of the EN one; both are authored.
+   */
+  [EN_SETUP.path]: {
+    kind: "article",
+    name: EN_SETUP.meta.title,
+    description: EN_SETUP.meta.description,
+    locale: "en",
+    dateModified: "2026-08-15",
+    faqs: EN_SETUP.faqs,
+  },
+  [FR_SETUP.path]: {
+    kind: "article",
+    name: FR_SETUP.meta.title,
+    description: FR_SETUP.meta.description,
+    locale: "fr",
+    dateModified: "2026-08-15",
+    faqs: FR_SETUP.faqs,
+  },
+  /**
+   * The technology decision resource, EN and FR.
+   *
+   * `article` for the same reason as the setup guide: it decides what a
+   * business should build on, and it has to be free to answer "a hosted
+   * builder, and no project" — which a Service node would quietly contradict.
+   *
+   * The breadcrumb hangs it off the setup guide rather than off a service
+   * page, because that is the real reading order: requirements first, then
+   * technology. Name, description and FAQs come from the same content packs
+   * the pages render.
+   */
+  [TECH_PATHS.en]: {
+    kind: "article",
+    name: EN_TECH.chrome.meta.title,
+    description: EN_TECH.chrome.meta.description,
+    locale: "en",
+    dateModified: "2026-08-15",
+    crumbs: [{ name: EN_SETUP.meta.title, path: EN_SETUP.path }],
+    faqs: EN_TECH.chrome.faq,
+  },
+  [TECH_PATHS.fr]: {
+    kind: "article",
+    name: FR_TECH.chrome.meta.title,
+    description: FR_TECH.chrome.meta.description,
+    locale: "fr",
+    dateModified: "2026-08-15",
+    crumbs: [{ name: FR_SETUP.meta.title, path: FR_SETUP.path }],
+    faqs: FR_TECH.chrome.faq,
+  },
+  /**
+   * The custom-software decision resource, EN and FR.
+   *
+   * `article`, not `service`, and the distinction is load-bearing: this page's
+   * job is to talk most readers OUT of a custom build, and a Service node
+   * declaring "custom software development" on a page whose answer is usually
+   * "buy something" would contradict its own content in structured data.
+   * The service intent is served by /software-development, which is where the
+   * Service node lives.
+   *
+   * The breadcrumb hangs off the setup guide for the same reason the
+   * technology page does — requirements first, then whether anything needs
+   * building at all.
+   */
+  [EN_CUSTOM.path]: {
+    kind: "article",
+    name: EN_CUSTOM.meta.title,
+    description: EN_CUSTOM.meta.description,
+    locale: "en",
+    dateModified: "2026-08-15",
+    crumbs: [{ name: EN_SETUP.meta.title, path: EN_SETUP.path }],
+    faqs: EN_CUSTOM.faq.map(([q, a]) => ({ q, a })),
+  },
+  [FR_CUSTOM.path]: {
+    kind: "article",
+    name: FR_CUSTOM.meta.title,
+    description: FR_CUSTOM.meta.description,
+    locale: "fr",
+    dateModified: "2026-08-15",
+    crumbs: [{ name: FR_SETUP.meta.title, path: FR_SETUP.path }],
+    faqs: FR_CUSTOM.faq.map(([q, a]) => ({ q, a })),
+  },
 };

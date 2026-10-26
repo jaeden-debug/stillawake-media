@@ -6,6 +6,7 @@ excerpt: "Le SEO technique est la fondation sous tout le reste. Sans lui, le bon
 category: "SEO"
 featured: true
 author: "Jaeden Doody"
+pair: "what-is-technical-seo"
 ---
 
 Le SEO technique a mauvaise réputation parce qu'on l'explique mal. On le présente comme une liste d'éléments à cocher, sans jamais dire à quoi chacun sert. Résultat : des entreprises paient pour des « corrections techniques » sans comprendre ce qui a changé ni pourquoi.

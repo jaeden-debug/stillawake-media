@@ -5,7 +5,7 @@ excerpt: "You can feel the difference between a cheap website and a premium one 
 category: "Web Design"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-author: "StillAwake Media"
+author: "Jaeden Doody"
 ---
 
 # Why Most Agency Websites Feel Cheap (And How Premium Brands Avoid It)

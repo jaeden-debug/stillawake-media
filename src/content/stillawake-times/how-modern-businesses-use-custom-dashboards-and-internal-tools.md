@@ -5,7 +5,7 @@ excerpt: "The businesses that scale efficiently aren't using more off-the-shelf 
 category: "Software Development"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-author: "StillAwake Media"
+author: "Jaeden Doody"
 ---
 
 # How Modern Businesses Use Custom Dashboards and Internal Tools

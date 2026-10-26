@@ -5,7 +5,7 @@ excerpt: "Most business websites look decent but convert nothing. This guide bre
 category: "Web Design"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-author: "StillAwake Media"
+author: "Jaeden Doody"
 ---
 
 # What Makes a High Converting Website? (Complete Business Guide)

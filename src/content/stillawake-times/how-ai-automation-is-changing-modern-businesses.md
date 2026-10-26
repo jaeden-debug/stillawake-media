@@ -5,7 +5,7 @@ excerpt: "AI automation is no longer experimental. It's how the most efficient b
 category: "AI Automation"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-author: "StillAwake Media"
+author: "Jaeden Doody"
 ---
 
 # How AI Automation Is Changing Modern Businesses

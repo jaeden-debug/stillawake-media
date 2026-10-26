@@ -5,7 +5,7 @@ excerpt: "Your website might look professional. It might even rank on Google. An
 category: "Web Design"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-author: "StillAwake Media"
+author: "Jaeden Doody"
 pair: "pourquoi-site-ne-genere-pas-de-clients"
 ---
 

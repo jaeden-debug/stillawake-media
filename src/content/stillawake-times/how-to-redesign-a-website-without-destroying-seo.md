@@ -6,7 +6,7 @@ excerpt: "A website redesign is one of the highest-risk moments for organic sear
 category: "Web Design"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-author: "StillAwake Media"
+author: "Jaeden Doody"
 pair: "refonte-site-web-sans-perdre-seo"
 ---
 

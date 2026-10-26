@@ -6,7 +6,7 @@ Ready-to-paste profiles for directories, GBP, and AEO-listicle outreach. Consist
 - **Name:** StillAwake Media (never "Still Awake Media" / "StillAwake")
 - **Location:** Montréal, Québec, Canada (service area: Québec · Canada · remote worldwide)
 - **Website:** https://stillawakemedia.com · **FR:** https://stillawakemedia.com/fr
-- **Email:** hello@stillawakemedia.com
+- **Email:** jaeden@stillawakemedia.com (the address used on the site and in `DIRECTORY-PROFILES.md`)
 - **Founder:** Jaeden Doody — https://stillawakemedia.com/founder/jaeden-doody
 - **Categories (pick in this order):** Website designer · Web development · Marketing agency / SEO · E-commerce service
 
@@ -14,7 +14,7 @@ Ready-to-paste profiles for directories, GBP, and AEO-listicle outreach. Consist
 > Montréal studio building premium websites, Shopify stores, SEO systems, and AI-search (AEO) visibility — with published pricing and no mandatory sales calls. Serving Québec, Canada, and remote clients.
 
 ## Description — EN (long)
-> StillAwake Media is a Montréal-based digital studio founded by Jaeden Doody. We design and custom-code premium websites, build Shopify stores and original Shopify themes, run monthly SEO programs ($600–$850 CAD, published), provide same-day emergency website support ($150–$600 CAD, published tiers), and optimize businesses for AI search engines (AEO/GEO) so ChatGPT, Perplexity, and Google AI Overviews can find and cite them. Async-first: written scopes and fixed prices by email — no sales call required. Bilingual EN/FR.
+> StillAwake Media is a Montréal-based digital studio founded by Jaeden Doody. We design and custom-code premium websites, build Shopify stores and original Shopify themes, run monthly SEO programs ($250–$850 CAD, published), provide same-day emergency website support ($150–$600 CAD, published tiers), and optimize businesses for AI search engines (AEO/GEO) so ChatGPT, Perplexity, and Google AI Overviews can find and cite them. Async-first: written scopes and fixed prices by email — no sales call required. Bilingual EN/FR.
 
 ## Description — FR (short)
 > Studio montréalais : création de sites web premium, boutiques Shopify, forfaits SEO à tarifs affichés et optimisation pour moteurs IA (AEO). Partout au Québec et au Canada, à distance — sans appel de vente obligatoire.

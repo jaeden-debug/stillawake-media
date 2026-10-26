@@ -413,7 +413,7 @@ Vercel's public customer list includes TikTok, Notion, Twitch, HashiCorp, Miro, 
 
 Next.js is the framework of choice for serious web development in 2026 because it solves the real problems that matter — performance, SEO, scalability, and developer experience — without requiring you to compromise between them.
 
-It's not the right tool for every project. A simple brochure site for a business that needs editorial independence may be better served by Framer. A basic blog might be fine on a lighter-weight framework. An application being built by a team with deep PHP expertise might reasonably stay on a PHP-based stack.
+It's not the right tool for every project. A simple brochure site for a business that needs editorial independence may be better served by Framer. A basic blog might be fine on a lighter-weight framework. An application being built by a team with deep PHP expertise might reasonably stay on a PHP-based stack. That's how we run our [web design work in Montréal](/web-design-montreal): Next.js when it earns its place, Framer or Shopify when they fit the job better.
 
 But for businesses building marketing sites that need to rank, applications that need to scale, and projects where technical quality is a differentiator — Next.js is the defensible choice with a strong track record and a clear technical roadmap.
 

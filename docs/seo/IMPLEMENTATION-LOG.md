@@ -2,6 +2,31 @@
 
 Newest first. Each entry lists what changed, how it was verified, and what is still open.
 
+## 2026-10-26 — Batch 3 (branch `seo/program-batch-3`)
+
+**P7-02: the four articles that earn impressions**
+- **Query data:** Search Console shows only 1–3 visible impressions per query for these articles. All four already open with a "Quick Answer" section, so answer-first was in place. The gap was internal links: three linked only to /contact.
+- **Links added**, one contextual sentence each, placed after the paragraph it fits:
+  - best-website-design-for-small-businesses-2026 → /website-cost-canada
+  - what-is-a-custom-web-application → /stillawake-times/custom-software-development-cost-canada, /do-i-need-custom-software, /software-development
+  - why-nextjs-is-the-best-framework-for-modern-websites → /stillawake-times/why-modern-businesses-are-moving-away-from-wordpress, /web-design-montreal
+  - what-makes-a-luxury-brand-website-feel-premium → /our-work
+- **CMS script:** `stillawakemedia.dev/scripts/add-article-links.mts` targets a heading or a paragraph's opening words, and handles anchor spans and inline markup in the HTML copy.
+- **Live:** best-website-design is republished.
+- **Waiting (B-12):** the other three are saved as new versions but can't publish, because they have no CMS author. Publishing needs one, and setting it would change their byline from StillAwake Media to Jaeden Doody. The markdown fallbacks are updated.
+
+**P6-04: /web-design-montreal**
+- **H1:** "Web design in Montreal: custom websites built to rank and convert."
+- **Quick answer:** now states StillAwake's own prices (from /website-cost-canada) before the market ranges.
+- **New "How a Web Design Project Works" section:** four steps (form, fixed-price written scope, bilingual build, ownership). It matches the French page and is backed by /website-ownership.
+
+**Verification before PR**
+- 843 tests pass.
+- Build succeeds.
+- seo-parity OK.
+- Local crawl: every check at 0.
+- The page renders correctly at mobile width.
+
 ## 2026-10-26 — Batch 2 (branch `seo/program-batch-2`)
 
 **SEO price accuracy (found while auditing /web-design-montreal)**

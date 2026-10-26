@@ -94,6 +94,15 @@ const sections = [
     ],
   },
   {
+    title: "How a Web Design Project Works",
+    body: [
+      "1. You describe the project in a form, on your own time. No sales call is required.",
+      "2. You get a written scope with a fixed price and a timeline before you commit. The price doesn't change once work starts.",
+      "3. We design and build the site, in English and French where you need both, with SEO structure, structured data and mobile performance built in from the start rather than added later.",
+      "4. You own the site, the domain and the accounts: we get access, not ownership.",
+    ],
+  },
+  {
     title: "Performance Is Measured, Not Promised",
     body: [
       "Speed and stability are part of trust, and they're testable — so we publish our numbers instead of adjectives. Measured with Chrome Lighthouse (mobile) in August 2026: BankDeMark scores 100/100/100 across performance, accessibility and best practices. NAVTRL scores 98/100/100 with a perfect 100 on agentic navigation — the audit of how well AI assistants can read and navigate a site. Lisa's platform holds CLS 0.00 (zero layout shift) with Best Practices 100.",
@@ -200,7 +209,7 @@ export default function Page() {
           </p>
 
           <h1 className="geist max-w-6xl text-5xl font-black leading-[.88] tracking-[-0.08em] md:text-8xl">
-            Web design Montreal businesses can use as growth infrastructure.
+            Web design in Montreal: custom websites built to rank and convert.
           </h1>
 
           <p className="mt-10 max-w-3xl text-lg leading-8 text-[#C7B9B9]">
@@ -235,9 +244,11 @@ export default function Page() {
             </h2>
             <p className="mt-8 max-w-4xl text-lg leading-8 text-[#C7B9B9]">
               Strategy, original design, SEO-ready structure, mobile-first UX, fast measured performance,
-              bilingual capability, and a scalable architecture — typically $3,000–$10,000 for a professional
-              small-business site and $8,000–$25,000 for a fully custom one (2026 Canadian market ranges;
-              every StillAwake project gets a fixed written quote).
+              bilingual capability, and a scalable architecture. At StillAwake Media a professional business
+              website runs about $2,750–$5,750 CAD with local search set up, a simpler site starts at $1,800 and
+              an online store at $4,250, each with a fixed written quote before you commit. Across the wider
+              Canadian market, expect roughly $3,000–$10,000 for a professional small-business site and
+              $8,000–$25,000 for a fully custom one.
             </p>
           </div>
         </div>

@@ -72,7 +72,7 @@ Why lower than the brief's 1,500–3,000: the site starts from a smaller real ba
 | P6-01 | /seo-montreal: title/description on "seo services/agency montreal", concrete quick answer, proof moved up | P0 | [x] | Code | `src/app/(en)/seo-montreal/page.tsx` | Title has both measured terms; price in description; honest timeline | Build + live check | Log | P4-02 | 2026-10-26 |
 | P6-02 | /fr/agence-seo-montreal review | P0 | [x] | Review | `src/app/(fr)/fr/agence-seo-montreal/page.tsx` | Already has prices, FAQ, proof, hreflang | Read 2026-10-26; no change needed | Log | P4-02 | 2026-10-26 |
 | P6-03 | Titles on web design, agence web, refonte, maintenance, logiciel pages | P1 | [x] | Code | 6 pages | Title leads with the measured term | Build + live check | Log | P4-02 | 2026-10-26 |
-| P6-04 | /web-design-montreal depth vs. ranking competitors | P1 | [ ] | Code | `src/app/(en)/web-design-montreal/page.tsx` | Covers process, pricing, proof, FAQ the SERP shows | Compare with `COMPETITOR-ANALYSIS.md` | — | P5-01 | |
+| P6-04 | /web-design-montreal depth vs. ranking competitors | P1 | [x] | Code | `src/app/(en)/web-design-montreal/page.tsx` | Covers process, pricing, proof, FAQ the SERP shows | Local build + live check | Log batch 3 | P5-01 | 2026-10-26 |
 | P6-05 | /fr/agence-web-montreal → "création site web montréal" coverage | P1 | [x] | Code | FR agency page | Section on création de site web (110/mo + 40/mo) | Built + live check | Log batch 2 | P4-02 | 2026-10-26 |
 
 | P6-06 | SEO prices consistent everywhere (Starter $250) | P0 | [x] | Code + CMS | 9 pages/articles + 3 CMS rows | No "$600–$850" range; test guard | `published-prices.test.ts` + CMS re-run | Log batch 2 | — | 2026-10-26 |
@@ -82,7 +82,7 @@ Why lower than the brief's 1,500–3,000: the site starts from a smaller real ba
 | ID | Task | Priority | Status | Tool | Location | Acceptance criteria | Verification | Evidence | Depends on | Completed |
 |---|---|---|---|---|---|---|---|---|---|---|
 | P7-01 | Classify 52 EN + 44 FR articles | P1 | [x] | Repo + GSC | `CONTENT-INVENTORY.md` | Each has keep / improve / merge-candidate | — | `CONTENT-INVENTORY.md` | P1-01 | 2026-10-26 |
-| P7-02 | Improve the 4 articles that already earn impressions | P2 | [ ] | Code | see inventory | Clear answer up top, link to owner service page | Crawl + GSC 28d later | — | P7-01 | |
+| P7-02 | Improve the 4 articles that already earn impressions | P2 | [-] | Code | see inventory | Clear answer up top, link to owner service page | 1 of 4 live; 3 blocked on author (B-12) | Log batch 3 | P7-01 | |
 | P7-03 | Decide merges for overlapping articles | P3 | [~] | Repo | see inventory | No deletion without data | Re-check at 2026-12-07 with more GSC data | — | P7-01 | |
 
 ## Phase 8 — Internal linking

@@ -368,7 +368,7 @@ Visitors who contact you after seeing your pricing range are already qualified. 
 | **Ongoing Support** | Self-managed | Varies | Package-based | Strategic partner |
 | **Timeline** | Days | 2–4 weeks | 4–8 weeks | 4–10 weeks |
 
-The choice is not about what you can afford — it's about what the website will cost you in missed leads and lost rankings if it underperforms for the next 3–5 years.
+The choice is not about what you can afford — it's about what the website will cost you in missed leads and lost rankings if it underperforms for the next 3–5 years. Current Canadian ranges, and what moves a quote within them, are in [what a website costs in Canada](/website-cost-canada).
 
 ---
 

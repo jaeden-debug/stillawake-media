@@ -8,7 +8,8 @@ Newest first. Each entry lists what changed, how it was verified, and what is st
 - **Fix:** [stillawake.studio#1](https://github.com/jaeden-debug/stillawake.studio/pull/1), merged as `d902e37`. The redirect awaits gtag's `event_callback` (capped at 1.5 s) and the hit is sent by beacon. A tracking error never blocks the redirect.
 - **Verified:** 123/123 tests pass (6 new), `tsc` clean, ESLint clean, `next build` passes. The production deploy succeeded and the live /start bundle contains the beacon, callback and timeout code.
 - **Not imported into Ads:** it would double-count with the /thank-you primary.
-- **Open (owner):** cross-domain domains on the Google tag (see `docs/ads/README.md`), and starring `generate_lead` once it first arrives.
+- **Cross-domain:** stillawakemedia.com and stillawake.studio added to the Google tag G-KE1CWNHY0S domains (owner-approved, confirmed after a reload).
+- **Open (owner):** star `generate_lead` as a GA4 key event once it first arrives.
 
 ## 2026-10-26 — Google Ads rebuilt and paused for winter
 

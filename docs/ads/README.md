@@ -64,17 +64,13 @@ The campaign uses the account-default goals: Submit lead forms and Request quote
 **GA4 (property 549901138):**
 - `contact_form_submit` is now a key event.
 - `generate_lead` (stillawake.studio intake) recorded 0 events in 90 days. Over the same period `start_onboarding` recorded 4, from the same tag with no redirect after it. The event fired in the same tick as the redirect to /thank-you and lost the race. **Fixed 2026-10-26** ([stillawake.studio#1](https://github.com/jaeden-debug/stillawake.studio/pull/1), live as `d902e37`): the redirect now waits for gtag's send confirmation (at most 1.5 s) and the hit goes by beacon. GA4 only lists an event once it has received it, so it can't be starred until the first real or test lead arrives.
+- **Cross-domain measurement:** the Google tag G-KE1CWNHY0S (Tag Manager → Google tags → "My website" → Configure your domains) lists "Contains stillawakemedia.com" and "Contains stillawake.studio". It was saved 2026-10-26 with the owner's approval and confirmed after a reload. The return redirect to /thank-you now stays in the visitor's original session instead of counting as a stillawake.studio referral. The suggested `*.vercel.app` preview domains were deliberately left out.
 - **Do not import `generate_lead` into Google Ads as a primary conversion.** Every Studio lead also loads /thank-you, which is already the primary "Studio lead (thank-you page)", so importing both would count each lead twice. Mark it as a GA4 key event for reporting only.
 
 ## Still to do (owner)
 
-1. **Cross-domain domains on the Google tag.** This is the one gap left on the tracking side. Studio sends visitors back to stillawakemedia.com/thank-you with a plain redirect, which doesn't carry the `_gl` linker. Without the admin cross-domain list, GA4 can start a new session there credited to stillawake.studio, and the conversion loses its link to the ad click.
-   - **Where:** tagmanager.google.com → Google tags → "My website" (G-KE1CWNHY0S) → Configure your domains.
-   - **What:** add two conditions, "Contains stillawakemedia.com" and "Contains stillawake.studio", then Save.
-   - **Don't accept** the suggested `*.vercel.app` preview domains.
-   - Claude got as far as this screen but stopped: account-setting changes need your explicit go-ahead.
-2. **First `generate_lead`:** after it arrives (or after one test intake, whose lead you then delete), go to GA4 → Admin → Key events and mark `generate_lead`. Reporting only; see above.
-3. **Optional:** reject the redundant Zylx pause `ed0f4486`.
+1. **First `generate_lead`:** after it arrives (or after one test intake, whose lead you then delete), go to GA4 → Admin → Key events and mark `generate_lead`. Reporting only; see above.
+2. **Optional:** reject the redundant Zylx pause `ed0f4486`.
 
 ## Resume checklist (winter)
 

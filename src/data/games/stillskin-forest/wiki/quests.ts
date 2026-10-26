@@ -10,10 +10,10 @@ export const quests: WikiEntry[] = [
     title: "Unlocking Blackthorn Asylum: The Admission Ledger",
     seoTitle: "How to Unlock Blackthorn Asylum in Stillskin Forest (Ledger Walkthrough)",
     description:
-      "Step-by-step: how to unlock Blackthorn Asylum in Stillskin Forest. Find the note on the barricade, solve the riddle, and read the Admission Ledger.",
+      "Step-by-step: how to unlock Blackthorn Asylum in Stillskin Forest. Read the note on the barricade, follow its riddle to the park, and read the Admission Ledger.",
     question: "How do you unlock Blackthorn Asylum in Stillskin Forest?",
     answer:
-      "Read the note \"Nailed to the Barricade\" at the ROAD CLOSED barricade on the road out of Stillwater. Its riddle points to the gazebo in Memorial Park. Under a loose board there is the Blackthorn Admission Ledger; reading it unlocks the asylum for your whole team for the rest of the run.",
+      "Read the note \"Nailed to the Barricade\" at the ROAD CLOSED barricade on the road out of Stillwater. Its riddle points to Memorial Park. Find the Blackthorn Admission Ledger there, near the picnic tables, and read it: the asylum unlocks for your whole team for the rest of the run.",
     sections: [
       {
         id: "steps",
@@ -22,9 +22,9 @@ export const quests: WikiEntry[] = [
         blocks: [
           { type: "list", ordered: true, items: [
             "In [Stillwater](@stillwater), follow Birch Lane to where it becomes Blackthorn Hill Road. The ROAD CLOSED barricade has been shoved onto the verge.",
-            "Read the note nailed to it: \"Nailed to the Barricade\". It is a riddle.",
-            "Go to the gazebo in [Memorial Park](@memorial-park).",
-            "Find the loose board and read the Blackthorn Admission Ledger.",
+            "Read the note nailed to it: \"Nailed to the Barricade\". It is a riddle: the book that signed the patients in waits \"where the band played on Sundays\".",
+            "Go to [Memorial Park](@memorial-park) in Stillwater.",
+            "Find the Blackthorn Admission Ledger, a readable note near the picnic tables, and read it.",
             "The asylum doors swing open and the chains drop for every player in your run.",
           ] },
           { type: "callout", tone: "warning", text: "The first time anyone steps onto the asylum grounds after this, 19 residents wake, including a Screamer and a Brute. Go together. See [Blackthorn Asylum](@blackthorn-asylum)." },

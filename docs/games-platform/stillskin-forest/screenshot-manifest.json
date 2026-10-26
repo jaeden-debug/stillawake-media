@@ -9,7 +9,7 @@
       "gameId": "stillskin-forest",
       "target": "/games/stillskin-forest",
       "description": "Cinematic main game hero. Real dusk lighting. Survivors are clones of one test avatar.",
-      "alt": "Two survivors with headlamps on a forest trail at dusk, a lantern post in the foreground",
+      "alt": "Survivors with headlamps on a forest trail at dusk in Stillskin Forest",
       "use": "hero",
       "dimensions": {
         "width": 2560,
@@ -49,7 +49,7 @@
       "gameId": "stillskin-forest",
       "target": "/games",
       "description": "Square game icon. Low-angle Walker against a glowing booth wall; high contrast for small sizes.",
-      "alt": "A Stillskin Forest infected looming against a pale glowing wall",
+      "alt": "Stillskin Forest game icon",
       "use": "icon",
       "dimensions": {
         "width": 512,
@@ -509,7 +509,7 @@
       "gameId": "stillskin-forest",
       "target": "memorial-park",
       "description": "Memorial Park",
-      "alt": "Memorial Park's gazebo and broken fountain",
+      "alt": "The playground in Memorial Park, Stillwater",
       "use": "screenshot",
       "dimensions": {
         "width": 1920,
@@ -517,7 +517,7 @@
       },
       "aspectRatio": "16:9",
       "priority": "P1",
-      "captureInstructions": "Gazebo, playground and fountain.",
+      "captureInstructions": "Playground, picnic tables and fountain.",
       "spoiler": false,
       "liveAvailability": "live",
       "status": "optimized"
@@ -589,7 +589,7 @@
       "gameId": "stillskin-forest",
       "target": "blackthorn-asylum",
       "description": "Asylum interior. Fill light from the camera position plus +0.8 EV.",
-      "alt": "The admissions room inside Blackthorn Asylum",
+      "alt": "The admissions hall inside Blackthorn Asylum",
       "use": "screenshot",
       "dimensions": {
         "width": 1920,
@@ -1109,7 +1109,7 @@
       "gameId": "stillskin-forest",
       "target": "food",
       "description": "Food items. Canned beans used instead of the Bag of Chips, whose texture shows a real third-party brand.",
-      "alt": "Canned beans, a food item in Stillskin Forest",
+      "alt": "Canned beans, chips and an energy bar",
       "use": "screenshot",
       "dimensions": {
         "width": 1920,
@@ -1269,7 +1269,7 @@
       "gameId": "stillskin-forest",
       "target": "headlamp",
       "description": "Headlamp. Night exposure lifted +2.2 EV for legibility.",
-      "alt": "A survivor with a headlamp outside St. Agnes Hospital at night",
+      "alt": "A headlamp beam cutting through the forest at night",
       "use": "screenshot",
       "dimensions": {
         "width": 1920,
@@ -1329,7 +1329,7 @@
       "gameId": "stillskin-forest",
       "target": "the-dread-encounter",
       "description": "Dread Encounter. Real hide view from inside the hospital locker; the hide prompt is cropped out.",
-      "alt": "An infected walking up to the locker, seen through the slats from inside",
+      "alt": "An infected approaching a locker during the Dread Encounter",
       "use": "screenshot",
       "dimensions": {
         "width": 1920,
@@ -1489,7 +1489,7 @@
       "gameId": "stillskin-forest",
       "target": "blood-moon",
       "description": "Blood Moon. Blood Moon grade set via GameState in Studio; the moon itself is not in frame. Night exposure lifted +1.1 EV.",
-      "alt": "St. Agnes Hospital under the red Blood Moon grade at night",
+      "alt": "A red Blood Moon over the forest",
       "use": "screenshot",
       "dimensions": {
         "width": 1920,
@@ -1649,7 +1649,7 @@
       "gameId": "stillskin-forest",
       "target": "blackthorn-admission-ledger",
       "description": "Admission ledger",
-      "alt": "The Blackthorn Admission Ledger under a loose board",
+      "alt": "The Blackthorn Admission Ledger open in the note reader",
       "use": "screenshot",
       "dimensions": {
         "width": 1920,
@@ -1657,7 +1657,7 @@
       },
       "aspectRatio": "16:9",
       "priority": "P1",
-      "captureInstructions": "Ledger in the gazebo.",
+      "captureInstructions": "Ledger note open on screen (use the ShowNote hook). HUD allowed.",
       "spoiler": false,
       "liveAvailability": "live",
       "status": "missing"

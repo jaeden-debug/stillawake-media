@@ -12,7 +12,6 @@ import type { MediaAsset } from "@/data/games/types";
 export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   "stillskin-forest-thumbnail": {
     "description": "Primary horizontal game thumbnail. Blackthorn Asylum above Green Lake, daylight.",
-    "alt": "Blackthorn Asylum above Green Lake in Stillskin Forest",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -25,7 +24,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-icon": {
     "description": "Square game icon. Low-angle Walker against a glowing booth wall; high contrast for small sizes.",
-    "alt": "A Stillskin Forest infected looming against a pale glowing wall",
     "dimensions": {
       "width": 512,
       "height": 512
@@ -38,7 +36,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-campgrounds": {
     "description": "Main campground. Campground lake, dock and cabin, daylight (not dusk).",
-    "alt": "Cabins around the campground lake in Stillskin Forest",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -51,7 +48,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-stillwater": {
     "description": "Stillwater town overview. Elevated view over Stillwater, St. Agnes Hospital and the park.",
-    "alt": "Main Street in the abandoned town of Stillwater",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -64,7 +60,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-hospital": {
     "description": "St. Agnes Hospital. St. Agnes Hospital exterior with ambulance.",
-    "alt": "St. Agnes Hospital and an abandoned ambulance",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -77,7 +72,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-blackthorn-asylum": {
     "description": "Asylum exterior. Asylum facade by day; a night version is still outstanding.",
-    "alt": "Blackthorn Asylum at the top of the hill",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -90,7 +84,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-green-lake": {
     "description": "Green Lake. Same master as the thumbnail, cropped lower and to the lake.",
-    "alt": "Green Lake below Blackthorn Asylum",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -103,7 +96,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-walker": {
     "description": "Walker. Walker in the capture booth (clean documentation).",
-    "alt": "A Walker infected in Stillskin Forest",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -116,7 +108,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-dread-encounter": {
     "description": "Dread Encounter. Real hide view from inside the hospital locker; the hide prompt is cropped out.",
-    "alt": "An infected walking up to the locker, seen through the slats from inside",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -129,7 +120,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-locker-view": {
     "description": "Locker view. Peek view through the locker slats.",
-    "alt": "The view out through the slats of a locker",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -142,7 +132,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-hero": {
     "description": "Cinematic main game hero. Real dusk lighting. Survivors are clones of one test avatar.",
-    "alt": "Two survivors with headlamps on a forest trail at dusk, a lantern post in the foreground",
     "dimensions": {
       "width": 2560,
       "height": 1440
@@ -155,7 +144,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-locker-hiding": {
     "description": "Locker hiding. Survivor stepping into the hospital locker.",
-    "alt": "A survivor stepping into a hospital locker",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -168,7 +156,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-night-chase": {
     "description": "Infected pursuit. Night exposure lifted +1.4 EV for legibility.",
-    "alt": "A survivor sprinting from infected through the forest at night",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -181,7 +168,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-blood-moon": {
     "description": "Blood Moon. Blood Moon grade set via GameState in Studio; the moon itself is not in frame. Night exposure lifted +1.1 EV.",
-    "alt": "St. Agnes Hospital under the red Blood Moon grade at night",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -194,7 +180,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-asylum-interior": {
     "description": "Asylum interior. Fill light from the camera position plus +0.8 EV.",
-    "alt": "The admissions room inside Blackthorn Asylum",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -207,7 +192,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-morgue": {
     "description": "Morgue. Fill light from the camera position plus +0.8 EV.",
-    "alt": "The drawer wall and autopsy tables in the St. Agnes morgue",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -220,7 +204,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-freezer": {
     "description": "Walk-in freezer. Fill light from the camera position plus +0.8 EV.",
-    "alt": "Meat hooks in the walk-in freezer behind the general store",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -233,7 +216,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-attic": {
     "description": "Tommy's attic. Fill light from the camera position plus +0.8 EV.",
-    "alt": "A circle of dolls in an attic in Stillwater",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -246,7 +228,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-hidden-study": {
     "description": "Hidden study. Fill light from the camera position plus +0.8 EV.",
-    "alt": "A hidden study behind a bookshelf",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -259,7 +240,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-storm-drain": {
     "description": "Storm drain. Fill light from the camera position plus +0.8 EV.",
-    "alt": "The storm drain tunnel under Memorial Park",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -272,7 +252,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-daytime": {
     "description": "Peaceful forest in daylight. Pine forest around the cabin row, daylight.",
-    "alt": "Sunlit pine forest in Stillskin Forest",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -285,7 +264,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-trails": {
     "description": "Forest trails",
-    "alt": "The lantern-lit forest trail toward Stillwater",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -298,7 +276,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-welcome-sign": {
     "description": "Welcome to Stillwater sign",
-    "alt": "The Welcome to Stillwater sign with the population crossed out to zero",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -311,7 +288,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-diner": {
     "description": "Rosie's Diner",
-    "alt": "The exterior of Rosie's Diner in Stillwater",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -324,7 +300,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-general-store": {
     "description": "Pine General Store",
-    "alt": "Pine General Store on Stillwater's main street",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -337,7 +312,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-houses": {
     "description": "Residential buildings",
-    "alt": "Boarded-up houses on a Stillwater street",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -350,7 +324,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-police-car": {
     "description": "Police car",
-    "alt": "A police roadblock with flashing lights at the edge of Stillwater",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -363,7 +336,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-wrecked-vehicles": {
     "description": "Wrecked vehicles",
-    "alt": "Burning car wrecks on a Stillwater street",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -376,7 +348,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-memorial-park": {
     "description": "Memorial Park",
-    "alt": "Memorial Park's gazebo and broken fountain",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -389,7 +360,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-graveyard": {
     "description": "Graveyard. Headstones are small and partly hidden by terrain grass in the current build.",
-    "alt": "The Blackthorn graveyard and its angel statue",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -402,7 +372,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-chapel": {
     "description": "Chapel. Chapel interior.",
-    "alt": "The chapel beside the Blackthorn graveyard",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -415,7 +384,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-crypt-cave": {
     "description": "Crypt cave",
-    "alt": "The green-lit chamber at the bottom of the crypt cave",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -428,7 +396,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-hollow": {
     "description": "Hollow environment",
-    "alt": "Green crystals lighting the Weeping Gallery underground",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -441,7 +408,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-hollow-heart": {
     "description": "The Heart",
-    "alt": "The pulsing Heart of Stillskin in its cavern",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -454,7 +420,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-runner": {
     "description": "Runner. Capture booth.",
-    "alt": "A Runner infected mid-sprint",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -467,7 +432,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-screamer": {
     "description": "Screamer. Capture booth.",
-    "alt": "A Screamer infected calling the horde",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -480,7 +444,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-brute": {
     "description": "Brute. Capture booth.",
-    "alt": "A Brute, the largest infected, at night",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -493,7 +456,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-infected-horde": {
     "description": "Infected horde. Infected massing outside the general store at dawn.",
-    "alt": "A horde of infected on a Stillwater street at night",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -506,7 +468,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-baseball-bat": {
     "description": "Baseball Bat",
-    "alt": "The Baseball Bat",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -519,7 +480,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-machete": {
     "description": "Machete",
-    "alt": "The Machete",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -532,7 +492,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-pistol": {
     "description": "Pistol",
-    "alt": "The Pistol",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -545,7 +504,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-shotgun": {
     "description": "Shotgun",
-    "alt": "The Shotgun",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -558,7 +516,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-crowbar": {
     "description": "Crowbar",
-    "alt": "The Crowbar",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -571,7 +528,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-hammer": {
     "description": "Hammer",
-    "alt": "The Hammer",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -584,7 +540,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-signal-remote": {
     "description": "Signal Remote",
-    "alt": "The Signal Remote freezing nearby infected",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -597,7 +552,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-first-aid-kit": {
     "description": "First Aid Kit",
-    "alt": "A First Aid Kit",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -610,7 +564,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-lantern": {
     "description": "Lantern",
-    "alt": "A placed lantern lighting a room",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -623,7 +576,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-food": {
     "description": "Food items. Canned beans used instead of the Bag of Chips, whose texture shows a real third-party brand.",
-    "alt": "Canned beans, a food item in Stillskin Forest",
     "dimensions": {
       "width": 1920,
       "height": 1080
@@ -636,7 +588,6 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   },
   "stillskin-forest-headlamp": {
     "description": "Headlamp. Night exposure lifted +2.2 EV for legibility.",
-    "alt": "A survivor with a headlamp outside St. Agnes Hospital at night",
     "dimensions": {
       "width": 1920,
       "height": 1080

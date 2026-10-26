@@ -24,7 +24,9 @@ const declared = new Set([...media.matchAll(/asset\(\s*"([a-z0-9-]+)"/g)].map((m
 const raw = delivery.capturedAssets;
 const items = Array.isArray(raw) ? raw : Object.values(raw);
 
-const overrideFields = ["description", "alt", "dimensions", "aspectRatio", "status", "source", "src", "spoiler"];
+// Alt text and targets are the site's copy (media.ts) and win over the
+// delivery, so a stale caption in a capture file can't overwrite a correction.
+const overrideFields = ["description", "dimensions", "aspectRatio", "status", "source", "src", "spoiler"];
 const assetFields = ["id", "filename", "gameId", "target", "description", "alt", "use", "dimensions", "aspectRatio", "priority", "spoiler", "liveAvailability", "status", "source", "src"];
 
 const missingFiles = [];

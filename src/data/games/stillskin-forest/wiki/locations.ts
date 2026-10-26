@@ -311,18 +311,18 @@ export const locations: WikiEntry[] = [
     ...base,
     slug: "memorial-park",
     title: "Memorial Park",
-    seoTitle: "Memorial Park in Stillskin Forest: The Gazebo and the Ledger",
+    seoTitle: "Memorial Park in Stillskin Forest: The Playground and the Ledger",
     description:
-      "Memorial Park in Stillskin Forest: the playground, the broken fountain, the polluted pond, and the gazebo where the Blackthorn Admission Ledger is hidden.",
+      "Memorial Park in Stillskin Forest: the playground, the broken fountain, the polluted pond, and the readable note that unlocks Blackthorn Asylum.",
     answer:
-      "Memorial Park is Stillwater's park: a playground with a music-box scare, a gazebo, picnic tables, a broken fountain spilling sludge, and a polluted pond with bubbles and flies. The gazebo is where the asylum quest leads, and the storm drain runs underneath.",
+      "Memorial Park is Stillwater's park: a playground with a music-box scare, picnic tables, a broken fountain spilling sludge, and a polluted pond with bubbles and flies. The Blackthorn Admission Ledger, the note that unlocks the asylum, is here, and the storm drain runs underneath.",
     sections: [
       {
-        id: "the-gazebo",
-        heading: "The gazebo",
+        id: "the-ledger",
+        heading: "The ledger",
         spoiler: true,
         blocks: [
-          { type: "p", text: "The riddle on the ROAD CLOSED barricade points here. Under a loose board is the Blackthorn Admission Ledger. See [the walkthrough](@blackthorn-admission-ledger)." },
+          { type: "p", text: "The riddle on the ROAD CLOSED barricade points here. The Blackthorn Admission Ledger is a readable note near the picnic tables, and reading it unlocks the asylum. See [the walkthrough](@blackthorn-admission-ledger)." },
         ],
       },
       {
@@ -335,7 +335,7 @@ export const locations: WikiEntry[] = [
     ],
     related: ["stillwater", "storm-drain", "blackthorn-admission-ledger"],
     sources: [SRC.playtest],
-    aliases: ["park", "gazebo", "fountain", "playground"],
+    aliases: ["park", "fountain", "playground", "picnic tables"],
   },
   {
     ...base,
@@ -368,7 +368,7 @@ export const locations: WikiEntry[] = [
       "Blackthorn Asylum in Stillskin Forest: how to unlock it, its two floors, the 19 residents that wake, and where the relics and Signal Remote are.",
     question: "How do you get into Blackthorn Asylum?",
     answer:
-      "The asylum is locked until someone reads the Blackthorn Admission Ledger, hidden in Memorial Park's gazebo. That unlocks it for your whole team for the run: the doors swing open and the chains drop. The first time anyone sets foot on the grounds afterward, 19 residents wake.",
+      "The asylum is locked until someone reads the Blackthorn Admission Ledger, a note in Memorial Park. That unlocks it for your whole team for the run: the doors swing open and the chains drop. The first time anyone sets foot on the grounds afterward, 19 residents wake.",
     sections: [
       {
         id: "getting-there",

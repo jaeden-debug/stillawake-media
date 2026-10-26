@@ -543,6 +543,222 @@
       "sha1": "0b3ad7f02acb"
     },
     {
+      "id": "stillskin-forest-sisters-rosary",
+      "filename": "stillskin-forest-sisters-rosary.webp",
+      "gameId": "stillskin-forest",
+      "target": "sisters-rosary",
+      "description": "The Sister's Rosary. Fill light from the camera position plus +0.6 EV.",
+      "alt": "The Sister's Rosary",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "spoiler": true,
+      "liveAvailability": "live",
+      "status": "optimized",
+      "source": "masters/pass4/sisters-rosary.png",
+      "src": "/games/stillskin-forest/lore/stillskin-forest-sisters-rosary.webp",
+      "captureMode": "Staged cinematic photography",
+      "originalResolution": "2768x1557",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 102304,
+      "sha1": "3bdaf4f63ccc"
+    },
+    {
+      "id": "stillskin-forest-miners-lantern",
+      "filename": "stillskin-forest-miners-lantern.webp",
+      "gameId": "stillskin-forest",
+      "target": "miners-lantern",
+      "description": "The Miner's Lantern. Fill light from the camera position plus +0.6 EV.",
+      "alt": "The Miner's Lantern burning green",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "spoiler": true,
+      "liveAvailability": "live",
+      "status": "optimized",
+      "source": "masters/pass4/miners-lantern.png",
+      "src": "/games/stillskin-forest/lore/stillskin-forest-miners-lantern.webp",
+      "captureMode": "Staged cinematic photography",
+      "originalResolution": "2768x1557",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 99760,
+      "sha1": "1cc424e3db3b"
+    },
+    {
+      "id": "stillskin-forest-dr-vances-ring",
+      "filename": "stillskin-forest-dr-vances-ring.webp",
+      "gameId": "stillskin-forest",
+      "target": "dr-vances-ring",
+      "description": "Dr. Vance's Ring. Fill light from the camera position plus +0.4 EV; the ring is small in frame.",
+      "alt": "Dr. Vance's Ring",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "spoiler": true,
+      "liveAvailability": "live",
+      "status": "optimized",
+      "source": "masters/pass4/dr-vances-ring.png",
+      "src": "/games/stillskin-forest/lore/stillskin-forest-dr-vances-ring.webp",
+      "captureMode": "Staged cinematic photography",
+      "originalResolution": "2768x1557",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 79938,
+      "sha1": "d6172fb76641"
+    },
+    {
+      "id": "stillskin-forest-ritual-circle",
+      "filename": "stillskin-forest-ritual-circle.webp",
+      "gameId": "stillskin-forest",
+      "target": "the-rite-of-stillness",
+      "description": "Ritual circle. The relic slots of the ritual circle.",
+      "alt": "The ritual circle in the Blackthorn cafeteria",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "spoiler": true,
+      "liveAvailability": "live",
+      "status": "optimized",
+      "source": "masters/pass4/ritual-circle.png",
+      "src": "/games/stillskin-forest/quests/stillskin-forest-ritual-circle.webp",
+      "captureMode": "Staged cinematic photography",
+      "originalResolution": "2768x1557",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 152274,
+      "sha1": "2f93167b9bce"
+    },
+    {
+      "id": "stillskin-forest-green-lake-dock",
+      "filename": "stillskin-forest-green-lake-dock.webp",
+      "gameId": "stillskin-forest",
+      "target": "green-lake",
+      "description": "Sampling dock",
+      "alt": "The abandoned sampling dock on Green Lake",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized",
+      "source": "masters/pass4/green-lake-dock.png",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-green-lake-dock.webp",
+      "captureMode": "Staged cinematic photography",
+      "originalResolution": "2768x1557",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 151436,
+      "sha1": "b903be307ae9"
+    },
+    {
+      "id": "stillskin-forest-green-lake-drain",
+      "filename": "stillskin-forest-green-lake-drain.webp",
+      "gameId": "stillskin-forest",
+      "target": "green-lake",
+      "description": "Asylum drainage outlet",
+      "alt": "The corroded asylum drain outlet at Green Lake",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "spoiler": true,
+      "liveAvailability": "live",
+      "status": "optimized",
+      "source": "masters/pass4/green-lake-drain.png",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-green-lake-drain.webp",
+      "captureMode": "Staged cinematic photography",
+      "originalResolution": "2768x1557",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 149716,
+      "sha1": "559902c1d925"
+    },
+    {
+      "id": "stillskin-forest-cabins",
+      "filename": "stillskin-forest-cabins.webp",
+      "gameId": "stillskin-forest",
+      "target": "campgrounds",
+      "description": "Cabin area",
+      "alt": "Wooden camping cabins in the Stillskin Forest campground",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized",
+      "source": "masters/pass4/cabins.png",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-cabins.webp",
+      "captureMode": "Staged cinematic photography",
+      "originalResolution": "2768x1557",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 151318,
+      "sha1": "3b19a9c47dca"
+    },
+    {
+      "id": "stillskin-forest-rooftops",
+      "filename": "stillskin-forest-rooftops.webp",
+      "gameId": "stillskin-forest",
+      "target": "st-agnes-hospital",
+      "description": "Rooftop traversal. View across Stillwater from a flat rooftop.",
+      "alt": "A survivor on the hospital roof above Stillwater",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized",
+      "source": "masters/pass4/rooftops.png",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-rooftops.webp",
+      "captureMode": "Staged cinematic photography",
+      "originalResolution": "2768x1557",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 53246,
+      "sha1": "766400ed1f4c"
+    },
+    {
       "id": "stillskin-forest-daytime",
       "filename": "stillskin-forest-daytime.webp",
       "gameId": "stillskin-forest",
@@ -764,7 +980,7 @@
       "gameId": "stillskin-forest",
       "target": "memorial-park",
       "description": "Memorial Park",
-      "alt": "Memorial Park's gazebo and broken fountain",
+      "alt": "The playground in Memorial Park, Stillwater",
       "use": "screenshot",
       "dimensions": {
         "width": 1920,
@@ -1676,7 +1892,7 @@
       "target": "/games/stillskin-forest/wiki/multiplayer/co-op-survival",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "blocked: needs 3-4 real players or test accounts"
+      "reason": "blocked: needs 3-4 players"
     },
     {
       "id": "stillskin-forest-trailer-poster",
@@ -1697,58 +1913,13 @@
       "reason": "pending: not captured yet"
     },
     {
-      "id": "stillskin-forest-cabins",
-      "folder": "locations",
-      "priority": "P2",
-      "target": "campgrounds",
-      "spoiler": false,
-      "liveAvailability": "live",
-      "reason": "pending: not captured yet"
-    },
-    {
-      "id": "stillskin-forest-rooftops",
-      "folder": "locations",
-      "priority": "P2",
-      "target": "st-agnes-hospital",
-      "spoiler": false,
-      "liveAvailability": "live",
-      "reason": "pending: not captured yet"
-    },
-    {
-      "id": "stillskin-forest-ritual-circle",
-      "folder": "quests",
-      "priority": "P1",
-      "target": "the-rite-of-stillness",
-      "spoiler": true,
-      "liveAvailability": "live",
-      "reason": "pending: not captured yet"
-    },
-    {
-      "id": "stillskin-forest-green-lake-dock",
-      "folder": "locations",
-      "priority": "P2",
-      "target": "green-lake",
-      "spoiler": false,
-      "liveAvailability": "live",
-      "reason": "pending: not captured yet"
-    },
-    {
-      "id": "stillskin-forest-green-lake-drain",
-      "folder": "locations",
-      "priority": "P2",
-      "target": "green-lake",
-      "spoiler": true,
-      "liveAvailability": "live",
-      "reason": "pending: not captured yet"
-    },
-    {
       "id": "stillskin-forest-watcher",
       "folder": "enemies",
       "priority": "P1",
       "target": "watcher",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "blocked: summon hook works (2 attempts) but the Watcher is not legible at night even at +1.3 EV; may need its glow/eyes tuned or a moonlit spot"
+      "reason": "blocked: summoned twice but not legible at night even at +1.3 EV"
     },
     {
       "id": "stillskin-forest-zombie-chase",
@@ -1802,7 +1973,7 @@
       "target": "stamina-and-sprinting",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "pending: not captured yet"
+      "reason": "blocked: stamina bar only shows during real sprint input"
     },
     {
       "id": "stillskin-forest-health",
@@ -1811,7 +1982,7 @@
       "target": "health-and-healing",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "pending: not captured yet"
+      "reason": "blocked: as hotbar"
     },
     {
       "id": "stillskin-forest-inventory",
@@ -1820,7 +1991,7 @@
       "target": "inventory-and-hotbar",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "pending: not captured yet"
+      "reason": "blocked: as hotbar"
     },
     {
       "id": "stillskin-forest-hotbar",
@@ -1829,7 +2000,7 @@
       "target": "inventory-and-hotbar",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "pending: not captured yet"
+      "reason": "blocked: needs live keyboard input; Roblox menu overlay appears in automated HUD capture"
     },
     {
       "id": "stillskin-forest-dread-encounter-closeup",
@@ -1838,7 +2009,7 @@
       "target": "the-dread-encounter",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "blocked: needs Codex staging hook CLR-010"
+      "reason": "blocked: needs Codex staging hook CLR-010 (Codex-owned)"
     },
     {
       "id": "stillskin-forest-revive",
@@ -1847,7 +2018,7 @@
       "target": "downed-and-revive",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "blocked: needs two players (multi-client playtest or real accounts)"
+      "reason": "blocked: needs two players"
     },
     {
       "id": "stillskin-forest-downed",
@@ -1892,7 +2063,7 @@
       "target": "doors-and-building",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "pending: not captured yet"
+      "reason": "blocked: needs live build input"
     },
     {
       "id": "stillskin-forest-heavy-fog",
@@ -1901,7 +2072,7 @@
       "target": "heavy-fog",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "blocked: special-night visuals only apply when the night rolls at dusk; setting GameState.SpecialNight mid-night does not trigger them. Needs GameConfig.SpecialNights.ForceType set before dusk (builder-owned)"
+      "reason": "in progress: builder's ForceSpecialNight hook being deployed"
     },
     {
       "id": "stillskin-forest-infected-surge",
@@ -1910,7 +2081,7 @@
       "target": "infected-surge",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "blocked: same as heavy-fog"
+      "reason": "in progress: as heavy-fog"
     },
     {
       "id": "stillskin-forest-silent-night",
@@ -1919,25 +2090,7 @@
       "target": "silent-night",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "blocked: same as heavy-fog"
-    },
-    {
-      "id": "stillskin-forest-sisters-rosary",
-      "folder": "lore",
-      "priority": "P2",
-      "target": "sisters-rosary",
-      "spoiler": true,
-      "liveAvailability": "live",
-      "reason": "pending: not captured yet"
-    },
-    {
-      "id": "stillskin-forest-miners-lantern",
-      "folder": "lore",
-      "priority": "P2",
-      "target": "miners-lantern",
-      "spoiler": true,
-      "liveAvailability": "live",
-      "reason": "pending: not captured yet"
+      "reason": "in progress: as heavy-fog"
     },
     {
       "id": "stillskin-forest-angels-tear",
@@ -1946,16 +2099,7 @@
       "target": "angels-tear",
       "spoiler": true,
       "liveAvailability": "live",
-      "reason": "pending: not captured yet"
-    },
-    {
-      "id": "stillskin-forest-dr-vances-ring",
-      "folder": "lore",
-      "priority": "P2",
-      "target": "dr-vances-ring",
-      "spoiler": true,
-      "liveAvailability": "live",
-      "reason": "pending: not captured yet"
+      "reason": "retry: camera framed grass; position (-365,56,-605)"
     },
     {
       "id": "stillskin-forest-admission-ledger",
@@ -1964,7 +2108,7 @@
       "target": "blackthorn-admission-ledger",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "blocked: ledger sits under a loose board in the park gazebo; not visible without the in-game reveal interaction"
+      "reason": "in progress: builder's ShowNote hook being deployed (ledger is a normal note at the park, not hidden)"
     },
     {
       "id": "stillskin-forest-story-documents",
@@ -1973,7 +2117,7 @@
       "target": "notes-and-tapes",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "pending: not captured yet"
+      "reason": "retry: framed a poster, not a note"
     },
     {
       "id": "stillskin-forest-ritual",

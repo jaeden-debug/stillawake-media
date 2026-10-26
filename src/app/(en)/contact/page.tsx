@@ -15,6 +15,11 @@ export const metadata: Metadata = {
     "Contact StillAwake Media to start a premium website, SEO system, brand identity, AI automation, Shopify build, or custom software project.",
   alternates: {
     canonical: "/contact",
+    languages: {
+      "en-CA": "https://stillawakemedia.com/contact",
+      "fr-CA": "https://stillawakemedia.com/fr/contact",
+      "x-default": "https://stillawakemedia.com/contact",
+    },
   },
 };
 

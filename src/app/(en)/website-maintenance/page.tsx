@@ -23,7 +23,7 @@ const CARE = RECURRING_BY_ID["website-care-plan"];
 const HOSTING = RECURRING_BY_ID["managed-hosting"];
 
 export const metadata: Metadata = {
-  title: "Website Maintenance & Emergency Support | Transparent Pricing",
+  title: "Website Maintenance & Emergency Support | Montréal",
   description:
     `Website maintenance and same-day emergency support from StillAwake Media in Montréal, serving all of Canada remotely. Care plans from $${HOSTING.monthly} CAD per month and emergency fixes from $${Math.min(...tierPrices("custom_site"))} CAD, with published tier pricing.`,
   alternates: {

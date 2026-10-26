@@ -6,9 +6,9 @@ import { ArticlesLies } from "@/components/articles-lies";
 const pageUrl = "https://stillawakemedia.com/fr/agence-web-montreal";
 
 export const metadata: Metadata = {
-  title: "Agence Web Montréal | Sites Premium, SEO et Branding",
+  title: "Agence web Montréal | Création de site web sur mesure",
   description:
-    "StillAwake Media est une agence web à Montréal spécialisée en sites premium, SEO, branding, performance, automatisation IA et croissance numérique.",
+    "Agence web à Montréal : création de site web sur mesure, refonte, boutiques Shopify et référencement, en français et en anglais. Prix affichés et études de cas mesurées.",
   alternates: {
     canonical: pageUrl,
     languages: {
@@ -332,6 +332,7 @@ export default function Page() {
           ["Agence SEO Montréal", "/fr/agence-seo-montreal"],
           ["Maintenance de site web", "/fr/maintenance-site-web"],
           ["Développement Shopify", "/fr/developpement-shopify"],
+          ["Développement Framer", "/fr/developpement-framer"],
           ["Référencement IA (AEO)", "/fr/referencement-ia"],
           ["Tarifs", "/fr/tarifs"],
           ["Prix d'un site web au Québec", "/fr/prix-site-web-quebec"],

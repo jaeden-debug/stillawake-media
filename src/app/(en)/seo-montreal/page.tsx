@@ -29,14 +29,14 @@ const SEO_PLAN_ITEMS: Record<string, string[]> = {
 };
 
 export const metadata: Metadata = {
-  title: "SEO Montreal | Technical SEO & Local SEO Services",
-  description:
-    "SEO Montreal services focused on technical SEO, local rankings, Google visibility, content systems, and conversion-focused organic growth.",
+  title: "SEO Montreal | SEO Services & Local SEO Agency",
+  description: `SEO services for Montréal businesses: technical SEO, local and map-pack visibility, content and AI search. Month-to-month plans from $${SEO_PLANS[0].monthly} CAD, price on the page.`,
   keywords: [
     "seo montreal",
     "seo services montreal",
     "local seo montreal",
     "technical seo montreal",
+    "seo agency montreal",
     "montreal seo agency",
     "google maps ranking montreal",
     "referencement montreal",
@@ -188,6 +188,18 @@ export default function SeoMontrealPage() {
         </div>
       </section>
 
+      <section className="border-t border-white/10 px-6 py-16">
+        <div className="mx-auto max-w-7xl rounded-[2rem] border border-[#D71920]/40 bg-[#D71920]/5 p-8">
+          <p className="mb-3 text-sm uppercase tracking-[.3em] text-[#D71920]">Proof, not promises</p>
+          <h2 className="geist max-w-3xl text-3xl font-black tracking-[-0.06em]">Zero organic clicks to page 1 in 8 weeks — measured.</h2>
+          <p className="mt-4 max-w-3xl leading-8 text-[#C7B9B9]">
+            TravelDesign By Lisa: 834-URL trilingual build, ~2,300 SEO defects cleared, 9-minute average sessions,
+            CLS 0.00 and Best Practices 100 measured Aug 2026. Every number sourced and dated in the case study.
+          </p>
+          <Link href="/work/lisa-travel-design" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Read the case study →</Link>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-4xl px-6 py-24">
         <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-10">
           <p className="text-sm uppercase tracking-[0.3em] text-[#D71920]">
@@ -195,12 +207,19 @@ export default function SeoMontrealPage() {
           </p>
 
           <p className="mt-6 text-2xl leading-10 text-white/90">
-            SEO in Montreal is no longer just about keywords. Modern SEO is a
-            technical infrastructure problem, a content architecture problem, a
-            user experience problem, and a trust-building problem. Businesses
-            that rank consistently combine strong technical foundations with
-            strategic content systems, local authority signals, internal linking,
-            performance optimization, and conversion-focused design.
+            StillAwake Media is a Montréal SEO studio. We fix the technical
+            problems that stop Google from crawling and trusting a site, build
+            the local signals that decide the map pack (Google Business Profile,
+            consistent business details, reviews you earn), and write the pages
+            people in Montréal actually search for, in English and French.
+            Plans are month-to-month from ${SEO_PLANS[0].monthly} CAD, and every
+            month ends with a written report.
+          </p>
+          <p className="mt-6 text-base leading-8 text-white/60">
+            What to expect: technical fixes show up in Search Console within
+            weeks; new rankings for competitive Montréal terms usually take
+            several months and depend on the competition and on your site&apos;s
+            starting point. Nobody can honestly guarantee a position.
           </p>
         </div>
       </section>
@@ -794,17 +813,6 @@ export default function SeoMontrealPage() {
         </article>
       </section>
     
-      <section className="border-t border-white/10 px-6 py-16">
-        <div className="mx-auto max-w-7xl rounded-[2rem] border border-[#D71920]/40 bg-[#D71920]/5 p-8">
-          <p className="mb-3 text-sm uppercase tracking-[.3em] text-[#D71920]">Proof, not promises</p>
-          <h2 className="geist max-w-3xl text-3xl font-black tracking-[-0.06em]">Zero organic clicks to page 1 in 8 weeks — measured.</h2>
-          <p className="mt-4 max-w-3xl leading-8 text-[#C7B9B9]">
-            TravelDesign By Lisa: 834-URL trilingual build, ~2,300 SEO defects cleared, 9-minute average sessions,
-            CLS 0.00 and Best Practices 100 measured Aug 2026. Every number sourced and dated in the case study.
-          </p>
-          <Link href="/work/lisa-travel-design" className="mt-6 inline-flex rounded-full bg-[#D71920] px-6 py-3 text-sm font-medium transition hover:opacity-90">Read the case study →</Link>
-        </div>
-      </section>
     </main>
   );
 }

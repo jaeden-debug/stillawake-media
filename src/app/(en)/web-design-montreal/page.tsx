@@ -5,7 +5,7 @@ import { AuditCta, MagazineInjection, RelatedReadingInjection, InternalLinks } f
 const pageUrl = "https://stillawakemedia.com/web-design-montreal";
 
 export const metadata: Metadata = {
-  title: "Web Design Montreal | Premium Websites Built for Growth",
+  title: "Web Design Montreal | Custom Website Design Agency",
   description: "Premium web design in Montreal with published pricing context and measured results: page-1 rankings, 100/100 Lighthouse scores, and four sourced case studies.",
   alternates: {
     canonical: pageUrl,

@@ -5,13 +5,19 @@
  * exists under public/, and writes src/data/games/<game>/captured.ts:
  * overrides for ids already declared in media.ts, plus any extra captures.
  *
- * Run: node scripts/import-game-captures.mjs [game-slug]
+ * Run: node scripts/import-game-captures.mjs [game-slug] [--skip=id1,id2]
+ *   --skip leaves delivered captures out (for example a frame with dev UI in it)
+ *   until a corrected file arrives.
  * Then: UPDATE_DOCS=1 npx vitest run src/lib/game-docs.test.ts
  */
 import fs from "node:fs";
 import path from "node:path";
 
-const game = process.argv[2] ?? "stillskin-forest";
+const args = process.argv.slice(2);
+const game = args.find((a) => !a.startsWith("--")) ?? "stillskin-forest";
+const skip = new Set(
+  (args.find((a) => a.startsWith("--skip="))?.slice(7) ?? "").split(",").filter(Boolean),
+);
 const root = process.cwd();
 const deliveryPath = path.join(root, "docs/games-platform", game, "capture-delivery", `${game}-assets.json`);
 const mediaPath = path.join(root, "src/data/games", game, "media.ts");
@@ -24,9 +30,10 @@ const declared = new Set([...media.matchAll(/asset\(\s*"([a-z0-9-]+)"/g)].map((m
 const raw = delivery.capturedAssets;
 const items = Array.isArray(raw) ? raw : Object.values(raw);
 
-// Alt text and targets are the site's copy (media.ts) and win over the
-// delivery, so a stale caption in a capture file can't overwrite a correction.
-const overrideFields = ["description", "dimensions", "aspectRatio", "status", "source", "src", "spoiler"];
+// Alt text, targets and spoiler status are the site's decisions (media.ts) and
+// win over the delivery, so a capture file can't un-hide a spoiler or
+// overwrite a corrected caption.
+const overrideFields = ["description", "dimensions", "aspectRatio", "status", "source", "src"];
 const assetFields = ["id", "filename", "gameId", "target", "description", "alt", "use", "dimensions", "aspectRatio", "priority", "spoiler", "liveAvailability", "status", "source", "src"];
 
 const missingFiles = [];
@@ -34,6 +41,7 @@ const captured = {};
 const extras = [];
 
 for (const a of items) {
+  if (skip.has(a.id)) continue;
   if (!a.src || !fs.existsSync(path.join(root, "public", a.src))) {
     missingFiles.push(a.id);
     continue;
@@ -78,5 +86,6 @@ export const extraAssets: MediaAsset[] = ${json(extras)};
 
 console.log(
   `Imported ${Object.keys(captured).length} declared + ${extras.length} extra captures for ${game}. ` +
-    `${(delivery.missing ?? []).length} ids still missing.`,
+    `${(delivery.missing ?? []).length} ids still missing.` +
+    (skip.size ? ` Skipped: ${[...skip].join(", ")}.` : ""),
 );

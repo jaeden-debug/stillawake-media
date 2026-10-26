@@ -19,8 +19,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/locations/stillskin-forest-green-lake__day-a.png",
-    "src": "/games/stillskin-forest/branding/stillskin-forest-thumbnail.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/branding/stillskin-forest-thumbnail.webp"
   },
   "stillskin-forest-icon": {
     "description": "Square game icon. Low-angle Walker against a glowing booth wall; high contrast for small sizes.",
@@ -31,8 +30,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "1:1",
     "status": "optimized",
     "source": "masters/pass3/sil-2.png",
-    "src": "/games/stillskin-forest/branding/stillskin-forest-icon.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/branding/stillskin-forest-icon.webp"
   },
   "stillskin-forest-campgrounds": {
     "description": "Main campground. Campground lake, dock and cabin, daylight (not dusk).",
@@ -43,8 +41,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/_rejected/_tests/test-campgrounds.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-campgrounds.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-campgrounds.webp"
   },
   "stillskin-forest-stillwater": {
     "description": "Stillwater town overview. Elevated view over Stillwater, St. Agnes Hospital and the park.",
@@ -55,8 +52,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/locations/stillskin-forest-stillwater__a.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-stillwater.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-stillwater.webp"
   },
   "stillskin-forest-hospital": {
     "description": "St. Agnes Hospital. St. Agnes Hospital exterior with ambulance.",
@@ -67,8 +63,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/locations/stillskin-forest-hospital__a.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-hospital.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-hospital.webp"
   },
   "stillskin-forest-blackthorn-asylum": {
     "description": "Asylum exterior. Asylum facade by day; a night version is still outstanding.",
@@ -79,8 +74,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/locations/stillskin-forest-blackthorn-asylum__day-a.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-blackthorn-asylum.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-blackthorn-asylum.webp"
   },
   "stillskin-forest-green-lake": {
     "description": "Green Lake. Same master as the thumbnail, cropped lower and to the lake.",
@@ -91,8 +85,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/locations/stillskin-forest-green-lake__day-a.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-green-lake.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-green-lake.webp"
   },
   "stillskin-forest-walker": {
     "description": "Walker. Walker in the capture booth (clean documentation).",
@@ -103,8 +96,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/enemies/stillskin-forest-walker-profile.png",
-    "src": "/games/stillskin-forest/enemies/stillskin-forest-walker.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/enemies/stillskin-forest-walker.webp"
   },
   "stillskin-forest-dread-encounter": {
     "description": "Dread Encounter. Real hide view from inside the hospital locker; the hide prompt is cropped out.",
@@ -115,8 +107,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/mechanics/_locker-take1/dread-seq-01.png",
-    "src": "/games/stillskin-forest/mechanics/stillskin-forest-dread-encounter.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/mechanics/stillskin-forest-dread-encounter.webp"
   },
   "stillskin-forest-locker-view": {
     "description": "Locker view. Peek view through the locker slats.",
@@ -127,8 +118,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/mechanics/_locker-take1/dread-seq-03.png",
-    "src": "/games/stillskin-forest/mechanics/stillskin-forest-locker-view.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/mechanics/stillskin-forest-locker-view.webp"
   },
   "stillskin-forest-hero": {
     "description": "Cinematic main game hero. Real dusk lighting. Survivors are clones of one test avatar.",
@@ -139,8 +129,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/heroes/hero-dusk-06.png",
-    "src": "/games/stillskin-forest/branding/stillskin-forest-hero.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/branding/stillskin-forest-hero.webp"
   },
   "stillskin-forest-locker-hiding": {
     "description": "Locker hiding. Survivor stepping into the hospital locker.",
@@ -151,8 +140,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/mechanics/locker-entry-01.png",
-    "src": "/games/stillskin-forest/mechanics/stillskin-forest-locker-hiding.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/mechanics/stillskin-forest-locker-hiding.webp"
   },
   "stillskin-forest-night-chase": {
     "description": "Infected pursuit. Night exposure lifted +1.4 EV for legibility.",
@@ -163,8 +151,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/branding/nchase-10.png",
-    "src": "/games/stillskin-forest/branding/stillskin-forest-night-chase.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/branding/stillskin-forest-night-chase.webp"
   },
   "stillskin-forest-blood-moon": {
     "description": "Blood Moon. Blood Moon grade set via GameState in Studio; the moon itself is not in frame. Night exposure lifted +1.1 EV.",
@@ -175,8 +162,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/pass3/blood-moon.png",
-    "src": "/games/stillskin-forest/nights/stillskin-forest-blood-moon.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/nights/stillskin-forest-blood-moon.webp"
   },
   "stillskin-forest-asylum-interior": {
     "description": "Asylum interior. Fill light from the camera position plus +0.8 EV.",
@@ -187,8 +173,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/pass3/asylum-admissions.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-asylum-interior.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-asylum-interior.webp"
   },
   "stillskin-forest-morgue": {
     "description": "Morgue. Fill light from the camera position plus +0.8 EV.",
@@ -199,8 +184,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/pass3/morgue.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-morgue.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-morgue.webp"
   },
   "stillskin-forest-freezer": {
     "description": "Walk-in freezer. Fill light from the camera position plus +0.8 EV.",
@@ -211,8 +195,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/pass3/freezer.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-freezer.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-freezer.webp"
   },
   "stillskin-forest-attic": {
     "description": "Tommy's attic. Fill light from the camera position plus +0.8 EV.",
@@ -223,8 +206,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/pass3/attic.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-attic.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-attic.webp"
   },
   "stillskin-forest-hidden-study": {
     "description": "Hidden study. Fill light from the camera position plus +0.8 EV.",
@@ -235,8 +217,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/pass3/hidden-study.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-hidden-study.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-hidden-study.webp"
   },
   "stillskin-forest-storm-drain": {
     "description": "Storm drain. Fill light from the camera position plus +0.8 EV.",
@@ -247,8 +228,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/pass3/storm-drain.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-storm-drain.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-storm-drain.webp"
   },
   "stillskin-forest-sisters-rosary": {
     "description": "The Sister's Rosary. Fill light from the camera position plus +0.6 EV.",
@@ -259,8 +239,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/pass4/sisters-rosary.png",
-    "src": "/games/stillskin-forest/lore/stillskin-forest-sisters-rosary.webp",
-    "spoiler": true
+    "src": "/games/stillskin-forest/lore/stillskin-forest-sisters-rosary.webp"
   },
   "stillskin-forest-miners-lantern": {
     "description": "The Miner's Lantern. Fill light from the camera position plus +0.6 EV.",
@@ -271,8 +250,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/pass4/miners-lantern.png",
-    "src": "/games/stillskin-forest/lore/stillskin-forest-miners-lantern.webp",
-    "spoiler": true
+    "src": "/games/stillskin-forest/lore/stillskin-forest-miners-lantern.webp"
   },
   "stillskin-forest-dr-vances-ring": {
     "description": "Dr. Vance's Ring. Fill light from the camera position plus +0.4 EV; the ring is small in frame.",
@@ -283,8 +261,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/pass4/dr-vances-ring.png",
-    "src": "/games/stillskin-forest/lore/stillskin-forest-dr-vances-ring.webp",
-    "spoiler": true
+    "src": "/games/stillskin-forest/lore/stillskin-forest-dr-vances-ring.webp"
   },
   "stillskin-forest-ritual-circle": {
     "description": "Ritual circle. The relic slots of the ritual circle.",
@@ -295,8 +272,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/pass4/ritual-circle.png",
-    "src": "/games/stillskin-forest/quests/stillskin-forest-ritual-circle.webp",
-    "spoiler": true
+    "src": "/games/stillskin-forest/quests/stillskin-forest-ritual-circle.webp"
   },
   "stillskin-forest-green-lake-dock": {
     "description": "Sampling dock",
@@ -307,8 +283,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/pass4/green-lake-dock.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-green-lake-dock.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-green-lake-dock.webp"
   },
   "stillskin-forest-green-lake-drain": {
     "description": "Asylum drainage outlet",
@@ -319,8 +294,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/pass4/green-lake-drain.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-green-lake-drain.webp",
-    "spoiler": true
+    "src": "/games/stillskin-forest/locations/stillskin-forest-green-lake-drain.webp"
   },
   "stillskin-forest-cabins": {
     "description": "Cabin area",
@@ -331,8 +305,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/pass4/cabins.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-cabins.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-cabins.webp"
   },
   "stillskin-forest-rooftops": {
     "description": "Rooftop traversal. View across Stillwater from a flat rooftop.",
@@ -343,8 +316,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/pass4/rooftops.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-rooftops.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-rooftops.webp"
   },
   "stillskin-forest-admission-ledger": {
     "description": "Admission ledger. Real note reader UI, opened in Studio via the ShowNote capture hook.",
@@ -355,8 +327,29 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/pass4/admission-ledger.png",
-    "src": "/games/stillskin-forest/quests/stillskin-forest-admission-ledger.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/quests/stillskin-forest-admission-ledger.webp"
+  },
+  "stillskin-forest-story-documents": {
+    "description": "Story documents. Real note reader UI, opened in Studio via the ShowNote capture hook.",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass5/story-documents.png",
+    "src": "/games/stillskin-forest/lore/stillskin-forest-story-documents.webp"
+  },
+  "stillskin-forest-end-run": {
+    "description": "End of run. Real RunOver outro after the survivor was eliminated; cropped 1:1 to exclude a placeholder UI panel at the right edge (the run-stats card is clipped). Not the rooftop lineup.",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass5/end-run.png",
+    "src": "/games/stillskin-forest/mechanics/stillskin-forest-end-run.webp"
   },
   "stillskin-forest-daytime": {
     "description": "Peaceful forest in daylight. Pine forest around the cabin row, daylight.",
@@ -367,8 +360,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/locations/stillskin-forest-cabins__a.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-daytime.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-daytime.webp"
   },
   "stillskin-forest-trails": {
     "description": "Forest trails",
@@ -379,8 +371,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/locations/stillskin-forest-trails__a.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-trails.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-trails.webp"
   },
   "stillskin-forest-welcome-sign": {
     "description": "Welcome to Stillwater sign",
@@ -391,8 +382,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/locations/stillskin-forest-welcome-sign__a.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-welcome-sign.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-welcome-sign.webp"
   },
   "stillskin-forest-diner": {
     "description": "Rosie's Diner",
@@ -403,8 +393,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/locations/stillskin-forest-diner__b.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-diner.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-diner.webp"
   },
   "stillskin-forest-general-store": {
     "description": "Pine General Store",
@@ -415,8 +404,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/locations/stillskin-forest-general-store__b.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-general-store.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-general-store.webp"
   },
   "stillskin-forest-houses": {
     "description": "Residential buildings",
@@ -427,8 +415,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/locations/stillskin-forest-houses__a.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-houses.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-houses.webp"
   },
   "stillskin-forest-police-car": {
     "description": "Police car",
@@ -439,8 +426,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/locations/stillskin-forest-police-car__a.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-police-car.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-police-car.webp"
   },
   "stillskin-forest-wrecked-vehicles": {
     "description": "Wrecked vehicles",
@@ -451,8 +437,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/locations/stillskin-forest-wrecked-vehicles__a.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-wrecked-vehicles.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-wrecked-vehicles.webp"
   },
   "stillskin-forest-memorial-park": {
     "description": "Memorial Park",
@@ -463,8 +448,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/locations/stillskin-forest-memorial-park__a.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-memorial-park.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-memorial-park.webp"
   },
   "stillskin-forest-graveyard": {
     "description": "Graveyard. Headstones are small and partly hidden by terrain grass in the current build.",
@@ -475,8 +459,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/locations/stillskin-forest-graveyard__day-b.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-graveyard.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-graveyard.webp"
   },
   "stillskin-forest-chapel": {
     "description": "Chapel. Chapel interior.",
@@ -487,8 +470,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/locations/stillskin-forest-chapel__a.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-chapel.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/locations/stillskin-forest-chapel.webp"
   },
   "stillskin-forest-crypt-cave": {
     "description": "Crypt cave",
@@ -499,8 +481,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/locations/stillskin-forest-crypt-cave__a.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-crypt-cave.webp",
-    "spoiler": true
+    "src": "/games/stillskin-forest/locations/stillskin-forest-crypt-cave.webp"
   },
   "stillskin-forest-hollow": {
     "description": "Hollow environment",
@@ -511,8 +492,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/locations/stillskin-forest-hollow__a.png",
-    "src": "/games/stillskin-forest/locations/stillskin-forest-hollow.webp",
-    "spoiler": true
+    "src": "/games/stillskin-forest/locations/stillskin-forest-hollow.webp"
   },
   "stillskin-forest-hollow-heart": {
     "description": "The Heart",
@@ -523,8 +503,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/quests/stillskin-forest-hollow-heart__a.png",
-    "src": "/games/stillskin-forest/quests/stillskin-forest-hollow-heart.webp",
-    "spoiler": true
+    "src": "/games/stillskin-forest/quests/stillskin-forest-hollow-heart.webp"
   },
   "stillskin-forest-runner": {
     "description": "Runner. Capture booth.",
@@ -535,8 +514,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/enemies/stillskin-forest-runner-profile.png",
-    "src": "/games/stillskin-forest/enemies/stillskin-forest-runner.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/enemies/stillskin-forest-runner.webp"
   },
   "stillskin-forest-screamer": {
     "description": "Screamer. Capture booth.",
@@ -547,8 +525,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/enemies/stillskin-forest-screamer-profile.png",
-    "src": "/games/stillskin-forest/enemies/stillskin-forest-screamer.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/enemies/stillskin-forest-screamer.webp"
   },
   "stillskin-forest-brute": {
     "description": "Brute. Capture booth.",
@@ -559,8 +536,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/enemies/stillskin-forest-brute-profile.png",
-    "src": "/games/stillskin-forest/enemies/stillskin-forest-brute.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/enemies/stillskin-forest-brute.webp"
   },
   "stillskin-forest-infected-horde": {
     "description": "Infected horde. Infected massing outside the general store at dawn.",
@@ -571,8 +547,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/enemies/stillskin-forest-brute__night-a.png",
-    "src": "/games/stillskin-forest/enemies/stillskin-forest-infected-horde.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/enemies/stillskin-forest-infected-horde.webp"
   },
   "stillskin-forest-baseball-bat": {
     "description": "Baseball Bat",
@@ -583,8 +558,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/weapons/stillskin-forest-baseball-bat.png",
-    "src": "/games/stillskin-forest/weapons/stillskin-forest-baseball-bat.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/weapons/stillskin-forest-baseball-bat.webp"
   },
   "stillskin-forest-machete": {
     "description": "Machete",
@@ -595,8 +569,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/weapons/stillskin-forest-machete.png",
-    "src": "/games/stillskin-forest/weapons/stillskin-forest-machete.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/weapons/stillskin-forest-machete.webp"
   },
   "stillskin-forest-pistol": {
     "description": "Pistol",
@@ -607,8 +580,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/weapons/stillskin-forest-pistol.png",
-    "src": "/games/stillskin-forest/weapons/stillskin-forest-pistol.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/weapons/stillskin-forest-pistol.webp"
   },
   "stillskin-forest-shotgun": {
     "description": "Shotgun",
@@ -619,8 +591,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/weapons/stillskin-forest-shotgun.png",
-    "src": "/games/stillskin-forest/weapons/stillskin-forest-shotgun.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/weapons/stillskin-forest-shotgun.webp"
   },
   "stillskin-forest-crowbar": {
     "description": "Crowbar",
@@ -631,8 +602,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/weapons/stillskin-forest-crowbar.png",
-    "src": "/games/stillskin-forest/weapons/stillskin-forest-crowbar.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/weapons/stillskin-forest-crowbar.webp"
   },
   "stillskin-forest-hammer": {
     "description": "Hammer",
@@ -643,8 +613,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/weapons/stillskin-forest-hammer.png",
-    "src": "/games/stillskin-forest/weapons/stillskin-forest-hammer.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/weapons/stillskin-forest-hammer.webp"
   },
   "stillskin-forest-signal-remote": {
     "description": "Signal Remote",
@@ -655,8 +624,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/weapons/stillskin-forest-signal-remote.png",
-    "src": "/games/stillskin-forest/weapons/stillskin-forest-signal-remote.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/weapons/stillskin-forest-signal-remote.webp"
   },
   "stillskin-forest-first-aid-kit": {
     "description": "First Aid Kit",
@@ -667,8 +635,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/items/stillskin-forest-first-aid-kit.png",
-    "src": "/games/stillskin-forest/items/stillskin-forest-first-aid-kit.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/items/stillskin-forest-first-aid-kit.webp"
   },
   "stillskin-forest-lantern": {
     "description": "Lantern",
@@ -679,8 +646,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/items/stillskin-forest-lantern.png",
-    "src": "/games/stillskin-forest/items/stillskin-forest-lantern.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/items/stillskin-forest-lantern.webp"
   },
   "stillskin-forest-food": {
     "description": "Food items. Canned beans used instead of the Bag of Chips, whose texture shows a real third-party brand.",
@@ -691,8 +657,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/items/stillskin-forest-canned-beans.png",
-    "src": "/games/stillskin-forest/items/stillskin-forest-food.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/items/stillskin-forest-food.webp"
   },
   "stillskin-forest-headlamp": {
     "description": "Headlamp. Night exposure lifted +2.2 EV for legibility.",
@@ -703,8 +668,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "aspectRatio": "16:9",
     "status": "optimized",
     "source": "masters/locations/stillskin-forest-stillwater__night-a.png",
-    "src": "/games/stillskin-forest/mechanics/stillskin-forest-headlamp.webp",
-    "spoiler": false
+    "src": "/games/stillskin-forest/mechanics/stillskin-forest-headlamp.webp"
   }
 };
 

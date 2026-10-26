@@ -103,3 +103,13 @@ export const jaedenDoody = {
  * Everything else falls back to the Organization as author.
  */
 export const personAuthorNames = new Set(["Jaeden Doody"]);
+
+/**
+ * The `<meta name="author">` for an article, from the same frontmatter name
+ * the byline and the JSON-LD author use, so the three never disagree.
+ */
+export function articleAuthors(name: string | undefined): { name: string; url: string }[] {
+  return name && personAuthorNames.has(name)
+    ? [{ name: jaedenDoody.name, url: jaedenDoody.url }]
+    : [{ name: "StillAwake Media", url: siteUrl }];
+}

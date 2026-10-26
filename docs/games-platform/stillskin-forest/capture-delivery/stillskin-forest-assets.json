@@ -799,7 +799,7 @@
       },
       "aspectRatio": "16:9",
       "priority": "P2",
-      "spoiler": false,
+      "spoiler": true,
       "liveAvailability": "live",
       "status": "optimized",
       "source": "masters/pass5/story-documents.png",
@@ -817,7 +817,7 @@
       "filename": "stillskin-forest-end-run.webp",
       "gameId": "stillskin-forest",
       "target": "death-ghosts-and-the-finale",
-      "description": "End of run. Real RunOver outro after the survivor was eliminated; cropped to drop a placeholder UI panel at the right edge. Not the rooftop lineup.",
+      "description": "End of run. Real RunOver outro after the survivor was eliminated; cropped 1:1 to exclude a placeholder UI panel at the right edge (the run-stats card is clipped). Not the rooftop lineup.",
       "alt": "The end-of-run summary card over the landmark tour",
       "use": "screenshot",
       "dimensions": {
@@ -832,12 +832,12 @@
       "source": "masters/pass5/end-run.png",
       "src": "/games/stillskin-forest/mechanics/stillskin-forest-end-run.webp",
       "captureMode": "Authentic gameplay",
-      "originalResolution": "2214x1245",
+      "originalResolution": "1920x1080",
       "captureDate": "2026-10-25",
       "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
       "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
-      "bytes": 67684,
-      "sha1": "eab2f2202909"
+      "bytes": 60764,
+      "sha1": "f93cc3846292"
     },
     {
       "id": "stillskin-forest-daytime",

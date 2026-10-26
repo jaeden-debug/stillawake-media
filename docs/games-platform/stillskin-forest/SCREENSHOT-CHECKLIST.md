@@ -4,7 +4,7 @@ Generated from `src/data/games/stillskin-forest/media.ts`. Do not edit by hand.
 
 Rules: real in-game captures only. No development UI unless the note says HUD allowed. No generated or stock images presented as gameplay. Save as WebP at the listed size to the `Path` shown (under `public/`). Then set the asset's status in `media.ts` and the image appears on every page that references it.
 
-Total: 98 · P0: 12 · captured: 71
+Total: 98 · P0: 12 · captured: 72
 
 | Done | Priority | File | Path | Size | Target page | Spoiler | In build | What to capture | Alt text |
 |---|---|---|---|---|---|---|---|---|---|
@@ -31,7 +31,7 @@ Total: 98 · P0: 12 · captured: 71
 | ☑ | P1 | `stillskin-forest-daytime.webp` | `public/games/stillskin-forest/locations/stillskin-forest-daytime.webp` | 1920×1080 (16:9) | `/games/stillskin-forest/wiki/mechanics/day-night-cycle` | no | live | Mid-morning, Day 1 lighting. | Sunlit pine forest in Stillskin Forest |
 | ☑ | P1 | `stillskin-forest-diner.webp` | `public/games/stillskin-forest/locations/stillskin-forest-diner.webp` | 1920×1080 (16:9) | `/games/stillskin-forest/wiki/locations/rosies-diner` | no | live | Exterior with neon sign at dusk. | The exterior of Rosie's Diner in Stillwater |
 | ☐ | P1 | `stillskin-forest-dread-encounter-closeup.webp` | `public/games/stillskin-forest/mechanics/stillskin-forest-dread-encounter-closeup.webp` | 1920×1080 (16:9) | `/games/stillskin-forest/wiki/mechanics/the-dread-encounter` | no | live | From inside, the face at the grate. | An infected staring through a locker grate |
-| ☐ | P1 | `stillskin-forest-end-run.webp` | `public/games/stillskin-forest/mechanics/stillskin-forest-end-run.webp` | 1920×1080 (16:9) | `/games/stillskin-forest/wiki/multiplayer/death-ghosts-and-the-finale` | no | live | The run-over result card during the outro tour. | The end-of-run summary card over the landmark tour |
+| ☑ | P1 | `stillskin-forest-end-run.webp` | `public/games/stillskin-forest/mechanics/stillskin-forest-end-run.webp` | 1920×1080 (16:9) | `/games/stillskin-forest/wiki/multiplayer/death-ghosts-and-the-finale` | no | live | The run-over result card during the outro tour. | The end-of-run summary card over the landmark tour |
 | ☐ | P1 | `stillskin-forest-gameplay-overview.webp` | `public/games/stillskin-forest/branding/stillskin-forest-gameplay-overview.webp` | 1920×1080 (16:9) | `/games/stillskin-forest` | no | live | Third-person, mid-day, a survivor looting with the town behind. Hide all HUD and development UI. | A survivor scavenging a Stillwater street by day |
 | ☑ | P1 | `stillskin-forest-general-store.webp` | `public/games/stillskin-forest/locations/stillskin-forest-general-store.webp` | 1920×1080 (16:9) | `/games/stillskin-forest/wiki/locations/pine-general-store` | no | live | Store front. | Pine General Store on Stillwater's main street |
 | ☑ | P1 | `stillskin-forest-graveyard.webp` | `public/games/stillskin-forest/locations/stillskin-forest-graveyard.webp` | 1920×1080 (16:9) | `/games/stillskin-forest/wiki/locations/graveyard` | no | live | Angel statue in frame. | The Blackthorn graveyard and its angel statue |

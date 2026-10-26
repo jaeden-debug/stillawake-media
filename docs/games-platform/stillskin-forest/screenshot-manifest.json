@@ -1428,7 +1428,7 @@
       "src": "/games/stillskin-forest/mechanics/stillskin-forest-end-run.webp",
       "gameId": "stillskin-forest",
       "target": "death-ghosts-and-the-finale",
-      "description": "End of run",
+      "description": "End of run. Real RunOver outro after the survivor was eliminated; cropped 1:1 to exclude a placeholder UI panel at the right edge (the run-stats card is clipped). Not the rooftop lineup.",
       "alt": "The end-of-run summary card over the landmark tour",
       "use": "screenshot",
       "dimensions": {
@@ -1440,7 +1440,7 @@
       "captureInstructions": "The run-over result card during the outro tour.",
       "spoiler": false,
       "liveAvailability": "live",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-zombie-dance",

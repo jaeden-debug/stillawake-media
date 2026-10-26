@@ -340,6 +340,17 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "source": "masters/pass5/story-documents.png",
     "src": "/games/stillskin-forest/lore/stillskin-forest-story-documents.webp"
   },
+  "stillskin-forest-end-run": {
+    "description": "End of run. Real RunOver outro after the survivor was eliminated; cropped 1:1 to exclude a placeholder UI panel at the right edge (the run-stats card is clipped). Not the rooftop lineup.",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass5/end-run.png",
+    "src": "/games/stillskin-forest/mechanics/stillskin-forest-end-run.webp"
+  },
   "stillskin-forest-daytime": {
     "description": "Peaceful forest in daylight. Pine forest around the cabin row, daylight.",
     "dimensions": {

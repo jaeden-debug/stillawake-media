@@ -184,6 +184,7 @@ export const gettingStarted: WikiEntry[] = [
         ],
       },
     ],
+    media: "stillskin-forest-hotbar",
     related: ["how-to-play", "stamina-and-sprinting", "crouching-and-takedowns", "aiming-and-reloading"],
     sources: [SRC.playtest, SRC.report],
     aliases: ["keybinds", "keys", "key bindings", "controller", "gamepad", "buttons"],

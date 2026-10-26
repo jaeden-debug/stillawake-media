@@ -2,6 +2,18 @@
 
 Newest first. Each entry lists what changed, how it was verified, and what is still open.
 
+## 2026-10-26 — B-11: CMS article links
+
+- **Why:** three articles are served from their CMS rows, so the markdown link fix in PR #6 didn't reach production.
+- **How:** `stillawakemedia.dev/scripts/fix-redirect-links.mts` saved new versions through the CMS's own save path, rewriting only whole href values (2 per article: the editor copy and the HTML copy).
+- **Publish gate:** the first publish was blocked with `missing_author`; these rows predated the author requirement. With the owner's approval, Jaeden Doody was set as author and all three were republished. The markdown fallbacks were updated to match.
+- **Verified live:**
+  - no stale hrefs
+  - JSON-LD author is `/founder/jaeden-doody#person`
+  - all three return 200
+  - full crawl of 279 URLs: linksToRedirects 0, broken 0, orphans 0, hreflang 0
+- **Note:** 20 other published articles still have no CMS author, so any future edit to them will hit the same gate.
+
 ## 2026-10-26 — Batch 1 (branch `seo/program-batch-1`)
 
 **Discovery**

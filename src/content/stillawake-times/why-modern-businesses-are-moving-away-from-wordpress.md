@@ -5,7 +5,7 @@ excerpt: "WordPress built the internet we have. It also accumulated enough techn
 category: "Web Design"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-author: "StillAwake Media"
+author: "Jaeden Doody"
 ---
 
 # Why Modern Businesses Are Moving Away From WordPress

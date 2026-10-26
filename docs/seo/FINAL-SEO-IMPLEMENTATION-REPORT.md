@@ -24,7 +24,7 @@ This covers batch 1 only, not the whole program. Open work continues from `MASTE
 | Reciprocal hreflang on `/` and `/contact` | Yes. `/` now emits en-CA, fr-CA and x-default. The live crawl finds 0 non-reciprocal pairs. |
 | Orphaned `/fr/developpement-framer` linked | Yes. Live crawl: 0 orphans. |
 | Homepage article card pointed at the final URL | Yes |
-| 3 markdown article links fixed | **Not live.** Production serves these articles from the CMS's published copy, which still has the old links. They 308 to the right page, so the harm is small. Fixing them needs a CMS edit (B-11). |
+| 3 article links fixed | Yes, after a follow-up CMS republish (B-11). These articles render from the CMS, which also required an author: they're now credited to Jaeden Doody, with the owner's approval. |
 | /seo-montreal title, description, quick answer, proof placement | Yes. Live title is "SEO Montreal \| SEO Services & Local SEO Agency \| StillAwake Media". |
 | Titles on 6 commercial pages lead with the measured term | Yes |
 | Sitemap `lastmod` bumped for changed pages | Yes |
@@ -32,7 +32,7 @@ This covers batch 1 only, not the whole program. Open work continues from `MASTE
 
 **Full live crawl (279 URLs):**
 - 0 non-200 pages, 0 broken links, 0 orphans, 0 hreflang errors, 0 duplicate titles or descriptions.
-- 3 links still point at redirects (the CMS articles above).
+- After the CMS republish: 0 links to redirects.
 
 ## Not done, and why
 

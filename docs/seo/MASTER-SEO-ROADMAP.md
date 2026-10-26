@@ -35,7 +35,7 @@ Why lower than the brief's 1,500–3,000: the site starts from a smaller real ba
 | ID | Task | Priority | Status | Tool | Location | Acceptance criteria | Verification | Evidence | Depends on | Completed |
 |---|---|---|---|---|---|---|---|---|---|---|
 | P2-01 | Reciprocal hreflang on EN `/` and `/contact` | P1 | [x] | Code | `src/app/(en)/page.tsx`, `src/app/(en)/contact/page.tsx` | Crawl `hreflangNotReciprocal` = 0 | Local build crawl = 0; live check after deploy | Log | P1-03 | 2026-10-26 |
-| P2-02 | Replace internal links that hit redirects | P1 | [!] | Code | `src/lib/data.ts`, 3 articles | Crawl `linksToRedirects` = 0 | Local 0; live 3 (CMS copies of 3 articles, B-11) | Log | P1-03 | |
+| P2-02 | Replace internal links that hit redirects | P1 | [x] | Code | `src/lib/data.ts`, 3 articles | Crawl `linksToRedirects` = 0 | Live crawl 0 after CMS republish | Log | P1-03 | 2026-10-26 |
 | P2-03 | Link the orphaned `/fr/developpement-framer` | P2 | [x] | Code | `src/app/(fr)/fr/agence-web-montreal/page.tsx` | Crawl `orphans` = 0 | Local build crawl = 0 | Log | P1-03 | 2026-10-26 |
 | P2-04 | `http://www.` → apex in one hop | P3 | [!] | Vercel domains | Vercel | One 308 | `curl -I` | B-07 | — | |
 | P2-05 | Title lengths on article pages (124 over 70 chars incl. suffix) | P3 | [~] | Code | articles | Only where a page earns impressions | Crawl | CTR-only effect; most articles have 0 impressions | P1-01 | |

@@ -250,6 +250,102 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "src": "/games/stillskin-forest/locations/stillskin-forest-storm-drain.webp",
     "spoiler": false
   },
+  "stillskin-forest-sisters-rosary": {
+    "description": "The Sister's Rosary. Fill light from the camera position plus +0.6 EV.",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass4/sisters-rosary.png",
+    "src": "/games/stillskin-forest/lore/stillskin-forest-sisters-rosary.webp",
+    "spoiler": true
+  },
+  "stillskin-forest-miners-lantern": {
+    "description": "The Miner's Lantern. Fill light from the camera position plus +0.6 EV.",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass4/miners-lantern.png",
+    "src": "/games/stillskin-forest/lore/stillskin-forest-miners-lantern.webp",
+    "spoiler": true
+  },
+  "stillskin-forest-dr-vances-ring": {
+    "description": "Dr. Vance's Ring. Fill light from the camera position plus +0.4 EV; the ring is small in frame.",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass4/dr-vances-ring.png",
+    "src": "/games/stillskin-forest/lore/stillskin-forest-dr-vances-ring.webp",
+    "spoiler": true
+  },
+  "stillskin-forest-ritual-circle": {
+    "description": "Ritual circle. The relic slots of the ritual circle.",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass4/ritual-circle.png",
+    "src": "/games/stillskin-forest/quests/stillskin-forest-ritual-circle.webp",
+    "spoiler": true
+  },
+  "stillskin-forest-green-lake-dock": {
+    "description": "Sampling dock",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass4/green-lake-dock.png",
+    "src": "/games/stillskin-forest/locations/stillskin-forest-green-lake-dock.webp",
+    "spoiler": false
+  },
+  "stillskin-forest-green-lake-drain": {
+    "description": "Asylum drainage outlet",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass4/green-lake-drain.png",
+    "src": "/games/stillskin-forest/locations/stillskin-forest-green-lake-drain.webp",
+    "spoiler": true
+  },
+  "stillskin-forest-cabins": {
+    "description": "Cabin area",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass4/cabins.png",
+    "src": "/games/stillskin-forest/locations/stillskin-forest-cabins.webp",
+    "spoiler": false
+  },
+  "stillskin-forest-rooftops": {
+    "description": "Rooftop traversal. View across Stillwater from a flat rooftop.",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass4/rooftops.png",
+    "src": "/games/stillskin-forest/locations/stillskin-forest-rooftops.webp",
+    "spoiler": false
+  },
   "stillskin-forest-daytime": {
     "description": "Peaceful forest in daylight. Pine forest around the cabin row, daylight.",
     "dimensions": {

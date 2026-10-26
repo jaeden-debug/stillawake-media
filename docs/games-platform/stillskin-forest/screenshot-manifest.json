@@ -240,7 +240,7 @@
       "captureInstructions": "Close on the cabin row.",
       "spoiler": false,
       "liveAvailability": "live",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-trails",
@@ -448,7 +448,7 @@
       "src": "/games/stillskin-forest/locations/stillskin-forest-rooftops.webp",
       "gameId": "stillskin-forest",
       "target": "st-agnes-hospital",
-      "description": "Rooftop traversal",
+      "description": "Rooftop traversal. View across Stillwater from a flat rooftop.",
       "alt": "A survivor on the hospital roof above Stillwater",
       "use": "screenshot",
       "dimensions": {
@@ -460,7 +460,7 @@
       "captureInstructions": "Hospital roof sandbag nest.",
       "spoiler": false,
       "liveAvailability": "live",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-hidden-study",
@@ -668,7 +668,7 @@
       "src": "/games/stillskin-forest/quests/stillskin-forest-ritual-circle.webp",
       "gameId": "stillskin-forest",
       "target": "the-rite-of-stillness",
-      "description": "Ritual circle",
+      "description": "Ritual circle. The relic slots of the ritual circle.",
       "alt": "The ritual circle in the Blackthorn cafeteria",
       "use": "screenshot",
       "dimensions": {
@@ -680,7 +680,7 @@
       "captureInstructions": "Cafeteria circle with candles.",
       "spoiler": true,
       "liveAvailability": "live",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-hollow",
@@ -740,7 +740,7 @@
       "captureInstructions": "Dock and condemned-water sign.",
       "spoiler": false,
       "liveAvailability": "live",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-green-lake-drain",
@@ -760,7 +760,7 @@
       "captureInstructions": "Drain outlet.",
       "spoiler": true,
       "liveAvailability": "live",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-walker",
@@ -1568,7 +1568,7 @@
       "src": "/games/stillskin-forest/lore/stillskin-forest-sisters-rosary.webp",
       "gameId": "stillskin-forest",
       "target": "sisters-rosary",
-      "description": "The Sister's Rosary",
+      "description": "The Sister's Rosary. Fill light from the camera position plus +0.6 EV.",
       "alt": "The Sister's Rosary",
       "use": "screenshot",
       "dimensions": {
@@ -1580,7 +1580,7 @@
       "captureInstructions": "Relic where it lies.",
       "spoiler": true,
       "liveAvailability": "live",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-miners-lantern",
@@ -1588,7 +1588,7 @@
       "src": "/games/stillskin-forest/lore/stillskin-forest-miners-lantern.webp",
       "gameId": "stillskin-forest",
       "target": "miners-lantern",
-      "description": "The Miner's Lantern",
+      "description": "The Miner's Lantern. Fill light from the camera position plus +0.6 EV.",
       "alt": "The Miner's Lantern burning green",
       "use": "screenshot",
       "dimensions": {
@@ -1600,7 +1600,7 @@
       "captureInstructions": "In the crypt chamber.",
       "spoiler": true,
       "liveAvailability": "live",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-angels-tear",
@@ -1628,7 +1628,7 @@
       "src": "/games/stillskin-forest/lore/stillskin-forest-dr-vances-ring.webp",
       "gameId": "stillskin-forest",
       "target": "dr-vances-ring",
-      "description": "Dr. Vance's Ring",
+      "description": "Dr. Vance's Ring. Fill light from the camera position plus +0.4 EV; the ring is small in frame.",
       "alt": "Dr. Vance's Ring",
       "use": "screenshot",
       "dimensions": {
@@ -1640,7 +1640,7 @@
       "captureInstructions": "In Vance's office.",
       "spoiler": true,
       "liveAvailability": "live",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-admission-ledger",

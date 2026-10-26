@@ -33,7 +33,7 @@ const resources = [
   ["Website ownership", "/website-ownership"],
   ["Do I need custom software?", "/do-i-need-custom-software"],
   ["Products", "/products"],
-  ["Portfolio", "/portfolio"],
+  ["Our Work", "/our-work"],
   ["Case Studies", "/work"],
   ["About", "/about"],
   ["Work with us globally", "/global"],
@@ -99,7 +99,7 @@ export function Footer({ locale = "en" }: { locale?: "en" | "fr" }) {
               </Link>
 
               <Link
-                href={fr ? "/fr/realisations" : "/portfolio"}
+                href={fr ? "/fr/realisations" : "/our-work"}
                 className="rounded-full border border-white/10 px-6 py-3 text-sm text-white transition hover:border-[#D71920]/60"
               >
                 {fr ? "Voir les réalisations" : "View Portfolio"}
@@ -171,7 +171,7 @@ export function Footer({ locale = "en" }: { locale?: "en" | "fr" }) {
           <div className="flex flex-wrap gap-6">
             {(fr
               ? ([["À propos", "/fr/a-propos"], ["Réalisations", "/fr/realisations"], ["Études de cas", "/fr/etudes-de-cas"], ["Contact", "/fr/contact"], ["Confidentialité", "/fr/confidentialite"]] as const)
-              : ([["About", "/about"], ["Portfolio", "/portfolio"], ["StillAwake Times", "/stillawake-times"], ["Contact", "/contact"], ["Privacy", "/privacy"]] as const)
+              : ([["About", "/about"], ["Our Work", "/our-work"], ["StillAwake Times", "/stillawake-times"], ["Contact", "/contact"], ["Privacy", "/privacy"]] as const)
             ).map(([label, href]) => (
               <Link key={href} href={href} className="transition hover:text-white">
                 {label}

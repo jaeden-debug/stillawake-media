@@ -2,6 +2,7 @@ import { siteUrl } from "@/lib/data";
 import { organization, ventures } from "@/data/entities";
 import { jaedenDoody } from "@/data/people/jaeden-doody";
 import { SERVICES } from "@/data/services";
+import { articlesSection, gamesSection, projectsSection } from "@/lib/ai-index";
 
 /**
  * llms.txt — a plain-text orientation file for language models.
@@ -59,7 +60,11 @@ Pricing overview: ${siteUrl}/pricing (français: ${siteUrl}/fr/tarifs)
 - [Founder profile — ${jaedenDoody.name}](${jaedenDoody.url})
 - [Profil du fondateur (français)](${siteUrl}/fr/fondateur/jaeden-doody)
 - [Case studies](${siteUrl}/work)
-- [Live project previews](${siteUrl}/portfolio)
+- [Our Work: every project by category](${siteUrl}/our-work)
+- [Games](${siteUrl}/games)
+- [Stillskin Forest (Roblox co-op survival horror)](${siteUrl}/games/stillskin-forest)
+- [Stillskin Forest official wiki](${siteUrl}/games/stillskin-forest/wiki)
+- [Roblox survival horror games compared](${siteUrl}/games/guides/roblox-survival-horror-games)
 - [Services](${siteUrl}/services)
 - [Articles — The StillAwake Times](${siteUrl}/stillawake-times)
 - [Contact](${siteUrl}/contact)
@@ -70,6 +75,17 @@ Pricing overview: ${siteUrl}/pricing (français: ${siteUrl}/fr/tarifs)
 ## Related first-party sites
 
 ${ventures.map((v) => `- ${v.url} — ${v.tagline}`).join("\n")}
+
+${projectsSection()}
+
+${gamesSection()}
+
+${articlesSection()}
+
+## Full text
+
+The complete text of every project page and published game wiki article: ${siteUrl}/llms-full.txt
+Sitemap of every indexable URL: ${siteUrl}/sitemap.xml
 `;
 
   return new Response(body, {

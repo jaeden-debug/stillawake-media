@@ -4,6 +4,18 @@ import { getAllPublishedForSitemap } from "@/lib/cms/adapter";
 import { publishedGuides } from "@/data/llms-txt-guides";
 import { REDIRECT_SOURCES } from "@/data/redirects.mjs";
 import { siteUrl } from "@/lib/data";
+import { projectsWithDetailPage } from "@/data/portfolio/projects";
+import { gameBundles } from "@/data/games";
+import { GUIDE_PATH, SNAPSHOT_DATE } from "@/data/games/guides/roblox-survival-horror";
+import {
+  activeCategories,
+  categoryPath,
+  entriesInCategory,
+  entryPath,
+  gamePath,
+  publishedEntries,
+  wikiPath,
+} from "@/lib/games";
 
 /**
  * Stable per-route lastmod dates.
@@ -16,7 +28,8 @@ import { siteUrl } from "@/lib/data";
 const pageLastModified: Record<string, string> = {
   "": "2026-08-13",
   about: "2026-08-13",
-  portfolio: "2026-08-13",
+  "our-work": "2026-10-25",
+  games: "2026-10-25",
   global: "2026-08-13",
   services: "2026-08-13",
   "stillawake-times": "2026-08-13",
@@ -31,7 +44,7 @@ const pageLastModified: Record<string, string> = {
   "founder/jaeden-doody": "2026-08-13",
   "fr/fondateur/jaeden-doody": "2026-08-13",
   "fr/a-propos": "2026-08-13",
-  "fr/realisations": "2026-08-13",
+  "fr/realisations": "2026-10-26",
   "fr/etudes-de-cas": "2026-08-13",
   "fr/articles": "2026-08-13",
   "web-design-montreal": "2026-08-13",
@@ -146,7 +159,7 @@ const languagePairs: Record<string, string> = {
   "work/blackwater-aquatics": "fr/etude-de-cas-blackwater-aquatics",
   "founder/jaeden-doody": "fr/fondateur/jaeden-doody",
   about: "fr/a-propos",
-  portfolio: "fr/realisations",
+  "our-work": "fr/realisations",
   work: "fr/etudes-de-cas",
   products: "fr/produits",
   tools: "fr/outils",
@@ -314,5 +327,40 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const isRedirected = (url: string) =>
     REDIRECT_SOURCES.has(url.replace(siteUrl, "").replace(/\/$/, "") || "/");
 
-  return [...fileEntries, ...cmsEntries].filter((entry) => !isRedirected(entry.url));
+  return [...fileEntries, ...projectEntries(), ...gameEntries(), ...cmsEntries].filter(
+    (entry) => !isRedirected(entry.url),
+  );
+}
+
+/** One page per project that has no canonical home elsewhere. */
+function projectEntries(): MetadataRoute.Sitemap {
+  return projectsWithDetailPage().map((p) => ({
+    url: `${siteUrl}/our-work/${p.slug}`,
+    lastModified: new Date(p.updated),
+  }));
+}
+
+/**
+ * Game landing pages, wiki homes, categories and articles. Only published
+ * (verified-live) entries are listed; the lastmod is the date an entry was
+ * last checked against the game, never the deploy date.
+ */
+function gameEntries(): MetadataRoute.Sitemap {
+  const out: MetadataRoute.Sitemap = [{ url: `${siteUrl}${GUIDE_PATH}`, lastModified: new Date(SNAPSHOT_DATE) }];
+  for (const bundle of gameBundles) {
+    const slug = bundle.game.slug;
+    const entries = publishedEntries(bundle);
+    const newest = entries.reduce((max, e) => (e.lastVerified > max ? e.lastVerified : max), bundle.game.lastVerified);
+    out.push({ url: `${siteUrl}${gamePath(slug)}`, lastModified: new Date(bundle.game.lastVerified) });
+    out.push({ url: `${siteUrl}${wikiPath(slug)}`, lastModified: new Date(newest) });
+    for (const c of activeCategories(bundle)) {
+      const inCat = entriesInCategory(bundle, c.id);
+      const latest = inCat.reduce((max, e) => (e.lastVerified > max ? e.lastVerified : max), "1970-01-01");
+      out.push({ url: `${siteUrl}${categoryPath(slug, c.slug)}`, lastModified: new Date(latest) });
+    }
+    for (const e of entries) {
+      out.push({ url: `${siteUrl}${entryPath(slug, e)}`, lastModified: new Date(e.lastVerified) });
+    }
+  }
+  return out;
 }

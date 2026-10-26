@@ -107,7 +107,7 @@ export default function SeoMontrealPage() {
             </Link>
 
             <Link
-              href="/portfolio"
+              href="/our-work"
               className="rounded-full border border-white/15 px-7 py-4 text-sm font-medium transition hover:border-white/40"
             >
               View Selected Work

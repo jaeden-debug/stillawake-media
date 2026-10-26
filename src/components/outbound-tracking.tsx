@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { trackStartClick, trackClusterClick } from "@/lib/analytics";
+import { trackAiReferral, trackClusterClick, trackStartClick, trackTaggedClick } from "@/lib/analytics";
 
 /**
  * Tracks clicks through to the Studio onboarding.
@@ -17,13 +17,36 @@ import { trackStartClick, trackClusterClick } from "@/lib/analytics";
  * the handler does no async work: gtag pushes into dataLayer synchronously,
  * which survives the page unload.
  */
+const AI_REFERRERS: [string, string][] = [
+  ["chatgpt.com", "chatgpt"],
+  ["chat.openai.com", "chatgpt"],
+  ["perplexity.ai", "perplexity"],
+  ["copilot.microsoft.com", "copilot"],
+  ["gemini.google.com", "gemini"],
+  ["claude.ai", "claude"],
+  ["you.com", "you"],
+];
+
 export function OutboundTracking({ locale }: { locale: "en" | "fr" }) {
   useEffect(() => {
     function onClick(event: MouseEvent) {
       const target = event.target as HTMLElement | null;
       const anchor = target?.closest?.("a");
-      if (!anchor) return;
 
+      // Tagged CTAs (game, Roblox and portfolio links) carry their own event
+      // name and parameters as data attributes.
+      const tagged = target?.closest?.("[data-track]") as HTMLElement | null;
+      if (tagged) {
+        const params: Record<string, string> = { page: window.location.pathname };
+        for (const [key, value] of Object.entries(tagged.dataset)) {
+          if (key.startsWith("track") && key !== "track" && value) {
+            params[key.slice(5).replace(/^./, (c) => c.toLowerCase())] = value;
+          }
+        }
+        trackTaggedClick(tagged.dataset.track!, params);
+      }
+
+      if (!anchor) return;
       const href = anchor.getAttribute("href") ?? "";
 
       /**
@@ -50,6 +73,18 @@ export function OutboundTracking({ locale }: { locale: "en" | "fr" }) {
       // "which page persuades people to start", which is the question the
       // content plan actually needs answered.
       trackStartClick(from, locale);
+    }
+
+    // Known AI assistants, by referrer host. Recorded once per session.
+    try {
+      const host = document.referrer ? new URL(document.referrer).hostname : "";
+      const ai = AI_REFERRERS.find(([pattern]) => host === pattern || host.endsWith(`.${pattern}`));
+      if (ai && !sessionStorage.getItem("sa_ai_ref")) {
+        sessionStorage.setItem("sa_ai_ref", "1");
+        trackAiReferral(ai[1], window.location.pathname);
+      }
+    } catch {
+      // Storage blocked or a malformed referrer: skip, never break the page.
     }
 
     document.addEventListener("click", onClick, { capture: true });

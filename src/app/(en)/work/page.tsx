@@ -267,11 +267,11 @@ export default function Page() {
               search structure, and the design decisions behind five live
               StillAwake Media projects across travel, digital product, finance,
               AI software, and outdoor retail. If you want to click through the
-              sites themselves, the{" "}
-              <Link href="/portfolio" className="text-white underline decoration-[#D71920] underline-offset-4">
-                interactive portfolio
+              sites themselves,{" "}
+              <Link href="/our-work" className="text-white underline decoration-[#D71920] underline-offset-4">
+                Our Work
               </Link>{" "}
-              opens each one in a live preview.
+              has a page for each one with a live preview.
             </p>
           </div>
 

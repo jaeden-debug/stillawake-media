@@ -1,0 +1,363 @@
+import type { WikiEntry, WikiSection } from "@/data/games/types";
+import { SRC, VERIFIED } from "./sources";
+
+const base = { category: "weapons", verification: "verified_live", lastVerified: VERIFIED } as const;
+
+const meleeTiers: WikiSection = {
+  id: "upgrade-tiers",
+  heading: "Upgrade tiers",
+  blocks: [
+    { type: "table", caption: "Melee upgrade tiers (multipliers on base stats)", head: ["Tier", "Name", "Damage", "Time between swings", "Knockback"], rows: [
+      ["I", "Worn", "×1", "×1", "×1"],
+      ["II", "Sharpened", "×1.25", "×0.9", "×1"],
+      ["III", "Reinforced", "×1.5", "×0.8", "×1.3"],
+    ] },
+    { type: "callout", tone: "note", text: "Tiers exist in the game's data and show on the hotbar, but the current build has no way to earn an upgrade yet. A workbench or shop upgrade is planned." },
+  ],
+};
+
+const gunTiers: WikiSection = {
+  id: "upgrade-tiers",
+  heading: "Upgrade tiers",
+  blocks: [
+    { type: "table", caption: "Gun upgrade tiers (multipliers on base stats)", head: ["Tier", "Name", "Damage", "Spread", "Reload time", "Magazine"], rows: [
+      ["I", "Standard", "×1", "×1", "×1", "+0"],
+      ["II", "Tuned", "×1.15", "×0.85", "×0.85", "+2"],
+      ["III", "Custom", "×1.3", "×0.7", "×0.7", "+4"],
+    ] },
+    { type: "callout", tone: "note", text: "Tiers exist in the game's data, but the current build has no way to earn an upgrade yet." },
+  ],
+};
+
+export const weapons: WikiEntry[] = [
+  {
+    ...base,
+    slug: "weapons-compared",
+    title: "Stillskin Forest Weapons Compared",
+    seoTitle: "Stillskin Forest Weapons: Every Weapon Compared (Damage, Speed, Range)",
+    description:
+      "Every Stillskin Forest weapon side by side: damage, attack speed, range, magazine, reload and durability for the bat, machete, hammer, crowbar, pistol, shotgun.",
+    question: "What is the best weapon in Stillskin Forest?",
+    answer:
+      "There is no single best weapon. The Machete deals the most damage per swing (40) and the Hammer knocks infected furthest; the Pistol is the accurate long-range option (34 damage, 12-round magazine); the Shotgun fires six 18-damage pellets and wins any fight at close range, but it is the loudest thing you can do. Most survivors carry one melee weapon and one gun.",
+    sections: [
+      {
+        id: "melee",
+        heading: "Melee weapons",
+        blocks: [
+          { type: "table", caption: "Melee weapon base stats (Tier I)", head: ["Weapon", "Damage", "Time between swings", "Range", "Knockback", "Durability", "Rarity"], rows: [
+            ["[Baseball Bat](@baseball-bat)", "25", "0.8 s", "5.5", "30", "120", "Common"],
+            ["[Machete](@machete)", "40", "0.9 s", "5.5", "22", "110", "Uncommon"],
+            ["[Hammer](@hammer)", "32", "1.0 s", "5", "48", "160", "Uncommon"],
+            ["[Crowbar](@crowbar)", "18", "0.7 s", "5", "20", "140", "Uncommon"],
+          ] },
+          { type: "p", text: "Melee is quiet: a swing is heard by infected within 25 studs, compared with 90 for a pistol shot. A crouched hit from behind on an infected that hasn't noticed you is an instant [takedown](@crouching-and-takedowns)." },
+        ],
+      },
+      {
+        id: "guns",
+        heading: "Guns",
+        blocks: [
+          { type: "table", caption: "Gun base stats (Tier I)", head: ["Weapon", "Damage", "Pellets", "Magazine", "Reload", "Time between shots", "Range", "Durability", "Ammo"], rows: [
+            ["[Pistol](@pistol)", "34", "1", "12", "1.6 s", "0.35 s", "250", "160", "[Pistol Ammo](@ammunition)"],
+            ["[Shotgun](@shotgun)", "18 per pellet", "6", "6", "2.4 s", "1.0 s", "70", "70", "[Shells](@ammunition)"],
+          ] },
+          { type: "p", text: "Headshots double a pistol bullet's damage and multiply each shotgun pellet by 1.4. See [Aiming and reloading](@aiming-and-reloading)." },
+        ],
+      },
+      {
+        id: "hits-to-kill",
+        heading: "Hits to bring down each infected",
+        blocks: [
+          { type: "table", caption: "Body hits needed at Tier I (derived from damage and health)", head: ["Weapon", "Walker (100)", "Runner (60)", "Screamer (70)", "Brute (320)"], rows: [
+            ["Baseball Bat", "4", "3", "3", "13"],
+            ["Machete", "3", "2", "2", "8"],
+            ["Hammer", "4", "2", "3", "10"],
+            ["Crowbar", "6", "4", "4", "18"],
+            ["Pistol (body)", "3", "2", "3", "10"],
+            ["Pistol (head)", "2", "1", "2", "5"],
+          ] },
+          { type: "callout", tone: "note", text: "These are worked out from base damage and enemy health. They ignore upgrade tiers and headshots unless stated. A full shotgun blast at close range (6 × 18 = 108) drops a Walker if every pellet lands." },
+        ],
+      },
+      {
+        id: "which-to-carry",
+        heading: "Which to carry",
+        blocks: [
+          { type: "list", items: [
+            "**Quiet scavenging:** Machete or Baseball Bat.",
+            "**Building a defence:** [Hammer](@hammer) (it nails planks) plus a [Crowbar](@crowbar) to take them down again.",
+            "**Holding a corridor:** Shotgun, with the understanding that it calls everything within 120 studs.",
+            "**Picking off a Screamer before it calls the horde:** Pistol, aimed at the head.",
+          ] },
+        ],
+      },
+    ],
+    related: ["baseball-bat", "machete", "pistol", "shotgun", "enemy-comparison"],
+    sources: [SRC.items, SRC.config, SRC.playtest],
+    aliases: ["weapons", "best weapon", "weapon tier list", "guns", "melee", "damage"],
+  },
+  {
+    ...base,
+    slug: "baseball-bat",
+    title: "Baseball Bat",
+    seoTitle: "Baseball Bat in Stillskin Forest: Damage, Speed and Tips",
+    description:
+      "The Baseball Bat in Stillskin Forest: 25 damage, 0.8 s between swings, strong knockback and 120 durability. How it compares and how to use it.",
+    question: "How good is the Baseball Bat in Stillskin Forest?",
+    answer:
+      "The Baseball Bat is the common starter melee weapon: 25 damage per swing, 0.8 seconds between swings, 5.5 studs of reach and solid knockback (30). It takes four body hits to drop a Walker and lasts 120 uses before it breaks.",
+    facts: [
+      ["Type", "Melee"], ["Damage", "25"], ["Time between swings", "0.8 s"], ["Range", "5.5 studs"],
+      ["Knockback", "30"], ["Durability", "120"], ["Rarity", "Common"],
+    ],
+    sections: [
+      {
+        id: "overview",
+        heading: "Overview",
+        blocks: [
+          { type: "p", text: "Solid wood with a taped grip. The bat is the most common melee weapon you will find, and its knockback pushes an infected back out of swing range, which buys time against one or two at once. Three swings took a Walker from 100 to 25 health in testing; the fourth finishes it." },
+        ],
+      },
+      {
+        id: "strengths-and-weaknesses",
+        heading: "Strengths and weaknesses",
+        blocks: [
+          { type: "list", items: [
+            "**Strengths:** quiet (heard within 25 studs), no ammunition, fast swings, good knockback, durable.",
+            "**Weaknesses:** lowest damage of the bat/machete/hammer group; poor against a [Brute](@brute) (13 hits).",
+          ] },
+        ],
+      },
+      {
+        id: "tips",
+        heading: "Tips",
+        blocks: [
+          { type: "list", items: [
+            "Swing, step back, swing. Knockback plus a step keeps you out of a Walker's reach.",
+            "Crouch and hit an unaware infected from behind for a one-blow [takedown](@crouching-and-takedowns).",
+            "Swinging into a wall wears the bat by 1. Every landed swing and every hit you take while holding it wears it too. See [Durability](@durability-and-wear).",
+          ] },
+        ],
+      },
+      meleeTiers,
+    ],
+    related: ["machete", "hammer", "weapons-compared", "walker"],
+    sources: [SRC.items, SRC.config, SRC.playtest],
+    aliases: ["bat"],
+    gaps: ["Exact loot locations and drop rates not published."],
+  },
+  {
+    ...base,
+    slug: "machete",
+    title: "Machete",
+    seoTitle: "Machete in Stillskin Forest: Damage, Speed and Tips",
+    description:
+      "The Machete in Stillskin Forest: 40 damage per swing, the hardest-hitting melee weapon, with 0.9 s between swings and 110 durability.",
+    question: "Is the Machete better than the bat in Stillskin Forest?",
+    answer:
+      "For damage, yes. The Machete hits for 40, the most of any melee weapon, so it drops a Walker in three swings instead of four. It swings slightly slower (0.9 s), has less knockback (22) and breaks a little sooner (110 uses).",
+    facts: [
+      ["Type", "Melee"], ["Damage", "40"], ["Time between swings", "0.9 s"], ["Range", "5.5 studs"],
+      ["Knockback", "22"], ["Durability", "110"], ["Rarity", "Uncommon"],
+    ],
+    sections: [
+      {
+        id: "overview",
+        heading: "Overview",
+        blocks: [
+          { type: "p", text: "Rusty but sharp. The Machete is the melee weapon to keep if damage matters most. It two-shots a [Runner](@runner) or [Screamer](@screamer) and needs eight hits on a [Brute](@brute)." },
+        ],
+      },
+      {
+        id: "strengths-and-weaknesses",
+        heading: "Strengths and weaknesses",
+        blocks: [
+          { type: "list", items: [
+            "**Strengths:** highest melee damage, quiet, no ammunition.",
+            "**Weaknesses:** less knockback than the bat or hammer, so infected stay closer after each hit.",
+          ] },
+        ],
+      },
+      meleeTiers,
+    ],
+    related: ["baseball-bat", "hammer", "weapons-compared"],
+    sources: [SRC.items, SRC.config],
+    aliases: ["knife", "blade"],
+  },
+  {
+    ...base,
+    slug: "hammer",
+    title: "Hammer",
+    seoTitle: "Hammer in Stillskin Forest: Damage, Building and Tips",
+    description:
+      "The Hammer in Stillskin Forest: 32 damage, the biggest knockback of any weapon, 160 durability, and the only tool that nails planks for building.",
+    question: "What does the Hammer do in Stillskin Forest?",
+    answer:
+      "The Hammer is a heavy melee weapon (32 damage, 1.0 s between swings, 48 knockback) and the building tool. A quick click swings; holding the click and dragging across a surface nails a plank, costing one point of the hammer's 160 durability.",
+    facts: [
+      ["Type", "Melee / builder"], ["Damage", "32"], ["Time between swings", "1.0 s"], ["Range", "5 studs"],
+      ["Knockback", "48"], ["Durability", "160"], ["Rarity", "Uncommon"],
+    ],
+    sections: [
+      {
+        id: "overview",
+        heading: "Overview",
+        blocks: [
+          { type: "p", text: "Slow, but it staggers what it hits and sends it flying: the Hammer has the strongest knockback of any weapon. It is also the only way to build. See [Doors and building](@doors-and-building)." },
+        ],
+      },
+      {
+        id: "where-to-find",
+        heading: "Where to find it",
+        blocks: [
+          { type: "p", text: "Hammers turn up in house, store and trail loot, most often in the store. In the current build the lobby Outfitter also offers one as a one-match supply for 60 Embers." },
+        ],
+      },
+      meleeTiers,
+    ],
+    related: ["crowbar", "doors-and-building", "weapons-compared"],
+    sources: [SRC.items, SRC.config, SRC.playtest],
+    aliases: ["build", "builder"],
+  },
+  {
+    ...base,
+    slug: "crowbar",
+    title: "Crowbar",
+    seoTitle: "Crowbar in Stillskin Forest: Prying Planks and Combat",
+    description:
+      "The Crowbar in Stillskin Forest: a fast 18-damage pry bar that takes a nailed plank down in two swings. Stats, uses and tips.",
+    question: "What is the Crowbar for in Stillskin Forest?",
+    answer:
+      "The Crowbar is a pry bar. Two swings take a nailed plank down, which is how you remove a barricade. It also works as a fast but weak weapon: 18 damage, 0.7 seconds between swings, 140 durability.",
+    facts: [
+      ["Type", "Melee / pry tool"], ["Damage", "18"], ["Time between swings", "0.7 s"], ["Range", "5 studs"],
+      ["Knockback", "20"], ["Durability", "140"], ["Rarity", "Uncommon"],
+    ],
+    sections: [
+      {
+        id: "overview",
+        heading: "Overview",
+        blocks: [
+          { type: "p", text: "The Crowbar pairs with the [Hammer](@hammer): one builds, the other unbuilds. Against the infected it is the weakest melee option (six hits on a Walker), so treat it as a tool you can fight with in a pinch." },
+        ],
+      },
+      meleeTiers,
+    ],
+    related: ["hammer", "doors-and-building", "weapons-compared"],
+    sources: [SRC.items, SRC.config, SRC.playtest],
+    aliases: ["pry bar"],
+  },
+  {
+    ...base,
+    slug: "pistol",
+    title: "Pistol",
+    seoTitle: "Pistol in Stillskin Forest: Damage, Magazine, Reload and Tips",
+    description:
+      "The Pistol in Stillskin Forest: 34 damage, 12-round magazine, 1.6 s reload and 250-stud range. Headshots deal double. Stats and tips.",
+    question: "How does the Pistol work in Stillskin Forest?",
+    answer:
+      "The Pistol fires one 34-damage bullet up to 250 studs, with a 12-round magazine, 0.35 seconds between shots and a 1.6-second reload. Headshots deal double (68). It uses Pistol Ammo, and every shot is heard by infected up to 90 studs away.",
+    facts: [
+      ["Type", "Gun"], ["Damage", "34 (68 headshot)"], ["Magazine", "12"], ["Reload", "1.6 s"],
+      ["Time between shots", "0.35 s"], ["Range", "250 studs"], ["Ammo", "Pistol Ammo"], ["Durability", "160"], ["Rarity", "Rare"],
+    ],
+    sections: [
+      {
+        id: "overview",
+        heading: "Overview",
+        blocks: [
+          { type: "p", text: "A reliable sidearm and the longest-range weapon in the game. Found guns come loaded. Pressing **R** moves rounds from your reserve into the magazine, and an empty gun reloads by itself. Switching away cancels a reload." },
+        ],
+      },
+      {
+        id: "aiming",
+        heading: "Aiming and headshots",
+        blocks: [
+          { type: "p", text: "Aiming with right mouse tightens your spread considerably. A headshot does double damage (68 against 34 on the body in testing), shows a gold hitmarker and can stagger. See [Aiming and reloading](@aiming-and-reloading)." },
+        ],
+      },
+      {
+        id: "tips",
+        heading: "Tips",
+        blocks: [
+          { type: "list", items: [
+            "Two headshots drop a Walker; one drops a Runner.",
+            "Kill a [Screamer](@screamer) at range before it alerts everything within 100 studs.",
+            "Every shot pulls in calm infected within 90 studs. Fire, then move.",
+          ] },
+        ],
+      },
+      gunTiers,
+    ],
+    related: ["shotgun", "ammunition", "aiming-and-reloading", "weapons-compared"],
+    sources: [SRC.items, SRC.config, SRC.playtest],
+    aliases: ["gun", "handgun", "sidearm"],
+  },
+  {
+    ...base,
+    slug: "shotgun",
+    title: "Shotgun",
+    seoTitle: "Shotgun in Stillskin Forest: Damage, Shells, Reload and Tips",
+    description:
+      "The Shotgun in Stillskin Forest: six 18-damage pellets, 6-shell magazine, 2.4 s reload, 70-stud range. Devastating up close, heard 120 studs away.",
+    question: "How strong is the Shotgun in Stillskin Forest?",
+    answer:
+      "The Shotgun fires six pellets of 18 damage each (108 if all hit), enough to drop a Walker in one blast at close range. It holds six Shells, takes 2.4 seconds to reload, reaches 70 studs, and is the loudest weapon in the game: every shot is heard 120 studs away.",
+    facts: [
+      ["Type", "Gun"], ["Damage", "6 × 18 per shot"], ["Magazine", "6"], ["Reload", "2.4 s"],
+      ["Time between shots", "1.0 s"], ["Range", "70 studs"], ["Ammo", "Shells"], ["Durability", "70"], ["Rarity", "Epic"],
+    ],
+    sections: [
+      {
+        id: "overview",
+        heading: "Overview",
+        blocks: [
+          { type: "p", text: "Devastating up close. The spread is wide, so damage falls off quickly with distance, and headshots multiply each pellet by 1.4 rather than doubling. Shotgun hits always stagger an infected." },
+        ],
+      },
+      {
+        id: "strengths-and-weaknesses",
+        heading: "Strengths and weaknesses",
+        blocks: [
+          { type: "list", items: [
+            "**Strengths:** highest burst damage; staggers; can stop a [Brute](@brute) charge.",
+            "**Weaknesses:** loudest weapon (120-stud noise), short range, slow reload, lowest durability of any weapon (70).",
+          ] },
+        ],
+      },
+      gunTiers,
+    ],
+    related: ["pistol", "ammunition", "brute", "weapons-compared"],
+    sources: [SRC.items, SRC.config, SRC.playtest],
+    aliases: ["shot gun"],
+  },
+  {
+    ...base,
+    slug: "signal-remote",
+    title: "Signal Remote",
+    seoTitle: "Signal Remote in Stillskin Forest: How the Legendary Gadget Works",
+    description:
+      "The Signal Remote in Stillskin Forest freezes every infected within 24 studs for 5 seconds and takes 40% of their health. Where to find it and how to use it.",
+    question: "What does the Signal Remote do?",
+    answer:
+      "The Signal Remote is a rewired TV remote and the game's only Legendary gadget. Pressing it freezes every infected within 24 studs for 5 seconds and takes 40% of their health. It recharges in 30 seconds and has 12 uses of durability. It is found at the nurse station inside Blackthorn Asylum.",
+    facts: [
+      ["Type", "Gadget"], ["Radius", "24 studs"], ["Freeze", "5 s"], ["Damage", "40% of health"],
+      ["Recharge", "30 s"], ["Durability", "12"], ["Rarity", "Legendary"], ["Location", "Blackthorn Asylum nurse station"],
+    ],
+    sections: [
+      {
+        id: "how-to-use",
+        heading: "How to use it",
+        blocks: [
+          { type: "p", text: "Equip it and press the use button near the infected. Everything close by locks in place and loses 40% of its health; four infected were frozen and damaged at once in testing. Use the five seconds to escape, revive a teammate, or finish them off." },
+          { type: "callout", tone: "tip", text: "Save it for [the Rite of Stillness](@the-rite-of-stillness). A pulse in the cafeteria when a wave arrives buys real time." },
+        ],
+      },
+    ],
+    related: ["blackthorn-asylum", "the-rite-of-stillness", "weapons-compared"],
+    sources: [SRC.items, SRC.playtest],
+    aliases: ["remote", "tv remote", "gadget"],
+  },
+];

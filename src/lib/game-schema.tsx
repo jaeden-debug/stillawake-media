@@ -119,7 +119,9 @@ export function wikiArticleNode(bundle: GameBundle, entry: WikiEntry) {
     articleSection: bundle.categories.find((c) => c.id === entry.category)?.title,
     wordCount: entryText(entry).split(/\s+/).length,
   };
-  if (hasImage(image)) node.image = absolute(image.src);
+  // Spoiler images stay out of structured data: search engines can use it as
+  // the result thumbnail, which would show the spoiler before anyone clicks.
+  if (hasImage(image) && !image.spoiler) node.image = absolute(image.src);
   return node;
 }
 

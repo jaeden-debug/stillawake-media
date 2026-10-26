@@ -1228,7 +1228,7 @@
       "src": "/games/stillskin-forest/mechanics/stillskin-forest-inventory.webp",
       "gameId": "stillskin-forest",
       "target": "inventory-and-hotbar",
-      "description": "Inventory",
+      "description": "Inventory. Real backpack panel opened with the Studio-only ShowBag hook.",
       "alt": "The backpack inventory panel",
       "use": "screenshot",
       "dimensions": {
@@ -1240,7 +1240,7 @@
       "captureInstructions": "HUD allowed.",
       "spoiler": false,
       "liveAvailability": "live",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-hotbar",
@@ -1248,7 +1248,7 @@
       "src": "/games/stillskin-forest/mechanics/stillskin-forest-hotbar.webp",
       "gameId": "stillskin-forest",
       "target": "inventory-and-hotbar",
-      "description": "Hotbar",
+      "description": "Hotbar. Real HUD (hotbar, day timer) over a staged over-the-shoulder camera.",
       "alt": "The hotbar with items and ammo counts",
       "use": "screenshot",
       "dimensions": {
@@ -1260,7 +1260,7 @@
       "captureInstructions": "HUD allowed.",
       "spoiler": false,
       "liveAvailability": "live",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-headlamp",
@@ -1508,7 +1508,7 @@
       "src": "/games/stillskin-forest/nights/stillskin-forest-heavy-fog.webp",
       "gameId": "stillskin-forest",
       "target": "heavy-fog",
-      "description": "Heavy Fog",
+      "description": "Heavy Fog. Heavy Fog forced with the Studio-only ForceSpecialNight hook; +1.0 EV.",
       "alt": "Dense grey fog in Stillwater",
       "use": "screenshot",
       "dimensions": {
@@ -1520,7 +1520,7 @@
       "captureInstructions": "Street disappearing into fog.",
       "spoiler": false,
       "liveAvailability": "live",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-infected-surge",
@@ -1548,7 +1548,7 @@
       "src": "/games/stillskin-forest/nights/stillskin-forest-silent-night.webp",
       "gameId": "stillskin-forest",
       "target": "silent-night",
-      "description": "Silent Night",
+      "description": "Silent Night. Silent Night forced with the Studio-only hook; blue desaturated grade, subtle by design; +1.3 EV.",
       "alt": "Cold, clear moonlight over a silent forest",
       "use": "screenshot",
       "dimensions": {
@@ -1560,7 +1560,7 @@
       "captureInstructions": "Blue moonlight, nothing moving.",
       "spoiler": false,
       "liveAvailability": "live",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-sisters-rosary",

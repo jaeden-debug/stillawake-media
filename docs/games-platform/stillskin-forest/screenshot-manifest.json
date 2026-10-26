@@ -48,8 +48,8 @@
       "src": "/games/stillskin-forest/branding/stillskin-forest-icon.webp",
       "gameId": "stillskin-forest",
       "target": "/games",
-      "description": "Square game icon. Square crop of the Walker's head from the capture booth.",
-      "alt": "Stillskin Forest Walker infected face",
+      "description": "Square game icon. Low-angle Walker against a glowing booth wall; high contrast for small sizes.",
+      "alt": "A Stillskin Forest infected looming against a pale glowing wall",
       "use": "icon",
       "dimensions": {
         "width": 512,
@@ -328,7 +328,7 @@
       "src": "/games/stillskin-forest/locations/stillskin-forest-morgue.webp",
       "gameId": "stillskin-forest",
       "target": "morgue",
-      "description": "Morgue",
+      "description": "Morgue. Fill light from the camera position plus +0.8 EV.",
       "alt": "The drawer wall and autopsy tables in the St. Agnes morgue",
       "use": "screenshot",
       "dimensions": {
@@ -340,7 +340,7 @@
       "captureInstructions": "Inside the morgue, drawer wall in frame.",
       "spoiler": false,
       "liveAvailability": "secret",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-freezer",
@@ -348,7 +348,7 @@
       "src": "/games/stillskin-forest/locations/stillskin-forest-freezer.webp",
       "gameId": "stillskin-forest",
       "target": "pine-general-store",
-      "description": "Walk-in freezer",
+      "description": "Walk-in freezer. Fill light from the camera position plus +0.8 EV.",
       "alt": "Meat hooks in the walk-in freezer behind the general store",
       "use": "screenshot",
       "dimensions": {
@@ -360,7 +360,7 @@
       "captureInstructions": "Inside the freezer.",
       "spoiler": false,
       "liveAvailability": "secret",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-diner",
@@ -428,7 +428,7 @@
       "src": "/games/stillskin-forest/locations/stillskin-forest-attic.webp",
       "gameId": "stillskin-forest",
       "target": "houses-of-stillwater",
-      "description": "Tommy's attic",
+      "description": "Tommy's attic. Fill light from the camera position plus +0.8 EV.",
       "alt": "A circle of dolls in an attic in Stillwater",
       "use": "screenshot",
       "dimensions": {
@@ -440,7 +440,7 @@
       "captureInstructions": "Attic with the doll circle and rocking chair.",
       "spoiler": false,
       "liveAvailability": "secret",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-rooftops",
@@ -468,7 +468,7 @@
       "src": "/games/stillskin-forest/locations/stillskin-forest-hidden-study.webp",
       "gameId": "stillskin-forest",
       "target": "houses-of-stillwater",
-      "description": "Hidden study",
+      "description": "Hidden study. Fill light from the camera position plus +0.8 EV.",
       "alt": "A hidden study behind a bookshelf",
       "use": "screenshot",
       "dimensions": {
@@ -480,7 +480,7 @@
       "captureInstructions": "Inside Paul's study.",
       "spoiler": false,
       "liveAvailability": "secret",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-storm-drain",
@@ -488,7 +488,7 @@
       "src": "/games/stillskin-forest/locations/stillskin-forest-storm-drain.webp",
       "gameId": "stillskin-forest",
       "target": "storm-drain",
-      "description": "Storm drain",
+      "description": "Storm drain. Fill light from the camera position plus +0.8 EV.",
       "alt": "The storm drain tunnel under Memorial Park",
       "use": "screenshot",
       "dimensions": {
@@ -500,7 +500,7 @@
       "captureInstructions": "Tunnel interior with headlamp light.",
       "spoiler": false,
       "liveAvailability": "secret",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-memorial-park",
@@ -588,8 +588,8 @@
       "src": "/games/stillskin-forest/locations/stillskin-forest-asylum-interior.webp",
       "gameId": "stillskin-forest",
       "target": "blackthorn-asylum",
-      "description": "Asylum interior",
-      "alt": "The admissions hall inside Blackthorn Asylum",
+      "description": "Asylum interior. Fill light from the camera position plus +0.8 EV.",
+      "alt": "The admissions room inside Blackthorn Asylum",
       "use": "screenshot",
       "dimensions": {
         "width": 1920,
@@ -600,7 +600,7 @@
       "captureInstructions": "Admissions hall and stairs.",
       "spoiler": false,
       "liveAvailability": "live",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-graveyard",
@@ -1488,8 +1488,8 @@
       "src": "/games/stillskin-forest/nights/stillskin-forest-blood-moon.webp",
       "gameId": "stillskin-forest",
       "target": "blood-moon",
-      "description": "Blood Moon",
-      "alt": "A red Blood Moon over the forest",
+      "description": "Blood Moon. Blood Moon grade set via GameState in Studio; the moon itself is not in frame. Night exposure lifted +1.1 EV.",
+      "alt": "St. Agnes Hospital under the red Blood Moon grade at night",
       "use": "screenshot",
       "dimensions": {
         "width": 1920,
@@ -1500,7 +1500,7 @@
       "captureInstructions": "Red sky, moon in frame.",
       "spoiler": false,
       "liveAvailability": "live",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-heavy-fog",
@@ -1719,6 +1719,26 @@
       "priority": "P2",
       "captureInstructions": "Heart cavern.",
       "spoiler": true,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-asylum-interior-alt",
+      "filename": "stillskin-forest-asylum-interior-alt.webp",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-asylum-interior-alt.webp",
+      "gameId": "stillskin-forest",
+      "target": "blackthorn-asylum",
+      "description": "Blackthorn Asylum interior, second angle. Extra capture.",
+      "alt": "A corridor doorway inside Blackthorn Asylum",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Extra capture supplied by the capture session.",
+      "spoiler": false,
       "liveAvailability": "live",
       "status": "optimized"
     },

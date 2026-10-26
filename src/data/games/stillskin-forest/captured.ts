@@ -24,15 +24,15 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "spoiler": false
   },
   "stillskin-forest-icon": {
-    "description": "Square game icon. Square crop of the Walker's head from the capture booth.",
-    "alt": "Stillskin Forest Walker infected face",
+    "description": "Square game icon. Low-angle Walker against a glowing booth wall; high contrast for small sizes.",
+    "alt": "A Stillskin Forest infected looming against a pale glowing wall",
     "dimensions": {
       "width": 512,
       "height": 512
     },
     "aspectRatio": "1:1",
     "status": "optimized",
-    "source": "masters/enemies/stillskin-forest-walker-detail.png",
+    "source": "masters/pass3/sil-2.png",
     "src": "/games/stillskin-forest/branding/stillskin-forest-icon.webp",
     "spoiler": false
   },
@@ -177,6 +177,97 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "status": "optimized",
     "source": "masters/branding/nchase-10.png",
     "src": "/games/stillskin-forest/branding/stillskin-forest-night-chase.webp",
+    "spoiler": false
+  },
+  "stillskin-forest-blood-moon": {
+    "description": "Blood Moon. Blood Moon grade set via GameState in Studio; the moon itself is not in frame. Night exposure lifted +1.1 EV.",
+    "alt": "St. Agnes Hospital under the red Blood Moon grade at night",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass3/blood-moon.png",
+    "src": "/games/stillskin-forest/nights/stillskin-forest-blood-moon.webp",
+    "spoiler": false
+  },
+  "stillskin-forest-asylum-interior": {
+    "description": "Asylum interior. Fill light from the camera position plus +0.8 EV.",
+    "alt": "The admissions room inside Blackthorn Asylum",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass3/asylum-admissions.png",
+    "src": "/games/stillskin-forest/locations/stillskin-forest-asylum-interior.webp",
+    "spoiler": false
+  },
+  "stillskin-forest-morgue": {
+    "description": "Morgue. Fill light from the camera position plus +0.8 EV.",
+    "alt": "The drawer wall and autopsy tables in the St. Agnes morgue",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass3/morgue.png",
+    "src": "/games/stillskin-forest/locations/stillskin-forest-morgue.webp",
+    "spoiler": false
+  },
+  "stillskin-forest-freezer": {
+    "description": "Walk-in freezer. Fill light from the camera position plus +0.8 EV.",
+    "alt": "Meat hooks in the walk-in freezer behind the general store",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass3/freezer.png",
+    "src": "/games/stillskin-forest/locations/stillskin-forest-freezer.webp",
+    "spoiler": false
+  },
+  "stillskin-forest-attic": {
+    "description": "Tommy's attic. Fill light from the camera position plus +0.8 EV.",
+    "alt": "A circle of dolls in an attic in Stillwater",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass3/attic.png",
+    "src": "/games/stillskin-forest/locations/stillskin-forest-attic.webp",
+    "spoiler": false
+  },
+  "stillskin-forest-hidden-study": {
+    "description": "Hidden study. Fill light from the camera position plus +0.8 EV.",
+    "alt": "A hidden study behind a bookshelf",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass3/hidden-study.png",
+    "src": "/games/stillskin-forest/locations/stillskin-forest-hidden-study.webp",
+    "spoiler": false
+  },
+  "stillskin-forest-storm-drain": {
+    "description": "Storm drain. Fill light from the camera position plus +0.8 EV.",
+    "alt": "The storm drain tunnel under Memorial Park",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass3/storm-drain.png",
+    "src": "/games/stillskin-forest/locations/stillskin-forest-storm-drain.webp",
     "spoiler": false
   },
   "stillskin-forest-daytime": {
@@ -560,6 +651,27 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
 
 /** Captures that were not on the original list. */
 export const extraAssets: MediaAsset[] = [
+  {
+    "id": "stillskin-forest-asylum-interior-alt",
+    "filename": "stillskin-forest-asylum-interior-alt.webp",
+    "gameId": "stillskin-forest",
+    "target": "blackthorn-asylum",
+    "description": "Blackthorn Asylum interior, second angle. Extra capture.",
+    "alt": "A corridor doorway inside Blackthorn Asylum",
+    "use": "screenshot",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "priority": "P2",
+    "spoiler": false,
+    "liveAvailability": "live",
+    "status": "optimized",
+    "source": "masters/pass3/asylum-interior.png",
+    "src": "/games/stillskin-forest/locations/stillskin-forest-asylum-interior-alt.webp",
+    "captureInstructions": "Extra capture supplied by the capture session."
+  },
   {
     "id": "stillskin-forest-chase-golden-hour",
     "filename": "stillskin-forest-chase-golden-hour.webp",

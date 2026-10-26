@@ -34,8 +34,8 @@
       "filename": "stillskin-forest-icon.webp",
       "gameId": "stillskin-forest",
       "target": "/games",
-      "description": "Square game icon. Square crop of the Walker's head from the capture booth.",
-      "alt": "Stillskin Forest Walker infected face",
+      "description": "Square game icon. Low-angle Walker against a glowing booth wall; high contrast for small sizes.",
+      "alt": "A Stillskin Forest infected looming against a pale glowing wall",
       "use": "icon",
       "dimensions": {
         "width": 512,
@@ -46,15 +46,15 @@
       "spoiler": false,
       "liveAvailability": "live",
       "status": "optimized",
-      "source": "masters/enemies/stillskin-forest-walker-detail.png",
+      "source": "masters/pass3/sil-2.png",
       "src": "/games/stillskin-forest/branding/stillskin-forest-icon.webp",
       "captureMode": "Clean documentation photography",
       "originalResolution": "2768x1557",
       "captureDate": "2026-10-25",
       "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
       "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
-      "bytes": 3544,
-      "sha1": "5f46a0799520"
+      "bytes": 3906,
+      "sha1": "fca6c32826ef"
     },
     {
       "id": "stillskin-forest-campgrounds",
@@ -352,6 +352,195 @@
       "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
       "bytes": 58450,
       "sha1": "648f1474083d"
+    },
+    {
+      "id": "stillskin-forest-blood-moon",
+      "filename": "stillskin-forest-blood-moon.webp",
+      "gameId": "stillskin-forest",
+      "target": "blood-moon",
+      "description": "Blood Moon. Blood Moon grade set via GameState in Studio; the moon itself is not in frame. Night exposure lifted +1.1 EV.",
+      "alt": "St. Agnes Hospital under the red Blood Moon grade at night",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized",
+      "source": "masters/pass3/blood-moon.png",
+      "src": "/games/stillskin-forest/nights/stillskin-forest-blood-moon.webp",
+      "captureMode": "Staged cinematic photography",
+      "originalResolution": "1920x1080",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 31724,
+      "sha1": "de63ebe44926"
+    },
+    {
+      "id": "stillskin-forest-asylum-interior",
+      "filename": "stillskin-forest-asylum-interior.webp",
+      "gameId": "stillskin-forest",
+      "target": "blackthorn-asylum",
+      "description": "Asylum interior. Fill light from the camera position plus +0.8 EV.",
+      "alt": "The admissions room inside Blackthorn Asylum",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized",
+      "source": "masters/pass3/asylum-admissions.png",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-asylum-interior.webp",
+      "captureMode": "Staged cinematic photography",
+      "originalResolution": "2768x1557",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 66130,
+      "sha1": "4904669bd04d"
+    },
+    {
+      "id": "stillskin-forest-morgue",
+      "filename": "stillskin-forest-morgue.webp",
+      "gameId": "stillskin-forest",
+      "target": "morgue",
+      "description": "Morgue. Fill light from the camera position plus +0.8 EV.",
+      "alt": "The drawer wall and autopsy tables in the St. Agnes morgue",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "spoiler": false,
+      "liveAvailability": "secret",
+      "status": "optimized",
+      "source": "masters/pass3/morgue.png",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-morgue.webp",
+      "captureMode": "Staged cinematic photography",
+      "originalResolution": "2768x1557",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 49486,
+      "sha1": "c82ee2948786"
+    },
+    {
+      "id": "stillskin-forest-freezer",
+      "filename": "stillskin-forest-freezer.webp",
+      "gameId": "stillskin-forest",
+      "target": "pine-general-store",
+      "description": "Walk-in freezer. Fill light from the camera position plus +0.8 EV.",
+      "alt": "Meat hooks in the walk-in freezer behind the general store",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "spoiler": false,
+      "liveAvailability": "secret",
+      "status": "optimized",
+      "source": "masters/pass3/freezer.png",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-freezer.webp",
+      "captureMode": "Staged cinematic photography",
+      "originalResolution": "2768x1557",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 90144,
+      "sha1": "af64dde46091"
+    },
+    {
+      "id": "stillskin-forest-attic",
+      "filename": "stillskin-forest-attic.webp",
+      "gameId": "stillskin-forest",
+      "target": "houses-of-stillwater",
+      "description": "Tommy's attic. Fill light from the camera position plus +0.8 EV.",
+      "alt": "A circle of dolls in an attic in Stillwater",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "spoiler": false,
+      "liveAvailability": "secret",
+      "status": "optimized",
+      "source": "masters/pass3/attic.png",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-attic.webp",
+      "captureMode": "Staged cinematic photography",
+      "originalResolution": "2768x1557",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 112488,
+      "sha1": "776b880baecf"
+    },
+    {
+      "id": "stillskin-forest-hidden-study",
+      "filename": "stillskin-forest-hidden-study.webp",
+      "gameId": "stillskin-forest",
+      "target": "houses-of-stillwater",
+      "description": "Hidden study. Fill light from the camera position plus +0.8 EV.",
+      "alt": "A hidden study behind a bookshelf",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "spoiler": false,
+      "liveAvailability": "secret",
+      "status": "optimized",
+      "source": "masters/pass3/hidden-study.png",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-hidden-study.webp",
+      "captureMode": "Staged cinematic photography",
+      "originalResolution": "2768x1557",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 112480,
+      "sha1": "052cb44b54df"
+    },
+    {
+      "id": "stillskin-forest-storm-drain",
+      "filename": "stillskin-forest-storm-drain.webp",
+      "gameId": "stillskin-forest",
+      "target": "storm-drain",
+      "description": "Storm drain. Fill light from the camera position plus +0.8 EV.",
+      "alt": "The storm drain tunnel under Memorial Park",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "spoiler": false,
+      "liveAvailability": "secret",
+      "status": "optimized",
+      "source": "masters/pass3/storm-drain.png",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-storm-drain.webp",
+      "captureMode": "Staged cinematic photography",
+      "originalResolution": "2768x1557",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 58812,
+      "sha1": "0b3ad7f02acb"
     },
     {
       "id": "stillskin-forest-daytime",
@@ -1137,6 +1326,33 @@
       "sha1": "61cfa18db51a"
     },
     {
+      "id": "stillskin-forest-asylum-interior-alt",
+      "filename": "stillskin-forest-asylum-interior-alt.webp",
+      "gameId": "stillskin-forest",
+      "target": "blackthorn-asylum",
+      "description": "Blackthorn Asylum interior, second angle. Extra capture.",
+      "alt": "A corridor doorway inside Blackthorn Asylum",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized",
+      "source": "masters/pass3/asylum-interior.png",
+      "src": "/games/stillskin-forest/locations/stillskin-forest-asylum-interior-alt.webp",
+      "captureMode": "Staged cinematic photography",
+      "originalResolution": "2768x1557",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 59944,
+      "sha1": "c7632d09b031"
+    },
+    {
       "id": "stillskin-forest-chase-golden-hour",
       "filename": "stillskin-forest-chase-golden-hour.webp",
       "gameId": "stillskin-forest",
@@ -1490,64 +1706,10 @@
       "reason": "pending: not captured yet"
     },
     {
-      "id": "stillskin-forest-morgue",
-      "folder": "locations",
-      "priority": "P1",
-      "target": "morgue",
-      "spoiler": false,
-      "liveAvailability": "secret",
-      "reason": "pending: not captured yet"
-    },
-    {
-      "id": "stillskin-forest-freezer",
-      "folder": "locations",
-      "priority": "P2",
-      "target": "pine-general-store",
-      "spoiler": false,
-      "liveAvailability": "secret",
-      "reason": "pending: not captured yet"
-    },
-    {
-      "id": "stillskin-forest-attic",
-      "folder": "locations",
-      "priority": "P2",
-      "target": "houses-of-stillwater",
-      "spoiler": false,
-      "liveAvailability": "secret",
-      "reason": "pending: not captured yet"
-    },
-    {
       "id": "stillskin-forest-rooftops",
       "folder": "locations",
       "priority": "P2",
       "target": "st-agnes-hospital",
-      "spoiler": false,
-      "liveAvailability": "live",
-      "reason": "pending: not captured yet"
-    },
-    {
-      "id": "stillskin-forest-hidden-study",
-      "folder": "locations",
-      "priority": "P2",
-      "target": "houses-of-stillwater",
-      "spoiler": false,
-      "liveAvailability": "secret",
-      "reason": "pending: not captured yet"
-    },
-    {
-      "id": "stillskin-forest-storm-drain",
-      "folder": "locations",
-      "priority": "P2",
-      "target": "storm-drain",
-      "spoiler": false,
-      "liveAvailability": "secret",
-      "reason": "pending: not captured yet"
-    },
-    {
-      "id": "stillskin-forest-asylum-interior",
-      "folder": "locations",
-      "priority": "P1",
-      "target": "blackthorn-asylum",
       "spoiler": false,
       "liveAvailability": "live",
       "reason": "pending: not captured yet"
@@ -1586,7 +1748,7 @@
       "target": "watcher",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "retry: summon hook works (Watcher spawned) but the take failed; survivor must be isolated and calm"
+      "reason": "blocked: summon hook works (2 attempts) but the Watcher is not legible at night even at +1.3 EV; may need its glow/eyes tuned or a moonlit spot"
     },
     {
       "id": "stillskin-forest-zombie-chase",
@@ -1676,7 +1838,7 @@
       "target": "the-dread-encounter",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "blocked: needs Codex staging hook CLR-010; two real-flow attempts never produced the stare"
+      "reason": "blocked: needs Codex staging hook CLR-010"
     },
     {
       "id": "stillskin-forest-revive",
@@ -1694,7 +1856,7 @@
       "target": "downed-and-revive",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "blocked: needs a second player to show the downed state meaningfully"
+      "reason": "blocked: needs a second player"
     },
     {
       "id": "stillskin-forest-ghost-spectator",
@@ -1733,22 +1895,13 @@
       "reason": "pending: not captured yet"
     },
     {
-      "id": "stillskin-forest-blood-moon",
-      "folder": "nights",
-      "priority": "P1",
-      "target": "blood-moon",
-      "spoiler": false,
-      "liveAvailability": "live",
-      "reason": "pending: set GameState.SpecialNight during Night; not attempted yet"
-    },
-    {
       "id": "stillskin-forest-heavy-fog",
       "folder": "nights",
       "priority": "P1",
       "target": "heavy-fog",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "pending: as blood-moon"
+      "reason": "blocked: special-night visuals only apply when the night rolls at dusk; setting GameState.SpecialNight mid-night does not trigger them. Needs GameConfig.SpecialNights.ForceType set before dusk (builder-owned)"
     },
     {
       "id": "stillskin-forest-infected-surge",
@@ -1757,7 +1910,7 @@
       "target": "infected-surge",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "pending: as blood-moon"
+      "reason": "blocked: same as heavy-fog"
     },
     {
       "id": "stillskin-forest-silent-night",
@@ -1766,7 +1919,7 @@
       "target": "silent-night",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "pending: as blood-moon"
+      "reason": "blocked: same as heavy-fog"
     },
     {
       "id": "stillskin-forest-sisters-rosary",
@@ -1811,7 +1964,7 @@
       "target": "blackthorn-admission-ledger",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "pending: not captured yet"
+      "reason": "blocked: ledger sits under a loose board in the park gazebo; not visible without the in-game reveal interaction"
     },
     {
       "id": "stillskin-forest-story-documents",

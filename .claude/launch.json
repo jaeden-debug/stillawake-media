@@ -37,6 +37,17 @@
         "3007"
       ],
       "port": 3007
+    },
+    {
+      "name": "stillawake-com-prod",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "next",
+        "start",
+        "--port",
+        "3006"
+      ],
+      "port": 3006
     }
   ]
 }

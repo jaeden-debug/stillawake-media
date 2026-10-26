@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ServiceJsonLd, FaqBlock, RelatedServices } from "@/components/service-page";
 
 export const metadata: Metadata = {
-  title: "Développement logiciel sur mesure | SaaS, portails et outils — Montréal",
+  title: "Développement logiciel sur mesure à Montréal",
   description:
     "Développement de logiciels sur mesure à Montréal : SaaS, portails clients, tableaux de bord et applications mobiles. Trois produits réels documentés, portée écrite et prix fixe — sans appel de vente.",
   alternates: {

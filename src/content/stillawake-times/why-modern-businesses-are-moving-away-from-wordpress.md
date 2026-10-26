@@ -238,7 +238,7 @@ Moving from WordPress to a modern platform requires proper SEO migration protoco
 
 With these steps executed correctly, rankings are preserved through the migration and then typically improve as Google recognizes the performance improvements.
 
-> **Internal Link:** For a complete migration guide, see our article on [how to redesign a website without destroying your SEO](/blog/how-to-redesign-a-website-without-destroying-seo).
+> **Internal Link:** For a complete migration guide, see our article on [how to redesign a website without destroying your SEO](/stillawake-times/how-to-redesign-a-website-without-destroying-seo).
 
 ---
 

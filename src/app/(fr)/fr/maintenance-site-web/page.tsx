@@ -18,7 +18,7 @@ const CARE = RECURRING_BY_ID["website-care-plan"];
 const HOSTING = RECURRING_BY_ID["managed-hosting"];
 
 export const metadata: Metadata = {
-  title: "Maintenance de site web et support d'urgence | Tarifs affichés",
+  title: "Entretien et maintenance de site web | Tarifs affichés",
   description: `Maintenance de site web et support d'urgence le jour même, de Montréal pour tout le Québec. Forfaits d'entretien à partir de ${HOSTING.monthly} $ CAD par mois et dépannage à partir de ${Math.min(...tierPrices("custom_site"))} $ CAD, tarifs affichés avant le paiement.`,
   alternates: {
     canonical: "https://stillawakemedia.com/fr/maintenance-site-web",

@@ -6,7 +6,14 @@ export const metadata: Metadata = {
   title: "StillAwake Media | Web Design, SEO & AI Search — Montréal",
   description:
     "Montréal studio building premium websites, Shopify stores, SEO systems, AI-search (AEO) visibility, and custom software — with transparent pricing and measurable results.",
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-CA": "https://stillawakemedia.com/",
+      "fr-CA": "https://stillawakemedia.com/fr",
+      "x-default": "https://stillawakemedia.com/",
+    },
+  },
 };
 export default function Home(){return <main>
       <PageSchema route="/" />

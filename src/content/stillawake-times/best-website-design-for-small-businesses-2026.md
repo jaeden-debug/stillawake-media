@@ -466,7 +466,7 @@ The website URL in your GBP profile should point to a relevant, optimized page â
 
 When you run promotions, announce services, or share updates in your GBP posts, the landing pages those posts point to should be relevant and consistent with the message. A GBP post about a new service that links to a generic contact page is a missed conversion opportunity.
 
-> **Internal Link:** See our full guide to [Google Business Profile optimization](/blog/google-business-profile-optimization) for a complete walkthrough of GBP strategy.
+> **Internal Link:** See our full guide to [Google Business Profile optimization](/stillawake-times/google-business-profile-optimization) for a complete walkthrough of GBP strategy.
 
 ---
 

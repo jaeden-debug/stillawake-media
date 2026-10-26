@@ -75,7 +75,7 @@ export const portfolio = [
 
 export const posts = [
   {
-    slug: "custom-coded-websites-outperform-templates",
+    slug: "why-custom-coded-websites-outperform-templates",
     title: "Why Custom-Coded Websites Outperform Templates",
     category: "Web Development",
     date: "2026-05-24",

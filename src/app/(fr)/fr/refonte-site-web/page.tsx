@@ -4,7 +4,7 @@ import { ServiceJsonLd, FaqBlock, RelatedServices } from "@/components/service-p
 import { ArticlesLies } from "@/components/articles-lies";
 
 export const metadata: Metadata = {
-  title: "Refonte de site web | Moderniser sans perdre votre référencement",
+  title: "Refonte de site web à Montréal | Sans perdre votre SEO",
   description:
     "Refonte de site web depuis Montréal, partout au Québec : reconstruction moderne, référencement préservé, objectifs de conversion mesurables et prix fixe écrit avant de vous engager.",
   alternates: {

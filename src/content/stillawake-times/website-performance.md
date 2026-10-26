@@ -523,7 +523,7 @@ Visit [/contact](/contact) to discuss your website performance strategy.
 
 ## Related Services
 
-- [Technical SEO](/technical-seo)
+- [Technical SEO](/stillawake-times/what-is-technical-seo)
 - [Web Design](/web-design-montreal)
 - [Software Development](/software-development)
 - [Local SEO](/local-seo)

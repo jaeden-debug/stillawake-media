@@ -546,7 +546,7 @@ The businesses showing up in the top 3 local results aren't there by accident. T
 
 That's the work. And it compounds. A stronger profile this month means more calls next month. More calls means more reviews. More reviews means stronger prominence. Stronger prominence means higher rankings.
 
-> **Ready to rank higher on Google Maps?** [Book a free local SEO strategy call with StillAwake Media](/contact) and let's look at exactly what it will take to move your business to the top of the map pack in your market.
+> **Ready to rank higher on Google Maps?** [Book a free local SEO strategy call with StillAwake Media](/contact) and let's look at exactly what it will take to move your business to the top of the map pack in your market. What the monthly work costs is published on [our SEO Montréal page](/seo-montreal).
 
 ---
 

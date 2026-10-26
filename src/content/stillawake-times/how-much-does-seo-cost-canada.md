@@ -1,7 +1,7 @@
 ---
 title: "How Much Does SEO Cost in Canada? (Real Numbers, 2026)"
 date: "2026-08-12"
-excerpt: "SEO in Canada typically costs $500–$5,000+ per month depending on scope and agency size — but almost nobody publishes their prices. We do: $600–$850 CAD/month. Here's what actually determines SEO cost, what you get at each level, and the red flags that cost more than any retainer."
+excerpt: "SEO in Canada typically costs $500–$5,000+ per month depending on scope and agency size — but almost nobody publishes their prices. We do: $250–$850 CAD/month. Here's what actually determines SEO cost, what you get at each level, and the red flags that cost more than any retainer."
 category: "SEO Strategy"
 featured: true
 author: "Jaeden Doody"
@@ -9,7 +9,7 @@ author: "Jaeden Doody"
 
 # How Much Does SEO Cost in Canada? (Real Numbers, 2026)
 
-**In Canada, professional monthly SEO typically runs from about $500/month at the low end to $5,000+/month for large-scope agency engagements. StillAwake Media's plans are published: $600 CAD/month (SEO Growth — Essentials) and $850 CAD/month (SEO Growth — Advanced) — no 12-month contract.** One-time work like audits and cleanup projects is usually quoted per scope.
+**In Canada, professional monthly SEO typically runs from about $500/month at the low end to $5,000+/month for large-scope agency engagements. StillAwake Media's plans are published: $250 CAD/month (SEO Growth — Starter), $600 CAD/month (SEO Growth — Essentials) and $850 CAD/month (SEO Growth — Advanced) — no 12-month contract.** One-time work like audits and cleanup projects is usually quoted per scope.
 
 That first paragraph already makes this article unusual: almost no Canadian agency publishes pricing. In our research across the Montréal market, we found exactly one competitor with public SEO prices. Everyone else routes you into a sales call first — which tells you the price is set after they've sized *you*, not the work.
 
@@ -44,6 +44,7 @@ Five factors drive almost all of the variance:
 
 For a concrete reference point (full details on [SEO Montréal](/seo-montreal) and [pricing](/pricing)):
 
+- **SEO Growth — Starter, $250 CAD/month:** Search Console monitoring, one on-page fix a month, and the same plain-language monthly report. It's a real plan at a small size, not a trial.
 - **SEO Growth — Essentials, $600 CAD/month:** technical SEO, on-page optimization, Google Search Console monitoring, and a plain-language monthly report of what was done and what moved.
 - **SEO Growth — Advanced, $850 CAD/month:** everything in Essentials, plus AI-engine optimization (AEO), entity work, and content strategy.
 - No 12-month contract. If we don't deliver, you leave — we consider that the correct pressure, and it points at us.

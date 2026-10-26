@@ -1,13 +1,13 @@
 ---
 title: "Combien coûte le SEO au Québec (les vrais chiffres)"
 date: "2026-08-15"
-excerpt: "Un mandat SEO sérieux au Québec se situe entre 500 $ et 2 500 $ par mois. Nos forfaits publiés : 600 $ et 850 $ CAD par mois. Voici ce que chaque palier achète réellement."
+excerpt: "Un mandat SEO sérieux au Québec se situe entre 500 $ et 2 500 $ par mois. Nos forfaits publiés : 250 $, 600 $ et 850 $ CAD par mois. Voici ce que chaque palier achète réellement."
 category: "SEO"
 featured: false
 author: "Jaeden Doody"
 ---
 
-**Au Québec, un mandat SEO mensuel sérieux pour une PME se situe entre 500 $ et 2 500 $ CAD par mois. Nos forfaits sont publiés : 600 $ et 850 $ CAD par mois, sans contrat de 12 mois. Le travail ponctuel — audit, nettoyage technique, migration — se facture au projet, généralement entre 1 500 $ et 6 000 $ selon la taille du site. Sous 300 $ par mois, vous n'achetez à peu près jamais des heures humaines.**
+**Au Québec, un mandat SEO mensuel sérieux pour une PME se situe entre 500 $ et 2 500 $ CAD par mois. Nos forfaits sont publiés : 250 $, 600 $ et 850 $ CAD par mois, sans contrat de 12 mois. Le travail ponctuel — audit, nettoyage technique, migration — se facture au projet, généralement entre 1 500 $ et 6 000 $ selon la taille du site. Sous 300 $ par mois, vous n'achetez à peu près jamais des heures humaines.**
 
 Presque aucune agence d'ici ne publie ses prix. Ça se voit dans les données de recherche, et c'est la première chose utile à comprendre.
 
@@ -58,8 +58,9 @@ Mais attention à la fausse économie : traduire les pages anglaises ne produit 
 
 Pour un point de repère concret — les détails complets sont sur [tarifs](/fr/tarifs) et [agence SEO Montréal](/fr/agence-seo-montreal) :
 
+- **Départ — 250 $ CAD par mois :** surveillance de la Search Console, une correction on-page par mois et le même rapport mensuel en langage clair. Un vrai forfait à petite échelle, pas un essai.
 - **Essentiel — 600 $ CAD par mois :** SEO technique, optimisation des pages, surveillance de la Search Console, et un rapport mensuel en langage clair qui dit ce qui a été fait et ce qui a bougé.
-- **Croissance — 850 $ CAD par mois :** tout l'Essentiel, plus l'optimisation pour les moteurs de réponse (AEO), le travail d'entité et la stratégie de contenu.
+- **Avancé — 850 $ CAD par mois :** tout l'Essentiel, plus l'optimisation pour les moteurs de réponse (AEO), le travail d'entité et la stratégie de contenu.
 - Pas de contrat de 12 mois. Si on ne livre pas, vous partez. On considère que c'est la bonne pression, et qu'elle doit pointer vers nous.
 - Le dépannage ponctuel se facture entre 150 $ et 600 $ CAD, une seule fois.
 

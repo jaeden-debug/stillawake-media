@@ -68,7 +68,7 @@ In order of how often we see it: unclear decision-making authority (three stakeh
 
 ## How we price it
 
-Every project gets a **written scope with a fixed price** before any commitment — described asynchronously, no mandatory sales call. Where we publish flat rates, they're public: [SEO plans at $600–$850 CAD/month and emergency support at $150–$600](/pricing).
+Every project gets a **written scope with a fixed price** before any commitment — described asynchronously, no mandatory sales call. Where we publish flat rates, they're public: [SEO plans at $250–$850 CAD/month and emergency support at $150–$600](/pricing).
 
 Software builds are quoted per scope because pretending otherwise would be dishonest — the range at the top of this article is exactly why.
 

@@ -34,7 +34,7 @@ const FAQ: [string, string][] = [
   ],
   [
     "Combien coûte l'entretien d'un site web?",
-    "Après la construction : hébergement et domaine (souvent 10 $ à 100 $ et plus par mois), maintenance et mises à jour, et le travail de croissance comme le SEO. Nos prix sont affichés : site d'entreprise professionnel environ 2 750 $ à 5 750 $ CAD avec référencement local, site plus simple à partir de 1 800 $, boutique en ligne à partir de 4 250 $, cadrage payant à partir de 1 800 $, forfaits SEO de 600 $ à 850 $ par mois et dépannage d'urgence de 150 $ à 600 $.",
+    "Après la construction : hébergement et domaine (souvent 10 $ à 100 $ et plus par mois), maintenance et mises à jour, et le travail de croissance comme le SEO. Nos prix sont affichés : site d'entreprise professionnel environ 2 750 $ à 5 750 $ CAD avec référencement local, site plus simple à partir de 1 800 $, boutique en ligne à partir de 4 250 $, cadrage payant à partir de 1 800 $, forfaits SEO de 250 $ à 850 $ par mois et dépannage d'urgence de 150 $ à 600 $.",
   ],
   [
     "Un site bilingue coûte-t-il deux fois plus cher?",
@@ -122,7 +122,7 @@ export default function PrixSiteWebQuebecPage() {
               pas cadrer honnêtement commence par un{" "}
               <strong className="text-white">cadrage payant à partir de 1 800 $</strong>, crédité sur la
               construction. On ne vous facture pas plus parce que vous avez plus d&apos;employés. Le récurrent et le support sont publics aussi : forfaits SEO de{" "}
-              <strong className="text-white">600 $ à 850 $ CAD par mois</strong>, dépannage d&apos;urgence de{" "}
+              <strong className="text-white">250 $ à 850 $ CAD par mois</strong>, dépannage d&apos;urgence de{" "}
               <strong className="text-white">150 $ à 400 $ CAD</strong> (site sur mesure) ou{" "}
               <strong className="text-white">250 $ à 600 $ CAD</strong> (boutique), paiement unique. Tous les
               détails sur la page <Link href="/fr/tarifs" className="text-[#D71920] underline-offset-4 hover:underline">Tarifs</Link>.

@@ -73,7 +73,9 @@ Why lower than the brief's 1,500–3,000: the site starts from a smaller real ba
 | P6-02 | /fr/agence-seo-montreal review | P0 | [x] | Review | `src/app/(fr)/fr/agence-seo-montreal/page.tsx` | Already has prices, FAQ, proof, hreflang | Read 2026-10-26; no change needed | Log | P4-02 | 2026-10-26 |
 | P6-03 | Titles on web design, agence web, refonte, maintenance, logiciel pages | P1 | [x] | Code | 6 pages | Title leads with the measured term | Build + live check | Log | P4-02 | 2026-10-26 |
 | P6-04 | /web-design-montreal depth vs. ranking competitors | P1 | [ ] | Code | `src/app/(en)/web-design-montreal/page.tsx` | Covers process, pricing, proof, FAQ the SERP shows | Compare with `COMPETITOR-ANALYSIS.md` | — | P5-01 | |
-| P6-05 | /fr/agence-web-montreal → "création site web montréal" coverage | P1 | [ ] | Code | FR agency page | Section on création de site web (110/mo + 40/mo) | Review | — | P4-02 | |
+| P6-05 | /fr/agence-web-montreal → "création site web montréal" coverage | P1 | [x] | Code | FR agency page | Section on création de site web (110/mo + 40/mo) | Built + live check | Log batch 2 | P4-02 | 2026-10-26 |
+
+| P6-06 | SEO prices consistent everywhere (Starter $250) | P0 | [x] | Code + CMS | 9 pages/articles + 3 CMS rows | No "$600–$850" range; test guard | `published-prices.test.ts` + CMS re-run | Log batch 2 | — | 2026-10-26 |
 
 ## Phase 7 — Content inventory
 
@@ -88,7 +90,7 @@ Why lower than the brief's 1,500–3,000: the site starts from a smaller real ba
 | ID | Task | Priority | Status | Tool | Location | Acceptance criteria | Verification | Evidence | Depends on | Completed |
 |---|---|---|---|---|---|---|---|---|---|---|
 | P8-01 | Zero orphans, zero redirecting links | P1 | [x] | Crawl | — | Both 0 | Local crawl | Log | P2-02 | 2026-10-26 |
-| P8-02 | Each SEO/local article links to /seo-montreal or /fr/agence-seo-montreal | P2 | [ ] | Code | articles | Link present with descriptive anchor | grep + crawl | — | P7-01 | |
+| P8-02 | Each SEO/local article links to /seo-montreal or /fr/agence-seo-montreal | P2 | [x] | Code | articles | Link present with descriptive anchor | Live HTML, 4 local/technical articles | Log batch 2 | P7-01 | 2026-10-26 |
 
 ## Phase 9 — Local SEO
 
@@ -124,7 +126,7 @@ Why lower than the brief's 1,500–3,000: the site starts from a smaller real ba
 
 | ID | Task | Priority | Status | Tool | Location | Acceptance criteria | Verification | Evidence | Depends on | Completed |
 |---|---|---|---|---|---|---|---|---|---|---|
-| P13-01 | Lighthouse on /, /seo-montreal, /web-design-montreal, /fr/agence-web-montreal | P2 | [ ] | Lighthouse | — | Scores recorded | Lighthouse JSON | PSI API quota was exhausted 2026-10-26 | — | |
+| P13-01 | Lighthouse on /, /seo-montreal, /web-design-montreal, /fr/agence-web-montreal | P2 | [x] | Lighthouse | — | Scores recorded | Local Lighthouse CLI | Log batch 2; homepage weight −37% | — | 2026-10-26 |
 
 ## Phase 14 — Paid search alignment
 

@@ -352,7 +352,7 @@ The businesses ranking in the top three local results for their primary service 
 
 The cost of not investing in local SEO isn't zero. It's the revenue that goes to your competitors instead of you. Month after month. Year after year.
 
-> **Ready to invest in local SEO that actually moves your rankings?** [Book a free strategy session with StillAwake Media](/contact) — we'll give you an honest assessment of your current standing and a clear roadmap for getting to the top of the map pack in your market.
+> **Ready to invest in local SEO that actually moves your rankings?** [Book a free strategy session with StillAwake Media](/contact) — we'll give you an honest assessment of your current standing and a clear roadmap for getting to the top of the map pack in your market. What the monthly work costs is published on [our SEO Montréal page](/seo-montreal).
 
 ---
 

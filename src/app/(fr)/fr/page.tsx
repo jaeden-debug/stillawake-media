@@ -4,6 +4,7 @@ import { Button, Section, ServiceGridFr, PortfolioGrid, InternalLinks } from "@/
 import { CalculatorBand } from "@/components/tools/calculator-band";
 import LiveWorkShowcase from "@/components/LiveWorkShowcase";
 import { ServiceJsonLd } from "@/components/service-page";
+import { LazyVideo } from "@/components/lazy-video";
 
 export const metadata: Metadata = {
   title: "Agence web à Montréal — Sites, SEO et IA",
@@ -122,16 +123,11 @@ export default function FrHome() {
 
       <section className="px-6 py-10 md:py-16">
         <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-black shadow-2xl">
-          <video
-            className="h-[420px] w-full object-cover md:h-[620px]"
-            src="/tv-static-stillawake-media-intro-optimized-small.mp4"
-            poster="/tv-static-stillawake-media-intro-poster.jpg"
-            preload="none"
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
+          <LazyVideo
+      className="h-[420px] w-full object-cover md:h-[620px]"
+      src="/tv-static-stillawake-media-intro-optimized-small.mp4"
+      poster="/tv-static-stillawake-media-intro-poster.jpg"
+    />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/10" />
         </div>
       </section>

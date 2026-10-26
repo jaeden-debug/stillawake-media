@@ -103,7 +103,7 @@ export default function EtreCiteParIaPage() {
             <h3 className="geist pt-2 text-2xl font-black tracking-[-0.04em] text-white">Des faits extractibles</h3>
             <p>
               Un prix affiché en texte clair peut être cité; un prix caché derrière « réservez un appel » ne le peut
-              pas. C&apos;est pour ça que nos tarifs sont publics — 600 $ à 850 $ CAD par mois pour le SEO, affichés
+              pas. C&apos;est pour ça que nos tarifs sont publics — 250 $ à 850 $ CAD par mois pour le SEO, affichés
               sur <Link href="/fr/tarifs" className="text-[#D71920] underline underline-offset-4">la page tarifs</Link>.
               Même logique pour vos zones desservies, vos délais, votre processus : dit clairement = citable.
             </p>

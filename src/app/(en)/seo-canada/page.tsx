@@ -2,6 +2,33 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ServiceJsonLd, PriceCard, FaqBlock, RelatedServices } from "@/components/service-page";
 import { siteUrl } from "@/lib/data";
+import { RECURRING } from "@/lib/pricing/model";
+import { RECURRING_LABELS } from "@/lib/pricing/labels";
+
+/** The SEO rungs, in catalogue order — same source as /seo-montreal and /pricing. */
+const SEO_PLANS = RECURRING.filter((r) => r.approved && r.group === "seo");
+const SEO_FLOOR = SEO_PLANS[0].monthly!;
+const SEO_CEILING = SEO_PLANS.at(-1)!.monthly!;
+const SEO_PLAN_ITEMS: Record<string, string[]> = {
+  "seo-starter": [
+    "Search Console monitoring",
+    "One on-page fix a month",
+    "Plain-language monthly report",
+    "The honest entry point — not a smaller Essentials",
+  ],
+  "seo-essentials": [
+    "Technical SEO foundation",
+    "On-page optimization",
+    "Google Search Console monitoring",
+    "Plain-language monthly report",
+  ],
+  "seo-advanced": [
+    "Everything in Essentials",
+    "AI-engine optimization (AEO)",
+    "Entity and structured-data work",
+    "Content strategy",
+  ],
+};
 
 const url = `${siteUrl}/seo-canada`;
 
@@ -24,7 +51,7 @@ const url = `${siteUrl}/seo-canada`;
 export const metadata: Metadata = {
   title: "SEO Services for Canadian Businesses | Published Pricing",
   description:
-    "SEO for Canadian businesses, delivered remotely from Montréal: technical foundation, content architecture and AI-search visibility. Published pricing at $600–$850 CAD/month, no 12-month contract.",
+    `SEO for Canadian businesses, delivered remotely from Montréal: technical foundation, content architecture and AI-search visibility. Published pricing from $${SEO_FLOOR} to $${SEO_CEILING} CAD/month, no 12-month contract.`,
   alternates: {
     canonical: "/seo-canada",
     languages: { "en-CA": url, "x-default": url },
@@ -50,7 +77,7 @@ const FAQ: [string, string][] = [
   ],
   [
     "How much does SEO cost in Canada?",
-    "Ours is published: $600 CAD/month (Essential) and $850 CAD/month (Growth), with no 12-month contract. The wider Canadian market generally runs $500–$5,000+/month depending on scope and agency size — we break down what each band actually buys in our guide to SEO costs in Canada.",
+    `Ours is published: ${SEO_PLANS.map((r) => `$${r.monthly} CAD/month (${RECURRING_LABELS[r.id].en.split(" — ")[1]})`).join(", ")}, with no 12-month contract. The wider Canadian market generally runs $500–$5,000+/month depending on scope and agency size — we break down what each band actually buys in our guide to SEO costs in Canada.`,
   ],
   [
     "Does operating in French matter if my business is outside Québec?",
@@ -74,8 +101,11 @@ export default function SeoCanadaPage() {
         name="SEO Services for Canadian Businesses"
         description="Remote-delivered search engine optimization for businesses across Canada: technical SEO, content architecture, and AI-search visibility, with published monthly pricing."
         offers={[
-          { name: "Growth SEO — Essential", price: 600, interval: "MONTH" },
-          { name: "Growth SEO — Growth", price: 850, interval: "MONTH" },
+          ...SEO_PLANS.map((r) => ({
+            name: RECURRING_LABELS[r.id].en,
+            price: r.monthly!,
+            interval: "MONTH" as const,
+          })),
         ]}
         breadcrumb={[
           ["Home", "/"],
@@ -146,32 +176,18 @@ export default function SeoCanadaPage() {
             In our research across this market we found exactly one competitor publishing SEO prices. Here are ours,
             and they&apos;re the same wherever in Canada you are.
           </p>
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            <PriceCard
-              name="Growth SEO — Essential"
-              price="$600 CAD"
-              cadence="per month"
-              items={[
-                "Technical SEO foundation",
-                "On-page optimization",
-                "Google Search Console monitoring",
-                "Plain-language monthly report",
-              ]}
-              cta={["Start with Essential", "https://stillawake.studio/start"]}
-            />
-            <PriceCard
-              name="Growth SEO — Growth"
-              price="$850 CAD"
-              cadence="per month"
-              items={[
-                "Everything in Essential",
-                "AI-engine optimization (AEO)",
-                "Entity and structured-data work",
-                "Content strategy",
-              ]}
-              cta={["Start with Growth", "https://stillawake.studio/start"]}
-              highlight
-            />
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {SEO_PLANS.map((plan) => (
+              <PriceCard
+                key={plan.id}
+                name={RECURRING_LABELS[plan.id].en}
+                price={`$${plan.monthly} CAD`}
+                cadence="per month"
+                items={SEO_PLAN_ITEMS[plan.id]}
+                cta={[`Start with ${RECURRING_LABELS[plan.id].en.split(" — ")[1]}`, "https://stillawake.studio/start"]}
+                highlight={plan.id === "seo-essentials"}
+              />
+            ))}
           </div>
           <p className="mt-6 text-sm text-[#8F8585]">
             No 12-month contract. Full breakdown of what the Canadian market charges is in{" "}

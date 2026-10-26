@@ -517,7 +517,7 @@ Technical SEO is invisible when it's working and painful when it's not. It doesn
 
 Businesses that invest in technical SEO foundations find that their content ranks more readily, their new pages are indexed faster, and their competitive position strengthens as compound improvements take hold. Businesses that ignore it find that strong content and legitimate link-building produce less than their potential — because the foundation is working against them.
 
-> **Want a technical SEO audit of your website?** [Contact StillAwake Media](/contact) — we'll identify your highest-impact technical issues and build a prioritized roadmap to fix them.
+> **Want a technical SEO audit of your website?** [Contact StillAwake Media](/contact) — we'll identify your highest-impact technical issues and build a prioritized roadmap to fix them. What the monthly work costs is published on [our SEO Montréal page](/seo-montreal).
 
 ---
 

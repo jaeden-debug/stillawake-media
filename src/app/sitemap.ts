@@ -60,7 +60,7 @@ const pageLastModified: Record<string, string> = {
   "fr/tarifs": "2026-08-13",
   fr: "2026-10-26",
   "fr/contact": "2026-08-13",
-  "website-cost-canada": "2026-08-13",
+  "website-cost-canada": "2026-10-26",
   "fr/prix-site-web-quebec": "2026-10-26",
   "website-redesign": "2026-08-13",
   "fr/refonte-site-web": "2026-10-26",
@@ -82,7 +82,7 @@ const pageLastModified: Record<string, string> = {
   "fr/fiche-google-entreprise": "2026-08-13",
   "fr/referencement-naturel": "2026-08-13",
   "fr/audit-seo": "2026-08-13",
-  "fr/etre-cite-par-ia": "2026-08-13",
+  "fr/etre-cite-par-ia": "2026-10-26",
   "fr/boutique-en-ligne-quebec": "2026-08-13",
   products: "2026-08-13",
   "fr/produits": "2026-08-13",
@@ -93,7 +93,7 @@ const pageLastModified: Record<string, string> = {
   // National SEO surface. EN-only by design: Québec-French SEO intent is served
   // by /fr/agence-seo-montreal, and measured FR national demand ("agence seo
   // québec", 20/mo) does not justify a separate French national page.
-  "seo-canada": "2026-08-14",
+  "seo-canada": "2026-10-26",
   "fr/outils": "2026-08-15",
   "fr/outils/generateur-llms-txt": "2026-08-15",
   "tools/project-cost-calculator": "2026-08-15",

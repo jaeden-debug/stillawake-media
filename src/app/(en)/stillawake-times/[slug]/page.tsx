@@ -4,7 +4,7 @@ import { draftMode } from "next/headers";
 import { notFound, permanentRedirect, redirect } from "next/navigation";
 import { siteUrl } from "@/lib/data";
 import { entityIds } from "@/data/entities";
-import { jaedenDoody, personAuthorNames } from "@/data/people/jaeden-doody";
+import { articleAuthors, jaedenDoody, personAuthorNames } from "@/data/people/jaeden-doody";
 import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/content";
 import { getPublishedByTypeSlugConfirmed, getSiblingOf, redirectFor } from "@/lib/cms/adapter";
 import { fetchDraftByRoute } from "@/lib/cms/draft";
@@ -57,7 +57,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
      * genuine counterpart is not silently unpaired just because the row moved
      * into the CMS.
      */
-    const filePair = (await getPostBySlug(slug))?.pair;
+    const filePost = await getPostBySlug(slug);
+    const filePair = filePost?.pair;
     const languages =
       sibling?.route_path != null
         ? {
@@ -76,7 +77,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title,
       description,
-      authors: [{ name: "StillAwake Media", url: siteUrl }],
+      authors: articleAuthors(filePost?.author),
       alternates: {
         canonical: `/stillawake-times/${cms.slug}`,
         ...(languages ? { languages } : {}),
@@ -110,6 +111,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.excerpt,
+    authors: articleAuthors(post.author),
     alternates: {
       canonical: `/stillawake-times/${post.slug}`,
       // Only articles that name a counterpart get alternates. Declaring an

@@ -4,6 +4,8 @@ Newest first. Each entry lists what changed, how it was verified, and what is st
 
 ## 2026-10-26 — Owner-approved actions ("fix all in order")
 
+**Final sweep: article meta author.** The article pages hardcoded `<meta name="author">` as "StillAwake Media", which contradicted the byline and JSON-LD once the articles were credited to Jaeden. A new `articleAuthors()` helper in `src/data/people/jaeden-doody.ts` takes the meta author from the same frontmatter name. It's used on the EN and FR article routes, on both the CMS and markdown paths. Verified locally on what-is-branding (CMS), custom-software-development-cost-canada (markdown) and prix-du-seo-au-quebec (FR); all show Jaeden Doody.
+
 **1–2. Google Ads: one primary lead conversion (B-01), PMax final URL to the apex (B-02)**
 - **Not done yet.** Zylx's Google Ads actions cover campaigns, budgets, keywords and ads only, with no conversion-action or final-URL edits.
 - **Browser route:** Google asked to re-verify the jaeden@blackwateraquatics.ca sign-in, which needs the owner's password. Waiting on that sign-in. Budget and bidding won't be touched either way.

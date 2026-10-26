@@ -4,7 +4,7 @@ import { draftMode } from "next/headers";
 import { notFound, permanentRedirect, redirect } from "next/navigation";
 import { siteUrl } from "@/lib/data";
 import { entityIds } from "@/data/entities";
-import { jaedenDoody, personAuthorNames } from "@/data/people/jaeden-doody";
+import { articleAuthors, jaedenDoody, personAuthorNames } from "@/data/people/jaeden-doody";
 import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/content";
 import { getPublishedByTypeSlugConfirmed, getSiblingOf, redirectFor } from "@/lib/cms/adapter";
 import { fetchDraftByRoute } from "@/lib/cms/draft";
@@ -45,7 +45,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ? await getSiblingOf(cms.translation_group_id, "en")
       : null;
     /** Same precedence as the EN route: CMS sibling first, markdown `pair` second. */
-    const filePair = (await getPostBySlug(slug, "fr"))?.pair;
+    const filePost = await getPostBySlug(slug, "fr");
+    const filePair = filePost?.pair;
     const languages =
       sibling?.route_path != null
         ? {
@@ -64,7 +65,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title,
       description,
-      authors: [{ name: "StillAwake Media", url: siteUrl }],
+      authors: articleAuthors(filePost?.author),
       alternates: {
         canonical: `/fr/articles/${cms.slug}`,
         ...(languages ? { languages } : {}),
@@ -96,6 +97,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.excerpt,
+    authors: articleAuthors(post.author),
     // No `languages` block: these articles are written for Québec and most have
     // no English counterpart, so declaring a bogus en-CA alternate would be
     // worse than declaring none. Pairs get added per-article once both exist.

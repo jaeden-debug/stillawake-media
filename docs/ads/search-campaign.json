@@ -1,0 +1,178 @@
+{
+  "version": "2026-10-26",
+  "account": { "customer_id": "800-560-2976", "currency": "CAD", "time_zone": "America/Toronto" },
+  "campaign": {
+    "name": "Search | Leads | Montréal EN-FR",
+    "channel_type": "SEARCH",
+    "status_at_creation": "PAUSED",
+    "daily_budget_cad": 25,
+    "networks": { "google_search": true, "search_partners": false, "display_network": false },
+    "locations": ["Montréal, QC", "Laval, QC", "Longueuil, QC"],
+    "location_option": "PRESENCE (people in or regularly in these places)",
+    "languages": ["English", "French"],
+    "bidding_at_launch": { "strategy": "MAXIMIZE_CLICKS", "max_cpc_cad": 10 },
+    "bidding_after_learning": { "strategy": "MAXIMIZE_CONVERSIONS", "switch_when": "15+ primary conversions in the last 30 days" },
+    "conversion_goal": "Leads: generate_lead (Studio) + contact_form_submit (site), both counted One per click"
+  },
+  "negative_keywords_phrase": [
+    "emploi", "emplois", "job", "jobs", "career", "carrière", "salary", "salaire", "stage", "internship",
+    "course", "cours", "formation", "training", "certification", "tutorial", "tutoriel",
+    "free", "gratuit", "gratuite", "template", "templates", "modèle", "theme", "thème",
+    "how to", "comment faire", "what is", "qu'est-ce", "definition", "définition",
+    "reddit", "pdf", "wix", "squarespace", "godaddy", "plugin"
+  ],
+  "ad_groups": [
+    {
+      "name": "EN | SEO Montréal",
+      "final_url": "https://stillawakemedia.com/seo-montreal",
+      "path": ["seo", "montreal"],
+      "keywords": [
+        ["seo montreal", "EXACT"], ["seo montreal", "PHRASE"],
+        ["seo services montreal", "EXACT"], ["seo services montreal", "PHRASE"],
+        ["seo agency montreal", "EXACT"], ["seo agency montreal", "PHRASE"],
+        ["seo company montreal", "PHRASE"], ["local seo montreal", "PHRASE"]
+      ],
+      "headlines": [
+        "SEO Montréal", "SEO Services in Montréal", "Montréal SEO Agency", "SEO Plans From $250/Month",
+        "Prices Published Upfront", "No Sales Call Required", "Month-to-Month, No Contract",
+        "Technical + Local SEO", "Bilingual SEO, EN & FR", "Written Monthly Report",
+        "Page 1 in 8 Weeks: Case Study", "Local Map-Pack SEO", "AI Search Optimization Too",
+        "Montréal-Based SEO Studio", "See Plans and Prices"
+      ],
+      "descriptions": [
+        "Technical SEO, local search and content for Montréal businesses. Plans from $250/month.",
+        "See the price before you talk to anyone. Month-to-month, with a plain-language report.",
+        "English and French SEO from a Montréal studio. Real case studies with dated numbers.",
+        "We fix what stops Google trusting your site, then go after the searches your clients make."
+      ]
+    },
+    {
+      "name": "FR | Agence SEO Montréal",
+      "final_url": "https://stillawakemedia.com/fr/agence-seo-montreal",
+      "path": ["seo", "montreal"],
+      "keywords": [
+        ["agence seo montréal", "EXACT"], ["agence seo montréal", "PHRASE"],
+        ["agence seo montreal", "PHRASE"], ["référencement montréal", "PHRASE"],
+        ["referencement montreal", "PHRASE"], ["référencement naturel montréal", "PHRASE"],
+        ["agence référencement montréal", "PHRASE"]
+      ],
+      "headlines": [
+        "Agence SEO Montréal", "Référencement à Montréal", "Forfaits SEO dès 250 $/mois",
+        "Tarifs affichés en ligne", "Sans appel de vente", "Sans contrat de 12 mois",
+        "SEO technique et local", "SEO bilingue FR et EN", "Rapport mensuel clair",
+        "Étude de cas : page 1", "Studio montréalais", "Optimisation IA (AEO)",
+        "Visibilité Google Maps", "Voir les forfaits et prix", "Référencement naturel"
+      ],
+      "descriptions": [
+        "SEO technique, référencement local et contenu pour PME de Montréal. Dès 250 $/mois.",
+        "Le prix est affiché avant toute discussion. Sans contrat de 12 mois, rapport mensuel.",
+        "Référencement en français et en anglais par un studio montréalais. Études de cas réelles.",
+        "On corrige ce qui bloque Google, puis on vise les recherches de vos clients."
+      ]
+    },
+    {
+      "name": "EN | Web Design Montréal",
+      "final_url": "https://stillawakemedia.com/web-design-montreal",
+      "path": ["web-design", "montreal"],
+      "keywords": [
+        ["web design montreal", "EXACT"], ["web design montreal", "PHRASE"],
+        ["montreal web design", "PHRASE"], ["web design agency montreal", "PHRASE"],
+        ["website design montreal", "PHRASE"], ["web designer montreal", "PHRASE"],
+        ["website development montreal", "PHRASE"]
+      ],
+      "headlines": [
+        "Web Design Montréal", "Custom Websites, Montréal", "Websites From $1,800",
+        "Business Sites $2,750–$5,750", "Fixed Written Price", "No Sales Call Required",
+        "Bilingual Sites, EN & FR", "SEO Built In From Day One", "You Own Your Site & Domain",
+        "Fast, Mobile-First Builds", "See Our Work", "Online Stores From $4,250",
+        "Montréal Web Design Studio", "Get a Price Online", "Prices Published Upfront"
+      ],
+      "descriptions": [
+        "Custom websites for Montréal businesses, designed to rank and convert. From $1,800.",
+        "Written scope and fixed price before you commit. No sales call required.",
+        "English and French, SEO structure and mobile speed built in. You own everything.",
+        "Real case studies with sourced numbers: page-1 rankings, 100/100 Lighthouse scores."
+      ]
+    },
+    {
+      "name": "FR | Création site web Montréal",
+      "final_url": "https://stillawakemedia.com/fr/agence-web-montreal",
+      "path": ["site-web", "montreal"],
+      "keywords": [
+        ["création site web montréal", "EXACT"], ["création site web montréal", "PHRASE"],
+        ["agence web montréal", "EXACT"], ["agence web montréal", "PHRASE"],
+        ["conception site web montréal", "PHRASE"], ["création de site web montréal", "PHRASE"],
+        ["agence web montreal", "PHRASE"]
+      ],
+      "headlines": [
+        "Création site web Montréal", "Agence web Montréal", "Sites web dès 1 800 $",
+        "Sites PME 2 750 $–5 750 $", "Prix fixe écrit", "Sans appel de vente",
+        "Sites bilingues FR et EN", "SEO intégré dès le départ", "Votre site vous appartient",
+        "Rapides et pensés mobile", "Voir nos réalisations", "Boutiques en ligne dès 4 250 $",
+        "Studio web montréalais", "Votre prix en ligne", "Conception de sites sur mesure"
+      ],
+      "descriptions": [
+        "Sites web sur mesure pour entreprises de Montréal, conçus pour Google. Dès 1 800 $.",
+        "Portée écrite et prix fixe avant de vous engager. Aucun appel de vente obligatoire.",
+        "En français et en anglais, SEO et performance mobile intégrés. Tout vous appartient.",
+        "Études de cas réelles et chiffres sourcés : positions en page 1, scores Lighthouse 100."
+      ]
+    },
+    {
+      "name": "FR | Prix site web",
+      "final_url": "https://stillawakemedia.com/fr/prix-site-web-quebec",
+      "path": ["prix", "site-web"],
+      "keywords": [
+        ["prix site web", "PHRASE"], ["prix site web québec", "PHRASE"],
+        ["combien coûte un site web", "PHRASE"], ["coût site web", "PHRASE"],
+        ["prix création site web", "PHRASE"]
+      ],
+      "headlines": [
+        "Prix d'un site web au Québec", "Combien coûte un site web?", "Nos prix sont affichés",
+        "Sites web dès 1 800 $", "Sites PME 2 750 $–5 750 $", "Boutiques dès 4 250 $",
+        "Prix fixe écrit d'avance", "Sans appel de vente", "Calculez votre prix",
+        "Guide des prix 2026", "Studio montréalais"
+      ],
+      "descriptions": [
+        "Ce que coûte vraiment un site web au Québec en 2026, et nos propres prix affichés.",
+        "Site simple dès 1 800 $, site d'entreprise 2 750 $ à 5 750 $, boutique dès 4 250 $.",
+        "Prix fixe écrit avant de commencer. Pas d'appel de vente obligatoire. FR et EN."
+      ]
+    },
+    {
+      "name": "EN | Website cost",
+      "final_url": "https://stillawakemedia.com/website-cost-canada",
+      "path": ["website", "cost"],
+      "keywords": [
+        ["website cost montreal", "PHRASE"], ["how much does a website cost canada", "PHRASE"],
+        ["website price montreal", "PHRASE"], ["cost of a website canada", "PHRASE"],
+        ["how much does a website cost", "EXACT"]
+      ],
+      "headlines": [
+        "Website Cost in Canada", "How Much Is a Website?", "Our Prices Are Published",
+        "Websites From $1,800", "Business Sites $2,750–$5,750", "Online Stores From $4,250",
+        "Fixed Written Price", "No Sales Call Required", "Calculate Your Price",
+        "2026 Website Price Guide", "Montréal Web Studio"
+      ],
+      "descriptions": [
+        "What a website really costs in Canada in 2026, with our own prices published.",
+        "Simpler sites from $1,800, business sites $2,750–$5,750, online stores from $4,250.",
+        "Fixed written price before work starts. No sales call required. English and French."
+      ]
+    }
+  ],
+  "sitelinks_en": [
+    ["Pricing", "https://stillawakemedia.com/pricing"],
+    ["Our Work", "https://stillawakemedia.com/our-work"],
+    ["SEO Plans", "https://stillawakemedia.com/seo-montreal"],
+    ["Contact", "https://stillawakemedia.com/contact"]
+  ],
+  "sitelinks_fr": [
+    ["Tarifs", "https://stillawakemedia.com/fr/tarifs"],
+    ["Réalisations", "https://stillawakemedia.com/fr/realisations"],
+    ["Forfaits SEO", "https://stillawakemedia.com/fr/agence-seo-montreal"],
+    ["Nous joindre", "https://stillawakemedia.com/fr/contact"]
+  ],
+  "callouts_en": ["Prices published", "Fixed written price", "No sales call required", "Bilingual EN/FR", "You own your site", "Month-to-month SEO"],
+  "callouts_fr": ["Prix affichés", "Prix fixe écrit", "Sans appel de vente", "Bilingue FR/EN", "Votre site, à vous", "SEO sans contrat"]
+}

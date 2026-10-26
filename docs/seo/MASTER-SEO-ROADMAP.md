@@ -35,7 +35,7 @@ Why lower than the brief's 1,500–3,000: the site starts from a smaller real ba
 | ID | Task | Priority | Status | Tool | Location | Acceptance criteria | Verification | Evidence | Depends on | Completed |
 |---|---|---|---|---|---|---|---|---|---|---|
 | P2-01 | Reciprocal hreflang on EN `/` and `/contact` | P1 | [x] | Code | `src/app/(en)/page.tsx`, `src/app/(en)/contact/page.tsx` | Crawl `hreflangNotReciprocal` = 0 | Local build crawl = 0; live check after deploy | Log | P1-03 | 2026-10-26 |
-| P2-02 | Replace internal links that hit redirects | P1 | [x] | Code | `src/lib/data.ts`, 3 articles | Crawl `linksToRedirects` = 0 | Local build crawl = 0 | Log | P1-03 | 2026-10-26 |
+| P2-02 | Replace internal links that hit redirects | P1 | [!] | Code | `src/lib/data.ts`, 3 articles | Crawl `linksToRedirects` = 0 | Local 0; live 3 (CMS copies of 3 articles, B-11) | Log | P1-03 | |
 | P2-03 | Link the orphaned `/fr/developpement-framer` | P2 | [x] | Code | `src/app/(fr)/fr/agence-web-montreal/page.tsx` | Crawl `orphans` = 0 | Local build crawl = 0 | Log | P1-03 | 2026-10-26 |
 | P2-04 | `http://www.` → apex in one hop | P3 | [!] | Vercel domains | Vercel | One 308 | `curl -I` | B-07 | — | |
 | P2-05 | Title lengths on article pages (124 over 70 chars incl. suffix) | P3 | [~] | Code | articles | Only where a page earns impressions | Crawl | CTR-only effect; most articles have 0 impressions | P1-01 | |
@@ -45,7 +45,7 @@ Why lower than the brief's 1,500–3,000: the site starts from a smaller real ba
 
 | ID | Task | Priority | Status | Tool | Location | Acceptance criteria | Verification | Evidence | Depends on | Completed |
 |---|---|---|---|---|---|---|---|---|---|---|
-| P3-01 | IndexNow on deploy and daily cron | P0 | [x] | Code | `/api/cron/indexnow` | 200 from api.indexnow.org | Submitted after PR #5 | Earlier log | — | 2026-10-26 |
+| P3-01 | IndexNow on deploy and daily cron | P0 | [x] | Code | `/api/cron/indexnow` | 200 from api.indexnow.org | Submitted after PR #5 and PR #6 (10 URLs, 200) | Earlier log | — | 2026-10-26 |
 | P3-02 | llms.txt / llms-full.txt | P1 | [x] | Code | `/llms.txt` | Lists every published page | `ai-index.test.ts` | Earlier PRs | — | 2026-10-26 |
 | P3-03 | Request indexing for changed money pages in GSC | P1 | [!] | GSC UI | GSC | Inspected + requested | Owner action | B-03 | P2-01 | |
 | P3-04 | Bing Webmaster Tools sitemap | P2 | [!] | Bing UI | Bing | Sitemap submitted | Owner action | B-04 | — | |
@@ -137,6 +137,6 @@ Why lower than the brief's 1,500–3,000: the site starts from a smaller real ba
 | ID | Task | Priority | Status | Tool | Location | Acceptance criteria | Verification | Evidence | Depends on | Completed |
 |---|---|---|---|---|---|---|---|---|---|---|
 | P15-01 | Monitoring cadence and queries | P1 | [x] | Docs | `SEO-MONITORING.md` | Weekly/monthly checks defined | — | `SEO-MONITORING.md` | — | 2026-10-26 |
-| P15-02 | Deploy batch 1 and verify live | P0 | [-] | GitHub/Vercel | PR | Live crawl clean | Live crawl | Log | P2-01..P6-03 | |
+| P15-02 | Deploy batch 1 and verify live | P0 | [x] | GitHub/Vercel | PR | Live crawl clean | Live crawl 2026-10-26: all 0 except 3 CMS redirect links | PR #6, 960c852 | P2-01..P6-03 | 2026-10-26 |
 | P15-03 | 28-day review | P1 | [ ] | Zylx | `SEO-MONITORING.md` | Compare with baseline | — | Due 2026-11-23 | P15-02 | |
-| P15-04 | Final report | P1 | [-] | Docs | `FINAL-SEO-IMPLEMENTATION-REPORT.md` | Evidence for each claim | — | — | P15-02 | |
+| P15-04 | Final report (batch 1) | P1 | [x] | Docs | `FINAL-SEO-IMPLEMENTATION-REPORT.md` | Evidence for each claim | Live checks | `FINAL-SEO-IMPLEMENTATION-REPORT.md` | P15-02 | 2026-10-26 |

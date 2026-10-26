@@ -146,7 +146,7 @@ export const stillskinMedia: MediaAsset[] = [
   asset("stillskin-forest-revive", "mechanics", "downed-and-revive", "Revive", "A survivor reviving a downed teammate", "P1", "Two players, revive in progress."),
   asset("stillskin-forest-downed", "mechanics", "downed-and-revive", "Downed", "A downed survivor on the ground", "P2", "Downed state."),
   asset("stillskin-forest-ghost-spectator", "mechanics", "death-ghosts-and-the-finale", "Ghost spectator", "A blue ghost spectator watching teammates", "P2", "Ghost mode."),
-  asset("stillskin-forest-end-run", "mechanics", "death-ghosts-and-the-finale", "End of run", "Survivors' stat cards on the hospital roof", "P1", "Rooftop lineup with cards."),
+  asset("stillskin-forest-end-run", "mechanics", "death-ghosts-and-the-finale", "End of run", "The end-of-run summary card over the landmark tour", "P1", "The run-over result card during the outro tour."),
   asset("stillskin-forest-zombie-dance", "mechanics", "death-ghosts-and-the-finale", "Zombie dance", "Infected dancing around the survivors on the hospital roof", "P2", "Finale dance."),
   asset("stillskin-forest-building", "mechanics", "doors-and-building", "Building", "Planks nailed across a doorway", "P2", "Barricaded doorway."),
 
@@ -162,7 +162,7 @@ export const stillskinMedia: MediaAsset[] = [
   asset("stillskin-forest-angels-tear", "lore", "angels-tear", "The Angel's Tear", "The Angel's Tear", "P2", "At the grave.", { spoiler: true }),
   asset("stillskin-forest-dr-vances-ring", "lore", "dr-vances-ring", "Dr. Vance's Ring", "Dr. Vance's Ring", "P2", "In Vance's office.", { spoiler: true }),
   asset("stillskin-forest-admission-ledger", "quests", "blackthorn-admission-ledger", "Admission ledger", "The Blackthorn Admission Ledger open in the note reader", "P1", "Ledger note open on screen (use the ShowNote hook). HUD allowed."),
-  asset("stillskin-forest-story-documents", "lore", "notes-and-tapes", "Story documents", "The note reader open on a story note", "P2", "Note UI open. HUD allowed."),
+  asset("stillskin-forest-story-documents", "lore", "notes-and-tapes", "Story documents", "The note reader open on a story note", "P2", "Note UI open. HUD allowed.", { spoiler: true }),
   asset("stillskin-forest-ritual", "quests", "the-rite-of-stillness", "The ritual", "Candles lighting during the Rite of Stillness", "P2", "Ritual in progress.", { spoiler: true }),
   asset("stillskin-forest-hollow-heart", "quests", "the-heart-of-stillskin", "The Heart", "The pulsing Heart of Stillskin in its cavern", "P2", "Heart cavern.", { spoiler: true }),
 ];

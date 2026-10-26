@@ -1429,7 +1429,7 @@
       "gameId": "stillskin-forest",
       "target": "death-ghosts-and-the-finale",
       "description": "End of run",
-      "alt": "Survivors' stat cards on the hospital roof",
+      "alt": "The end-of-run summary card over the landmark tour",
       "use": "screenshot",
       "dimensions": {
         "width": 1920,
@@ -1437,7 +1437,7 @@
       },
       "aspectRatio": "16:9",
       "priority": "P1",
-      "captureInstructions": "Rooftop lineup with cards.",
+      "captureInstructions": "The run-over result card during the outro tour.",
       "spoiler": false,
       "liveAvailability": "live",
       "status": "missing"
@@ -1668,7 +1668,7 @@
       "src": "/games/stillskin-forest/lore/stillskin-forest-story-documents.webp",
       "gameId": "stillskin-forest",
       "target": "notes-and-tapes",
-      "description": "Story documents",
+      "description": "Story documents. Real note reader UI, opened in Studio via the ShowNote capture hook.",
       "alt": "The note reader open on a story note",
       "use": "screenshot",
       "dimensions": {
@@ -1678,9 +1678,9 @@
       "aspectRatio": "16:9",
       "priority": "P2",
       "captureInstructions": "Note UI open. HUD allowed.",
-      "spoiler": false,
+      "spoiler": true,
       "liveAvailability": "live",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-ritual",

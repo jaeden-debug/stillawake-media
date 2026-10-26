@@ -367,7 +367,7 @@ Without that foundation, the designer is making decisions in a vacuum. With it, 
 
 ## Platforms That Enable Premium Design
 
-Not every platform can deliver a premium website. The tools used matter because they either enable or constrain the design and performance outcomes.
+Not every platform can deliver a premium website. The tools used matter because they either enable or constrain the design and performance outcomes. You can see how we apply this in [our work](/our-work).
 
 ### Framer
 

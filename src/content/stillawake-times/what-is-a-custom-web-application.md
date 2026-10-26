@@ -275,7 +275,7 @@ $120,000–$400,000+ / 6–18 months
 **SaaS product (product strategy, multi-tenancy, billing, onboarding):**
 $150,000–$500,000+ / 9–24 months
 
-These ranges reflect North American agency rates. Offshore development can reduce costs but introduces coordination overhead and quality variability that should be factored into the calculation.
+These ranges reflect North American agency rates. Offshore development can reduce costs but introduces coordination overhead and quality variability that should be factored into the calculation. For Canadian figures and how a scope turns into a fixed price, see [what custom software costs in Canada](/stillawake-times/custom-software-development-cost-canada).
 
 ---
 
@@ -299,7 +299,7 @@ Include: license fees, implementation time, training time, ongoing workaround ti
 An initial scoping engagement (typically $2,000–$8,000) produces a detailed technical specification and cost estimate. This investment is worth making before committing to a full build.
 
 **Step 6: Compare total costs and strategic value**
-Custom solutions often have higher upfront costs but lower ongoing costs and operational friction. Factor in strategic value: is this a differentiating capability, or a utility function?
+Custom solutions often have higher upfront costs but lower ongoing costs and operational friction. Factor in strategic value: is this a differentiating capability, or a utility function? If you're still weighing build against buy, our guide to [custom software or an existing tool](/do-i-need-custom-software) walks through the same decision.
 
 ---
 
@@ -341,7 +341,7 @@ Plan for: hosting infrastructure (typically $50–$500/month depending on scale 
 
 ## The Bottom Line
 
-Custom web applications are not the right solution for every business problem. Off-the-shelf tools solve standard problems efficiently and should be used where they fit.
+Custom web applications are not the right solution for every business problem. Off-the-shelf tools solve standard problems efficiently and should be used where they fit. Our [custom software development](/software-development) page shows what we build and how a project is scoped.
 
 But for businesses that have genuine operational complexity that generic software can't accommodate, that have proprietary workflows representing competitive advantages, or that are building software as their product — custom web applications are the difference between a business that's constrained by its tools and one that has tools designed to amplify its specific capabilities.
 

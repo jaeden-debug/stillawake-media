@@ -5,7 +5,7 @@ excerpt: "Businesses redesigning their websites in 2026 face a fundamental archi
 category: "Web Design"
 featured: true
 image: "/best-website-design-for-small-businesses-2026-featured-image.jpg"
-author: "StillAwake Media"
+author: "Jaeden Doody"
 ---
 
 # Framer vs WordPress: Which Platform Is Better for Modern Businesses?

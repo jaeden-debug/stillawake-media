@@ -2,6 +2,27 @@
 
 Newest first. Each entry lists what changed, how it was verified, and what is still open.
 
+## 2026-10-26 — Owner-approved actions ("fix all in order")
+
+**1–2. Google Ads: one primary lead conversion (B-01), PMax final URL to the apex (B-02)**
+- **Not done yet.** Zylx's Google Ads actions cover campaigns, budgets, keywords and ads only, with no conversion-action or final-URL edits.
+- **Browser route:** Google asked to re-verify the jaeden@blackwateraquatics.ca sign-in, which needs the owner's password. Waiting on that sign-in. Budget and bidding won't be touched either way.
+
+**3. Directory and Google Business Profile copy (B-05, B-06)**
+- **`DIRECTORY-PROFILES.md` additions:**
+  - HelloDarwin, in EN and FR
+  - Semrush Agency Partners, flagged as needing an active Semrush account
+  - Google Business Profile: service-area setup, categories, EN/FR description without links or prices (per Google's rules), and a service list using the names and prices from the live /pricing schema
+- **Price check:** every price was cross-checked against the live /pricing page.
+- **`docs/citation-kit.md` corrections:** the SEO range now starts at $250, and the email is jaeden@ instead of hello@, which the site never uses.
+- **Not done by Claude:** creating accounts and publishing the listings. Those stay owner actions.
+
+**4. Authors on the remaining articles**
+- **Script:** `stillawakemedia.dev/scripts/set-article-author.mts` found 17 published articles with no author.
+- **Draft check:** before republishing, each saved version was compared with its live snapshot. None had unpublished drafts, so republishing shipped nothing unreviewed.
+- **Result:** all 17 credited to Jaeden Doody and republished; a re-run finds 0. Markdown bylines updated, so all 52 EN and 44 FR now say Jaeden Doody.
+- **Where the byline comes from:** the article page reads the visible byline and the JSON-LD author from the markdown `author` field (`src/app/(en)/stillawake-times/[slug]/page.tsx`), not from the CMS. The live pages switch when the markdown deploys.
+
 ## 2026-10-26 — Batch 3 (branch `seo/program-batch-3`)
 
 **P7-02: the four articles that earn impressions**
@@ -104,7 +125,7 @@ Newest first. Each entry lists what changed, how it was verified, and what is st
   - JSON-LD author is `/founder/jaeden-doody#person`
   - all three return 200
   - full crawl of 279 URLs: linksToRedirects 0, broken 0, orphans 0, hreflang 0
-- **Note:** 20 other published articles still have no CMS author, so any future edit to them will hit the same gate.
+- **Note:** 20 other published articles still had no CMS author. Corrected 2026-10-26: the real figure was 17 once batch 3 credited three more, and all are now fixed (see the owner-approved actions entry).
 
 ## 2026-10-26 — Batch 1 (branch `seo/program-batch-1`)
 

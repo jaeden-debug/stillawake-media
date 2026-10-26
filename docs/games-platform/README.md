@@ -75,7 +75,7 @@ Rules applied: anything only the design report claimed, or the log listed as unv
 - A separate session (the Stillskin asset agent) is capturing real screenshots into `public/games/stillskin-forest/<folder>/`, against this manifest. To publish a capture: set its entry in `capturedAssets` in `media.ts` (status `"optimized"`, real dimensions), then run `UPDATE_DOCS=1 npx vitest run src/lib/game-docs.test.ts`.
 - When the hero lands, also add it as `image` on the Stillskin record in `projects.ts`, so the Our Work hero and card show it.
 
-**Still on iframes:** the homepages (EN and FR) still embed live sites through `LiveWorkShowcase`. It's a teaser that links to the portfolio, not the portfolio's navigation, so it was left as-is. Converting it to cards would remove two third-party iframes from the homepage.
+**Homepages:** the EN and FR homepage showcase (`LiveWorkShowcase`) no longer embeds live sites. It shows the featured project cards and links to the portfolio. Live previews remain one click deeper, on each project page.
 
 ## 6. Missing or unverified game information
 

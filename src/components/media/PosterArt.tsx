@@ -34,7 +34,7 @@ export function PosterArt({
 }) {
   return (
     <div
-      className={`relative w-full overflow-hidden bg-[#0d0d0d] ${className}`}
+      className={`@container relative w-full overflow-hidden bg-[#0d0d0d] ${className}`}
       style={{ aspectRatio: aspect }}
     >
       {src ? (
@@ -61,7 +61,7 @@ export function PosterArt({
                 {eyebrow}
               </p>
             )}
-            <p className="geist mt-1 text-3xl font-black leading-[.9] tracking-[-.06em] text-white/90 md:text-4xl">
+            <p className="geist mt-1 text-[clamp(1.35rem,11cqw,2.4rem)] font-black leading-[.9] tracking-[-.06em] text-white/90 [overflow-wrap:anywhere]">
               {title}
             </p>
           </div>

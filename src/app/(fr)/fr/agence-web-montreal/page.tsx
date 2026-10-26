@@ -123,7 +123,7 @@ const faqs = [
   ],
   [
     "Combien coûte un site web à Montréal ?",
-    "Le coût dépend du nombre de pages, de la complexité du projet, du branding, du SEO, des intégrations et du niveau de personnalisation."
+    "Le coût dépend du nombre de pages, de la complexité du projet, du branding, du SEO, des intégrations et du niveau de personnalisation. Notre guide du prix d'un site web au Québec présente les fourchettes réelles du marché et nos tarifs affichés."
   ],
   [
     "Pourquoi le SEO est-il important pour un site web ?",
@@ -334,6 +334,7 @@ export default function Page() {
           ["Développement Shopify", "/fr/developpement-shopify"],
           ["Référencement IA (AEO)", "/fr/referencement-ia"],
           ["Tarifs", "/fr/tarifs"],
+          ["Prix d'un site web au Québec", "/fr/prix-site-web-quebec"],
           ["Nous joindre", "/fr/contact"],
           ["English version", "/web-design-montreal"],
         ]}

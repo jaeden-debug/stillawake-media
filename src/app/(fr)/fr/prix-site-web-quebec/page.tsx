@@ -3,9 +3,9 @@ import Link from "next/link";
 import { ServiceJsonLd, FaqBlock, RelatedServices } from "@/components/service-page";
 
 export const metadata: Metadata = {
-  title: "Prix d'un site web au Québec (guide 2026)",
+  title: "Prix site web Québec 2026 : combien coûte un site?",
   description:
-    "Combien coûte un site web au Québec en 2026? Fourchettes réelles pour sites vitrines, sites sur mesure, boutiques en ligne et applications web — et les tarifs affichés d'un studio montréalais.",
+    "Prix d'un site web au Québec en 2026 : fourchettes réelles par type de site, coûts de la Loi 96 et de la Loi 25, frais récurrents et tarifs affichés d'un studio montréalais.",
   alternates: {
     canonical: "https://stillawakemedia.com/fr/prix-site-web-quebec",
     languages: {
@@ -37,6 +37,10 @@ const FAQ: [string, string][] = [
     "Après la construction : hébergement et domaine (souvent 10 $ à 100 $ et plus par mois), maintenance et mises à jour, et le travail de croissance comme le SEO. Nos prix sont affichés : site d'entreprise professionnel environ 2 750 $ à 5 750 $ CAD avec référencement local, site plus simple à partir de 1 800 $, boutique en ligne à partir de 4 250 $, cadrage payant à partir de 1 800 $, forfaits SEO de 600 $ à 850 $ par mois et dépannage d'urgence de 150 $ à 600 $.",
   ],
   [
+    "Un site bilingue coûte-t-il deux fois plus cher?",
+    "Non. La structure du site se bâtit une seule fois; ce qui s'ajoute, c'est la rédaction de la version française (ou anglaise) avec une qualité équivalente, comme l'exige la Loi 96. Une soumission bilingue au même prix et au même délai qu'une soumission unilingue annonce généralement une traduction automatique.",
+  ],
+  [
     "Un site pas cher, est-ce une mauvaise idée?",
     "Pas toujours — un site en modèle peut convenir pour valider une idée. Ça devient coûteux quand l'entreprise dépend du site : lenteur, structure SEO impossible à corriger et dépendance à la plateforme coûtent souvent plus cher à réparer que de bâtir correctement dès le départ.",
   ],
@@ -66,7 +70,7 @@ export default function PrixSiteWebQuebecPage() {
         <div className="mx-auto max-w-6xl">
           <p className="mb-6 text-sm uppercase tracking-[0.35em] text-[#D71920]">Guide des prix · 2026</p>
           <h1 className="max-w-4xl text-5xl font-semibold leading-[1.05] md:text-6xl">
-            Combien coûte un site web au Québec?
+            Prix d&apos;un site web au Québec : combien ça coûte en 2026?
           </h1>
           <p className="mt-8 max-w-3xl text-lg leading-8 text-white/70">
             La vraie réponse : <strong className="text-white">d&apos;environ 1 500 $ pour un site en modèle à bien plus
@@ -138,6 +142,56 @@ export default function PrixSiteWebQuebecPage() {
               Obtenir une soumission écrite — sans appel
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="px-6 pb-20">
+        <div className="mx-auto max-w-7xl">
+          <h2 className="geist text-4xl font-black tracking-[-0.06em]">Ce qui fait monter le prix au Québec</h2>
+          <p className="mt-4 max-w-3xl leading-8 text-[#C7B9B9]">
+            Deux lois québécoises touchent presque tous les sites commerciaux. Elles ne doublent pas un budget,
+            mais une soumission qui les ignore n&apos;est pas comparable à une soumission qui les prévoit.
+          </p>
+          <div className="mt-8 grid gap-5 md:grid-cols-2">
+            <div className="rounded-[2rem] border border-white/10 bg-white/[.03] p-7">
+              <h3 className="geist text-2xl font-black tracking-[-0.05em]">Loi 96 : le français d&apos;abord</h3>
+              <p className="mt-3 leading-7 text-[#C7B9B9]">
+                Si vous faites affaire au Québec, l&apos;information commerciale doit exister en français, avec une
+                qualité équivalente à l&apos;anglais, pas une version raccourcie. Ce qui coûte, c&apos;est la
+                rédaction : la structure d&apos;un site bilingue se bâtit une seule fois.
+              </p>
+              <Link href="/fr/articles/loi-96-site-web-obligations" className="mt-4 inline-flex text-sm text-[#D71920] underline-offset-4 hover:underline">
+                Ce que la Loi 96 exige d&apos;un site web →
+              </Link>
+            </div>
+            <div className="rounded-[2rem] border border-white/10 bg-white/[.03] p-7">
+              <h3 className="geist text-2xl font-black tracking-[-0.05em]">Loi 25 : renseignements personnels</h3>
+              <p className="mt-3 leading-7 text-[#C7B9B9]">
+                Un formulaire de contact et un outil d&apos;analyse suffisent pour être visé : responsable
+                désigné et publié, politique de confidentialité fidèle à la réalité, et consentement pour le suivi.
+                Un bon prix de site inclut ces éléments au lieu de les laisser pour plus tard.
+              </p>
+              <Link href="/fr/articles/loi-25-cookies-consentement" className="mt-4 inline-flex text-sm text-[#D71920] underline-offset-4 hover:underline">
+                Ce que la Loi 25 exige de votre site →
+              </Link>
+            </div>
+          </div>
+
+          <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">Les coûts après le lancement</h2>
+          <ul className="mt-6 max-w-3xl list-disc space-y-3 pl-6 leading-8 text-[#C7B9B9] marker:text-[#D71920]">
+            <li><strong className="text-white">Hébergement et domaine</strong> : souvent de 10 $ à 100 $ et plus par mois selon la plateforme.</li>
+            <li><strong className="text-white">Maintenance et mises à jour</strong> : sécurité, sauvegardes, correctifs. Voir notre page <Link href="/fr/maintenance-site-web" className="text-[#D71920] underline-offset-4 hover:underline">maintenance de site web</Link>.</li>
+            <li><strong className="text-white">Croissance</strong> : référencement, contenu et suivi. Nos forfaits SEO sont affichés sur la page <Link href="/fr/tarifs" className="text-[#D71920] underline-offset-4 hover:underline">Tarifs</Link>.</li>
+          </ul>
+
+          <h2 className="geist mt-16 text-4xl font-black tracking-[-0.06em]">Comment comparer deux soumissions</h2>
+          <ol className="mt-6 max-w-3xl list-decimal space-y-3 pl-6 leading-8 text-[#C7B9B9]">
+            <li>Vérifiez que le domaine, l&apos;hébergement et le code seront <Link href="/fr/propriete-site-web" className="text-[#D71920] underline-offset-4 hover:underline">à votre nom</Link>.</li>
+            <li>Demandez si la version française est rédigée ou traduite automatiquement.</li>
+            <li>Comparez ce qui est inclus : rédaction, photos, référencement de base, conformité Loi 25.</li>
+            <li>Regardez le délai annoncé : un délai irréaliste annonce des coupes. <Link href="/fr/articles/deroulement-projet-web-delais" className="text-[#D71920] underline-offset-4 hover:underline">Délais réalistes par type de projet</Link>.</li>
+            <li>Posez les <Link href="/fr/articles/choisir-agence-web-questions" className="text-[#D71920] underline-offset-4 hover:underline">douze questions à poser avant de signer</Link>.</li>
+          </ol>
         </div>
       </section>
 

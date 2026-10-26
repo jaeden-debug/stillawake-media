@@ -35,6 +35,7 @@ const SERVICE_PILLS: [string, string][] = [
   ["Logiciels sur mesure", "/fr/developpement-logiciel"],
   ["Image de marque", "/fr/image-de-marque"],
   ["Tarifs", "/fr/tarifs"],
+  ["Prix d'un site web", "/fr/prix-site-web-quebec"],
 ];
 
 const CASE_STUDIES: [string, string, string][] = [

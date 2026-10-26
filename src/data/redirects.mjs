@@ -24,6 +24,10 @@ export const REDIRECTS = [
   { source: "/portfolio", destination: "/our-work", permanent: true },
   { source: "/our-work/stillskin-forest", destination: "/games/stillskin-forest", permanent: true },
   { source: "/our-work/llms-txt-generator", destination: "/tools/llms-txt-generator", permanent: true },
+  // The previous Framer site's contact form lived at these paths; old links
+  // (Facebook posts among them) still arrive here.
+  { source: "/collab-sign-up", destination: "/contact", permanent: true },
+  { source: "/contact-us", destination: "/contact", permanent: true },
   { source: "/web-design", destination: "/web-design-montreal", permanent: true },
   {
     source: "/technical-seo",

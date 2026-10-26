@@ -133,6 +133,19 @@ After deploy:
 4. Register the GA4 custom dimensions above.
 5. When the game is publicly playable: set `publiclyPlayable: true` and `releaseStatus`/`releaseDate` in `game.ts`, and add tested devices to `verifiedDevices`.
 
+## Indexing and answer engines (automatic for future work)
+
+- **Sitemap** (`/sitemap.xml`): every published page with a real lastmod. Redirected URLs are filtered out. Google reads this.
+- **`/llms.txt`**: one line per page for every project, game, wiki article and article (EN and FR), generated from the same registries as the pages. **`/llms-full.txt`**: the full text of every project and published wiki article. New content appears in both on the next deploy, and tests fail if a published page is missing or an unpublished one leaks.
+- **IndexNow** (Bing, which also feeds ChatGPT search and Copilot; plus Yandex, Seznam and Naver):
+  - **Key file:** `/cd3d70095fcf36ece162530aca2a273c.txt`. The key is public by design.
+  - **Daily job:** `/api/cron/indexnow` runs at 14:30 UTC (in `vercel.json`, same `CRON_SECRET` auth as the other crons) and submits every URL changed in the last 2 days.
+  - **One-off full submission:** `node scripts/indexnow-submit.mjs`, after a big deploy.
+- **robots.txt** allows every crawler, including Googlebot, Bingbot and OAI-SearchBot.
+- **Google** does not use IndexNow. It needs the sitemap submitted once in Search Console, then picks up changes from lastmod.
+
+None of this guarantees a ranking or an AI citation. It makes every page discoverable, readable without JavaScript, and announced as soon as it changes.
+
 ## 10. Future publishing
 
 **Add a project:** add a record to `projects` in `src/data/portfolio/projects.ts`. Give it categories by id, and add a new category to `projectCategories` if needed. Set `canonicalPath` if it has a home elsewhere on the site. It appears on every shelf, in search, in the sitemap and gets a page automatically.

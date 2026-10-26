@@ -2,6 +2,7 @@ import { siteUrl } from "@/lib/data";
 import { organization, ventures } from "@/data/entities";
 import { jaedenDoody } from "@/data/people/jaeden-doody";
 import { SERVICES } from "@/data/services";
+import { articlesSection, gamesSection, projectsSection } from "@/lib/ai-index";
 
 /**
  * llms.txt — a plain-text orientation file for language models.
@@ -74,6 +75,17 @@ Pricing overview: ${siteUrl}/pricing (français: ${siteUrl}/fr/tarifs)
 ## Related first-party sites
 
 ${ventures.map((v) => `- ${v.url} — ${v.tagline}`).join("\n")}
+
+${projectsSection()}
+
+${gamesSection()}
+
+${articlesSection()}
+
+## Full text
+
+The complete text of every project page and published game wiki article: ${siteUrl}/llms-full.txt
+Sitemap of every indexable URL: ${siteUrl}/sitemap.xml
 `;
 
   return new Response(body, {

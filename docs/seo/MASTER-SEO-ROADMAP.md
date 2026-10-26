@@ -82,7 +82,7 @@ Why lower than the brief's 1,500–3,000: the site starts from a smaller real ba
 | ID | Task | Priority | Status | Tool | Location | Acceptance criteria | Verification | Evidence | Depends on | Completed |
 |---|---|---|---|---|---|---|---|---|---|---|
 | P7-01 | Classify 52 EN + 44 FR articles | P1 | [x] | Repo + GSC | `CONTENT-INVENTORY.md` | Each has keep / improve / merge-candidate | — | `CONTENT-INVENTORY.md` | P1-01 | 2026-10-26 |
-| P7-02 | Improve the 4 articles that already earn impressions | P2 | [-] | Code | see inventory | Clear answer up top, link to owner service page | 1 of 4 live; 3 blocked on author (B-12) | Log batch 3 | P7-01 | |
+| P7-02 | Improve the 4 articles that already earn impressions | P2 | [x] | Code | see inventory | Clear answer up top, link to owner service page | All 4 live (link sentences confirmed in live HTML) | Log batch 3 | P7-01 | 2026-10-26 |
 | P7-03 | Decide merges for overlapping articles | P3 | [~] | Repo | see inventory | No deletion without data | Re-check at 2026-12-07 with more GSC data | — | P7-01 | |
 
 ## Phase 8 — Internal linking

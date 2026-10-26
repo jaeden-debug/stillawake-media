@@ -15,6 +15,12 @@ Newest first. Each entry lists what changed, how it was verified, and what is st
 - **Live:** best-website-design is republished.
 - **Waiting (B-12):** the other three are saved as new versions but can't publish, because they have no CMS author. Publishing needs one, and setting it would change their byline from StillAwake Media to Jaeden Doody. The markdown fallbacks are updated.
 
+- **B-12 resolved:** the owner approved crediting Jaeden Doody, so the author was set and the three articles were republished. Live checks:
+  - all six added sentences are present
+  - the JSON-LD author is `/founder/jaeden-doody#person`
+  - IndexNow accepted the three URLs (HTTP 200)
+  - the markdown bylines are updated to match
+
 **P6-04: /web-design-montreal**
 - **H1:** "Web design in Montreal: custom websites built to rank and convert."
 - **Quick answer:** now states StillAwake's own prices (from /website-cost-canada) before the market ranges.

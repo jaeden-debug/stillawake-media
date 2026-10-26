@@ -4,7 +4,7 @@ Generated from `src/data/games/stillskin-forest/media.ts`. Do not edit by hand.
 
 Rules: real in-game captures only. No development UI unless the note says HUD allowed. No generated or stock images presented as gameplay. Save as WebP at the listed size to the `Path` shown (under `public/`). Then set the asset's status in `media.ts` and the image appears on every page that references it.
 
-Total: 98 · P0: 12 · captured: 69
+Total: 98 · P0: 12 · captured: 70
 
 | Done | Priority | File | Path | Size | Target page | Spoiler | In build | What to capture | Alt text |
 |---|---|---|---|---|---|---|---|---|---|
@@ -20,7 +20,7 @@ Total: 98 · P0: 12 · captured: 69
 | ☑ | P0 | `stillskin-forest-stillwater.webp` | `public/games/stillskin-forest/locations/stillskin-forest-stillwater.webp` | 1920×1080 (16:9) | `/games/stillskin-forest/wiki/locations/stillwater` | no | live | Elevated view down Main Street, wrecks and streetlights visible. Hide all HUD and development UI. | Main Street in the abandoned town of Stillwater |
 | ☑ | P0 | `stillskin-forest-thumbnail.webp` | `public/games/stillskin-forest/branding/stillskin-forest-thumbnail.webp` | 1920×1080 (16:9) | `/games` | no | live | Strongest single image of the game, readable at 400px wide. Hide all HUD and development UI. | Blackthorn Asylum above Green Lake in Stillskin Forest |
 | ☑ | P0 | `stillskin-forest-walker.webp` | `public/games/stillskin-forest/enemies/stillskin-forest-walker.webp` | 1920×1080 (16:9) | `/games/stillskin-forest/wiki/enemies/walker` | no | live | Full body, three-quarter view, readable silhouette. | A Walker infected in Stillskin Forest |
-| ☐ | P1 | `stillskin-forest-admission-ledger.webp` | `public/games/stillskin-forest/quests/stillskin-forest-admission-ledger.webp` | 1920×1080 (16:9) | `/games/stillskin-forest/wiki/quests/blackthorn-admission-ledger` | no | live | Ledger note open on screen (use the ShowNote hook). HUD allowed. | The Blackthorn Admission Ledger open in the note reader |
+| ☑ | P1 | `stillskin-forest-admission-ledger.webp` | `public/games/stillskin-forest/quests/stillskin-forest-admission-ledger.webp` | 1920×1080 (16:9) | `/games/stillskin-forest/wiki/quests/blackthorn-admission-ledger` | no | live | Ledger note open on screen (use the ShowNote hook). HUD allowed. | The Blackthorn Admission Ledger open in the note reader |
 | ☑ | P1 | `stillskin-forest-asylum-interior.webp` | `public/games/stillskin-forest/locations/stillskin-forest-asylum-interior.webp` | 1920×1080 (16:9) | `/games/stillskin-forest/wiki/locations/blackthorn-asylum` | no | live | Admissions hall and stairs. | The admissions hall inside Blackthorn Asylum |
 | ☑ | P1 | `stillskin-forest-baseball-bat.webp` | `public/games/stillskin-forest/weapons/stillskin-forest-baseball-bat.webp` | 1920×1080 (16:9) | `/games/stillskin-forest/wiki/weapons/baseball-bat` | no | live | Item on a plain surface or in hand, first person. | The Baseball Bat |
 | ☑ | P1 | `stillskin-forest-blood-moon.webp` | `public/games/stillskin-forest/nights/stillskin-forest-blood-moon.webp` | 1920×1080 (16:9) | `/games/stillskin-forest/wiki/special-nights/blood-moon` | no | live | Red sky, moon in frame. | A red Blood Moon over the forest |

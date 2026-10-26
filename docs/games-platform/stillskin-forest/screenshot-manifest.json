@@ -1648,7 +1648,7 @@
       "src": "/games/stillskin-forest/quests/stillskin-forest-admission-ledger.webp",
       "gameId": "stillskin-forest",
       "target": "blackthorn-admission-ledger",
-      "description": "Admission ledger",
+      "description": "Admission ledger. Real note reader UI, opened in Studio via the ShowNote capture hook.",
       "alt": "The Blackthorn Admission Ledger open in the note reader",
       "use": "screenshot",
       "dimensions": {
@@ -1660,7 +1660,7 @@
       "captureInstructions": "Ledger note open on screen (use the ShowNote hook). HUD allowed.",
       "spoiler": false,
       "liveAvailability": "live",
-      "status": "missing"
+      "status": "optimized"
     },
     {
       "id": "stillskin-forest-story-documents",

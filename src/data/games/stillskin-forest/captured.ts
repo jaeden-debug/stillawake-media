@@ -346,6 +346,18 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "src": "/games/stillskin-forest/locations/stillskin-forest-rooftops.webp",
     "spoiler": false
   },
+  "stillskin-forest-admission-ledger": {
+    "description": "Admission ledger. Real note reader UI, opened in Studio via the ShowNote capture hook.",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass4/admission-ledger.png",
+    "src": "/games/stillskin-forest/quests/stillskin-forest-admission-ledger.webp",
+    "spoiler": false
+  },
   "stillskin-forest-daytime": {
     "description": "Peaceful forest in daylight. Pine forest around the cabin row, daylight.",
     "dimensions": {

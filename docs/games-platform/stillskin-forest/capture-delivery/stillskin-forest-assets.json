@@ -759,6 +759,33 @@
       "sha1": "766400ed1f4c"
     },
     {
+      "id": "stillskin-forest-admission-ledger",
+      "filename": "stillskin-forest-admission-ledger.webp",
+      "gameId": "stillskin-forest",
+      "target": "blackthorn-admission-ledger",
+      "description": "Admission ledger. Real note reader UI, opened in Studio via the ShowNote capture hook.",
+      "alt": "The Blackthorn Admission Ledger open in the note reader",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized",
+      "source": "masters/pass4/admission-ledger.png",
+      "src": "/games/stillskin-forest/quests/stillskin-forest-admission-ledger.webp",
+      "captureMode": "Authentic gameplay",
+      "originalResolution": "2768x1557",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 119546,
+      "sha1": "948338cf1317"
+    },
+    {
       "id": "stillskin-forest-daytime",
       "filename": "stillskin-forest-daytime.webp",
       "gameId": "stillskin-forest",
@@ -2000,7 +2027,7 @@
       "target": "inventory-and-hotbar",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "blocked: needs live keyboard input; Roblox menu overlay appears in automated HUD capture"
+      "reason": "blocked: needs live keyboard input; Roblox menu overlays automated HUD capture"
     },
     {
       "id": "stillskin-forest-dread-encounter-closeup",
@@ -2072,7 +2099,7 @@
       "target": "heavy-fog",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "in progress: builder's ForceSpecialNight hook being deployed"
+      "reason": "blocked: ForceSpecialNight sets the night, but no distinct visual a few seconds into Night (Lighting.FogEnd stayed 100000 under HeavyFog); reported to builder"
     },
     {
       "id": "stillskin-forest-infected-surge",
@@ -2081,7 +2108,7 @@
       "target": "infected-surge",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "in progress: as heavy-fog"
+      "reason": "blocked: forced night showed no distinct visual in a wide shot; reported to builder"
     },
     {
       "id": "stillskin-forest-silent-night",
@@ -2090,7 +2117,7 @@
       "target": "silent-night",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "in progress: as heavy-fog"
+      "reason": "blocked: same as heavy-fog; not attempted after the first two showed no visual"
     },
     {
       "id": "stillskin-forest-angels-tear",
@@ -2099,16 +2126,7 @@
       "target": "angels-tear",
       "spoiler": true,
       "liveAvailability": "live",
-      "reason": "retry: camera framed grass; position (-365,56,-605)"
-    },
-    {
-      "id": "stillskin-forest-admission-ledger",
-      "folder": "quests",
-      "priority": "P1",
-      "target": "blackthorn-admission-ledger",
-      "spoiler": false,
-      "liveAvailability": "live",
-      "reason": "in progress: builder's ShowNote hook being deployed (ledger is a normal note at the park, not hidden)"
+      "reason": "retry: camera framed grass; relic at (-365,56,-605)"
     },
     {
       "id": "stillskin-forest-story-documents",
@@ -2117,7 +2135,7 @@
       "target": "notes-and-tapes",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "retry: framed a poster, not a note"
+      "reason": "retry: ShowNote with a second note id kept the ledger open; needs the reader closed between notes"
     },
     {
       "id": "stillskin-forest-ritual",

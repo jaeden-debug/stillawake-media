@@ -46,6 +46,17 @@ Newest first. Each entry lists what changed, how it was verified, and what is st
 
 **Also:** stillawakemedia.dev PR #1 merged `fix-redirect-links.mts` from a clean branch, because local `main` there has 5 unrelated unpushed commits.
 
+**Deploy (2026-10-26)**
+- **PR #9:** merged as 41eb99c after the Vercel check passed. Changes were live within about a minute.
+- **Live checks:**
+  - 0 stale "$600–$850" ranges or retired plan names across all 10 affected URLs
+  - the 4 articles each link to /seo-montreal
+  - the FR agency H1 is updated
+  - the homepage intro video ships with no source, and the icons point at the small files
+- **Live crawl, 279 URLs:** every check at 0, including linksToRedirects.
+- **IndexNow:** 20 URLs submitted, HTTP 200.
+- **CMS scripts:** merged in stillawakemedia.dev PR #2; that deploy succeeded.
+
 **Verification before PR**
 - 843 tests pass.
 - Build succeeds.

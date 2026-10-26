@@ -840,6 +840,114 @@
       "sha1": "f93cc3846292"
     },
     {
+      "id": "stillskin-forest-hotbar",
+      "filename": "stillskin-forest-hotbar.webp",
+      "gameId": "stillskin-forest",
+      "target": "inventory-and-hotbar",
+      "description": "Hotbar. Real HUD (hotbar, day timer) over a staged over-the-shoulder camera.",
+      "alt": "The hotbar with items and ammo counts",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized",
+      "source": "masters/pass6/hotbar.png",
+      "src": "/games/stillskin-forest/mechanics/stillskin-forest-hotbar.webp",
+      "captureMode": "Staged cinematic photography",
+      "originalResolution": "2768x1557",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 125756,
+      "sha1": "292a3ada0324"
+    },
+    {
+      "id": "stillskin-forest-inventory",
+      "filename": "stillskin-forest-inventory.webp",
+      "gameId": "stillskin-forest",
+      "target": "inventory-and-hotbar",
+      "description": "Inventory. Real backpack panel opened with the Studio-only ShowBag hook.",
+      "alt": "The backpack inventory panel",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized",
+      "source": "masters/pass6/inventory.png",
+      "src": "/games/stillskin-forest/mechanics/stillskin-forest-inventory.webp",
+      "captureMode": "Staged cinematic photography",
+      "originalResolution": "2768x1557",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 71182,
+      "sha1": "92d96cba93ec"
+    },
+    {
+      "id": "stillskin-forest-heavy-fog",
+      "filename": "stillskin-forest-heavy-fog.webp",
+      "gameId": "stillskin-forest",
+      "target": "heavy-fog",
+      "description": "Heavy Fog. Heavy Fog forced with the Studio-only ForceSpecialNight hook; +1.0 EV.",
+      "alt": "Dense grey fog in Stillwater",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized",
+      "source": "masters/pass6/heavy-fog.png",
+      "src": "/games/stillskin-forest/nights/stillskin-forest-heavy-fog.webp",
+      "captureMode": "Staged cinematic photography",
+      "originalResolution": "2768x1557",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 22186,
+      "sha1": "0cc5552d1f0b"
+    },
+    {
+      "id": "stillskin-forest-silent-night",
+      "filename": "stillskin-forest-silent-night.webp",
+      "gameId": "stillskin-forest",
+      "target": "silent-night",
+      "description": "Silent Night. Silent Night forced with the Studio-only hook; blue desaturated grade, subtle by design; +1.3 EV.",
+      "alt": "Cold, clear moonlight over a silent forest",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P1",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized",
+      "source": "masters/pass6/silent-night.png",
+      "src": "/games/stillskin-forest/nights/stillskin-forest-silent-night.webp",
+      "captureMode": "Staged cinematic photography",
+      "originalResolution": "2768x1557",
+      "captureDate": "2026-10-25",
+      "gameVersion": "Studio place 111788627314883, saved and published 2026-10-25 (pre-capture), unversioned",
+      "verification": "file exists; opened and decoded; dimensions checked; visually reviewed",
+      "bytes": 12646,
+      "sha1": "70e7257e6c57"
+    },
+    {
       "id": "stillskin-forest-daytime",
       "filename": "stillskin-forest-daytime.webp",
       "gameId": "stillskin-forest",
@@ -2000,7 +2108,7 @@
       "target": "watcher",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "ready to retry: builder added eyes and rim light; not yet captured"
+      "reason": "blocked: Roblox opens its Escape menu whenever the Studio window loses focus during automated capture; Watcher summons fine"
     },
     {
       "id": "stillskin-forest-zombie-chase",
@@ -2054,7 +2162,7 @@
       "target": "stamina-and-sprinting",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "ready to retry: SetStamina hook"
+      "reason": "blocked: as health (SetStamina hook works; bar not in captured area)"
     },
     {
       "id": "stillskin-forest-health",
@@ -2063,25 +2171,7 @@
       "target": "health-and-healing",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "ready to retry: set Humanoid.Health"
-    },
-    {
-      "id": "stillskin-forest-inventory",
-      "folder": "mechanics",
-      "priority": "P2",
-      "target": "inventory-and-hotbar",
-      "spoiler": false,
-      "liveAvailability": "live",
-      "reason": "ready to retry: ShowBag hook"
-    },
-    {
-      "id": "stillskin-forest-hotbar",
-      "folder": "mechanics",
-      "priority": "P2",
-      "target": "inventory-and-hotbar",
-      "spoiler": false,
-      "liveAvailability": "live",
-      "reason": "ready to retry: builder added ShowBag/SetStamina/ShowBuildPreview hooks; pass 5 attempt lost when the survivor was eliminated"
+      "reason": "blocked: HealthHUD sits at the screen edge/inset that capture-mode hiding of the Roblox top bar shifts out of frame; needs a person at the keyboard or a HUD layout check"
     },
     {
       "id": "stillskin-forest-dread-encounter-closeup",
@@ -2135,16 +2225,7 @@
       "target": "doors-and-building",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "ready to retry: ShowBuildPreview hook"
-    },
-    {
-      "id": "stillskin-forest-heavy-fog",
-      "folder": "nights",
-      "priority": "P1",
-      "target": "heavy-fog",
-      "spoiler": false,
-      "liveAvailability": "live",
-      "reason": "ready to retry: builder fixed the Atmosphere bug and added ground mist; not yet captured"
+      "reason": "blocked: ShowBuildPreview needs live camera movement to draw the plank"
     },
     {
       "id": "stillskin-forest-infected-surge",
@@ -2153,16 +2234,7 @@
       "target": "infected-surge",
       "spoiler": false,
       "liveAvailability": "live",
-      "reason": "ready to retry: horde builds over 1-2 min of night; not yet captured"
-    },
-    {
-      "id": "stillskin-forest-silent-night",
-      "folder": "nights",
-      "priority": "P1",
-      "target": "silent-night",
-      "spoiler": false,
-      "liveAvailability": "live",
-      "reason": "ready to retry: Atmosphere fix landed; not yet captured"
+      "reason": "blocked: horde verified (103 infected on the street) but the Escape-menu-on-focus-loss covered the frame"
     },
     {
       "id": "stillskin-forest-angels-tear",

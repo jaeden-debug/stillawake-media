@@ -351,6 +351,50 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "source": "masters/pass5/end-run.png",
     "src": "/games/stillskin-forest/mechanics/stillskin-forest-end-run.webp"
   },
+  "stillskin-forest-hotbar": {
+    "description": "Hotbar. Real HUD (hotbar, day timer) over a staged over-the-shoulder camera.",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass6/hotbar.png",
+    "src": "/games/stillskin-forest/mechanics/stillskin-forest-hotbar.webp"
+  },
+  "stillskin-forest-inventory": {
+    "description": "Inventory. Real backpack panel opened with the Studio-only ShowBag hook.",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass6/inventory.png",
+    "src": "/games/stillskin-forest/mechanics/stillskin-forest-inventory.webp"
+  },
+  "stillskin-forest-heavy-fog": {
+    "description": "Heavy Fog. Heavy Fog forced with the Studio-only ForceSpecialNight hook; +1.0 EV.",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass6/heavy-fog.png",
+    "src": "/games/stillskin-forest/nights/stillskin-forest-heavy-fog.webp"
+  },
+  "stillskin-forest-silent-night": {
+    "description": "Silent Night. Silent Night forced with the Studio-only hook; blue desaturated grade, subtle by design; +1.3 EV.",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    },
+    "aspectRatio": "16:9",
+    "status": "optimized",
+    "source": "masters/pass6/silent-night.png",
+    "src": "/games/stillskin-forest/nights/stillskin-forest-silent-night.webp"
+  },
   "stillskin-forest-daytime": {
     "description": "Peaceful forest in daylight. Pine forest around the cabin row, daylight.",
     "dimensions": {

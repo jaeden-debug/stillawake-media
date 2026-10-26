@@ -38,12 +38,13 @@ const sections = [
     ],
   },
   {
-    title: "Création de site web pensée pour la croissance",
+    title: "Création de site web à Montréal : comment ça se passe",
     body: [
-      "StillAwake Media ne construit pas seulement des pages visuellement attrayantes.",
-      "Chaque projet est conçu comme une infrastructure numérique capable de supporter la croissance à long terme.",
-      "Cela inclut : architecture SEO, performance mobile, hiérarchie de contenu, stratégie de conversion, branding, structure de navigation, maillage interne et évolutivité.",
-      "Le but est de créer un site qui reste performant même lorsque l’entreprise grandit."
+      "1. Vous décrivez le projet dans un formulaire, à votre rythme. Pas d’appel de vente obligatoire.",
+      "2. Vous recevez une portée écrite avec un prix fixe et un échéancier avant de vous engager. Le prix ne change pas en cours de route.",
+      "3. On conçoit et on construit le site en français et en anglais, avec la structure SEO, les données structurées et la performance mobile intégrées dès le départ, pas ajoutées après.",
+      "4. Le site, le domaine et les comptes vous appartiennent : nous obtenons un accès, pas la propriété.",
+      "Pour une PME, un site d’entreprise professionnel coûte environ 2 750 $ à 5 750 $ CAD avec le référencement local; un site plus simple part de 1 800 $ et une boutique en ligne de 4 250 $."
     ],
   },
   {
@@ -123,7 +124,11 @@ const faqs = [
   ],
   [
     "Combien coûte un site web à Montréal ?",
-    "Le coût dépend du nombre de pages, de la complexité du projet, du branding, du SEO, des intégrations et du niveau de personnalisation. Notre guide du prix d'un site web au Québec présente les fourchettes réelles du marché et nos tarifs affichés."
+    "Nos prix sont affichés : un site d'entreprise professionnel coûte environ 2 750 $ à 5 750 $ CAD avec le référencement local, un site plus simple part de 1 800 $ et une boutique en ligne de 4 250 $. Le prix final dépend du nombre de pages, des intégrations et du niveau de personnalisation, et il est fixé par écrit avant que vous vous engagiez. Notre guide du prix d'un site web au Québec présente aussi les fourchettes du marché."
+  ],
+  [
+    "Combien de temps prend la création d’un site web ?",
+    "Ça dépend de la portée. Nos repères mesurés : un site marketing de 31 routes avec 19 pages d’atterrissage a été livré en 19 jours. Une plateforme multilingue sérieuse prend plus de temps. L’échéancier, avec ses étapes, fait partie de la portée écrite."
   ],
   [
     "Pourquoi le SEO est-il important pour un site web ?",
@@ -203,7 +208,7 @@ export default function Page() {
           </p>
 
           <h1 className="geist max-w-6xl text-5xl font-black leading-[.88] tracking-[-0.08em] md:text-8xl">
-            Agence web à Montréal pour marques modernes et systèmes numériques performants.
+            Agence web à Montréal : création de site web sur mesure, en français et en anglais.
           </h1>
 
           <p className="mt-10 max-w-3xl text-lg leading-8 text-[#C7B9B9]">
@@ -237,12 +242,18 @@ export default function Page() {
             </p>
 
             <h2 className="geist max-w-4xl text-4xl font-black leading-[.95] tracking-[-0.06em] md:text-6xl">
-              Que devrait inclure une agence web moderne à Montréal ?
+              Combien coûte la création d’un site web à Montréal, et qu’est-ce qui est inclus ?
             </h2>
 
             <p className="mt-8 max-w-4xl text-lg leading-8 text-[#C7B9B9]">
-              Une agence web moderne doit combiner design, SEO, performance,
-              branding, UX, développement et stratégie numérique dans un système cohérent.
+              Chez StillAwake Media, un site d’entreprise professionnel coûte environ 2 750 $ à 5 750 $ CAD
+              avec le référencement local, un site plus simple part de 1 800 $ et une boutique en ligne de
+              4 250 $. C’est inclus : design original, version française et anglaise, structure SEO, performance
+              mobile mesurée et une portée écrite à prix fixe avant de vous engager. Le détail est dans notre{" "}
+              <Link href="/fr/prix-site-web-quebec" className="text-[#D71920] underline underline-offset-4">
+                guide du prix d’un site web au Québec
+              </Link>
+              .
             </p>
           </div>
         </div>

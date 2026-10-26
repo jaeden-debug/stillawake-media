@@ -44,7 +44,7 @@ No AI company publishes its full source-selection criteria, so be suspicious of 
 
 **1. Machine-legible identity.** Engines need to resolve *who you are* before they can recommend you. That's entity work: consistent naming everywhere, an organization schema with a stable `@id`, a founder/author with a real profile, and cross-references between your properties that agree with each other.
 
-**2. Extractable facts.** A price hidden behind "book a call" cannot be quoted. A price stated in plain text — like our SEO plans at $600–$850 CAD/month on the [pricing page](/pricing) — can be. The same goes for service areas, process, and timelines. Engines cite what they can extract cleanly.
+**2. Extractable facts.** A price hidden behind "book a call" cannot be quoted. A price stated in plain text — like our SEO plans at $250–$850 CAD/month on the [pricing page](/pricing) — can be. The same goes for service areas, process, and timelines. Engines cite what they can extract cleanly.
 
 **3. Question-shaped content.** Generated answers respond to questions, so content that states the question and answers it directly in the first sentences gets lifted far more often than content that builds to a conclusion over eight paragraphs.
 

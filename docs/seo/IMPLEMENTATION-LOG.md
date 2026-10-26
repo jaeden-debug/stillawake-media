@@ -2,6 +2,56 @@
 
 Newest first. Each entry lists what changed, how it was verified, and what is still open.
 
+## 2026-10-26 — Batch 2 (branch `seo/program-batch-2`)
+
+**SEO price accuracy (found while auditing /web-design-montreal)**
+- **Problem:** nine pages and articles still said SEO plans cost "$600–$850 CAD/month". Starter ($250) has been in the catalogue since 2026-08-15. /seo-canada and the CMS copy of how-much-does-seo-cost-canada also used retired plan names ("Growth SEO — Essential / Growth") and listed two plans instead of three.
+- **Code pages:** /seo-canada now renders its three plans, its schema offers and its FAQ answer from the pricing model. The SEO range now starts at $250 on:
+  - /web-design-montreal
+  - /website-cost-canada
+  - /fr/prix-site-web-quebec
+  - /fr/etre-cite-par-ia
+- **Markdown articles:** EN (can-chatgpt-recommend-my-business, custom-software-development-cost-canada, what-is-generative-engine-optimization, how-much-does-seo-cost-canada) and FR (prix-du-seo-au-quebec, which also had the 850 plan wrongly named "Croissance"). Starter added to both plan lists.
+- **CMS:** `stillawakemedia.dev/scripts/fix-seo-plan-copy.mts` scanned every article and page. Three EN articles needed fixes and were republished through the CMS's normal save/publish path (14 changes on the SEO cost article, including the Starter bullet). Archived rows were skipped.
+- **Guard:** `published-prices.test.ts` now fails on any SEO range ending at the top plan's price that doesn't start at the cheapest plan. It also covers 6 more pages. Checked: it fails on the old /web-design-montreal copy.
+
+**/fr/agence-web-montreal (P6-05)**
+- H1 now leads with "création de site web sur mesure".
+- The generic quick answer is replaced with prices (from /fr/prix-site-web-quebec) and what's included.
+- The "création de site web" section is now a 4-step process: form, written fixed-price scope, bilingual build, ownership. Each step is backed by existing pages.
+- FAQ: real prices, plus a timeline answer (31 routes in 19 days, from the Stalkr case study).
+
+**Internal links (P8-02)**
+- Four articles now link to /seo-montreal from their closing call to action: why-local-seo-matters, how-to-rank-higher-on-google-maps, google-business-profile-optimization, what-is-technical-seo.
+- Done in the CMS (`scripts/link-seo-montreal.mts`, republished) and in the markdown fallbacks.
+- Live before the fix: 0 links to /seo-montreal from any of the four.
+
+**Performance (P13-01)**
+- Mobile Lighthouse, live, before:
+  - /: 68 / 97 / 100 / 100 (performance / accessibility / best practices / SEO)
+  - /seo-montreal: 99 / 92 / 100 / 100
+  - /web-design-montreal: 96 / 96 / 100 / 100
+  - /fr/agence-web-montreal: 99 / 96 / 100 / 100
+  - /fr/agence-seo-montreal: 99 / 92 / 100 / 100
+- **Homepage findings:**
+  - A 401 KB below-the-fold intro video downloaded on load, because `autoPlay` overrides `preload="none"`.
+  - A 181 KB 512px favicon was fetched at high priority.
+- **Fixes:**
+  - `LazyVideo` sets the video's source only within 200px of the viewport. EN and FR homepages use it.
+  - Icons now point at a 3 KB 48px favicon, the 192px icon and the 180px apple-touch icon.
+- **Verified in the local build:**
+  - The video has no source on load, then plays when scrolled to.
+  - Page weight is 1,002 KB vs 1,581 KB live.
+- **Caveat:** mobile performance scores on the live homepage varied between 68 and 92 across runs, so scores aren't used as evidence. Page weight is.
+
+**Also:** stillawakemedia.dev PR #1 merged `fix-redirect-links.mts` from a clean branch, because local `main` there has 5 unrelated unpushed commits.
+
+**Verification before PR**
+- 843 tests pass.
+- Build succeeds.
+- seo-parity OK.
+- Local crawl, 279 URLs: every check at 0.
+
 ## 2026-10-26 — B-11: CMS article links
 
 - **Why:** three articles are served from their CMS rows, so the markdown link fix in PR #6 didn't reach production.

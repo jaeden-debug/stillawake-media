@@ -43,6 +43,12 @@ const PAGES = [
   "src/app/(fr)/fr/tarifs/page.tsx",
   "src/app/(en)/website-cost-canada/page.tsx",
   "src/app/(fr)/fr/prix-site-web-quebec/page.tsx",
+  "src/app/(en)/seo-canada/page.tsx",
+  "src/app/(en)/seo-montreal/page.tsx",
+  "src/app/(fr)/fr/agence-seo-montreal/page.tsx",
+  "src/app/(en)/web-design-montreal/page.tsx",
+  "src/app/(fr)/fr/etre-cite-par-ia/page.tsx",
+  "src/app/(fr)/fr/agence-web-montreal/page.tsx",
 ].map((path) => ({ path, body: readFileSync(path, "utf8") }));
 
 describe("published copy agrees with the pricing model", () => {
@@ -269,6 +275,32 @@ describe("published copy agrees with the pricing model", () => {
             ).toContain(amount);
           }
         }
+      }
+    }
+  });
+});
+
+/**
+ * "SEO plans at $600–$850" was true until Starter ($250) was added on
+ * 2026-08-15, then stayed live on nine pages and articles for two months. A
+ * range whose top is the dearest SEO plan is describing the whole ladder, so
+ * its bottom must be the cheapest plan.
+ */
+describe("SEO price ranges start at the cheapest plan", () => {
+  const seo = RECURRING.filter((r) => r.approved && r.group === "seo").map((r) => r.monthly!);
+  const floor = Math.min(...seo);
+  const ceiling = Math.max(...seo);
+  const ranges = [
+    new RegExp(`\\$(\\d+)\\s*[–-]\\s*\\$${ceiling}\\b`, "g"),
+    new RegExp(`\\b(\\d+)\\s*\\$\\s*à\\s*${ceiling}\\s*\\$`, "g"),
+  ];
+
+  it.each([...FILES, ...PAGES])("$path", ({ path, body }) => {
+    for (const pattern of ranges) {
+      for (const match of body.matchAll(pattern)) {
+        const low = Number(match[1]);
+        if (!seo.includes(low)) continue; // some other range that happens to end at the same figure
+        expect(low, `${path}: "${match[0]}" omits the $${floor} plan`).toBe(floor);
       }
     }
   });

@@ -593,7 +593,7 @@ Your Google Business Profile is the most powerful free lead generation tool avai
 
 Full optimization isn't a weekend project. It's an ongoing practice of posting, responding, updating, and refining. The businesses that do this consistently have a distinct, compounding advantage over those who set it up once and move on.
 
-> **Need help getting your GBP to the top of the map pack?** [Book a local SEO strategy call with StillAwake Media](/contact) and let's audit your current profile and build a roadmap to ranking dominance in your market.
+> **Need help getting your GBP to the top of the map pack?** [Book a local SEO strategy call with StillAwake Media](/contact) and let's audit your current profile and build a roadmap to ranking dominance in your market. What the monthly work costs is published on [our SEO Montréal page](/seo-montreal).
 
 ---
 

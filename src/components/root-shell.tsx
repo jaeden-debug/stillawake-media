@@ -53,9 +53,15 @@ export function buildRootMetadata(locale: "en_CA" | "fr_CA"): Metadata {
     publisher: "StillAwake Media",
     category: "Digital Agency",
     icons: {
-      icon: [{ url: "/stillawake-media-favicon.png", type: "image/png" }],
-      shortcut: "/stillawake-media-favicon.png",
-      apple: "/stillawake-media-favicon.png",
+      // Small files for the tab and home screen. The 512px original (181 KB)
+      // was being fetched at high priority on every page load; it stays as
+      // the schema logo below.
+      icon: [
+        { url: "/favicon-48.png", type: "image/png", sizes: "48x48" },
+        { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      ],
+      shortcut: "/favicon-48.png",
+      apple: "/apple-touch-icon.png",
     },
     openGraph: {
       title,

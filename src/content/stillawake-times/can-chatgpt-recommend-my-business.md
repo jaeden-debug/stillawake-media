@@ -29,7 +29,7 @@ An assistant naming a business is making a small bet with its credibility. Obser
 
 **A resolvable identity.** The assistant needs to establish who you are, where you operate, and what you sell — and every source needs to agree. Inconsistent names, addresses, or service descriptions across your site, Google Business Profile, and directories read as uncertainty, and uncertain entities get skipped.
 
-**Extractable commercial facts.** Assistants love answering "how much does it cost" — if the price exists in plain text. Ours are published ($600–$850 CAD/month for [SEO plans](/pricing), $150–$600 for emergency support), which means an assistant *can* repeat them. A competitor whose price lives behind a discovery call gives the assistant nothing to say.
+**Extractable commercial facts.** Assistants love answering "how much does it cost" — if the price exists in plain text. Ours are published ($250–$850 CAD/month for [SEO plans](/pricing), $150–$600 for emergency support), which means an assistant *can* repeat them. A competitor whose price lives behind a discovery call gives the assistant nothing to say.
 
 **Checkable claims.** "Award-winning" is unverifiable; "took a store's repeat-customer rate from 5.9% to 27.8%, source and date published" is a claim a retrieval step can confirm on [our case studies](/work). Specifics survive; adjectives evaporate.
 

@@ -33,7 +33,7 @@ const FAQ: [string, string][] = [
   ],
   [
     "What does ongoing website ownership cost?",
-    "Beyond the build: hosting and domain (commonly $10–$100+/month), maintenance and updates, and growth work like SEO. For reference, StillAwake Media publishes its own prices: a professional business website at about $2,750–$5,750 CAD with local search, a simpler site from $1,800, an online store from $4,250, paid discovery from $1,800, SEO plans at $600–$850 CAD/month and emergency support at $150–$600 one-time.",
+    "Beyond the build: hosting and domain (commonly $10–$100+/month), maintenance and updates, and growth work like SEO. For reference, StillAwake Media publishes its own prices: a professional business website at about $2,750–$5,750 CAD with local search, a simpler site from $1,800, an online store from $4,250, paid discovery from $1,800, SEO plans at $250–$850 CAD/month and emergency support at $150–$600 one-time.",
   ],
   [
     "Is a cheap website a bad idea?",
@@ -120,7 +120,7 @@ export default function WebsiteCostCanadaPage() {
               with <strong className="text-white">paid discovery from $1,800</strong>, credited against the build.
               You are not charged more for having more employees.
               Recurring and support are public too: SEO plans cost{" "}
-              <strong className="text-white">$600–$850 CAD per month</strong>, emergency support{" "}
+              <strong className="text-white">$250–$850 CAD per month</strong>, emergency support{" "}
               <strong className="text-white">$150–$400 CAD one-time</strong> (custom sites) or{" "}
               <strong className="text-white">$250–$600 CAD one-time</strong> (ecommerce). Full details on the{" "}
               <Link href="/pricing" className="text-[#D71920] underline-offset-4 hover:underline">pricing page</Link>.

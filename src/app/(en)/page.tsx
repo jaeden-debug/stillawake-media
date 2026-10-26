@@ -2,6 +2,7 @@ import type { Metadata } from "next";import Link from "next/link";import {Button
 import { CalculatorBand } from "@/components/tools/calculator-band";
 import { PageSchema } from "@/components/page-schema";
 import { Testimonials } from "@/components/testimonials";
+import { LazyVideo } from "@/components/lazy-video";
 export const metadata: Metadata = {
   title: "StillAwake Media | Web Design, SEO & AI Search — Montréal",
   description:
@@ -51,15 +52,10 @@ We build <span className="text-[#D71920]">bold brands</span>, high-performance w
 <section className="px-6 py-10 md:py-16">
   <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-black shadow-2xl">
     
-    <video
+    <LazyVideo
       className="h-[420px] w-full object-cover md:h-[620px]"
       src="/tv-static-stillawake-media-intro-optimized-small.mp4"
       poster="/tv-static-stillawake-media-intro-poster.jpg"
-      preload="none"
-      autoPlay
-      muted
-      loop
-      playsInline
     />
 
     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/10" />

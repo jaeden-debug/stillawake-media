@@ -2,6 +2,22 @@
 
 Newest first. Each entry lists what changed, how it was verified, and what is still open.
 
+## 2026-10-26 — Google Ads rebuilt and paused for winter
+
+Done in the Google Ads UI through the browser pane. The owner signed in and clicked Publish themselves. Full state and runbook: `docs/ads/README.md`.
+
+- **Campaign #1 (PMax):** paused. Spend since Aug 10 was CA$62.25 (249 clicks, 0 conversions), not the $4.64 recorded earlier.
+- **New Search campaign "Search | Leads | Montréal EN-FR" (ID 24394172619):**
+  - paused, starting January 1, 2027, at CA$25/day with Maximize clicks and a CA$10 CPC cap
+  - Search only; Montréal, Laval and Longueuil (presence only); AI Max and auto-created assets off
+  - 6 ad groups, 39 keywords, 6 responsive search ads, 37 phrase negatives, 8 sitelinks and 12 callouts, all matching `docs/ads/search-campaign.json`
+- **Conversions (B-01):**
+  - two primaries, each counted One: the /thank-you import, renamed "Studio lead (thank-you page)", and the GA4 `contact_form_submit` import
+  - "Lead form - Submit" set to secondary
+  - `contact_form_submit` marked as a GA4 key event
+- **Verified (read back from the UI):** both campaigns paused; settings; ad group, keyword and ad counts; negatives 37 of 37; assets 8 + 12.
+- **Open:** Studio `generate_lead` records 0 events, so it can't be a key event yet (likely lost on redirect; that's a Studio code fix). The Zylx pause `ed0f4486` is redundant.
+
 ## 2026-10-26 — Owner-approved actions ("fix all in order")
 
 **Final sweep: article meta author.** The article pages hardcoded `<meta name="author">` as "StillAwake Media", which contradicted the byline and JSON-LD once the articles were credited to Jaeden. A new `articleAuthors()` helper in `src/data/people/jaeden-doody.ts` takes the meta author from the same frontmatter name. It's used on the EN and FR article routes, on both the CMS and markdown paths. Verified locally on what-is-branding (CMS), custom-software-development-cost-canada (markdown) and prix-du-seo-au-quebec (FR); all show Jaeden Doody.

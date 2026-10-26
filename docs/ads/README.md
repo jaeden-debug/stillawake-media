@@ -1,87 +1,82 @@
 # Google Ads: paused for now, ready for winter
 
-Account 800-560-2976 (CAD, Toronto time). Decision 2026-10-26: pause paid search until winter, then relaunch on a budget that can afford clicks. This file is the state and the runbook. The campaign itself is specified in [`search-campaign.json`](search-campaign.json), which is the single source for keywords, ads, negatives and settings.
+Account 800-560-2976 (CAD, Toronto time). Decision 2026-10-26: pause paid search until winter, then relaunch on a budget that can afford clicks. This file is the state and the runbook. The campaign is specified in [`search-campaign.json`](search-campaign.json), which is the single source for keywords, ads, negatives and settings. As of 2026-10-26 the campaign is **built in Google Ads and paused**.
 
 ## Why the old campaign stopped
 
 "Campaign #1" (Performance Max, $2/day):
-- **Results, last 90 days:** $4.64 spent, 7 clicks at $0.66, 0 conversions.
+- **Results since Aug 10, 2026 (Google Ads UI, read 2026-10-26):** CA$62.25 spent, 11,643 impressions, 249 clicks, 0 conversions.
+  - An earlier figure in this file ($4.64, 7 clicks) came from a 90-day Zylx read and was wrong. The UI number above is authoritative.
 - **Search terms:** none recorded.
 - **Why:** Keyword Planner puts the low end of top-of-page bids for the target searches at about $3–$9 CAD (median about $6), and the high end at $9–$84. At $2/day the campaign can't enter those auctions, so the money went to cheap non-search inventory.
 
-## Current state
+## Current state (verified in the Google Ads UI, 2026-10-26)
 
-| Item | State | Evidence |
-|---|---|---|
-| Campaign #1 (PMax) pause | Approved in Zylx (change `ed0f4486`). **Not applied yet:** Zylx won't execute Google Ads actions until its one-time live test passes (see "Still to do"). | `approve_pending_action` → `approved_pending`, reason "No successful live round-trip test recorded" |
-| Zylx Google Ads writes | On, with guards: no auto-execution, approval required. Resume, budget change and delete are **blocked**, so Zylx can never start spend. | `update_provider_write_settings`, 2026-10-26 |
-| Zylx credential check | Write access verified (validate-only probe) | `setup_provider_execution` → `enabled_credentials_verified` |
-| New Search campaign | Specified and validated (6 ad groups, 39 keywords, 37 negatives; every headline ≤30 and description ≤90 characters). Built **paused** once Zylx execution is ready. | `search-campaign.json` |
-| Landing pages | All 6 final URLs, plus sitelink targets and /thank-you, return 200 | Checked 2026-10-26 |
+| Item | State |
+|---|---|
+| Campaign #1 (PMax, ID 24143680714) | **Paused.** Kept, not deleted, for its history. |
+| New campaign "Search \| Leads \| Montréal EN-FR" (ID 24394172619) | **Paused.** Built to the spec; summary below. |
+| Ad groups | 6 of 6, each with 1 responsive search ad. All 6 ads and 20 assets were "under review" at creation; they show "Not eligible" only because the campaign is paused. |
+| Keywords | 39 of 39 |
+| Negative keywords | 37 of 37, phrase match, campaign level |
+| Sitelinks | 8, campaign level: Pricing, Our Work, SEO Plans, Contact, Tarifs, Réalisations, Forfaits SEO, Nous joindre. No descriptions; the spec has none. |
+| Callouts | 12, campaign level (6 EN, 6 FR, from the spec) |
+| Conversions | See "Conversion tracking" below |
+| Zylx Google Ads writes | On, with guards: no auto-execution, approval required. Resume, budget change and delete are **blocked**, so Zylx can never start spend. |
+| Zylx pause change `ed0f4486` | Approved but never executed (Zylx's live test was never run). The campaign was paused in the UI instead, so this change is redundant; reject it in the Zylx approval queue if it bothers you. |
 
-**Full-autonomy note:** the workspace runs in `full_autonomy` mode, which lets Zylx run *low-risk* Google Ads actions (pause, adding negative keywords, creating ad groups) without asking. Anything that spends money (resume, budget changes) is blocked or never-auto.
+## The new campaign
 
-## The new campaign (summary)
-
-- **Network:** Search only. Search partners and the Display network are both off.
-- **Where:** Montréal, Laval and Longueuil, presence only. **Languages:** English and French.
-- **Budget:** **$25 CAD/day** (up to about $760/month while running), the recommended minimum. It buys about 4 clicks a day at the median low-end bid of about $6. Less than that takes months to produce data worth acting on.
+- **Status:** paused. **Start date:** January 1, 2027, with no end date. The start date is a second guard: even if resumed early, nothing serves before then.
+- **Network:** Google Search only. Search partners and the Display network are off.
+- **Where:** Montréal, Laval and Longueuil, presence only (people in or regularly in these places).
+- **Languages:** Google no longer offers a language setting for this campaign; it shows "All languages" and matches by the searcher's language. The ad groups are split EN/FR by keyword and copy instead.
+- **Budget:** **CA$25/day** (up to about $760/month while running), the recommended minimum. Google's estimate at build time for the EN SEO ad group was about 30 clicks a week at about CA$5.83 per click.
 - **Bidding:**
-  - At launch: Maximize clicks with a $10 maximum cost per click. There's no conversion history yet to bid on.
+  - At launch: Maximize clicks with a CA$10 maximum cost per click. There's no conversion history yet to bid on.
   - Later: switch to Maximize conversions once there are 15 or more primary conversions in 30 days.
+- **Turned off:** AI Max (text and URL expansion), automatically created assets, broad match. Ad rotation: optimize.
 - **Ad groups:** each has its own landing page, and every claim in the ads is backed by a published page.
 
-| Ad group | Landing page |
-|---|---|
-| EN SEO | /seo-montreal |
-| FR SEO | /fr/agence-seo-montreal |
-| EN web design | /web-design-montreal |
-| FR création de site web | /fr/agence-web-montreal |
-| FR prix | /fr/prix-site-web-quebec |
-| EN website cost | /website-cost-canada |
+| Ad group | Keywords | Landing page | Headlines / descriptions | Ad strength at build |
+|---|---:|---|---|---|
+| EN \| SEO Montréal | 8 | /seo-montreal | 15 / 4 | Good |
+| FR \| Agence SEO Montréal | 7 | /fr/agence-seo-montreal | 15 / 4 | Good |
+| EN \| Web Design Montréal | 7 | /web-design-montreal | 15 / 4 | Good |
+| FR \| Création site web Montréal | 7 | /fr/agence-web-montreal | 15 / 4 | Good |
+| FR \| Prix site web | 5 | /fr/prix-site-web-quebec | 11 / 3 | Average |
+| EN \| Website cost | 5 | /website-cost-canada | 11 / 3 | Average |
+
+The two price ad groups are "Average" because the spec has 11 headlines for them, not 15. Adding 4 more true headlines each would lift them.
 
 ## Conversion tracking
 
-This is where the old campaign was weakest.
+**Google Ads (Goals → Conversions), as set 2026-10-26:**
 
-**What fires today (GA4 property 549901138, last 90 days):**
+| Conversion action | Source | Goal | Count | Role |
+|---|---|---|---|---|
+| Studio lead (thank-you page), renamed from "SUBMIT_LEAD_FORM" | GA4 event `ads_conversion_SUBMIT_LEAD_FORM_1` (page load of /thank-you) | Submit lead forms | One | **Primary** |
+| www.stillawakemedia.com (web) contact_form_submit | GA4 key event `contact_form_submit` | Request quotes | One | **Primary** |
+| Lead form - Submit | Google-hosted lead form | Submit lead forms | — | Secondary |
 
-| Event | Where | Fires when | Count | Key event? |
-|---|---|---|---:|---|
-| `generate_lead` | stillawake.studio intake | Lead row saved (code: `src/lib/analytics.ts`, `intake-submit.ts`) | 0 | **No** |
-| `contact_form_submit` | stillawakemedia.com /contact | Server accepted the form (`contact-form.tsx`) | 2 | **No** |
-| `ads_conversion_SUBMIT_LEAD_FORM_1` | GA4/tag-generated, in neither codebase | unclear | 2 (1 user) | Yes, the only one |
+The campaign uses the account-default goals: Submit lead forms and Request quotes.
 
-**In Google Ads:**
-- "Lead form - Submit" (a Google-hosted lead form) and "SUBMIT_LEAD_FORM" (the GA4 import above) are both **Primary**.
-- Neither of the two real lead events is imported.
-
-**Fix:** UI-only steps. Neither the GA4 nor the Google Ads conversion settings can be changed through the APIs available here.
-
-1. **GA4 → Admin → Events:** mark `generate_lead` and `contact_form_submit` as **key events**. Leave `ads_conversion_SUBMIT_LEAD_FORM_1` unmarked.
-2. **Google Ads → Goals → Conversions → New → Import → Google Analytics 4:** import both key events.
-   - Category: Submit lead form.
-   - Count: **One**.
-   - Set both as **Primary**.
-3. **Set to Secondary** (don't delete): "Lead form - Submit" and the old "SUBMIT_LEAD_FORM" import.
-4. **Check that `generate_lead` actually fires.** It recorded 0 in 90 days, and the Studio leads database couldn't be read from this session to confirm whether any leads came in. Use GA4 → Admin → DebugView while submitting the Studio intake once yourself, then delete that test lead.
+**GA4 (property 549901138):**
+- `contact_form_submit` is now a key event.
+- `generate_lead` (stillawake.studio intake) can't be made a key event yet: GA4 only lists events it has received, and it has recorded 0 in 90 days. The likely cause is that the event fires right before a redirect and is lost. That is a code fix in the Studio repo (send it with `transport_type: 'beacon'`, or fire it on the thank-you page). Once it fires, mark it as a key event and import it as a third primary.
 
 ## Still to do (owner)
 
-1. **Zylx live test:** run it once in the Zylx app (Google Ads → execution readiness → live test). It adds a temporary negative keyword to a campaign, checks it, and removes it. This session doesn't have that tool. After it passes:
-   - the approved pause applies;
-   - the new campaign can be built paused from `search-campaign.json`.
-2. **Conversion fixes:** steps 1–4 above.
-3. **Sitelinks and callouts:** listed in `search-campaign.json`. Zylx has no executor for these, so add them in the Google Ads UI.
+1. **Studio `generate_lead`:** fix and verify it fires, as above. Check with GA4 → Admin → DebugView while submitting the Studio intake once yourself, then delete that test lead.
+2. **Optional:** reject the redundant Zylx pause `ed0f4486`.
 
 ## Resume checklist (winter)
 
-1. **Confirm tracking:**
-   - GA4 key events show `generate_lead` / `contact_form_submit`;
-   - Google Ads lists both as Primary and "Recording conversions".
-2. **Check settings:** open the new campaign and confirm Search only, the 3 locations, EN+FR, and the budget you want.
-3. **Resume** in the Google Ads UI. Resume is deliberately blocked in Zylx; unblock `google_ads.campaign.resume` there only if you want Zylx to do it.
-4. **Day 2:** read the search terms and add negatives for anything off-intent.
-5. **Week 2:** check cost per click against the $10 cap and the share of impressions lost to budget.
-6. **Bidding:** after 15+ conversions in 30 days, switch to Maximize conversions.
-7. **Old PMax campaign:** keep it paused. Don't delete it; its history stays useful.
+1. **Confirm tracking:** in Google Ads, both primary conversions show "Recording conversions" (submit the site contact form once to test).
+2. **Check the ads passed review:** ads and assets should be "Approved", not "Under review" or "Disapproved".
+3. **Check settings:** Search only, the 3 locations, the budget you want, and the start date (January 1, 2027; move it if you resume on another day).
+4. **Resume** in the Google Ads UI. Resume is deliberately blocked in Zylx; unblock `google_ads.campaign.resume` there only if you want Zylx to do it.
+5. **Day 2:** read the search terms and add negatives for anything off-intent.
+6. **Week 2:** check cost per click against the $10 cap and the share of impressions lost to budget.
+7. **Bidding:** after 15+ conversions in 30 days, switch to Maximize conversions.
+8. **Old PMax campaign:** keep it paused. Don't delete it; its history stays useful.

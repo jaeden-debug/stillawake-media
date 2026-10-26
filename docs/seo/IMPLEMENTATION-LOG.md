@@ -43,4 +43,9 @@ Newest first. Each entry lists what changed, how it was verified, and what is st
 - **Build:** `npm run build` succeeded.
 - **Crawl of `next start`, 279 URLs:** hreflangNotReciprocal 0, linksToRedirects 0, orphans 0, brokenInternalLinks 0, non200 0, duplicate titles and descriptions 0. Long titles went from 127 to 124.
 
-**Open:** deploy and check live (P15-02), IndexNow, then the owner actions B-01 to B-09.
+**Deploy (2026-10-26)**
+- **PR #6:** merged as 960c852 after the Vercel check passed. The new /seo-montreal title was live within about a minute.
+- **Live crawl, 279 URLs:** hreflang 0, orphans 0, broken links 0, non200 0. linksToRedirects is 3, all inside articles that production serves from the CMS's published copy, so the markdown fix doesn't reach them (B-11).
+- **IndexNow:** 10 changed URLs submitted, HTTP 200.
+
+**Open:** B-01 to B-11, then P6-04, P6-05, P7-02, P8-02 and P13-01.

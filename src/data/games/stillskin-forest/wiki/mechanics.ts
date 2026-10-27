@@ -533,13 +533,14 @@ export const mechanics: WikiEntry[] = [
   {
     ...base,
     slug: "durability-and-wear",
+    lastVerified: "2026-10-27",
     title: "Durability and Wear",
     seoTitle: "Weapon Durability in Stillskin Forest: How Long Weapons Last",
     description:
       "Every weapon and tool in Stillskin Forest wears out. Durability values for each item, what causes wear, and what happens when one breaks.",
     question: "Do weapons break in Stillskin Forest?",
     answer:
-      "Yes. Every weapon and tool has durability. Each landed swing, shot, nailed plank or gadget use costs 1, as does a swing that hits a wall and each hit you take while holding the item. At zero the item breaks. Durability ranges from 12 (Signal Remote) to 220 (Lantern).",
+      "Yes. Every weapon and tool has durability. Each landed swing, shot, nailed plank or gadget use costs 1, as does a swing that hits a wall and each hit you take while holding the item. At zero the item breaks. A gun that breaks gives the rounds in its magazine back to your ammo reserve, so you never lose ammo with it. Durability ranges from 12 (Signal Remote) to 220 (Lantern).",
     sections: [
       {
         id: "values",

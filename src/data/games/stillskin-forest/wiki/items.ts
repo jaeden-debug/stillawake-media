@@ -81,7 +81,8 @@ export const items: WikiEntry[] = [
         heading: "How reserves and magazines work",
         blocks: [
           { type: "list", items: [
-            "Each gun shows its magazine and reserve on the hotbar.",
+            "Each gun shows its magazine and reserve on the hotbar. The bag lists all three reserves (Pistol Ammo, Shells, Rifle Rounds) even when you carry no gun for them.",
+            "If a gun breaks, the rounds in its magazine go back into your reserve.",
             "Press **R** to reload; an empty gun reloads automatically.",
             "Switching weapons cancels a reload in progress.",
             "To share, hold **E** on a teammate with empty hands to give them half your ammo. See [Co-op survival](@co-op-survival).",

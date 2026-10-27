@@ -11,14 +11,14 @@ import type { MediaAsset } from "@/data/games/types";
 /** Overrides for ids already declared in media.ts. */
 export const capturedAssets: Record<string, Partial<MediaAsset>> = {
   "stillskin-forest-thumbnail": {
-    "description": "Primary horizontal game thumbnail. Blackthorn Asylum above Green Lake, daylight.",
+    "description": "Primary horizontal game thumbnail. Official key art: the Stillskin Forest logo over a survivor aiming at infected outside Rosie's Diner at night. The square artwork is centred on a blurred, darkened copy of itself to fill 16:9.",
     "dimensions": {
       "width": 1920,
       "height": 1080
     },
     "aspectRatio": "16:9",
     "status": "optimized",
-    "source": "masters/locations/stillskin-forest-green-lake__day-a.png",
+    "source": "owner-supplied key art, 1254x1254 square (2026-10-26)",
     "src": "/games/stillskin-forest/branding/stillskin-forest-thumbnail.webp"
   },
   "stillskin-forest-icon": {

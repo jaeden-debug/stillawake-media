@@ -107,7 +107,7 @@ export const projects: Project[] = [
     accent: "#7FA36B",
     image: {
       src: "/games/stillskin-forest/branding/stillskin-forest-thumbnail.webp",
-      alt: "Blackthorn Asylum above Green Lake in Stillskin Forest",
+      alt: "Stillskin Forest key art: a survivor in a beanie aims at infected outside Rosie's Diner under a full moon",
       width: 1920,
       height: 1080,
     },

@@ -69,11 +69,9 @@ export const stillskinForest: Game = {
     screenshots: [
       "stillskin-forest-night-chase",
       "stillskin-forest-campgrounds",
-      "stillskin-forest-stillwater",
       "stillskin-forest-hospital",
       "stillskin-forest-blackthorn-asylum",
       "stillskin-forest-green-lake",
-      "stillskin-forest-locker-hiding",
     ],
     hero: "stillskin-forest-hero",
     thumbnail: "stillskin-forest-thumbnail",

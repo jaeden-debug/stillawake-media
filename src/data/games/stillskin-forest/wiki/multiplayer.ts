@@ -90,7 +90,7 @@ export const multiplayer: WikiEntry[] = [
             "The camera tours the hospital, the camp lake and dock, the forest, a cabin, the police car and a burning dumpster.",
             "Each player chooses **Return to Camp** to start the next run.",
           ] },
-          { type: "p", text: "A victory ([the ritual](@the-rite-of-stillness) or [the Heart](@the-heart-of-stillskin)) gets its own screen instead, without the laughing horde." },
+          { type: "p", text: "Winning ([the ritual](@the-rite-of-stillness) or [the Heart](@the-heart-of-stillskin)) no longer ends the run: you keep playing until the last survivor falls, and that end screen shows the win, without the laughing horde." },
         ],
       },
       {

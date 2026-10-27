@@ -139,6 +139,13 @@ export const items: WikiEntry[] = [
         ],
       },
       {
+        id: "night-vision-goggles",
+        heading: "Night-vision goggles",
+        blocks: [
+          { type: "p", text: "Win a run ([the ritual](@the-rite-of-stillness) or [the Heart](@the-heart-of-stillskin)) and your headlamp is swapped for night-vision goggles for the rest of that run. They use the same button (F / D-pad down) and the same battery. Switched on, they throw no beam: the world turns bright green and you can see across the dark. In first person the view narrows a little, as if looking through the tubes. Teammates see the goggles glow green while they're on." },
+        ],
+      },
+      {
         id: "battery",
         heading: "Battery",
         blocks: [

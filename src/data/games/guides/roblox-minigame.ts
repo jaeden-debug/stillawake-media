@@ -136,6 +136,7 @@ const games: GuideGame[] = [
 export const minigameGuide: ComparisonGuide = {
   id: "roblox-minigame",
   path: "/games/guides/roblox-minigame-games",
+  gameSlug: "risk-it",
   title: "Roblox Minigame and Ragdoll Games: 8 to Play, With Real Numbers",
   shortName: "Roblox minigame games",
   description:

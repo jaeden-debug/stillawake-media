@@ -80,6 +80,7 @@ export const stillskinForest: Game = {
     icon: "stillskin-forest-icon",
     cover: "stillskin-forest-cover",
     trailerPoster: "stillskin-forest-trailer-poster",
+    social: "stillskin-forest-social",
   },
   accent: "#7FA36B",
   accentSoft: "#b9d4a8",

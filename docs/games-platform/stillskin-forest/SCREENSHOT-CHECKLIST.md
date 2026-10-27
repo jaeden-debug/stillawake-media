@@ -4,7 +4,7 @@ Generated from `src/data/games/stillskin-forest/media.ts`. Do not edit by hand.
 
 Rules: real in-game captures only. No development UI unless the note says HUD allowed. No generated or stock images presented as gameplay. Save as WebP at the listed size to the `Path` shown (under `public/`). Then set the asset's status in `media.ts` and the image appears on every page that references it.
 
-Total: 98 · P0: 12 · captured: 76
+Total: 99 · P0: 13 · captured: 77
 
 | Done | Priority | File | Path | Size | Target page | Spoiler | In build | What to capture | Alt text |
 |---|---|---|---|---|---|---|---|---|---|
@@ -17,6 +17,7 @@ Total: 98 · P0: 12 · captured: 76
 | ☑ | P0 | `stillskin-forest-icon.webp` | `public/games/stillskin-forest/branding/stillskin-forest-icon.webp` | 512×512 (1:1) | `/games` | no | live | Square crop of a single strong subject (an infected silhouette or the asylum). Must read at 64px. | Stillskin Forest game icon |
 | ☑ | P0 | `stillskin-forest-locker-hiding.webp` | `public/games/stillskin-forest/mechanics/stillskin-forest-locker-hiding.webp` | 1920×1080 (16:9) | `/games/stillskin-forest/wiki/mechanics/hiding` | no | live | Third-person entering a locker. | A survivor stepping into a hospital locker |
 | ☑ | P0 | `stillskin-forest-night-chase.webp` | `public/games/stillskin-forest/branding/stillskin-forest-night-chase.webp` | 1920×1080 (16:9) | `/games/stillskin-forest` | no | live | Over-the-shoulder chase at night with 2–3 infected visible. Hide all HUD and development UI. | A survivor sprinting from infected through the forest at night |
+| ☑ | P0 | `stillskin-forest-social.jpg` | `public/games/stillskin-forest/branding/stillskin-forest-social.jpg` | 1600×900 (16:9) | `/games/stillskin-forest` | no | live | Owner-supplied key art, exported as 1600×900 JPEG for social previews. | Stillskin Forest key art: the logo over a survivor with a headlamp facing infected outside Rosie's Diner under a full moon |
 | ☑ | P0 | `stillskin-forest-stillwater.webp` | `public/games/stillskin-forest/locations/stillskin-forest-stillwater.webp` | 1920×1080 (16:9) | `/games/stillskin-forest/wiki/locations/stillwater` | no | live | Elevated view down Main Street, wrecks and streetlights visible. Hide all HUD and development UI. | Main Street in the abandoned town of Stillwater |
 | ☑ | P0 | `stillskin-forest-thumbnail.webp` | `public/games/stillskin-forest/branding/stillskin-forest-thumbnail.webp` | 1920×1080 (16:9) | `/games` | no | live | Strongest single image of the game, readable at 400px wide. Hide all HUD and development UI. | Stillskin Forest key art: a survivor in a beanie aims at infected outside Rosie's Diner under a full moon |
 | ☑ | P0 | `stillskin-forest-walker.webp` | `public/games/stillskin-forest/enemies/stillskin-forest-walker.webp` | 1920×1080 (16:9) | `/games/stillskin-forest/wiki/enemies/walker` | no | live | Full body, three-quarter view, readable silhouette. | A Walker infected in Stillskin Forest |

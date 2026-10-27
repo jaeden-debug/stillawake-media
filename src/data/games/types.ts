@@ -63,6 +63,8 @@ export type Game = {
     icon?: string;
     cover?: string;
     trailerPoster?: string;
+    /** Link-preview (og:image) art for the game page. Falls back to hero, then thumbnail. */
+    social?: string;
     screenshots: string[];
   };
   trailerUrl?: string;
@@ -172,7 +174,7 @@ export type MediaAsset = {
   target: string;
   description: string;
   alt: string;
-  use: "hero" | "thumbnail" | "icon" | "cover" | "screenshot" | "trailer-poster";
+  use: "hero" | "thumbnail" | "icon" | "cover" | "screenshot" | "trailer-poster" | "social";
   dimensions: { width: number; height: number };
   aspectRatio: string;
   priority: "P0" | "P1" | "P2";

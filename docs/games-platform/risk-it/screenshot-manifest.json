@@ -43,6 +43,26 @@
       "status": "optimized"
     },
     {
+      "id": "risk-it-social",
+      "filename": "risk-it-social.jpg",
+      "src": "/games/risk-it/branding/risk-it-social.jpg",
+      "gameId": "risk-it",
+      "target": "/games/risk-it",
+      "description": "Owner-supplied promotional key art for link previews (not an in-game capture)",
+      "alt": "RISK IT! key art: a Roblox player launched off a glowing pad, screaming, in a neon arena",
+      "use": "social",
+      "dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "aspectRatio": "16:9",
+      "priority": "P0",
+      "captureInstructions": "Owner-supplied key art, exported as 1600×900 JPEG for social previews.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
       "id": "risk-it-icon",
       "filename": "risk-it-icon.webp",
       "src": "/games/risk-it/branding/risk-it-icon.webp",

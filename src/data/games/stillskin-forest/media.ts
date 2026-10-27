@@ -67,6 +67,13 @@ export const stillskinMedia: MediaAsset[] = [
   // Branding and promotional
   asset("stillskin-forest-hero", "branding", "/games/stillskin-forest", "Cinematic main game hero", "Survivors with headlamps on a forest trail at dusk in Stillskin Forest", "P0", `Wide establishing shot at dusk with 2–4 survivors, headlamps on, forest and Stillwater rooftops in depth. Leave the left third darker for headline text. ${NO_UI}`, { use: "hero", dimensions: { width: 2560, height: 1440 } }),
   asset("stillskin-forest-thumbnail", "branding", "/games", "Primary horizontal game thumbnail", "Stillskin Forest key art: a survivor in a beanie aims at infected outside Rosie's Diner under a full moon", "P0", `Strongest single image of the game, readable at 400px wide. ${NO_UI}`, { use: "thumbnail" }),
+  {
+    ...asset("stillskin-forest-social", "branding", "/games/stillskin-forest", "Owner-supplied promotional key art for link previews (not an in-game capture)", "Stillskin Forest key art: the logo over a survivor with a headlamp facing infected outside Rosie's Diner under a full moon", "P0", "Owner-supplied key art, exported as 1600×900 JPEG for social previews.", { use: "social", dimensions: { width: 1600, height: 900 } }),
+    filename: "stillskin-forest-social.jpg",
+    source: "owner-supplied key art, 1672x941 (2026-10-27)",
+    status: "optimized",
+    src: "/games/stillskin-forest/branding/stillskin-forest-social.jpg",
+  },
   asset("stillskin-forest-icon", "branding", "/games", "Square game icon", "Stillskin Forest game icon", "P0", "Square crop of a single strong subject (an infected silhouette or the asylum). Must read at 64px.", { use: "icon", dimensions: { width: 512, height: 512 }, aspectRatio: "1:1" }),
   asset("stillskin-forest-cover", "branding", "/games/stillskin-forest", "Game cover artwork", "Stillskin Forest cover art", "P1", "Portrait cover composition with room for the title at the top.", { use: "cover", dimensions: { width: 1200, height: 1600 }, aspectRatio: "3:4" }),
   asset("stillskin-forest-gameplay-overview", "branding", "/games/stillskin-forest", "Wide gameplay overview", "A survivor scavenging a Stillwater street by day", "P1", `Third-person, mid-day, a survivor looting with the town behind. ${NO_UI}`),

@@ -76,6 +76,7 @@ export const riskIt: Game = {
     hero: "risk-it-hero",
     thumbnail: "risk-it-thumbnail",
     icon: "risk-it-icon",
+    social: "risk-it-social",
   },
   accent: "#FF2E63",
   accentSoft: "#FFD60A",

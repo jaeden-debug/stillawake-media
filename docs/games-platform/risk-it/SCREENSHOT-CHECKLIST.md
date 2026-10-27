@@ -4,7 +4,7 @@ Generated from `src/data/games/risk-it/media.ts`. Do not edit by hand.
 
 Rules: real in-game captures only. No development UI unless the note says HUD allowed. No generated or stock images presented as gameplay. Save as WebP at the listed size to the `Path` shown (under `public/`). Then set the asset's status in `media.ts` and the image appears on every page that references it.
 
-Total: 22 · P0: 15 · captured: 22
+Total: 23 · P0: 16 · captured: 23
 
 | Done | Priority | File | Path | Size | Target page | Spoiler | In build | What to capture | Alt text |
 |---|---|---|---|---|---|---|---|---|---|
@@ -18,6 +18,7 @@ Total: 22 · P0: 15 · captured: 22
 | ☑ | P0 | `risk-it-meltdown.webp` | `public/games/risk-it/challenges/risk-it-meltdown.webp` | 1772×1080 (16:9.75) | `/games/risk-it/wiki/challenges/meltdown` | no | live | Captured in a Studio playtest of build v0.2.2 with the game's own capture helper. | MELTDOWN challenge: a player on a dark tile grid with one tile flashing pink and a missing tile beside it |
 | ☑ | P0 | `risk-it-perfect-stop.webp` | `public/games/risk-it/challenges/risk-it-perfect-stop.webp` | 1772×1080 (16:9.75) | `/games/risk-it/wiki/challenges/perfect-stop` | no | live | Captured in a Studio playtest of build v0.2.2 with the game's own capture helper. | PERFECT STOP challenge: a needle sliding toward the green and gold zone on a neon board |
 | ☑ | P0 | `risk-it-quick-draw.webp` | `public/games/risk-it/challenges/risk-it-quick-draw.webp` | 1772×1080 (16:9.75) | `/games/risk-it/wiki/challenges/quick-draw` | no | live | Captured in a Studio playtest of build v0.2.2 with the game's own capture helper. | QUICK DRAW challenge: a red light on the tower and the Wait for green prompt |
+| ☑ | P0 | `risk-it-social.jpg` | `public/games/risk-it/branding/risk-it-social.jpg` | 1600×900 (16:9) | `/games/risk-it` | no | live | Owner-supplied key art, exported as 1600×900 JPEG for social previews. | RISK IT! key art: a Roblox player launched off a glowing pad, screaming, in a neon arena |
 | ☑ | P0 | `risk-it-the-button.webp` | `public/games/risk-it/challenges/risk-it-the-button.webp` | 1772×1080 (16:9.75) | `/games/risk-it/wiki/challenges/the-button` | no | live | Captured in a Studio playtest of build v0.2.2 with the game's own capture helper. | THE BUTTON challenge: the pot board reads POT 20, next press 20% drop, with Press and Cash Out buttons |
 | ☑ | P0 | `risk-it-the-sweeper.webp` | `public/games/risk-it/challenges/risk-it-the-sweeper.webp` | 1772×1080 (16:9.75) | `/games/risk-it/wiki/challenges/the-sweeper` | no | live | Captured in a Studio playtest of build v0.2.2 with the game's own capture helper. | THE SWEEPER challenge: a narrow yellow bridge with a spinning arm and the finish platform ahead |
 | ☑ | P0 | `risk-it-the-vault.webp` | `public/games/risk-it/progression/risk-it-the-vault.webp` | 1772×1080 (16:9.75) | `/games/risk-it/wiki/vault/the-vault` | no | live | Captured in a Studio playtest of build v0.2.2 with the game's own capture helper. | THE VAULT shop open on the Fail Trails tab, showing Signature, Liquid Gold and Void Walker |

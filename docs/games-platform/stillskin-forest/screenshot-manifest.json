@@ -43,6 +43,26 @@
       "status": "optimized"
     },
     {
+      "id": "stillskin-forest-social",
+      "filename": "stillskin-forest-social.jpg",
+      "src": "/games/stillskin-forest/branding/stillskin-forest-social.jpg",
+      "gameId": "stillskin-forest",
+      "target": "/games/stillskin-forest",
+      "description": "Owner-supplied promotional key art for link previews (not an in-game capture)",
+      "alt": "Stillskin Forest key art: the logo over a survivor with a headlamp facing infected outside Rosie's Diner under a full moon",
+      "use": "social",
+      "dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "aspectRatio": "16:9",
+      "priority": "P0",
+      "captureInstructions": "Owner-supplied key art, exported as 1600×900 JPEG for social previews.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
       "id": "stillskin-forest-icon",
       "filename": "stillskin-forest-icon.webp",
       "src": "/games/stillskin-forest/branding/stillskin-forest-icon.webp",

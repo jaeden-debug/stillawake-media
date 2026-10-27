@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const bundle = getBundle(slug);
   if (!bundle) return {};
   const { game } = bundle;
-  const hero = [mediaFor(bundle, game.media.hero), mediaFor(bundle, game.media.thumbnail)].find(hasImage);
+  const hero = [mediaFor(bundle, game.media.social), mediaFor(bundle, game.media.hero), mediaFor(bundle, game.media.thumbnail)].find(hasImage);
   return {
     title: `${game.title}: ${game.kindLabel}`,
     description: game.metaDescription,
@@ -46,6 +46,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: absolute(gamePath(game.slug)),
       type: "website",
       ...(hasImage(hero) ? { images: [{ url: hero.src, width: hero.dimensions.width, height: hero.dimensions.height, alt: hero.alt }] } : {}),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${game.title} | ${game.tagline}`,
+      description: game.summary,
+      ...(hasImage(hero) ? { images: [{ url: hero.src, alt: hero.alt }] } : {}),
     },
   };
 }

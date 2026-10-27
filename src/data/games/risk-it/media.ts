@@ -47,6 +47,12 @@ export const riskItMedia: MediaAsset[] = [
   // Branding
   asset("risk-it-hero", "branding", "/games/risk-it", "A player launched off the Quick Draw island with the Full Spectrum trail", "A Roblox avatar ragdolling through the air above the neon RISK IT! arena, trailing a rainbow streak", "P0", { use: "hero" }),
   asset("risk-it-thumbnail", "branding", "/games", "Owner-supplied promotional key art (not an in-game capture), square art letterboxed on a blurred copy of itself", "RISK IT! key art: a Roblox player launched off a glowing pad under the neon RISK IT! sign", "P0", { use: "thumbnail", dimensions: { width: 1920, height: 1080 }, aspectRatio: "16:9", captureInstructions: "Owner-supplied square key art, centred at full height on a blurred copy of itself at 1920×1080." }),
+  {
+    ...asset("risk-it-social", "branding", "/games/risk-it", "Owner-supplied promotional key art for link previews (not an in-game capture)", "RISK IT! key art: a Roblox player launched off a glowing pad, screaming, in a neon arena", "P0", { use: "social", dimensions: { width: 1600, height: 900 }, aspectRatio: "16:9", captureInstructions: "Owner-supplied key art, exported as 1600×900 JPEG for social previews." }),
+    filename: "risk-it-social.jpg",
+    source: "owner-supplied key art, 1672x941 (2026-10-27)",
+    src: "/games/risk-it/branding/risk-it-social.jpg",
+  },
   asset("risk-it-icon", "branding", "/games", "Square game icon", "RISK IT! game icon: the logo over a synthwave grid with a rainbow arc", "P0", { use: "icon", dimensions: { width: 512, height: 512 }, aspectRatio: "1:1" }),
   asset("risk-it-launch-full-spectrum", "branding", "/games/risk-it", "A Quick Draw flinch, launched with the Full Spectrum trail and Seeing Stars burst", "A player tumbling through the air with a rainbow trail and a starburst, the challenge islands behind", "P0"),
   asset("risk-it-arena-aerial", "branding", "what-is-risk-it", "The whole arena from above: the hub and eight islands", "Aerial view of the RISK IT! hub and its eight neon challenge islands over a synthwave grid", "P0"),

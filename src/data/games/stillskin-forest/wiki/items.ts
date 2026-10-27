@@ -91,6 +91,18 @@ export const items: WikiEntry[] = [
         ],
       },
       {
+        id: "never-lost",
+        heading: "Ammo is never lost during a run",
+        blocks: [
+          { type: "list", items: [
+            "Drop a gun and the rounds in its magazine stay with you; the gun goes on the ground empty.",
+            "Being taken out doesn't cost ammo: the rounds in your guns go back to you, and you have them when you respawn at dawn.",
+            "Swap to another gun and your ammo carries over, plus whatever the new gun had loaded.",
+            "Ammo only resets when a new run starts.",
+          ] },
+        ],
+      },
+      {
         id: "rifle-rounds",
         heading: "Rifle Rounds and ammo from kills",
         blocks: [

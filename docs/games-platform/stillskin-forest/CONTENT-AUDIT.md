@@ -135,4 +135,4 @@ Generated from the wiki registry. Do not edit by hand.
 
 ## Media
 
-22 of 99 images still to capture. See SCREENSHOT-CHECKLIST.md.
+22 of 103 images still to capture. See SCREENSHOT-CHECKLIST.md.

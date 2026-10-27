@@ -268,12 +268,12 @@
       "src": "/games/stillskin-forest/locations/stillskin-forest-trails.webp",
       "gameId": "stillskin-forest",
       "target": "forest-trail",
-      "description": "Forest trails",
+      "description": "Forest trail by day: the dirt path and trail lanterns leading into Stillwater (repainted trails, 2026-10-27).",
       "alt": "The lantern-lit forest trail toward Stillwater",
       "use": "screenshot",
       "dimensions": {
-        "width": 1920,
-        "height": 1080
+        "width": 1600,
+        "height": 900
       },
       "aspectRatio": "16:9",
       "priority": "P1",
@@ -288,12 +288,12 @@
       "src": "/games/stillskin-forest/locations/stillskin-forest-stillwater.webp",
       "gameId": "stillskin-forest",
       "target": "stillwater",
-      "description": "Stillwater town overview. Elevated view over Stillwater, St. Agnes Hospital and the park.",
-      "alt": "Main Street in the abandoned town of Stillwater",
+      "description": "Stillwater by day: Pine General Store, a wrecked car and the main road, with the 2026-10-27 lighting and materials.",
+      "alt": "Pine General Store and a wrecked car on Stillwater's main road",
       "use": "screenshot",
       "dimensions": {
-        "width": 1920,
-        "height": 1080
+        "width": 1600,
+        "height": 900
       },
       "aspectRatio": "16:9",
       "priority": "P0",
@@ -948,12 +948,12 @@
       "src": "/games/stillskin-forest/weapons/stillskin-forest-baseball-bat.webp",
       "gameId": "stillskin-forest",
       "target": "baseball-bat",
-      "description": "Baseball Bat",
+      "description": "Baseball Bat. Product shot of the in-game model on a dark wooden table, lit in Studio Play mode (no HUD).",
       "alt": "The Baseball Bat",
       "use": "screenshot",
       "dimensions": {
-        "width": 1920,
-        "height": 1080
+        "width": 1600,
+        "height": 900
       },
       "aspectRatio": "16:9",
       "priority": "P1",
@@ -968,12 +968,12 @@
       "src": "/games/stillskin-forest/weapons/stillskin-forest-machete.webp",
       "gameId": "stillskin-forest",
       "target": "machete",
-      "description": "Machete",
+      "description": "Machete. Product shot of the in-game model on a dark wooden table, lit in Studio Play mode (no HUD).",
       "alt": "The Machete",
       "use": "screenshot",
       "dimensions": {
-        "width": 1920,
-        "height": 1080
+        "width": 1600,
+        "height": 900
       },
       "aspectRatio": "16:9",
       "priority": "P1",
@@ -988,12 +988,12 @@
       "src": "/games/stillskin-forest/weapons/stillskin-forest-hammer.webp",
       "gameId": "stillskin-forest",
       "target": "hammer",
-      "description": "Hammer",
+      "description": "Hammer. Product shot of the in-game model on a dark wooden table, lit in Studio Play mode (no HUD).",
       "alt": "The Hammer",
       "use": "screenshot",
       "dimensions": {
-        "width": 1920,
-        "height": 1080
+        "width": 1600,
+        "height": 900
       },
       "aspectRatio": "16:9",
       "priority": "P2",
@@ -1008,12 +1008,12 @@
       "src": "/games/stillskin-forest/weapons/stillskin-forest-crowbar.webp",
       "gameId": "stillskin-forest",
       "target": "crowbar",
-      "description": "Crowbar",
+      "description": "Crowbar. Product shot of the in-game model on a dark wooden table, lit in Studio Play mode (no HUD).",
       "alt": "The Crowbar",
       "use": "screenshot",
       "dimensions": {
-        "width": 1920,
-        "height": 1080
+        "width": 1600,
+        "height": 900
       },
       "aspectRatio": "16:9",
       "priority": "P2",
@@ -1028,12 +1028,12 @@
       "src": "/games/stillskin-forest/weapons/stillskin-forest-pistol.webp",
       "gameId": "stillskin-forest",
       "target": "pistol",
-      "description": "Pistol",
+      "description": "Pistol. Product shot of the in-game model on a dark wooden table, lit in Studio Play mode (no HUD).",
       "alt": "The Pistol",
       "use": "screenshot",
       "dimensions": {
-        "width": 1920,
-        "height": 1080
+        "width": 1600,
+        "height": 900
       },
       "aspectRatio": "16:9",
       "priority": "P1",
@@ -1048,12 +1048,12 @@
       "src": "/games/stillskin-forest/weapons/stillskin-forest-shotgun.webp",
       "gameId": "stillskin-forest",
       "target": "shotgun",
-      "description": "Shotgun",
+      "description": "Shotgun. Product shot of the in-game model on a dark wooden table, lit in Studio Play mode (no HUD).",
       "alt": "The Shotgun",
       "use": "screenshot",
       "dimensions": {
-        "width": 1920,
-        "height": 1080
+        "width": 1600,
+        "height": 900
       },
       "aspectRatio": "16:9",
       "priority": "P1",
@@ -1068,12 +1068,12 @@
       "src": "/games/stillskin-forest/weapons/stillskin-forest-signal-remote.webp",
       "gameId": "stillskin-forest",
       "target": "signal-remote",
-      "description": "Signal Remote",
-      "alt": "The Signal Remote freezing nearby infected",
+      "description": "Signal Remote. Product shot of the in-game model on a dark wooden table, lit in Studio Play mode (no HUD).",
+      "alt": "The Signal Remote with its red lights glowing",
       "use": "screenshot",
       "dimensions": {
-        "width": 1920,
-        "height": 1080
+        "width": 1600,
+        "height": 900
       },
       "aspectRatio": "16:9",
       "priority": "P2",
@@ -1128,12 +1128,12 @@
       "src": "/games/stillskin-forest/items/stillskin-forest-food.webp",
       "gameId": "stillskin-forest",
       "target": "food",
-      "description": "Food items. Canned beans used instead of the Bag of Chips, whose texture shows a real third-party brand.",
+      "description": "Food: Canned Beans, Bag of Chips and Energy Bar. Product shot of the in-game model on a dark wooden table, lit in Studio Play mode (no HUD).",
       "alt": "Canned beans, chips and an energy bar",
       "use": "screenshot",
       "dimensions": {
-        "width": 1920,
-        "height": 1080
+        "width": 1600,
+        "height": 900
       },
       "aspectRatio": "16:9",
       "priority": "P2",
@@ -1148,12 +1148,12 @@
       "src": "/games/stillskin-forest/items/stillskin-forest-first-aid-kit.webp",
       "gameId": "stillskin-forest",
       "target": "first-aid-kit",
-      "description": "First Aid Kit",
+      "description": "First Aid Kit. Product shot of the in-game model on a dark wooden table, lit in Studio Play mode (no HUD).",
       "alt": "A First Aid Kit",
       "use": "screenshot",
       "dimensions": {
-        "width": 1920,
-        "height": 1080
+        "width": 1600,
+        "height": 900
       },
       "aspectRatio": "16:9",
       "priority": "P2",
@@ -1168,12 +1168,12 @@
       "src": "/games/stillskin-forest/items/stillskin-forest-lantern.webp",
       "gameId": "stillskin-forest",
       "target": "lantern",
-      "description": "Lantern",
-      "alt": "A placed lantern lighting a room",
+      "description": "Lantern, lit (the in-game lit state: glowing glass and light on). Product shot of the in-game model on a dark wooden table, lit in Studio Play mode (no HUD).",
+      "alt": "A lit Lantern glowing on a dark wooden table",
       "use": "screenshot",
       "dimensions": {
-        "width": 1920,
-        "height": 1080
+        "width": 1600,
+        "height": 900
       },
       "aspectRatio": "16:9",
       "priority": "P2",
@@ -1908,12 +1908,12 @@
       "src": "/games/stillskin-forest/locations/stillskin-forest-hospital-night.webp",
       "gameId": "stillskin-forest",
       "target": "st-agnes-hospital",
-      "description": "St. Agnes Hospital at night. Extra capture.",
-      "alt": "St. Agnes Hospital and ambulance at night",
+      "description": "St. Agnes Hospital at night: the red EMERGENCY sign and ambulance lightbar lighting the grass.",
+      "alt": "St. Agnes Hospital at night, lit red by its emergency sign and ambulance",
       "use": "screenshot",
       "dimensions": {
-        "width": 1920,
-        "height": 1080
+        "width": 1600,
+        "height": 900
       },
       "aspectRatio": "16:9",
       "priority": "P2",
@@ -1978,6 +1978,86 @@
       "aspectRatio": "16:9",
       "priority": "P2",
       "captureInstructions": "Extra capture supplied by the capture session.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-mini-ak",
+      "filename": "stillskin-forest-mini-ak.webp",
+      "src": "/games/stillskin-forest/weapons/stillskin-forest-mini-ak.webp",
+      "gameId": "stillskin-forest",
+      "target": "mini-ak",
+      "description": "Mini AK. Product shot of the in-game model on a dark wooden table, lit in Studio Play mode (no HUD).",
+      "alt": "The Mini AK lying on a dark wooden table",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Product shot on the photo table, Studio Play mode.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-ammunition",
+      "filename": "stillskin-forest-ammunition.webp",
+      "src": "/games/stillskin-forest/items/stillskin-forest-ammunition.webp",
+      "gameId": "stillskin-forest",
+      "target": "ammunition",
+      "description": "Ammunition boxes: Pistol Ammo, Shells and Rifle Rounds. Product shot of the in-game model on a dark wooden table, lit in Studio Play mode (no HUD).",
+      "alt": "Boxes of pistol ammo, shotgun shells and rifle rounds",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Product shot on the photo table, Studio Play mode.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-headlamp-upgrades",
+      "filename": "stillskin-forest-headlamp-upgrades.webp",
+      "src": "/games/stillskin-forest/items/stillskin-forest-headlamp-upgrades.webp",
+      "gameId": "stillskin-forest",
+      "target": "headlamp-upgrades",
+      "description": "Headlamp upgrades: Batteries, LED Bulb, Extended Battery and Tactical Reflector. Product shot of the in-game model on a dark wooden table, lit in Studio Play mode (no HUD).",
+      "alt": "Batteries, an LED bulb, an extended battery and a tactical reflector in a row",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Product shot on the photo table, Studio Play mode.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "stillskin-forest-military-armor",
+      "filename": "stillskin-forest-military-armor.webp",
+      "src": "/games/stillskin-forest/items/stillskin-forest-military-armor.webp",
+      "gameId": "stillskin-forest",
+      "target": "military-armor",
+      "description": "Military armor: the Plate Carrier and Military Helmet. Product shot of the in-game model on a dark wooden table, lit in Studio Play mode (no HUD).",
+      "alt": "The Plate Carrier and Military Helmet on a dark wooden table",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "aspectRatio": "16:9",
+      "priority": "P2",
+      "captureInstructions": "Product shot on the photo table, Studio Play mode.",
       "spoiler": false,
       "liveAvailability": "live",
       "status": "optimized"

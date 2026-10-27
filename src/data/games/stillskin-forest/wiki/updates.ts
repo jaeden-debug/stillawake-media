@@ -8,6 +8,34 @@ import { SRC, VERIFIED } from "./sources";
  */
 export const stillskinUpdates: GameUpdate[] = [
   {
+    id: "2026-10-27-lobby-ghosts-ammo",
+    version: null,
+    date: "2026-10-27",
+    title: "A new lobby, flying ghosts, dawn respawns and ammo you never lose",
+    kind: "development-milestone",
+    newFeatures: [
+      "The lobby camp now sits in a wide clearing at sunset, with fireflies, mist, eyes watching from the treeline and a storm on the horizon.",
+      "Joining the lobby opens with a short flythrough down the trail road to the bonfire (any key skips it).",
+      "When your queue leaves, the truck drives off up the road into the forest before the screen fades to black.",
+      "Ghosts fly: once you're out, fly anywhere on the map, or follow a teammate.",
+      "Dawn respawn: every ghost comes back next to a standing teammate when dawn breaks.",
+    ],
+    changes: [
+      "The downed window is now 2 minutes (was 20 seconds), so teammates have time to reach you.",
+      "Ammo is never lost during a run: dropping a gun, swapping guns and being taken out all keep your rounds. It only resets when a new run starts.",
+      "The lobby trails are smooth dirt paths, and the forest trails are painted dirt between the lanterns.",
+    ],
+    fixes: [
+      "Trees grew in the middle of the lobby camp, and floating pumpkins hung over it.",
+    ],
+    balance: [],
+    knownIssues: [
+      "Ghost flight has only been tested with a keyboard, not a controller or touch screen.",
+      "Dawn respawns have been tested with two players in Studio, not a full squad on a live server.",
+    ],
+    relatedEntries: ["death-ghosts-and-the-finale", "downed-and-revive", "ammunition", "co-op-survival"],
+  },
+  {
     id: "2026-10-27-atmosphere-weather-combat",
     version: null,
     date: "2026-10-27",

@@ -48,6 +48,7 @@ Projects whose canonical page lives elsewhere (cards link there, and `/our-work/
 | `/games/stillskin-forest/wiki/getting-started/playing-with-friends` | Playing Stillskin Forest with Friends |
 | `/games/stillskin-forest/wiki/getting-started/faq` | Stillskin Forest FAQ |
 | `/games/stillskin-forest/wiki/weapons/weapons-compared` | Stillskin Forest Weapons Compared |
+| `/games/stillskin-forest/wiki/weapons/fists` | Fists |
 | `/games/stillskin-forest/wiki/weapons/baseball-bat` | Baseball Bat |
 | `/games/stillskin-forest/wiki/weapons/machete` | Machete |
 | `/games/stillskin-forest/wiki/weapons/hammer` | Hammer |
@@ -76,6 +77,8 @@ Projects whose canonical page lives elsewhere (cards link there, and `/our-work/
 | `/games/stillskin-forest/wiki/mechanics/downed-and-revive` | Downed and Revive |
 | `/games/stillskin-forest/wiki/mechanics/inventory-and-hotbar` | Inventory and Hotbar |
 | `/games/stillskin-forest/wiki/mechanics/aiming-and-reloading` | Aiming, Headshots and Reloading |
+| `/games/stillskin-forest/wiki/mechanics/shooting-through-cover` | Shooting Through Doors, Windows and Glass |
+| `/games/stillskin-forest/wiki/mechanics/weather` | Weather: Rain, Storms and Puddles |
 | `/games/stillskin-forest/wiki/mechanics/climbing-and-ladders` | Climbing, Jumping and Ladders |
 | `/games/stillskin-forest/wiki/mechanics/crouching-and-takedowns` | Crouching and Takedowns |
 | `/games/stillskin-forest/wiki/mechanics/doors-and-building` | Doors and Building Barricades |

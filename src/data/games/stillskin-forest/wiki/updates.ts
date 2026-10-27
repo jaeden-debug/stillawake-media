@@ -8,6 +8,46 @@ import { SRC, VERIFIED } from "./sources";
  */
 export const stillskinUpdates: GameUpdate[] = [
   {
+    id: "2026-10-27-atmosphere-weather-combat",
+    version: null,
+    date: "2026-10-27",
+    title: "Deep forest, cinematic nights, weather, breakable glass and fists",
+    kind: "development-milestone",
+    newFeatures: [
+      "A much denser forest: about 1,400 more pines plus bushes and ferns, with the town, asylum, lake, ranger station and airfield as clearings inside it.",
+      "Bushes rustle when you, another survivor or an infected walks through them; leaves blow in the wind and the trees sway.",
+      "Zombie eyes glow at night, a colour per type (Walker green, Runner yellow, Screamer white, Brute red, Soldier amber), visible from far away.",
+      "Weather: rain every few days and nights, thunderstorms with lightning and thunder, and puddles that splash.",
+      "Rain hides you: the infected see and hear far less in a downpour.",
+      "Breakable glass: one bullet shatters a window, melee chips at it, and the infected smash through in eight blows. They can also see you through it.",
+      "Wall-bangs: bullets punch through doors and thin wood for less damage, and pass through glass and open doorways.",
+      "Fists: with nothing in your hands, click or press R2 to punch (six punches drop a Walker).",
+      "Night lighting: a navy moonlit sky with stars and clouds, lanterns around the lake, a lit asylum entrance and windows, the hospital's red emergency sign, and an ambulance with flashing lights.",
+    ],
+    changes: [
+      "Shots go exactly where your crosshair is; standing next to a car, fence or wall no longer eats the shot.",
+      "Melee reaches further down, so you can hit infected at your feet from on top of a car.",
+      "Softer daylight with longer shadows, a golden hour, and textured, weathered concrete, wood, plaster, roads, rock and bark.",
+      "Under the canopy at night you can see the ground and the nearest trees without the headlamp; further out you still need it.",
+    ],
+    fixes: [
+      "Shots were blocked by a car, fence or wall right next to you even when aiming past it.",
+      "Bullets could not pass through open doorways.",
+    ],
+    balance: [
+      "Fists: 17 damage, 0.55 s between punches.",
+      "A downpour cuts infected sight by up to 45% and hearing by up to 40%.",
+    ],
+    knownIssues: [
+      "Weather and lightning have only been tested solo, not with a full squad.",
+      "There is no punch button on touch screens yet.",
+      "New rain, thunder, glass and punch sounds are waiting for a listening pass.",
+    ],
+    relatedEntries: [
+      "weather", "shooting-through-cover", "fists", "forest-trail", "detection-and-noise", "enemy-comparison", "aiming-and-reloading",
+    ],
+  },
+  {
     id: "2026-10-27-blackpine-expansion",
     version: null,
     date: "2026-10-27",
@@ -111,12 +151,12 @@ export const updates: WikiEntry[] = [
       "What's new in Stillskin Forest: dated development milestones with new features, changes, fixes, balance changes and known issues.",
     question: "What's new in Stillskin Forest?",
     answer:
-      "The most recent milestone (25 October 2026) added Blackthorn Hill, the asylum quest, the four relics and two endings, hiding and the Dread Encounter, building, crouch and takedowns, the lobby and squads, and a long list of fixes. The game has no public version numbers yet.",
+      "The most recent milestone (27 October 2026) made the forest much denser and added weather (rain, thunderstorms and puddles, which make sneaking easier), glowing zombie eyes at night, breakable glass, shooting through doors, punching, and a cinematic lighting pass. Earlier on 27 October came the Blackpine Airfield expansion. The game has no public version numbers yet.",
     sections: [],
-    related: ["what-is-stillskin-forest", "how-to-play"],
+    related: ["what-is-stillskin-forest", "how-to-play", "weather", "shooting-through-cover"],
     verification: "verified_live",
-    sources: [SRC.playtest],
-    lastVerified: VERIFIED,
+    sources: [SRC.playtest, SRC.playtest27],
+    lastVerified: "2026-10-27",
     aliases: ["updates", "patch notes", "changelog", "what's new", "news", "version"],
   },
 ];

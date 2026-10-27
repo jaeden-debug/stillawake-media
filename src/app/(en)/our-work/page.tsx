@@ -18,10 +18,21 @@ import { JsonLd, graph, itemList } from "@/lib/game-schema";
 import { siteUrl } from "@/lib/data";
 
 const description =
-  "Websites, apps, games, tools, components and SaaS built by StillAwake Media. Browse every project by category, open its page, or preview it live.";
+  "Explore StillAwake Media’s portfolio of custom websites, Shopify stores, software, AI solutions, and digital experiences. See what we’ve built for businesses.";
+
+// The share card (Open Graph / X) is written for people, not search results.
+const shareTitle = "Our Work | Web Design, Software & Digital Experiences — StillAwake Media";
+const shareDescription =
+  "Explore the work behind StillAwake Media. From custom websites and eCommerce stores to AI-powered software and interactive experiences, discover what we design, develop, and bring to life.";
+const shareImage = {
+  url: "/stillawake-our-work-social-preview.jpg",
+  width: 1200,
+  height: 630,
+  alt: "StillAwake Media, On Air, stillawakemedia.com",
+};
 
 export const metadata: Metadata = {
-  title: "Our Work | Websites, Apps, Games and Software",
+  title: { absolute: "Our Portfolio | Web Design & Development — StillAwake Media" },
   description,
   alternates: {
     canonical: "/our-work",
@@ -32,10 +43,20 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Our Work | StillAwake Media",
-    description,
+    title: shareTitle,
+    description: shareDescription,
     url: `${siteUrl}/our-work`,
+    siteName: "StillAwake Media",
     type: "website",
+    locale: "en_CA",
+    alternateLocale: ["fr_CA"],
+    images: [shareImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: shareTitle,
+    description: shareDescription,
+    images: [shareImage.url],
   },
 };
 

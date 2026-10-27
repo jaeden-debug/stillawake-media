@@ -14,10 +14,21 @@ import { siteUrl } from "@/lib/data";
 
 const pageUrl = `${siteUrl}/fr/realisations`;
 const description =
-  "Sites web, applications, jeux, outils, composants et logiciels bâtis par StillAwake Media. Parcourez chaque projet par catégorie ou lisez l'étude de cas.";
+  "Découvrez le portfolio de StillAwake Media : sites web sur mesure, boutiques Shopify, logiciels, solutions d’IA et expériences numériques. Voyez ce que nous avons bâti pour les entreprises.";
+
+// La carte de partage (Open Graph / X) s'adresse aux gens, pas aux résultats de recherche.
+const shareTitle = "Réalisations | Design web, logiciels et expériences numériques — StillAwake Media";
+const shareDescription =
+  "Découvrez le travail derrière StillAwake Media. Des sites web sur mesure et boutiques en ligne aux logiciels propulsés par l’IA et aux expériences interactives, voyez ce que nous concevons, développons et faisons naître.";
+const shareImage = {
+  url: "/stillawake-our-work-social-preview.jpg",
+  width: 1200,
+  height: 630,
+  alt: "StillAwake Media, On Air, stillawakemedia.com",
+};
 
 export const metadata: Metadata = {
-  title: "Réalisations | Sites web, applications, jeux et logiciels",
+  title: { absolute: "Nos réalisations | Conception et développement web — StillAwake Media" },
   description,
   alternates: {
     canonical: "/fr/realisations",
@@ -28,11 +39,20 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Réalisations | StillAwake Media",
-    description,
+    title: shareTitle,
+    description: shareDescription,
     url: pageUrl,
+    siteName: "StillAwake Media",
     type: "website",
     locale: "fr_CA",
+    alternateLocale: ["en_CA"],
+    images: [shareImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: shareTitle,
+    description: shareDescription,
+    images: [shareImage.url],
   },
 };
 

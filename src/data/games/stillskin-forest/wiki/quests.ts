@@ -80,7 +80,7 @@ export const quests: WikiEntry[] = [
         heading: "The ending",
         spoiler: true,
         blocks: [
-          { type: "p", text: "Every infected drops and the finale shows \"THE HOLLOW SLEEPS\" and \"THE RITUAL IS COMPLETE\", with the day you finished on. The words \"for now\" are deliberate: the other ending is below, in [the Heart of Stillskin](@the-heart-of-stillskin)." },
+          { type: "p", text: "Every infected drops and \"YOU WON · THE HOLLOW SLEEPS\" appears. The win and its Embers are yours straight away, but the run doesn't end: everyone gets [night-vision goggles](@headlamp) and the run carries on, harder (see [After you win](@how-to-play)). The words \"for now\" are deliberate: the other ending is below, in [the Heart of Stillskin](@the-heart-of-stillskin)." },
         ],
       },
     ],

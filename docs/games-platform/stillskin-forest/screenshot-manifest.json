@@ -148,12 +148,12 @@
       "src": "/games/stillskin-forest/branding/stillskin-forest-night-chase.webp",
       "gameId": "stillskin-forest",
       "target": "/games/stillskin-forest",
-      "description": "Infected pursuit. Night exposure lifted +1.4 EV for legibility.",
-      "alt": "A survivor sprinting from infected through the forest at night",
+      "description": "Infected pursuit. A survivor runs from a crowd of infected along a lantern-lit forest trail at night. Owner-supplied image (2026-10-27).",
+      "alt": "A survivor runs from a crowd of infected along a lantern-lit forest trail at night",
       "use": "screenshot",
       "dimensions": {
-        "width": 1920,
-        "height": 1080
+        "width": 1672,
+        "height": 941
       },
       "aspectRatio": "16:9",
       "priority": "P0",
@@ -188,12 +188,12 @@
       "src": "/games/stillskin-forest/locations/stillskin-forest-campgrounds.webp",
       "gameId": "stillskin-forest",
       "target": "campgrounds",
-      "description": "Main campground. Campground lake, dock and cabin, daylight (not dusk).",
-      "alt": "Cabins around the campground lake in Stillskin Forest",
+      "description": "Main campground. A log cabin across the campground lake at night, dock and lanterns lit, infected at the shoreline. Owner-supplied image (2026-10-27).",
+      "alt": "A log cabin across the campground lake at night, with infected at the shoreline in Stillskin Forest",
       "use": "screenshot",
       "dimensions": {
-        "width": 1920,
-        "height": 1080
+        "width": 1672,
+        "height": 941
       },
       "aspectRatio": "16:9",
       "priority": "P0",
@@ -328,12 +328,12 @@
       "src": "/games/stillskin-forest/locations/stillskin-forest-hospital.webp",
       "gameId": "stillskin-forest",
       "target": "st-agnes-hospital",
-      "description": "St. Agnes Hospital. St. Agnes Hospital exterior with ambulance.",
-      "alt": "St. Agnes Hospital and an abandoned ambulance",
+      "description": "St. Agnes Hospital. Hospital exterior at night with the ambulance doors open under the Emergency sign, infected closing in. Owner-supplied image (2026-10-27).",
+      "alt": "An ambulance with its doors open outside St. Agnes Hospital as infected close in at night",
       "use": "screenshot",
       "dimensions": {
-        "width": 1920,
-        "height": 1080
+        "width": 1672,
+        "height": 941
       },
       "aspectRatio": "16:9",
       "priority": "P0",
@@ -588,12 +588,12 @@
       "src": "/games/stillskin-forest/locations/stillskin-forest-blackthorn-asylum.webp",
       "gameId": "stillskin-forest",
       "target": "blackthorn-asylum",
-      "description": "Asylum exterior. Asylum facade by day; a night version is still outstanding.",
-      "alt": "Blackthorn Asylum at the top of the hill",
+      "description": "Asylum exterior. Blackthorn Asylum at night under a full moon, infected at the lit windows and in the grass. Owner-supplied image (2026-10-27).",
+      "alt": "Infected at the windows and in the grass outside Blackthorn Asylum under a full moon",
       "use": "screenshot",
       "dimensions": {
-        "width": 1920,
-        "height": 1080
+        "width": 1672,
+        "height": 941
       },
       "aspectRatio": "16:9",
       "priority": "P0",
@@ -728,12 +728,12 @@
       "src": "/games/stillskin-forest/locations/stillskin-forest-green-lake.webp",
       "gameId": "stillskin-forest",
       "target": "green-lake",
-      "description": "Green Lake. Same master as the thumbnail, cropped lower and to the lake.",
-      "alt": "Green Lake below Blackthorn Asylum",
+      "description": "Green Lake. Blackthorn Asylum above the fenced lake basin at night, infected along the fence and green gate lamps lit. Owner-supplied image (2026-10-27).",
+      "alt": "Blackthorn Asylum above Green Lake at night, with infected along the fence",
       "use": "screenshot",
       "dimensions": {
-        "width": 1920,
-        "height": 1080
+        "width": 1672,
+        "height": 941
       },
       "aspectRatio": "16:9",
       "priority": "P0",

@@ -7,14 +7,15 @@ export const mechanics: WikiEntry[] = [
   {
     ...base,
     slug: "day-night-cycle",
+    lastVerified: "2026-10-27",
     title: "Day and Night Cycle",
     seoTitle: "Stillskin Forest Day and Night Cycle: How Long Is a Night?",
     description:
       "How long a day and night last in Stillskin Forest, what changes after dark, and how the infected population grows each day.",
     question: "How long is a night in Stillskin Forest?",
     answer:
-      "A night lasts three minutes. The day phase lasts five minutes, including a 20-second sunrise at the start and a 40-second dusk at the end, so a full day takes about eight minutes. Runs begin on Day 1 at 8:00 a.m. in full light.",
-    facts: [["Day phase", "5 min"], ["Sunrise", "20 s"], ["Dusk", "40 s"], ["Night", "3 min"], ["Full cycle", "~8 min"]],
+      "A night lasts five minutes. The day phase lasts eight minutes, including a 20-second sunrise at the start and a 40-second dusk at the end, so a full day and night take about thirteen minutes. Runs begin on Day 1 at 8:00 a.m. in full light.",
+    facts: [["Day phase", "8 min"], ["Sunrise", "20 s"], ["Dusk", "40 s"], ["Night", "5 min"], ["Full cycle", "~13 min"]],
     sections: [
       {
         id: "phases",
@@ -22,9 +23,9 @@ export const mechanics: WikiEntry[] = [
         blocks: [
           { type: "table", caption: "A day in Stillskin Forest", head: ["Phase", "Length", "Clock", "What changes"], rows: [
             ["Dawn", "20 s", "5:48 → 7:00", "Night extras head back into the woods and despawn. Empty loot spots refill."],
-            ["Day", "~4 min", "7:00 → 17:36", "Few infected, shorter detection range. Scavenge."],
+            ["Day", "7 min", "7:00 → 17:36", "Few infected, shorter detection range. Scavenge."],
             ["Dusk", "40 s", "17:36 → 19:12", "Warning banner. A special night may be announced."],
-            ["Night", "3 min", "19:12 → 5:48", "Population jumps, detection range grows, infected drift toward survivors."],
+            ["Night", "5 min", "19:12 → 5:48", "Population jumps, detection range grows, and a share of the infected near you search your area. See [Night survival](@night-survival)."],
           ] },
         ],
       },
@@ -40,7 +41,7 @@ export const mechanics: WikiEntry[] = [
         ],
       },
     ],
-    related: ["surviving-your-first-night", "special-nights-overview", "detection-and-noise", "headlamp"],
+    related: ["night-survival", "surviving-your-first-night", "special-nights-overview", "detection-and-noise", "headlamp"],
     sources: [SRC.config, SRC.playtest],
     aliases: ["day night", "night length", "time", "cycle", "how long is a day"],
   },
@@ -89,6 +90,7 @@ export const mechanics: WikiEntry[] = [
   {
     ...base,
     slug: "detection-and-noise",
+    lastVerified: "2026-10-27",
     title: "Detection, Noise and Pursuit",
     seoTitle: "How Zombies Detect You in Stillskin Forest: Sight, Noise and Chases",
     description:
@@ -117,7 +119,7 @@ export const mechanics: WikiEntry[] = [
         heading: "Noise",
         blocks: [
           { type: "table", caption: "How far each noise carries", head: ["Noise", "Heard within"], rows: [
-            ["Shotgun blast", "120 studs"], ["Gunshot", "90 studs"], ["Sprinting footsteps", "30 studs"], ["Melee swing", "25 studs"], ["Walking", "Silent"], ["Crouched footsteps", "Silent"],
+            ["Shotgun blast, Hunting Rifle or Mini AK shot", "120 studs"], ["Gunshot", "90 studs"], ["Running generator", "45 studs, every 8 s"], ["Sprinting footsteps", "30 studs"], ["Melee swing", "25 studs"], ["Walking", "Silent"], ["Crouched footsteps", "Silent"],
           ] },
           { type: "p", text: "Alarms count too: the burglar alarm at [Pine General Store](@pine-general-store), a crashed car's alarm, and the hospital vending machine all pull infected in." },
         ],
@@ -496,13 +498,14 @@ export const mechanics: WikiEntry[] = [
   {
     ...base,
     slug: "doors-and-building",
+    lastVerified: "2026-10-27",
     title: "Doors and Building Barricades",
     seoTitle: "Building and Doors in Stillskin Forest: Planks, Hammers and Barricades",
     description:
       "How to barricade in Stillskin Forest: closing doors the infected must bash open, nailing planks with the Hammer, and prying them off with the Crowbar.",
     question: "How do you build barricades in Stillskin Forest?",
     answer:
-      "Equip a Hammer, hold the click on a surface, drag to where you want the plank to end, and release to nail it. Planks are unlimited; each costs one point of hammer durability. An infected with a plank in its way claws at it and needs six hits to break it. Doors help too: the infected can't open them and need eight hits to bash one open.",
+      "Equip a Hammer, hold the click (or R2) on a surface, drag to where you want the plank to end, and release to nail it. A quick tap swings instead; a hold never swings. There is no limit on planks; each costs one point of hammer durability. An infected with a plank in its way claws at it and needs six hits to break it. Doors help too: the infected can't open them and need eight hits to bash one open.",
     sections: [
       {
         id: "doors",
@@ -516,13 +519,13 @@ export const mechanics: WikiEntry[] = [
         heading: "Nailing planks",
         blocks: [
           { type: "table", caption: "Building rules", head: ["Rule", "Value"], rows: [
-            ["Tool", "[Hammer](@hammer)"], ["Plank length", "1.5–12 studs"], ["Reach", "Both ends within 20 studs of you"], ["Cost", "1 hammer durability per plank"], ["Infected hits to break", "6 (one every 1.4 s)"], ["Crowbar swings to remove", "2"], ["Maximum", "120 planks per player"],
+            ["Tool", "[Hammer](@hammer)"], ["Plank length", "1.5–12 studs"], ["Reach", "Both ends within 20 studs of you"], ["Cost", "1 hammer durability per plank"], ["Infected hits to break", "6 (one every 1.4 s)"], ["Crowbar swings to remove", "2"], ["Maximum", "No limit"],
           ] },
           { type: "p", text: "A green ghost board shows while you drag if the plank will fit. Planks can't overlap a player or an infected. A broken or pried plank falls and fades away." },
         ],
       },
     ],
-    related: ["hammer", "crowbar", "lantern", "surviving-your-first-night"],
+    related: ["hammer", "crowbar", "night-survival", "surviving-your-first-night"],
     sources: [SRC.config, SRC.playtest],
     aliases: ["build", "base building", "barricade", "planks", "doors", "fortify"],
     gaps: ["Infected breaking planks on their own was not yet observed in a recorded playtest."],

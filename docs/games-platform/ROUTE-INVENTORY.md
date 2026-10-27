@@ -57,7 +57,7 @@ Projects whose canonical page lives elsewhere (cards link there, and `/our-work/
 | `/games/stillskin-forest/wiki/weapons/signal-remote` | Signal Remote |
 | `/games/stillskin-forest/wiki/items/food` | Food: Bag of Chips, Canned Beans and Energy Bar |
 | `/games/stillskin-forest/wiki/items/first-aid-kit` | First Aid Kit |
-| `/games/stillskin-forest/wiki/items/ammunition` | Ammunition: Pistol Ammo and Shells |
+| `/games/stillskin-forest/wiki/items/ammunition` | Ammunition: Pistol Ammo, Shells and Rifle Rounds |
 | `/games/stillskin-forest/wiki/items/headlamp` | Headlamp |
 | `/games/stillskin-forest/wiki/items/headlamp-upgrades` | Headlamp Upgrades and Batteries |
 | `/games/stillskin-forest/wiki/items/lantern` | Lantern |
@@ -119,6 +119,12 @@ Projects whose canonical page lives elsewhere (cards link there, and `/our-work/
 | `/games/stillskin-forest/wiki/multiplayer/co-op-survival` | Co-op Survival: Revives, Pings and Sharing |
 | `/games/stillskin-forest/wiki/multiplayer/death-ghosts-and-the-finale` | Death, Ghosts and the Rooftop Finale |
 | `/games/stillskin-forest/wiki/updates/development-log` | Stillskin Forest Development Log |
+| `/games/stillskin-forest/wiki/locations/blackpine-airfield` | Blackpine Airfield |
+| `/games/stillskin-forest/wiki/enemies/soldier` | Soldier |
+| `/games/stillskin-forest/wiki/weapons/mini-ak` | Mini AK |
+| `/games/stillskin-forest/wiki/items/military-armor` | Military Armor: Plate Carrier and Helmet |
+| `/games/stillskin-forest/wiki/mechanics/night-survival` | Night Survival: Hunters, Wisps, Night Caches and Sleep |
+| `/games/stillskin-forest/wiki/mechanics/generators-and-gas-cans` | Generators and Gas Cans |
 | `/games/risk-it` | RISK IT! landing page |
 | `/games/risk-it/wiki` | RISK IT! wiki home |
 | `/games/risk-it/wiki/getting-started` | Wiki category: Getting Started |

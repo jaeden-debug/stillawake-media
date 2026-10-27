@@ -2,9 +2,9 @@
 
 Generated from the wiki registry. Do not edit by hand.
 
-- Published (verified_live): **78** articles across 11 categories
+- Published (verified_live): **84** articles across 11 categories
 - Not published: **9** (planned, unverified or deprecated)
-- Articles with recorded gaps: **19**
+- Articles with recorded gaps: **24**
 - Last verified: 2026-10-25
 
 ## Published articles
@@ -17,29 +17,29 @@ Generated from the wiki registry. Do not edit by hand.
 | Getting Started | How to Survive Your First Night in Stillskin Forest | `/games/stillskin-forest/wiki/getting-started/surviving-your-first-night` | no | 2026-10-25 |
 | Getting Started | Playing Stillskin Forest with Friends | `/games/stillskin-forest/wiki/getting-started/playing-with-friends` | no | 2026-10-25 |
 | Getting Started | Stillskin Forest FAQ | `/games/stillskin-forest/wiki/getting-started/faq` | no | 2026-10-25 |
-| Weapons | Stillskin Forest Weapons Compared | `/games/stillskin-forest/wiki/weapons/weapons-compared` | no | 2026-10-25 |
+| Weapons | Stillskin Forest Weapons Compared | `/games/stillskin-forest/wiki/weapons/weapons-compared` | no | 2026-10-27 |
 | Weapons | Baseball Bat | `/games/stillskin-forest/wiki/weapons/baseball-bat` | no | 2026-10-25 |
 | Weapons | Machete | `/games/stillskin-forest/wiki/weapons/machete` | no | 2026-10-25 |
-| Weapons | Hammer | `/games/stillskin-forest/wiki/weapons/hammer` | no | 2026-10-25 |
+| Weapons | Hammer | `/games/stillskin-forest/wiki/weapons/hammer` | no | 2026-10-27 |
 | Weapons | Crowbar | `/games/stillskin-forest/wiki/weapons/crowbar` | no | 2026-10-25 |
 | Weapons | Pistol | `/games/stillskin-forest/wiki/weapons/pistol` | no | 2026-10-25 |
 | Weapons | Shotgun | `/games/stillskin-forest/wiki/weapons/shotgun` | no | 2026-10-25 |
 | Weapons | Signal Remote | `/games/stillskin-forest/wiki/weapons/signal-remote` | no | 2026-10-25 |
 | Items & Equipment | Food: Bag of Chips, Canned Beans and Energy Bar | `/games/stillskin-forest/wiki/items/food` | no | 2026-10-25 |
 | Items & Equipment | First Aid Kit | `/games/stillskin-forest/wiki/items/first-aid-kit` | no | 2026-10-25 |
-| Items & Equipment | Ammunition: Pistol Ammo and Shells | `/games/stillskin-forest/wiki/items/ammunition` | no | 2026-10-25 |
-| Items & Equipment | Headlamp | `/games/stillskin-forest/wiki/items/headlamp` | no | 2026-10-25 |
-| Items & Equipment | Headlamp Upgrades and Batteries | `/games/stillskin-forest/wiki/items/headlamp-upgrades` | no | 2026-10-25 |
+| Items & Equipment | Ammunition: Pistol Ammo, Shells and Rifle Rounds | `/games/stillskin-forest/wiki/items/ammunition` | no | 2026-10-27 |
+| Items & Equipment | Headlamp | `/games/stillskin-forest/wiki/items/headlamp` | no | 2026-10-27 |
+| Items & Equipment | Headlamp Upgrades and Batteries | `/games/stillskin-forest/wiki/items/headlamp-upgrades` | no | 2026-10-27 |
 | Items & Equipment | Lantern | `/games/stillskin-forest/wiki/items/lantern` | no | 2026-10-25 |
-| Enemies | Stillskin Forest Enemies Compared | `/games/stillskin-forest/wiki/enemies/enemy-comparison` | no | 2026-10-25 |
+| Enemies | Stillskin Forest Enemies Compared | `/games/stillskin-forest/wiki/enemies/enemy-comparison` | no | 2026-10-27 |
 | Enemies | Walker | `/games/stillskin-forest/wiki/enemies/walker` | no | 2026-10-25 |
 | Enemies | Runner | `/games/stillskin-forest/wiki/enemies/runner` | no | 2026-10-25 |
 | Enemies | Screamer | `/games/stillskin-forest/wiki/enemies/screamer` | no | 2026-10-25 |
 | Enemies | Brute | `/games/stillskin-forest/wiki/enemies/brute` | no | 2026-10-25 |
 | Enemies | The Watcher | `/games/stillskin-forest/wiki/enemies/watcher` | no | 2026-10-25 |
-| Survival Mechanics | Day and Night Cycle | `/games/stillskin-forest/wiki/mechanics/day-night-cycle` | no | 2026-10-25 |
+| Survival Mechanics | Day and Night Cycle | `/games/stillskin-forest/wiki/mechanics/day-night-cycle` | no | 2026-10-27 |
 | Survival Mechanics | Stamina and Sprinting | `/games/stillskin-forest/wiki/mechanics/stamina-and-sprinting` | no | 2026-10-25 |
-| Survival Mechanics | Detection, Noise and Pursuit | `/games/stillskin-forest/wiki/mechanics/detection-and-noise` | no | 2026-10-25 |
+| Survival Mechanics | Detection, Noise and Pursuit | `/games/stillskin-forest/wiki/mechanics/detection-and-noise` | no | 2026-10-27 |
 | Survival Mechanics | Hiding | `/games/stillskin-forest/wiki/mechanics/hiding` | no | 2026-10-25 |
 | Survival Mechanics | The Dread Encounter | `/games/stillskin-forest/wiki/mechanics/the-dread-encounter` | no | 2026-10-25 |
 | Survival Mechanics | Health, Damage and Healing | `/games/stillskin-forest/wiki/mechanics/health-and-healing` | no | 2026-10-25 |
@@ -48,7 +48,7 @@ Generated from the wiki registry. Do not edit by hand.
 | Survival Mechanics | Aiming, Headshots and Reloading | `/games/stillskin-forest/wiki/mechanics/aiming-and-reloading` | no | 2026-10-25 |
 | Survival Mechanics | Climbing, Jumping and Ladders | `/games/stillskin-forest/wiki/mechanics/climbing-and-ladders` | no | 2026-10-25 |
 | Survival Mechanics | Crouching and Takedowns | `/games/stillskin-forest/wiki/mechanics/crouching-and-takedowns` | no | 2026-10-25 |
-| Survival Mechanics | Doors and Building Barricades | `/games/stillskin-forest/wiki/mechanics/doors-and-building` | no | 2026-10-25 |
+| Survival Mechanics | Doors and Building Barricades | `/games/stillskin-forest/wiki/mechanics/doors-and-building` | no | 2026-10-27 |
 | Survival Mechanics | Durability and Wear | `/games/stillskin-forest/wiki/mechanics/durability-and-wear` | no | 2026-10-25 |
 | Locations | The Campgrounds | `/games/stillskin-forest/wiki/locations/campgrounds` | no | 2026-10-25 |
 | Locations | The Forest Trail | `/games/stillskin-forest/wiki/locations/forest-trail` | no | 2026-10-25 |
@@ -89,6 +89,12 @@ Generated from the wiki registry. Do not edit by hand.
 | Co-op & End of Run | Co-op Survival: Revives, Pings and Sharing | `/games/stillskin-forest/wiki/multiplayer/co-op-survival` | no | 2026-10-25 |
 | Co-op & End of Run | Death, Ghosts and the Rooftop Finale | `/games/stillskin-forest/wiki/multiplayer/death-ghosts-and-the-finale` | no | 2026-10-25 |
 | Updates | Stillskin Forest Development Log | `/games/stillskin-forest/wiki/updates/development-log` | no | 2026-10-25 |
+| Locations | Blackpine Airfield | `/games/stillskin-forest/wiki/locations/blackpine-airfield` | no | 2026-10-27 |
+| Enemies | Soldier | `/games/stillskin-forest/wiki/enemies/soldier` | no | 2026-10-27 |
+| Weapons | Mini AK | `/games/stillskin-forest/wiki/weapons/mini-ak` | no | 2026-10-27 |
+| Items & Equipment | Military Armor: Plate Carrier and Helmet | `/games/stillskin-forest/wiki/items/military-armor` | no | 2026-10-27 |
+| Survival Mechanics | Night Survival: Hunters, Wisps, Night Caches and Sleep | `/games/stillskin-forest/wiki/mechanics/night-survival` | no | 2026-10-27 |
+| Survival Mechanics | Generators and Gas Cans | `/games/stillskin-forest/wiki/mechanics/generators-and-gas-cans` | no | 2026-10-27 |
 
 ## Not published, and why
 
@@ -119,6 +125,11 @@ Generated from the wiki registry. Do not edit by hand.
 | Notes and Tapes | The location of every individual note is not yet documented. |
 | Descent into the Hollow | The full descent has been verified solo; a two-player run of the cave has not been recorded yet. |
 | Death, Ghosts and the Rooftop Finale | Return to Camp voting with several real clients has not been recorded yet. |
+| Blackpine Airfield | Not yet walked through with two or more players. |
+| Mini AK | The third-person model uses the shared gun pose; no dedicated reload animation yet. |
+| Military Armor: Plate Carrier and Helmet | Taking armor off with a controller is not mapped yet (keyboard K only). |
+| Night Survival: Hunters, Wisps, Night Caches and Sleep | Sleeping with two or more players voting has not been tested. |
+| Generators and Gas Cans | The ranger station's own generator works separately and doesn't use fuel yet. No engine-running sound yet. |
 
 ## Media
 

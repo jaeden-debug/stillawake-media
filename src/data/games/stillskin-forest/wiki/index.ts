@@ -10,6 +10,7 @@ import { story } from "./story";
 import { quests } from "./quests";
 import { multiplayer } from "./multiplayer";
 import { updates } from "./updates";
+import { expansion } from "./expansion";
 import { unpublished } from "./audit";
 
 export { stillskinUpdates } from "./updates";
@@ -27,5 +28,6 @@ export const stillskinWiki: WikiEntry[] = [
   ...quests,
   ...multiplayer,
   ...updates,
+  ...expansion,
   ...unpublished,
 ];

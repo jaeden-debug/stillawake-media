@@ -6,7 +6,7 @@ import { REDIRECT_SOURCES } from "@/data/redirects.mjs";
 import { siteUrl } from "@/lib/data";
 import { projectsWithDetailPage } from "@/data/portfolio/projects";
 import { gameBundles } from "@/data/games";
-import { GUIDE_PATH, SNAPSHOT_DATE } from "@/data/games/guides/roblox-survival-horror";
+import { comparisonGuides } from "@/data/games/guides";
 import {
   activeCategories,
   categoryPath,
@@ -346,7 +346,7 @@ function projectEntries(): MetadataRoute.Sitemap {
  * last checked against the game, never the deploy date.
  */
 function gameEntries(): MetadataRoute.Sitemap {
-  const out: MetadataRoute.Sitemap = [{ url: `${siteUrl}${GUIDE_PATH}`, lastModified: new Date(SNAPSHOT_DATE) }];
+  const out: MetadataRoute.Sitemap = comparisonGuides.map((g) => ({ url: `${siteUrl}${g.path}`, lastModified: new Date(g.snapshotDate) }));
   for (const bundle of gameBundles) {
     const slug = bundle.game.slug;
     const entries = publishedEntries(bundle);

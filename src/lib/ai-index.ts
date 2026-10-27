@@ -2,7 +2,7 @@ import { siteUrl } from "@/lib/data";
 import { getAllPosts } from "@/lib/content";
 import { projects, projectCategories, projectHref } from "@/data/portfolio/projects";
 import { gameBundles } from "@/data/games";
-import { GUIDE_PATH, GUIDE_TITLE, SNAPSHOT_DATE } from "@/data/games/guides/roblox-survival-horror";
+import { comparisonGuides } from "@/data/games/guides";
 import {
   activeCategories,
   entriesInCategory,
@@ -61,7 +61,7 @@ export function gamesSection(): string {
       out.push("");
     }
   }
-  out.push(`### Guides`, "", `- [${GUIDE_TITLE}](${abs(GUIDE_PATH)}): figures from Roblox's public listings, ${SNAPSHOT_DATE}.`);
+  out.push(`### Guides`, "", ...comparisonGuides.map((g) => `- [${g.title}](${abs(g.path)}): figures from Roblox's public listings, ${g.snapshotDate}.`));
   return out.join("\n");
 }
 

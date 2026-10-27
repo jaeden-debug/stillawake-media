@@ -150,7 +150,9 @@ describe("site search", () => {
 
   it("matches aliases", () => {
     expect(search(index, "locker").map((h) => h.doc.title)).toContain("Hiding");
-    expect(search(index, "keybinds")[0]?.doc.title).toBe("Stillskin Forest Controls");
+    const keybinds = search(index, "keybinds").slice(0, 2).map((h) => h.doc.title);
+    expect(keybinds).toContain("Stillskin Forest Controls");
+    expect(keybinds).toContain("RISK IT! Controls");
   });
 
   it("filters by group", () => {

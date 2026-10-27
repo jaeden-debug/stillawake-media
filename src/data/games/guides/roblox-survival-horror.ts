@@ -11,26 +11,13 @@
  * SNAPSHOT_DATE.
  */
 
+import type { ComparisonGuide, GuideGame } from "./types";
+
+export { robloxUrl, type GuideGame } from "./types";
+
 export const SNAPSHOT_DATE = "2026-10-26";
 export const GUIDE_PATH = "/games/guides/roblox-survival-horror-games";
 export const GUIDE_TITLE = "Roblox Survival Horror Games: 8 to Play, With Real Numbers";
-
-export type GuideGame = {
-  universeId: number;
-  placeId: string;
-  name: string;
-  creator: string;
-  /** Roblox's own genre labels. */
-  genre: string;
-  style: string;
-  maxPlayers: number;
-  visits: number;
-  playingAtSnapshot: number;
-  created: string;
-  premise: string;
-  goodFor: string;
-  warnings?: string;
-};
 
 export const guideGames: GuideGame[] = [
   {
@@ -159,6 +146,28 @@ export const guideGames: GuideGame[] = [
   },
 ];
 
-export function robloxUrl(g: GuideGame) {
-  return `https://www.roblox.com/games/${g.placeId}`;
-}
+export const survivalHorrorGuide: ComparisonGuide = {
+  id: "roblox-survival-horror",
+  path: GUIDE_PATH,
+  title: GUIDE_TITLE,
+  shortName: "Roblox survival horror games",
+  description:
+    "Eight Roblox survival-horror games compared with numbers from Roblox itself: play style, server size, visits and players, plus which suit a group of friends.",
+  blurb: "DOORS, The Mimic, Pressure, 3008, Dead Rails, Piggy, Forsaken and Apeirophobia, compared by play style and server size.",
+  snapshotDate: SNAPSHOT_DATE,
+  question: "What are good survival horror games on Roblox?",
+  answer:
+    "Eight established options, each in a different style: **DOORS**, **The Mimic** and **Pressure** for co-op escape horror; **3008** for base building; **Dead Rails** for zombie survival on the move; **Piggy** for short chases; **Forsaken** for killer-versus-survivors; and **Apeirophobia** for exploration. The right one depends on how many friends you have and whether you'd rather fight, hide, build or explore.",
+  disclosure: {
+    before: "Disclosure: StillAwake Media makes ",
+    linkText: "Stillskin Forest",
+    href: "/games/stillskin-forest",
+    after: ", a co-op survival-horror game that is still in development. It is left off this list because it is not yet publicly playable.",
+  },
+  groups: [
+    { label: "Play with a group of friends (16+ per server)", min: 16 },
+    { label: "Small sessions (under 10 per server)", max: 9 },
+  ],
+  keywords: ["guide", "best", "scary roblox games", "roblox horror games", "with friends"],
+  games: guideGames,
+};

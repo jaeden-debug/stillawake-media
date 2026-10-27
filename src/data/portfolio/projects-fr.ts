@@ -31,6 +31,10 @@ export const projectsFr: Record<string, ProjectFr> = {
     kind: "Survie-horreur coopératif",
     summary: "Un jeu de survie-horreur coopératif sur Roblox. La forêt est belle. Les nuits, non.",
   },
+  "risk-it": {
+    kind: "Mini-jeux et chutes ragdoll",
+    summary: "Un jeu télévisé néon sur Roblox : huit défis de quelques secondes, et chaque échec vous propulse en orbite.",
+  },
   "lisa-travel-design": {
     kind: "Site de voyage",
     summary: "Un site de voyage haut de gamme bâti autour de la confiance, de la planification et des demandes qualifiées.",

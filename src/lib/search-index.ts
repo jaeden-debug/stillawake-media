@@ -1,6 +1,6 @@
 import { projects, projectCategories, projectHref } from "@/data/portfolio/projects";
 import type { SearchDoc } from "@/lib/search";
-import { GUIDE_PATH, GUIDE_TITLE, guideGames } from "@/data/games/guides/roblox-survival-horror";
+import { comparisonGuides } from "@/data/games/guides";
 import {
   activeCategories,
   allGames,
@@ -29,14 +29,16 @@ export function siteSearchDocs(): SearchDoc[] {
     ],
   }));
 
-  docs.push({
-    id: "guide:roblox-survival-horror",
-    title: GUIDE_TITLE,
-    url: GUIDE_PATH,
-    group: "Games",
-    summary: "Eight Roblox survival-horror games compared, with numbers from Roblox itself.",
-    keywords: ["guide", "best", "scary roblox games", "roblox horror games", "with friends", ...guideGames.map((g) => g.name)],
-  });
+  for (const guide of comparisonGuides) {
+    docs.push({
+      id: `guide:${guide.id}`,
+      title: guide.title,
+      url: guide.path,
+      group: "Games",
+      summary: guide.description,
+      keywords: [...guide.keywords, ...guide.games.map((g) => g.name)],
+    });
+  }
 
   for (const game of allGames()) {
     docs.push({

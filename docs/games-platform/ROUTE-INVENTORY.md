@@ -19,6 +19,7 @@ Generated from the registries. Do not edit by hand. Every URL below is in the si
 Projects whose canonical page lives elsewhere (cards link there, and `/our-work/<slug>` redirects):
 
 - Stillskin Forest → `/games/stillskin-forest`
+- RISK IT! → `/games/risk-it`
 - llms.txt Generator → `/tools/llms-txt-generator`
 
 ## Games
@@ -118,12 +119,49 @@ Projects whose canonical page lives elsewhere (cards link there, and `/our-work/
 | `/games/stillskin-forest/wiki/multiplayer/co-op-survival` | Co-op Survival: Revives, Pings and Sharing |
 | `/games/stillskin-forest/wiki/multiplayer/death-ghosts-and-the-finale` | Death, Ghosts and the Rooftop Finale |
 | `/games/stillskin-forest/wiki/updates/development-log` | Stillskin Forest Development Log |
+| `/games/risk-it` | RISK IT! landing page |
+| `/games/risk-it/wiki` | RISK IT! wiki home |
+| `/games/risk-it/wiki/getting-started` | Wiki category: Getting Started |
+| `/games/risk-it/wiki/challenges` | Wiki category: Challenges |
+| `/games/risk-it/wiki/progression` | Wiki category: GUTS & Medals |
+| `/games/risk-it/wiki/vault` | Wiki category: THE VAULT |
+| `/games/risk-it/wiki/mechanics` | Wiki category: How It Works |
+| `/games/risk-it/wiki/updates` | Wiki category: Updates |
+| `/games/risk-it/wiki/getting-started/what-is-risk-it` | What Is RISK IT!? |
+| `/games/risk-it/wiki/getting-started/how-to-play` | How to Play RISK IT! |
+| `/games/risk-it/wiki/getting-started/controls` | RISK IT! Controls |
+| `/games/risk-it/wiki/getting-started/playing-on-phone-and-tablet` | Playing RISK IT! on Phone and Tablet |
+| `/games/risk-it/wiki/getting-started/beginner-tips` | RISK IT! Beginner Tips |
+| `/games/risk-it/wiki/getting-started/faq` | RISK IT! FAQ |
+| `/games/risk-it/wiki/challenges/the-button` | THE BUTTON |
+| `/games/risk-it/wiki/challenges/perfect-stop` | PERFECT STOP |
+| `/games/risk-it/wiki/challenges/quick-draw` | QUICK DRAW |
+| `/games/risk-it/wiki/challenges/the-sweeper` | THE SWEEPER |
+| `/games/risk-it/wiki/challenges/door-number-who` | DOOR NUMBER WHO |
+| `/games/risk-it/wiki/challenges/meltdown` | MELTDOWN |
+| `/games/risk-it/wiki/challenges/copy-that` | COPY THAT |
+| `/games/risk-it/wiki/challenges/long-shot` | LONG SHOT |
+| `/games/risk-it/wiki/challenges/challenges-compared` | All RISK IT! Challenges Compared |
+| `/games/risk-it/wiki/progression/guts` | GUTS |
+| `/games/risk-it/wiki/progression/medals` | Medals |
+| `/games/risk-it/wiki/progression/personal-bests` | Personal Bests |
+| `/games/risk-it/wiki/progression/titles-and-wipeouts` | Titles and Wipeouts |
+| `/games/risk-it/wiki/progression/hot-seat` | Hot Seat |
+| `/games/risk-it/wiki/vault/the-vault` | THE VAULT |
+| `/games/risk-it/wiki/vault/fail-trails` | Fail Trails |
+| `/games/risk-it/wiki/vault/launch-bursts` | Launch Bursts |
+| `/games/risk-it/wiki/mechanics/wipeouts-and-recovery` | Wipeouts and Recovery |
+| `/games/risk-it/wiki/mechanics/instant-retry` | Instant Retry |
+| `/games/risk-it/wiki/mechanics/fairness-and-odds` | Fairness and Odds |
+| `/games/risk-it/wiki/mechanics/playing-with-friends` | Playing With Friends |
+| `/games/risk-it/wiki/updates/development-log` | RISK IT! Update Log |
 
 ## Portfolio inventory
 
 | Project | Categories | Platforms | Status | Page |
 |---|---|---|---|---|
 | Stillskin Forest | Games | Roblox | in-development | `/games/stillskin-forest` |
+| RISK IT! | Games | Roblox | beta | `/games/risk-it` |
 | Lisa Travel Design | Websites | Web | live | `/our-work/lisa-travel-design` |
 | NAVTRL / Stalkr | Apps, Websites | iOS, Web | beta | `/our-work/navtrl-stalkr` |
 | BankDeMark | Websites, Tools | Web | live | `/our-work/bankdemark` |

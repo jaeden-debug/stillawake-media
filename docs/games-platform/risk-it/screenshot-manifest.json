@@ -1,0 +1,446 @@
+{
+  "game": "risk-it",
+  "generatedFrom": "src/data/games/risk-it/media.ts",
+  "assets": [
+    {
+      "id": "risk-it-hero",
+      "filename": "risk-it-hero.webp",
+      "src": "/games/risk-it/branding/risk-it-hero.webp",
+      "gameId": "risk-it",
+      "target": "/games/risk-it",
+      "description": "A player launched off the Quick Draw island with the Full Spectrum trail",
+      "alt": "A Roblox avatar ragdolling through the air above the neon RISK IT! arena, trailing a rainbow streak",
+      "use": "hero",
+      "dimensions": {
+        "width": 1772,
+        "height": 1080
+      },
+      "aspectRatio": "16:9.75",
+      "priority": "P0",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-thumbnail",
+      "filename": "risk-it-thumbnail.webp",
+      "src": "/games/risk-it/branding/risk-it-thumbnail.webp",
+      "gameId": "risk-it",
+      "target": "/games",
+      "description": "Owner-supplied promotional key art (not an in-game capture), square art letterboxed on a blurred copy of itself",
+      "alt": "RISK IT! key art: a Roblox player launched off a glowing pad under the neon RISK IT! sign",
+      "use": "thumbnail",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "aspectRatio": "16:9",
+      "priority": "P0",
+      "captureInstructions": "Owner-supplied square key art, centred at full height on a blurred copy of itself at 1920×1080.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-icon",
+      "filename": "risk-it-icon.webp",
+      "src": "/games/risk-it/branding/risk-it-icon.webp",
+      "gameId": "risk-it",
+      "target": "/games",
+      "description": "Square game icon",
+      "alt": "RISK IT! game icon: the logo over a synthwave grid with a rainbow arc",
+      "use": "icon",
+      "dimensions": {
+        "width": 512,
+        "height": 512
+      },
+      "aspectRatio": "1:1",
+      "priority": "P0",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-launch-full-spectrum",
+      "filename": "risk-it-launch-full-spectrum.webp",
+      "src": "/games/risk-it/branding/risk-it-launch-full-spectrum.webp",
+      "gameId": "risk-it",
+      "target": "/games/risk-it",
+      "description": "A Quick Draw flinch, launched with the Full Spectrum trail and Seeing Stars burst",
+      "alt": "A player tumbling through the air with a rainbow trail and a starburst, the challenge islands behind",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1772,
+        "height": 1080
+      },
+      "aspectRatio": "16:9.75",
+      "priority": "P0",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-arena-aerial",
+      "filename": "risk-it-arena-aerial.webp",
+      "src": "/games/risk-it/branding/risk-it-arena-aerial.webp",
+      "gameId": "risk-it",
+      "target": "what-is-risk-it",
+      "description": "The whole arena from above: the hub and eight islands",
+      "alt": "Aerial view of the RISK IT! hub and its eight neon challenge islands over a synthwave grid",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1772,
+        "height": 1080
+      },
+      "aspectRatio": "16:9.75",
+      "priority": "P0",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-hub",
+      "filename": "risk-it-hub.webp",
+      "src": "/games/risk-it/branding/risk-it-hub.webp",
+      "gameId": "risk-it",
+      "target": "how-to-play",
+      "description": "The hub with the HUD: GUTS, wipeouts, title, medals and the Hot Seat banner",
+      "alt": "The RISK IT! hub from behind the player, with the GUTS and wipeout counters at the top",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1772,
+        "height": 1080
+      },
+      "aspectRatio": "16:9.75",
+      "priority": "P1",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-the-button",
+      "filename": "risk-it-the-button.webp",
+      "src": "/games/risk-it/challenges/risk-it-the-button.webp",
+      "gameId": "risk-it",
+      "target": "the-button",
+      "description": "THE BUTTON after one safe press: pot 20, next press 20% drop",
+      "alt": "THE BUTTON challenge: the pot board reads POT 20, next press 20% drop, with Press and Cash Out buttons",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1772,
+        "height": 1080
+      },
+      "aspectRatio": "16:9.75",
+      "priority": "P0",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-perfect-stop",
+      "filename": "risk-it-perfect-stop.webp",
+      "src": "/games/risk-it/challenges/risk-it-perfect-stop.webp",
+      "gameId": "risk-it",
+      "target": "perfect-stop",
+      "description": "PERFECT STOP, round 1: the needle approaching the green zone",
+      "alt": "PERFECT STOP challenge: a needle sliding toward the green and gold zone on a neon board",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1772,
+        "height": 1080
+      },
+      "aspectRatio": "16:9.75",
+      "priority": "P0",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-quick-draw",
+      "filename": "risk-it-quick-draw.webp",
+      "src": "/games/risk-it/challenges/risk-it-quick-draw.webp",
+      "gameId": "risk-it",
+      "target": "quick-draw",
+      "description": "QUICK DRAW on red: wait for green",
+      "alt": "QUICK DRAW challenge: a red light on the tower and the Wait for green prompt",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1772,
+        "height": 1080
+      },
+      "aspectRatio": "16:9.75",
+      "priority": "P0",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-the-sweeper",
+      "filename": "risk-it-the-sweeper.webp",
+      "src": "/games/risk-it/challenges/risk-it-the-sweeper.webp",
+      "gameId": "risk-it",
+      "target": "the-sweeper",
+      "description": "THE SWEEPER: the bridge, a low arm and the finish",
+      "alt": "THE SWEEPER challenge: a narrow yellow bridge with a spinning arm and the finish platform ahead",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1772,
+        "height": 1080
+      },
+      "aspectRatio": "16:9.75",
+      "priority": "P0",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-door-number-who",
+      "filename": "risk-it-door-number-who.webp",
+      "src": "/games/risk-it/challenges/risk-it-door-number-who.webp",
+      "gameId": "risk-it",
+      "target": "door-number-who",
+      "description": "DOOR NUMBER WHO, round 1: three doors, three lamps",
+      "alt": "DOOR NUMBER WHO challenge: three neon doors numbered 1 to 3, each with a lamp above it",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1772,
+        "height": 1080
+      },
+      "aspectRatio": "16:9.75",
+      "priority": "P0",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-meltdown",
+      "filename": "risk-it-meltdown.webp",
+      "src": "/games/risk-it/challenges/risk-it-meltdown.webp",
+      "gameId": "risk-it",
+      "target": "meltdown",
+      "description": "MELTDOWN: a tile flashing before it drops, with a gap where one already fell",
+      "alt": "MELTDOWN challenge: a player on a dark tile grid with one tile flashing pink and a missing tile beside it",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1772,
+        "height": 1080
+      },
+      "aspectRatio": "16:9.75",
+      "priority": "P0",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-copy-that",
+      "filename": "risk-it-copy-that.webp",
+      "src": "/games/risk-it/challenges/risk-it-copy-that.webp",
+      "gameId": "risk-it",
+      "target": "copy-that",
+      "description": "COPY THAT: the board showing the next arrow",
+      "alt": "COPY THAT challenge: an arrow board lighting the up arrow while the panel says Watch, 3 arrows",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1772,
+        "height": 1080
+      },
+      "aspectRatio": "16:9.75",
+      "priority": "P0",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-long-shot-aim",
+      "filename": "risk-it-long-shot-aim.webp",
+      "src": "/games/risk-it/challenges/risk-it-long-shot-aim.webp",
+      "gameId": "risk-it",
+      "target": "long-shot",
+      "description": "LONG SHOT: aiming the cannon at the 100, 250 and 500 rings",
+      "alt": "LONG SHOT challenge: the aim meter with ring markers and floating target rings below the cannon",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1772,
+        "height": 1080
+      },
+      "aspectRatio": "16:9.75",
+      "priority": "P0",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-long-shot-flight",
+      "filename": "risk-it-long-shot-flight.webp",
+      "src": "/games/risk-it/challenges/risk-it-long-shot-flight.webp",
+      "gameId": "risk-it",
+      "target": "long-shot",
+      "description": "LONG SHOT: fired toward the 500 ring with the Re-entry trail",
+      "alt": "A player flying toward a floating ring labelled 500, trailing an orange streak",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1772,
+        "height": 1080
+      },
+      "aspectRatio": "16:9.75",
+      "priority": "P1",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-win-banked-it",
+      "filename": "risk-it-win-banked-it.webp",
+      "src": "/games/risk-it/progression/risk-it-win-banked-it.webp",
+      "gameId": "risk-it",
+      "target": "guts",
+      "description": "A win: BANKED IT, +20 GUTS and confetti",
+      "alt": "A win in RISK IT!: the words Banked it with +20 GUTS and confetti falling around the player",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1772,
+        "height": 1080
+      },
+      "aspectRatio": "16:9.75",
+      "priority": "P0",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-the-vault",
+      "filename": "risk-it-the-vault.webp",
+      "src": "/games/risk-it/progression/risk-it-the-vault.webp",
+      "gameId": "risk-it",
+      "target": "the-vault",
+      "description": "THE VAULT open on Fail Trails",
+      "alt": "THE VAULT shop open on the Fail Trails tab, showing Signature, Liquid Gold and Void Walker",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1772,
+        "height": 1080
+      },
+      "aspectRatio": "16:9.75",
+      "priority": "P0",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-trail-full-spectrum",
+      "filename": "risk-it-trail-full-spectrum.webp",
+      "src": "/games/risk-it/progression/risk-it-trail-full-spectrum.webp",
+      "gameId": "risk-it",
+      "target": "fail-trails",
+      "description": "The Full Spectrum trail in a fail",
+      "alt": "A player launched with the rainbow Full Spectrum trail and a confetti burst",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1772,
+        "height": 1080
+      },
+      "aspectRatio": "16:9.75",
+      "priority": "P1",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-trail-liquid-gold",
+      "filename": "risk-it-trail-liquid-gold.webp",
+      "src": "/games/risk-it/progression/risk-it-trail-liquid-gold.webp",
+      "gameId": "risk-it",
+      "target": "launch-bursts",
+      "description": "Liquid Gold trail with the Party Pooper confetti burst",
+      "alt": "A player launched with a gold trail and colourful square confetti",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1772,
+        "height": 1080
+      },
+      "aspectRatio": "16:9.75",
+      "priority": "P1",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-mobile-prompt",
+      "filename": "risk-it-mobile-prompt.webp",
+      "src": "/games/risk-it/mobile/risk-it-mobile-prompt.webp",
+      "gameId": "risk-it",
+      "target": "playing-on-phone-and-tablet",
+      "description": "Phone: the tappable RISK IT! prompt at a pad",
+      "alt": "RISK IT! on a phone screen: the Tap, Risk it prompt beside the thumbstick and jump button",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 1048,
+        "height": 524
+      },
+      "aspectRatio": "2:1",
+      "priority": "P1",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-mobile-meltdown",
+      "filename": "risk-it-mobile-meltdown.webp",
+      "src": "/games/risk-it/mobile/risk-it-mobile-meltdown.webp",
+      "gameId": "risk-it",
+      "target": "playing-on-phone-and-tablet",
+      "description": "Phone: MELTDOWN with the slim top panel",
+      "alt": "RISK IT! on a phone: MELTDOWN with the challenge panel docked at the top",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 786,
+        "height": 393
+      },
+      "aspectRatio": "2:1",
+      "priority": "P1",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    },
+    {
+      "id": "risk-it-mobile-win",
+      "filename": "risk-it-mobile-win.webp",
+      "src": "/games/risk-it/mobile/risk-it-mobile-win.webp",
+      "gameId": "risk-it",
+      "target": "playing-on-phone-and-tablet",
+      "description": "Phone: a win with confetti",
+      "alt": "RISK IT! on a phone: Banked it with +20 GUTS and confetti",
+      "use": "screenshot",
+      "dimensions": {
+        "width": 786,
+        "height": 393
+      },
+      "aspectRatio": "2:1",
+      "priority": "P2",
+      "captureInstructions": "Captured in a Studio playtest of build v0.2.2 with the game's own capture helper.",
+      "spoiler": false,
+      "liveAvailability": "live",
+      "status": "optimized"
+    }
+  ]
+}

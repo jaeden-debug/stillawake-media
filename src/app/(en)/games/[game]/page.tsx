@@ -7,7 +7,7 @@ import { PosterArt } from "@/components/media/PosterArt";
 import { RobloxCta, StatusBadge } from "@/components/games/GameCta";
 import { InternalLinks } from "@/components/site";
 import { gameBundles } from "@/data/games";
-import type { WikiEntry } from "@/data/games/types";
+import type { Game, WikiEntry } from "@/data/games/types";
 import { JsonLd, breadcrumbList, gamePageNode, graph, videoGameNode, type Crumb } from "@/lib/game-schema";
 import {
   absolute,
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { game } = bundle;
   const hero = [mediaFor(bundle, game.media.hero), mediaFor(bundle, game.media.thumbnail)].find(hasImage);
   return {
-    title: `${game.title}: Co-op Survival Horror on Roblox`,
+    title: `${game.title}: ${game.kindLabel}`,
     description: game.metaDescription,
     alternates: { canonical: gamePath(game.slug) },
     openGraph: {
@@ -66,8 +66,11 @@ export default async function GamePage({ params }: Props) {
   const shots = game.media.screenshots.map((id) => mediaFor(bundle, id)).filter(hasImage);
   const pick = (slugs: string[]) => slugs.map((s) => getEntry(bundle, s)).filter((e): e is WikiEntry => Boolean(e));
   const startHere = pick(game.beginnerGuides);
-  const enemies = entriesInCategory(bundle, "enemies").filter((e) => e.slug !== "enemy-comparison");
-  const places = pick(["campgrounds", "stillwater", "st-agnes-hospital", "blackthorn-asylum", "green-lake", "the-hollow"]);
+  const { showcase, strip } = game.landing;
+  const showcaseEntries = showcase
+    ? entriesInCategory(bundle, showcase.category).filter((e) => !showcase.exclude?.includes(e.slug))
+    : [];
+  const stripEntries = strip ? pick(strip.slugs) : [];
   const latest = bundle.updates[0];
 
   return (
@@ -97,7 +100,7 @@ export default async function GamePage({ params }: Props) {
           <h1 id="game-title" className="geist mt-6 text-6xl font-black leading-[.85] tracking-[-.08em] md:text-8xl">
             {game.title}
           </h1>
-          <p className="mt-5 text-xl italic text-[#b9d4a8] md:text-2xl">{game.tagline}</p>
+          <p className="mt-5 text-xl italic md:text-2xl" style={{ color: game.accentSoft }}>{game.tagline}</p>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[#d6cfcf]">{game.summary}</p>
           <div className="mt-9 flex flex-wrap gap-3">
             <RobloxCta game={game} placement="game_hero" />
@@ -141,9 +144,9 @@ export default async function GamePage({ params }: Props) {
             {[
               ["Platform", game.platforms.join(", ")],
               ["Genre", game.genre.join(", ")],
-              ["Players", "Solo, Duo or Squad of 4"],
+              ["Players", game.playersLabel],
               ["Developer", game.developer],
-              ["Status", "In development"],
+              ["Status", STATUS_LABEL[game.releaseStatus]],
               ["Devices", game.verifiedDevices.length ? game.verifiedDevices.join(", ") : "Device testing in progress"],
             ].map(([k, v]) => (
               <div key={k} className="bg-[#080b08] p-5">
@@ -157,7 +160,7 @@ export default async function GamePage({ params }: Props) {
 
       {/* Features */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6" aria-labelledby="features">
-        <h2 id="features" className="geist text-4xl font-black tracking-[-.06em] md:text-5xl">What makes it Stillskin Forest</h2>
+        <h2 id="features" className="geist text-4xl font-black tracking-[-.06em] md:text-5xl">{game.landing.featuresTitle}</h2>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {game.features.map((f) => (
             <div key={f.title} className="rounded-[1.8rem] border border-white/10 bg-[#0a0d0a] p-7">
@@ -185,23 +188,33 @@ export default async function GamePage({ params }: Props) {
       {/* Start here */}
       <GuideStrip bundle={bundle} title="New here? Start with these" entries={startHere} />
 
-      {/* Enemies */}
-      <section className="mx-auto mt-20 max-w-7xl px-4 sm:px-6" aria-labelledby="enemies">
-        <div className="flex items-end justify-between gap-4">
-          <h2 id="enemies" className="geist text-4xl font-black tracking-[-.06em]">The infected</h2>
-          <Link href={categoryPath(game.slug, "enemies")} className="text-sm font-semibold text-[#C7B9B9] hover:text-white">All enemies →</Link>
-        </div>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {enemies.map((e) => (
-            <Link key={e.slug} href={entryPath(game.slug, e)} className="rounded-[1.6rem] border border-white/10 bg-[#0a0d0a] p-6 transition hover:border-[#9B1C1C]/60">
-              <h3 className="geist text-xl font-black tracking-[-.04em]">{e.title}</h3>
-              <p className="mt-2 line-clamp-4 text-sm leading-6 text-[#C7B9B9]">{e.answer}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
+      {/* Showcase: one category as cards (enemies, challenges…) */}
+      {showcase && showcaseEntries.length > 0 && (
+        <section className="mx-auto mt-20 max-w-7xl px-4 sm:px-6" aria-labelledby="showcase">
+          <div className="flex items-end justify-between gap-4">
+            <h2 id="showcase" className="geist text-4xl font-black tracking-[-.06em]">{showcase.title}</h2>
+            <Link href={categoryPath(game.slug, showcase.category)} className="text-sm font-semibold text-[#C7B9B9] hover:text-white">{showcase.linkLabel} →</Link>
+          </div>
+          <div className={`mt-8 grid gap-4 sm:grid-cols-2 ${showcaseEntries.length % 4 === 0 ? "lg:grid-cols-4" : "lg:grid-cols-5"}`}>
+            {showcaseEntries.map((e) => {
+              const img = mediaFor(bundle, e.media);
+              return (
+                <Link key={e.slug} href={entryPath(game.slug, e)} className="overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#0a0d0a] transition hover:border-[#9B1C1C]/60">
+                  {showcase.withImages && hasImage(img) && !img.spoiler && (
+                    <Image src={img.src} alt={img.alt} width={img.dimensions.width} height={img.dimensions.height} sizes="(max-width: 640px) 100vw, 320px" className="aspect-video h-auto w-full object-cover" />
+                  )}
+                  <div className="p-6">
+                    <h3 className="geist text-xl font-black tracking-[-.04em]">{e.title}</h3>
+                    <p className="mt-2 line-clamp-4 text-sm leading-6 text-[#C7B9B9]">{e.answer}</p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
-      <GuideStrip bundle={bundle} title="Places to survive" entries={places} href={categoryPath(game.slug, "locations")} />
+      {strip && <GuideStrip bundle={bundle} title={strip.title} entries={stripEntries} href={categoryPath(game.slug, strip.category)} />}
 
       {/* Latest update */}
       {latest && (
@@ -224,9 +237,9 @@ export default async function GamePage({ params }: Props) {
       {/* Wiki CTA */}
       <section className="mx-auto mt-20 max-w-7xl px-4 sm:px-6">
         <div className="rounded-[2.5rem] bg-[linear-gradient(135deg,#1a2617,#0b100b)] p-8 md:p-14">
-          <h2 className="geist max-w-3xl text-4xl font-black leading-[.95] tracking-[-.06em] md:text-5xl">Every weapon, enemy, place and secret, documented.</h2>
+          <h2 className="geist max-w-3xl text-4xl font-black leading-[.95] tracking-[-.06em] md:text-5xl">{game.landing.wikiCtaTitle}</h2>
           <p className="mt-5 max-w-2xl text-base leading-8 text-[#d6cfcf]">
-            The official {game.title} wiki is written from the game&apos;s own data. Story pages hide spoilers until you open them.
+            The official {game.title} wiki {game.landing.wikiCtaBody}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href={wikiPath(game.slug)} className="rounded-full bg-white px-6 py-3 text-sm font-bold text-black">Open the wiki</Link>
@@ -241,6 +254,12 @@ export default async function GamePage({ params }: Props) {
     </main>
   );
 }
+
+const STATUS_LABEL: Record<Game["releaseStatus"], string> = {
+  "in-development": "In development",
+  "early-access": "Live test",
+  released: "Released",
+};
 
 function entryPathFor(bundle: NonNullable<ReturnType<typeof getBundle>>, slug: string) {
   const e = getEntry(bundle, slug);

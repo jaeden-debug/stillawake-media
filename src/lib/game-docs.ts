@@ -35,7 +35,7 @@ export function screenshotManifestJson(bundle: GameBundle): string {
     liveAvailability: a.liveAvailability,
     status: a.status,
   }));
-  return JSON.stringify({ game: bundle.game.id, generatedFrom: "src/data/games/stillskin-forest/media.ts", assets }, null, 2) + "\n";
+  return JSON.stringify({ game: bundle.game.id, generatedFrom: `src/data/games/${bundle.game.id}/media.ts`, assets }, null, 2) + "\n";
 }
 
 function targetUrl(bundle: GameBundle, target: string): string {
@@ -49,7 +49,7 @@ export function screenshotChecklistMd(bundle: GameBundle): string {
   const lines = [
     `# ${bundle.game.title}: screenshot capture checklist`,
     "",
-    "Generated from `src/data/games/stillskin-forest/media.ts`. Do not edit by hand.",
+    `Generated from \`src/data/games/${bundle.game.id}/media.ts\`. Do not edit by hand.`,
     "",
     "Rules: real in-game captures only. No development UI unless the note says HUD allowed. No generated or stock images presented as gameplay. Save as WebP at the listed size to the `Path` shown (under `public/`). Then set the asset's status in `media.ts` and the image appears on every page that references it.",
     "",

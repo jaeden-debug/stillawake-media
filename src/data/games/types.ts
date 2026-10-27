@@ -67,6 +67,24 @@ export type Game = {
   };
   trailerUrl?: string;
   accent: string;
+  /** Second brand colour, used for small highlights on the landing page. */
+  accentSoft: string;
+  /** Short genre line for the landing page <title>, e.g. "Co-op Survival Horror on Roblox". */
+  kindLabel: string;
+  /** "Players" fact on the landing page. */
+  playersLabel: string;
+  /** Per-game copy for the shared landing and wiki templates. */
+  landing: {
+    featuresTitle: string;
+    /** A grid of entry cards from one category (enemies, challenges…). */
+    showcase?: { category: string; title: string; linkLabel: string; exclude?: string[]; withImages?: boolean };
+    /** A strip of hand-picked guides. */
+    strip?: { title: string; slugs: string[]; category: string };
+    wikiCtaTitle: string;
+    wikiCtaBody: string;
+  };
+  /** Wiki home <title> suffix, meta description and intro line. */
+  wikiBlurb: { title: string; description: string; intro: string };
   related: string[];
   lastVerified: string;
   /** Wiki articles to feature on the landing page and wiki home. */

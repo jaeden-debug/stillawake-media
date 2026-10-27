@@ -51,6 +51,7 @@ export const weapons: WikiEntry[] = [
             ["[Machete](@machete)", "40", "0.9 s", "5.5", "22", "110", "Uncommon"],
             ["[Hammer](@hammer)", "32", "1.0 s", "5", "48", "160", "Uncommon"],
             ["[Crowbar](@crowbar)", "18", "0.7 s", "5", "20", "140", "Uncommon"],
+            ["[Fists](@fists)", "17", "0.55 s", "4.5", "10", "—", "Always"],
           ] },
           { type: "p", text: "Melee is quiet: a swing is heard by infected within 25 studs, compared with 90 for a pistol shot. A crouched hit from behind on an infected that hasn't noticed you is an instant [takedown](@crouching-and-takedowns)." },
         ],
@@ -76,6 +77,7 @@ export const weapons: WikiEntry[] = [
             ["Machete", "3", "2", "2", "8"],
             ["Hammer", "4", "2", "3", "10"],
             ["Crowbar", "6", "4", "4", "18"],
+            ["Fists", "6", "4", "5", "19"],
             ["Pistol (body)", "3", "2", "3", "10"],
             ["Pistol (head)", "2", "1", "2", "5"],
           ] },
@@ -95,9 +97,44 @@ export const weapons: WikiEntry[] = [
         ],
       },
     ],
-    related: ["baseball-bat", "machete", "pistol", "shotgun", "enemy-comparison"],
+    related: ["baseball-bat", "machete", "pistol", "shotgun", "fists", "enemy-comparison"],
     sources: [SRC.items, SRC.config, SRC.playtest],
     aliases: ["weapons", "best weapon", "weapon tier list", "guns", "melee", "damage"],
+  },
+  {
+    ...base,
+    slug: "fists",
+    lastVerified: "2026-10-27",
+    title: "Fists",
+    seoTitle: "Punching in Stillskin Forest: Fist Damage and Hits to Kill",
+    description:
+      "Fighting with your fists in Stillskin Forest: how to punch, how much it does, how many punches each infected takes, and breaking glass bare-handed.",
+    question: "Can you punch zombies in Stillskin Forest?",
+    answer:
+      "Yes. With nothing in your hands, click (or press R2) to punch. A punch does 17 damage, so six punches drop a Walker. It is short-ranged and slow next to a real weapon, but it never breaks and it is always there.",
+    facts: [["Damage", "17"], ["Time between punches", "0.55 s"], ["Range", "4.5 studs"], ["Punches to drop a Walker", "6"], ["Durability", "Never breaks"]],
+    sections: [
+      {
+        id: "how",
+        heading: "How to punch",
+        blocks: [
+          { type: "p", text: "Put away whatever you're holding (or have nothing in your hands) and click, or press R2 on controller. Hands alternate. Punching is as quiet as a melee swing, a little quieter, and reaches down far enough to hit an infected at your feet." },
+        ],
+      },
+      {
+        id: "hits",
+        heading: "Punches to bring each infected down",
+        blocks: [
+          { type: "table", caption: "Punches needed (17 damage each)", head: ["Walker (100)", "Runner (60)", "Screamer (70)", "Brute (320)", "Soldier (130)"], rows: [
+            ["6", "4", "5", "19", "8"],
+          ] },
+          { type: "p", text: "Six punches also break a window pane. See [Shooting through cover](@shooting-through-cover)." },
+        ],
+      },
+    ],
+    related: ["weapons-compared", "baseball-bat", "shooting-through-cover", "crouching-and-takedowns"],
+    sources: [SRC.playtest27],
+    aliases: ["punch", "fist", "unarmed", "bare hands", "melee without weapon"],
   },
   {
     ...base,

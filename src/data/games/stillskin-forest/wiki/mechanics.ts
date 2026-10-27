@@ -111,6 +111,7 @@ export const mechanics: WikiEntry[] = [
             ["Headlamp on at dusk/night", "×1.25"],
             ["Headlamp off at dusk/night", "×0.8"],
             ["Crouching", "×0.55 (close sense ×0.6)"],
+            ["In rain", "Down by up to 45% in a downpour (see [Weather](@weather))"],
           ] },
         ],
       },
@@ -121,7 +122,8 @@ export const mechanics: WikiEntry[] = [
           { type: "table", caption: "How far each noise carries", head: ["Noise", "Heard within"], rows: [
             ["Shotgun blast, Hunting Rifle or Mini AK shot", "120 studs"], ["Gunshot", "90 studs"], ["Running generator", "45 studs, every 8 s"], ["Sprinting footsteps", "30 studs"], ["Melee swing", "25 studs"], ["Walking", "Silent"], ["Crouched footsteps", "Silent"],
           ] },
-          { type: "p", text: "Alarms count too: the burglar alarm at [Pine General Store](@pine-general-store), a crashed car's alarm, and the hospital vending machine all pull infected in." },
+          { type: "p", text: "Alarms count too: the burglar alarm at [Pine General Store](@pine-general-store), a crashed car's alarm, and the hospital vending machine all pull infected in. Breaking a window is loud too. In rain every noise carries up to 40% less far." },
+          { type: "p", text: "Walking through bushes and ferns rustles them, and splashing through a puddle makes a sound. You hear the infected doing the same, which is often the first sign one is close." },
         ],
       },
       {
@@ -374,6 +376,7 @@ export const mechanics: WikiEntry[] = [
   {
     ...base,
     slug: "aiming-and-reloading",
+    lastVerified: "2026-10-27",
     title: "Aiming, Headshots and Reloading",
     seoTitle: "Aiming and Headshots in Stillskin Forest: Damage, Spread and Reloads",
     description:
@@ -392,7 +395,7 @@ export const mechanics: WikiEntry[] = [
             "V switches to first person; aiming there brings the sights to your eye line.",
             "Aim sway is gentle when rested and larger when you're winded.",
             "On controller and touch only, aiming applies a gentle pull toward targets within 7°.",
-            "A blocked-muzzle marker appears if a wall is in front of the barrel.",
+            "Shots go exactly where your crosshair is, from your eye line: hugging a car, fence or wall no longer eats the shot. See [Shooting through cover](@shooting-through-cover).",
           ] },
         ],
       },
@@ -411,9 +414,115 @@ export const mechanics: WikiEntry[] = [
         ],
       },
     ],
-    related: ["pistol", "shotgun", "ammunition", "weapons-compared"],
-    sources: [SRC.config, SRC.items, SRC.playtest],
+    related: ["pistol", "shotgun", "ammunition", "weapons-compared", "shooting-through-cover"],
+    sources: [SRC.config, SRC.items, SRC.playtest, SRC.playtest27],
     aliases: ["aim", "headshot", "reload", "first person", "crosshair", "aim assist"],
+  },
+  {
+    ...base,
+    slug: "shooting-through-cover",
+    lastVerified: "2026-10-27",
+    title: "Shooting Through Doors, Windows and Glass",
+    seoTitle: "Stillskin Forest Wall-Bangs: Shooting Through Doors and Breaking Glass",
+    description:
+      "What bullets go through in Stillskin Forest: open doorways, glass that shatters, doors and thin wood for less damage, what stops a shot, and how to break windows.",
+    question: "Can you shoot through doors and windows in Stillskin Forest?",
+    answer:
+      "Yes. A bullet flies through open doorways, shatters window glass and carries on (90% damage), and punches through a closed door or a thin wooden board for about half damage, up to two in a row. Concrete, plaster, brick, metal, rock and thick walls stop it. Any bullet breaks a window pane outright; melee chips at it with the weapon's own damage, and the infected break one in eight blows.",
+    facts: [["Through glass", "90% damage, glass breaks"], ["Through a door or thin wood", "55% each, up to 2"], ["Stops a bullet", "Concrete, plaster, brick, metal, rock, thick walls"], ["Bullets to break a pane", "1"], ["Infected blows to break a pane", "8"]],
+    sections: [
+      {
+        id: "what-bullets-do",
+        heading: "What a bullet goes through",
+        blocks: [
+          { type: "table", caption: "Bullets and cover", head: ["In the way", "What happens", "Damage left"], rows: [
+            ["Open doorway, anything you can see or walk through", "Passes", "100%"],
+            ["Window or car glass", "Shatters and passes", "90%"],
+            ["Closed door, plank wall, thin wooden board", "Punches through (a wall-bang), at most two", "55% per layer"],
+            ["Concrete, plaster, brick, metal, rock, thick walls, the ground", "Stops the bullet", "0%"],
+          ] },
+          { type: "p", text: "Shots are traced from your eye to the crosshair, so standing right next to a car, a fence or a wall doesn't block a shot you can see. Standing on a car and shooting an infected at its wheels works. A headshot through a door still hurts more than a body shot, but it is no longer an instant kill." },
+        ],
+      },
+      {
+        id: "breaking-glass",
+        heading: "Breaking glass",
+        blocks: [
+          { type: "table", caption: "Hits to break one window pane", head: ["With", "Hits"], rows: [
+            ["Any bullet (every shotgun pellet too)", "1"],
+            ["[Machete](@machete)", "3"],
+            ["[Baseball Bat](@baseball-bat)", "4"],
+            ["[Hammer](@hammer)", "4"],
+            ["[Fists](@fists)", "6"],
+            ["[Crowbar](@crowbar)", "6"],
+            ["An infected", "8"],
+          ] },
+          { type: "p", text: "Breaking glass is loud: it draws infected from about 45 studs. A broken pane leaves the frame open, so you can climb through a window big enough to fit. Every window is whole again at the start of a new run." },
+          { type: "callout", tone: "warning", text: "The infected can see you through a window. If one spots you inside, it comes straight for the glass and smashes it in eight blows, so a window is not a wall." },
+        ],
+      },
+    ],
+    related: ["aiming-and-reloading", "doors-and-building", "weapons-compared", "fists", "detection-and-noise"],
+    sources: [SRC.playtest27],
+    aliases: ["wallbang", "wall bang", "shoot through doors", "glass", "break window", "windows", "penetration", "bullet through wall"],
+  },
+  {
+    ...base,
+    slug: "weather",
+    lastVerified: "2026-10-27",
+    title: "Weather: Rain, Storms and Puddles",
+    seoTitle: "Stillskin Forest Weather: Rain, Thunderstorms and Sneaking in the Rain",
+    description:
+      "Weather in Stillskin Forest: rain every few days and nights, thunderstorms, puddles that splash, and why rain makes it far easier to sneak past the infected.",
+    question: "Does it rain in Stillskin Forest?",
+    answer:
+      "Yes, every few days and nights. Any day or night can bring rain, and it never stays dry for long. Some rains are thunderstorms with lightning and thunder. In the rain the infected see and hear far less: in a downpour they spot you at little more than half the usual distance and hear noise over a much smaller area, so it is the best time to slip past them.",
+    facts: [["How often", "Every few days and nights"], ["Storms", "About 4 in 10 rains (more at night)"], ["Infected sight in a downpour", "Down by almost half"], ["Infected hearing in a downpour", "Down by about 40%"], ["Never on", "The first day of a run"]],
+    sections: [
+      {
+        id: "when-it-rains",
+        heading: "When it rains",
+        blocks: [
+          { type: "p", text: "Each day and each night has a chance of rain, and the forest is never dry for more than a few phases in a row. Rain fades in and out over about half a minute and can last most of a day or a night. About four rains in ten are thunderstorms, a little more often at night. It never rains on the first day of a run." },
+        ],
+      },
+      {
+        id: "sneaking",
+        heading: "Sneaking in the rain",
+        blocks: [
+          { type: "p", text: "Rain is cover. The heavier it falls, the less the infected notice: in a full downpour they see you at a little over half their usual range and only hear noise from about 60% as far away. Gunshots still carry, just not as far." },
+          { type: "callout", tone: "tip", text: "Rain is the time to cross open ground, loot a busy street or get past a pack you couldn't otherwise. It stacks with [crouching](@crouching-and-takedowns) and a headlamp switched off." },
+        ],
+      },
+      {
+        id: "storms",
+        heading: "Thunderstorms",
+        blocks: [
+          { type: "p", text: "In a storm the wind picks up (trees sway harder and the rain slants), and lightning strikes around you every several seconds. Each strike flashes the sky; the thunder arrives a moment later, the further away the strike the longer the gap, so a close one cracks and a far one rumbles." },
+        ],
+      },
+      {
+        id: "puddles",
+        heading: "Puddles",
+        blocks: [
+          { type: "p", text: "Puddles fill up on trails, roads and clearings while it rains and dry out slowly after. Running through one splashes loudly enough to hear, and you can hear the infected splashing through them too." },
+        ],
+      },
+      {
+        id: "look-and-sound",
+        heading: "What it looks and sounds like",
+        blocks: [
+          { type: "list", items: [
+            "The sky clouds over and the light goes grey; low mist creeps in, even by day.",
+            "Rain stops at the edge of a roof: step inside and you hear it drumming overhead instead.",
+            "Fewer dry leaves blow about; the trees move more.",
+          ] },
+        ],
+      },
+    ],
+    related: ["detection-and-noise", "day-night-cycle", "crouching-and-takedowns", "night-survival"],
+    sources: [SRC.playtest27],
+    aliases: ["rain", "weather", "storm", "thunder", "lightning", "puddles", "thunderstorm"],
   },
   {
     ...base,

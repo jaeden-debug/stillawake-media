@@ -2,9 +2,9 @@
 
 Generated from the wiki registry. Do not edit by hand.
 
-- Published (verified_live): **84** articles across 11 categories
-- Not published: **9** (planned, unverified or deprecated)
-- Articles with recorded gaps: **24**
+- Published (verified_live): **87** articles across 11 categories
+- Not published: **8** (planned, unverified or deprecated)
+- Articles with recorded gaps: **23**
 - Last verified: 2026-10-25
 
 ## Published articles
@@ -18,6 +18,7 @@ Generated from the wiki registry. Do not edit by hand.
 | Getting Started | Playing Stillskin Forest with Friends | `/games/stillskin-forest/wiki/getting-started/playing-with-friends` | no | 2026-10-25 |
 | Getting Started | Stillskin Forest FAQ | `/games/stillskin-forest/wiki/getting-started/faq` | no | 2026-10-25 |
 | Weapons | Stillskin Forest Weapons Compared | `/games/stillskin-forest/wiki/weapons/weapons-compared` | no | 2026-10-27 |
+| Weapons | Fists | `/games/stillskin-forest/wiki/weapons/fists` | no | 2026-10-27 |
 | Weapons | Baseball Bat | `/games/stillskin-forest/wiki/weapons/baseball-bat` | no | 2026-10-25 |
 | Weapons | Machete | `/games/stillskin-forest/wiki/weapons/machete` | no | 2026-10-25 |
 | Weapons | Hammer | `/games/stillskin-forest/wiki/weapons/hammer` | no | 2026-10-27 |
@@ -45,13 +46,15 @@ Generated from the wiki registry. Do not edit by hand.
 | Survival Mechanics | Health, Damage and Healing | `/games/stillskin-forest/wiki/mechanics/health-and-healing` | no | 2026-10-25 |
 | Survival Mechanics | Downed and Revive | `/games/stillskin-forest/wiki/mechanics/downed-and-revive` | no | 2026-10-25 |
 | Survival Mechanics | Inventory and Hotbar | `/games/stillskin-forest/wiki/mechanics/inventory-and-hotbar` | no | 2026-10-25 |
-| Survival Mechanics | Aiming, Headshots and Reloading | `/games/stillskin-forest/wiki/mechanics/aiming-and-reloading` | no | 2026-10-25 |
+| Survival Mechanics | Aiming, Headshots and Reloading | `/games/stillskin-forest/wiki/mechanics/aiming-and-reloading` | no | 2026-10-27 |
+| Survival Mechanics | Shooting Through Doors, Windows and Glass | `/games/stillskin-forest/wiki/mechanics/shooting-through-cover` | no | 2026-10-27 |
+| Survival Mechanics | Weather: Rain, Storms and Puddles | `/games/stillskin-forest/wiki/mechanics/weather` | no | 2026-10-27 |
 | Survival Mechanics | Climbing, Jumping and Ladders | `/games/stillskin-forest/wiki/mechanics/climbing-and-ladders` | no | 2026-10-25 |
 | Survival Mechanics | Crouching and Takedowns | `/games/stillskin-forest/wiki/mechanics/crouching-and-takedowns` | no | 2026-10-25 |
 | Survival Mechanics | Doors and Building Barricades | `/games/stillskin-forest/wiki/mechanics/doors-and-building` | no | 2026-10-27 |
 | Survival Mechanics | Durability and Wear | `/games/stillskin-forest/wiki/mechanics/durability-and-wear` | no | 2026-10-27 |
 | Locations | The Campgrounds | `/games/stillskin-forest/wiki/locations/campgrounds` | no | 2026-10-25 |
-| Locations | The Forest Trail | `/games/stillskin-forest/wiki/locations/forest-trail` | no | 2026-10-25 |
+| Locations | The Forest Trail | `/games/stillskin-forest/wiki/locations/forest-trail` | no | 2026-10-27 |
 | Locations | Stillwater | `/games/stillskin-forest/wiki/locations/stillwater` | no | 2026-10-25 |
 | Locations | St. Agnes Hospital | `/games/stillskin-forest/wiki/locations/st-agnes-hospital` | no | 2026-10-25 |
 | Locations | The Morgue | `/games/stillskin-forest/wiki/locations/morgue` | no | 2026-10-25 |
@@ -88,7 +91,7 @@ Generated from the wiki registry. Do not edit by hand.
 | Quests & Walkthroughs | The Heart of Stillskin | `/games/stillskin-forest/wiki/quests/the-heart-of-stillskin` | no | 2026-10-25 |
 | Co-op & End of Run | Co-op Survival: Revives, Pings and Sharing | `/games/stillskin-forest/wiki/multiplayer/co-op-survival` | no | 2026-10-25 |
 | Co-op & End of Run | Death, Ghosts and the Rooftop Finale | `/games/stillskin-forest/wiki/multiplayer/death-ghosts-and-the-finale` | no | 2026-10-25 |
-| Updates | Stillskin Forest Development Log | `/games/stillskin-forest/wiki/updates/development-log` | no | 2026-10-25 |
+| Updates | Stillskin Forest Development Log | `/games/stillskin-forest/wiki/updates/development-log` | no | 2026-10-27 |
 | Locations | Blackpine Airfield | `/games/stillskin-forest/wiki/locations/blackpine-airfield` | no | 2026-10-27 |
 | Enemies | Soldier | `/games/stillskin-forest/wiki/enemies/soldier` | no | 2026-10-27 |
 | Weapons | Mini AK | `/games/stillskin-forest/wiki/weapons/mini-ak` | no | 2026-10-27 |
@@ -107,7 +110,6 @@ Generated from the wiki registry. Do not edit by hand.
 | Embers and the Outfitter | Co-op & End of Run | verified_planned | Embers, the lobby shop, daily rewards and VIP exist in development; Robux products are not set up and saving across servers needs the public game. |
 | Achievements | Co-op & End of Run | verified_planned | 19 achievements are defined and tracked; the unlock banner and persistence across sessions are not yet confirmed in play. |
 | Longest Survivors Leaderboard | Co-op & End of Run | verified_planned | The lobby leaderboard exists but has no real data until the game is public. |
-| Weather | Survival Mechanics | verified_planned | Rain and thunder are planned but not built. |
 | Night Milestones (First Dark, The Long Night…) | Special Nights | verified_planned | Named milestone nights (Night 1 First Dark, Night 2 The Hunt Deepens, Night 3 Heavy Footsteps, Night 5 The Long Night, Night 7 No Safe Trail) are implemented as data but not integrated into the live director. |
 
 ## Gaps inside published articles

@@ -43,18 +43,26 @@ export const locations: WikiEntry[] = [
   {
     ...base,
     slug: "forest-trail",
+    lastVerified: "2026-10-27",
     title: "The Forest Trail",
     seoTitle: "The Forest Trail in Stillskin Forest",
     description:
       "The Forest Trail links the Campgrounds to Stillwater in Stillskin Forest: lanterns, a signpost, trail loot, and something in the trees.",
     answer:
-      "The Forest Trail is the path from the Campgrounds south through new forest to Stillwater. It is lined with lanterns and has a signpost, a fallen log, loot spots along the way, and a scare where something runs through the trees.",
+      "The Forest Trail is the path from the Campgrounds south through deep forest to Stillwater. It is lined with lanterns and has a signpost, a fallen log, loot spots along the way, and a scare where something runs through the trees. Off the trail the woods are thick with pines, bushes and ferns.",
     sections: [
       {
         id: "overview",
         heading: "Overview",
         blocks: [
           { type: "p", text: "The trail is the main road between camp and town. Its loot spots refill at dawn like everywhere else, and it is one of the places headlamp parts can turn up. Infected spawn across the trail as well as the forest and town, never closer than 70 studs to a survivor and never in your line of sight." },
+        ],
+      },
+      {
+        id: "the-woods",
+        heading: "The woods around it",
+        blocks: [
+          { type: "p", text: "Stillskin Forest is one continuous forest: the town, the asylum, the lake, the ranger station and the airfield sit in clearings inside it, joined by the lantern-lit trails. Between them the pines stand close, with bushes and ferns underneath. Bushes rustle when anything walks through them, you or an infected, and the wind sways the trees and blows leaves about. Under the canopy at night it is properly dark: you can see the ground and the nearest trunks, and past that you need the [headlamp](@headlamp)." },
         ],
       },
     ],

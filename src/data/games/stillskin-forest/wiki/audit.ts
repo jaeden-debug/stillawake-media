@@ -50,7 +50,6 @@ export const unpublished: WikiEntry[] = [
   pending("leaderboards", "multiplayer", "Longest Survivors Leaderboard", "verified_planned", [
     "The lobby leaderboard exists but has no real data until the game is public.",
   ]),
-  pending("weather", "mechanics", "Weather", "verified_planned", ["Rain and thunder are planned but not built."]),
   pending("night-milestones", "special-nights", "Night Milestones (First Dark, The Long Night…)", "verified_planned", [
     "Named milestone nights (Night 1 First Dark, Night 2 The Hunt Deepens, Night 3 Heavy Footsteps, Night 5 The Long Night, Night 7 No Safe Trail) are implemented as data but not integrated into the live director.",
   ]),

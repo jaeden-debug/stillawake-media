@@ -13,6 +13,7 @@ export const enemies: WikiEntry[] = [
   {
     ...base,
     slug: "enemy-comparison",
+    lastVerified: "2026-10-27",
     title: "Stillskin Forest Enemies Compared",
     seoTitle: "Stillskin Forest Enemies: Walker, Runner, Screamer, Brute and Watcher",
     description:
@@ -31,6 +32,7 @@ export const enemies: WikiEntry[] = [
             ["[Screamer](@screamer)", "70", "20.5", "8", "1.9 s", "Day 2", "8"],
             ["[Brute](@brute)", "320", "18.5", "28", "2.6 s", "Day 3, nights only", "6"],
             ["[Watcher](@watcher)", "—", "—", "Never attacks", "—", "Rare sightings", "—"],
+            ["[Soldier](@soldier)", "130", "20.5", "11.5", "1.9 s", "Blackpine Airfield only", "—"],
           ] },
           { type: "p", text: "Spawn weight is relative: of every 104 infected the director rolls once all four types are unlocked, about 70 are Walkers. Special nights change the mix; a [Blood Moon](@blood-moon) adds far more Runners and Brutes." },
           configNote,
@@ -52,7 +54,7 @@ export const enemies: WikiEntry[] = [
         ],
       },
     ],
-    related: ["walker", "runner", "screamer", "brute", "watcher", "detection-and-noise"],
+    related: ["walker", "runner", "screamer", "brute", "watcher", "soldier", "detection-and-noise"],
     sources: [SRC.config, SRC.playtest],
     aliases: ["zombies", "monsters", "infected", "enemy list", "all enemies", "zombie types"],
   },

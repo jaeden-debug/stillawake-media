@@ -67,13 +67,14 @@ export const items: WikiEntry[] = [
   {
     ...base,
     slug: "ammunition",
-    title: "Ammunition: Pistol Ammo and Shells",
-    seoTitle: "Ammo in Stillskin Forest: Pistol Ammo, Shells and Reloading",
+    lastVerified: "2026-10-27",
+    title: "Ammunition: Pistol Ammo, Shells and Rifle Rounds",
+    seoTitle: "Ammo in Stillskin Forest: Pistol Ammo, Shells, Rifle Rounds",
     description:
-      "Stillskin Forest has two ammunition types: Pistol Ammo for the Pistol and Shells for the Shotgun. How reserves, magazines and reloading work.",
+      "Stillskin Forest ammunition: Pistol Ammo, Shells and Rifle Rounds, which guns use them, where to find them, and ammo dropped by the infected.",
     question: "What ammo does each gun use in Stillskin Forest?",
     answer:
-      "The Pistol uses Pistol Ammo and the Shotgun uses Shells. Ammunition you pick up goes into a reserve; reloading moves it into the gun's magazine (12 rounds for the Pistol, 6 for the Shotgun). Guns you find already come loaded.",
+      "The Pistol uses Pistol Ammo, the Shotgun uses Shells, and the Hunting Rifle and Mini AK use Rifle Rounds. Ammunition you pick up goes into a reserve; reloading moves it into the gun's magazine. Guns you find already come loaded, and the infected you kill sometimes drop a little ammo.",
     sections: [
       {
         id: "how-it-works",
@@ -87,23 +88,31 @@ export const items: WikiEntry[] = [
           ] },
         ],
       },
+      {
+        id: "rifle-rounds",
+        heading: "Rifle Rounds and ammo from kills",
+        blocks: [
+          { type: "p", text: "Rifle Rounds are the scarcest: they turn up in Blackthorn Asylum, stashes, [Blackpine Airfield](@blackpine-airfield) containers and night caches. An infected you kill has an 18% chance to drop a small amount of ammo (22% for soldiers, who drop Rifle Rounds more often). See [Night survival](@night-survival)." },
+        ],
+      },
     ],
-    related: ["pistol", "shotgun", "aiming-and-reloading"],
+    related: ["pistol", "shotgun", "mini-ak", "aiming-and-reloading"],
     sources: [SRC.items, SRC.playtest],
     aliases: ["ammo", "pistol ammo", "shells", "shotgun shells", "bullets"],
   },
   {
     ...base,
     slug: "headlamp",
+    lastVerified: "2026-10-27",
     title: "Headlamp",
     seoTitle: "Headlamp in Stillskin Forest: Range, Battery and Detection Trade-off",
     description:
       "Every survivor wears a headlamp in Stillskin Forest. Toggle it with F. Its range, battery life, upgrades, and why it makes you easier to spot at night.",
     question: "How does the headlamp work in Stillskin Forest?",
     answer:
-      "Every survivor wears a headlamp that takes no inventory slot; press F (D-pad down on controller) to toggle it. It lights where you aim, but at dusk and night a lit lamp lets the infected spot you from 1.25× further, while turning it off cuts their sight range to 0.8×. The battery lasts five minutes of light per run.",
+      "Every survivor wears a headlamp that takes no inventory slot; press F (D-pad down on controller) to toggle it. It lights where you aim, but at dusk and night a lit lamp lets the infected spot you from 1.25× further, while turning it off cuts their sight range to 0.8×. A charge lasts ten minutes of light, and spare Batteries swap in by themselves.",
     facts: [
-      ["Toggle", "F / D-pad down"], ["Battery", "5 minutes of light (10 with Extended Battery)"],
+      ["Toggle", "F / D-pad down"], ["Battery", "10 minutes of light (15 with Extended Battery)"], ["Spare batteries", "Up to 6, no bag slot"],
       ["Starting range", "24 studs"], ["Detection when lit (dusk/night)", "×1.25"], ["Detection when off (dusk/night)", "×0.8"],
     ],
     sections: [
@@ -131,7 +140,7 @@ export const items: WikiEntry[] = [
         id: "battery",
         heading: "Battery",
         blocks: [
-          { type: "p", text: "The battery drains only while the lamp is on: five minutes of light on a charge. Below 15% it dims and flickers; at 0 it dies. The HUD shows the percentage, and each run starts full." },
+          { type: "p", text: "The battery drains only while the lamp is on: ten minutes of light on a charge, about two nights. Below 15% it dims and flickers. When it runs out, a spare battery goes in by itself if you carry one; otherwise the lamp dies. The HUD shows the charge and your spares (\"+2 BATT\"), and each run starts full." },
         ],
       },
     ],
@@ -142,13 +151,14 @@ export const items: WikiEntry[] = [
   {
     ...base,
     slug: "headlamp-upgrades",
+    lastVerified: "2026-10-27",
     title: "Headlamp Upgrades and Batteries",
     seoTitle: "Stillskin Forest Headlamp Upgrades: LED Bulb, Reflector, Batteries",
     description:
-      "How to upgrade your headlamp in Stillskin Forest: LED Bulb (Tier II), Tactical Reflector (Tier III), Extended Battery and Batteries, all fitted on pickup.",
+      "How to upgrade your headlamp in Stillskin Forest: LED Bulb (Tier II), Tactical Reflector (Tier III), Extended Battery, and spare Batteries that need no bag slot.",
     question: "How do you upgrade the headlamp in Stillskin Forest?",
     answer:
-      "Pick up headlamp parts and they are fitted instantly without taking a bag slot. The LED Bulb raises the lamp to Tier II (40 studs), the Tactical Reflector to Tier III (60 studs), the Extended Battery doubles battery life to ten minutes, and Batteries put back 60% charge. A part no better than what you have is salvaged for 15 Embers.",
+      "Pick up headlamp parts and they are fitted instantly without taking a bag slot. The LED Bulb raises the lamp to Tier II (40 studs), the Tactical Reflector to Tier III (60 studs), the Extended Battery raises battery life to fifteen minutes, and Batteries are kept as spares (up to six) that swap in when the lamp dies. A part no better than what you have is salvaged for 15 Embers.",
     sections: [
       {
         id: "parts",
@@ -157,8 +167,8 @@ export const items: WikiEntry[] = [
           { type: "table", caption: "Headlamp parts", head: ["Part", "Effect", "Rarity"], rows: [
             ["LED Bulb", "Lamp to Tier II: 40 studs, 56°, brighter", "Rare"],
             ["Tactical Reflector", "Lamp to Tier III: 60 studs, 66°, no flicker", "Legendary"],
-            ["Extended Battery", "10 minutes of light per charge instead of 5", "Epic"],
-            ["Batteries", "Restores 60% charge", "Common"],
+            ["Extended Battery", "15 minutes of light per charge instead of 10", "Epic"],
+            ["Batteries", "A spare (up to 6). A dead lamp takes it at once; with 6 spares it tops the lamp up", "Common"],
           ] },
           { type: "p", text: "Upgrades last for the run. The lamp returns to Tier I when a new run starts." },
         ],

@@ -1,0 +1,551 @@
+{
+  "game": "stillskin-forest",
+  "source": "Exported from the published place (ReplicatedStorage.GameConfig, ServerScriptService.LootConfig, ServerStorage.Items) with fresh module copies",
+  "build": "Published 2026-10-27 07:16 UTC",
+  "lastVerified": "2026-10-27",
+  "values": {
+    "airfield": {
+      "nightBudget": 12,
+      "dayBudget": 8
+    },
+    "helmetHeadshot": {
+      "share": 0.55,
+      "multiplier": 2.5
+    },
+    "building": {
+      "maxPerPlayer": "unlimited",
+      "maxLength": 12,
+      "reach": 20
+    },
+    "items": {
+      "Bag of Chips": {
+        "Description": "Salty and stale. Still food.",
+        "ItemType": "Snack",
+        "Rarity": "Common"
+      },
+      "Baseball Bat": {
+        "Cooldown": 0.55,
+        "Damage": 25,
+        "Description": "Solid wood, taped grip. Knocks them back.",
+        "ItemType": "Melee",
+        "Range": 5.5,
+        "Rarity": "Common"
+      },
+      "Batteries": {
+        "Description": "A few AA batteries. Puts charge back in your headlamp the moment you pick them up.",
+        "ItemType": "Upgrade",
+        "Rarity": "Common"
+      },
+      "Canned Beans": {
+        "Description": "Cold beans. Better than nothing.",
+        "ItemType": "Snack",
+        "Rarity": "Common"
+      },
+      "Crowbar": {
+        "Cooldown": 0.5,
+        "Damage": 18,
+        "Description": "Pry bar. Two swings take a plank down and you keep the wood. Works on the infected in a pinch.",
+        "ItemType": "Melee",
+        "Range": 5,
+        "Rarity": "Common"
+      },
+      "Energy Bar": {
+        "Description": "Chewy, sweet, keeps you going.",
+        "ItemType": "Snack",
+        "Rarity": "Common"
+      },
+      "Extended Battery": {
+        "Description": "A high-capacity battery pack for your headlamp: twice the light on a charge. Fitted on pickup.",
+        "ItemType": "Upgrade",
+        "Rarity": "Epic"
+      },
+      "First Aid Kit": {
+        "Description": "Bandages and antiseptic. Patches you up.",
+        "ItemType": "Snack",
+        "Rarity": "Rare"
+      },
+      "Gas Can": {
+        "Description": "A red jerry can, about a third full. Runs a generator for one whole night (hold E at a generator).",
+        "ItemType": "Fuel",
+        "Rarity": "Common"
+      },
+      "Hammer": {
+        "Builder": true,
+        "Cooldown": 0.75,
+        "Damage": 32,
+        "Description": "Heavy claw hammer. Slow, but it staggers what it hits and sends it flying. Builders will want one.",
+        "ItemType": "Melee",
+        "Range": 5,
+        "Rarity": "Common"
+      },
+      "Hunting Rifle": {
+        "AmmoType": "RifleAmmo",
+        "Cooldown": 1.25,
+        "Damage": 110,
+        "Description": "Bolt-action hunting rifle with a scope. Uses Rifle Rounds. One per survivor, from Dr. Vance's office.",
+        "ItemType": "Gun",
+        "Loud": true,
+        "MagSize": 5,
+        "Pellets": 1,
+        "Range": 450,
+        "Rarity": "Rare",
+        "ReloadTime": 3,
+        "Spread": 0.35
+      },
+      "LED Bulb": {
+        "Description": "A proper LED for your headlamp: brighter, wider, further. Fitted the moment you pick it up.",
+        "ItemType": "Upgrade",
+        "Rarity": "Rare"
+      },
+      "Lantern": {
+        "Description": "Kerosene camp lantern. Lights your way, or set it down (click) to light a room or a base. Pick it back up any time.",
+        "ItemType": "Lantern",
+        "Rarity": "Uncommon"
+      },
+      "Machete": {
+        "Cooldown": 0.6,
+        "Damage": 40,
+        "Description": "Rusty but sharp. Hits harder than a bat.",
+        "ItemType": "Melee",
+        "Range": 5.5,
+        "Rarity": "Common"
+      },
+      "Military Helmet": {
+        "ArmorSlot": "Head",
+        "Description": "Combat helmet. Hold it and press fire to wear it: takes 15% of every hit until it wears out. Only found at Blackpine Airfield.",
+        "ItemType": "Armor",
+        "Rarity": "Rare"
+      },
+      "Mini AK": {
+        "AmmoType": "RifleAmmo",
+        "Automatic": true,
+        "Cooldown": 0.12,
+        "Damage": 26,
+        "Description": "Compact AK-pattern carbine. Fully automatic, 20 rounds, uses Rifle Rounds. Loud. Very rare: only at Blackpine Airfield.",
+        "ItemType": "Gun",
+        "Loud": true,
+        "MagSize": 20,
+        "Pellets": 1,
+        "Range": 320,
+        "Rarity": "Rare",
+        "ReloadTime": 2.4,
+        "Spread": 1.4
+      },
+      "Pistol": {
+        "AmmoType": "PistolAmmo",
+        "Cooldown": 0.22,
+        "Damage": 34,
+        "Description": "Reliable sidearm. Uses Pistol Ammo.",
+        "ItemType": "Gun",
+        "MagSize": 12,
+        "Pellets": 1,
+        "Range": 250,
+        "Rarity": "Common",
+        "ReloadTime": 1.6,
+        "Spread": 1
+      },
+      "Plate Carrier": {
+        "ArmorSlot": "Chest",
+        "Description": "Military plate carrier. Hold it and press fire to wear it: takes 40% of every hit until it wears out. Only found at Blackpine Airfield.",
+        "ItemType": "Armor",
+        "Rarity": "Legendary"
+      },
+      "Shotgun": {
+        "AmmoType": "Shells",
+        "Cooldown": 0.8,
+        "Damage": 18,
+        "Description": "Devastating up close. Uses Shells.",
+        "ItemType": "Gun",
+        "MagSize": 6,
+        "Pellets": 6,
+        "Range": 70,
+        "Rarity": "Common",
+        "ReloadTime": 2.4,
+        "Spread": 6
+      },
+      "Signal Remote": {
+        "Cooldown": 30,
+        "Description": "A rewired TV remote. Press it near the infected: everything close by freezes for 5 seconds and takes damage. Recharges in 30 seconds.",
+        "ItemType": "Gadget",
+        "Rarity": "Legendary"
+      },
+      "Tactical Reflector": {
+        "Description": "Military reflector housing. Turns your headlamp into a floodlight. Fitted the moment you pick it up.",
+        "ItemType": "Upgrade",
+        "Rarity": "Legendary"
+      }
+    },
+    "ammoDrops": {
+      "Chance": 0.18,
+      "Profiles": {
+        "Default": [
+          {
+            "Amount": [
+              3,
+              7
+            ],
+            "Name": "PistolAmmo",
+            "Weight": 60
+          },
+          {
+            "Amount": [
+              1,
+              3
+            ],
+            "Name": "Shells",
+            "Weight": 30
+          },
+          {
+            "Amount": [
+              1,
+              2
+            ],
+            "Name": "RifleAmmo",
+            "Weight": 10
+          }
+        ],
+        "Soldier": [
+          {
+            "Amount": [
+              4,
+              8
+            ],
+            "Name": "PistolAmmo",
+            "Weight": 40
+          },
+          {
+            "Amount": [
+              2,
+              3
+            ],
+            "Name": "Shells",
+            "Weight": 20
+          },
+          {
+            "Amount": [
+              2,
+              5
+            ],
+            "Name": "RifleAmmo",
+            "Weight": 40
+          }
+        ]
+      },
+      "Lifetime": 180,
+      "SoldierChance": 0.22
+    },
+    "militaryLootTable": {
+      "emptyChance": 0.3
+    },
+    "zombies": {
+      "Walker": {
+        "nightOnly": false,
+        "chaseSpeed": 20,
+        "health": 100,
+        "firstDay": 1,
+        "damage": 10
+      },
+      "Runner": {
+        "nightOnly": false,
+        "chaseSpeed": 21.5,
+        "health": 60,
+        "firstDay": 2,
+        "damage": 8
+      },
+      "Brute": {
+        "nightOnly": true,
+        "chaseSpeed": 18.5,
+        "health": 320,
+        "firstDay": 3,
+        "damage": 28
+      },
+      "Screamer": {
+        "nightOnly": false,
+        "chaseSpeed": 20.5,
+        "health": 70,
+        "firstDay": 2,
+        "damage": 8
+      },
+      "Soldier": {
+        "nightOnly": false,
+        "chaseSpeed": 20.5,
+        "health": 130,
+        "helmetChance": 0.6,
+        "regionOnly": "Airfield",
+        "firstDay": 1,
+        "damage": 11.5
+      }
+    },
+    "cycle": {
+      "dawnSeconds": 20,
+      "duskSeconds": 40,
+      "daySeconds": 480,
+      "nightSeconds": 300
+    },
+    "night": {
+      "Sleep": {
+        "HealthCost": 25,
+        "HoldSeconds": 1.5,
+        "MinPlanks": 3,
+        "ZombieClearance": 14
+      },
+      "Wisps": {
+        "Every": 55,
+        "FirstDelay": 10,
+        "GiveUpAfter": 45,
+        "StashItems": 2,
+        "PerNight": 3,
+        "Speed": 9,
+        "LeadRange": 26,
+        "SpawnDistance": 26,
+        "RelicChance": 0.5
+      },
+      "Caches": {
+        "NoiseMult": 2.5,
+        "Table": "NightCache",
+        "PerNight": 5
+      }
+    },
+    "headlamp": {
+      "batterySeconds": 600,
+      "extendedBatterySeconds": 900,
+      "reserveCap": 6
+    },
+    "armor": {
+      "Plate Carrier": {
+        "Durability": 300,
+        "Absorb": 0.4,
+        "Slot": "Chest"
+      },
+      "Military Helmet": {
+        "Durability": 150,
+        "Absorb": 0.15,
+        "Slot": "Head"
+      }
+    },
+    "generators": {
+      "NoiseRadius": 45,
+      "SecondsPerCan": 300,
+      "NoiseEvery": 8,
+      "MaxFuel": 600
+    },
+    "military": {
+      "Rares": [
+        {
+          "Chance": 0.12,
+          "Name": "Plate Carrier",
+          "Cap": 1
+        },
+        {
+          "Chance": 0.15,
+          "Name": "Military Helmet",
+          "Cap": 1
+        },
+        {
+          "Chance": 0.08,
+          "Name": "Mini AK",
+          "Cap": 1
+        }
+      ],
+      "PerExtraPlayer": 0.1,
+      "MaxPlayerBonus": 0.3
+    },
+    "nightHunt": {
+      "Offset": [
+        10,
+        30
+      ],
+      "StaggerSeconds": 6,
+      "Fraction": 0.5,
+      "Interval": 18,
+      "MaxPerSurvivor": 8,
+      "SectorSize": 160
+    }
+  },
+  "features": [
+    {
+      "id": "cycle-8-5",
+      "name": "8-minute day, 5-minute night",
+      "category": "day-night",
+      "status": "verified_live",
+      "verifiedBy": "Play test: Day 1 daylight phase 440 s (+40 s dusk), night phase 300 s",
+      "wiki": [
+        "day-night-cycle"
+      ]
+    },
+    {
+      "id": "night-hunt",
+      "name": "Night hunting",
+      "category": "zombies",
+      "status": "verified_live",
+      "verifiedBy": "Play test, Night 1 in Stillwater: hunters rose 0\u21925\u21926\u21927\u21928 over 40 s, staggered; chases followed",
+      "wiki": [
+        "night-survival"
+      ]
+    },
+    {
+      "id": "gunshot-aggro",
+      "name": "Gunshots draw the infected",
+      "category": "zombies",
+      "status": "verified_live",
+      "verifiedBy": "Existing system (Zombies.noise from WeaponService: 90 studs, 120 for shotguns and loud guns); scream alerts capped",
+      "wiki": [
+        "detection-and-noise"
+      ]
+    },
+    {
+      "id": "ammo-drops",
+      "name": "Ammo from kills",
+      "category": "loot",
+      "status": "verified_live",
+      "verifiedBy": "Play test: 60 credited kills \u2192 12 drops (20%), 20 uncredited deaths \u2192 0; 20,000-roll distribution 18.0% / 21.4%",
+      "wiki": [
+        "night-survival",
+        "ammunition"
+      ]
+    },
+    {
+      "id": "wisps",
+      "name": "Green wisps",
+      "category": "night",
+      "status": "verified_live",
+      "verifiedBy": "Play test: a relic wisp led camp \u2192 crypt arch; a stash wisp left 2 items",
+      "wiki": [
+        "night-survival"
+      ]
+    },
+    {
+      "id": "night-caches",
+      "name": "Night caches",
+      "category": "night",
+      "status": "verified_live",
+      "verifiedBy": "Play test: 0 by day, 5 at night with glow and prompt; search gave loot",
+      "wiki": [
+        "night-survival"
+      ]
+    },
+    {
+      "id": "sleep",
+      "name": "Sleep until dawn",
+      "category": "night",
+      "status": "verified_live",
+      "verifiedBy": "Play test (solo): 233 s of night left \u2192 -25 health and Dawn; infected nearby blocks it",
+      "notVerified": [
+        "Two or more players voting",
+        "On-screen prompt card (capture tool doesn't draw prompt cards)"
+      ],
+      "wiki": [
+        "night-survival"
+      ]
+    },
+    {
+      "id": "airfield",
+      "name": "Blackpine Airfield",
+      "category": "location",
+      "status": "verified_live",
+      "verifiedBy": "Built in the published place; walked in Play; 27 containers built; 9 working doors",
+      "notVerified": [
+        "Multiplayer",
+        "Mobile performance"
+      ],
+      "wiki": [
+        "blackpine-airfield"
+      ]
+    },
+    {
+      "id": "soldiers",
+      "name": "Soldier infected",
+      "category": "zombies",
+      "status": "verified_live",
+      "verifiedBy": "Play test: 5 spawned at the airfield only, 130 health, vests, 2 helmets; helmet headshot 130\u219245 then kill",
+      "wiki": [
+        "soldier"
+      ]
+    },
+    {
+      "id": "rare-gear",
+      "name": "Rare military gear director",
+      "category": "loot",
+      "status": "verified_live",
+      "verifiedBy": "Play test: Day 1 rolls logged (all missed, allowed); 200,000-run simulation of the configured odds",
+      "wiki": [
+        "blackpine-airfield"
+      ]
+    },
+    {
+      "id": "armor",
+      "name": "Plate Carrier and Military Helmet",
+      "category": "equipment",
+      "status": "verified_live",
+      "verifiedBy": "Play test: worn via the real remote, 20-damage hit \u2192 9 taken, durability 292/300 and 147/150, K returned both to the bag with durability",
+      "notVerified": [
+        "Controller key to take armor off"
+      ],
+      "wiki": [
+        "military-armor"
+      ]
+    },
+    {
+      "id": "mini-ak",
+      "name": "Mini AK",
+      "category": "weapon",
+      "status": "verified_live",
+      "verifiedBy": "Play test: holding fire 1.3 s fired 12 rounds (20\u21928); HUD shows MINI AK / Rifle Rounds",
+      "notVerified": [
+        "Dedicated reload animation",
+        "Real-pad L2/R2/L3 feel"
+      ],
+      "wiki": [
+        "mini-ak"
+      ]
+    },
+    {
+      "id": "generators",
+      "name": "Generators and Gas Cans",
+      "category": "power",
+      "status": "verified_live",
+      "verifiedBy": "Play test: Gas Can consumed \u2192 300 s fuel, start lit 34 lights, burns 1 s/s; 8 gas cans, one per section, on Day 1",
+      "notVerified": [
+        "Engine sound (no asset yet)"
+      ],
+      "wiki": [
+        "generators-and-gas-cans"
+      ]
+    },
+    {
+      "id": "batteries",
+      "name": "Spare batteries",
+      "category": "lighting",
+      "status": "verified_live",
+      "verifiedBy": "Play test: dead lamp swapped a spare (2\u21921); 1.00% drain per 6 s = 10 min; 0 drain while off; HUD shows +N BATT",
+      "wiki": [
+        "headlamp",
+        "headlamp-upgrades"
+      ]
+    },
+    {
+      "id": "hammer-tap-hold",
+      "name": "Hammer: tap swings, hold builds",
+      "category": "controls",
+      "status": "partially_verified",
+      "verifiedBy": "Play test with mouse: 0.8\u20130.9 s holds caused 0 server swings; controller R2 tap swings",
+      "notVerified": [
+        "Real controller R2 hold (injected input released early in testing)"
+      ],
+      "wiki": [
+        "hammer",
+        "doors-and-building"
+      ]
+    },
+    {
+      "id": "unlimited-planks",
+      "name": "No plank cap",
+      "category": "building",
+      "status": "verified_live",
+      "verifiedBy": "Server reads MaxPerPlayer = inf",
+      "wiki": [
+        "doors-and-building"
+      ]
+    }
+  ]
+}

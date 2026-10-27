@@ -33,6 +33,7 @@ export const weapons: WikiEntry[] = [
   {
     ...base,
     slug: "weapons-compared",
+    lastVerified: "2026-10-27",
     title: "Stillskin Forest Weapons Compared",
     seoTitle: "Stillskin Forest Weapons: Every Weapon Compared (Damage, Speed, Range)",
     description:
@@ -61,6 +62,7 @@ export const weapons: WikiEntry[] = [
           { type: "table", caption: "Gun base stats (Tier I)", head: ["Weapon", "Damage", "Pellets", "Magazine", "Reload", "Time between shots", "Range", "Durability", "Ammo"], rows: [
             ["[Pistol](@pistol)", "34", "1", "12", "1.6 s", "0.35 s", "250", "160", "[Pistol Ammo](@ammunition)"],
             ["[Shotgun](@shotgun)", "18 per pellet", "6", "6", "2.4 s", "1.0 s", "70", "70", "[Shells](@ammunition)"],
+            ["[Mini AK](@mini-ak)", "26", "1", "20", "2.4 s", "0.12 s (automatic)", "320", "—", "[Rifle Rounds](@ammunition)"],
           ] },
           { type: "p", text: "Headshots double a pistol bullet's damage and multiply each shotgun pellet by 1.4. See [Aiming and reloading](@aiming-and-reloading)." },
         ],
@@ -188,13 +190,14 @@ export const weapons: WikiEntry[] = [
   {
     ...base,
     slug: "hammer",
+    lastVerified: "2026-10-27",
     title: "Hammer",
     seoTitle: "Hammer in Stillskin Forest: Damage, Building and Tips",
     description:
       "The Hammer in Stillskin Forest: 32 damage, the biggest knockback of any weapon, 160 durability, and the only tool that nails planks for building.",
     question: "What does the Hammer do in Stillskin Forest?",
     answer:
-      "The Hammer is a heavy melee weapon (32 damage, 1.0 s between swings, 48 knockback) and the building tool. A quick click swings; holding the click and dragging across a surface nails a plank, costing one point of the hammer's 160 durability.",
+      "The Hammer is a heavy melee weapon (32 damage, 1.0 s between swings, 48 knockback) and the building tool. A quick tap swings; holding the click (or R2) and dragging across a surface nails a plank, costing one point of the hammer's 160 durability. A hold never swings, even if you let go without placing a plank.",
     facts: [
       ["Type", "Melee / builder"], ["Damage", "32"], ["Time between swings", "1.0 s"], ["Range", "5 studs"],
       ["Knockback", "48"], ["Durability", "160"], ["Rarity", "Uncommon"],

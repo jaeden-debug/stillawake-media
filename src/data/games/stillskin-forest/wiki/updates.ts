@@ -8,6 +8,49 @@ import { SRC, VERIFIED } from "./sources";
  */
 export const stillskinUpdates: GameUpdate[] = [
   {
+    id: "2026-10-27-blackpine-expansion",
+    version: null,
+    date: "2026-10-27",
+    title: "Blackpine expansion: the airfield, military gear, night survival and power",
+    kind: "development-milestone",
+    newFeatures: [
+      "Blackpine Airfield: a military base south of the ranger station, with a runway, control tower, hangar, command center, two barracks and vehicles.",
+      "Soldier infected, only at the airfield, some wearing helmets that soak the first headshot.",
+      "Rare military gear: the Plate Carrier, the Military Helmet and the Mini AK, each with one chance a day to appear at the airfield.",
+      "Wearable armor that absorbs part of every hit until it wears out (K takes it off).",
+      "Night hunting: a share of the infected near you search your area after dark.",
+      "Green wisps that lead to night stashes or toward relics, and glowing night caches that only exist at night.",
+      "Sleep until dawn in a boarded-up building, for 25 health.",
+      "Ammo dropped by the infected you kill.",
+      "Generators fuelled by Gas Cans (one chance per map section per day) that power the airfield's lights.",
+      "Lit trails and signposts to the morgue, the crypt cave, the ranger station, Hunter's Blind, the Old Logging Camp and Stillwater Overlook, plus named places on the map.",
+    ],
+    changes: [
+      "Day phase 5 → 8 minutes; night 3 → 5 minutes.",
+      "Headlamp battery 5 → 10 minutes (Extended Battery 15); Batteries are now spares that swap in by themselves.",
+      "The Hammer swings only on a quick tap; a held press builds and never swings.",
+      "No limit on planks per player (was 120).",
+      "Smoother terrain, a pass through the ridge to the ranger station, a walk-in morgue stair and a marked crypt entrance.",
+    ],
+    fixes: [
+      "Trees in the lobby were tilted or upside down, and some trees on the map floated above the ground.",
+      "The fire tower could not be reached: a ridge with a drop stood between the town and the ranger station.",
+      "Out-of-place lava and basalt textures at the campsite.",
+    ],
+    balance: [
+      "Soldier: 130 health, 11.5 damage. Ammo drop chance 18% (soldiers 22%).",
+    ],
+    knownIssues: [
+      "Two-player sleep voting, rare-gear sharing and the airfield with a full squad are not yet tested.",
+      "Holding R2 to build on a real controller still needs checking.",
+      "The Mini AK has no dedicated reload animation; generators have no engine sound yet.",
+    ],
+    relatedEntries: [
+      "blackpine-airfield", "soldier", "mini-ak", "military-armor", "night-survival", "generators-and-gas-cans",
+      "day-night-cycle", "headlamp", "doors-and-building",
+    ],
+  },
+  {
     id: "2026-10-25-development-build",
     version: null,
     date: "2026-10-25",

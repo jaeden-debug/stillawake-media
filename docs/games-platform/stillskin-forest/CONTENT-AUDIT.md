@@ -49,7 +49,7 @@ Generated from the wiki registry. Do not edit by hand.
 | Survival Mechanics | Climbing, Jumping and Ladders | `/games/stillskin-forest/wiki/mechanics/climbing-and-ladders` | no | 2026-10-25 |
 | Survival Mechanics | Crouching and Takedowns | `/games/stillskin-forest/wiki/mechanics/crouching-and-takedowns` | no | 2026-10-25 |
 | Survival Mechanics | Doors and Building Barricades | `/games/stillskin-forest/wiki/mechanics/doors-and-building` | no | 2026-10-27 |
-| Survival Mechanics | Durability and Wear | `/games/stillskin-forest/wiki/mechanics/durability-and-wear` | no | 2026-10-25 |
+| Survival Mechanics | Durability and Wear | `/games/stillskin-forest/wiki/mechanics/durability-and-wear` | no | 2026-10-27 |
 | Locations | The Campgrounds | `/games/stillskin-forest/wiki/locations/campgrounds` | no | 2026-10-25 |
 | Locations | The Forest Trail | `/games/stillskin-forest/wiki/locations/forest-trail` | no | 2026-10-25 |
 | Locations | Stillwater | `/games/stillskin-forest/wiki/locations/stillwater` | no | 2026-10-25 |

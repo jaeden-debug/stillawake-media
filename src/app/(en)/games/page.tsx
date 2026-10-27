@@ -11,13 +11,38 @@ import { JsonLd, breadcrumbList, collectionPageNode, graph, itemList, type Crumb
 import { absolute, entryPath, gamePath, getEntry, hasImage, mediaFor, wikiPath } from "@/lib/games";
 
 const description =
-  "Original Roblox games by StillAwake Media: Stillskin Forest, a co-op survival-horror game, and RISK IT!, a minigame game of ragdoll fails. Official pages, guides and wikis.";
+  "Explore original games developed by StillAwake Media, including Roblox survival horror adventures and multiplayer experiences. Discover games, updates, and guides.";
+
+// The share card (Open Graph / X) is written for people, not search results.
+const shareTitle = "StillAwake Games | Original Games by StillAwake Media";
+const shareDescription =
+  "Discover original games from StillAwake Media. Explore immersive worlds, survival horror, exciting challenges, and unique Roblox experiences. Play, explore, and stay updated on our latest releases.";
+const shareImage = {
+  url: "/stillawake-games-social-preview.jpg",
+  width: 1200,
+  height: 630,
+  alt: "StillAwake Games by StillAwake Media, stillawakemedia.com",
+};
 
 export const metadata: Metadata = {
-  title: "Games by StillAwake Media",
+  title: { absolute: "StillAwake Games | Play & Explore Our Games" },
   description,
   alternates: { canonical: "/games" },
-  openGraph: { title: "Games by StillAwake Media", description, url: absolute("/games"), type: "website" },
+  openGraph: {
+    title: shareTitle,
+    description: shareDescription,
+    url: absolute("/games"),
+    siteName: "StillAwake Media",
+    type: "website",
+    locale: "en_CA",
+    images: [shareImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: shareTitle,
+    description: shareDescription,
+    images: [shareImage.url],
+  },
 };
 
 const crumbs: Crumb[] = [

@@ -48,6 +48,8 @@ export type TocItem = {
 };
 
 export type Post = PostMeta & {
+  /** Social preview image (frontmatter `ogImage`, 1200×630 or 16:9). Defaults to the site preview. */
+  ogImage?: string;
   content: string;
   html: string;
   toc: TocItem[];
@@ -144,6 +146,7 @@ export async function getPostBySlug(slug: string, locale: Locale = "en"): Promis
     image: data.image || "",
     readTime: data.readTime || estimateReadTime(content, locale),
     author: data.author || "StillAwake Media",
+    ogImage: typeof data.ogImage === "string" && data.ogImage ? data.ogImage : undefined,
     content,
     html: processed.toString(),
     toc,

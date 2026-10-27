@@ -150,3 +150,19 @@ a{text-decoration:none}
       rgba(7, 8, 13, 0.6);
   }
 }
+
+.articleProse img{
+  display:block;
+  width:100%;
+  height:auto;
+  margin:2.25rem 0 .6rem;
+  border-radius:1.25rem;
+  border:1px solid rgba(255,255,255,.1);
+}
+
+.articleProse img + em,
+.articleProse p > em:only-child{
+  display:block;
+  font-size:.9rem;
+  color:#9a9090;
+}

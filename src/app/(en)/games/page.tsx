@@ -6,12 +6,12 @@ import { ContentRow } from "@/components/our-work/ContentRow";
 import { RobloxCta, StatusBadge } from "@/components/games/GameCta";
 import { InternalLinks } from "@/components/site";
 import { gameBundles } from "@/data/games";
-import { GUIDE_PATH, GUIDE_TITLE } from "@/data/games/guides/roblox-survival-horror";
+import { comparisonGuides } from "@/data/games/guides";
 import { JsonLd, breadcrumbList, collectionPageNode, graph, itemList, type Crumb } from "@/lib/game-schema";
 import { absolute, entryPath, gamePath, getEntry, hasImage, mediaFor, wikiPath } from "@/lib/games";
 
 const description =
-  "Original games published by StillAwake Media, starting with Stillskin Forest, a co-op survival-horror game on Roblox. Official pages, guides and wikis.";
+  "Original Roblox games by StillAwake Media: Stillskin Forest, a co-op survival-horror game, and RISK IT!, a minigame game of ragdoll fails. Official pages, guides and wikis.";
 
 export const metadata: Metadata = {
   title: "Games by StillAwake Media",
@@ -83,7 +83,7 @@ export default function GamesHub() {
                 <h2 className="geist mt-5 text-4xl font-black tracking-[-.06em] md:text-5xl">
                   <Link href={gamePath(game.slug)} className="hover:text-[#cfe3c2]">{game.title}</Link>
                 </h2>
-                <p className="mt-2 text-sm italic text-[#9fc28a]">{game.tagline}</p>
+                <p className="mt-2 text-sm italic" style={{ color: game.accentSoft }}>{game.tagline}</p>
                 <p className="mt-4 text-base leading-7 text-[#C7B9B9]">{game.summary}</p>
                 <p className="mt-4 text-xs uppercase tracking-[.2em] text-[#8a8a8a]">{game.genre.join(" · ")}</p>
                 <div className="mt-7 flex flex-wrap gap-3">
@@ -132,14 +132,19 @@ export default function GamesHub() {
 
       <section className="mx-auto mt-16 max-w-7xl px-4 sm:px-6" aria-labelledby="guides">
         <h2 id="guides" className="geist text-3xl font-black tracking-[-.05em]">Guides</h2>
-        <Link
-          href={GUIDE_PATH}
-          className="mt-6 block rounded-[1.6rem] border border-white/10 bg-[#0a0d0a] p-6 transition hover:border-[#7FA36B]/50 md:p-8"
-        >
-          <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#7FA36B]">Roblox</p>
-          <h3 className="geist mt-2 text-2xl font-black tracking-[-.04em]">{GUIDE_TITLE}</h3>
-          <p className="mt-2 text-sm leading-6 text-[#C7B9B9]">DOORS, The Mimic, Pressure, 3008, Dead Rails, Piggy, Forsaken and Apeirophobia, compared by play style and server size.</p>
-        </Link>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {comparisonGuides.map((guide) => (
+            <Link
+              key={guide.id}
+              href={guide.path}
+              className="block rounded-[1.6rem] border border-white/10 bg-[#0a0d0a] p-6 transition hover:border-[#7FA36B]/50 md:p-8"
+            >
+              <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#7FA36B]">Roblox</p>
+              <h3 className="geist mt-2 text-2xl font-black tracking-[-.04em]">{guide.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-[#C7B9B9]">{guide.blurb}</p>
+            </Link>
+          ))}
+        </div>
       </section>
 
       <div className="mt-16">

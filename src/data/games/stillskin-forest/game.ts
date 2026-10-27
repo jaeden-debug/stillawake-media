@@ -82,7 +82,27 @@ export const stillskinForest: Game = {
     trailerPoster: "stillskin-forest-trailer-poster",
   },
   accent: "#7FA36B",
-  related: [],
+  accentSoft: "#b9d4a8",
+  kindLabel: "Co-op Survival Horror on Roblox",
+  playersLabel: "Solo, Duo or Squad of 4",
+  landing: {
+    featuresTitle: "What makes it Stillskin Forest",
+    showcase: { category: "enemies", title: "The infected", linkLabel: "All enemies", exclude: ["enemy-comparison"] },
+    strip: {
+      title: "Places to survive",
+      slugs: ["campgrounds", "stillwater", "st-agnes-hospital", "blackthorn-asylum", "green-lake", "the-hollow"],
+      category: "locations",
+    },
+    wikiCtaTitle: "Every weapon, enemy, place and secret, documented.",
+    wikiCtaBody: "is written from the game's own data. Story pages hide spoilers until you open them.",
+  },
+  wikiBlurb: {
+    title: "Official Guides, Weapons and Enemies",
+    description:
+      "The official Stillskin Forest wiki: weapons, enemies, locations, survival mechanics, quests, story and updates, written from the game's own data.",
+    intro: "guides on weapons, enemies, places, survival and story, written from the game itself. Story pages hide spoilers until you open them.",
+  },
+  related: ["risk-it"],
   lastVerified: STILLSKIN_VERIFIED,
   featuredGuides: [
     "how-to-play",

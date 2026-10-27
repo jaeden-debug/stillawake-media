@@ -35,9 +35,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { game: slug } = await params;
   const bundle = getBundle(slug);
   if (!bundle) return {};
-  const description = `The official ${bundle.game.title} wiki: weapons, enemies, locations, survival mechanics, quests, story and updates, written from the game's own data.`;
+  const description = bundle.game.wikiBlurb.description;
   return {
-    title: `${bundle.game.title} Wiki: Official Guides, Weapons and Enemies`,
+    title: `${bundle.game.title} Wiki: ${bundle.game.wikiBlurb.title}`,
     description,
     alternates: { canonical: wikiPath(slug) },
     openGraph: { title: `${bundle.game.title} Wiki`, description, url: absolute(wikiPath(slug)), type: "website" },
@@ -80,7 +80,7 @@ export default async function WikiHome({ params }: Props) {
           <p className="text-xs font-bold uppercase tracking-[.35em] text-[#7FA36B]">Official wiki</p>
           <h1 className="geist mt-3 text-5xl font-black leading-[.9] tracking-[-.07em] md:text-6xl">{game.title} Wiki</h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-[#C7B9B9]">
-            {publishedEntries(bundle).length} guides on weapons, enemies, places, survival and story, written from the game itself. Story pages hide spoilers until you open them.
+            {publishedEntries(bundle).length} {bundle.game.wikiBlurb.intro}
           </p>
           <div className="mt-8 max-w-2xl">
             <SiteSearch

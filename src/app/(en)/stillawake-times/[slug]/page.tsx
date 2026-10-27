@@ -131,19 +131,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.title,
       description: post.excerpt,
       images: [
-        {
-          url: "/stillawake-media-social-preview.jpeg",
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
+        post.ogImage
+          ? { url: post.ogImage, alt: post.title }
+          : { url: "/stillawake-media-social-preview.jpeg", width: 1200, height: 630, alt: post.title },
       ],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.excerpt,
-      images: ["/stillawake-media-social-preview.jpeg"],
+      images: [post.ogImage ?? "/stillawake-media-social-preview.jpeg"],
     },
   };
 }

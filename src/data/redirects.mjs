@@ -23,6 +23,7 @@ export const REDIRECTS = [
   // home under /games, so a portfolio URL for a game points there.
   { source: "/portfolio", destination: "/our-work", permanent: true },
   { source: "/our-work/stillskin-forest", destination: "/games/stillskin-forest", permanent: true },
+  { source: "/our-work/risk-it", destination: "/games/risk-it", permanent: true },
   { source: "/our-work/llms-txt-generator", destination: "/tools/llms-txt-generator", permanent: true },
   // The previous Framer site's contact form lived at these paths; old links
   // (Facebook posts among them) still arrive here.

@@ -163,7 +163,8 @@ export const gettingStarted: WikiEntry[] = [
           { type: "table", caption: "Controller mappings in the current build", head: ["Button", "Action"], rows: [
             ["R2 / L2", "Fire / aim"],
             ["B", "Crouch"],
-            ["X", "Ping"],
+            ["X / Square", "Tap: reload. Hold: use a prompt (pick up, open, place relics)"],
+            ["Y / Triangle", "Tap: ping. Hold: drop what you're holding"],
             ["LB / RB", "Cycle hotbar"],
             ["D-pad down", "Headlamp"],
             ["D-pad left / right", "Light lantern / lantern to belt"],

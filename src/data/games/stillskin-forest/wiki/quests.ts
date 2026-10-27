@@ -51,7 +51,7 @@ export const quests: WikiEntry[] = [
       "How to complete the ritual in Stillskin Forest: lay the four relics at the cafeteria circle in Blackthorn Asylum and hold it for 50 seconds against the waves.",
     question: "How do you do the ritual in Stillskin Forest?",
     answer:
-      "With all four relics, go to the ritual circle in Blackthorn Asylum's cafeteria and use \"Lay the relics\". Then hold the cafeteria for 50 seconds while the candles light and waves of infected arrive, with a Brute at the halfway point. If the circle is left empty for 6 seconds it breaks, and you can start again. Finish it and every infected drops: the run ends in victory, \"THE HOLLOW SLEEPS\".",
+      "With all four relics, go to the ritual circle in Blackthorn Asylum's cafeteria and hold E / Square on \"Place relics\". Then hold the cafeteria for 50 seconds while the candles light and waves of infected arrive, with a Brute at the halfway point. If the circle is left empty for 6 seconds it breaks, and you can start again. Finish it and every infected drops: the run ends in victory, \"THE HOLLOW SLEEPS\".",
     facts: [["Requires", "All 4 relics"], ["Where", "Blackthorn Asylum cafeteria"], ["Hold time", "50 s"], ["Breaks if empty for", "6 s"], ["Reward", "Victory: The Hollow Sleeps"]],
     sections: [
       {
@@ -72,7 +72,7 @@ export const quests: WikiEntry[] = [
         heading: "The defence",
         spoiler: true,
         blocks: [
-          { type: "p", text: "Use \"Lay the relics\" at the circle. The candles light one by one over 50 seconds while waves arrive; a Brute comes at the halfway point. Someone must stay in the cafeteria: if it is empty for 6 seconds the circle breaks. One player holding it is enough; teammates can leave." },
+          { type: "p", text: "Hold E / Square on \"Place relics\" at the circle. The candles light one by one over 50 seconds while waves arrive; a Brute comes at the halfway point. Someone must stay in the cafeteria: if it is empty for 6 seconds the circle breaks. One player holding it is enough; teammates can leave." },
         ],
       },
       {

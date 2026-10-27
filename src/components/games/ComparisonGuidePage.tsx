@@ -5,7 +5,7 @@ import { InternalLinks } from "@/components/site";
 import { entityIds } from "@/data/entities";
 import { robloxUrl, type ComparisonGuide } from "@/data/games/guides/types";
 import { JsonLd, breadcrumbList, graph, type Crumb } from "@/lib/game-schema";
-import { absolute } from "@/lib/games";
+import { absolute, getBundle, socialImage } from "@/lib/games";
 
 const fmt = (n: number) => n.toLocaleString("en-CA");
 const compact = (n: number) =>
@@ -21,11 +21,25 @@ function Bold({ text }: { text: string }) {
 }
 
 export function guideMetadata(guide: ComparisonGuide): Metadata {
+  const image = socialImage(getBundle(guide.gameSlug));
   return {
     title: { absolute: guide.title },
     description: guide.description,
     alternates: { canonical: guide.path },
-    openGraph: { title: guide.title, description: guide.description, url: absolute(guide.path), type: "article", modifiedTime: guide.snapshotDate },
+    openGraph: {
+      title: guide.title,
+      description: guide.description,
+      url: absolute(guide.path),
+      type: "article",
+      modifiedTime: guide.snapshotDate,
+      ...(image ? { images: [image] } : {}),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: guide.title,
+      description: guide.description,
+      ...(image ? { images: [image.url] } : {}),
+    },
   };
 }
 

@@ -149,6 +149,7 @@ export const guideGames: GuideGame[] = [
 export const survivalHorrorGuide: ComparisonGuide = {
   id: "roblox-survival-horror",
   path: GUIDE_PATH,
+  gameSlug: "stillskin-forest",
   title: GUIDE_TITLE,
   shortName: "Roblox survival horror games",
   description:

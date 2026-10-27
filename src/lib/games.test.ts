@@ -163,3 +163,28 @@ describe("site search", () => {
     expect(search(index, "qwxzv plorf")).toHaveLength(0);
   });
 });
+
+describe("share images for hub-level pages", () => {
+  it("every game's thumbnail is a real image, so wiki home pages get a share card", async () => {
+    const { socialImage } = await import("@/lib/games");
+    for (const bundle of gameBundles) {
+      const img = socialImage(bundle);
+      expect(img, bundle.game.slug).toBeDefined();
+      expect(img!.url).toMatch(/^https:\/\/stillawakemedia\.com\/games\/.+-thumbnail\.webp$/);
+      expect(img!.alt.length).toBeGreaterThan(10);
+    }
+  });
+
+  it("every comparison guide names one of our games and uses its thumbnail", async () => {
+    const { comparisonGuides } = await import("@/data/games/guides");
+    const { guideMetadata } = await import("@/components/games/ComparisonGuidePage");
+    const { getBundle, socialImage } = await import("@/lib/games");
+    for (const guide of comparisonGuides) {
+      const bundle = getBundle(guide.gameSlug);
+      expect(bundle, guide.id).toBeDefined();
+      const meta = guideMetadata(guide);
+      const og = meta.openGraph as { images?: { url: string }[] };
+      expect(og.images?.[0]?.url).toBe(socialImage(bundle)!.url);
+    }
+  });
+});

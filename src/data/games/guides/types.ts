@@ -23,6 +23,8 @@ export type GuideGame = {
 export type ComparisonGuide = {
   id: string;
   path: string;
+  /** Slug of our own game this guide accompanies; its thumbnail is the share image. */
+  gameSlug: string;
   title: string;
   /** Short name for breadcrumbs and the list schema. */
   shortName: string;

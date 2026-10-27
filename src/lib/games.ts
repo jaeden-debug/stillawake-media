@@ -123,6 +123,18 @@ export function hasImage(asset: MediaAsset | undefined): asset is MediaAsset & {
   return Boolean(asset && asset.status !== "missing" && asset.src);
 }
 
+/**
+ * The share image for a game's hub-level pages (wiki home, comparison guide):
+ * its thumbnail, the owner's key art. Pages that set their own `openGraph`
+ * replace the layout's whole object, image included, so they must pass this
+ * explicitly or the share card goes blank.
+ */
+export function socialImage(bundle: GameBundle | undefined) {
+  const thumb = bundle ? mediaFor(bundle, bundle.game.media.thumbnail) : undefined;
+  if (!hasImage(thumb)) return undefined;
+  return { url: absolute(thumb.src), width: thumb.dimensions.width, height: thumb.dimensions.height, alt: thumb.alt };
+}
+
 /** Section headings for the on-page table of contents. */
 export function tableOfContents(entry: WikiEntry) {
   return entry.sections.map((s) => ({ id: s.id, heading: s.heading }));

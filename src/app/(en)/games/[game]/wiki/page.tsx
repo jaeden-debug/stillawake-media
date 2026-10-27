@@ -18,6 +18,7 @@ import {
   getBundle,
   getEntry,
   publishedEntries,
+  socialImage,
   recentlyUpdatedEntries,
   wikiPath,
 } from "@/lib/games";
@@ -36,11 +37,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const bundle = getBundle(slug);
   if (!bundle) return {};
   const description = bundle.game.wikiBlurb.description;
+  const image = socialImage(bundle);
   return {
     title: `${bundle.game.title} Wiki: ${bundle.game.wikiBlurb.title}`,
     description,
     alternates: { canonical: wikiPath(slug) },
-    openGraph: { title: `${bundle.game.title} Wiki`, description, url: absolute(wikiPath(slug)), type: "website" },
+    openGraph: {
+      title: `${bundle.game.title} Wiki`,
+      description,
+      url: absolute(wikiPath(slug)),
+      type: "website",
+      ...(image ? { images: [image] } : {}),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${bundle.game.title} Wiki`,
+      description,
+      ...(image ? { images: [image.url] } : {}),
+    },
   };
 }
 

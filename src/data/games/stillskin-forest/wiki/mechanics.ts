@@ -301,17 +301,17 @@ export const mechanics: WikiEntry[] = [
     title: "Downed and Revive",
     seoTitle: "How to Revive Teammates in Stillskin Forest",
     description:
-      "What happens when you go down in Stillskin Forest: the 20-second window, how to revive a teammate by holding E for 3 seconds, and what comes after.",
+      "What happens when you go down in Stillskin Forest: the 2-minute window, how to revive a teammate by holding E for 3 seconds, and coming back at dawn.",
     question: "How do you revive a teammate in Stillskin Forest?",
     answer:
-      "Walk to your downed teammate and hold E for three seconds. You have 20 seconds from the moment they go down. They come back at 35% health. While downed, a player can only crawl slowly and can't use items or interact.",
-    facts: [["Revive window", "20 s"], ["Hold to revive", "3 s (E)"], ["Health after revive", "35%"], ["Crawl speed", "4 studs/s"]],
+      "Walk to your downed teammate and hold E for three seconds. You have 2 minutes from the moment they go down. They come back at 35% health. While downed, a player can only crawl slowly and can't use items or interact.",
+    facts: [["Revive window", "2 min"], ["Hold to revive", "3 s (E)"], ["Health after revive", "35%"], ["Crawl speed", "4 studs/s"]],
     sections: [
       {
         id: "going-down",
         heading: "Going down",
         blocks: [
-          { type: "p", text: "A lethal hit doesn't kill you outright while teammates are standing. You go down with a 20-second countdown and an overlay. Movement and interaction are disabled except a slow crawl, and you don't regenerate." },
+          { type: "p", text: "A lethal hit doesn't kill you outright while teammates are standing. You go down with a 2-minute countdown and an overlay. Movement and interaction are disabled except a slow crawl, and you don't regenerate." },
           { type: "callout", tone: "warning", text: "If you are the last survivor standing, there is no revive. A lethal hit starts the final-death sequence. See [Death, ghosts and the finale](@death-ghosts-and-the-finale)." },
         ],
       },
@@ -326,7 +326,7 @@ export const mechanics: WikiEntry[] = [
         id: "if-time-runs-out",
         heading: "If time runs out",
         blocks: [
-          { type: "p", text: "At zero the player is eliminated and becomes a ghost spectator while the run continues. Infected chasing them disperse rather than attacking the body." },
+          { type: "p", text: "At zero the player is eliminated and becomes a ghost while the run continues. Infected chasing them disperse rather than attacking the body. Ghosts fly freely around the map and come back at dawn: see [Death, ghosts and the finale](@death-ghosts-and-the-finale)." },
         ],
       },
     ],

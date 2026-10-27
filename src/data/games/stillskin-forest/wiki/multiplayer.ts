@@ -19,7 +19,7 @@ export const multiplayer: WikiEntry[] = [
         id: "revives",
         heading: "Revives",
         blocks: [
-          { type: "p", text: "A downed teammate has 20 seconds. Hold **E** on them for 3 seconds and they're back at 35% health. Full details in [Downed and revive](@downed-and-revive)." },
+          { type: "p", text: "A downed teammate has 2 minutes. Hold **E** on them for 3 seconds and they're back at 35% health. Full details in [Downed and revive](@downed-and-revive)." },
         ],
       },
       {
@@ -60,16 +60,22 @@ export const multiplayer: WikiEntry[] = [
     title: "Death, Ghosts and the Rooftop Finale",
     seoTitle: "What Happens When You Die in Stillskin Forest: Ghosts and the Finale",
     description:
-      "What happens when you die in Stillskin Forest: ghost spectating, the last-survivor sequence, rooftop stat cards with dancing infected, and Return to Camp.",
+      "What happens when you die in Stillskin Forest: flying as a ghost, respawning at dawn, the last-survivor sequence, the rooftop finale and Return to Camp.",
     question: "What happens when you die in Stillskin Forest?",
     answer:
-      "If your teammates are still alive, you become a blue ghost spectator and keep watching the run. When the last survivor falls, the run ends: everyone appears on the roof of St. Agnes Hospital with their stat cards while the infected walk in and dance, the camera tours the map, and players choose Return to Camp to start a new run on Day 1.",
+      "If your teammates are still alive, you become a ghost: you fly freely around the map (or follow a teammate) and respawn beside a survivor when dawn breaks. When the last survivor falls, the run ends: everyone appears on the roof of St. Agnes Hospital with their stat cards while the infected walk in and dance, the camera tours the map, and players choose Return to Camp to start a new run on Day 1.",
     sections: [
       {
         id: "ghost-mode",
         heading: "Ghost mode",
         blocks: [
-          { type: "p", text: "An eliminated player's avatar breaks apart and they become a ghost spectator while teammates fight on. The infected that were after them disperse rather than attacking the body." },
+          { type: "p", text: "An eliminated player's avatar breaks apart and they become a ghost while teammates fight on. The infected that were after them disperse rather than attacking the body." },
+          { type: "list", items: [
+            "**Fly:** ghosts fly by default. Move with **WASD** (or the left stick) in the direction you look, **Space** and **Ctrl** to rise and sink, **Shift** to go faster. Hold the right mouse button (or use the right stick) to look around.",
+            "**Follow a survivor:** **Q** / **E** (LB / RB) switch to watching a teammate; **F** (Y) flies again.",
+            "**Back at dawn:** when dawn breaks, every ghost respawns next to a teammate who is still standing. You keep your ammo, but the gear you carried is gone.",
+            "If nobody is left standing, the run is over and there is no respawn.",
+          ] },
         ],
       },
       {

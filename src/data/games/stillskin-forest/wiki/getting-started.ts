@@ -102,7 +102,7 @@ export const gettingStarted: WikiEntry[] = [
         heading: "At night: survive",
         blocks: [
           { type: "p", text: "The infected population jumps (45 on Night 1) and they spot you from further away. Your [headlamp](@headlamp) shows you more but also makes you easier to see. Gunfire, alarms and sprinting all draw attention; see [Detection and noise](@detection-and-noise)." },
-          { type: "p", text: "You can fight, run, or [hide](@hiding). If you go down, a teammate has 20 seconds to [revive](@downed-and-revive) you." },
+          { type: "p", text: "You can fight, run, or [hide](@hiding). If you go down, a teammate has 2 minutes to [revive](@downed-and-revive) you." },
         ],
       },
       {
@@ -240,7 +240,7 @@ export const gettingStarted: WikiEntry[] = [
         id: "if-it-goes-wrong",
         heading: "If it goes wrong",
         blocks: [
-          { type: "p", text: "If you go down you have 20 seconds; a teammate holds **E** for 3 seconds to bring you back at 35% health. If no one can reach you, you will become a ghost and can keep watching. See [Downed and revive](@downed-and-revive)." },
+          { type: "p", text: "If you go down you have 2 minutes; a teammate holds **E** for 3 seconds to bring you back at 35% health. If no one reaches you, you become a ghost who can fly around the map, and you respawn next to a teammate at dawn. See [Downed and revive](@downed-and-revive)." },
         ],
       },
     ],

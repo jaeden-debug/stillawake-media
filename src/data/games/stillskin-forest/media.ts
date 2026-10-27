@@ -87,7 +87,7 @@ export const stillskinMedia: MediaAsset[] = [
   asset("stillskin-forest-nighttime", "locations", "day-night-cycle", "Forest at night", "Moonlit pine forest at night in Stillskin Forest", "P1", "Same framing as the daytime shot, at night, headlamp off."),
   asset("stillskin-forest-cabins", "locations", "campgrounds", "Cabin area", "Wooden camping cabins in the Stillskin Forest campground", "P2", "Close on the cabin row."),
   asset("stillskin-forest-trails", "locations", "forest-trail", "Forest trails", "The lantern-lit forest trail toward Stillwater", "P1", "Trail with lanterns and the signpost."),
-  asset("stillskin-forest-stillwater", "locations", "stillwater", "Stillwater town overview", "Main Street in the abandoned town of Stillwater", "P0", `Elevated view down Main Street, wrecks and streetlights visible. ${NO_UI}`),
+  asset("stillskin-forest-stillwater", "locations", "stillwater", "Stillwater town overview", "Pine General Store and a wrecked car on Stillwater's main road", "P0", `Elevated view down Main Street, wrecks and streetlights visible. ${NO_UI}`),
   asset("stillskin-forest-welcome-sign", "locations", "stillwater", "Welcome to Stillwater sign", "The Welcome to Stillwater sign with the population crossed out to zero", "P2", "Close on the sign."),
   asset("stillskin-forest-hospital", "locations", "st-agnes-hospital", "St. Agnes Hospital", "An ambulance with its doors open outside St. Agnes Hospital as infected close in at night", "P0", "Hospital entrance with the ER canopy and ambulance."),
   asset("stillskin-forest-morgue", "locations", "morgue", "Morgue", "The drawer wall and autopsy tables in the St. Agnes morgue", "P1", "Inside the morgue, drawer wall in frame.", { liveAvailability: "secret" }),
@@ -130,14 +130,14 @@ export const stillskinMedia: MediaAsset[] = [
   asset("stillskin-forest-crowbar", "weapons", "crowbar", "Crowbar", "The Crowbar", "P2", "Same framing as the bat."),
   asset("stillskin-forest-pistol", "weapons", "pistol", "Pistol", "The Pistol", "P1", "First-person aimed down sights."),
   asset("stillskin-forest-shotgun", "weapons", "shotgun", "Shotgun", "The Shotgun", "P1", "First-person, two-handed."),
-  asset("stillskin-forest-signal-remote", "weapons", "signal-remote", "Signal Remote", "The Signal Remote freezing nearby infected", "P2", "Mid-pulse with frozen infected."),
+  asset("stillskin-forest-signal-remote", "weapons", "signal-remote", "Signal Remote", "The Signal Remote with its red lights glowing", "P2", "Mid-pulse with frozen infected."),
   asset("stillskin-forest-weapon-combat", "weapons", "weapons-compared", "Weapon combat", "A survivor fighting infected with a melee weapon", "P1", "Third-person mid-swing."),
   asset("stillskin-forest-weapon-inventory", "weapons", "inventory-and-hotbar", "Weapon inventory", "The backpack panel with weapons", "P2", "Backpack open. HUD allowed for this one."),
 
   // Items
   asset("stillskin-forest-food", "items", "food", "Food items", "Canned beans, chips and an energy bar", "P2", "The three snacks together."),
   asset("stillskin-forest-first-aid-kit", "items", "first-aid-kit", "First Aid Kit", "A First Aid Kit", "P2", "Item close-up."),
-  asset("stillskin-forest-lantern", "items", "lantern", "Lantern", "A placed lantern lighting a room", "P2", "Placed lantern at night."),
+  asset("stillskin-forest-lantern", "items", "lantern", "Lantern", "A lit Lantern glowing on a dark wooden table", "P2", "Placed lantern at night."),
 
   // Mechanics
   asset("stillskin-forest-sprinting", "mechanics", "stamina-and-sprinting", "Sprinting", "A survivor sprinting", "P2", "Sprint with FOV widening."),

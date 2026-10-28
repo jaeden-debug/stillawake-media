@@ -660,7 +660,7 @@ export const capturedAssets: Record<string, Partial<MediaAsset>> = {
     "src": "/games/stillskin-forest/weapons/stillskin-forest-hammer.webp"
   },
   "stillskin-forest-signal-remote": {
-    "description": "Signal Remote. Product shot of the in-game model on a dark wooden table, lit in Studio Play mode (no HUD).",
+    "description": "Freeze Device (formerly the Signal Remote; same in-game model). Product shot on a dark wooden table, lit in Studio Play mode (no HUD).",
     "dimensions": {
       "width": 1600,
       "height": 900

@@ -13,6 +13,7 @@ const meleeTiers: WikiSection = {
       ["III", "Reinforced", "×1.5", "×0.8", "×1.3"],
     ] },
     { type: "callout", tone: "note", text: "Tiers exist in the game's data and show on the hotbar, but the current build has no way to earn an upgrade yet. A workbench or shop upgrade is planned." },
+    { type: "p", text: "**Picking up a second one repairs yours.** If you already carry this weapon and find another, your own is repaired to full and gets a little tougher (+5% of its original durability each time, up to 125%). The copy you found is used up. Every melee weapon also breaks a window pane in one hit. See [Durability](@durability-and-wear)." },
   ],
 };
 
@@ -66,6 +67,7 @@ export const weapons: WikiEntry[] = [
             ["[Mini AK](@mini-ak)", "26", "1", "20", "2.4 s", "0.12 s (automatic)", "320", "—", "[Rifle Rounds](@ammunition)"],
           ] },
           { type: "p", text: "Headshots double a pistol bullet's damage and multiply each shotgun pellet by 1.4. See [Aiming and reloading](@aiming-and-reloading)." },
+          { type: "p", text: "Pistols and shotguns turn up in ordinary scavenging: houses, the store, the hospital, the airfield, stashes and night caches, and now and then on the trail. They are still rarer than food and melee weapons. A [Gun Repair Kit](@gun-repair-kit) restores a worn gun to full." },
         ],
       },
       {
@@ -374,30 +376,51 @@ export const weapons: WikiEntry[] = [
   },
   {
     ...base,
-    slug: "signal-remote",
-    title: "Signal Remote",
-    seoTitle: "Signal Remote in Stillskin Forest: How the Legendary Gadget Works",
+    slug: "freeze-device",
+    lastVerified: "2026-10-28",
+    title: "Freeze Device",
+    seoTitle: "Freeze Device in Stillskin Forest: How to Get It and How It Works",
     description:
-      "The Signal Remote in Stillskin Forest freezes every infected within 24 studs for 5 seconds and takes 40% of their health. Where to find it and how to use it.",
-    question: "What does the Signal Remote do?",
+      "The Freeze Device in Stillskin Forest freezes the infected in front of you for 10 seconds (Brutes 6) and takes a quarter of their health. Where to claim it.",
+    question: "What does the Freeze Device do?",
     answer:
-      "The Signal Remote is a rewired TV remote and the game's only Legendary gadget. Pressing it freezes every infected within 24 studs for 5 seconds and takes 40% of their health. It recharges in 30 seconds and has 12 uses of durability. It is found at the nurse station inside Blackthorn Asylum.",
+      "The Freeze Device is a rewired signal remote that throws a cone of cold in the direction you aim. Every infected in that cone, up to 42 studs away and in clear sight, freezes for 10 seconds (a Brute for 6) and loses a quarter of its maximum health. It recharges in 5 seconds and never wears out. Each survivor can claim one, once per server, from the nurse-station counter in Blackthorn Asylum.",
     facts: [
-      ["Type", "Gadget"], ["Radius", "24 studs"], ["Freeze", "5 s"], ["Damage", "40% of health"],
-      ["Recharge", "30 s"], ["Durability", "12"], ["Rarity", "Legendary"], ["Location", "Blackthorn Asylum nurse station"],
+      ["Type", "Gadget"], ["Range", "42 studs, in front of you"], ["Freeze", "10 s (Brutes 6 s)"], ["Damage", "25% of max health"],
+      ["Recharge", "5 s"], ["Durability", "Never wears out"], ["Rarity", "Legendary"], ["Location", "Blackthorn Asylum nurse station"],
     ],
     sections: [
+      {
+        id: "getting-it",
+        heading: "Getting it",
+        blocks: [
+          { type: "p", text: "Once [Blackthorn Asylum](@blackthorn-asylum) is open and its residents wake, the Freeze Device sits on the nurse-station counter. Walk up and press E (Square on controller) to claim it." },
+          { type: "list", items: [
+            "Every survivor in the server can claim their own. One player taking theirs doesn't take anyone else's.",
+            "You get one per server. Dropping it, losing it, dying, rejoining or handing it to someone never gives you another, so look after it.",
+            "A dropped Freeze Device is an ordinary item anyone can pick up.",
+          ] },
+        ],
+      },
       {
         id: "how-to-use",
         heading: "How to use it",
         blocks: [
-          { type: "p", text: "Equip it and press the use button near the infected. Everything close by locks in place and loses 40% of its health; four infected were frozen and damaged at once in testing. Use the five seconds to escape, revive a teammate, or finish them off." },
-          { type: "callout", tone: "tip", text: "Save it for [the Rite of Stillness](@the-rite-of-stillness). A pulse in the cafeteria when a wave arrives buys real time." },
+          { type: "p", text: "Equip it and fire (click or R2) where you're aiming. Everything in the cone in front of you freezes at once, so it's made for a group coming down a corridor or through a door. Walls and closed doors block it: only infected you can see are hit." },
+          { type: "list", items: [
+            "Frozen infected can't move, chase or attack, but they can still be hit.",
+            "Each shot takes 25% of each target's maximum health, once. An infected already at a quarter or less dies.",
+            "Frost creeps over a frozen infected. Two seconds before it breaks free the ice pulses and cracks, then it shatters.",
+            "Freezing one again restarts its timer, but nothing stays frozen longer than 16 seconds in a row.",
+            "Firing again inside the 5-second recharge tells you how long is left.",
+          ] },
+          { type: "callout", tone: "tip", text: "Save it for [the Rite of Stillness](@the-rite-of-stillness): a shot into the doorway when a wave arrives buys real time." },
         ],
       },
     ],
-    related: ["blackthorn-asylum", "the-rite-of-stillness", "weapons-compared"],
-    sources: [SRC.items, SRC.playtest],
-    aliases: ["remote", "tv remote", "gadget"],
+    related: ["blackthorn-asylum", "the-rite-of-stillness", "brute", "weapons-compared"],
+    sources: [SRC.items28, SRC.config28, SRC.playtest28],
+    aliases: ["freeze", "freeze gun", "signal remote", "remote", "tv remote", "gadget", "ice gun"],
+    gaps: ["Performance with a very large herd and on phones has not been measured. Its sounds have not been reviewed by the developer yet."],
   },
 ];

@@ -24,6 +24,10 @@ export const REDIRECTS = [
   { source: "/portfolio", destination: "/our-work", permanent: true },
   { source: "/our-work/stillskin-forest", destination: "/games/stillskin-forest", permanent: true },
   { source: "/our-work/risk-it", destination: "/games/risk-it", permanent: true },
+  // Stillskin Forest loot economy update (28 Oct 2026): the Signal Remote became the Freeze Device and
+  // Gas Cans became Jerry Cans; the old wiki pages point at their renamed ones.
+  { source: "/games/stillskin-forest/wiki/weapons/signal-remote", destination: "/games/stillskin-forest/wiki/weapons/freeze-device", permanent: true },
+  { source: "/games/stillskin-forest/wiki/mechanics/generators-and-gas-cans", destination: "/games/stillskin-forest/wiki/mechanics/generators-and-jerry-cans", permanent: true },
   { source: "/our-work/llms-txt-generator", destination: "/tools/llms-txt-generator", permanent: true },
   // The previous Framer site's contact form lived at these paths; old links
   // (Facebook posts among them) still arrive here.

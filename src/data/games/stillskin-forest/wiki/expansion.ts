@@ -3,7 +3,7 @@ import knowledge from "@/data/games/stillskin-forest/knowledge.json";
 import { SRC } from "./sources";
 
 /**
- * The Blackpine expansion (published build of 27 Oct 2026): the airfield, military gear, soldier
+ * The Blackpine expansion (published build of 27 Oct 2026; loot economy update 28 Oct 2026): the airfield, military gear, soldier
  * infected, night survival and power. Numbers come from `knowledge.json`, which is exported from the
  * game's own configuration, so a changed value in the game shows up as a changed value here.
  */
@@ -17,26 +17,27 @@ const soldier = K.zombies.Soldier;
 const walker = K.zombies.Walker;
 const plate = K.armor["Plate Carrier"];
 const helmet = K.armor["Military Helmet"];
-const rare = (name: string) => K.military.Rares.find((r) => r.Name === name)!;
+const VERIFIED_28 = "2026-10-28";
+const econ = K.economy;
 
 export const expansion: WikiEntry[] = [
   {
     slug: "blackpine-airfield",
     category: "locations",
     verification: "verified_live",
-    lastVerified: VERIFIED_27,
+    lastVerified: VERIFIED_28,
     title: "Blackpine Airfield",
     seoTitle: "Blackpine Airfield in Stillskin Forest: Map, Loot and Military Gear",
     description:
       "Blackpine Airfield in Stillskin Forest: how to get there, the runway, control tower, hangar, command center and barracks, its soldiers, and the rare gear.",
     question: "Where is the military base in Stillskin Forest?",
     answer:
-      "Blackpine Airfield is the military base south of Blackpine Ranger Station. Take the lit Ranger Trail east from the end of the Forest Trail, through Ranger Gap, then the access road south from the ranger station to the checkpoint. It is the only place the Plate Carrier, Military Helmet and Mini AK can turn up, and it is guarded by soldier infected.",
+      "Blackpine Airfield is the military base east of Stillwater, south of Blackpine Ranger Station. Three lit trails lead there from town through the forest: from the end of Main Street to the north checkpoint and to a cut in the west fence between the barracks, and from the park to a second fence cut by Hangar 1. It is the only place the Plate Carrier, Military Helmet and Mini AK can turn up, and it is guarded by soldier infected.",
     facts: [
-      ["Way in", "Ranger Trail → Ranger Gap → ranger station → access road south"],
+      ["Way in", "Three lit trails from town: to the checkpoint, the barracks and Hangar 1"],
       ["Buildings", "Command center, Barracks A and B, control tower, Hangar 1, guard booth"],
       ["Enemies", "Soldiers (only here)"],
-      ["Power", "One generator for the floodlights, runway and interior lights"],
+      ["Power", "One generator for the floodlights, runway and interior lights (needs a Jerry Can)"],
     ],
     sections: [
       {
@@ -58,7 +59,8 @@ export const expansion: WikiEntry[] = [
         id: "loot",
         heading: "Loot",
         blocks: [
-          { type: "p", text: `The airfield's lockers, footlockers and crates hold ordinary military supplies: ammunition (including Rifle Rounds), first aid, batteries, food, tools and the odd Gas Can. About ${pct(K.militaryLootTable.emptyChance)} of searches come up empty.` },
+          { type: "p", text: "There are no crates or lockers to search any more. Supplies lie out in the open: on bunks, desks, workbenches, shelves and floors across the barracks, hangar, command center and tower. Ammunition (including Rifle Rounds), first aid, batteries, food, tools, Gun Repair Kits and the odd shotgun turn up. Not every spot has something; the server keeps only part of them filled at a time." },
+          { type: "p", text: "The airfield is also one of the three places a [Jerry Can](@generators-and-jerry-cans) can appear." },
           { type: "p", text: "The rare gear is placed differently: see [Military armor](@military-armor), [Mini AK](@mini-ak) and the rare-gear rules below." },
         ],
       },
@@ -66,18 +68,18 @@ export const expansion: WikiEntry[] = [
         id: "rare-gear",
         heading: "How the rare gear appears",
         blocks: [
-          { type: "p", text: "Each morning (the first morning of a run included), each rare item gets one chance for the whole server to be hidden in a random unsearched airfield container. A miss means none that day. There is no guarantee after a set number of days, and never more than one of each waiting to be found." },
-          { type: "table", caption: "Daily chance per item (one survivor)", head: ["Item", "Chance each morning"], rows: [
-            ["Plate Carrier", pct(rare("Plate Carrier").Chance)],
-            ["Military Helmet", pct(rare("Military Helmet").Chance)],
-            ["Mini AK", pct(rare("Mini AK").Chance)],
+          { type: "p", text: "Every morning (the first morning of a run included), the server picks which of the three rare items can appear that day: always at least one and never all three. Over many days each of the Plate Carrier, the Military Helmet and the Mini AK is picked on about half of them." },
+          { type: "table", caption: "Rare gear per day (100,000 simulated days)", head: ["Picked that day", "Share of days"], rows: [
+            ["One of the three", "50%"],
+            ["Two of the three", "50%"],
+            ["None, or all three", "Never"],
           ] },
-          { type: "p", text: `A bigger squad raises those chances a little (+${pct(K.military.PerExtraPlayer)} of the base chance per extra survivor, at most +${pct(K.military.MaxPlayerBonus)}). It never adds extra copies. In a simulation of 200,000 solo runs, at least one of the three appeared on Day 1 in about 31% of runs and by Day 3 in about 67%.` },
+          { type: "p", text: "A picked item lies on a floor spot somewhere inside the airfield fence, out of sight of anyone nearby. If one of that kind is still lying there unclaimed, no second one appears. Over a whole server session each kind can appear at most once per survivor in the run, so a squad still has to search and share. The odds are the same for everyone: nothing looks at how you play or what you buy." },
         ],
       },
     ],
-    related: ["soldier", "military-armor", "mini-ak", "generators-and-gas-cans"],
-    sources: [SRC.config27, SRC.world27, SRC.playtest27],
+    related: ["soldier", "military-armor", "mini-ak", "generators-and-jerry-cans"],
+    sources: [SRC.config28, SRC.world27, SRC.playtest27, SRC.playtest28],
     aliases: ["military base", "army base", "airfield", "runway", "hangar", "control tower", "barracks"],
     gaps: ["Not yet walked through with two or more players."],
   },
@@ -118,13 +120,13 @@ export const expansion: WikiEntry[] = [
     slug: "mini-ak",
     category: "weapons",
     verification: "verified_live",
-    lastVerified: VERIFIED_27,
+    lastVerified: VERIFIED_28,
     title: "Mini AK",
     seoTitle: "Mini AK in Stillskin Forest: Damage, Fire Rate and Where to Find It",
     description:
       "The Mini AK in Stillskin Forest: a fully automatic carbine using Rifle Rounds, only found at Blackpine Airfield. Damage, fire rate, magazine and noise.",
     question: "Where do you find the Mini AK in Stillskin Forest?",
-    answer: `Only at Blackpine Airfield, and rarely: it has a ${pct(rare("Mini AK").Chance)} chance each morning to be hidden in an airfield container. It is fully automatic (${Math.round(60 / ak.Cooldown)} rounds per minute), deals ${ak.Damage} per bullet, holds ${ak.MagSize} rounds and uses Rifle Rounds. It is loud.`,
+    answer: `Only at Blackpine Airfield: on about half of all days it is one of the rare items picked for that morning, and then it lies somewhere inside the airfield fence. It is fully automatic (${Math.round(60 / ak.Cooldown)} rounds per minute), deals ${ak.Damage} per bullet, holds ${ak.MagSize} rounds and uses Rifle Rounds. It is loud.`,
     facts: [["Type", "Automatic carbine"], ["Damage", String(ak.Damage)], ["Fire rate", `${Math.round(60 / ak.Cooldown)} rounds/min`], ["Magazine", String(ak.MagSize)], ["Reload", `${ak.ReloadTime} s`], ["Range", `${ak.Range} studs`], ["Ammo", "Rifle Rounds"]],
     sections: [
       {
@@ -132,7 +134,7 @@ export const expansion: WikiEntry[] = [
         heading: "Using it",
         blocks: [
           { type: "p", text: "Hold fire to keep shooting (R2 on controller). Aim (L2) to tighten the spread. Every shot carries as far as a shotgun blast, so a long burst calls the infected from a wide area." },
-          { type: "p", text: "Rifle Rounds come from the asylum, stashes, airfield containers and the infected, especially soldiers. See [Ammunition](@ammunition)." },
+          { type: "p", text: "Rifle Rounds come from the asylum, stashes, the airfield and the infected, especially soldiers. See [Ammunition](@ammunition)." },
         ],
       },
     ],
@@ -222,42 +224,59 @@ export const expansion: WikiEntry[] = [
         ],
       },
     ],
-    related: ["day-night-cycle", "doors-and-building", "detection-and-noise", "generators-and-gas-cans"],
+    related: ["day-night-cycle", "doors-and-building", "detection-and-noise", "generators-and-jerry-cans"],
     sources: [SRC.config27, SRC.playtest27],
     aliases: ["night", "wisp", "wisps", "night cache", "sleep", "skip night", "ammo drop", "night hunt"],
     gaps: ["Sleeping with two or more players voting has not been tested."],
   },
   {
-    slug: "generators-and-gas-cans",
+    slug: "generators-and-jerry-cans",
     category: "mechanics",
     verification: "verified_live",
-    lastVerified: VERIFIED_27,
-    title: "Generators and Gas Cans",
-    seoTitle: "Generators and Gas Cans in Stillskin Forest: Fuel and Power",
+    lastVerified: VERIFIED_28,
+    title: "Generators and Jerry Cans",
+    seoTitle: "Generators and Jerry Cans in Stillskin Forest: Fuel and Power",
     description:
-      "How to power lights in Stillskin Forest: where Gas Cans turn up, how long one runs a generator, starting and stopping it, and the noise it makes.",
+      "How to power lights in Stillskin Forest: where Jerry Cans turn up, refuelling a generator, how long a can lasts, starting and stopping it, and the noise it makes.",
     question: "How do generators work in Stillskin Forest?",
-    answer: `Hold E at the generator's fuel cap with a Gas Can in your bag to add ${min(K.generators.SecondsPerCan)} of fuel (one whole night), up to ${min(K.generators.MaxFuel)}. Start it at the control panel on the other end. While it runs it lights everything wired to it, burns fuel, and its noise draws the infected nearby.`,
-    facts: [["One Gas Can", min(K.generators.SecondsPerCan)], ["Fuel tank", min(K.generators.MaxFuel)], ["Noise", `Every ${K.generators.NoiseEvery} s, ${K.generators.NoiseRadius}-stud radius`], ["Gas Cans", "One chance per map section per day"]],
+    answer: `Take a Jerry Can in your hands, walk to the generator and hold E (Square on controller) for ${K.generators.RefuelHold} seconds to pour it in: one can adds ${min(K.generators.SecondsPerCan)} of fuel (one whole night), up to ${min(K.generators.MaxFuel)}. Then start it with E at the switch. It burns fuel only while running, lights everything wired to it, and its noise draws the infected nearby.`,
+    facts: [["One Jerry Can", min(K.generators.SecondsPerCan)], ["Fuel tank", min(K.generators.MaxFuel)], ["Refuel", `Hold ${K.generators.RefuelHold} s with the can in hand`], ["Noise", `Every ${K.generators.NoiseEvery} s, ${K.generators.NoiseRadius}-stud radius`], ["Jerry Cans in the world", `${econ.JerryCans.Total} at a time`]],
     sections: [
       {
-        id: "gas-cans",
-        heading: "Finding Gas Cans",
+        id: "jerry-cans",
+        heading: "Finding Jerry Cans",
         blocks: [
-          { type: "p", text: "Each section of the map (the campgrounds, the trail, north and south Stillwater, Blackthorn Hill, the lowland below it, the ranger station and the airfield) gets one Gas Can each morning in one of a few spots. A section never has two lying around: if yesterday's is still there, no new one appears. Airfield containers can also hold one." },
+          { type: "p", text: `Only ${econ.JerryCans.Total} Jerry Cans exist at a time, counting the ones lying around and the ones in bags. They turn up in only three places: [Blackpine Airfield](@blackpine-airfield), [St. Agnes Hospital](@st-agnes-hospital) and the campground sheds. Picking one up or dropping it doesn't make a new one; pouring one into a generator uses it up, and a replacement appears somewhere in those three places a little later.` },
+          { type: "p", text: "A Jerry Can takes a bag slot of its own and cans don't stack." },
+        ],
+      },
+      {
+        id: "refuelling",
+        heading: "Refuelling",
+        blocks: [
+          { type: "list", items: [
+            "Select the Jerry Can so it's in your hands. A can left in your bag won't pour.",
+            `At the generator, hold E (Square) for ${K.generators.RefuelHold} seconds. The can tips and you hear the fuel go in. Let go early and nothing is used.`,
+            "When it's done the can is gone and the generator is ready to start.",
+            `If the tank is already full (${min(K.generators.MaxFuel)}) it tells you so and keeps your can.`,
+          ] },
         ],
       },
       {
         id: "generators",
-        heading: "Generators",
+        heading: "The generators",
         blocks: [
-          { type: "p", text: "The generator at [Blackpine Airfield](@blackpine-airfield) powers its floodlights, runway lights and the lights inside its buildings. Fuel burns only while it runs, on the server's clock. A new run starts every generator empty." },
+          { type: "list", items: [
+            "**Blackpine Airfield:** powers its floodlights, runway lights and the lights inside its buildings.",
+            "**Blackpine Ranger Station:** powers the compound's floodlights and the tower beacon. It used to run without fuel; it now needs a Jerry Can like the airfield's.",
+          ] },
+          { type: "p", text: "Press E at the switch to start or stop one. With no fuel it says so: find a Jerry Can. Fuel burns only while it runs, on the server's clock, so stopping it saves what's left. A new run starts every generator empty." },
         ],
       },
     ],
     related: ["blackpine-airfield", "night-survival", "headlamp"],
-    sources: [SRC.config27, SRC.playtest27],
-    aliases: ["generator", "gas can", "fuel", "gasoline", "power", "floodlights"],
-    gaps: ["The ranger station's own generator works separately and doesn't use fuel yet. No engine-running sound yet."],
+    sources: [SRC.config28, SRC.playtest28],
+    aliases: ["generator", "gas can", "jerry can", "fuel", "gasoline", "power", "floodlights", "refuel"],
+    gaps: ["No refuelling animation beyond the can tipping, and no engine-running sound yet. The pouring sound has not been reviewed by the developer."],
   },
 ];

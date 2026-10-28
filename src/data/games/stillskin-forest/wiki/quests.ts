@@ -34,7 +34,7 @@ export const quests: WikiEntry[] = [
         id: "next",
         heading: "What's next",
         blocks: [
-          { type: "p", text: "Inside are the [Signal Remote](@signal-remote) and one of [the four relics](@the-four-relics). Collect all four for [the Rite of Stillness](@the-rite-of-stillness)." },
+          { type: "p", text: "Inside are the [Freeze Device](@freeze-device) and one of [the four relics](@the-four-relics). Collect all four for [the Rite of Stillness](@the-rite-of-stillness)." },
         ],
       },
     ],
@@ -45,6 +45,7 @@ export const quests: WikiEntry[] = [
   {
     ...base,
     slug: "the-rite-of-stillness",
+    lastVerified: "2026-10-28",
     title: "The Rite of Stillness: Ritual Walkthrough",
     seoTitle: "Stillskin Forest Ritual Walkthrough: The Rite of Stillness",
     description:
@@ -62,7 +63,7 @@ export const quests: WikiEntry[] = [
           { type: "list", items: [
             "Collect [the four relics](@the-four-relics). They count for the whole squad, whoever carries them.",
             "Bring ammunition and healing. A [Shotgun](@shotgun) is ideal for the Brute.",
-            "If you have the [Signal Remote](@signal-remote), save it for the defence.",
+            "If you have the [Freeze Device](@freeze-device), save it for the defence: one shot into the doorway freezes a whole wave.",
             "Clear the cafeteria and close nearby [doors](@doors-and-building) first; consider nailing planks across entrances.",
           ] },
         ],
@@ -80,7 +81,8 @@ export const quests: WikiEntry[] = [
         heading: "The ending",
         spoiler: true,
         blocks: [
-          { type: "p", text: "Every infected drops and \"YOU WON · THE HOLLOW SLEEPS\" appears. The win and its Embers are yours straight away, but the run doesn't end: everyone gets [night-vision goggles](@headlamp) and the run carries on, harder (see [After you win](@how-to-play)). The words \"for now\" are deliberate: the other ending is below, in [the Heart of Stillskin](@the-heart-of-stillskin)." },
+          { type: "p", text: "Every infected drops and \"YOU WON · THE HOLLOW SLEEPS\" appears. The win and its Embers are yours straight away, but the run doesn't end: it carries on, harder (see [After you win](@how-to-play)). The words \"for now\" are deliberate: the other ending is below, in [the Heart of Stillskin](@the-heart-of-stillskin)." },
+          { type: "p", text: "**The reward.** As the last candle burns down a low swell rises, the centre of the circle starts to glow and green motes drift in along the floor. A pair of [night-vision goggles](@headlamp) rises slowly out of the ground and hangs there, turning. Walk up and press E (Square) to claim yours: each survivor gets their own pair, once per ritual, with a RITUAL COMPLETE · NIGHT VISION UNLOCKED card, and the HUD lamp indicator turns into NVG. Nobody is held in a cutscene; you can move the whole time." },
         ],
       },
     ],

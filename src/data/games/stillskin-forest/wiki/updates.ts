@@ -8,6 +8,59 @@ import { SRC, VERIFIED } from "./sources";
  */
 export const stillskinUpdates: GameUpdate[] = [
   {
+    id: "2026-10-28-loot-economy",
+    version: null,
+    date: "2026-10-28",
+    title: "A fairer loot economy, the Freeze Device, gun repairs and the ritual's goggles",
+    kind: "development-milestone",
+    newFeatures: [
+      "The Freeze Device replaces the Signal Remote: aim it and everything in the cone in front of you freezes (10 s, Brutes 6 s) and loses a quarter of its health. Recharges in 5 s, never wears out, and each survivor claims their own from the asylum's nurse station.",
+      "Gun Repair Kits: restore your most worn gun to full. They only pick up if you carry a gun.",
+      "The ritual's reward: night-vision goggles rise out of the circle when the Rite of Stillness ends, and each survivor claims their own pair.",
+      "The Hunting Rifle case opens first, then each survivor claims their own rifle (still one per survivor per server).",
+      "Three achievements: Marksman, Cold Snap and Night Eyes.",
+    ],
+    changes: [
+      "Loot is controlled server-wide: only part of the spawn spots hold something at a time, a bit more with more survivors, and empty spots are normal.",
+      "First Aid Kits: one per survivor in the whole server, and you can carry one. Using one makes a new one appear elsewhere a little later.",
+      "Lanterns never wear out, every one you pick up is another lantern, and up to four lie around the map (most often at the campground).",
+      "Gas Cans are now Jerry Cans: two exist at a time, only at the airfield, the hospital and the campground sheds. Pouring one into a generator uses it up and frees a replacement.",
+      "Refuelling needs the can in your hands and a 2.5-second hold. The ranger station's generator now needs fuel too.",
+      "Picking up a second copy of a melee weapon repairs yours to full and makes it 5% tougher, up to 125%.",
+      "Any melee weapon breaks a window pane in one hit (fists still take six).",
+      "Pistols and shotguns are easier to find in ordinary scavenging. How they shoot is unchanged.",
+      "Blackpine Airfield's crates and lockers are gone: its supplies lie on bunks, desks, benches and floors.",
+      "Airfield rare gear: each day one or two of the Plate Carrier, Military Helmet and Mini AK appear (never none, never all three), each on about half of all days.",
+    ],
+    fixes: [],
+    balance: [],
+    knownIssues: [
+      "The new freeze, ice, pouring and ritual sounds haven't been reviewed by the developer yet.",
+      "Tested solo in Studio; not yet with a full squad or on phones.",
+    ],
+    relatedEntries: ["freeze-device", "gun-repair-kit", "first-aid-kit", "lantern", "generators-and-jerry-cans", "blackpine-airfield", "the-rite-of-stillness", "durability-and-wear"],
+  },
+  {
+    id: "2026-10-27-squad-markers-base-trails",
+    version: null,
+    date: "2026-10-27",
+    title: "Squad markers and lit trails to the airfield",
+    kind: "development-milestone",
+    newFeatures: [
+      "Squad markers: every teammate has their own colour, an outline that shows through walls, a name and distance tag, and an arrow at the screen edge when they're off screen. A downed teammate's marker turns red.",
+      "Three lit trails lead from town to Blackpine Airfield: to the north checkpoint, and to two new cuts in the west fence by the barracks and Hangar 1.",
+    ],
+    changes: [
+      "The cliff between Stillwater and the airfield is gone. In its place is forest on level ground.",
+    ],
+    fixes: [],
+    balance: [],
+    knownIssues: [
+      "Squad markers were tested with two players in Studio, not on phones or with a controller.",
+    ],
+    relatedEntries: ["co-op-survival", "blackpine-airfield"],
+  },
+  {
     id: "2026-10-27-lobby-ghosts-ammo",
     version: null,
     date: "2026-10-27",
@@ -114,7 +167,7 @@ export const stillskinUpdates: GameUpdate[] = [
       "The Mini AK has no dedicated reload animation; generators have no engine sound yet.",
     ],
     relatedEntries: [
-      "blackpine-airfield", "soldier", "mini-ak", "military-armor", "night-survival", "generators-and-gas-cans",
+      "blackpine-airfield", "soldier", "mini-ak", "military-armor", "night-survival", "generators-and-jerry-cans",
       "day-night-cycle", "headlamp", "doors-and-building",
     ],
   },

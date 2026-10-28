@@ -421,15 +421,15 @@ export const mechanics: WikiEntry[] = [
   {
     ...base,
     slug: "shooting-through-cover",
-    lastVerified: "2026-10-27",
+    lastVerified: "2026-10-28",
     title: "Shooting Through Doors, Windows and Glass",
     seoTitle: "Stillskin Forest Wall-Bangs: Shooting Through Doors and Breaking Glass",
     description:
       "What bullets go through in Stillskin Forest: open doorways, glass that shatters, doors and thin wood for less damage, what stops a shot, and how to break windows.",
     question: "Can you shoot through doors and windows in Stillskin Forest?",
     answer:
-      "Yes. A bullet flies through open doorways, shatters window glass and carries on (90% damage), and punches through a closed door or a thin wooden board for about half damage, up to two in a row. Concrete, plaster, brick, metal, rock and thick walls stop it. Any bullet breaks a window pane outright; melee chips at it with the weapon's own damage, and the infected break one in eight blows.",
-    facts: [["Through glass", "90% damage, glass breaks"], ["Through a door or thin wood", "55% each, up to 2"], ["Stops a bullet", "Concrete, plaster, brick, metal, rock, thick walls"], ["Bullets to break a pane", "1"], ["Infected blows to break a pane", "8"]],
+      "Yes. A bullet flies through open doorways, shatters window glass and carries on (90% damage), and punches through a closed door or a thin wooden board for about half damage, up to two in a row. Concrete, plaster, brick, metal, rock and thick walls stop it. Any bullet or any melee weapon breaks a window pane in one hit, fists take six punches, and the infected break one in eight blows.",
+    facts: [["Through glass", "90% damage, glass breaks"], ["Through a door or thin wood", "55% each, up to 2"], ["Stops a bullet", "Concrete, plaster, brick, metal, rock, thick walls"], ["Bullets to break a pane", "1"], ["Melee weapon hits to break a pane", "1"], ["Infected blows to break a pane", "8"]],
     sections: [
       {
         id: "what-bullets-do",
@@ -450,11 +450,8 @@ export const mechanics: WikiEntry[] = [
         blocks: [
           { type: "table", caption: "Hits to break one window pane", head: ["With", "Hits"], rows: [
             ["Any bullet (every shotgun pellet too)", "1"],
-            ["[Machete](@machete)", "3"],
-            ["[Baseball Bat](@baseball-bat)", "4"],
-            ["[Hammer](@hammer)", "4"],
+            ["Any melee weapon: [Machete](@machete), [Baseball Bat](@baseball-bat), [Hammer](@hammer), [Crowbar](@crowbar)", "1"],
             ["[Fists](@fists)", "6"],
-            ["[Crowbar](@crowbar)", "6"],
             ["An infected", "8"],
           ] },
           { type: "p", text: "Breaking glass is loud: it draws infected from about 45 studs. A broken pane leaves the frame open, so you can climb through a window big enough to fit. Every window is whole again at the start of a new run." },
@@ -463,7 +460,7 @@ export const mechanics: WikiEntry[] = [
       },
     ],
     related: ["aiming-and-reloading", "doors-and-building", "weapons-compared", "fists", "detection-and-noise"],
-    sources: [SRC.playtest27],
+    sources: [SRC.playtest27, SRC.playtest28],
     aliases: ["wallbang", "wall bang", "shoot through doors", "glass", "break window", "windows", "penetration", "bullet through wall"],
   },
   {
@@ -642,21 +639,21 @@ export const mechanics: WikiEntry[] = [
   {
     ...base,
     slug: "durability-and-wear",
-    lastVerified: "2026-10-27",
+    lastVerified: "2026-10-28",
     title: "Durability and Wear",
     seoTitle: "Weapon Durability in Stillskin Forest: How Long Weapons Last",
     description:
-      "Every weapon and tool in Stillskin Forest wears out. Durability values for each item, what causes wear, and what happens when one breaks.",
+      "Weapons and tools in Stillskin Forest wear out. Durability values for each item, what causes wear, how to repair weapons, and what happens when one breaks.",
     question: "Do weapons break in Stillskin Forest?",
     answer:
-      "Yes. Every weapon and tool has durability. Each landed swing, shot, nailed plank or gadget use costs 1, as does a swing that hits a wall and each hit you take while holding the item. At zero the item breaks. A gun that breaks gives the rounds in its magazine back to your ammo reserve, so you never lose ammo with it. Picking up a less worn copy of a weapon or tool you already carry swaps its durability onto yours: you keep your own item, its rarity and its loaded rounds, and a found gun's rounds go into your reserve. A copy that is more worn than yours changes nothing about your item. Durability ranges from 12 (Signal Remote) to 220 (Lantern).",
+      "Yes. Every weapon and tool has durability. Each landed swing, shot, nailed plank or gadget use costs 1, as does a swing that hits a wall and each hit you take while holding the item. At zero the item breaks. A gun that breaks gives the rounds in its magazine back to your ammo reserve, so you never lose ammo with it. Melee weapons repair themselves the scavenger's way: pick up another copy of one you carry and yours goes back to full and gets 5% tougher (up to 125% of its original durability); the copy is used up. A gun is repaired with a [Gun Repair Kit](@gun-repair-kit), and finding a less worn copy of a gun you carry swaps its durability onto yours. Lanterns and the Freeze Device never wear out. Durability ranges from 70 (Shotgun) to 160 (Hammer, Pistol) before any repairs.",
     sections: [
       {
         id: "values",
         heading: "Durability by item",
         blocks: [
           { type: "table", caption: "Maximum durability", head: ["Item", "Durability"], rows: [
-            ["[Lantern](@lantern)", "220"], ["[Hammer](@hammer)", "160"], ["[Pistol](@pistol)", "160"], ["[Crowbar](@crowbar)", "140"], ["[Baseball Bat](@baseball-bat)", "120"], ["[Machete](@machete)", "110"], ["[Shotgun](@shotgun)", "70"], ["[Signal Remote](@signal-remote)", "12"],
+            ["[Hammer](@hammer)", "160"], ["[Pistol](@pistol)", "160"], ["[Crowbar](@crowbar)", "140"], ["[Baseball Bat](@baseball-bat)", "120"], ["[Machete](@machete)", "110"], ["[Shotgun](@shotgun)", "70"], ["[Lantern](@lantern)", "Never wears out"], ["[Freeze Device](@freeze-device)", "Never wears out"],
           ] },
         ],
       },
@@ -665,16 +662,28 @@ export const mechanics: WikiEntry[] = [
         heading: "What causes wear",
         blocks: [
           { type: "list", items: [
-            "A melee swing that lands, a shot, a nailed plank, a gadget pulse: 1 each.",
+            "A melee swing that lands, a shot, a nailed plank: 1 each.",
             "A melee swing that hits a wall: 1.",
-            "Getting hit while holding the item: 1 (and 1 to a lantern in your off hand).",
+            "Getting hit while holding the item: 1.",
           ] },
           { type: "p", text: "The hotbar strip shows durability and turns red below 25%. Dropped items keep their wear." },
         ],
       },
+      {
+        id: "repairs",
+        heading: "Repairing weapons",
+        blocks: [
+          { type: "table", caption: "How to repair", head: ["Weapon", "How", "Result"], rows: [
+            ["Melee (bat, machete, hammer, crowbar)", "Pick up another of the same weapon", "Full durability, +5% of the original each time, up to 125%"],
+            ["Guns", "Use a [Gun Repair Kit](@gun-repair-kit)", "Your most worn gun back to full"],
+            ["Guns", "Pick up a less worn copy of a gun you carry", "Yours takes the better durability; its rounds go to your reserve"],
+          ] },
+          { type: "p", text: "A repair never makes a better weapon worse. Once a melee weapon reaches 125% further copies still repair it to full." },
+        ],
+      },
     ],
-    related: ["weapons-compared", "inventory-and-hotbar"],
-    sources: [SRC.config],
+    related: ["weapons-compared", "inventory-and-hotbar", "gun-repair-kit"],
+    sources: [SRC.config, SRC.config28, SRC.playtest28],
     aliases: ["durability", "wear", "break", "weapon breaking"],
   },
 ];

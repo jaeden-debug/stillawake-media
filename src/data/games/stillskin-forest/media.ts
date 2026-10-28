@@ -130,7 +130,7 @@ export const stillskinMedia: MediaAsset[] = [
   asset("stillskin-forest-crowbar", "weapons", "crowbar", "Crowbar", "The Crowbar", "P2", "Same framing as the bat."),
   asset("stillskin-forest-pistol", "weapons", "pistol", "Pistol", "The Pistol", "P1", "First-person aimed down sights."),
   asset("stillskin-forest-shotgun", "weapons", "shotgun", "Shotgun", "The Shotgun", "P1", "First-person, two-handed."),
-  asset("stillskin-forest-signal-remote", "weapons", "signal-remote", "Signal Remote", "The Signal Remote with its red lights glowing", "P2", "Mid-pulse with frozen infected."),
+  asset("stillskin-forest-signal-remote", "weapons", "freeze-device", "Freeze Device", "The Freeze Device, a rewired remote with red lights", "P2", "Mid-shot with a frozen group."),
   asset("stillskin-forest-weapon-combat", "weapons", "weapons-compared", "Weapon combat", "A survivor fighting infected with a melee weapon", "P1", "Third-person mid-swing."),
   asset("stillskin-forest-weapon-inventory", "weapons", "inventory-and-hotbar", "Weapon inventory", "The backpack panel with weapons", "P2", "Backpack open. HUD allowed for this one."),
 

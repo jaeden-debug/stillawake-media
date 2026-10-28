@@ -6,6 +6,43 @@ const base = { category: "items", verification: "verified_live", lastVerified: V
 export const items: WikiEntry[] = [
   {
     ...base,
+    slug: "gun-repair-kit",
+    lastVerified: "2026-10-28",
+    title: "Gun Repair Kit",
+    seoTitle: "Gun Repair Kit in Stillskin Forest: How to Repair Guns",
+    description:
+      "The Gun Repair Kit in Stillskin Forest restores one gun to full durability. Where to find one, why you need a gun to pick it up, and which gun it repairs.",
+    question: "How do you repair a gun in Stillskin Forest?",
+    answer:
+      "Use a Gun Repair Kit. Select it and use it: after two seconds your most worn gun is back to full durability and the kit is used up. You can only pick a kit up while you carry a gun, and if all your guns are already in perfect condition the kit is kept.",
+    facts: [["Repairs", "One gun, to full"], ["Which gun", "Your most worn one"], ["Use time", "2 s"], ["Pick up", "Only while carrying a gun"], ["Rarity", "Rare"]],
+    sections: [
+      {
+        id: "using-it",
+        heading: "Using it",
+        blocks: [
+          { type: "list", items: [
+            "Select the kit and use it (click or R2; the button reads REPAIR). It works on the gun of yours that's most worn.",
+            "It never repairs more than one gun, and it's only used up once the repair is done. Switch away during the two seconds and nothing is lost.",
+            "If every gun you carry is already pristine, it tells you so and keeps the kit.",
+            "With no gun in your bag, a kit on the ground says \"You have no gun to repair\" and stays there.",
+          ] },
+        ],
+      },
+      {
+        id: "where-to-find",
+        heading: "Where to find it",
+        blocks: [
+          { type: "p", text: "Gun Repair Kits are uncommon. Look on the floors and benches of [Blackpine Airfield](@blackpine-airfield), in stashes, and occasionally in houses and the store." },
+        ],
+      },
+    ],
+    related: ["durability-and-wear", "pistol", "shotgun", "ammunition"],
+    sources: [SRC.items28, SRC.config28, SRC.playtest28],
+    aliases: ["repair kit", "gun repair", "repair gun", "fix gun", "weapon repair"],
+  },
+  {
+    ...base,
     slug: "food",
     title: "Food: Bag of Chips, Canned Beans and Energy Bar",
     seoTitle: "Food in Stillskin Forest: Chips, Canned Beans and Energy Bars",
@@ -43,25 +80,38 @@ export const items: WikiEntry[] = [
   {
     ...base,
     slug: "first-aid-kit",
+    lastVerified: "2026-10-28",
     title: "First Aid Kit",
     seoTitle: "First Aid Kit in Stillskin Forest: How Much It Heals",
     description:
       "The First Aid Kit in Stillskin Forest heals 75% of your health and takes 1.5 seconds to use. Where to look for one and when to use it.",
     question: "How much does a First Aid Kit heal in Stillskin Forest?",
     answer:
-      "A First Aid Kit heals 75% of your maximum health and takes 1.5 seconds to use. It is Rare, so it is worth saving for when food won't be enough.",
-    facts: [["Heals", "75%"], ["Use time", "1.5 s"], ["Rarity", "Rare"]],
+      "A First Aid Kit heals 75% of your maximum health and takes 1.5 seconds to use. They are deliberately scarce: there is only one per survivor in the whole server at a time, and you can carry just one. Save it for when food won't be enough.",
+    facts: [["Heals", "75%"], ["Use time", "1.5 s"], ["How many exist", "One per survivor in the server"], ["Carry limit", "1"], ["Rarity", "Rare"]],
     sections: [
       {
         id: "using-it",
         heading: "Using it",
         blocks: [
-          { type: "p", text: "Bandages and antiseptic. Select it and use it; the 1.5-second use time is three times longer than eating, so get out of reach first. [St. Agnes Hospital](@st-agnes-hospital) uses a medical-heavy loot table." },
+          { type: "p", text: "Bandages and antiseptic. Select it and use it; the 1.5-second use time is three times longer than eating, so get out of reach first." },
+        ],
+      },
+      {
+        id: "how-many",
+        heading: "How many there are",
+        blocks: [
+          { type: "list", items: [
+            "The server keeps one First Aid Kit per survivor: solo there is one, a squad of four has four. That counts kits lying around and kits in bags.",
+            "You can carry only one. Walk up to another while you have one and it stays where it is for a teammate.",
+            "Using a kit frees a new one. It appears somewhere else a little later, never right in front of anyone. Just picking one up doesn't make a new one.",
+            "[St. Agnes Hospital](@st-agnes-hospital) is the likeliest place to find one; houses, the store, the asylum and the airfield can hold one too.",
+          ] },
         ],
       },
     ],
     related: ["food", "health-and-healing", "st-agnes-hospital"],
-    sources: [SRC.items, SRC.playtest],
+    sources: [SRC.items, SRC.config28, SRC.playtest28],
     aliases: ["medkit", "med kit", "first aid", "bandage"],
   },
   {
@@ -117,7 +167,7 @@ export const items: WikiEntry[] = [
   {
     ...base,
     slug: "headlamp",
-    lastVerified: "2026-10-27",
+    lastVerified: "2026-10-28",
     title: "Headlamp",
     seoTitle: "Headlamp in Stillskin Forest: Range, Battery and Detection Trade-off",
     description:
@@ -154,7 +204,7 @@ export const items: WikiEntry[] = [
         id: "night-vision-goggles",
         heading: "Night-vision goggles",
         blocks: [
-          { type: "p", text: "Win a run ([the ritual](@the-rite-of-stillness) or [the Heart](@the-heart-of-stillskin)) and your headlamp is swapped for night-vision goggles for the rest of that run. They use the same button (F / D-pad down) and the same battery. Switched on, they throw no beam: the world turns bright green and you can see across the dark. In first person the view narrows a little, as if looking through the tubes. Teammates see the goggles glow green while they're on." },
+          { type: "p", text: "Night-vision goggles are the endgame prize. Complete [the Rite of Stillness](@the-rite-of-stillness) and a pair rises out of the ritual circle: walk up and press E (Square) to claim yours. Each survivor claims their own, once per ritual. Winning by killing [the Heart](@the-heart-of-stillskin) gives everyone goggles straight away. Either way they replace the headlamp for the rest of that run (your lamp, battery and spares are untouched and come back next run), and the HUD's lamp indicator turns into an NVG one. They use the same button (F / D-pad down) and the same battery. Switched on, they throw no beam: the world turns bright green and you can see across the dark. In first person the view narrows a little, as if looking through the tubes. Teammates see the goggles glow green while they're on." },
         ],
       },
       {
@@ -203,14 +253,15 @@ export const items: WikiEntry[] = [
   {
     ...base,
     slug: "lantern",
+    lastVerified: "2026-10-28",
     title: "Lantern",
     seoTitle: "Lantern in Stillskin Forest: Carrying, Placing and Lighting",
     description:
       "The kerosene Lantern in Stillskin Forest: carry it lit, clip it to your belt, or place up to four to light a room or base. Controls and ranges.",
     question: "How do you use the Lantern in Stillskin Forest?",
     answer:
-      "Press L to light or put out the Lantern. Carried, it lights 16 studs and moves your weapon to your left hand; press H to clip it to your belt (dimmer, but your weapon goes back to your right hand). With the Lantern selected, click to place it where you aim; a placed lantern lights 26 studs. Each player can place up to four.",
-    facts: [["Carried light", "16 studs"], ["Placed light", "26 studs"], ["Max placed", "4 per player"], ["Durability", "220"], ["Rarity", "Uncommon"]],
+      "Press L to light or put out the Lantern. Carried, it lights 16 studs and moves your weapon to your left hand; press H to clip it to your belt (dimmer, but your weapon goes back to your right hand). With the Lantern selected, click to place it where you aim; a placed lantern lights 26 studs. Lanterns never wear out, and you can carry several: each one you pick up is another lantern. Each player can place up to four.",
+    facts: [["Carried light", "16 studs"], ["Placed light", "26 studs"], ["Max placed", "4 per player"], ["Durability", "Never wears out"], ["In the world", "Up to 4 at a time"], ["Rarity", "Uncommon"]],
     sections: [
       {
         id: "carrying",
@@ -227,9 +278,16 @@ export const items: WikiEntry[] = [
           { type: "callout", tone: "tip", text: "Lanterns let you light a base without running your [headlamp](@headlamp) battery down." },
         ],
       },
+      {
+        id: "finding",
+        heading: "Finding lanterns",
+        blocks: [
+          { type: "p", text: "Lanterns are fairly common. Up to four lie around the map at a time (at least one per survivor, up to four), most often at the campground. When someone picks one up, another appears somewhere else a little later. Lanterns you drop or place don't count toward the four. Several lanterns share one bag slot." },
+        ],
+      },
     ],
     related: ["headlamp", "doors-and-building"],
-    sources: [SRC.items, SRC.playtest],
+    sources: [SRC.items, SRC.config28, SRC.playtest28],
     aliases: ["lamp", "kerosene lantern", "light source"],
   },
 ];

@@ -370,10 +370,11 @@ export const locations: WikiEntry[] = [
   {
     ...base,
     slug: "blackthorn-asylum",
+    lastVerified: "2026-10-28",
     title: "Blackthorn Asylum",
     seoTitle: "Blackthorn Asylum in Stillskin Forest: How to Get In and What's Inside",
     description:
-      "Blackthorn Asylum in Stillskin Forest: how to unlock it, its two floors, the 19 residents that wake, and where the relics and Signal Remote are.",
+      "Blackthorn Asylum in Stillskin Forest: how to unlock it, its two floors, the 19 residents, and where the relics, Freeze Device and Hunting Rifle are.",
     question: "How do you get into Blackthorn Asylum?",
     answer:
       "The asylum is locked until someone reads the Blackthorn Admission Ledger, a note in Memorial Park. That unlocks it for your whole team for the run: the doors swing open and the chains drop. The first time anyone sets foot on the grounds afterward, 19 residents wake.",
@@ -409,7 +410,8 @@ export const locations: WikiEntry[] = [
         spoiler: true,
         blocks: [
           { type: "list", items: [
-            "The [Signal Remote](@signal-remote), at the nurse station.",
+            "The [Freeze Device](@freeze-device), on the nurse-station counter: each survivor claims their own, once per server.",
+            "The Hunting Rifle case, in Dr. Vance's office: hold E to open it, then press E (Square) to claim your rifle. Each survivor gets one, once per server; losing it doesn't give another.",
             "[Dr. Vance's Ring](@dr-vances-ring), in his office upstairs.",
             "The ritual circle in the cafeteria, where [the Rite of Stillness](@the-rite-of-stillness) is performed.",
             "Two tapes: the Night Nurse and the Records Room.",

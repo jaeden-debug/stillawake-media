@@ -1,7 +1,7 @@
 {
   "game": "stillskin-forest",
   "source": "Exported from the published place (ReplicatedStorage.GameConfig, ServerScriptService.LootConfig, ServerStorage.Items) with fresh module copies",
-  "build": "Published 2026-10-27 07:16 UTC",
+  "build": "Published 2026-10-28 (loot economy update); values re-exported 2026-10-28 from the published place",
   "lastVerified": "2026-10-27",
   "values": {
     "airfield": {
@@ -20,159 +20,236 @@
     "items": {
       "Bag of Chips": {
         "Description": "Salty and stale. Still food.",
-        "ItemType": "Snack",
-        "Rarity": "Common"
+        "Rarity": "Common",
+        "EquipSound": "FoodPickup",
+        "UseTime": 0.6,
+        "HealPercent": 25,
+        "ItemType": "Snack"
       },
       "Baseball Bat": {
-        "Cooldown": 0.55,
-        "Damage": 25,
+        "Knockback": 30,
         "Description": "Solid wood, taped grip. Knocks them back.",
-        "ItemType": "Melee",
+        "PreviousCooldown": 0.8,
         "Range": 5.5,
-        "Rarity": "Common"
+        "Rarity": "Common",
+        "ItemType": "Melee",
+        "EquipSound": "MeleeEquip",
+        "HitSound": "BatHit",
+        "Cooldown": 0.55,
+        "Damage": 25
       },
       "Batteries": {
-        "Description": "A few AA batteries. Puts charge back in your headlamp the moment you pick them up.",
         "ItemType": "Upgrade",
-        "Rarity": "Common"
+        "Rarity": "Common",
+        "Description": "A few AA batteries. Puts charge back in your headlamp the moment you pick them up.",
+        "Upgrade": "Recharge"
       },
       "Canned Beans": {
         "Description": "Cold beans. Better than nothing.",
-        "ItemType": "Snack",
-        "Rarity": "Common"
+        "Rarity": "Common",
+        "EquipSound": "FoodPickup",
+        "UseTime": 0.6,
+        "HealPercent": 25,
+        "ItemType": "Snack"
       },
       "Crowbar": {
-        "Cooldown": 0.5,
-        "Damage": 18,
+        "Knockback": 20,
         "Description": "Pry bar. Two swings take a plank down and you keep the wood. Works on the infected in a pinch.",
-        "ItemType": "Melee",
+        "PreviousCooldown": 0.7,
         "Range": 5,
-        "Rarity": "Common"
+        "Rarity": "Common",
+        "Pry": true,
+        "ItemType": "Melee",
+        "EquipSound": "MeleeEquip",
+        "HitSound": "BatHit",
+        "Cooldown": 0.5,
+        "Damage": 18
       },
       "Energy Bar": {
         "Description": "Chewy, sweet, keeps you going.",
-        "ItemType": "Snack",
-        "Rarity": "Common"
+        "Rarity": "Common",
+        "EquipSound": "FoodPickup",
+        "UseTime": 0.6,
+        "HealPercent": 25,
+        "ItemType": "Snack"
       },
       "Extended Battery": {
         "Description": "A high-capacity battery pack for your headlamp: twice the light on a charge. Fitted on pickup.",
-        "ItemType": "Upgrade",
-        "Rarity": "Epic"
+        "Upgrade": "Capacity",
+        "Capacity": 600,
+        "Rarity": "Epic",
+        "ItemType": "Upgrade"
       },
       "First Aid Kit": {
+        "Rarity": "Rare",
         "Description": "Bandages and antiseptic. Patches you up.",
-        "ItemType": "Snack",
-        "Rarity": "Rare"
+        "UseSound": "Bandage",
+        "EquipSound": "FoodPickup",
+        "UseTime": 1.5,
+        "HealPercent": 75,
+        "ItemType": "Snack"
       },
-      "Gas Can": {
-        "Description": "A red jerry can, about a third full. Runs a generator for one whole night (hold E at a generator).",
-        "ItemType": "Fuel",
-        "Rarity": "Common"
+      "Freeze Device": {
+        "ConeAngle": 30,
+        "Description": "A rewired signal remote that throws a cone of killing cold. Aim and fire: every infected in front of you freezes (10 s, Brutes 6 s) and loses a quarter of its health. Recharges in 5 seconds. One per survivor.",
+        "FreezeTime": 10,
+        "Range": 42,
+        "DamagePercent": 25,
+        "BruteFreezeTime": 6,
+        "Rarity": "Legendary",
+        "Cooldown": 5,
+        "ItemType": "Gadget"
+      },
+      "Gun Repair Kit": {
+        "EquipSound": "MeleeEquip",
+        "Rarity": "Rare",
+        "Description": "Oil, springs and a cleaning rod. Use it to restore your most worn gun to pristine. Only picks up if you carry a gun.",
+        "ItemType": "Kit"
       },
       "Hammer": {
-        "Builder": true,
-        "Cooldown": 0.75,
-        "Damage": 32,
+        "Knockback": 48,
         "Description": "Heavy claw hammer. Slow, but it staggers what it hits and sends it flying. Builders will want one.",
-        "ItemType": "Melee",
+        "Builder": true,
+        "PreviousCooldown": 1,
         "Range": 5,
-        "Rarity": "Common"
+        "ClaudeNote": "ManualActivationOnly: only a quick tap swings (BuildController); a held press builds",
+        "Rarity": "Common",
+        "ItemType": "Melee",
+        "EquipSound": "MeleeEquip",
+        "HitSound": "BatHit",
+        "Cooldown": 0.75,
+        "Damage": 32
       },
       "Hunting Rifle": {
-        "AmmoType": "RifleAmmo",
-        "Cooldown": 1.25,
-        "Damage": 110,
         "Description": "Bolt-action hunting rifle with a scope. Uses Rifle Rounds. One per survivor, from Dr. Vance's office.",
-        "ItemType": "Gun",
-        "Loud": true,
-        "MagSize": 5,
-        "Pellets": 1,
         "Range": 450,
-        "Rarity": "Rare",
+        "ScopeFov": 18,
+        "Spread": 0.35,
+        "Damage": 110,
+        "BarrelLength": 3,
+        "ItemType": "Gun",
+        "AmmoType": "RifleAmmo",
+        "ReloadSound": "ShellInsert",
+        "Loud": true,
+        "ShellReload": true,
         "ReloadTime": 3,
-        "Spread": 0.35
+        "ShotSound": "ShotgunShot",
+        "Rarity": "Rare",
+        "EquipSound": "ShotgunEquip",
+        "Pellets": 1,
+        "Cooldown": 1.25,
+        "MagSize": 5
+      },
+      "Jerry Can": {
+        "EquipSound": "MeleeEquip",
+        "Rarity": "Common",
+        "Description": "A red jerry can of fuel. Hold it at a generator and hold E / Square to refuel: one can runs a generator for a whole night.",
+        "ItemType": "Fuel"
       },
       "LED Bulb": {
+        "HeadlampTier": 2,
         "Description": "A proper LED for your headlamp: brighter, wider, further. Fitted the moment you pick it up.",
-        "ItemType": "Upgrade",
-        "Rarity": "Rare"
+        "Upgrade": "Headlamp",
+        "Rarity": "Rare",
+        "ItemType": "Upgrade"
       },
       "Lantern": {
+        "Rarity": "Uncommon",
         "Description": "Kerosene camp lantern. Lights your way, or set it down (click) to light a room or a base. Pick it back up any time.",
+        "PlacedRange": 26,
+        "EquipSound": "HeadlampClick",
         "ItemType": "Lantern",
-        "Rarity": "Uncommon"
+        "LightRange": 16,
+        "Lit": false
       },
       "Machete": {
-        "Cooldown": 0.6,
-        "Damage": 40,
+        "Knockback": 22,
         "Description": "Rusty but sharp. Hits harder than a bat.",
-        "ItemType": "Melee",
+        "PreviousCooldown": 0.9,
         "Range": 5.5,
-        "Rarity": "Common"
+        "Rarity": "Common",
+        "ItemType": "Melee",
+        "EquipSound": "MeleeEquip",
+        "HitSound": "BladeHit",
+        "Cooldown": 0.6,
+        "Damage": 40
       },
       "Military Helmet": {
         "ArmorSlot": "Head",
         "Description": "Combat helmet. Hold it and press fire to wear it: takes 15% of every hit until it wears out. Only found at Blackpine Airfield.",
-        "ItemType": "Armor",
-        "Rarity": "Rare"
+        "EquipSound": "MeleeEquip",
+        "Rarity": "Rare",
+        "ItemType": "Armor"
       },
       "Mini AK": {
-        "AmmoType": "RifleAmmo",
-        "Automatic": true,
-        "Cooldown": 0.12,
-        "Damage": 26,
         "Description": "Compact AK-pattern carbine. Fully automatic, 20 rounds, uses Rifle Rounds. Loud. Very rare: only at Blackpine Airfield.",
-        "ItemType": "Gun",
-        "Loud": true,
-        "MagSize": 20,
-        "Pellets": 1,
+        "Automatic": true,
         "Range": 320,
-        "Rarity": "Rare",
+        "Spread": 1.4,
+        "Damage": 26,
+        "BarrelLength": 2.6,
+        "ItemType": "Gun",
+        "AmmoType": "RifleAmmo",
+        "Loud": true,
+        "ReloadSound": "PistolReload",
         "ReloadTime": 2.4,
-        "Spread": 1.4
+        "ShotSound": "ShotgunShot",
+        "Rarity": "Rare",
+        "EquipSound": "ShotgunEquip",
+        "Pellets": 1,
+        "Cooldown": 0.12,
+        "MagSize": 20
       },
       "Pistol": {
-        "AmmoType": "PistolAmmo",
-        "Cooldown": 0.22,
-        "Damage": 34,
+        "BarrelLength": 1.3,
+        "Spread": 1,
         "Description": "Reliable sidearm. Uses Pistol Ammo.",
-        "ItemType": "Gun",
-        "MagSize": 12,
-        "Pellets": 1,
-        "Range": 250,
+        "AmmoType": "PistolAmmo",
         "Rarity": "Common",
+        "PreviousCooldown": 0.35,
+        "Range": 250,
+        "MagSize": 12,
         "ReloadTime": 1.6,
-        "Spread": 1
+        "ReloadSound": "PistolReload",
+        "ShotSound": "PistolShot",
+        "Pellets": 1,
+        "EquipSound": "PistolEquip",
+        "ItemType": "Gun",
+        "Cooldown": 0.22,
+        "Damage": 34
       },
       "Plate Carrier": {
         "ArmorSlot": "Chest",
         "Description": "Military plate carrier. Hold it and press fire to wear it: takes 40% of every hit until it wears out. Only found at Blackpine Airfield.",
-        "ItemType": "Armor",
-        "Rarity": "Legendary"
+        "EquipSound": "MeleeEquip",
+        "Rarity": "Legendary",
+        "ItemType": "Armor"
       },
       "Shotgun": {
-        "AmmoType": "Shells",
-        "Cooldown": 0.8,
-        "Damage": 18,
         "Description": "Devastating up close. Uses Shells.",
-        "ItemType": "Gun",
-        "MagSize": 6,
-        "Pellets": 6,
+        "PreviousCooldown": 1,
         "Range": 70,
-        "Rarity": "Common",
+        "Spread": 6,
+        "Damage": 18,
+        "BarrelLength": 2.6,
+        "ItemType": "Gun",
+        "AmmoType": "Shells",
+        "MagSize": 6,
         "ReloadTime": 2.4,
-        "Spread": 6
-      },
-      "Signal Remote": {
-        "Cooldown": 30,
-        "Description": "A rewired TV remote. Press it near the infected: everything close by freezes for 5 seconds and takes damage. Recharges in 30 seconds.",
-        "ItemType": "Gadget",
-        "Rarity": "Legendary"
+        "ShellReload": true,
+        "ShotSound": "ShotgunShot",
+        "ReloadSound": "ShellInsert",
+        "EquipSound": "ShotgunEquip",
+        "Rarity": "Common",
+        "Cooldown": 0.8,
+        "Pellets": 6
       },
       "Tactical Reflector": {
+        "HeadlampTier": 3,
         "Description": "Military reflector housing. Turns your headlamp into a floodlight. Fitted the moment you pick it up.",
-        "ItemType": "Upgrade",
-        "Rarity": "Legendary"
+        "Upgrade": "Headlamp",
+        "Rarity": "Legendary",
+        "ItemType": "Upgrade"
       }
     },
     "ammoDrops": {
@@ -325,30 +402,20 @@
     },
     "generators": {
       "NoiseRadius": 45,
-      "SecondsPerCan": 300,
+      "RefuelHold": 2.5,
       "NoiseEvery": 8,
+      "SecondsPerCan": 300,
       "MaxFuel": 600
     },
     "military": {
       "Rares": [
-        {
-          "Chance": 0.12,
-          "Name": "Plate Carrier",
-          "Cap": 1
-        },
-        {
-          "Chance": 0.15,
-          "Name": "Military Helmet",
-          "Cap": 1
-        },
-        {
-          "Chance": 0.08,
-          "Name": "Mini AK",
-          "Cap": 1
-        }
+        "Plate Carrier",
+        "Military Helmet",
+        "Mini AK"
       ],
-      "PerExtraPlayer": 0.1,
-      "MaxPlayerBonus": 0.3
+      "MaxPerDay": 2,
+      "CandidateChance": 0.5,
+      "MinPerDay": 1
     },
     "nightHunt": {
       "Offset": [
@@ -360,6 +427,48 @@
       "Interval": 18,
       "MaxPerSurvivor": 8,
       "SectorSize": 160
+    },
+    "economy": {
+      "Medkits": {
+        "PerPlayer": 1,
+        "ReplaceDelay": [
+          25,
+          45
+        ],
+        "CarryLimit": 1
+      },
+      "JerryCans": {
+        "Total": 2,
+        "ReplaceDelay": [
+          30,
+          60
+        ],
+        "Sections": [
+          "Airfield",
+          "Hospital",
+          "CampSheds"
+        ]
+      },
+      "MeleeRepair": {
+        "CapShare": 1.25,
+        "BonusShare": 0.05
+      },
+      "FillShare": [
+        0.42,
+        0.5,
+        0.56,
+        0.62
+      ],
+      "AvoidRadius": 45,
+      "Lanterns": {
+        "CampWeight": 3,
+        "ReplaceDelay": [
+          40,
+          75
+        ],
+        "WorldCap": 4
+      },
+      "FillShareMax": 0.66
     }
   },
   "features": [
@@ -509,7 +618,7 @@
         "Engine sound (no asset yet)"
       ],
       "wiki": [
-        "generators-and-gas-cans"
+        "generators-and-jerry-cans"
       ]
     },
     {
@@ -545,6 +654,99 @@
       "verifiedBy": "Server reads MaxPerPlayer = inf",
       "wiki": [
         "doors-and-building"
+      ]
+    },
+    {
+      "id": "loot-economy",
+      "name": "Controlled loot economy (fill share, medkit/lantern/jerry-can caps)",
+      "category": "loot",
+      "status": "verified_live",
+      "verifiedBy": "Studio play test 2026-10-28: 56 of 134 floor spots filled for one survivor; 1 medkit (cap 1); 1 world lantern (cap 1); 2 jerry cans at a camp shed and the airfield; used medkit replaced 137 studs away; taken lantern replaced",
+      "wiki": [
+        "first-aid-kit",
+        "lantern",
+        "generators-and-jerry-cans"
+      ]
+    },
+    {
+      "id": "rare-gear-daily",
+      "name": "Airfield rare gear: one or two categories a day",
+      "category": "military",
+      "status": "verified_live",
+      "verifiedBy": "100,000-day simulation of the live selection: 0 / 50.1% / 49.9% / 0 days with 0/1/2/3 categories; each category ~50%; live run placed Mini AK and Plate Carrier on airfield floor spots",
+      "wiki": [
+        "blackpine-airfield"
+      ]
+    },
+    {
+      "id": "melee-repair",
+      "name": "Duplicate melee pickups repair and toughen",
+      "category": "weapons",
+      "status": "verified_live",
+      "verifiedBy": "Studio: Hammer 40/160 -> 168/168 on a duplicate; capped at 200 (125%) after 8 more",
+      "wiki": [
+        "durability-and-wear"
+      ]
+    },
+    {
+      "id": "melee-glass",
+      "name": "Melee weapons break a pane in one hit",
+      "category": "weapons",
+      "status": "verified_live",
+      "verifiedBy": "Studio: one Machete swing broke a House_Elm1 pane",
+      "wiki": [
+        "shooting-through-cover"
+      ]
+    },
+    {
+      "id": "gun-repair-kit",
+      "name": "Gun Repair Kit",
+      "category": "items",
+      "status": "verified_live",
+      "verifiedBy": "Studio: pickup refused without a gun, accepted with one; Pistol 30/160 -> 160/160, kit used up",
+      "wiki": [
+        "gun-repair-kit"
+      ]
+    },
+    {
+      "id": "generator-fuel",
+      "name": "Generators need a jerry can in hand (airfield and ranger station)",
+      "category": "generators",
+      "status": "verified_live",
+      "verifiedBy": "Studio: no start without fuel; can in bag refused; can in hand +300 s; ranger station lights on; no drain while stopped",
+      "wiki": [
+        "generators-and-jerry-cans"
+      ]
+    },
+    {
+      "id": "freeze-device",
+      "name": "Freeze Device",
+      "category": "weapons",
+      "status": "verified_live",
+      "verifiedBy": "Studio: one claim per player; cone hit 4 of 9 (in-cone, clear line); walls, behind, out-of-range untouched; 25% damage; walker thawed at 10.1 s, Brute 6.1 s; 24/100 walker killed",
+      "wiki": [
+        "freeze-device"
+      ]
+    },
+    {
+      "id": "rifle-claim",
+      "name": "Hunting Rifle case: one claim per player",
+      "category": "weapons",
+      "status": "verified_live",
+      "verifiedBy": "Studio: first claim gave the rifle and 5 rounds; second refused; refused again after the rifle was lost",
+      "wiki": [
+        "blackthorn-asylum"
+      ]
+    },
+    {
+      "id": "ritual-nvg",
+      "name": "Ritual reward: night-vision goggles rise from the circle",
+      "category": "quests",
+      "status": "verified_live",
+      "verifiedBy": "Studio: circle glow, goggles rose to 3.25 studs and bobbed/turned; claim set NVG and the HUD pill read NVG ON; second claim refused",
+      "wiki": [
+        "the-rite-of-stillness",
+        "headlamp"
       ]
     }
   ]

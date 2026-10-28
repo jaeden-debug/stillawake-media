@@ -1594,9 +1594,9 @@
       "id": "stillskin-forest-signal-remote",
       "filename": "stillskin-forest-signal-remote.webp",
       "gameId": "stillskin-forest",
-      "target": "signal-remote",
-      "description": "Signal Remote. Product shot of the in-game model on a dark wooden table, lit in Studio Play mode (no HUD).",
-      "alt": "The Signal Remote with its red lights glowing",
+      "target": "freeze-device",
+      "description": "Freeze Device (formerly the Signal Remote; same in-game model). Product shot on a dark wooden table, lit in Studio Play mode (no HUD).",
+      "alt": "The Freeze Device, a rewired remote with red lights",
       "use": "screenshot",
       "dimensions": {
         "width": 1600,

@@ -1067,9 +1067,9 @@
       "filename": "stillskin-forest-signal-remote.webp",
       "src": "/games/stillskin-forest/weapons/stillskin-forest-signal-remote.webp",
       "gameId": "stillskin-forest",
-      "target": "signal-remote",
-      "description": "Signal Remote. Product shot of the in-game model on a dark wooden table, lit in Studio Play mode (no HUD).",
-      "alt": "The Signal Remote with its red lights glowing",
+      "target": "freeze-device",
+      "description": "Freeze Device (formerly the Signal Remote; same in-game model). Product shot on a dark wooden table, lit in Studio Play mode (no HUD).",
+      "alt": "The Freeze Device, a rewired remote with red lights",
       "use": "screenshot",
       "dimensions": {
         "width": 1600,
@@ -1077,7 +1077,7 @@
       },
       "aspectRatio": "16:9",
       "priority": "P2",
-      "captureInstructions": "Mid-pulse with frozen infected.",
+      "captureInstructions": "Mid-shot with a frozen group.",
       "spoiler": false,
       "liveAvailability": "live",
       "status": "optimized"

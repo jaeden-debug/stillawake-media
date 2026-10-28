@@ -7,6 +7,7 @@ export const multiplayer: WikiEntry[] = [
   {
     ...base,
     slug: "co-op-survival",
+    lastVerified: "2026-10-28",
     title: "Co-op Survival: Revives, Pings and Sharing",
     seoTitle: "Stillskin Forest Co-op Guide: Revives, Pings and Giving Items",
     description:
@@ -15,6 +16,20 @@ export const multiplayer: WikiEntry[] = [
     answer:
       "Squads share one run. You revive downed teammates by holding E for three seconds, ping infected, loot or your position with T (X on controller) so the squad sees a marker for 8 seconds, and hold E on a teammate to give them your held item, or half your ammo if your hands are empty. Story progress such as the asylum unlock and relic count is shared.",
     sections: [
+      {
+        id: "squad-markers",
+        heading: "Finding your squad",
+        blocks: [
+          { type: "p", text: "Every teammate has a colour of their own, the same on everyone's screen, so you can always find each other:" },
+          { type: "list", items: [
+            "**Outline through walls:** a coloured outline on their body that shows through trees and buildings, filling in faintly when something blocks your view and fading when they're right beside you.",
+            "**Name tag:** their name and distance in metres above them, smaller the further away they are.",
+            "**Edge pointer:** when a teammate is off screen or behind you, an arrow at the edge of your screen points their way, with their name and distance.",
+            "**Downed:** a downed teammate's marker turns red and pulses, with DOWN next to their name.",
+          ] },
+          { type: "p", text: "Markers work across the map: in testing, the edge pointer led straight to a teammate 157 m away." },
+        ],
+      },
       {
         id: "revives",
         heading: "Revives",

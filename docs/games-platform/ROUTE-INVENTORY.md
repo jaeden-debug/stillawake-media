@@ -55,7 +55,8 @@ Projects whose canonical page lives elsewhere (cards link there, and `/our-work/
 | `/games/stillskin-forest/wiki/weapons/crowbar` | Crowbar |
 | `/games/stillskin-forest/wiki/weapons/pistol` | Pistol |
 | `/games/stillskin-forest/wiki/weapons/shotgun` | Shotgun |
-| `/games/stillskin-forest/wiki/weapons/signal-remote` | Signal Remote |
+| `/games/stillskin-forest/wiki/weapons/freeze-device` | Freeze Device |
+| `/games/stillskin-forest/wiki/items/gun-repair-kit` | Gun Repair Kit |
 | `/games/stillskin-forest/wiki/items/food` | Food: Bag of Chips, Canned Beans and Energy Bar |
 | `/games/stillskin-forest/wiki/items/first-aid-kit` | First Aid Kit |
 | `/games/stillskin-forest/wiki/items/ammunition` | Ammunition: Pistol Ammo, Shells and Rifle Rounds |
@@ -127,7 +128,7 @@ Projects whose canonical page lives elsewhere (cards link there, and `/our-work/
 | `/games/stillskin-forest/wiki/weapons/mini-ak` | Mini AK |
 | `/games/stillskin-forest/wiki/items/military-armor` | Military Armor: Plate Carrier and Helmet |
 | `/games/stillskin-forest/wiki/mechanics/night-survival` | Night Survival: Hunters, Wisps, Night Caches and Sleep |
-| `/games/stillskin-forest/wiki/mechanics/generators-and-gas-cans` | Generators and Gas Cans |
+| `/games/stillskin-forest/wiki/mechanics/generators-and-jerry-cans` | Generators and Jerry Cans |
 | `/games/risk-it` | RISK IT! landing page |
 | `/games/risk-it/wiki` | RISK IT! wiki home |
 | `/games/risk-it/wiki/getting-started` | Wiki category: Getting Started |

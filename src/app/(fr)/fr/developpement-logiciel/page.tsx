@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { ServiceJsonLd, FaqBlock, RelatedServices } from "@/components/service-page";
 
 export const metadata: Metadata = {
   title: "Développement logiciel sur mesure à Montréal",
   description:
+    metaDescription(
     "Développement de logiciels sur mesure à Montréal : SaaS, portails clients, tableaux de bord et applications mobiles. Trois produits réels documentés, portée écrite et prix fixe — sans appel de vente.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/fr/developpement-logiciel",
     languages: {
@@ -20,6 +24,7 @@ export const metadata: Metadata = {
     url: "https://stillawakemedia.com/fr/developpement-logiciel",
     type: "website",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

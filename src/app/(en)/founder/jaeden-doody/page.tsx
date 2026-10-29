@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 import { siteUrl } from "@/lib/data";
@@ -8,7 +9,9 @@ import { getAllPosts } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Jaeden Doody — Founder",
-  description: person.shortBio,
+  description: metaDescription(
+    person.shortBio,
+  ),
   alternates: {
     canonical: person.path,
     languages: {

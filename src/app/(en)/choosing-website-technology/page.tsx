@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 
 import { PageSchema } from "@/components/page-schema";
 import { TechStackGuide } from "@/components/tech-stack/guide";
@@ -46,7 +48,9 @@ const frUrl = `${siteUrl}${PATHS.fr}`;
  */
 export const metadata: Metadata = {
   title: EN.chrome.meta.title,
-  description: EN.chrome.meta.description,
+  description: metaDescription(
+    EN.chrome.meta.description,
+  ),
   alternates: {
     canonical: url,
     languages: { "en-CA": url, "fr-CA": frUrl, "x-default": url },
@@ -56,6 +60,7 @@ export const metadata: Metadata = {
     description: EN.chrome.meta.ogDescription,
     url,
     type: "article",
+    images: OG_IMAGES,
   },
 };
 

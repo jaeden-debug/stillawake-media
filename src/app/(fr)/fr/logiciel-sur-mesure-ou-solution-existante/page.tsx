@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 
 import { GuideBody } from "@/components/custom-software/guide-sections";
 import { PageSchema } from "@/components/page-schema";
@@ -30,7 +32,9 @@ const enUrl = `${siteUrl}${FR.otherPath}`;
  */
 export const metadata: Metadata = {
   title: FR.meta.title,
-  description: FR.meta.description,
+  description: metaDescription(
+    FR.meta.description,
+  ),
   alternates: {
     canonical: url,
     languages: { "fr-CA": url, "en-CA": enUrl, "x-default": enUrl },
@@ -41,6 +45,7 @@ export const metadata: Metadata = {
     url,
     type: "article",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
   twitter: {
     card: "summary_large_image",

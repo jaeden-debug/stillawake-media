@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 
 import { PageSchema } from "@/components/page-schema";
@@ -18,9 +19,11 @@ const frUrl = "https://stillawakemedia.com/fr/outils/calculateur-cout-projet";
  * them instead of trying to rank for them too.
  */
 export const metadata: Metadata = {
-  title: "Website & Project Cost Calculator — Real Canadian Pricing",
+  title: "Website & Project Cost Calculator (Canada)",
   description:
+    metaDescription(
     "Estimate what a website, online store, SEO programme or custom software project would actually cost in Canada. Free, no email, answers in plain language — built on StillAwake Media's real pricing, in CAD.",
+  ),
   alternates: {
     canonical: url,
     languages: { "en-CA": url, "fr-CA": frUrl, "x-default": url },

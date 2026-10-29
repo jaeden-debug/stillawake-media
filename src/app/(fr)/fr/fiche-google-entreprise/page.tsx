@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { siteUrl } from "@/lib/data";
 import { entityIds } from "@/data/entities";
@@ -10,7 +12,9 @@ const url = `${siteUrl}/fr/fiche-google-entreprise`;
 export const metadata: Metadata = {
   title: "Fiche Google Entreprise : le guide québécois (2026)",
   description:
+    metaDescription(
     "Comment optimiser votre fiche Google Entreprise (Google Business Profile) au Québec : catégories, photos, avis, publications et pièges à éviter — par un studio qui gère de vraies fiches, avec des positions locales mesurées.",
+  ),
   alternates: { canonical: "/fr/fiche-google-entreprise" },
   openGraph: {
     title: "Fiche Google Entreprise : le guide québécois",
@@ -18,6 +22,7 @@ export const metadata: Metadata = {
     url,
     type: "article",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { serviceNav, montrealNav } from "@/lib/data";
 import { AuditCta, MagazineInjection, RelatedReadingInjection, InternalLinks } from "@/components/site";
@@ -7,7 +8,9 @@ import { PageSchema } from "@/components/page-schema";
 export const metadata: Metadata = {
   title: "Services | Web, SEO, AI & Custom Software",
   description:
+    metaDescription(
     "Explore StillAwake Media services across web design, SEO, software development, branding, AI automation, Shopify, Framer, and digital strategy.",
+  ),
   alternates: {
     canonical: "/services",
   },

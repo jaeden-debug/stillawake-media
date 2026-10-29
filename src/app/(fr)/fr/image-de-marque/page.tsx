@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { ServiceJsonLd, FaqBlock, RelatedServices } from "@/components/service-page";
 import { ArticlesLies } from "@/components/articles-lies";
@@ -6,7 +8,9 @@ import { ArticlesLies } from "@/components/articles-lies";
 export const metadata: Metadata = {
   title: "Image de marque et identité visuelle | Studio de branding à Montréal",
   description:
+    metaDescription(
     "Création d'image de marque à Montréal : logo, identité visuelle, système de marque complet et déclinaison web. Quatre marques réelles en production comme preuve — pas un portfolio de maquettes.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/fr/image-de-marque",
     languages: {
@@ -21,6 +25,7 @@ export const metadata: Metadata = {
     url: "https://stillawakemedia.com/fr/image-de-marque",
     type: "website",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

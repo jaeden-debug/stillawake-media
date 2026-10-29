@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { ServiceJsonLd, FaqBlock, RelatedServices } from "@/components/service-page";
 import { ArticlesLies } from "@/components/articles-lies";
@@ -6,7 +8,9 @@ import { ArticlesLies } from "@/components/articles-lies";
 export const metadata: Metadata = {
   title: "Refonte de site web à Montréal | Sans perdre votre SEO",
   description:
+    metaDescription(
     "Refonte de site web depuis Montréal, partout au Québec : reconstruction moderne, référencement préservé, objectifs de conversion mesurables et prix fixe écrit avant de vous engager.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/fr/refonte-site-web",
     languages: {
@@ -21,6 +25,7 @@ export const metadata: Metadata = {
     url: "https://stillawakemedia.com/fr/refonte-site-web",
     type: "website",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
 import { PageSchema } from "@/components/page-schema";
 export const metadata: Metadata = {
-  title:
-    "Branding Services | Premium Brand Identity Systems",
+  title: "Branding | Brand Identity Systems",
 
-  description: "StillAwake Media builds premium brand identity systems, positioning, logo direction, typography, color strategy, messaging, and digital assets that help modern businesses stand out online.",
+  description: metaDescription(
+    "StillAwake Media builds premium brand identity systems, positioning, logo direction, typography, color strategy, messaging, and digital assets that help modern businesses stand out online.",
+  ),
 
   alternates: {
     canonical: "https://stillawakemedia.com/branding",

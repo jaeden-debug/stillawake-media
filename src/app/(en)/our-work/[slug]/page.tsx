@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { OG_IMAGES } from "@/lib/og-image";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -40,7 +42,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       url,
       type: "website",
-      ...(project.image ? { images: [{ url: project.image.src, width: project.image.width, height: project.image.height, alt: project.image.alt }] } : {}),
+      ...(project.image
+        ? { images: [{ url: project.image.src, width: project.image.width, height: project.image.height, alt: project.image.alt }] }
+        : { images: OG_IMAGES }),
     },
   };
 }
@@ -63,7 +67,7 @@ export default async function ProjectPage({ params }: Props) {
     "@type": "CreativeWork",
     "@id": `${url}#work`,
     name: project.title,
-    description: project.description.join(" "),
+    description: metaDescription(project.description.join(" ")),
     url,
     creator: { "@id": entityIds.organization },
     genre: categoryLabels,

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import { ContactForm, FR_LABELS } from "@/components/contact-form";
 import { getContentLayer } from "@/lib/cms/adapter";
 import { slot } from "@/lib/cms/layer";
@@ -9,7 +11,9 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Contact | Démarrer un projet",
   description:
+    metaDescription(
     "Contactez StillAwake Media pour démarrer un site web, un système SEO, une boutique Shopify, une image de marque ou un logiciel sur mesure. Réponse par courriel — sans appel obligatoire.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/fr/contact",
     languages: {
@@ -24,6 +28,7 @@ export const metadata: Metadata = {
     url: "https://stillawakemedia.com/fr/contact",
     type: "website",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

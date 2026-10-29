@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { RelatedServices } from "@/components/service-page";
 import { ArticlesLies } from "@/components/articles-lies";
@@ -6,9 +7,11 @@ import { ArticlesLies } from "@/components/articles-lies";
 const pageUrl = "https://stillawakemedia.com/fr/agence-web-montreal";
 
 export const metadata: Metadata = {
-  title: "Agence web Montréal | Création de site web sur mesure",
+  title: "Agence web Montréal | Sites sur mesure",
   description:
+    metaDescription(
     "Agence web à Montréal : création de site web sur mesure, refonte, boutiques Shopify et référencement, en français et en anglais. Prix affichés et études de cas mesurées.",
+  ),
   alternates: {
     canonical: pageUrl,
     languages: {

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { PageSchema } from "@/components/page-schema";
 import { FaqBlock, RelatedServices } from "@/components/service-page";
@@ -36,7 +38,9 @@ const CARE = RECURRING_BY_ID["website-care-plan"];
 export const metadata: Metadata = {
   title: "Propriété d’un site web : qui possède le domaine, le code et les comptes",
   description:
+    metaDescription(
     "Guide clair sur la propriété d’un site web quand vous engagez une agence : qui doit posséder le nom de domaine, l’hébergement, le code source, le CMS, la base de données, Stripe, Shopify et l’analytique — qui paie quoi, et ce qui arrive si vous cessez de travailler ensemble.",
+  ),
   alternates: {
     canonical: url,
     languages: {
@@ -52,6 +56,7 @@ export const metadata: Metadata = {
     url,
     type: "article",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
@@ -19,7 +21,9 @@ const url = "https://stillawakemedia.com/global";
 export const metadata: Metadata = {
   title: "Work With Us From Anywhere",
   description:
+    metaDescription(
     "StillAwake Media is a remote-first digital studio working with clients across the United States, Canada, Europe and beyond. Written scope, fixed price, no sales calls, no timezone friction.",
+  ),
   alternates: {
     canonical: url,
     languages: {
@@ -35,6 +39,7 @@ export const metadata: Metadata = {
       "A remote-first studio. Describe your project in writing, get a written scope and a fixed price back. No sales calls, no timezone friction.",
     url,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 
 import { PageSchema } from "@/components/page-schema";
@@ -21,7 +22,9 @@ const enUrl = "https://stillawakemedia.com/tools/project-cost-calculator";
 export const metadata: Metadata = {
   title: "Calculateur de coût de projet web — prix réels au Canada",
   description:
+    metaDescription(
     "Estimez ce que coûterait vraiment un site web, une boutique en ligne, un mandat SEO ou un logiciel sur mesure au Québec. Gratuit, sans courriel, en langage clair — basé sur les tarifs réels de StillAwake Media, en dollars canadiens.",
+  ),
   alternates: {
     canonical: url,
     languages: { "fr-CA": url, "en-CA": enUrl, "x-default": enUrl },

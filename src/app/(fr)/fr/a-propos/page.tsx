@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { Button, InternalLinks } from "@/components/site";
 import { siteUrl } from "@/lib/data";
@@ -10,7 +12,9 @@ const pageUrl = `${siteUrl}/fr/a-propos`;
 export const metadata: Metadata = {
   title: "À propos | Studio d'infrastructure numérique à Montréal",
   description:
+    metaDescription(
     "StillAwake Media est un studio montréalais qui bâtit des sites premium, des systèmes SEO, des marques, de l'automatisation IA, des expériences Shopify et des logiciels sur mesure.",
+  ),
   alternates: {
     canonical: "/fr/a-propos",
     languages: {
@@ -26,6 +30,7 @@ export const metadata: Metadata = {
     url: pageUrl,
     type: "website",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

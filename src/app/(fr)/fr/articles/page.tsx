@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { getAllPosts, type PostMeta } from "@/lib/content";
 import { getPublishedArticles } from "@/lib/cms/adapter";
@@ -40,7 +42,9 @@ async function getMergedPosts(): Promise<PostMeta[]> {
 export const metadata: Metadata = {
   title: "Articles | Stratégie web, SEO et IA pour le Québec",
   description:
+    metaDescription(
     "Guides pratiques sur le web, le référencement, l'IA et le commerce en ligne — écrits pour le marché québécois, pas traduits de l'anglais.",
+  ),
   alternates: { canonical: "/fr/articles" },
   openGraph: {
     title: "Articles",
@@ -49,6 +53,7 @@ export const metadata: Metadata = {
     url: pageUrl,
     type: "website",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

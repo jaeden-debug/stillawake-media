@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { ServiceJsonLd, PriceCard, FaqBlock, RelatedServices } from "@/components/service-page";
 import { EMERGENCY, RECURRING_BY_ID } from "@/lib/pricing/model";
@@ -23,9 +25,11 @@ const CARE = RECURRING_BY_ID["website-care-plan"];
 const HOSTING = RECURRING_BY_ID["managed-hosting"];
 
 export const metadata: Metadata = {
-  title: "Website Maintenance & Emergency Support | Montréal",
+  title: "Website Maintenance & Emergency Support",
   description:
+    metaDescription(
     `Website maintenance and same-day emergency support from StillAwake Media in Montréal, serving all of Canada remotely. Care plans from $${HOSTING.monthly} CAD per month and emergency fixes from $${Math.min(...tierPrices("custom_site"))} CAD, with published tier pricing.`,
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/website-maintenance",
     languages: {
@@ -39,6 +43,7 @@ export const metadata: Metadata = {
     description: "Care plans and same-day emergency website support with published pricing. Montréal-based, Canada-wide.",
     url: "https://stillawakemedia.com/website-maintenance",
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { ServiceJsonLd, FaqBlock, RelatedServices } from "@/components/service-page";
 
 export const metadata: Metadata = {
   title: "Shopify vs WooCommerce (2026): An Honest Canadian Comparison",
   description:
+    metaDescription(
     "Shopify vs WooCommerce for Canadian businesses in 2026: real cost of ownership, maintenance burden, SEO, bilingual stores, and who should genuinely pick which — from a studio that builds on Shopify.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/shopify-vs-woocommerce",
     languages: {
@@ -19,6 +23,7 @@ export const metadata: Metadata = {
     description: "An honest comparison from a studio that builds Shopify stores — including when WooCommerce wins.",
     url: "https://stillawakemedia.com/shopify-vs-woocommerce",
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

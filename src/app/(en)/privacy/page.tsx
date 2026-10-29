@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { PageSchema } from "@/components/page-schema";
 
@@ -19,7 +20,9 @@ const url = "https://stillawakemedia.com/privacy";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
+    metaDescription(
     "What StillAwake Media collects, which analytics tools run, which cookies are set, how consent works, and how to contact us about your data.",
+  ),
   alternates: {
     canonical: url,
     languages: {

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
@@ -6,7 +7,9 @@ import { PageSchema } from "@/components/page-schema";
 export const metadata: Metadata = {
   title: "Framer Development Services | Premium Framer Websites",
   description:
+    metaDescription(
     "StillAwake Media builds premium Framer websites that feel high-end, load fast, stay easy to edit, and support SEO, conversion, and long-term brand growth.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/framer-development",
     languages: {

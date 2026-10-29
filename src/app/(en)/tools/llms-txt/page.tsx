@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { PageSchema } from "@/components/page-schema";
 import { publishedGuides } from "@/data/llms-txt-guides";
@@ -21,7 +23,9 @@ const CHECKED = "2026-10-29";
 export const metadata: Metadata = {
   title: "What Is llms.txt? Real Examples, Limits and How to Add One",
   description:
+    metaDescription(
     "What an llms.txt file is, what it looks like on eight real sites (measured), what Google says it does and doesn't do, and how to add one without overselling it.",
+  ),
   alternates: { canonical: url },
   openGraph: {
     title: "What Is llms.txt? Real Examples, Limits and How to Add One",
@@ -30,6 +34,7 @@ export const metadata: Metadata = {
     url,
     type: "article",
     modifiedTime: CHECKED,
+    images: OG_IMAGES,
   },
 };
 

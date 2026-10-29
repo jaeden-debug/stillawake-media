@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 import { siteUrl } from "@/lib/data";
@@ -9,7 +11,9 @@ const pageUrl = `${siteUrl}/fr/etudes-de-cas`;
 export const metadata: Metadata = {
   title: "Études de cas | Comment nous bâtissons nos projets",
   description:
+    metaDescription(
     "Décortiqués de projets StillAwake Media — le mandat, l'architecture des pages, la structure SEO et les décisions de design derrière chaque build.",
+  ),
   alternates: {
     canonical: "/fr/etudes-de-cas",
     languages: {
@@ -25,6 +29,7 @@ export const metadata: Metadata = {
     url: pageUrl,
     type: "website",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

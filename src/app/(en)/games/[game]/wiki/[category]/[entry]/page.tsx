@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { OG_IMAGES } from "@/lib/og-image";
+import { metaDescription } from "@/lib/meta-description";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -65,7 +67,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     // Entry titles are written in full, so they skip the site suffix.
     title: { absolute: title },
-    description: entry.description,
+    description: metaDescription(entry.description),
     authors: articleAuthors(jaedenDoody.name),
     alternates: { canonical: entryPath(game, entry) },
     openGraph: {
@@ -74,7 +76,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       type: "article",
       modifiedTime: entry.lastVerified,
-      ...(hasImage(image) && !image.spoiler ? { images: [{ url: image.src, alt: image.alt }] } : {}),
+      ...(hasImage(image) && !image.spoiler
+        ? { images: [{ url: image.src, alt: image.alt }] }
+        // Falls back to the site card rather than nothing. A spoiler image or a
+        // missing one left 57 wiki pages with no og:image at all.
+        : { images: OG_IMAGES }),
     },
   };
 }

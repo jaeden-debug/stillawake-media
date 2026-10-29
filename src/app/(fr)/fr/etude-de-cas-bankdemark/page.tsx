@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import { ServiceJsonLd, RelatedServices } from "@/components/service-page";
 
 export const metadata: Metadata = {
   title: "Étude de cas : BankDeMark — no 1 sur Google avec un Lighthouse parfait",
   description:
+    metaDescription(
     "Comment StillAwake Media a bâti une plateforme financière menée par les calculatrices : architecture SEO de 91 URL, 13 calculatrices, positions no 1 sur Google et un score Lighthouse mesuré de 100/100/100.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/fr/etude-de-cas-bankdemark",
     languages: {
@@ -19,6 +23,7 @@ export const metadata: Metadata = {
     url: "https://stillawakemedia.com/fr/etude-de-cas-bankdemark",
     type: "article",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

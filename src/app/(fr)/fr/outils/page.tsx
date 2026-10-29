@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { PageSchema } from "@/components/page-schema";
 import { publishedGuides } from "@/data/llms-txt-guides";
@@ -11,7 +13,9 @@ const enUrl = `${siteUrl}/tools`;
 export const metadata: Metadata = {
   title: "Outils techniques gratuits pour le web et la recherche IA",
   description:
+    metaDescription(
     "Outils gratuits et guides d'implémentation de StillAwake Media — à commencer par un générateur llms.txt qui vous dit ce qu'un moteur de réponse n'arrive pas à établir sur votre entreprise. Sans inscription.",
+  ),
   alternates: {
     canonical: "/fr/outils",
     languages: { "fr-CA": url, "en-CA": enUrl, "x-default": enUrl },
@@ -23,6 +27,7 @@ export const metadata: Metadata = {
     url,
     type: "website",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

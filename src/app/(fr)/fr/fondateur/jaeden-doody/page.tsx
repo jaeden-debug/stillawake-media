@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { siteUrl } from "@/lib/data";
 import { entityIds, ventures } from "@/data/entities";
@@ -9,7 +11,9 @@ const frUrl = `${siteUrl}/fr/fondateur/jaeden-doody`;
 export const metadata: Metadata = {
   title: "Jaeden Doody — Fondateur",
   description:
+    metaDescription(
     "Jaeden Doody est le fondateur montréalais de StillAwake Media. Créateur et développeur, il bâtit des logiciels, des systèmes d'IA et des solutions d'affaires concrètes.",
+  ),
   alternates: {
     canonical: "/fr/fondateur/jaeden-doody",
     languages: {
@@ -25,6 +29,7 @@ export const metadata: Metadata = {
     url: frUrl,
     type: "profile",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

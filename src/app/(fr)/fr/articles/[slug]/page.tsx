@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { draftMode } from "next/headers";
 import { notFound, permanentRedirect, redirect } from "next/navigation";
@@ -39,7 +40,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cms = await getPublishedByTypeSlugConfirmed("article", "fr", slug);
   if (cms) {
     const title = cms.snapshot.seo?.title || cms.snapshot.title;
-    const description = cms.snapshot.seo?.description || cms.snapshot.excerpt || "";
+    // Narrowed for the SERP only. The excerpt and seo.description are sized
+    // for the page and the card, and ran past 300 characters on some articles.
+    const description = metaDescription(
+      cms.snapshot.seo?.description || cms.snapshot.excerpt || "",
+    );
     const url = `${siteUrl}/fr/articles/${cms.slug}`;
     const sibling = cms.translation_group_id
       ? await getSiblingOf(cms.translation_group_id, "en")
@@ -96,7 +101,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `${siteUrl}/fr/articles/${post.slug}`;
   return {
     title: post.title,
-    description: post.excerpt,
+    description: metaDescription(post.excerpt),
     authors: articleAuthors(post.author),
     // No `languages` block: these articles are written for Québec and most have
     // no English counterpart, so declaring a bogus en-CA alternate would be

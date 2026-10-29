@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { ServiceJsonLd, PriceCard } from "@/components/service-page";
 import { getContentLayer } from "@/lib/cms/adapter";
@@ -77,8 +79,10 @@ const MONTHLY_CTA: Record<string, [string, string]> = {
 };
 
 export const metadata: Metadata = {
-  title: "Tarifs — Prix affichés, sans appel de vente",
-  description: `Tarifs StillAwake Media : forfaits mensuels à partir de ${ENTRY_MONTHLY} $ CAD, services à prix fixe à partir de ${ENTRY_ONE_TIME} $, sites à partir de 1 800 $ CAD, un site d'entreprise complet de 2 750 $ à 5 750 $, boutiques en ligne à partir de 4 250 $, cadrage payant à partir de 1 800 $ et dépannage d'urgence de ${ENTRY_ONE_TIME} $ à ${EMERGENCY_CEILING} $. Publiés, en dollars canadiens.`,
+  title: "Tarifs — Prix affichés",
+  description: metaDescription(
+    `Tarifs StillAwake Media : forfaits mensuels à partir de ${ENTRY_MONTHLY} $ CAD, services à prix fixe à partir de ${ENTRY_ONE_TIME} $, sites à partir de 1 800 $ CAD, un site d'entreprise complet de 2 750 $ à 5 750 $, boutiques en ligne à partir de 4 250 $, cadrage payant à partir de 1 800 $ et dépannage d'urgence de ${ENTRY_ONE_TIME} $ à ${EMERGENCY_CEILING} $. Publiés, en dollars canadiens.`,
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/fr/tarifs",
     languages: {
@@ -93,6 +97,7 @@ export const metadata: Metadata = {
     url: "https://stillawakemedia.com/fr/tarifs",
     type: "website",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

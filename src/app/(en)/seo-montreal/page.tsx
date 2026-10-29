@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { PriceCard, ServiceJsonLd } from "@/components/service-page";
 import { RECURRING } from "@/lib/pricing/model";
@@ -29,8 +31,10 @@ const SEO_PLAN_ITEMS: Record<string, string[]> = {
 };
 
 export const metadata: Metadata = {
-  title: "SEO Montreal | SEO Services & Local SEO Agency",
-  description: `SEO services for Montréal businesses: technical SEO, local and map-pack visibility, content and AI search. Month-to-month plans from $${SEO_PLANS[0].monthly} CAD, price on the page.`,
+  title: "SEO Montreal | Local SEO Services",
+  description: metaDescription(
+    `SEO services for Montréal businesses: technical SEO, local and map-pack visibility, content and AI search. Month-to-month plans from $${SEO_PLANS[0].monthly} CAD, price on the page.`,
+  ),
   keywords: [
     "seo montreal",
     "seo services montreal",
@@ -48,6 +52,7 @@ export const metadata: Metadata = {
     url: "https://stillawakemedia.com/seo-montreal",
     siteName: "StillAwake Media",
     type: "website",
+    images: OG_IMAGES,
   },
   alternates: {
     canonical: "https://stillawakemedia.com/seo-montreal",

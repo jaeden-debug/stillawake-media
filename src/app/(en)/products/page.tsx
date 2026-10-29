@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { siteUrl } from "@/lib/data";
 import { ProductCard } from "@/components/product-card";
@@ -6,13 +8,15 @@ import { getProductCards, productsCollectionSchema } from "@/lib/products";
 
 const pageUrl = `${siteUrl}/products`;
 
-const TITLE = "Products | Software Built by StillAwake Media";
+const TITLE = "Products | Software We Build";
 const DESCRIPTION =
   "The software StillAwake Media builds and runs for itself — business intelligence, invoicing, and financial management tools used in production, not concepts.";
 
 export const metadata: Metadata = {
   title: TITLE,
-  description: DESCRIPTION,
+  description: metaDescription(
+    DESCRIPTION,
+  ),
   alternates: {
     canonical: "/products",
     languages: {
@@ -26,6 +30,7 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     url: pageUrl,
     type: "website",
+    images: OG_IMAGES,
   },
   twitter: {
     card: "summary_large_image",

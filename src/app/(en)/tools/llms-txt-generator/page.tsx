@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { PageSchema } from "@/components/page-schema";
 import { LlmsTxtTool } from "@/components/tools/llms-txt-tool";
@@ -9,7 +11,9 @@ const url = "https://stillawakemedia.com/tools/llms-txt-generator";
 export const metadata: Metadata = {
   title: "Free llms.txt Generator + AI Readiness Check",
   description:
+    metaDescription(
     "Generate an llms.txt file for your website and see what an answer engine can — and cannot — tell about your business. Free, no signup, no email required.",
+  ),
   alternates: {
     canonical: url,
     languages: {
@@ -24,6 +28,7 @@ export const metadata: Metadata = {
       "Generate llms.txt and find out what ChatGPT, Perplexity and Google AI Overviews can actually tell about your business.",
     url,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

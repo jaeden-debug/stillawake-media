@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { siteUrl } from "@/lib/data";
 import { entityIds } from "@/data/entities";
@@ -10,7 +12,9 @@ const url = `${siteUrl}/fr/audit-seo`;
 export const metadata: Metadata = {
   title: "Audit SEO : quoi vérifier, dans quel ordre (grille 2026)",
   description:
+    metaDescription(
     "Comment faire un audit SEO sérieux : la grille en quatre couches que nous utilisons — indexation, technique, contenu, crédibilité — avec les outils gratuits pour chaque vérification et les pièges des audits automatisés.",
+  ),
   alternates: { canonical: "/fr/audit-seo" },
   openGraph: {
     title: "Audit SEO : quoi vérifier, dans quel ordre",
@@ -18,6 +22,7 @@ export const metadata: Metadata = {
     url,
     type: "article",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

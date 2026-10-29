@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { ServiceJsonLd, FaqBlock, RelatedServices } from "@/components/service-page";
 
 export const metadata: Metadata = {
-  title: "How Much Does a Website Cost in Canada? (2026 Guide)",
+  title: "How Much Does a Website Cost in Canada?",
   description:
+    metaDescription(
     "Real Canadian website pricing for 2026: what template sites, custom business sites, ecommerce, and web apps actually cost, what drives price, and the published rates one Montréal studio charges.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/website-cost-canada",
     languages: {
@@ -19,6 +23,7 @@ export const metadata: Metadata = {
     description: "Honest 2026 cost ranges for Canadian websites — and the published prices behind them.",
     url: "https://stillawakemedia.com/website-cost-canada",
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

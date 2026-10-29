@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { ServiceJsonLd, FaqBlock, RelatedServices, PriceCard } from "@/components/service-page";
 import { ArticlesLies } from "@/components/articles-lies";
@@ -6,7 +8,9 @@ import { ArticlesLies } from "@/components/articles-lies";
 export const metadata: Metadata = {
   title: "Référencement local à Montréal | Être trouvé dans votre quartier",
   description:
+    metaDescription(
     "Référencement local à Montréal : fiche Google, pages locales, données structurées et avis. Inclus dans nos forfaits SEO à 600 $ et 850 $ CAD par mois — avec des positions locales mesurées comme preuve.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/fr/referencement-local",
     languages: {
@@ -21,6 +25,7 @@ export const metadata: Metadata = {
     url: "https://stillawakemedia.com/fr/referencement-local",
     type: "website",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

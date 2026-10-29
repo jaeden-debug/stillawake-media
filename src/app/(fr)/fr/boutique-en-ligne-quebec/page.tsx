@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { siteUrl } from "@/lib/data";
 import { entityIds } from "@/data/entities";
@@ -9,7 +11,9 @@ const url = `${siteUrl}/fr/boutique-en-ligne-quebec`;
 export const metadata: Metadata = {
   title: "Créer une boutique en ligne au Québec : le guide honnête (2026)",
   description:
+    metaDescription(
     "DIY, Shopify, sur mesure : les vraies options pour créer une boutique en ligne au Québec, ce que chacune coûte, et les leçons d'un studio qui opère sa propre boutique — avec un taux de clients récurrents mesuré à 27,8 %.",
+  ),
   alternates: { canonical: "/fr/boutique-en-ligne-quebec" },
   openGraph: {
     title: "Créer une boutique en ligne au Québec : le guide honnête",
@@ -17,6 +21,7 @@ export const metadata: Metadata = {
     url,
     type: "article",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

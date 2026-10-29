@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import { ServiceJsonLd, RelatedServices } from "@/components/service-page";
 
 export const metadata: Metadata = {
   title: "Case Study: BankDeMark — #1 Rankings with a Perfect Lighthouse Score",
   description:
+    metaDescription(
     "How StillAwake Media built a calculator-led finance platform: a 90+ URL SEO architecture, 13 interactive calculators, #1 Google positions, and a measured 100/100/100 Lighthouse score.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/work/bankdemark",
     languages: {
@@ -18,6 +22,7 @@ export const metadata: Metadata = {
     description: "Calculator-led SEO architecture: #1 rankings and a perfect measured Lighthouse score.",
     url: "https://stillawakemedia.com/work/bankdemark",
     type: "article",
+    images: OG_IMAGES,
   },
 };
 

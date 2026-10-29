@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 
 /**
@@ -18,7 +19,9 @@ export const metadata: Metadata = {
   // would double it, which is the exact bug 3db8c04 cleaned out of 40 titles.
   title: "Project Received",
   description:
+    metaDescription(
     "Your project details have been received. StillAwake Media will review your submission and follow up with the next steps.",
+  ),
   robots: {
     index: false,
     follow: false,

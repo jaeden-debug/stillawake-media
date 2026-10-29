@@ -41,6 +41,15 @@ export type ComparisonGuide = {
   groups: { label: string; min?: number; max?: number }[];
   keywords: string[];
   games: GuideGame[];
+  /**
+   * Optional grouping of the games by how a group plays them. When present,
+   * "The games" renders section by section, in this order. Every game must
+   * appear in exactly one section (enforced in games.test.ts).
+   */
+  sections?: { id: string; heading: string; intro: string; games: number[] }[];
+  /** First-hand notes from building our own game in the genre. */
+  experience?: { heading: string; intro: string; points: { title: string; body: string }[] };
+  faqs?: { q: string; a: string }[];
 };
 
 export function robloxUrl(g: GuideGame) {

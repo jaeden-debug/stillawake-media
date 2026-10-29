@@ -1,7 +1,7 @@
 ---
 title: "Generative Engine Optimization (GEO) and AEO: The Complete Guide"
 date: "2026-08-12"
-updated: "2026-08-14"
+updated: "2026-10-29"
 excerpt: "GEO and AEO are the practice of making your business visible and citable inside AI-generated answers — ChatGPT, Perplexity, Gemini, and Google's AI Overviews. This guide defines both terms, explains how generative engines choose their sources, and documents the exact playbook we run on our own sites, with measured results."
 category: "AI Search"
 featured: true
@@ -70,7 +70,7 @@ Here is the concrete checklist, in the order we implement it for ourselves and c
 
 ### Extractability layer
 
-- **llms.txt** — a machine-readable summary of who you are, what you sell, at what price, with links. Ours is at [stillawakemedia.com/llms.txt](/llms.txt). When we reformatted it with proper markdown links, our measured agentic-browsing audit score went from 67 to 100 — that's Chrome's Lighthouse audit of how well AI agents can navigate a site, run August 12, 2026.
+- **llms.txt** — a machine-readable summary of who you are, what you sell, at what price, with links. Ours is at [stillawakemedia.com/llms.txt](/llms.txt). When we reformatted it with proper markdown links, our measured agentic-browsing audit score went from 67 to 100 — that's Chrome's Lighthouse audit of how well AI agents can navigate a site, run August 12, 2026. It is not a ranking factor: Google said in June 2026 that Search doesn't need llms.txt, and no assistant has committed to reading it. Our guide to [what llms.txt is](/tools/llms-txt) measures eight real files and covers its limits.
 - Published pricing wherever the business model allows it. This is the single most-cited commercial fact.
 - Direct-answer blocks: every service page opens with a bolded one-paragraph answer to its core question.
 - FAQ sections answering real questions in self-contained paragraphs that make sense quoted out of context.
@@ -114,7 +114,7 @@ Honest answer: measurement is immature. What we actually track:
 
 ## Where to start
 
-If you do only three things: publish an llms.txt with your real services and prices, add a direct-answer paragraph to the top of every commercial page, and fix your entity graph so every page agrees about who you are. Those three moves cover most of the distance, and they're all verifiable.
+If you do only three things: publish an llms.txt with your real services and prices, add a direct-answer paragraph to the top of every commercial page, and fix your entity graph so every page agrees about who you are. Those three moves cover most of what you control, and they're all verifiable. None of them guarantees an assistant will cite you.
 
 For the first one, we publish a [free llms.txt generator](/tools/llms-txt-generator) that also reports which business facts an answer engine cannot find on your site — the gaps matter more than the file. If you want the file itself on a specific stack, we keep verified implementation notes for [Shopify](/tools/llms-txt/shopify), [Next.js](/tools/llms-txt/nextjs) and [WordPress](/tools/llms-txt/wordpress), including the platform-specific behaviour that generic guides get wrong.
 

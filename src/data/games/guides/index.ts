@@ -1,5 +1,5 @@
 import type { ComparisonGuide } from "./types";
-import { survivalHorrorGuide } from "./roblox-survival-horror";
+import { friendsGuide } from "./scary-roblox-games-with-friends";
 import { minigameGuide } from "./roblox-minigame";
 
-export const comparisonGuides: ComparisonGuide[] = [survivalHorrorGuide, minigameGuide];
+export const comparisonGuides: ComparisonGuide[] = [friendsGuide, minigameGuide];

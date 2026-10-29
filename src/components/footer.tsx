@@ -30,6 +30,10 @@ const montreal = [
 const resources = [
   ["StillAwake Times", "/stillawake-times"],
   ["Free tools", "/tools"],
+  ["What is llms.txt?", "/tools/llms-txt"],
+  ["Schema markup generator", "/tools/schema-markup-generator"],
+  ["Games", "/games"],
+  ["Scary Roblox games with friends", "/games/guides/scary-roblox-games-with-friends"],
   ["Website ownership", "/website-ownership"],
   ["Do I need custom software?", "/do-i-need-custom-software"],
   ["Products", "/products"],

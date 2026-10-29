@@ -24,7 +24,7 @@ Related generated docs (kept current by `src/lib/game-docs.test.ts`):
 | **SEO** | Metadata, canonicals, OG, JSON-LD (VideoGame, CollectionPage, ItemList, Article, BreadcrumbList, FAQPage on the FAQ only), sitemap entries, redirects, llms.txt links. |
 | **Analytics** | New GA4 events (section 7). |
 | **French portfolio** (`/fr/realisations`) | Rebuilt on the same shelf design with French copy (`projects-fr.ts`). French cards link to French case studies where they exist, otherwise to the live site, and English-only pages are marked with hreflang. The old iframe `PortfolioBrowser` component was removed. |
-| **Genre guide** (`/games/guides/roblox-survival-horror-games`) | Eight Roblox survival-horror games compared, with dated numbers from Roblox's public API. Not a ranking, and the Stillskin Forest disclosure is on the page. Data: `src/data/games/guides/roblox-survival-horror.ts`. |
+| **Genre guide** (`/games/guides/scary-roblox-games-with-friends`) | Fifteen scary Roblox games for groups (it absorbed the survival-horror guide on 2026-10-29), grouped by how you play together, with dated numbers from Roblox's public API. Not a ranking, and the Stillskin Forest disclosure is on the page. Data: `src/data/games/guides/scary-roblox-games-with-friends.ts`. |
 
 **Data architecture.** No database was added. Everything is typed content files, which the project already used:
 

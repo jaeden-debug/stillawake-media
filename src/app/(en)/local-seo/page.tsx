@@ -44,7 +44,12 @@ const systems = [
   },
 ];
 
-const articles = [
+const articles: { href: string; title: string; kicker?: string }[] = [
+  {
+    href: "/tools/schema-markup-generator",
+    title: "LocalBusiness Schema Generator",
+    kicker: "Free tool",
+  },
   {
     href: "/stillawake-times/how-to-rank-higher-on-google-maps",
     title: "How to Rank Higher on Google Maps",
@@ -233,7 +238,7 @@ export default function LocalSEOPage() {
               >
 
                 <p className="text-xs uppercase tracking-[.3em] text-[#D71920]">
-                  Stillawake Times
+                  {article.kicker ?? "Stillawake Times"}
                 </p>
 
                 <h3 className="geist mt-5 text-3xl font-black tracking-[-0.06em]">

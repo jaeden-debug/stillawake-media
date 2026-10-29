@@ -139,7 +139,7 @@ export function routeInventoryMd(): string {
     "| URL | Page |",
     "|---|---|",
     "| `/games` | Games hub |",
-    "| `/games/guides/roblox-survival-horror-games` | Editorial guide: Roblox survival horror games |",
+    "| `/games/guides/scary-roblox-games-with-friends` | Editorial guide: scary Roblox games to play with friends (absorbed the survival-horror guide) |",
   ];
   for (const b of gameBundles) {
     out.push(`| \`${gamePath(b.game.slug)}\` | ${b.game.title} landing page |`);

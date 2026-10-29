@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { InternalLinks } from "@/components/site";
 import { entityIds } from "@/data/entities";
-import { robloxUrl, type ComparisonGuide } from "@/data/games/guides/types";
+import { robloxUrl, type ComparisonGuide, type GuideGame } from "@/data/games/guides/types";
 import { JsonLd, breadcrumbList, graph, type Crumb } from "@/lib/game-schema";
 import { absolute, getBundle, socialImage } from "@/lib/games";
 
@@ -159,39 +159,23 @@ export function ComparisonGuidePage({ guide }: { guide: ComparisonGuide }) {
         </section>
 
         <section aria-labelledby="games" className="mt-12">
-          <h2 id="games" className="geist text-2xl font-black tracking-[-.04em] md:text-3xl">The games</h2>
-          {guideGames.map((g) => (
-            <section key={g.universeId} aria-labelledby={anchor(g.name)} className="mt-8 scroll-mt-28 rounded-[1.6rem] border border-white/10 bg-[#0a0d0a] p-6 md:p-8">
-              <h3 id={anchor(g.name)} className="geist text-2xl font-black tracking-[-.04em]">{g.name}</h3>
-              <p className="mt-1 text-xs uppercase tracking-[.2em] text-[#7FA36B]">{g.style} · by {g.creator}</p>
-              <p className="mt-4 text-[1.0625rem] leading-8 text-[#cfc8c8]">{g.premise}</p>
-              <p className="mt-3 text-[1.0625rem] leading-8 text-[#cfc8c8]"><strong className="text-white">Good for:</strong> {g.goodFor}</p>
-              {g.warnings && <p className="mt-3 text-sm text-[#a9a0a0]">{g.warnings}</p>}
-              <dl className="mt-5 grid grid-cols-2 gap-3 text-sm sm:grid-cols-4">
-                {[
-                  ["Roblox genre", g.genre],
-                  ["Server size", String(g.maxPlayers)],
-                  ["Visits", compact(g.visits)],
-                  ["Created", g.created],
-                ].map(([k, v]) => (
-                  <div key={k}>
-                    <dt className="text-[11px] uppercase tracking-[.15em] text-[#8a8a8a]">{k}</dt>
-                    <dd className="mt-0.5 font-semibold text-white">{v}</dd>
-                  </div>
-                ))}
-              </dl>
-              <a
-                href={robloxUrl(g)}
-                target="_blank"
-                rel="noopener"
-                data-track="guide_outbound_click"
-                data-track-game={g.name}
-                className="mt-5 inline-flex rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10"
-              >
-                {g.name} on Roblox ↗
-              </a>
-            </section>
-          ))}
+          <h2 id="games" className="geist text-2xl font-black tracking-[-.04em] md:text-3xl">
+            {guide.sections ? "The games, by how you play together" : "The games"}
+          </h2>
+          {guide.sections ? (
+            guide.sections.map((s) => (
+              <section key={s.id} aria-labelledby={`sec-${s.id}`} className="mt-10">
+                <h3 id={`sec-${s.id}`} className="geist scroll-mt-28 text-xl font-black tracking-[-.03em] text-[#cfe3c2] md:text-2xl">{s.heading}</h3>
+                <p className="mt-3 text-[1.0625rem] leading-8 text-[#cfc8c8]">{s.intro}</p>
+                {s.games.map((id) => {
+                  const g = guideGames.find((x) => x.universeId === id);
+                  return g ? <GameCard key={id} g={g} level="h4" /> : null;
+                })}
+              </section>
+            ))
+          ) : (
+            guideGames.map((g) => <GameCard key={g.universeId} g={g} level="h3" />)
+          )}
         </section>
 
         <section aria-labelledby="friends" className="mt-12">
@@ -211,6 +195,40 @@ export function ComparisonGuidePage({ guide }: { guide: ComparisonGuide }) {
           ))}
         </section>
 
+        {guide.experience && (
+          <section aria-labelledby="experience" className="mt-12 rounded-[1.6rem] border border-[#7FA36B]/30 bg-[#7FA36B]/[.05] p-6 md:p-8">
+            <h2 id="experience" className="geist text-2xl font-black tracking-[-.04em] md:text-3xl">{guide.experience.heading}</h2>
+            <p className="mt-4 text-[1.0625rem] leading-8 text-[#cfc8c8]">{guide.experience.intro}</p>
+            <dl className="mt-6 grid gap-5">
+              {guide.experience.points.map((p) => (
+                <div key={p.title}>
+                  <dt className="font-bold text-white">{p.title}</dt>
+                  <dd className="mt-1 text-[1.0625rem] leading-8 text-[#cfc8c8]">{p.body}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-6 text-sm text-[#a9a0a0]">
+              Read how squad play works in the{" "}
+              <Link href={`/games/${guide.gameSlug}/wiki`} className="text-[#cfe3c2] underline decoration-[#7FA36B]/60 underline-offset-[3px]">Stillskin Forest wiki</Link>.
+              The game is in development and not publicly playable yet.
+            </p>
+          </section>
+        )}
+
+        {guide.faqs && (
+          <section aria-labelledby="faq" className="mt-12">
+            <h2 id="faq" className="geist text-2xl font-black tracking-[-.04em] md:text-3xl">Questions</h2>
+            <div className="mt-4 divide-y divide-white/10 border-y border-white/10">
+              {guide.faqs.map((f) => (
+                <div key={f.q} className="py-5">
+                  <h3 className="font-bold text-white">{f.q}</h3>
+                  <p className="mt-2 text-[1.0625rem] leading-8 text-[#cfc8c8]">{f.a}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         <footer className="mt-14 border-t border-white/10 pt-6 text-xs leading-6 text-[#8a8a8a]">
           Source: Roblox public game listings (games.roblox.com), read {SNAPSHOT_DATE}. Player counts change minute to minute; event names in titles are left out. Spotted something out of date?{" "}
           <Link href="/contact" className="text-[#C7B9B9] underline underline-offset-2">Tell us</Link>.
@@ -221,5 +239,41 @@ export function ComparisonGuidePage({ guide }: { guide: ComparisonGuide }) {
         <InternalLinks />
       </div>
     </main>
+  );
+}
+
+function GameCard({ g, level }: { g: GuideGame; level: "h3" | "h4" }) {
+  const H = level;
+  return (
+    <section aria-labelledby={anchor(g.name)} className="mt-8 scroll-mt-28 rounded-[1.6rem] border border-white/10 bg-[#0a0d0a] p-6 md:p-8">
+      <H id={anchor(g.name)} className="geist text-2xl font-black tracking-[-.04em]">{g.name}</H>
+      <p className="mt-1 text-xs uppercase tracking-[.2em] text-[#7FA36B]">{g.style} · by {g.creator}</p>
+      <p className="mt-4 text-[1.0625rem] leading-8 text-[#cfc8c8]">{g.premise}</p>
+      <p className="mt-3 text-[1.0625rem] leading-8 text-[#cfc8c8]"><strong className="text-white">Good for:</strong> {g.goodFor}</p>
+      {g.warnings && <p className="mt-3 text-sm text-[#a9a0a0]">{g.warnings}</p>}
+      <dl className="mt-5 grid grid-cols-2 gap-3 text-sm sm:grid-cols-4">
+        {[
+          ["Roblox genre", g.genre],
+          ["Server size", String(g.maxPlayers)],
+          ["Visits", compact(g.visits)],
+          ["Created", g.created],
+        ].map(([k, v]) => (
+          <div key={k}>
+            <dt className="text-[11px] uppercase tracking-[.15em] text-[#8a8a8a]">{k}</dt>
+            <dd className="mt-0.5 font-semibold text-white">{v}</dd>
+          </div>
+        ))}
+      </dl>
+      <a
+        href={robloxUrl(g)}
+        target="_blank"
+        rel="noopener"
+        data-track="guide_outbound_click"
+        data-track-game={g.name}
+        className="mt-5 inline-flex rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10"
+      >
+        {g.name} on Roblox ↗
+      </a>
+    </section>
   );
 }

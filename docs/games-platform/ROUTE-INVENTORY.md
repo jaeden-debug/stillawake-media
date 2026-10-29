@@ -27,7 +27,7 @@ Projects whose canonical page lives elsewhere (cards link there, and `/our-work/
 | URL | Page |
 |---|---|
 | `/games` | Games hub |
-| `/games/guides/roblox-survival-horror-games` | Editorial guide: Roblox survival horror games |
+| `/games/guides/scary-roblox-games-with-friends` | Editorial guide: scary Roblox games to play with friends (absorbed the survival-horror guide) |
 | `/games/stillskin-forest` | Stillskin Forest landing page |
 | `/games/stillskin-forest/wiki` | Stillskin Forest wiki home |
 | `/games/stillskin-forest/wiki/getting-started` | Wiki category: Getting Started |

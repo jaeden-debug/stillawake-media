@@ -21,7 +21,7 @@ AI-readable index: https://stillawakemedia.com/llms.txt · full text: https://st
 - https://stillawakemedia.com/games/stillskin-forest/wiki/getting-started/how-to-play
 - https://stillawakemedia.com/games/stillskin-forest/wiki/weapons/weapons-compared
 - https://stillawakemedia.com/games/stillskin-forest/wiki/enemies/enemy-comparison
-- https://stillawakemedia.com/games/guides/roblox-survival-horror-games
+- https://stillawakemedia.com/games/guides/scary-roblox-games-with-friends
 - https://stillawakemedia.com/fr/realisations
 
 ## Core pages (27)
@@ -77,7 +77,7 @@ AI-readable index: https://stillawakemedia.com/llms.txt · full text: https://st
 ## Games hub, Stillskin Forest and guides (3)
 
 - https://stillawakemedia.com/games
-- https://stillawakemedia.com/games/guides/roblox-survival-horror-games
+- https://stillawakemedia.com/games/guides/scary-roblox-games-with-friends
 - https://stillawakemedia.com/games/stillskin-forest
 
 ## Stillskin Forest wiki (90)

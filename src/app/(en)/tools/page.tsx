@@ -99,6 +99,22 @@ export default function ToolsPage() {
           </Link>
 
           <Link
+            href="/tools/seo-audit"
+            className="mt-5 block rounded-xl border border-white/10 bg-white/[0.03] p-7 transition hover:border-[#D71920]/50"
+          >
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#D71920]">Live</p>
+            <h3 className="geist mt-4 text-2xl font-black tracking-[-0.05em]">
+              SEO audit for one page
+            </h3>
+            <p className="mt-3 text-[#C7B9B9]">
+              Paste a URL and see what a crawler sees: the status and redirects, any noindex or robots.txt
+              block, the canonical, sitemap listing, title, headings and structured data. Each finding says
+              why it matters, and the page says plainly what only Search Console can tell you.
+            </p>
+            <p className="mt-4 text-sm text-[#8C8080]">Free · no signup · nothing stored →</p>
+          </Link>
+
+          <Link
             href="/tools/project-cost-calculator"
             className="mt-5 block rounded-xl border border-white/10 bg-white/[0.03] p-7 transition hover:border-[#D71920]/50"
           >
@@ -112,6 +128,22 @@ export default function ToolsPage() {
               you never have to guess whether you need Shopify, an API or a booking engine.
             </p>
             <p className="mt-4 text-sm text-[#8C8080]">Free · no signup · nothing stored →</p>
+          </Link>
+
+          <Link
+            href="/tools/app-development-cost-calculator"
+            className="mt-5 block rounded-xl border border-white/10 bg-white/[0.03] p-7 transition hover:border-[#D71920]/50"
+          >
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#D71920]">Live</p>
+            <h3 className="geist mt-4 text-2xl font-black tracking-[-0.05em]">
+              App development cost calculator
+            </h3>
+            <p className="mt-3 text-[#C7B9B9]">
+              The same pricing model, starting from the question that decides most of an app&apos;s cost: who
+              uses it. Internal tool, customer portal or public platform, with payments, accounts and
+              integrations priced as what they are.
+            </p>
+            <p className="mt-4 text-sm text-[#8C8080]">Free · no signup · figures in CAD →</p>
           </Link>
 
           <Link

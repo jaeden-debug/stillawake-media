@@ -30,7 +30,7 @@ describe("page schema registry", () => {
     // llms.txt explainer hub and the schema markup generator (2026-10-29).
     // An exact count is deliberate: it forces a conscious decision whenever a
     // route joins or leaves.
-    expect(entries.length).toBe(35);
+    expect(entries.length).toBe(37);
   });
 
   it.each(entries.map(([r]) => r))("%s produces a coherent graph", (route) => {

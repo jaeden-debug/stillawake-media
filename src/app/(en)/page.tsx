@@ -27,11 +27,13 @@ const RESOURCE_GROUPS: readonly (readonly [string, readonly (readonly [string, s
     ["What is llms.txt?", "/tools/llms-txt", "The format, eight real files measured, and what it can't do."],
     ["llms.txt generator", "/tools/llms-txt-generator", "Drafts the file and reports which facts about you an AI can't find."],
     ["Schema markup generator", "/tools/schema-markup-generator", "JSON-LD for seven types, validated as you type."],
+    ["Free SEO audit", "/tools/seo-audit", "What a crawler sees on any public page, in plain language."],
     ["Website cost calculator", "/tools/project-cost-calculator", "The pricing model we use to scope real projects, in CAD."],
   ]],
   ["Search & AI visibility", [
     ["What is generative engine optimization?", "/stillawake-times/what-is-generative-engine-optimization", "How AI answers choose sources, and what you can influence."],
-    ["Can ChatGPT recommend my business?", "/stillawake-times/can-chatgpt-recommend-my-business", "What decides whether an assistant names you."],
+    ["How to get recommended by ChatGPT", "/stillawake-times/can-chatgpt-recommend-my-business", "What decides whether an assistant names you."],
+    ["How to appear in Google AI Overviews", "/stillawake-times/how-to-appear-in-google-ai-overviews", "What Google documents, and what is guesswork."],
     ["Google Business Profile optimization", "/stillawake-times/google-business-profile-optimization", "Categories, descriptions, photos, posts and reviews."],
     ["How to rank higher on Google Maps", "/stillawake-times/how-to-rank-higher-on-google-maps", "Relevance, distance and prominence, in practice."],
     ["Why isn't my website ranking?", "/stillawake-times/why-is-my-website-not-ranking-on-google", "The nine-layer check we run on real sites, in order."],
@@ -39,6 +41,7 @@ const RESOURCE_GROUPS: readonly (readonly [string, readonly (readonly [string, s
   ["Games we make", [
     ["Scary Roblox games to play with friends", "/games/guides/scary-roblox-games-with-friends", "15 games grouped by how you play together, with real numbers."],
     ["Roblox minigame games compared", "/games/guides/roblox-minigame-games", "Party and ragdoll games, by server size."],
+    ["How to make a horror game in Roblox Studio", "/stillawake-times/how-to-make-a-horror-game-in-roblox-studio", "Lighting, sound and enemy AI, from building Stillskin Forest."],
     ["Stillskin Forest wiki", "/games/stillskin-forest/wiki", "Every weapon, enemy and place in our co-op survival-horror game."],
     ["All games", "/games", "Stillskin Forest and RISK IT! on Roblox."],
   ]],

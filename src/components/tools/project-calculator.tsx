@@ -271,10 +271,16 @@ function useCountUp(target: number) {
   return value;
 }
 
-export function ProjectCalculator({ locale }: { locale: Locale }) {
+/**
+ * `preset` pre-answers the opening questions for a landing page that already
+ * knows what the visitor wants (the app cost calculator presets the custom
+ * software goal). The flow starts at the first question the preset doesn't
+ * answer, and everything after that is the same engine and the same prices.
+ */
+export function ProjectCalculator({ locale, preset }: { locale: Locale; preset?: Answers }) {
   const T = UI[locale];
-  const [answers, setAnswers] = useState<Answers>({});
-  const [index, setIndex] = useState(0);
+  const [answers, setAnswers] = useState<Answers>(() => ({ ...preset }));
+  const [index, setIndex] = useState(() => (preset ? Object.keys(preset).length : 0));
   const [state, setState] = useState<"asking" | "loading" | "done" | "error">("asking");
   const [result, setResult] = useState<Result | null>(null);
   const started = useRef(false);
@@ -377,8 +383,8 @@ export function ProjectCalculator({ locale }: { locale: Locale }) {
   }
 
   function restart() {
-    setAnswers({});
-    setIndex(0);
+    setAnswers({ ...preset });
+    setIndex(preset ? Object.keys(preset).length : 0);
     setResult(null);
     started.current = false;
     setState("asking");

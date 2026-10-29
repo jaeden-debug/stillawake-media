@@ -170,6 +170,14 @@ export default function Page() {
             <Link href="/stillawake-times/shopify-seo-guide" className="text-white underline decoration-[#D71920] underline-offset-4">
               Shopify SEO guide
             </Link>
+            , what a store{" "}
+            <Link href="/stillawake-times/how-much-does-a-shopify-store-cost-canada" className="text-white underline decoration-[#D71920] underline-offset-4">
+              costs to build in Canada
+            </Link>
+            , and the{" "}
+            <Link href="/stillawake-times/how-to-build-a-shopify-store" className="text-white underline decoration-[#D71920] underline-offset-4">
+              step-by-step build guide
+            </Link>
             , or see how we structure builds in our{" "}
             <Link href="/work" className="text-white underline decoration-[#D71920] underline-offset-4">
               case studies

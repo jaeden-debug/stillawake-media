@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageSchema } from "@/components/page-schema";
 import { publishedGuides } from "@/data/llms-txt-guides";
 
+import { ProjectCta } from "@/components/project-cta";
 const url = "https://stillawakemedia.com/tools/llms-txt";
 const CHECKED = "2026-10-29";
 
@@ -327,6 +328,7 @@ Open Monday to Saturday, 7:00–19:00. Bilingual (English and French).
           </div>
         </section>
       </article>
+      <ProjectCta title="Want help being described accurately by AI assistants?" body="We do answer engine optimization for businesses: the pages, facts and entity data assistants rely on, plus the file. Tell us about your site, estimate the cost first, or read our published prices." />
     </main>
   );
 }

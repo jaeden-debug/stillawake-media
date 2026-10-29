@@ -4,6 +4,7 @@ import { PageSchema } from "@/components/page-schema";
 import { publishedGuides } from "@/data/llms-txt-guides";
 import { siteUrl } from "@/lib/data";
 
+import { ProjectCta } from "@/components/project-cta";
 const url = `${siteUrl}/fr/outils`;
 const enUrl = `${siteUrl}/tools`;
 
@@ -169,6 +170,7 @@ export default function OutilsPage() {
           </div>
         </div>
       </section>
+      <ProjectCta locale="fr" />
     </main>
   );
 }

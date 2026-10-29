@@ -261,9 +261,17 @@ export default async function ArticlePage({ params }: Props) {
                 <h2 className="geist max-w-3xl text-4xl font-black leading-[.95] tracking-[-0.06em] md:text-6xl">
                   Want this kind of strategy applied to your business?
                 </h2>
-                <Link href="https://stillawake.studio/start" className="mt-8 inline-flex rounded-full bg-black px-6 py-4 font-bold">
-                  Start Your Project →
-                </Link>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Link href="https://stillawake.studio/start" className="inline-flex rounded-full bg-black px-6 py-4 font-bold">
+                    Start Your Project →
+                  </Link>
+                  <Link href="/tools/project-cost-calculator" className="inline-flex rounded-full border border-white/40 px-6 py-4 font-bold transition hover:bg-white/10">
+                    Estimate the cost
+                  </Link>
+                  <Link href="/pricing" className="inline-flex rounded-full border border-white/40 px-6 py-4 font-bold transition hover:bg-white/10">
+                    See pricing
+                  </Link>
+                </div>
               </section>
             </div>
           </div>

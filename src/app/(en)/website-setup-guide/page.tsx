@@ -5,6 +5,7 @@ import { PageSchema } from "@/components/page-schema";
 import { EN } from "@/lib/website-setup/en";
 import { siteUrl } from "@/lib/data";
 
+import { ProjectCta } from "@/components/project-cta";
 const url = `${siteUrl}${EN.path}`;
 const frUrl = `${siteUrl}${EN.otherPath}`;
 
@@ -49,6 +50,7 @@ export default function WebsiteSetupGuidePage() {
     <main className="bg-black text-white">
       <PageSchema route={EN.path} />
       <GuideBody content={EN} />
+      <ProjectCta />
     </main>
   );
 }

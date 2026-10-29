@@ -98,6 +98,14 @@ Also in this release:
 - `/llms.txt` now puts the long tail (every project, wiki page and article) under `## Optional`, as the proposal intends. It was measured at 77 KB with 245 links and no Optional section.
 - Validator fix found in browser testing: a bad price no longer reports two errors.
 
+### Project CTAs (requested 2026-10-29, second release)
+
+- [x] "Need help getting started with your project?" band (`src/components/project-cta.tsx`). Three buttons: the Studio intake, the cost calculator and the pricing page; FR version links `/fr/...`. Added to:
+  - EN: the tools hub, the llms.txt guide (AEO-specific copy), the schema generator (structured-data copy), the llms.txt generator, the three llms.txt platform guides, the website setup guide, choosing website technology, and do I need custom software.
+  - FR: outils, the générateur llms.txt, the FR platform guides, guide-site-web-entreprise, choisir-technologie-site-web, and logiciel-sur-mesure-ou-solution-existante.
+- [x] Article "Next step" boxes (Times, CMS articles, FR articles) gain "Estimate the cost" and "See pricing" next to the existing start button.
+- Left out on purpose: the games guides and wiki. Readers there are players, and StillAwake doesn't sell game development, so an agency CTA would be off-intent.
+
 ## 4. Follow-ups (not in this release)
 
 - Rewrite or consolidate the 11 crawled-not-indexed articles.

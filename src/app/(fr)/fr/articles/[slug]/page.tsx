@@ -269,6 +269,9 @@ export default async function ArticleFr({ params }: Props) {
               <Link href="https://stillawake.studio/fr/demarrer" className="rounded-full bg-[#D71920] px-6 py-4 font-bold">
                 Démarrer un projet →
               </Link>
+              <Link href="/fr/outils/calculateur-cout-projet" className="rounded-full border border-white/10 px-6 py-4 font-bold text-[#C7B9B9] transition hover:text-white">
+                Estimer le coût →
+              </Link>
               <Link href="/fr/tarifs" className="rounded-full border border-white/10 px-6 py-4 font-bold text-[#C7B9B9] transition hover:text-white">
                 Voir les tarifs →
               </Link>

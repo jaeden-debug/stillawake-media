@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageSchema } from "@/components/page-schema";
 import { publishedGuides } from "@/data/llms-txt-guides";
 
+import { ProjectCta } from "@/components/project-cta";
 const url = "https://stillawakemedia.com/tools";
 
 export const metadata: Metadata = {
@@ -225,6 +226,7 @@ export default function ToolsPage() {
           </div>
         </section>
       ) : null}
+      <ProjectCta />
     </main>
   );
 }

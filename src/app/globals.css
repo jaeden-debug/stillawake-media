@@ -40,6 +40,35 @@ a{text-decoration:none}
 
 .articleProse{
   max-width:850px;
+  overflow-wrap:break-word;
+}
+
+/* Code samples scroll inside their own box instead of widening the page. */
+.articleProse pre{
+  margin-top:1.5rem;
+  max-width:100%;
+  overflow-x:auto;
+  padding:1rem 1.25rem;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:1rem;
+  background:rgba(255,255,255,.04);
+  font-size:.85rem;
+  line-height:1.6;
+}
+
+/* On phones a wide table scrolls sideways; on larger screens it keeps
+   filling the column like a normal table. */
+@media (max-width:640px){
+  .articleProse table{
+    display:block;
+    max-width:100%;
+    overflow-x:auto;
+  }
+}
+
+.articleProse pre code{
+  overflow-wrap:normal;
+  white-space:pre;
 }
 
 .articleProse h1{

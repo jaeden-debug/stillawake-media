@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageSchema } from "@/components/page-schema";
 import { LlmsTxtTool } from "@/components/tools/llms-txt-tool";
 
+import { ProjectCta } from "@/components/project-cta";
 const url = "https://stillawakemedia.com/tools/llms-txt-generator";
 
 export const metadata: Metadata = {
@@ -91,7 +92,7 @@ const GUIDE_LINKS = [
 const FAQS = [
   {
     q: "What is llms.txt?",
-    a: "A plain-text file at the root of your website that tells AI systems what your site is and which pages matter. It is to answer engines roughly what robots.txt is to crawlers: a short, machine-readable statement you write yourself, instead of leaving the summary to be inferred.",
+    a: "A plain-text file at the root of your website that tells AI systems what your site is and which pages matter: a short summary you write yourself, instead of leaving it to be inferred. Our guide to what llms.txt is covers the format, eight real files and what it can't do.",
   },
   {
     q: "Where do I put the file?",
@@ -99,7 +100,7 @@ const FAQS = [
   },
   {
     q: "Does llms.txt actually do anything yet?",
-    a: "It is a proposed convention, not a standard any engine is obliged to honour, and adoption is early. We say that plainly because most tools do not. The reason to publish one is that it costs almost nothing and it makes you decide what your own summary should say — and that exercise is worth more than the file.",
+    a: "It is a proposed convention, not a standard any engine is obliged to honour. Google said in June 2026 that Search doesn't need it and that it won't help or hurt rankings. We say that plainly because most tools do not. The reason to publish one is that it costs almost nothing and it makes you decide what your own summary should say — and that exercise is worth more than the file.",
   },
   {
     q: "Why does this tool show warnings instead of just generating a file?",
@@ -140,7 +141,8 @@ export default function LlmsTxtGeneratorPage() {
             and tells you which ones are missing.
           </p>
           <p className="mt-4 text-sm text-[#C7B9B9]">
-            Free. No signup, no email, nothing stored.
+            Free. No signup, no email, nothing stored. New to the format? Read{" "}
+            <Link href="/tools/llms-txt" className="underline hover:text-white">what llms.txt is and what it can&apos;t do</Link>.
           </p>
         </div>
       </section>
@@ -263,6 +265,7 @@ export default function LlmsTxtGeneratorPage() {
           </p>
         </div>
       </section>
+      <ProjectCta />
     </main>
   );
 }

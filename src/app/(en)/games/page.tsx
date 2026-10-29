@@ -50,6 +50,15 @@ const crumbs: Crumb[] = [
   { name: "Games", path: "/games" },
 ];
 
+/** Creator-facing tutorials. They live in the Times so they carry Article
+ *  schema and an author; the hub links them so players' pages and
+ *  developers' pages stay one hop apart. */
+const DEV_GUIDES = [
+  ["How to make a Roblox game", "/stillawake-times/how-to-make-a-roblox-game", "From concept and core loop to scripting, testing and publishing, with RISK IT! as the example."],
+  ["How to make a horror game in Roblox Studio", "/stillawake-times/how-to-make-a-horror-game-in-roblox-studio", "Atmosphere, sound, enemy perception and hiding systems, from building Stillskin Forest."],
+  ["How to fix lag in Roblox games", "/stillawake-times/how-to-fix-lag-in-roblox-studio", "Diagnose first, then fix draw calls, lighting, scripts, physics and replication."],
+] as const;
+
 export default function GamesHub() {
   const url = absolute("/games");
   return (
@@ -167,6 +176,26 @@ export default function GamesHub() {
               <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#7FA36B]">Roblox</p>
               <h3 className="geist mt-2 text-2xl font-black tracking-[-.04em]">{guide.title}</h3>
               <p className="mt-2 text-sm leading-6 text-[#C7B9B9]">{guide.blurb}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto mt-16 max-w-7xl px-4 sm:px-6" aria-labelledby="dev-guides">
+        <h2 id="dev-guides" className="geist text-3xl font-black tracking-[-.05em]">Make your own Roblox game</h2>
+        <p className="mt-3 max-w-3xl text-sm leading-6 text-[#C7B9B9]">
+          What we&apos;ve learned building these games, written up as practical guides for other creators.
+        </p>
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {DEV_GUIDES.map(([title, href, blurb]) => (
+            <Link
+              key={href}
+              href={href}
+              className="block rounded-[1.6rem] border border-white/10 bg-[#0a0d0a] p-6 transition hover:border-[#7FA36B]/50"
+            >
+              <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#7FA36B]">Roblox Studio</p>
+              <h3 className="geist mt-2 text-xl font-black tracking-[-.04em]">{title}</h3>
+              <p className="mt-2 text-sm leading-6 text-[#C7B9B9]">{blurb}</p>
             </Link>
           ))}
         </div>

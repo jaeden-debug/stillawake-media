@@ -29,7 +29,7 @@ const FAQ: [string, string][] = [
   ],
   [
     "Which is cheaper, Shopify or WooCommerce?",
-    "WooCommerce looks cheaper (free plugin) but isn't once you count hosting, premium plugins, security, and the maintenance hours it demands. Shopify's fees are visible up front (plans from about $50 CAD/month plus transaction costs). Over 2–3 years, a maintained WooCommerce store usually costs at least as much as Shopify — just less predictably.",
+    "WooCommerce looks cheaper (free plugin) but isn't once you count hosting, premium plugins, security, and the maintenance hours it demands. Shopify's fees are visible up front (as of October 2026, Basic is CA$49/month billed monthly or CA$37/month billed yearly, plus transaction costs). Over 2–3 years, a maintained WooCommerce store usually costs at least as much as Shopify — just less predictably.",
   ],
   [
     "Which is better for SEO?",

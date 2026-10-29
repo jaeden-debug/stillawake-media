@@ -150,7 +150,7 @@ export const minigameGuide: ComparisonGuide = {
     before: "Disclosure: StillAwake Media makes ",
     linkText: "RISK IT!",
     href: "/games/risk-it",
-    after: ", a minigame game of short challenges and ragdoll fails. It is left off this list because we will not rank our own game against the games we are recommending.",
+    after: ", a minigame game of short challenges and ragdoll fails. It is left off this list on purpose: we will never rank our own game against these.",
   },
   groups: [
     { label: "Big groups (20+ per server)", min: 20 },

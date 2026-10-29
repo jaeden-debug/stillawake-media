@@ -6,6 +6,7 @@ import { EN } from "@/lib/tech-stack/en";
 import { PATHS } from "@/lib/tech-stack/types";
 import { siteUrl } from "@/lib/data";
 
+import { ProjectCta } from "@/components/project-cta";
 const url = `${siteUrl}${PATHS.en}`;
 const frUrl = `${siteUrl}${PATHS.fr}`;
 
@@ -72,6 +73,7 @@ export default function ChoosingWebsiteTechnologyPage() {
           href: "/website-setup-guide",
         }}
       />
+      <ProjectCta />
     </main>
   );
 }

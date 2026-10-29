@@ -214,8 +214,8 @@ export default async function ArticleFr({ params }: Props) {
             </p>
           </header>
 
-          <div className="mt-16 grid gap-10 lg:grid-cols-[280px_1fr]">
-            <aside>
+          <div className="mt-16 grid gap-10 lg:grid-cols-[280px_minmax(0,1fr)]">
+            <aside className="min-w-0">
               <div className="rounded-[2rem] border border-white/10 bg-white/[.04] p-5 backdrop-blur-xl lg:sticky lg:top-28">
                 <p className="mb-4 text-xs uppercase tracking-[.3em] text-[#D71920]">Plan de l&apos;article</p>
                 <nav className="grid max-h-[340px] gap-3 overflow-y-auto pr-1">
@@ -233,7 +233,7 @@ export default async function ArticleFr({ params }: Props) {
             </aside>
 
             <div
-              className="article-body max-w-3xl"
+              className="article-body min-w-0 max-w-3xl"
               dangerouslySetInnerHTML={{ __html: post.html }}
             />
           </div>
@@ -268,6 +268,9 @@ export default async function ArticleFr({ params }: Props) {
             <div className="mt-10 flex flex-wrap gap-3">
               <Link href="https://stillawake.studio/fr/demarrer" className="rounded-full bg-[#D71920] px-6 py-4 font-bold">
                 Démarrer un projet →
+              </Link>
+              <Link href="/fr/outils/calculateur-cout-projet" className="rounded-full border border-white/10 px-6 py-4 font-bold text-[#C7B9B9] transition hover:text-white">
+                Estimer le coût →
               </Link>
               <Link href="/fr/tarifs" className="rounded-full border border-white/10 px-6 py-4 font-bold text-[#C7B9B9] transition hover:text-white">
                 Voir les tarifs →

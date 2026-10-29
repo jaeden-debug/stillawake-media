@@ -175,6 +175,15 @@ describe("share images for hub-level pages", () => {
     }
   });
 
+  it("a sectioned guide places every game in exactly one section", async () => {
+    const { comparisonGuides } = await import("@/data/games/guides");
+    for (const guide of comparisonGuides) {
+      if (!guide.sections) continue;
+      const placed = guide.sections.flatMap((s) => s.games).sort();
+      expect(placed, guide.id).toEqual(guide.games.map((g) => g.universeId).sort());
+    }
+  });
+
   it("every comparison guide names one of our games and uses its thumbnail", async () => {
     const { comparisonGuides } = await import("@/data/games/guides");
     const { guideMetadata } = await import("@/components/games/ComparisonGuidePage");

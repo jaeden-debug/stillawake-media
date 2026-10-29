@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageSchema } from "@/components/page-schema";
 import { publishedGuides } from "@/data/llms-txt-guides";
 
+import { ProjectCta } from "@/components/project-cta";
 const url = "https://stillawakemedia.com/tools";
 
 export const metadata: Metadata = {
@@ -81,6 +82,39 @@ export default function ToolsPage() {
           </Link>
 
           <Link
+            href="/tools/schema-markup-generator"
+            className="mt-5 block rounded-xl border border-white/10 bg-white/[0.03] p-7 transition hover:border-[#D71920]/50"
+          >
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#D71920]">Live</p>
+            <h3 className="geist mt-4 text-2xl font-black tracking-[-0.05em]">
+              Schema markup generator (JSON-LD)
+            </h3>
+            <p className="mt-3 text-[#C7B9B9]">
+              JSON-LD for a local business, organization, article, product, breadcrumbs, FAQ or person,
+              checked as you type against Google&apos;s required and recommended properties. It flags a
+              price with a currency symbol, a date in the wrong format or opening hours a parser can&apos;t
+              read, and says plainly what markup can&apos;t do.
+            </p>
+            <p className="mt-4 text-sm text-[#8C8080]">Free · runs in your browser · nothing sent →</p>
+          </Link>
+
+          <Link
+            href="/tools/seo-audit"
+            className="mt-5 block rounded-xl border border-white/10 bg-white/[0.03] p-7 transition hover:border-[#D71920]/50"
+          >
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#D71920]">Live</p>
+            <h3 className="geist mt-4 text-2xl font-black tracking-[-0.05em]">
+              SEO audit for one page
+            </h3>
+            <p className="mt-3 text-[#C7B9B9]">
+              Paste a URL and see what a crawler sees: the status and redirects, any noindex or robots.txt
+              block, the canonical, sitemap listing, title, headings and structured data. Each finding says
+              why it matters, and the page says plainly what only Search Console can tell you.
+            </p>
+            <p className="mt-4 text-sm text-[#8C8080]">Free · no signup · nothing stored →</p>
+          </Link>
+
+          <Link
             href="/tools/project-cost-calculator"
             className="mt-5 block rounded-xl border border-white/10 bg-white/[0.03] p-7 transition hover:border-[#D71920]/50"
           >
@@ -94,6 +128,22 @@ export default function ToolsPage() {
               you never have to guess whether you need Shopify, an API or a booking engine.
             </p>
             <p className="mt-4 text-sm text-[#8C8080]">Free · no signup · nothing stored →</p>
+          </Link>
+
+          <Link
+            href="/tools/app-development-cost-calculator"
+            className="mt-5 block rounded-xl border border-white/10 bg-white/[0.03] p-7 transition hover:border-[#D71920]/50"
+          >
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#D71920]">Live</p>
+            <h3 className="geist mt-4 text-2xl font-black tracking-[-0.05em]">
+              App development cost calculator
+            </h3>
+            <p className="mt-3 text-[#C7B9B9]">
+              The same pricing model, starting from the question that decides most of an app&apos;s cost: who
+              uses it. Internal tool, customer portal or public platform, with payments, accounts and
+              integrations priced as what they are.
+            </p>
+            <p className="mt-4 text-sm text-[#8C8080]">Free · no signup · figures in CAD →</p>
           </Link>
 
           <Link
@@ -163,7 +213,11 @@ export default function ToolsPage() {
             <p className="mt-3 text-[#C7B9B9]">
               How llms.txt actually works on specific platforms — verified against each platform&apos;s own
               documentation, with the version-specific behaviour that generic guides miss. Each carries the
-              date its facts were last checked.
+              date its facts were last checked. New to the format? Start with{" "}
+              <Link href="/tools/llms-txt" className="text-white underline underline-offset-2">
+                what llms.txt is, with eight real files measured
+              </Link>
+              .
             </p>
 
             <ul className="mt-8 space-y-4">
@@ -204,6 +258,7 @@ export default function ToolsPage() {
           </div>
         </section>
       ) : null}
+      <ProjectCta />
     </main>
   );
 }

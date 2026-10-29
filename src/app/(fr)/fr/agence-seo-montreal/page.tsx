@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { ServiceJsonLd, PriceCard, FaqBlock, RelatedServices } from "@/components/service-page";
 import { ArticlesLies } from "@/components/articles-lies";
@@ -32,8 +34,10 @@ const SEO_PLAN_ITEMS: Record<string, string[]> = {
 };
 
 export const metadata: Metadata = {
-  title: "Agence SEO Montréal | Référencement avec tarifs affichés",
-  description: `Agence SEO à Montréal : référencement technique, SEO local et optimisation IA avec tarifs affichés — forfaits de ${SEO_FLOOR} $ à ${SEO_CEILING} $ CAD par mois. Sans appel de vente obligatoire.`,
+  title: "Agence SEO Montréal | Tarifs affichés",
+  description: metaDescription(
+    `Agence SEO à Montréal : référencement technique, SEO local et optimisation IA avec tarifs affichés — forfaits de ${SEO_FLOOR} $ à ${SEO_CEILING} $ CAD par mois. Sans appel de vente obligatoire.`,
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/fr/agence-seo-montreal",
     languages: {
@@ -48,6 +52,7 @@ export const metadata: Metadata = {
     url: "https://stillawakemedia.com/fr/agence-seo-montreal",
     type: "website",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

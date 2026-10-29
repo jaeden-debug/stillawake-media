@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 import { PageSchema } from "@/components/page-schema";
@@ -33,7 +34,7 @@ const shareImage = {
 
 export const metadata: Metadata = {
   title: { absolute: "Our Portfolio | Web Design & Development — StillAwake Media" },
-  description,
+  description: metaDescription(description),
   alternates: {
     canonical: "/our-work",
     languages: {

@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import { ServiceJsonLd, RelatedServices } from "@/components/service-page";
 
 export const metadata: Metadata = {
   title: "Étude de cas : NAVTRL / Stalkr — une app de localisation en 24 jours",
   description:
+    metaDescription(
     "Comment StillAwake Media a bâti Stalkr : une app de localisation en temps réel de 11 000 lignes (équipes, zones, SOS) en 24 jours, plus un moteur de croissance de 31 routes mesuré à 98/100/100.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/fr/etude-de-cas-stalkr-navtrl",
     languages: {
@@ -19,6 +23,7 @@ export const metadata: Metadata = {
     url: "https://stillawakemedia.com/fr/etude-de-cas-stalkr-navtrl",
     type: "article",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

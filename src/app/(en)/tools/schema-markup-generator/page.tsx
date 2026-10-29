@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { PageSchema } from "@/components/page-schema";
 import { SchemaGeneratorTool } from "@/components/tools/schema-generator-tool";
@@ -16,7 +18,9 @@ const url = "https://stillawakemedia.com/tools/schema-markup-generator";
 export const metadata: Metadata = {
   title: "Free Schema Markup Generator (JSON-LD) with Validation",
   description:
+    metaDescription(
     "Generate JSON-LD schema markup for a local business, organization, article, product, breadcrumbs, FAQ or person. Checks required fields and formats as you type. Free, nothing stored.",
+  ),
   alternates: { canonical: url },
   openGraph: {
     title: "Free Schema Markup Generator (JSON-LD) with Validation",
@@ -24,6 +28,7 @@ export const metadata: Metadata = {
       "JSON-LD for seven schema.org types, checked against Google's required and recommended properties as you type.",
     url,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

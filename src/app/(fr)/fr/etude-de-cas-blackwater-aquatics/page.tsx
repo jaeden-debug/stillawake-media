@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import { ServiceJsonLd, RelatedServices } from "@/components/service-page";
 
 export const metadata: Metadata = {
   title: "Étude de cas : Blackwater Aquatics — le commerce Shopify mené par l'éducation",
   description:
+    metaDescription(
     "Comment StillAwake Media a bâti une boutique Shopify canadienne où 64 pages éducatives portent un catalogue de 17 produits : positions en page 1, une fiche produit à 8,6 % de CTR et 33,3 % de clients récurrents. Notre propre boutique — chaque chiffre daté et sourcé.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/fr/etude-de-cas-blackwater-aquatics",
     languages: {
@@ -19,6 +23,7 @@ export const metadata: Metadata = {
     url: "https://stillawakemedia.com/fr/etude-de-cas-blackwater-aquatics",
     type: "article",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

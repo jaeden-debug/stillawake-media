@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { ServiceJsonLd, FaqBlock, RelatedServices } from "@/components/service-page";
 
 export const metadata: Metadata = {
   title: "Développement Framer | Sites Framer professionnels — Montréal",
   description:
+    metaDescription(
     "Développement Framer à Montréal : sites vitrines rapides et soignés, livrés en semaines. Conseil honnête sur quand Framer est le bon choix — et quand le sur-mesure le bat.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/fr/developpement-framer",
     languages: {
@@ -20,6 +24,7 @@ export const metadata: Metadata = {
     url: "https://stillawakemedia.com/fr/developpement-framer",
     type: "website",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { ServiceJsonLd, PriceCard } from "@/components/service-page";
 import { getContentLayer } from "@/lib/cms/adapter";
@@ -83,7 +85,9 @@ const MONTHLY_CTA: Record<string, [string, string]> = {
 
 export const metadata: Metadata = {
   title: "Pricing — Published Rates, No Sales Call",
-  description: `StillAwake Media pricing: monthly plans from ${money(ENTRY_MONTHLY)}, fixed-price services from ${money(ENTRY_ONE_TIME)}, websites from $1,800 CAD, a full business website $2,750–$5,750, online stores from $4,250, paid discovery from $1,800 and emergency support $${ENTRY_ONE_TIME}–$${EMERGENCY_CEILING} one-time. Published, in CAD, no sales call.`,
+  description: metaDescription(
+    `StillAwake Media pricing: monthly plans from ${money(ENTRY_MONTHLY)}, fixed-price services from ${money(ENTRY_ONE_TIME)}, websites from $1,800 CAD, a full business website $2,750–$5,750, online stores from $4,250, paid discovery from $1,800 and emergency support $${ENTRY_ONE_TIME}–$${EMERGENCY_CEILING} one-time. Published, in CAD, no sales call.`,
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/pricing",
     languages: {
@@ -97,6 +101,7 @@ export const metadata: Metadata = {
     description: "Published pricing for SEO, maintenance, and support. Custom quotes for builds — async, no sales call.",
     url: "https://stillawakemedia.com/pricing",
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

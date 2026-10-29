@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { ServiceJsonLd, FaqBlock, RelatedServices } from "@/components/service-page";
 import { ArticlesLies } from "@/components/articles-lies";
@@ -6,7 +8,9 @@ import { ArticlesLies } from "@/components/articles-lies";
 export const metadata: Metadata = {
   title: "Automatisation IA pour PME | Agents et flux automatisés — Montréal",
   description:
+    metaDescription(
     "Automatisation IA à Montréal : agents avec garde-fous, courriels de cycle de vie, réconciliation de paiements et assistants intelligents. Des systèmes que nous exploitons nous-mêmes en production.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/fr/automatisation-ia",
     languages: {
@@ -21,6 +25,7 @@ export const metadata: Metadata = {
     url: "https://stillawakemedia.com/fr/automatisation-ia",
     type: "website",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

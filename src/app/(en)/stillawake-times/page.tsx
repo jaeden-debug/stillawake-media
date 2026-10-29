@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -37,9 +38,11 @@ async function getMergedPosts(): Promise<PostMeta[]> {
 }
 
 export const metadata: Metadata = {
-  title: "StillAwake Times | Digital Strategy, SEO & AI Insights",
+  title: "StillAwake Times | SEO & AI Insights",
   description:
+    metaDescription(
     "Explore StillAwake Times for practical insights on web design, SEO, AI automation, branding, software, Shopify, Framer, and digital infrastructure.",
+  ),
   alternates: {
     canonical: "/stillawake-times",
   },

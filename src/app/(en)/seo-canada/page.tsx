@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { ServiceJsonLd, PriceCard, FaqBlock, RelatedServices } from "@/components/service-page";
 import { siteUrl } from "@/lib/data";
@@ -51,7 +53,9 @@ const url = `${siteUrl}/seo-canada`;
 export const metadata: Metadata = {
   title: "SEO Services for Canadian Businesses | Published Pricing",
   description:
+    metaDescription(
     `SEO for Canadian businesses, delivered remotely from Montréal: technical foundation, content architecture and AI-search visibility. Published pricing from $${SEO_FLOOR} to $${SEO_CEILING} CAD/month, no 12-month contract.`,
+  ),
   alternates: {
     canonical: "/seo-canada",
     languages: { "en-CA": url, "x-default": url },
@@ -62,6 +66,7 @@ export const metadata: Metadata = {
       "Remote-delivered SEO for businesses across Canada. Published pricing, written reporting, no lock-in.",
     url,
     type: "website",
+    images: OG_IMAGES,
   },
   robots: { index: true, follow: true },
 };

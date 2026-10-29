@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 
 import { PageSchema } from "@/components/page-schema";
@@ -19,7 +21,9 @@ const url = "https://stillawakemedia.com/tools/app-development-cost-calculator";
 export const metadata: Metadata = {
   title: "App Development Cost Calculator (Canada, CAD)",
   description:
+    metaDescription(
     "Estimate what a web app, customer portal or SaaS platform would cost to build in Canada. Uses StillAwake Media's real pricing model, shows what drives the range, and states every assumption. Free, no email.",
+  ),
   alternates: { canonical: url },
   openGraph: {
     title: "App Development Cost Calculator (Canada, CAD)",
@@ -27,6 +31,7 @@ export const metadata: Metadata = {
       "A web app, portal or platform estimate from a studio's real pricing model, with the assumptions written down.",
     url,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

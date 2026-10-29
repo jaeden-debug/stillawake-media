@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { PageSchema } from "@/components/page-schema";
 import { LlmsTxtTool } from "@/components/tools/llms-txt-tool";
@@ -12,7 +14,9 @@ const enUrl = `${siteUrl}/tools/llms-txt-generator`;
 export const metadata: Metadata = {
   title: "Générateur llms.txt gratuit + vérification de lisibilité IA",
   description:
+    metaDescription(
     "Générez un fichier llms.txt pour votre site et découvrez ce qu'un moteur de réponse peut — ou ne peut pas — dire de votre entreprise. Gratuit, sans inscription, sans courriel.",
+  ),
   alternates: {
     canonical: "/fr/outils/generateur-llms-txt",
     languages: { "fr-CA": url, "en-CA": enUrl, "x-default": enUrl },
@@ -24,6 +28,7 @@ export const metadata: Metadata = {
     url,
     type: "website",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

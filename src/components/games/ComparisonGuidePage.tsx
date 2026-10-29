@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { InternalLinks } from "@/components/site";
@@ -25,7 +26,7 @@ export function guideMetadata(guide: ComparisonGuide): Metadata {
   const image = socialImage(getBundle(guide.gameSlug));
   return {
     title: { absolute: guide.title },
-    description: guide.description,
+    description: metaDescription(guide.description),
     authors: articleAuthors(jaedenDoody.name),
     alternates: { canonical: guide.path },
     openGraph: {

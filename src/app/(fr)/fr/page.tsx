@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { Button, Section, ServiceGridFr, PortfolioGrid, InternalLinks } from "@/components/site";
 import { CalculatorBand } from "@/components/tools/calculator-band";
@@ -9,7 +11,9 @@ import { LazyVideo } from "@/components/lazy-video";
 export const metadata: Metadata = {
   title: "Agence web à Montréal — Sites, SEO et IA",
   description:
+    metaDescription(
     "Agence web montréalaise : création de sites web, boutiques Shopify, référencement (SEO), optimisation IA et logiciels sur mesure — avec tarifs affichés et résultats mesurables.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/fr",
     languages: {
@@ -24,6 +28,7 @@ export const metadata: Metadata = {
     url: "https://stillawakemedia.com/fr",
     type: "website",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import { ServiceJsonLd, RelatedServices } from "@/components/service-page";
 
 export const metadata: Metadata = {
   title: "Case Study: TravelDesign By Lisa — 0 Clicks to Page 1 in 8 Weeks",
   description:
+    metaDescription(
     "How StillAwake Media built a trilingual travel platform — 834 URLs, custom CMS, eSIM commerce, 412 automated tests — and took it from zero organic clicks to page-1 rankings. Real numbers, sourced and dated.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/work/lisa-travel-design",
     languages: {
@@ -18,6 +22,7 @@ export const metadata: Metadata = {
     description: "From zero organic clicks to page-1 rankings in 8 weeks — with every number sourced.",
     url: "https://stillawakemedia.com/work/lisa-travel-design",
     type: "article",
+    images: OG_IMAGES,
   },
 };
 

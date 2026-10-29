@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import { ServiceJsonLd, RelatedServices } from "@/components/service-page";
 
 export const metadata: Metadata = {
   title: "Case Study: Blackwater Aquatics — Education-Led Shopify Commerce",
   description:
+    metaDescription(
     "How StillAwake Media built a Canadian Shopify store where 64 education pages power a 17-product catalogue: page-1 rankings, an 8.6% CTR product page, and a 33.3% repeat-customer rate. Our own store — every figure sourced and dated.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/work/blackwater-aquatics",
     languages: {
@@ -18,6 +22,7 @@ export const metadata: Metadata = {
     description: "Education-led Shopify commerce: content outweighs catalogue 4-to-1, and it sells.",
     url: "https://stillawakemedia.com/work/blackwater-aquatics",
     type: "article",
+    images: OG_IMAGES,
   },
 };
 

@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { AuditCta, MagazineInjection, RelatedReadingInjection, InternalLinks } from "@/components/site";
 
 const pageUrl = "https://stillawakemedia.com/web-design-montreal";
 
 export const metadata: Metadata = {
-  title: "Web Design Montreal | Custom Website Design Agency",
-  description: "Premium web design in Montreal with published pricing context and measured results: page-1 rankings, 100/100 Lighthouse scores, and four sourced case studies.",
+  title: "Web Design Montreal | Custom Websites",
+  description: metaDescription(
+    "Premium web design in Montreal with published pricing context and measured results: page-1 rankings, 100/100 Lighthouse scores, and four sourced case studies.",
+  ),
   alternates: {
     canonical: pageUrl,
     languages: {
@@ -20,6 +24,7 @@ export const metadata: Metadata = {
       "Premium Montreal web design proven by measured results — page-1 rankings, perfect Lighthouse scores, sourced case studies.",
     url: pageUrl,
     type: "website",
+    images: OG_IMAGES,
   },
 
   robots: {

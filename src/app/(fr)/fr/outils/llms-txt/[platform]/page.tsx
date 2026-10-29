@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import { notFound } from "next/navigation";
 import { InlinePageSchema } from "@/components/page-schema";
 import { PlatformGuideView } from "@/components/tools/platform-guide";
@@ -35,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: guide.title,
-    description: guide.description,
+    description: metaDescription(guide.description),
     alternates: {
       canonical: `/fr/outils/llms-txt/${guide.slug}`,
       languages: enUrl
@@ -49,6 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       locale: "fr_CA",
       modifiedTime: guide.verifiedDate,
+      images: OG_IMAGES,
     },
   };
 }

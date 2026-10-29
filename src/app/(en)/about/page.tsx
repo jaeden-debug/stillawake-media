@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { Button, InternalLinks } from "@/components/site";
 import { jaedenDoody } from "@/data/people/jaeden-doody";
 
 import { PageSchema } from "@/components/page-schema";
 export const metadata: Metadata = {
-  title: "About the Studio | Digital Infrastructure & Software",
+  title: "About the Studio | Digital Infrastructure",
   description:
+    metaDescription(
     "StillAwake Media is a Canada-based digital infrastructure studio building premium websites, SEO systems, branding, AI automation, Shopify experiences, and custom software.",
+  ),
   alternates: {
     canonical: "/about",
     languages: {

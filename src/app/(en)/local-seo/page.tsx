@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
@@ -6,7 +7,9 @@ import { PageSchema } from "@/components/page-schema";
 export const metadata: Metadata = {
   title: "Local SEO Services | Google Maps & Lead Generation",
   description:
+    metaDescription(
     "StillAwake Media builds local SEO systems that improve Google Maps visibility, search rankings, trust signals, and lead generation for modern businesses.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/local-seo",
     languages: {

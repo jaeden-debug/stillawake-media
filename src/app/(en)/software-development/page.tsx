@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
 import { PageSchema } from "@/components/page-schema";
 export const metadata: Metadata = {
   title: "Custom Software Development",
-  description: "StillAwake Media builds custom software, dashboards, portals, web applications, AI workflows, and scalable digital systems for modern businesses.",
+  description: metaDescription(
+    "StillAwake Media builds custom software, dashboards, portals, web applications, AI workflows, and scalable digital systems for modern businesses.",
+  ),
 
   alternates: {
     canonical: "https://stillawakemedia.com/software-development",

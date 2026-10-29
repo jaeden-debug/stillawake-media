@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { ServiceJsonLd, FaqBlock, RelatedServices } from "@/components/service-page";
 
 export const metadata: Metadata = {
   title: "Website Redesign Services | Rebuild Without Losing Your SEO",
   description:
+    metaDescription(
     "Website redesign from Montréal, serving all of Canada: modern rebuild, preserved search equity, measurable conversion goals, and a written fixed price before you commit.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/website-redesign",
     languages: {
@@ -19,6 +23,7 @@ export const metadata: Metadata = {
     description: "Rebuild the site without losing the rankings. Written scope, fixed price, no sales call.",
     url: "https://stillawakemedia.com/website-redesign",
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

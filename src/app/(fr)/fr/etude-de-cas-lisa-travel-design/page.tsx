@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import { ServiceJsonLd, RelatedServices } from "@/components/service-page";
 
 export const metadata: Metadata = {
   title: "Étude de cas : TravelDesign By Lisa — de 0 clic à la page 1 en 8 semaines",
   description:
+    metaDescription(
     "Comment StillAwake Media a bâti une plateforme de voyage trilingue — 834 URL, CMS sur mesure, boutique eSIM, 412 tests automatisés — et l'a menée de zéro clic organique à la page 1. Chiffres réels, sourcés et datés.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/fr/etude-de-cas-lisa-travel-design",
     languages: {
@@ -19,6 +23,7 @@ export const metadata: Metadata = {
     url: "https://stillawakemedia.com/fr/etude-de-cas-lisa-travel-design",
     type: "article",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { ServiceJsonLd, FaqBlock, RelatedServices } from "@/components/service-page";
 
 export const metadata: Metadata = {
-  title: "Answer Engine Optimization (AEO) & AI Search Services | Montréal",
+  title: "Answer Engine Optimization (AEO) Services",
   description:
+    metaDescription(
     "AEO, GEO, and AI search optimization from Montréal: make ChatGPT, Perplexity, Gemini, and Google AI Overviews find, understand, and cite your business. Clear deliverables, no hype.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/answer-engine-optimization",
     languages: {
@@ -19,6 +23,7 @@ export const metadata: Metadata = {
     description: "Get found and cited by AI search — entity graphs, structured data, answer-ready content.",
     url: "https://stillawakemedia.com/answer-engine-optimization",
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

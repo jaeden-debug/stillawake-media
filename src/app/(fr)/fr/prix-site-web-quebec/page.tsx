@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { ServiceJsonLd, FaqBlock, RelatedServices } from "@/components/service-page";
 
 export const metadata: Metadata = {
-  title: "Prix site web Québec 2026 : combien coûte un site?",
+  title: "Prix d'un site web au Québec (2026)",
   description:
+    metaDescription(
     "Prix d'un site web au Québec en 2026 : fourchettes réelles par type de site, coûts de la Loi 96 et de la Loi 25, frais récurrents et tarifs affichés d'un studio montréalais.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/fr/prix-site-web-quebec",
     languages: {
@@ -20,6 +24,7 @@ export const metadata: Metadata = {
     url: "https://stillawakemedia.com/fr/prix-site-web-quebec",
     type: "website",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

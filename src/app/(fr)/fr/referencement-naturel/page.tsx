@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { siteUrl } from "@/lib/data";
 import { entityIds } from "@/data/entities";
@@ -9,7 +11,9 @@ const url = `${siteUrl}/fr/referencement-naturel`;
 export const metadata: Metadata = {
   title: "Le référencement naturel (SEO), expliqué simplement",
   description:
+    metaDescription(
     "C'est quoi le SEO? Le référencement naturel expliqué sans jargon : comment Google classe les sites, les trois piliers du travail, les délais réalistes et les mythes à éviter — par un studio qui publie ses résultats mesurés.",
+  ),
   alternates: { canonical: "/fr/referencement-naturel" },
   openGraph: {
     title: "Le référencement naturel (SEO), expliqué simplement",
@@ -17,6 +21,7 @@ export const metadata: Metadata = {
     url,
     type: "article",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

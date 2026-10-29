@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { PageSchema } from "@/components/page-schema";
 import { SeoAuditTool } from "@/components/tools/seo-audit-tool";
@@ -13,7 +15,9 @@ const url = "https://stillawakemedia.com/tools/seo-audit";
 export const metadata: Metadata = {
   title: "Free SEO Audit Tool: Check Any Page's Technical SEO",
   description:
+    metaDescription(
     "Check one public page for the technical basics Google needs: status, redirects, noindex, robots.txt, canonical, sitemap, title, description, headings, structured data and more. Free, nothing stored.",
+  ),
   alternates: { canonical: url },
   openGraph: {
     title: "Free SEO Audit Tool: Check Any Page's Technical SEO",
@@ -21,6 +25,7 @@ export const metadata: Metadata = {
       "A plain-language technical check of one public page: indexability, crawl rules, canonical, metadata, headings and structured data.",
     url,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

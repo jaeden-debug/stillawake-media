@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${cat.title} | ${bundle.game.title} Wiki`,
     description: cat.description,
     alternates: { canonical: categoryPath(slug, cat.slug) },
-    openGraph: { title: `${cat.title} | ${bundle.game.title} Wiki`, description: cat.description, url: absolute(categoryPath(slug, cat.slug)), type: "website" },
+    openGraph: { title: `${cat.title} | ${bundle.game.title} Wiki`, description: cat.description, url: absolute(categoryPath(slug, cat.slug)), type: "website", images: OG_IMAGES },
   };
 }
 

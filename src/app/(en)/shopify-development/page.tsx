@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
 import { PageSchema } from "@/components/page-schema";
 import { Testimonials } from "@/components/testimonials";
 export const metadata: Metadata = {
-  title: "Shopify Development Services | SEO & Conversion Builds",
+  title: "Shopify Development | SEO-First Builds",
   description:
+    metaDescription(
     "StillAwake Media helps ecommerce brands improve Shopify product pages, collections, SEO structure, conversion flow, trust signals, and visual presentation.",
+  ),
   alternates: {
     canonical: "/shopify-development",
     languages: {

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { PageSchema } from "@/components/page-schema";
 import { publishedGuides } from "@/data/llms-txt-guides";
@@ -9,7 +11,9 @@ const url = "https://stillawakemedia.com/tools";
 export const metadata: Metadata = {
   title: "Free Technical Tools for Web and AI Search",
   description:
+    metaDescription(
     "Free tools and implementation guides from StillAwake Media — starting with an llms.txt generator that reports what an answer engine cannot determine about your business. No signup, no email.",
+  ),
   alternates: {
     canonical: url,
     languages: {
@@ -24,6 +28,7 @@ export const metadata: Metadata = {
       "Free, no-signup tools for checking how machines read your website, plus platform-by-platform implementation guides.",
     url,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { ServiceJsonLd, FaqBlock, RelatedServices } from "@/components/service-page";
 import { ArticlesLies } from "@/components/articles-lies";
@@ -6,7 +8,9 @@ import { ArticlesLies } from "@/components/articles-lies";
 export const metadata: Metadata = {
   title: "Développement Shopify | Expert Shopify à Montréal",
   description:
+    metaDescription(
     "Expert Shopify à Montréal : création de boutique en ligne, thèmes sur mesure, optimisation SEO et dépannage Shopify. Boutiques rapides, bilingues, bâties pour vendre.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/fr/developpement-shopify",
     languages: {
@@ -21,6 +25,7 @@ export const metadata: Metadata = {
     url: "https://stillawakemedia.com/fr/developpement-shopify",
     type: "website",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

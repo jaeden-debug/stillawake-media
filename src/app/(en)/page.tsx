@@ -1,4 +1,5 @@
 import type { Metadata } from "next";import Link from "next/link";import {Button,Section,ServiceGrid,PortfolioGrid,BlogCards,InternalLinks} from "@/components/site";import LiveWorkShowcase from "@/components/LiveWorkShowcase";import {services} from "@/lib/data";
+import { metaDescription } from "@/lib/meta-description";
 import { CalculatorBand } from "@/components/tools/calculator-band";
 import { PageSchema } from "@/components/page-schema";
 import { Testimonials } from "@/components/testimonials";
@@ -6,7 +7,9 @@ import { LazyVideo } from "@/components/lazy-video";
 export const metadata: Metadata = {
   title: "StillAwake Media | Web Design, SEO & AI Search — Montréal",
   description:
+    metaDescription(
     "Montréal studio building premium websites, Shopify stores, SEO systems, AI-search (AEO) visibility, and custom software — with transparent pricing and measurable results.",
+  ),
   alternates: {
     canonical: "/",
     languages: {

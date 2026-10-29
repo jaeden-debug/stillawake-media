@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
 import { PageSchema } from "@/components/page-schema";
 import { Testimonials } from "@/components/testimonials";
 export const metadata: Metadata = {
-  title:
-    "AI Automation Services | Custom AI Workflows for Business",
+  title: "AI Automation | Custom AI Workflows",
 
-  description: "StillAwake Media builds custom AI automation systems for lead handling, content workflows, research, reporting, admin tasks, SEO pipelines, and scalable business operations.",
+  description: metaDescription(
+    "StillAwake Media builds custom AI automation systems for lead handling, content workflows, research, reporting, admin tasks, SEO pipelines, and scalable business operations.",
+  ),
 
   alternates: {
     canonical: "https://stillawakemedia.com/ai-automation",

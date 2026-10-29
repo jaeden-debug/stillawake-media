@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 import { siteUrl } from "@/lib/data";
@@ -7,9 +9,11 @@ import { Testimonials } from "@/components/testimonials";
 const pageUrl = `${siteUrl}/work`;
 
 export const metadata: Metadata = {
-  title: "Case Studies | How We Build Client Projects",
+  title: "Case Studies | Client Projects",
   description:
+    metaDescription(
     "Build breakdowns from StillAwake Media client projects — the brief, the page architecture, the SEO structure, and the design decisions behind each website.",
+  ),
   alternates: {
     canonical: "/work",
     languages: {
@@ -24,6 +28,7 @@ export const metadata: Metadata = {
       "Build breakdowns from StillAwake Media client projects — brief, architecture, SEO structure, and design decisions.",
     url: pageUrl,
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

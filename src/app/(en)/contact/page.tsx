@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { ContactForm } from "@/components/contact-form";
 import { jaedenDoody } from "@/data/people/jaeden-doody";
@@ -12,7 +13,9 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Contact | Start a Project",
   description:
+    metaDescription(
     "Contact StillAwake Media to start a premium website, SEO system, brand identity, AI automation, Shopify build, or custom software project.",
+  ),
   alternates: {
     canonical: "/contact",
     languages: {

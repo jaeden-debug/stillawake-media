@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -47,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       url: absolute(wikiPath(slug)),
       type: "website",
-      ...(image ? { images: [image] } : {}),
+      ...(image ? { images: [image] } : { images: OG_IMAGES }),
     },
     twitter: {
       card: "summary_large_image",

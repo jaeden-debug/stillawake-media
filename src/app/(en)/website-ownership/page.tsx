@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { PageSchema } from "@/components/page-schema";
 import { FaqBlock, RelatedServices } from "@/components/service-page";
@@ -35,7 +37,9 @@ const CARE = RECURRING_BY_ID["website-care-plan"];
 export const metadata: Metadata = {
   title: "Website Ownership: Who Owns the Domain, Hosting, Code & Accounts",
   description:
+    metaDescription(
     "A plain-English guide to website ownership when you hire an agency: who should own the domain, hosting, source code, CMS, database, Stripe, Shopify and analytics — who pays for what, and what happens if you stop working together.",
+  ),
   alternates: {
     canonical: url,
     languages: {
@@ -50,6 +54,7 @@ export const metadata: Metadata = {
       "Domain, hosting, code, CMS, database, payments and analytics — who should own each one, who pays, and what happens when an agency relationship ends.",
     url,
     type: "article",
+    images: OG_IMAGES,
   },
 };
 

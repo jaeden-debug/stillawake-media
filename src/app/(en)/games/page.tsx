@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { PosterArt } from "@/components/media/PosterArt";
@@ -26,7 +27,7 @@ const shareImage = {
 
 export const metadata: Metadata = {
   title: { absolute: "StillAwake Games | Play & Explore Our Games" },
-  description,
+  description: metaDescription(description),
   alternates: { canonical: "/games" },
   openGraph: {
     title: shareTitle,

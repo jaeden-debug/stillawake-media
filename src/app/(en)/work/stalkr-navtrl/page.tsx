@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import { ServiceJsonLd, RelatedServices } from "@/components/service-page";
 
 export const metadata: Metadata = {
   title: "Case Study: NAVTRL / Stalkr — A Location App in TestFlight in 24 Days",
   description:
+    metaDescription(
     "How StillAwake Media built Stalkr: an 11,000-line real-time location app (crews, zones, SOS) in 24 days, plus a 31-route growth engine scoring 98/100/100 with a perfect AI-navigability score.",
+  ),
   alternates: {
     canonical: "https://stillawakemedia.com/work/stalkr-navtrl",
     languages: {
@@ -18,6 +22,7 @@ export const metadata: Metadata = {
     description: "A real-time location app in TestFlight in 24 days — plus the growth engine around it.",
     url: "https://stillawakemedia.com/work/stalkr-navtrl",
     type: "article",
+    images: OG_IMAGES,
   },
 };
 

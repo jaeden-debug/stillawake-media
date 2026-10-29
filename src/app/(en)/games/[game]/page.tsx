@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { OG_IMAGES } from "@/lib/og-image";
+import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -38,14 +40,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const hero = [mediaFor(bundle, game.media.social), mediaFor(bundle, game.media.hero), mediaFor(bundle, game.media.thumbnail)].find(hasImage);
   return {
     title: `${game.title}: ${game.kindLabel}`,
-    description: game.metaDescription,
+    description: metaDescription(game.metaDescription),
     alternates: { canonical: gamePath(game.slug) },
     openGraph: {
       title: `${game.title} | ${game.tagline}`,
       description: game.summary,
       url: absolute(gamePath(game.slug)),
       type: "website",
-      ...(hasImage(hero) ? { images: [{ url: hero.src, width: hero.dimensions.width, height: hero.dimensions.height, alt: hero.alt }] } : {}),
+      ...(hasImage(hero)
+        ? { images: [{ url: hero.src, width: hero.dimensions.width, height: hero.dimensions.height, alt: hero.alt }] }
+        : { images: OG_IMAGES }),
     },
     twitter: {
       card: "summary_large_image",

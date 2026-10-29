@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { siteUrl } from "@/lib/data";
 import { ProductCard } from "@/components/product-card";
@@ -6,13 +8,15 @@ import { getProductCards, productsCollectionSchema } from "@/lib/products";
 
 const pageUrl = `${siteUrl}/fr/produits`;
 
-const TITLE = "Produits | Les logiciels bâtis par StillAwake Media";
+const TITLE = "Produits | Nos logiciels";
 const DESCRIPTION =
   "Les logiciels que StillAwake Media bâtit et exploite pour elle-même : intelligence d'affaires, facturation et gestion financière — en production, pas des concepts.";
 
 export const metadata: Metadata = {
   title: TITLE,
-  description: DESCRIPTION,
+  description: metaDescription(
+    DESCRIPTION,
+  ),
   alternates: {
     canonical: "/fr/produits",
     languages: {
@@ -27,6 +31,7 @@ export const metadata: Metadata = {
     url: pageUrl,
     type: "website",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
   twitter: {
     card: "summary_large_image",

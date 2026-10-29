@@ -1,0 +1,17 @@
+{
+  "name": "RiskIt",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "RiskIt": { "$path": "src/shared" }
+    },
+    "ServerScriptService": {
+      "RiskItServer": { "$path": "src/server" }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "RiskItClient": { "$path": "src/client" }
+      }
+    }
+  }
+}

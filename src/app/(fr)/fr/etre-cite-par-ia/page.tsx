@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/meta-description";
+import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { siteUrl } from "@/lib/data";
 import { entityIds } from "@/data/entities";
@@ -9,7 +11,9 @@ const url = `${siteUrl}/fr/etre-cite-par-ia`;
 export const metadata: Metadata = {
   title: "Être cité par ChatGPT et les moteurs IA : le guide (SEO IA)",
   description:
+    metaDescription(
     "Comment faire pour que ChatGPT, Perplexity et les aperçus IA de Google recommandent votre entreprise? Le guide pratique du SEO IA (AEO/GEO) au Québec : ce qui influence les citations, ce qui ne marche pas, et comment tester votre visibilité IA aujourd'hui.",
+  ),
   alternates: { canonical: "/fr/etre-cite-par-ia" },
   openGraph: {
     title: "Être cité par ChatGPT et les moteurs IA",
@@ -17,6 +21,7 @@ export const metadata: Metadata = {
     url,
     type: "article",
     locale: "fr_CA",
+    images: OG_IMAGES,
   },
 };
 

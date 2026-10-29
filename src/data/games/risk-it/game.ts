@@ -33,11 +33,12 @@ export const riskIt: Game = {
   platforms: ["Roblox"],
   verifiedDevices: [],
   genre: ["Party & Casual", "Minigames", "Ragdoll"],
-  releaseStatus: "early-access",
+  releaseStatus: "released",
+  releaseDate: "2026-10-27",
   officialUrl: "https://www.roblox.com/games/128665544571489/RISK-IT",
   publiclyPlayable: true,
   statusNote:
-    "RISK IT! is public on Roblox as a live test (Maturity: Minimal; open to players 16+ for now, as of 29 October 2026). This site documents build v0.2.2 as of 26 October 2026; balance, prices and challenges may change between builds, and every page shows the date it was last checked.",
+    "RISK IT! went public on Roblox on 27 October 2026 (Maturity: Minimal; open to players 16+ for now, as of 29 October 2026). This site documents build v0.2.2 as of 26 October 2026; balance, prices and challenges may change between updates, and every page shows the date it was last checked.",
   features: [
     {
       title: "Eight challenges, eight different skills",

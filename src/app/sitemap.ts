@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/content";
 import { getAllPublishedForSitemap } from "@/lib/cms/adapter";
+import { cmsContentDates } from "@/lib/cms/dates";
 import { publishedGuides } from "@/data/llms-txt-guides";
 import { REDIRECT_SOURCES } from "@/data/redirects.mjs";
 import { siteUrl } from "@/lib/data";
@@ -299,9 +300,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const group = item.translation_group_id ? byGroup.get(item.translation_group_id) : undefined;
     const en = group?.find((row) => row.locale === "en" && row.route_path);
     const fr = group?.find((row) => row.locale === "fr" && row.route_path);
+    const { published, modified } = cmsContentDates(item);
     return {
       url: `${siteUrl}${item.route_path}`,
-      lastModified: new Date(item.published_at ?? item.publish_at ?? Date.now()),
+      ...(published ? { lastModified: new Date(modified ?? published) } : {}),
       alternates:
         en && fr
           ? {

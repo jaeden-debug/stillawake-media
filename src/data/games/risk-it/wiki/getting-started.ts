@@ -18,7 +18,7 @@ export const gettingStarted: WikiEntry[] = [
       ["Platform", "Roblox"],
       ["Genre", "Party & Casual · Minigame"],
       ["Developer", "StillAwake Media"],
-      ["Status", "Live test (build v0.2.2)"],
+      ["Status", "Released 27 Oct 2026 (build v0.2.2)"],
       ["Challenges", "8"],
       ["Medals", "24 (bronze, silver, gold per challenge)"],
     ],
@@ -60,7 +60,7 @@ export const gettingStarted: WikiEntry[] = [
         id: "development-status",
         heading: "Development status",
         blocks: [
-          { type: "callout", tone: "note", text: "RISK IT! is in a live test. This wiki documents build v0.2.2 as of 26 October 2026. Balance, prices and challenges may change between builds, and every page shows the date it was last checked." },
+          { type: "callout", tone: "note", text: "RISK IT! went public on Roblox on 27 October 2026. This wiki documents build v0.2.2 as of 26 October 2026. Balance, prices and challenges may change between builds, and every page shows the date it was last checked." },
         ],
       },
     ],

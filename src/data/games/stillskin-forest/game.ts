@@ -34,11 +34,12 @@ export const stillskinForest: Game = {
   platforms: ["Roblox"],
   verifiedDevices: [],
   genre: ["Survival horror", "Co-op", "Zombie survival"],
-  releaseStatus: "in-development",
+  releaseStatus: "released",
+  releaseDate: "2026-10-28",
   officialUrl: "https://www.roblox.com/games/111788627314883/Stillskin-Forest",
-  publiclyPlayable: false,
+  publiclyPlayable: true,
   statusNote:
-    "Stillskin Forest is in active development. This site documents the current development build as of 25 October 2026; public play on Roblox has not been confirmed yet, and details may change between builds.",
+    "Stillskin Forest went public on Roblox on 28 October 2026. This site documents the build as of 25 October 2026; details may change between updates, and every page shows the date it was last checked.",
   features: [
     {
       title: "Infected that hunt with intent",

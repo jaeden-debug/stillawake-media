@@ -77,7 +77,7 @@ export async function cmsCatchAllMetadata(path: string, locale: CmsLocale): Prom
       description,
       locale: locale === "fr" ? "fr_CA" : "en_CA",
       images: [
-        { url: "/stillawake-media-social-preview.jpeg", width: 1200, height: 630, alt: title },
+        { url: "/stillawake-media-social-preview.jpeg", width: 1200, height: 655, alt: title },
       ],
     },
     twitter: {

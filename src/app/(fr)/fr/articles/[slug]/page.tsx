@@ -4,7 +4,7 @@ import { draftMode } from "next/headers";
 import { notFound, permanentRedirect, redirect } from "next/navigation";
 import { siteUrl } from "@/lib/data";
 import { entityIds } from "@/data/entities";
-import { articleAuthors, jaedenDoody, personAuthorNames } from "@/data/people/jaeden-doody";
+import { articleAuthors, authorJsonLd, personAuthorNames } from "@/data/people/jaeden-doody";
 import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/content";
 import { getPublishedByTypeSlugConfirmed, getSiblingOf, redirectFor } from "@/lib/cms/adapter";
 import { fetchDraftByRoute } from "@/lib/cms/draft";
@@ -77,7 +77,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         type: "article",
         locale: "fr_CA",
         images: [
-          { url: "/stillawake-media-social-preview.jpeg", width: 1200, height: 630, alt: title },
+          { url: "/stillawake-media-social-preview.jpeg", width: 1200, height: 655, alt: title },
         ],
       },
       twitter: {
@@ -122,7 +122,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       locale: "fr_CA",
       images: [
-        { url: "/stillawake-media-social-preview.jpeg", width: 1200, height: 630, alt: post.title },
+        { url: "/stillawake-media-social-preview.jpeg", width: 1200, height: 655, alt: post.title },
       ],
     },
     twitter: {
@@ -165,7 +165,6 @@ export default async function ArticleFr({ params }: Props) {
 
   const related = getRelatedPosts(post.slug, post.category, 4, "fr");
   const byJaeden = personAuthorNames.has(post.author);
-  const authorId = byJaeden ? jaedenDoody.id : entityIds.organization;
   const url = `${siteUrl}/fr/articles/${post.slug}`;
 
   const articleSchema = {
@@ -178,7 +177,8 @@ export default async function ArticleFr({ params }: Props) {
     dateModified: post.updated || post.date,
     inLanguage: "fr-CA",
     mainEntityOfPage: url,
-    author: { "@id": authorId },
+    image: `${siteUrl}/stillawake-media-social-preview.jpeg`,
+    author: authorJsonLd(byJaeden),
     publisher: { "@id": entityIds.organization },
     isPartOf: { "@id": entityIds.website },
   };

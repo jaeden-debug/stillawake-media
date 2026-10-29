@@ -98,11 +98,11 @@ export const projects: Project[] = [
       "A cooperative survival-horror game on Roblox. The forest is beautiful. The nights are not.",
     description: [
       "Stillskin Forest is StillAwake Media's first game: a cooperative zombie survival-horror experience built on Roblox. Players scavenge a campground, the ruined town of Stillwater and the grounds of Blackthorn Asylum by day, then survive escalating nights against infected that hear, search and remember.",
-      "The game is in active development. Its official landing page and wiki live under /games.",
+      "The game went public on Roblox on 28 October 2026. Its official landing page and wiki live under /games.",
     ],
     categories: ["games"],
     platforms: ["Roblox"],
-    status: "in-development",
+    status: "live",
     kind: "Co-op survival horror",
     accent: "#7FA36B",
     image: {
@@ -119,7 +119,7 @@ export const projects: Project[] = [
     },
     canonicalPath: "/games/stillskin-forest",
     externalUrl: "https://www.roblox.com/games/111788627314883/Stillskin-Forest",
-    externalLabel: "View on Roblox",
+    externalLabel: "Play on Roblox",
     highlights: [
       "Infected AI with sight, hearing, search and ladder memory",
       "The Dread Encounter: hiding is not the same as being safe",
@@ -137,11 +137,11 @@ export const projects: Project[] = [
       "A neon game show on Roblox: eight five-second challenges, and every fail launches you into orbit.",
     description: [
       "RISK IT! is StillAwake Media's second game: a minigame game on Roblox built around short challenges and very public failure. Press your luck, stop a needle, react to a light, cross a bridge of spinning arms, pick the right door, outrun a falling floor, repeat arrows, or get fired from a cannon.",
-      "Win and you bank GUTS for medals and cosmetics. Fail and the game ragdolls you across the arena, then puts you back at the pad for one more go. It's in a live test; its official landing page and wiki live under /games.",
+      "Win and you bank GUTS for medals and cosmetics. Fail and the game ragdolls you across the arena, then puts you back at the pad for one more go. It went public on Roblox on 27 October 2026; its official landing page and wiki live under /games.",
     ],
     categories: ["games"],
     platforms: ["Roblox"],
-    status: "beta",
+    status: "live",
     kind: "Minigames and ragdoll fails",
     accent: "#FF2E63",
     image: {
@@ -158,7 +158,7 @@ export const projects: Project[] = [
     },
     canonicalPath: "/games/risk-it",
     externalUrl: "https://www.roblox.com/games/128665544571489/RISK-IT",
-    externalLabel: "View on Roblox",
+    externalLabel: "Play on Roblox",
     highlights: [
       "Eight 5–20 second challenges, each testing a different skill",
       "Server-decided outcomes with the real odds shown on screen",

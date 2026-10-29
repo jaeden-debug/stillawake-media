@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { siteUrl } from "@/lib/data";
 import { entityIds } from "@/data/entities";
-import { jaedenDoody, personAuthorNames } from "@/data/people/jaeden-doody";
+import { authorJsonLd, jaedenDoody, personAuthorNames } from "@/data/people/jaeden-doody";
+import { cmsContentDates } from "@/lib/cms/dates";
 import { getAuthor, getPublishedArticles, getRelatedFor } from "@/lib/cms/adapter";
 import { estimateReadTime, extractToc } from "@/lib/cms/prose";
 import { SectionRenderer } from "@/lib/cms/render";
@@ -33,8 +34,7 @@ function categoryOf(data: Record<string, unknown> | null | undefined): string {
 }
 
 export function viewFromPublished(item: CmsPublishedContent): ArticleView {
-  const firstPublished = (item.first_published_at ?? item.publish_at ?? item.published_at ?? "").slice(0, 10);
-  const lastPublished = (item.published_at ?? "").slice(0, 10);
+  const { published, modified } = cmsContentDates(item);
   return {
     contentId: item.id,
     slug: item.slug,
@@ -42,8 +42,8 @@ export function viewFromPublished(item: CmsPublishedContent): ArticleView {
     excerpt: item.snapshot.excerpt ?? "",
     sections: item.snapshot.sections ?? [],
     category: categoryOf(item.snapshot.data),
-    date: firstPublished || lastPublished,
-    updated: lastPublished && lastPublished !== firstPublished ? lastPublished : undefined,
+    date: published,
+    updated: modified,
     authorId: item.snapshot.author_id ?? item.author_id,
   };
 }
@@ -135,7 +135,6 @@ export async function CmsArticle({
   const author = view.authorId ? await getAuthor(view.authorId) : null;
   const authorName = author?.name ?? "StillAwake Media";
   const byJaeden = personAuthorNames.has(authorName);
-  const authorEntityId = byJaeden ? jaedenDoody.id : entityIds.organization;
   const founderPath = locale === "fr" ? "/fr/fondateur/jaeden-doody" : jaedenDoody.path;
   const readTime = estimateReadTime(view.sections, locale);
   const toc = extractToc(view.sections);
@@ -155,7 +154,8 @@ export async function CmsArticle({
     dateModified: view.updated || view.date,
     ...(locale === "fr" ? { inLanguage: "fr-CA" } : {}),
     mainEntityOfPage: url,
-    author: { "@id": authorEntityId },
+    image: `${siteUrl}/stillawake-media-social-preview.jpeg`,
+    author: authorJsonLd(byJaeden),
     publisher: { "@id": entityIds.organization },
     isPartOf: { "@id": entityIds.website },
   };

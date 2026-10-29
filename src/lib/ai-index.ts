@@ -84,7 +84,7 @@ export function fullText(): string {
   const out: string[] = [];
   out.push("# StillAwake Media: full text of projects and game documentation", "");
   out.push(
-    "Generated from the site's published content. Every section names its canonical URL; cite that URL. Game documentation describes the current development build and carries the date it was last checked.",
+    "Generated from the site's published content. Every section names its canonical URL; cite that URL. Game documentation describes the most recently checked build of each released game and carries the date it was last checked.",
     "",
   );
 

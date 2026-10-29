@@ -280,7 +280,7 @@ export const friendsGuide: ComparisonGuide = {
     before: "Disclosure: StillAwake Media makes ",
     linkText: "Stillskin Forest",
     href: "/games/stillskin-forest",
-    after: ", a co-op survival-horror game for squads of up to four that is still in development. It isn't on this list because it isn't publicly playable yet. What we learned building it is in the last section.",
+    after: ", a co-op survival-horror game for squads of up to four released on Roblox on 28 October 2026. It isn't on this list because we will not rank our own game against the games we are recommending. What we learned building it is in the last section.",
   },
   groups: [
     { label: "Big groups (16 or more per server)", min: 16 },

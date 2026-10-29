@@ -185,7 +185,7 @@ export default async function EntryPage({ params }: Props) {
               <span className="font-semibold text-[#b5adad]">Sources:</span> {entry.sources.join("; ")}.
             </p>
             <p className="mt-1">
-              {bundle.game.title} is in development; details can change between builds. Spotted something out of date?{" "}
+              {bundle.game.title} is updated regularly; details can change between builds. Spotted something out of date?{" "}
               <Link href="/contact" className="text-[#C7B9B9] underline underline-offset-2">Tell us</Link>.
             </p>
           </footer>

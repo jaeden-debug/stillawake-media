@@ -170,8 +170,8 @@ Projects whose canonical page lives elsewhere (cards link there, and `/our-work/
 
 | Project | Categories | Platforms | Status | Page |
 |---|---|---|---|---|
-| Stillskin Forest | Games | Roblox | in-development | `/games/stillskin-forest` |
-| RISK IT! | Games | Roblox | beta | `/games/risk-it` |
+| Stillskin Forest | Games | Roblox | live | `/games/stillskin-forest` |
+| RISK IT! | Games | Roblox | live | `/games/risk-it` |
 | Lisa Travel Design | Websites | Web | live | `/our-work/lisa-travel-design` |
 | NAVTRL / Stalkr | Apps, Websites | iOS, Web | beta | `/our-work/navtrl-stalkr` |
 | BankDeMark | Websites, Tools | Web | live | `/our-work/bankdemark` |

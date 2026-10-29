@@ -1,6 +1,7 @@
 ---
 title: "What Custom Software Development Actually Costs in Canada"
 date: "2026-08-14"
+updated: "2026-10-29"
 excerpt: "Custom software in Canada typically runs $15,000 to well past $100,000 — but the number is decided by things most quotes never itemize. Here is where the money actually goes, why simple-looking apps get expensive, and when you shouldn't build at all."
 category: "Software Development"
 featured: true
@@ -50,7 +51,7 @@ The screens are never the cost. Four things drive the number, and none of them a
 
 **$75,000 and up** — platform scale. Multiple user types, complex domain rules, significant integrations, real compliance or financial correctness requirements.
 
-For reference on how these compare to web work, our [Canadian website cost guide](/website-cost-canada) covers the equivalent bands for sites and stores.
+For reference on how these compare to web work, our [Canadian website cost guide](/website-cost-canada) covers the equivalent bands for sites and stores. If what you're planning is a mobile app, web app or SaaS product rather than an internal system, see [how much it costs to build an app in Canada](/stillawake-times/app-development-cost-canada).
 
 ## The question worth asking before you build
 

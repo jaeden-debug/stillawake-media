@@ -59,6 +59,14 @@ const articles = [
     title: "Do You Need Software, or a Website? Work It Out First",
   },
   {
+    href: "/tools/app-development-cost-calculator",
+    title: "App Development Cost Calculator",
+  },
+  {
+    href: "/stillawake-times/app-development-cost-canada",
+    title: "How Much Does It Cost to Build an App in Canada?",
+  },
+  {
     href: "/stillawake-times/custom-software-development-cost-canada",
     title: "What Custom Software Development Actually Costs in Canada",
   },
@@ -80,7 +88,7 @@ const articles = [
   },
   {
     href: "/stillawake-times/how-businesses-use-ai-automation-to-save-hundreds-of-hours",
-    title: "How Businesses Use AI Automation to Save Hundreds of Hours",
+    title: "AI Automation for Small Businesses: Real Examples",
   },
   {
     href: "/stillawake-times/how-google-crawls-and-understands-websites",

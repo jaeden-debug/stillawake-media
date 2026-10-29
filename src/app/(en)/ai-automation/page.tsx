@@ -59,7 +59,7 @@ const articles = [
   },
   {
     href: "/stillawake-times/how-businesses-use-ai-automation-to-save-hundreds-of-hours",
-    title: "How Businesses Use AI Automation to Save Hundreds of Hours",
+    title: "AI Automation for Small Businesses: Real Examples",
   },
   {
     href: "/stillawake-times/what-is-custom-software-development",

@@ -79,9 +79,17 @@ export const jaedenDoody = {
    * with their own relationships — they must never be listed here just
    * because he built them.
    *
-   * https://zylx.ai/authors/jaeden-doody still returns 404; add it once live.
+   * zylx.ai/authors/jaeden-doody went live and is now listed. It publishes its
+   * own Person node under a different @id
+   * (zylx.ai/authors/jaeden-doody#person), so sameAs is what tells a consumer
+   * the two nodes are one person rather than two people who share a name. That
+   * repo carries the reciprocal link back to this page, and to the LinkedIn
+   * profile below.
    */
-  sameAs: ["https://www.linkedin.com/in/jaedendoody"] as string[],
+  sameAs: [
+    "https://www.linkedin.com/in/jaedendoody",
+    "https://zylx.ai/authors/jaeden-doody",
+  ] as string[],
 
   /**
    * Jaeden's personal LinkedIn, for visible on-page links.

@@ -206,8 +206,8 @@ export async function CmsArticle({
             </p>
           </header>
 
-          <div className="mt-16 grid gap-10 lg:grid-cols-[280px_1fr]">
-            <aside className="block lg:block">
+          <div className="mt-16 grid gap-10 lg:grid-cols-[280px_minmax(0,1fr)]">
+            <aside className="block min-w-0 lg:block">
               <div className="rounded-[2rem] border border-white/10 bg-white/[.04] p-5 backdrop-blur-xl lg:sticky lg:top-28">
                 <p className="mb-4 text-xs uppercase tracking-[.3em] text-[#D71920]">
                   {locale === "fr" ? "Plan de l'article" : "Article Map"}
@@ -228,7 +228,7 @@ export async function CmsArticle({
               </div>
             </aside>
 
-            <div>
+            <div className="min-w-0">
               <SectionRenderer sections={view.sections} locale={locale} contentId={view.contentId} />
 
               <section className="mt-16 rounded-[3rem] bg-[#D71920] p-8 md:p-12">

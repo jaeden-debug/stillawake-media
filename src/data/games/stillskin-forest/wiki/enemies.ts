@@ -76,7 +76,7 @@ export const enemies: WikiEntry[] = [
         id: "behaviour",
         heading: "Behaviour",
         blocks: [
-          { type: "p", text: "Walkers idle and roam by day and drift toward survivors at night. One that sees you moves through suspicion (about a second), raises the alarm, then chases and attacks. In a pack they fan out and close in from the sides rather than queueing behind each other, and they stop at arm's length instead of shoving into you." },
+          { type: "p", text: "Walkers idle and roam by day and wander a little further at night; they come for you only once they see or hear you. One that sees you moves through suspicion (about a second), raises the alarm, then chases and attacks. In a pack they fan out and close in from the sides rather than queueing behind each other, and they stop at arm's length instead of shoving into you." },
         ],
       },
       {
@@ -122,7 +122,7 @@ export const enemies: WikiEntry[] = [
         blocks: [
           { type: "list", items: [
             "Don't start a long sprint on low stamina. You need at least 15 to start sprinting. See [Stamina and sprinting](@stamina-and-sprinting).",
-            "Break line of sight; chases end after about 22 seconds or once you are 85 studs clear.",
+            "Break line of sight: while it can see you it never gives up, but about 5 seconds after losing you it starts searching instead.",
             "Climb a ladder it didn't see you use, or turn and fight: it is the easiest infected to kill.",
           ] },
         ],

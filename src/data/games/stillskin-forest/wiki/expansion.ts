@@ -179,20 +179,21 @@ export const expansion: WikiEntry[] = [
     slug: "night-survival",
     category: "mechanics",
     verification: "verified_live",
-    lastVerified: VERIFIED_27,
-    title: "Night Survival: Hunters, Wisps, Night Caches and Sleep",
-    seoTitle: "Night in Stillskin Forest: Hunting Infected, Wisps, Caches and Sleep",
+    lastVerified: "2026-10-29",
+    title: "Night Survival: New Arrivals, Wisps, Night Caches and Sleep",
+    seoTitle: "Night in Stillskin Forest: New Infected, Wisps, Caches and Sleep",
     description:
-      "What happens at night in Stillskin Forest: infected that search for you, green wisps, glowing night caches, ammo from kills, and sleeping until dawn.",
+      "What happens at night in Stillskin Forest: fresh infected even where you cleared them, green wisps, glowing night caches, ammo from kills, and sleeping until dawn.",
     question: "What can you do at night in Stillskin Forest?",
     answer:
-      "Go out for the rewards or hole up. At night the infected near you start searching your area, but green wisps lead you to stashes or toward relics, five glowing night caches appear with the best outdoor loot, and kills can drop ammo. If everyone is inside one boarded-up building, you can all sleep until dawn for some health.",
+      "Go out for the rewards or hole up. At nightfall fresh infected come into the woods, even where you cleared them by day, but green wisps lead you to stashes or toward relics, five glowing night caches appear with the best outdoor loot, and kills can drop ammo. If everyone is inside one boarded-up building, you can all sleep until dawn for some health.",
     sections: [
       {
-        id: "hunters",
-        heading: "The infected come looking",
+        id: "new-arrivals",
+        heading: "New infected at nightfall",
         blocks: [
-          { type: "p", text: `Every ${K.nightHunt.Interval} seconds after dark, a share of the calm infected near each survivor (in your part of the map and the parts around it) set off to search the ground near you. They are sent near you, never to your exact spot, and find you only by sight or sound. The share grows over the first nights: about 30% on Night 1, 40% on Night 2 and ${pct(K.nightHunt.Fraction)} from Night 3, at most ${K.nightHunt.MaxPerSurvivor} per survivor each time. They set off a few seconds apart, not all at once.` },
+          { type: "p", text: `When night falls every part of the map, including ground you cleared by day and are still standing on, gets a fresh batch of up to ${K.regions.NightQuota} infected, up to ${K.population.NightAmbient} in the forest in all. They arrive a few at a time, out of sight and at least 70 studs from anyone, and start out wandering: they don't know where you are. They find you the usual way, by seeing you, hearing you, or from another infected that saw you. Light and movement give you away; darkness, crouching and walls help. See [Detection and noise](@detection-and-noise).` },
+          { type: "p", text: `Kill the ones around you and your ground stays clear for the night. Ground nobody is standing on can get a couple more later in the night (after about ${Math.round(K.regions.NightReinforceAfter / 60)} minutes), and those can wander over to you.` },
         ],
       },
       {

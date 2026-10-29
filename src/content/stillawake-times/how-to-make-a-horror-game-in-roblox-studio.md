@@ -191,30 +191,30 @@ Speed is pacing too: players sprint at 23 studs per second and the fastest infec
 
 ## Hiding systems and the Dread Encounter
 
-Most Roblox hiding systems make the player untargetable and stop there. That's safe and boring. In Stillskin Forest, hidden survivors still can't be damaged directly, but [hiding](/games/stillskin-forest/wiki/mechanics/hiding) isn't automatically safe. If no infected saw you go in, you're fine. If one did, [the Dread Encounter](/games/stillskin-forest/wiki/mechanics/the-dread-encounter) begins:
+Most Roblox hiding systems make the player untargetable and stop there. That's safe and boring. In Stillskin Forest, hidden survivors still can't be damaged directly, but [hiding](/games/stillskin-forest/wiki/mechanics/hiding) isn't automatically safe. If no infected was after you, you're fine. If one was, [the Dread Encounter](/games/stillskin-forest/wiki/mechanics/the-dread-encounter) begins:
 
-1. The chase goes quiet and the infected slow to a walk.
-2. A lead infected moves to a staged position, then sharply notices you, with a short audio sting.
-3. It comes up to the opening and stares and breathes close to you for about five seconds.
+1. The chase goes quiet and the infected slow to a walk. There's no music and no sting: only breathing, heartbeat and footsteps.
+2. A lead infected pauses, turns its head toward the hiding spot, then walks up to the opening.
+3. It looks straight in at you for four to nine seconds, glancing away now and then.
 4. Others, up to five in all, take supporting roles: a secondary investigator, a room searcher, a doorway watcher, a perimeter searcher.
-5. They leave one at a time with random gaps. One may linger or look back.
-6. Your heartbeat and breathing settle.
+5. Whether it finds you depends on what it actually knows. One that watched you climb in from close up bangs on the door and drags you out. One that only lost you nearby looks, then leaves.
+6. They leave one at a time with random gaps. One may linger or look back, and nothing tells the player when it's safe.
 
 The design brief behind it ended with a line worth keeping in mind for any horror game: the most frightening part should be the anticipation, not the jumpscare.
 
 Some implementation lessons:
 
 - **One controller per hidden player, owned by the server.** The server assigns roles and staging points so zombies don't all crowd one inspection spot. Every hide spot has authored attachment points for each role.
-- **Rules that can't be exploited.** You can't leave while an infected is visibly watching your spot, and leaving early can restart the chase. Hiding protects you but doesn't make you permanently safe. Each encounter also has a hard timeout (38 seconds at most in our build), so a stuck encounter can't lock the AI.
+- **Rules that can't be exploited.** Leaving while an infected is close restarts the chase, and the game never announces the all-clear. Hiding protects you but doesn't make you permanently safe. Each encounter also has a hard timeout (38 seconds at most in our build), so a stuck encounter can't lock the AI.
 - **Fallbacks for every phase.** A zombie that can't reach its staging point retries, picks another or falls back to normal investigation; it never teleports or freezes. Death, disconnect and early exit all clean up.
 - **Different camera framing for each hide type.** Standing lockers use a restricted first-person view through the grate, framed on the zombie's face. Low hides such as chests and freezers keep the camera low, so you see legs and silhouettes approaching. Using one camera setup for every hide makes the encounter predictable.
-- **Variation within limits.** A delayed head turn, a pause at the doorway, a look back while leaving. Randomise inside a fixed sequence, and never randomly kill a properly hidden player. That feels cheap, not scary.
+- **Variation within limits.** A delayed head turn, a pause at the doorway, a look back while leaving. Randomise inside a fixed sequence, and never randomly kill a properly hidden player. That feels cheap, not scary. Discovery in Stillskin is never a dice roll: it comes from what the zombie saw (did it watch you climb in, from how close), how well the spot hides you, and whether something made a noise right there.
 
-We tested the full sequence in Studio with four pursuers: reveal, inspection, staggered retreat, a final linger and the infected forgetting the player. That was a single-client test. Interruption by a second player has been reviewed in the source but not yet tested with real multiple clients.
+We tested the full sequence in Studio with four pursuers: reveal, inspection, staggered retreat, a final linger and the infected forgetting the player. In a later two-client Studio test, a second player stepping up behind the inspecting zombie pulled it away, and the hidden player stayed hidden.
 
 ## Pacing: day, night and special nights
 
-Horror needs breaks from the tension, or players get used to it. Stillskin Forest uses its [day and night cycle](/games/stillskin-forest/wiki/mechanics/day-night-cycle) for this. The day phase lasts eight minutes, with few infected and shorter detection range. That's when players scavenge and read notes. Nights last five minutes, and the infected population jumps: 45 on Night 1, rising every day to a cap of 72.
+Horror needs breaks from the tension, or players get used to it. Stillskin Forest uses its [day and night cycle](/games/stillskin-forest/wiki/mechanics/day-night-cycle) for this. The day phase lasts eight minutes, with few infected and shorter detection range. That's when players scavenge and read notes. Nights last five minutes, and a fresh batch of infected arrives, up to 40 in the forest, even where players cleared them by day. Ground players have cleared during the day stays clear while they're on it, so killing has a lasting effect, and nightfall is what resets the threat.
 
 On top of the steady escalation, [special nights](/games/stillskin-forest/wiki/special-nights/special-nights-overview) add surprise. From Night 2, dusk can roll Blood Moon, Heavy Fog, Infected Surge or Silent Night. The chance starts at 30% and rises 6% a night to 65%, and the same special night never comes twice in a row. Each one is announced at dusk with a sting and a banner, so players get a warning before night falls.
 

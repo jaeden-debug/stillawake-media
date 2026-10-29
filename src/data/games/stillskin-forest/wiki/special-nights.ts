@@ -20,9 +20,9 @@ export const specialNights: WikiEntry[] = [
         heading: "The four special nights",
         blocks: [
           { type: "table", caption: "Special night effects", head: ["Night", "Earliest", "Infected", "Chase speed", "Sight", "Other"], rows: [
-            ["[Blood Moon](@blood-moon)", "Night 3", "×1.3", "×1.2", "×1.25", "Many more Runners and Brutes"],
+            ["[Blood Moon](@blood-moon)", "Night 3", "Normal", "×1.2", "×1.25", "Many more Runners and Brutes"],
             ["[Heavy Fog](@heavy-fog)", "Night 2", "Normal", "Normal", "×0.6", "Infected can spawn as close as 40 studs"],
-            ["[Infected Surge](@infected-surge)", "Night 2", "×1.8", "Normal", "Normal", "Faster spawns; every infected hunts"],
+            ["[Infected Surge](@infected-surge)", "Night 2", "Normal", "Normal", "×1.15", "The night fills fast; more Runners and Screamers"],
             ["[Silent Night](@silent-night)", "Night 2", "×0.6", "×1.15", "Normal", "No groans or screams; the Watcher appears"],
           ] },
         ],
@@ -48,11 +48,11 @@ export const specialNights: WikiEntry[] = [
     title: "Blood Moon",
     seoTitle: "Blood Moon in Stillskin Forest: Effects and How to Survive",
     description:
-      "The Blood Moon special night in Stillskin Forest: 30% more infected, 20% faster chases, longer sight, and many more Runners and Brutes.",
+      "The Blood Moon special night in Stillskin Forest: 20% faster chases, longer sight, and many more Runners and Brutes.",
     question: "What happens during a Blood Moon in Stillskin Forest?",
     answer:
-      "A Blood Moon turns the sky and light red and brings 30% more infected that chase 20% faster and spot you from 25% further. The mix shifts hard toward Runners and Brutes. It can roll from Night 3. In testing it put 19 infected on the map where a normal night had fewer.",
-    facts: [["Earliest", "Night 3"], ["Infected", "×1.3"], ["Chase speed", "×1.2"], ["Detection", "×1.25"], ["Watcher", "50% chance"]],
+      "A Blood Moon turns the sky and light red. The infected chase 20% faster and spot you from 25% further. The mix shifts hard toward Runners and Brutes. It can roll from Night 3. In testing it put 19 infected on the map where a normal night had fewer.",
+    facts: [["Earliest", "Night 3"], ["Infected", "Normal night cap (40)"], ["Chase speed", "×1.2"], ["Detection", "×1.25"], ["Watcher", "50% chance"]],
     sections: [
       {
         id: "how-to-adapt",
@@ -105,11 +105,11 @@ export const specialNights: WikiEntry[] = [
     title: "Infected Surge",
     seoTitle: "Infected Surge in Stillskin Forest: Effects and How to Survive",
     description:
-      "The Infected Surge special night in Stillskin Forest: 80% more infected, faster spawning, and every infected hunting survivors all night.",
+      "The Infected Surge special night in Stillskin Forest: the night fills fast, the infected see further, and more of them are Runners and Screamers.",
     question: "What is an Infected Surge in Stillskin Forest?",
     answer:
-      "An Infected Surge brings 80% more infected, spawning faster, and every one of them hunts survivors instead of roaming. Screams echo all night. In testing it put 27 infected on the map.",
-    facts: [["Earliest", "Night 2"], ["Infected", "×1.8"], ["Spawn interval", "0.8 s"], ["Behaviour", "All hunt"], ["Watcher", "15% chance"]],
+      "On an Infected Surge the night's infected arrive almost at once instead of trickling in, they spot you from 15% further, and far more of them are Runners and Screamers, so one sighting quickly becomes a pack. Screams echo all night. The number of infected still never goes past the normal night cap.",
+    facts: [["Earliest", "Night 2"], ["Infected", "Normal night cap (40)"], ["Spawn interval", "0.8 s"], ["Detection", "×1.15"], ["Mix", "More Runners and Screamers"], ["Watcher", "15% chance"]],
     sections: [
       {
         id: "how-to-adapt",

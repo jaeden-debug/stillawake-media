@@ -7,7 +7,7 @@ export const mechanics: WikiEntry[] = [
   {
     ...base,
     slug: "day-night-cycle",
-    lastVerified: "2026-10-27",
+    lastVerified: "2026-10-29",
     title: "Day and Night Cycle",
     seoTitle: "Stillskin Forest Day and Night Cycle: How Long Is a Night?",
     description:
@@ -25,7 +25,7 @@ export const mechanics: WikiEntry[] = [
             ["Dawn", "20 s", "5:48 → 7:00", "Night extras head back into the woods and despawn. Empty loot spots refill."],
             ["Day", "7 min", "7:00 → 17:36", "Few infected, shorter detection range. Scavenge."],
             ["Dusk", "40 s", "17:36 → 19:12", "Warning banner. A special night may be announced."],
-            ["Night", "5 min", "19:12 → 5:48", "Population jumps, detection range grows, and a share of the infected near you search your area. See [Night survival](@night-survival)."],
+            ["Night", "5 min", "19:12 → 5:48", "Fresh infected come into the woods, even where you cleared them by day, and detection range grows. See [Night survival](@night-survival)."],
           ] },
         ],
       },
@@ -33,11 +33,19 @@ export const mechanics: WikiEntry[] = [
         id: "escalation",
         heading: "How it escalates",
         blocks: [
-          { type: "p", text: "Every day adds infected. By day the map holds 6 plus the day number (to a maximum of 14). At night it holds three times (12 + 3 × day), to a maximum of 72, and spawns arrive up to three at a time." },
-          { type: "table", caption: "Infected population by day", head: ["Day", "Day population", "Night population"], rows: [
-            ["1", "7", "45"], ["2", "8", "54"], ["3", "9", "63"], ["4", "10", "72"], ["5+", "11–14", "72"],
+          { type: "p", text: "Every day adds infected. By day the forest holds 6 plus the day number (to a maximum of 14). At night it holds up to 40, arriving up to three at a time, out of sight and never closer than 70 studs. Counting every infected from every source (the airfield's soldiers, the asylum, the ritual, ambushes), there are never more than 56 at once, special nights included." },
+          { type: "table", caption: "Ordinary infected in the forest", head: ["Day", "By day", "At night"], rows: [
+            ["1", "7", "40"], ["2", "8", "40"], ["3", "9", "40"], ["4", "10", "40"], ["5+", "11–14", "40"],
           ] },
           { type: "p", text: "Detection range grows too: 45 studs by day, 70 at night, plus 1.5 studs for every day survived. From Night 2, dusk can roll a [special night](@special-nights-overview)." },
+        ],
+      },
+      {
+        id: "cleared-ground",
+        heading: "Cleared ground stays cleared",
+        blocks: [
+          { type: "p", text: "The map is split into squares about 160 studs across, and each square gets a few ordinary infected per day. Kill the ones around you and no more appear in your square while anyone stays in it or near its edge. It fills up again only once everyone has been gone for about two minutes." },
+          { type: "p", text: "Nightfall is the exception: every square, including the one you're standing in, gets a fresh batch for the night. They arrive out of sight and don't know where you are; they find you the usual way, by sight or sound. Clear your ground at night and it stays clear for the rest of the night, though infected from the squares around you can still wander in." },
         ],
       },
     ],
@@ -90,14 +98,14 @@ export const mechanics: WikiEntry[] = [
   {
     ...base,
     slug: "detection-and-noise",
-    lastVerified: "2026-10-27",
+    lastVerified: "2026-10-29",
     title: "Detection, Noise and Pursuit",
     seoTitle: "How Zombies Detect You in Stillskin Forest: Sight, Noise and Chases",
     description:
       "How the infected find you in Stillskin Forest: sight range, field of view, noise from guns and sprinting, alerts, searches, and how chases end.",
     question: "How do zombies detect you in Stillskin Forest?",
     answer:
-      "Infected see you within a 140° field of view out to 45 studs by day and 70 at night (more each day), and sense you within 9 studs from any direction. They also investigate noise: gunshots within 90 studs, shotgun blasts within 120, melee within 25, and sprinting footsteps within 30. After about a second of seeing you they commit, scream to alert others within 45 studs, and chase.",
+      "Infected see you within a 140° field of view out to 45 studs by day and 70 at night (more each day), and sense you within 9 studs from any direction. They also investigate noise: gunshots within 90 studs, shotgun blasts within 120, melee within 25, and sprinting footsteps within 30, all shorter through a wall. After about a second of seeing you they commit, scream to alert others within 45 studs, and chase. They never simply know where you are.",
     sections: [
       {
         id: "sight",
@@ -122,6 +130,7 @@ export const mechanics: WikiEntry[] = [
           { type: "table", caption: "How far each noise carries", head: ["Noise", "Heard within"], rows: [
             ["Shotgun blast, Hunting Rifle or Mini AK shot", "120 studs"], ["Gunshot", "90 studs"], ["Running generator", "45 studs, every 8 s"], ["Sprinting footsteps", "30 studs"], ["Melee swing", "25 studs"], ["Walking", "Silent"], ["Crouched footsteps", "Silent"],
           ] },
+          { type: "p", text: "Walls muffle sound. With a wall between you and an infected, a quiet noise (sprinting, a melee swing, a running generator) carries less than half as far, and a gunshot about four fifths as far. Glass doesn't count as a wall." },
           { type: "p", text: "Alarms count too: the burglar alarm at [Pine General Store](@pine-general-store), a crashed car's alarm, and the hospital vending machine all pull infected in. Breaking a window is loud too. In rain every noise carries up to 40% less far." },
           { type: "p", text: "Walking through bushes and ferns rustles them, and splashing through a puddle makes a sound. You hear the infected doing the same, which is often the first sign one is close." },
         ],
@@ -136,15 +145,16 @@ export const mechanics: WikiEntry[] = [
             "**Alert.** It screams, pulling in infected within 45 studs (100 for a [Screamer](@screamer)).",
             "**Chase.** It leads your movement; a pack fans out to close from the sides.",
             "**Attack.** In reach, it winds up (slowing down) and swings.",
-            "**Search.** If it loses sight of you for 5 seconds, it searches where you were heading for about 9 seconds, then returns to roaming.",
+            "**Search.** If it loses sight of you for 5 seconds, it searches where you were heading for roughly 7 to 12 seconds, stopping now and then to listen and look around, then returns to roaming.",
           ] },
+          { type: "p", text: "An infected that can see you tells searching infected within about 20 studs where you are, every couple of seconds. That's the only way news of you spreads, besides a scream. Infected far away never come for you just because it's night." },
         ],
       },
       {
         id: "how-chases-end",
         heading: "How chases end",
         blocks: [
-          { type: "p", text: "Infected don't track you forever. A chase ends after 22 seconds, after 145 studs, or once you are 85 studs away and out of sight. Climbing a ladder the chaser didn't see you use also leaves it behind; see [Climbing and ladders](@climbing-and-ladders)." },
+          { type: "p", text: "An infected that can still see you keeps coming: there is no timer while you're in plain sight. Break line of sight and it heads for where it last saw you; about 5 seconds later it starts searching. A loud noise (a gunshot) can tell a chaser that has lost you where you went. Climbing a ladder the chaser didn't see you use also leaves it behind; see [Climbing and ladders](@climbing-and-ladders)." },
         ],
       },
     ],
@@ -156,13 +166,14 @@ export const mechanics: WikiEntry[] = [
   {
     ...base,
     slug: "hiding",
+    lastVerified: "2026-10-29",
     title: "Hiding",
     seoTitle: "How to Hide in Stillskin Forest: Lockers, Wardrobes and Hide Spots",
     description:
       "How to hide from zombies in Stillskin Forest: where the hiding spots are, how to enter and leave, and what happens if the infected saw you go in.",
     question: "How do you hide from zombies in Stillskin Forest?",
     answer:
-      "Walk up to a hiding spot (a locker, wardrobe, dumpster, chest, trunk, morgue drawer or tent) and press E. You watch through the slats or gap and can look around a little; leave with E or Space. If no infected saw you go in, you're safe. If one did, the Dread Encounter begins: stay still until it leaves.",
+      "Walk up to a hiding spot (a locker, wardrobe, dumpster, chest, trunk, morgue drawer or tent) and press E. You watch through the slats or gap and can look around a little; leave with E or Space. If no infected was after you, you're safe. If one was, it comes to look (the Dread Encounter). One that watched you climb in from close by will usually find you; break its line of sight before you hide and it will look, then leave.",
     sections: [
       {
         id: "where",
@@ -191,7 +202,7 @@ export const mechanics: WikiEntry[] = [
         id: "if-they-saw-you",
         heading: "If they saw you",
         blocks: [
-          { type: "p", text: "Hiding in sight of an infected starts [the Dread Encounter](@the-dread-encounter). Leaving early can restart the chase, and you can't leave while an infected is visibly watching the spot." },
+          { type: "p", text: "Hiding while an infected is after you starts [the Dread Encounter](@the-dread-encounter). You can leave at any time, but leaving while one is close restarts the chase, and nothing tells you when it's safe: listen first." },
         ],
       },
     ],
@@ -202,26 +213,27 @@ export const mechanics: WikiEntry[] = [
   {
     ...base,
     slug: "the-dread-encounter",
+    lastVerified: "2026-10-29",
     title: "The Dread Encounter",
     seoTitle: "The Dread Encounter in Stillskin Forest: What Happens When You Hide",
     description:
       "The Dread Encounter is what happens in Stillskin Forest when the infected see you hide: the slow approach, the stare through the grate, and how it ends.",
     question: "What is the Dread Encounter in Stillskin Forest?",
     answer:
-      "The Dread Encounter happens when infected see you hide. The chase goes unnaturally quiet; they stop sprinting and walk slowly toward your spot. One steps up to the opening and stares at you, breathing, for about five seconds while others take up positions nearby. Then they leave one at a time, one may linger or look back, and your heartbeat settles. Stay still: leaving early can restart the chase.",
+      "The Dread Encounter happens when infected that were after you see where you hid, or lose you right beside it. The chase goes quiet; there's no music, only your breathing, your heart and their footsteps. They walk slowly toward your spot. One steps up to the opening and looks straight in at you for four to nine seconds while others wait nearby. If it watched you climb in from close up, it may find you and drag you out. If it only lost you nearby, it looks, then leaves, one at a time, sometimes glancing back.",
     sections: [
       {
         id: "the-sequence",
         heading: "The sequence",
         blocks: [
           { type: "list", ordered: true, items: [
-            "The chase becomes unnaturally quiet.",
-            "The infected stop sprinting and approach slowly.",
-            "A lead infected moves into position, then sharply notices you.",
-            "It comes up to the opening and stares and breathes close to you for about five seconds.",
-            "Others, up to five in all, occupy supporting positions.",
-            "They withdraw individually with random gaps between them. One may linger for a few seconds or look back.",
-            "Your heartbeat and breathing settle as the danger passes.",
+            "The chase goes quiet. There's no music: only your breathing, your heartbeat and the room.",
+            "The infected stop sprinting and approach slowly, walking around furniture rather than through it.",
+            "A lead infected pauses, turns its head toward your spot, then comes up to the opening.",
+            "It looks in at you through the slats or the gap, breathing close, for four to nine seconds. Now and then it glances away, then back.",
+            "Others, up to five in all, wait or search nearby. Only one ever stands at the opening.",
+            "Either it finds you (see below) or they withdraw one at a time, with gaps between them. One may linger or look back.",
+            "Nothing announces that it's over. Listen before you leave.",
           ] },
         ],
       },
@@ -230,9 +242,11 @@ export const mechanics: WikiEntry[] = [
         heading: "Rules",
         blocks: [
           { type: "list", items: [
-            "You can't leave while an infected is visibly watching your spot.",
-            "Leaving early can restart the chase.",
-            "Gunfire and other noise elsewhere does not interrupt an encounter.",
+            "**Being found depends on what it saw.** An infected that watched you climb in from up close, with nothing between you, finds you in a locker or wardrobe and drags you out after banging on it once: you get a moment's warning. Darker spots (the tent, the morgue drawer) and spots with a lid (the dumpster, the freezer, the trunk) hide you better.",
+            "**Break line of sight first.** If it only lost you near the spot, it looks, then leaves.",
+            "**Noise matters.** A sound right at your spot during the inspection (a teammate's gunfire, say) makes it surer. A loud sound somewhere else can pull it away to look.",
+            "Hidden, you can't be hurt: it never attacks through the door.",
+            "You can leave at any time; leaving while it's close restarts the chase.",
             "An encounter times out after 38 seconds at most.",
           ] },
         ],
@@ -630,6 +644,7 @@ export const mechanics: WikiEntry[] = [
             ["Tool", "[Hammer](@hammer)"], ["Plank length", "1.5–12 studs"], ["Reach", "Both ends within 20 studs of you"], ["Cost", "1 hammer durability per plank"], ["Infected hits to break", "6 (one every 1.4 s)"], ["Crowbar swings to remove", "2"], ["Maximum", "No limit"],
           ] },
           { type: "p", text: "A green ghost board shows while you drag if the plank will fit. Planks can't overlap a player or an infected. A broken or pried plank falls and fades away." },
+          { type: "p", text: "The infected claw at a plank, door or window only when they've just seen you go behind it (within about 3 seconds) or heard you there (within about 8). A base on its own, or night falling, never sets them on it, and they can't hurt you through a wall." },
         ],
       },
     ],

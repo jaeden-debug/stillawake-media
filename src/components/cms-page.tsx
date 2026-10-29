@@ -3,6 +3,7 @@ import { draftMode } from "next/headers";
 import { notFound, permanentRedirect, redirect } from "next/navigation";
 import { siteUrl } from "@/lib/data";
 import { entityIds } from "@/data/entities";
+import { authorJsonLd } from "@/data/people/jaeden-doody";
 import {
   getPublishedByRouteConfirmed,
   getRedirects,
@@ -114,7 +115,7 @@ function GenericCmsPage({
     mainEntityOfPage: url,
     ...(schemaTypeFor(item.type) === "Service" ? { provider: { "@id": entityIds.organization } } : {}),
     ...(schemaTypeFor(item.type) === "Article"
-      ? { author: { "@id": entityIds.organization }, publisher: { "@id": entityIds.organization } }
+      ? { author: authorJsonLd(true), publisher: { "@id": entityIds.organization } }
       : { publisher: { "@id": entityIds.organization } }),
     isPartOf: { "@id": entityIds.website },
   };

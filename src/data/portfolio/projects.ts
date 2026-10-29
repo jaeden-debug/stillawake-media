@@ -137,7 +137,7 @@ export const projects: Project[] = [
       "A neon game show on Roblox: eight five-second challenges, and every fail launches you into orbit.",
     description: [
       "RISK IT! is StillAwake Media's second game: a minigame game on Roblox built around short challenges and very public failure. Press your luck, stop a needle, react to a light, cross a bridge of spinning arms, pick the right door, outrun a falling floor, repeat arrows, or get fired from a cannon.",
-      "Win and you bank GUTS for medals and cosmetics. Fail and the game ragdolls you across the arena, then puts you back at the pad for one more go. It went public on Roblox on 27 October 2026; its official landing page and wiki live under /games.",
+      "Win and you bank GUTS for medals and cosmetics. Fail and the game ragdolls you across the arena, then puts you back at the pad for one more go. It went public on Roblox on 29 October 2026; its official landing page and wiki live under /games.",
     ],
     categories: ["games"],
     platforms: ["Roblox"],

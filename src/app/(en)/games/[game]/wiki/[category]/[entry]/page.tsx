@@ -7,6 +7,7 @@ import { WikiShell } from "@/components/wiki/WikiShell";
 import { SpoilerGate, WikiSectionView, WikiText } from "@/components/wiki/WikiContent";
 import { RobloxCta } from "@/components/games/GameCta";
 import { gameBundles, type GameBundle } from "@/data/games";
+import { articleAuthors, jaedenDoody } from "@/data/people/jaeden-doody";
 import type { GameUpdate, WikiEntry } from "@/data/games/types";
 import {
   JsonLd,
@@ -65,6 +66,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     // Entry titles are written in full, so they skip the site suffix.
     title: { absolute: title },
     description: entry.description,
+    authors: articleAuthors(jaedenDoody.name),
     alternates: { canonical: entryPath(game, entry) },
     openGraph: {
       title,
@@ -158,7 +160,9 @@ export default async function EntryPage({ params }: Props) {
             {entry.title}
           </h1>
           <p className="mt-4 text-xs text-[#8a8a8a]">
-            Last checked <time dateTime={entry.lastVerified}>{entry.lastVerified}</time> · {verificationLabel[entry.verification]}
+            By{" "}
+            <Link href={jaedenDoody.path} className="underline underline-offset-2 hover:text-white">{jaedenDoody.name}</Link>
+            {" "}· Last checked <time dateTime={entry.lastVerified}>{entry.lastVerified}</time> · {verificationLabel[entry.verification]}
           </p>
 
           {entry.spoiler ? (

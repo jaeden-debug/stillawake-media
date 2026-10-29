@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { InternalLinks } from "@/components/site";
 import { entityIds } from "@/data/entities";
+import { articleAuthors, authorJsonLd, jaedenDoody } from "@/data/people/jaeden-doody";
 import { robloxUrl, type ComparisonGuide, type GuideGame } from "@/data/games/guides/types";
 import { JsonLd, breadcrumbList, graph, type Crumb } from "@/lib/game-schema";
 import { absolute, getBundle, socialImage } from "@/lib/games";
@@ -25,6 +26,7 @@ export function guideMetadata(guide: ComparisonGuide): Metadata {
   return {
     title: { absolute: guide.title },
     description: guide.description,
+    authors: articleAuthors(jaedenDoody.name),
     alternates: { canonical: guide.path },
     openGraph: {
       title: guide.title,
@@ -67,7 +69,7 @@ export function ComparisonGuidePage({ guide }: { guide: ComparisonGuide }) {
             description,
             url,
             dateModified: SNAPSHOT_DATE,
-            author: { "@id": entityIds.organization },
+            author: authorJsonLd(true),
             publisher: { "@id": entityIds.organization },
             mainEntityOfPage: { "@id": `${url}#webpage` },
             inLanguage: "en-CA",
@@ -106,7 +108,9 @@ export function ComparisonGuidePage({ guide }: { guide: ComparisonGuide }) {
         <p className="mt-10 text-xs font-bold uppercase tracking-[.35em] text-[#7FA36B]">Games guide</p>
         <h1 className="geist mt-3 text-4xl font-black leading-[.95] tracking-[-.06em] md:text-6xl">{title}</h1>
         <p className="mt-4 text-xs text-[#8a8a8a]">
-          Figures from Roblox&apos;s public game listings, checked <time dateTime={SNAPSHOT_DATE}>{SNAPSHOT_DATE}</time>.
+          By{" "}
+          <Link href={jaedenDoody.path} className="underline underline-offset-2 hover:text-white">{jaedenDoody.name}</Link>
+          {" "}· Figures from Roblox&apos;s public game listings, checked <time dateTime={SNAPSHOT_DATE}>{SNAPSHOT_DATE}</time>.
         </p>
 
         <div className="mt-6 rounded-2xl border border-[#7FA36B]/35 bg-[#7FA36B]/[.07] p-5 md:p-6">

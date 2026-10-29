@@ -90,7 +90,7 @@ export const updates: WikiEntry[] = [
       "What's new in RISK IT!: every build from v0.1.0 to v0.2.2 with new challenges, changes, fixes and known issues, dated as confirmed in the game.",
     question: "What's new in RISK IT!?",
     answer:
-      "The current build is v0.2.2 (26 October 2026), the build that went public on Roblox on 27 October 2026. It added a phone layout pass on top of v0.2.1's effects pass and v0.2.0's three new challenges (MELTDOWN, COPY THAT and LONG SHOT) and THE VAULT cosmetic shop.",
+      "The current build is v0.2.2 (26 October 2026), the build that went public on Roblox on 29 October 2026. It added a phone layout pass on top of v0.2.1's effects pass and v0.2.0's three new challenges (MELTDOWN, COPY THAT and LONG SHOT) and THE VAULT cosmetic shop.",
     sections: [],
     related: ["what-is-risk-it", "challenges-compared"],
     verification: "verified_live",

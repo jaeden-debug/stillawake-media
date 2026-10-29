@@ -165,15 +165,36 @@ export async function assertSafeUrl(raw: string): Promise<URL> {
   return url;
 }
 
-export type FetchedPage = { url: string; status: number; body: string; contentType: string };
+export type FetchedPage = {
+  url: string;
+  status: number;
+  body: string;
+  contentType: string;
+  /** Every URL that answered with a redirect before `url`, in order. */
+  redirects: string[];
+  /** The response's X-Robots-Tag header, which can noindex a page its HTML never mentions. */
+  xRobotsTag: string | null;
+};
+
+export type SafeFetchOptions = {
+  /** Identifies which tool is calling, so site owners can tell the checks apart. */
+  userAgent?: string;
+};
+
+const DEFAULT_USER_AGENT =
+  "StillAwakeLLMsTxtBot/1.0 (+https://stillawakemedia.com/tools/llms-txt-generator)";
 
 /**
  * Fetches a URL with the guard applied to every redirect hop, a hard byte
  * cap, and a timeout. Redirects are followed manually — `redirect: "follow"`
  * would let the runtime chase a hop we never validated.
  */
-export async function safeFetch(raw: string): Promise<FetchedPage | null> {
+export async function safeFetch(
+  raw: string,
+  options: SafeFetchOptions = {},
+): Promise<FetchedPage | null> {
   let current = raw;
+  const redirects: string[] = [];
 
   for (let hop = 0; hop <= MAX_REDIRECTS; hop++) {
     const url = await assertSafeUrl(current);
@@ -188,8 +209,7 @@ export async function safeFetch(raw: string): Promise<FetchedPage | null> {
         headers: {
           // Identifies the crawler honestly and gives site owners something
           // to block if they would rather not be checked.
-          "user-agent":
-            "StillAwakeLLMsTxtBot/1.0 (+https://stillawakemedia.com/tools/llms-txt-generator)",
+          "user-agent": options.userAgent ?? DEFAULT_USER_AGENT,
           accept: "text/html,text/plain,application/xml;q=0.9,*/*;q=0.8",
         },
       });
@@ -202,14 +222,18 @@ export async function safeFetch(raw: string): Promise<FetchedPage | null> {
     if (res.status >= 300 && res.status < 400) {
       const location = res.headers.get("location");
       if (!location) return null;
+      redirects.push(url.toString());
       current = new URL(location, url).toString();
       continue;
     }
 
     const contentType = res.headers.get("content-type") ?? "";
+    const xRobotsTag = res.headers.get("x-robots-tag");
     // Read with a cap rather than trusting content-length, which lies.
     const reader = res.body?.getReader();
-    if (!reader) return { url: url.toString(), status: res.status, body: "", contentType };
+    if (!reader) {
+      return { url: url.toString(), status: res.status, body: "", contentType, redirects, xRobotsTag };
+    }
 
     const chunks: Uint8Array[] = [];
     let total = 0;
@@ -234,6 +258,8 @@ export async function safeFetch(raw: string): Promise<FetchedPage | null> {
       status: res.status,
       body: new TextDecoder().decode(merged),
       contentType,
+      redirects,
+      xRobotsTag,
     };
   }
   return null;

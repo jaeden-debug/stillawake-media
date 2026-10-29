@@ -64,11 +64,16 @@ Pricing overview: ${siteUrl}/pricing (français: ${siteUrl}/fr/tarifs)
 - [Games](${siteUrl}/games)
 - [Stillskin Forest (Roblox co-op survival horror)](${siteUrl}/games/stillskin-forest)
 - [Stillskin Forest official wiki](${siteUrl}/games/stillskin-forest/wiki)
-- [Roblox survival horror games compared](${siteUrl}/games/guides/roblox-survival-horror-games)
+- [Scary Roblox games to play with friends](${siteUrl}/games/guides/scary-roblox-games-with-friends)
 - [RISK IT! (Roblox minigames with ragdoll fails)](${siteUrl}/games/risk-it)
 - [RISK IT! official wiki](${siteUrl}/games/risk-it/wiki)
 - [Roblox minigame and ragdoll games compared](${siteUrl}/games/guides/roblox-minigame-games)
 - [Services](${siteUrl}/services)
+- [Free tools](${siteUrl}/tools)
+- [What is llms.txt? Real examples and limits](${siteUrl}/tools/llms-txt)
+- [llms.txt generator and AI readiness check](${siteUrl}/tools/llms-txt-generator)
+- [Schema markup generator (JSON-LD)](${siteUrl}/tools/schema-markup-generator)
+- [Website and project cost calculator](${siteUrl}/tools/project-cost-calculator)
 - [Articles — The StillAwake Times](${siteUrl}/stillawake-times)
 - [Contact](${siteUrl}/contact)
 - [Published pricing](${siteUrl}/pricing)
@@ -79,16 +84,16 @@ Pricing overview: ${siteUrl}/pricing (français: ${siteUrl}/fr/tarifs)
 
 ${ventures.map((v) => `- ${v.url} — ${v.tagline}`).join("\n")}
 
-${projectsSection()}
-
-${gamesSection()}
-
-${articlesSection()}
-
 ## Full text
 
 The complete text of every project page and published game wiki article: ${siteUrl}/llms-full.txt
 Sitemap of every indexable URL: ${siteUrl}/sitemap.xml
+
+## Optional
+
+Everything below is the long tail: every project, game wiki page and article. Skip it when context is short; the key pages above cover what the studio does.
+
+${[projectsSection(), gamesSection(), articlesSection()].join("\n\n").replace(/^(#{2,}) /gm, "#$1 ")}
 `;
 
   return new Response(body, {

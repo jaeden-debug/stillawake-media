@@ -26,10 +26,11 @@ describe("page schema registry", () => {
     // the platform-guide cluster, plus the EN and FR project cost calculator,
     // plus the EN and FR website-ownership resource, plus the EN and FR
     // website setup guide, plus the EN and FR technology decision resource,
-    // plus the EN and FR custom-software decision resource.
+    // plus the EN and FR custom-software decision resource, plus the
+    // llms.txt explainer hub and the schema markup generator (2026-10-29).
     // An exact count is deliberate: it forces a conscious decision whenever a
     // route joins or leaves.
-    expect(entries.length).toBe(33);
+    expect(entries.length).toBe(35);
   });
 
   it.each(entries.map(([r]) => r))("%s produces a coherent graph", (route) => {

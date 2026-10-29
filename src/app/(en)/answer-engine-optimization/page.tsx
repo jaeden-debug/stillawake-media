@@ -92,7 +92,15 @@ export default function AeoPage() {
               free llms.txt generator and AI readiness check
             </Link>{" "}
             reads your site the way an assistant would and reports which facts it cannot find — owner,
-            pricing, service area, contact route. If you just need the file itself, we keep verified
+            pricing, service area, contact route. New to the file? Read{" "}
+            <Link href="/tools/llms-txt" className="text-white/80 underline-offset-4 hover:underline">
+              what llms.txt is and what it can&apos;t do
+            </Link>
+            ; for page-level facts there is a{" "}
+            <Link href="/tools/schema-markup-generator" className="text-white/80 underline-offset-4 hover:underline">
+              schema markup generator
+            </Link>
+            . If you just need the file itself, we keep verified
             implementation notes for{" "}
             <Link href="/tools/llms-txt/shopify" className="text-white/80 underline-offset-4 hover:underline">
               Shopify
@@ -172,6 +180,8 @@ export default function AeoPage() {
           ["SEO Montréal", "/seo-montreal"],
           ["Local SEO", "/local-seo"],
           ["Free llms.txt generator", "/tools/llms-txt-generator"],
+          ["What is llms.txt?", "/tools/llms-txt"],
+          ["Schema markup generator", "/tools/schema-markup-generator"],
           ["Guide: GEO and AEO explained", "/stillawake-times/what-is-generative-engine-optimization"],
           ["Guide: Can ChatGPT recommend my business?", "/stillawake-times/can-chatgpt-recommend-my-business"],
           ["llms.txt on Shopify", "/tools/llms-txt/shopify"],

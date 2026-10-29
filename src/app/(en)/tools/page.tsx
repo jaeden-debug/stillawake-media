@@ -81,6 +81,23 @@ export default function ToolsPage() {
           </Link>
 
           <Link
+            href="/tools/schema-markup-generator"
+            className="mt-5 block rounded-xl border border-white/10 bg-white/[0.03] p-7 transition hover:border-[#D71920]/50"
+          >
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#D71920]">Live</p>
+            <h3 className="geist mt-4 text-2xl font-black tracking-[-0.05em]">
+              Schema markup generator (JSON-LD)
+            </h3>
+            <p className="mt-3 text-[#C7B9B9]">
+              JSON-LD for a local business, organization, article, product, breadcrumbs, FAQ or person,
+              checked as you type against Google&apos;s required and recommended properties. It flags a
+              price with a currency symbol, a date in the wrong format or opening hours a parser can&apos;t
+              read, and says plainly what markup can&apos;t do.
+            </p>
+            <p className="mt-4 text-sm text-[#8C8080]">Free · runs in your browser · nothing sent →</p>
+          </Link>
+
+          <Link
             href="/tools/project-cost-calculator"
             className="mt-5 block rounded-xl border border-white/10 bg-white/[0.03] p-7 transition hover:border-[#D71920]/50"
           >
@@ -163,7 +180,11 @@ export default function ToolsPage() {
             <p className="mt-3 text-[#C7B9B9]">
               How llms.txt actually works on specific platforms — verified against each platform&apos;s own
               documentation, with the version-specific behaviour that generic guides miss. Each carries the
-              date its facts were last checked.
+              date its facts were last checked. New to the format? Start with{" "}
+              <Link href="/tools/llms-txt" className="text-white underline underline-offset-2">
+                what llms.txt is, with eight real files measured
+              </Link>
+              .
             </p>
 
             <ul className="mt-8 space-y-4">

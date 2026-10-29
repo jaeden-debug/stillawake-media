@@ -1,8 +1,8 @@
 import { ComparisonGuidePage, guideMetadata } from "@/components/games/ComparisonGuidePage";
-import { survivalHorrorGuide as guide } from "@/data/games/guides/roblox-survival-horror";
+import { friendsGuide as guide } from "@/data/games/guides/scary-roblox-games-with-friends";
 
 export const metadata = guideMetadata(guide);
 
-export default function SurvivalHorrorGuide() {
+export default function ScaryWithFriendsGuide() {
   return <ComparisonGuidePage guide={guide} />;
 }

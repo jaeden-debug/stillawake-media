@@ -28,6 +28,9 @@ export const REDIRECTS = [
   // Gas Cans became Jerry Cans; the old wiki pages point at their renamed ones.
   { source: "/games/stillskin-forest/wiki/weapons/signal-remote", destination: "/games/stillskin-forest/wiki/weapons/freeze-device", permanent: true },
   { source: "/games/stillskin-forest/wiki/mechanics/generators-and-gas-cans", destination: "/games/stillskin-forest/wiki/mechanics/generators-and-jerry-cans", permanent: true },
+  // 29 Oct 2026: the survival-horror guide was folded into the broader "with friends" guide. Google
+  // treats both searches as one intent, and the old URL had never been indexed.
+  { source: "/games/guides/roblox-survival-horror-games", destination: "/games/guides/scary-roblox-games-with-friends", permanent: true },
   { source: "/our-work/llms-txt-generator", destination: "/tools/llms-txt-generator", permanent: true },
   // The previous Framer site's contact form lived at these paths; old links
   // (Facebook posts among them) still arrive here.

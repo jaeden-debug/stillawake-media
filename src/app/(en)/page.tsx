@@ -16,6 +16,34 @@ export const metadata: Metadata = {
     },
   },
 };
+/**
+ * Direct links to the pages Search Console listed as "Discovered – currently
+ * not indexed" with no referring page (2026-10-29). The homepage is the most
+ * crawled URL on the site, so one hop from here is the strongest internal
+ * signal we control. See docs/seo/discoverability-week1-2.md.
+ */
+const RESOURCE_GROUPS: readonly (readonly [string, readonly (readonly [string, string, string])[]])[] = [
+  ["Free tools", [
+    ["What is llms.txt?", "/tools/llms-txt", "The format, eight real files measured, and what it can't do."],
+    ["llms.txt generator", "/tools/llms-txt-generator", "Drafts the file and reports which facts about you an AI can't find."],
+    ["Schema markup generator", "/tools/schema-markup-generator", "JSON-LD for seven types, validated as you type."],
+    ["Website cost calculator", "/tools/project-cost-calculator", "The pricing model we use to scope real projects, in CAD."],
+  ]],
+  ["Search & AI visibility", [
+    ["What is generative engine optimization?", "/stillawake-times/what-is-generative-engine-optimization", "How AI answers choose sources, and what you can influence."],
+    ["Can ChatGPT recommend my business?", "/stillawake-times/can-chatgpt-recommend-my-business", "What decides whether an assistant names you."],
+    ["Google Business Profile optimization", "/stillawake-times/google-business-profile-optimization", "Categories, descriptions, photos, posts and reviews."],
+    ["How to rank higher on Google Maps", "/stillawake-times/how-to-rank-higher-on-google-maps", "Relevance, distance and prominence, in practice."],
+    ["Why isn't my website ranking?", "/stillawake-times/why-is-my-website-not-ranking-on-google", "The nine-layer check we run on real sites, in order."],
+  ]],
+  ["Games we make", [
+    ["Scary Roblox games to play with friends", "/games/guides/scary-roblox-games-with-friends", "15 games grouped by how you play together, with real numbers."],
+    ["Roblox minigame games compared", "/games/guides/roblox-minigame-games", "Party and ragdoll games, by server size."],
+    ["Stillskin Forest wiki", "/games/stillskin-forest/wiki", "Every weapon, enemy and place in our co-op survival-horror game."],
+    ["All games", "/games", "Stillskin Forest and RISK IT! on Roblox."],
+  ]],
+];
+
 export default function Home(){return <main>
       <PageSchema route="/" />
 <section className="relative min-h-[100svh] overflow-hidden px-6 pt-6 md:min-h-screen"><video className="heroVideo absolute inset-0 h-screen min-h-screen w-full object-cover opacity-65" src="/stillawakemedia-hero-optimized-small.mp4" poster="/stillawakemedia-hero-poster.jpg" preload="metadata" autoPlay muted loop playsInline/><div className="absolute inset-0 bg-gradient-to-b from-black/40 via-[#050505]/50 to-[#050505]"/><div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_35%,rgba(215,25,32,.25),transparent_35%)]"/><div className="relative z-10 mx-auto flex min-h-[calc(100svh-1.5rem)] max-w-7xl items-start pt-28 pb-4 md:min-h-screen md:pt-32 md:pb-20"><div className="flex w-full items-center">
@@ -47,7 +75,24 @@ We build <span className="text-[#D71920]">bold brands</span>, high-performance w
 </div>
 </div></div></section>
 <Section eyebrow="What we do" title="Digital infrastructure for ambitious operators."><ServiceGrid/>
-<div className="mt-10 flex flex-wrap gap-3">{[["Web Design Montréal","/web-design-montreal"],["SEO Montréal","/seo-montreal"],["Shopify Development","/shopify-development"],["Website Maintenance & Support","/website-maintenance"],["AI Search Optimization (AEO)","/answer-engine-optimization"],["Custom Software","/software-development"],["Branding","/branding"],["Pricing","/pricing"]].map(([n,h])=>(<Link key={h} href={h} className="rounded-full border border-white/10 px-4 py-2 text-sm text-[#C7B9B9] transition hover:border-[#D71920]/60 hover:text-white">{n}</Link>))}</div></Section>
+<div className="mt-10 flex flex-wrap gap-3">{[["Web Design Montréal","/web-design-montreal"],["SEO Montréal","/seo-montreal"],["Shopify Development","/shopify-development"],["Website Maintenance & Support","/website-maintenance"],["AI Search Optimization (AEO)","/answer-engine-optimization"],["Custom Software","/software-development"],["Local SEO","/local-seo"],["AI Automation","/ai-automation"],["Branding","/branding"],["Pricing","/pricing"]].map(([n,h])=>(<Link key={h} href={h} className="rounded-full border border-white/10 px-4 py-2 text-sm text-[#C7B9B9] transition hover:border-[#D71920]/60 hover:text-white">{n}</Link>))}</div></Section>
+<Section eyebrow="Free tools & guides" title="Free tools and guides, written from client work and our own games.">
+<div className="grid gap-5 md:grid-cols-3">
+{RESOURCE_GROUPS.map(([heading, links]) => (
+<div key={heading} className="rounded-[2rem] border border-white/10 bg-[#0b0b0b] p-7">
+<h3 className="geist text-xl font-black tracking-[-0.05em] text-white">{heading}</h3>
+<ul className="mt-5 grid gap-3">
+{links.map(([label, href, note]) => (
+<li key={href}>
+<Link href={href} className="text-[15px] font-semibold text-white underline decoration-white/20 underline-offset-4 transition hover:decoration-[#D71920]">{label}</Link>
+<p className="mt-1 text-sm leading-6 text-[#8C8080]">{note}</p>
+</li>
+))}
+</ul>
+</div>
+))}
+</div>
+</Section>
 
 <section className="px-6 py-10 md:py-16">
   <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-black shadow-2xl">

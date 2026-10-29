@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { failBand } from "@/lib/analytics";
 import {
   analyzePage,
   buildChecks,
@@ -132,5 +133,11 @@ describe("robots.txt matching", () => {
     const r = parseRobotsTxt("User-agent: *\nDisallow:\nSitemap: https://example.com/sitemap.xml");
     expect(isAllowedByRobots(r, "Googlebot", "/anything")).toBe(true);
     expect(r.sitemaps).toEqual(["https://example.com/sitemap.xml"]);
+  });
+});
+
+describe("GA4 fail band", () => {
+  it("bands blocking problems without exposing the count", () => {
+    expect([0, 1, 2, 3, 9].map(failBand)).toEqual(["fail_0", "fail_1_2", "fail_1_2", "fail_3_plus", "fail_3_plus"]);
   });
 });

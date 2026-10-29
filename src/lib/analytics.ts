@@ -148,6 +148,25 @@ export function trackLlmsToolEvent(
 }
 
 /**
+ * SECONDARY — the single-page SEO audit. `run` is a completed report and
+ * carries how many blocking problems it found, banded; `run_failed` is a URL
+ * the tool refused or couldn't reach. The URL itself is never sent: it is
+ * often a client's or competitor's page, and not ours to record.
+ *
+ * GA4 only, so consented visitors only. The consent-free counter needs
+ * 'seo_audit' added to the tool_usage_daily CHECK constraint first
+ * (stillawakemedia.dev migration 0010); until then a ping would be rejected.
+ */
+export function failBand(fails: number): "fail_0" | "fail_1_2" | "fail_3_plus" {
+  return fails === 0 ? "fail_0" : fails <= 2 ? "fail_1_2" : "fail_3_plus";
+}
+
+export function trackSeoAuditEvent(action: "run" | "run_failed", fails?: number) {
+  const fail_band = fails === undefined ? "" : failBand(fails);
+  gtag("event", `seo_audit_${action}`, fail_band ? { fail_band } : {});
+}
+
+/**
  * SECONDARY — discovery diagnostics for the portfolio, games and wiki.
  * None of these is a conversion. A Roblox outbound click means someone left
  * for the Roblox page, not that they played.

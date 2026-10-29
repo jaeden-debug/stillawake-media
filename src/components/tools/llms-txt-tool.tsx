@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import type { Finding } from "@/lib/llms-txt/analyze";
 import { TOOL_STRINGS, findingCopy, type ToolLocale } from "./llms-txt-strings";
+import { trackLlmsToolEvent } from "@/lib/analytics";
 
 type Result = {
   domain: string;
@@ -48,18 +49,22 @@ export function LlmsTxtTool({ locale = "en" }: { locale?: ToolLocale } = {}) {
       if (!res.ok) {
         setError(data.error ?? t.genericError);
         setState("error");
+        trackLlmsToolEvent("run_failed", locale);
         return;
       }
+      trackLlmsToolEvent("run", locale, data.score);
       setResult(data);
       setEdited(data.llmsTxt);
       setState("done");
     } catch {
       setError(t.networkError);
       setState("error");
+      trackLlmsToolEvent("run_failed", locale);
     }
   }
 
   function copy() {
+    trackLlmsToolEvent("copied", locale, result?.score);
     navigator.clipboard.writeText(edited).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -67,6 +72,7 @@ export function LlmsTxtTool({ locale = "en" }: { locale?: ToolLocale } = {}) {
   }
 
   function download() {
+    trackLlmsToolEvent("downloaded", locale, result?.score);
     const blob = new Blob([edited], { type: "text/plain" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);

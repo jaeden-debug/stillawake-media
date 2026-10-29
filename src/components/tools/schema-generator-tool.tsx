@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import { trackSchemaGeneratorEvent } from "@/lib/analytics";
 import {
   EXAMPLES,
   FIELDS,
@@ -44,12 +45,25 @@ export function SchemaGeneratorTool() {
   const errorCount = issues.filter((i) => i.level === "error").length;
   const rowSpec = ROW_LABELS[type];
 
-  const update = (next: Partial<FormState>) => setForms((f) => ({ ...f, [type]: { ...f[type], ...next } }));
+  // One "edited" event per type per visit: enough to count use without an event per keystroke.
+  const edited = useRef(new Set<SchemaType>());
+  const update = (next: Partial<FormState>) => {
+    if (!edited.current.has(type)) {
+      edited.current.add(type);
+      trackSchemaGeneratorEvent("edited", type);
+    }
+    setForms((f) => ({ ...f, [type]: { ...f[type], ...next } }));
+  };
+  const choose = (next: SchemaType) => {
+    if (next !== type) trackSchemaGeneratorEvent("type_selected", next);
+    setType(next);
+  };
   const setValue = (key: string, value: string) => update({ values: { ...form.values, [key]: value } });
   const setRow = (i: number, side: "a" | "b", value: string) =>
     update({ rows: form.rows.map((r, j) => (j === i ? { ...r, [side]: value } : r)) });
 
   function copy() {
+    trackSchemaGeneratorEvent("copied", type, { error_count: errorCount, with_script_tag: wrap });
     navigator.clipboard.writeText(output).then(
       () => {
         setCopied(true);
@@ -73,7 +87,7 @@ export function SchemaGeneratorTool() {
               type="button"
               role="radio"
               aria-checked={type === t.type}
-              onClick={() => setType(t.type)}
+              onClick={() => choose(t.type)}
               className={`rounded-xl border p-4 text-left transition ${type === t.type ? "border-[#D71920] bg-[#D71920]/10" : "border-white/10 hover:border-white/30"}`}
             >
               <span className="block font-bold text-white">{t.label}</span>

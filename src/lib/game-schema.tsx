@@ -1,4 +1,5 @@
 import { entityIds } from "@/data/entities";
+import { authorJsonLd } from "@/data/people/jaeden-doody";
 import type { Game, WikiEntry } from "@/data/games/types";
 import type { GameBundle } from "@/data/games";
 import wikiPublished from "@/data/games/wiki-published.json";
@@ -9,9 +10,9 @@ import { absolute, entryImage, entryPath, entryText, gamePath, hasImage, mediaFo
  * Structured data for the games platform.
  *
  * Only truthful, supported properties: no ratings, no review counts, no
- * prices, no release date until there is a release. Wiki articles are
- * authored and published by the organization, so they reference the existing
- * Organization @id rather than inventing a person.
+ * prices, no release date until there is a release. The games themselves are
+ * credited to the organization; wiki articles are written by Jaeden Doody and
+ * published by the organization.
  */
 
 export type Crumb = { name: string; path: string };
@@ -115,7 +116,7 @@ export function wikiArticleNode(bundle: GameBundle, entry: WikiEntry) {
     mainEntityOfPage: { "@id": `${url}#webpage` },
     ...(published ? { datePublished: published } : {}),
     dateModified: entry.lastVerified,
-    author: { "@id": entityIds.organization },
+    author: authorJsonLd(true),
     publisher: { "@id": entityIds.organization },
     about: { "@id": videoGameId(bundle.game) },
     isPartOf: { "@id": `${absolute(wikiPath(bundle.game.slug))}#webpage` },

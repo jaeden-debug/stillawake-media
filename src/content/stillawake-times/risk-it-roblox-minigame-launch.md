@@ -1,19 +1,20 @@
 ---
 title: "RISK IT!: Our Second Roblox Game Is Eight Tiny Challenges and a Lot of Ragdolls"
 date: "2026-10-26"
-excerpt: "RISK IT! is a neon game show on Roblox: eight five-to-twenty-second challenges, honest odds, and fails that launch you across the arena. Here's what's in the live test, with real screenshots, and why we built it this way."
+updated: "2026-10-29"
+excerpt: "RISK IT! is a neon game show on Roblox: eight five-to-twenty-second challenges, honest odds, and fails that launch you across the arena. Here's what's in it at launch, with real screenshots, and why we built it this way."
 category: "Games"
 featured: false
 image: "/games/risk-it/branding/risk-it-hero.webp"
 ogImage: "/games/risk-it/branding/risk-it-thumbnail.webp"
-author: "StillAwake Media"
+author: "Jaeden Doody"
 ---
 
 # RISK IT!: Our Second Roblox Game Is Eight Tiny Challenges and a Lot of Ragdolls
 
 **RISK IT!** is StillAwake Media's second game on Roblox. You spawn on a neon hub floating over a synthwave void, with eight challenge islands around you. Walk onto a pad, press RISK IT!, and you get between five and twenty seconds to win. Win and you bank GUTS. Fail and the game makes a show of it, then puts you back at the pad for one more go.
 
-It's in a live test now. Everything below is from build v0.2.2, captured in the game itself on 26 October 2026.
+It launched on Roblox on 29 October 2026. Everything below is from build v0.2.2, captured in the game itself on 26 October 2026.
 
 ![The whole RISK IT! arena from above: the hub and eight neon challenge islands](/games/risk-it/branding/risk-it-arena-aerial.webp)
 *The hub and its eight islands, one challenge each.*
@@ -57,7 +58,7 @@ RISK IT! runs on computer, phone and tablet. We tested the layout in Roblox Stud
 ![RISK IT! on a phone: MELTDOWN with the challenge panel docked at the top](/games/risk-it/mobile/risk-it-mobile-meltdown.webp)
 *MELTDOWN on a phone-sized screen.*
 
-We haven't tested it on real phones yet, and saving progress on live servers is still being confirmed. Those are the two things this live test is for.
+We haven't tested it on real phones yet, and saving progress on live servers is still being confirmed. Those are the first two things we're watching now that it's live.
 
 ## Where to start
 

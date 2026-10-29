@@ -133,7 +133,8 @@ export async function CmsArticle({
   isDraft?: boolean;
 }) {
   const author = view.authorId ? await getAuthor(view.authorId) : null;
-  const authorName = author?.name ?? "StillAwake Media";
+  // Unattributed CMS articles are Jaeden's: he writes everything published here.
+  const authorName = author?.name ?? jaedenDoody.name;
   const byJaeden = personAuthorNames.has(authorName);
   const founderPath = locale === "fr" ? "/fr/fondateur/jaeden-doody" : jaedenDoody.path;
   const readTime = estimateReadTime(view.sections, locale);

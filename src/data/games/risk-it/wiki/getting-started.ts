@@ -18,7 +18,7 @@ export const gettingStarted: WikiEntry[] = [
       ["Platform", "Roblox"],
       ["Genre", "Party & Casual · Minigame"],
       ["Developer", "StillAwake Media"],
-      ["Status", "Released 27 Oct 2026 (build v0.2.2)"],
+      ["Status", "Released 29 Oct 2026 (build v0.2.2)"],
       ["Challenges", "8"],
       ["Medals", "24 (bronze, silver, gold per challenge)"],
     ],
@@ -60,7 +60,7 @@ export const gettingStarted: WikiEntry[] = [
         id: "development-status",
         heading: "Development status",
         blocks: [
-          { type: "callout", tone: "note", text: "RISK IT! went public on Roblox on 27 October 2026. This wiki documents build v0.2.2 as of 26 October 2026. Balance, prices and challenges may change between builds, and every page shows the date it was last checked." },
+          { type: "callout", tone: "note", text: "RISK IT! went public on Roblox on 29 October 2026. This wiki documents build v0.2.2 as of 26 October 2026. Balance, prices and challenges may change between builds, and every page shows the date it was last checked." },
         ],
       },
     ],
@@ -263,7 +263,7 @@ export const gettingStarted: WikiEntry[] = [
       "Answers to common RISK IT! questions: is it free, does it use Robux, can you play solo or with friends, does progress save, and does it work on mobile.",
     question: "Common questions about RISK IT!",
     answer:
-      "RISK IT! is free to play, has nothing for sale, works solo or with friends, and supports computer, phone and tablet. Progress is designed to save to your Roblox account; saving on live servers is being confirmed during the live test.",
+      "RISK IT! is free to play, has nothing for sale, works solo or with friends, and supports computer, phone and tablet. Progress is designed to save to your Roblox account; saving on live servers is still being confirmed.",
     sections: [
       {
         id: "is-it-free",
@@ -288,7 +288,7 @@ export const gettingStarted: WikiEntry[] = [
       {
         id: "saving",
         heading: "Does my progress save?",
-        blocks: [{ type: "p", text: "GUTS, medals, personal bests, wipeouts and your Vault items are designed to save to your Roblox account automatically. Saving on live servers is being confirmed during the live test." }],
+        blocks: [{ type: "p", text: "GUTS, medals, personal bests, wipeouts and your Vault items are designed to save to your Roblox account automatically. Saving on live servers is still being confirmed." }],
       },
       {
         id: "mobile",

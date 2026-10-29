@@ -105,6 +105,30 @@ export const jaedenDoody = {
 export const personAuthorNames = new Set(["Jaeden Doody"]);
 
 /**
+ * JSON-LD `author` value for an article.
+ *
+ * The Person node lives on the founder page, so an `{ "@id" }`-only reference
+ * dangles on every other page: Google's Article checks report a missing author
+ * name and answer engines see no named author at all. The reference therefore
+ * carries the name and URL inline under the same @id, which still merges with
+ * the full node. The Organization is emitted on every page by the root shell,
+ * so its bare @id already resolves.
+ */
+export function authorJsonLd(byJaeden: boolean) {
+  return byJaeden
+    ? {
+        "@type": "Person",
+        "@id": jaedenDoody.id,
+        name: jaedenDoody.name,
+        url: jaedenDoody.url,
+        jobTitle: jaedenDoody.jobTitle,
+        worksFor: { "@id": organization.id },
+        sameAs: [...jaedenDoody.sameAs],
+      }
+    : { "@id": organization.id };
+}
+
+/**
  * The `<meta name="author">` for an article, from the same frontmatter name
  * the byline and the JSON-LD author use, so the three never disagree.
  */

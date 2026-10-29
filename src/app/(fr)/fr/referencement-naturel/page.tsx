@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { siteUrl } from "@/lib/data";
 import { entityIds } from "@/data/entities";
-import { jaedenDoody } from "@/data/people/jaeden-doody";
+import { authorJsonLd } from "@/data/people/jaeden-doody";
 
 const url = `${siteUrl}/fr/referencement-naturel`;
 
@@ -34,7 +34,7 @@ export default function ReferencementNaturelPage() {
         dateModified: "2026-08-12",
         inLanguage: "fr-CA",
         mainEntityOfPage: url,
-        author: { "@id": jaedenDoody.id },
+        author: authorJsonLd(true),
         publisher: { "@id": entityIds.organization },
         isPartOf: { "@id": entityIds.website },
       },

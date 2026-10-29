@@ -74,7 +74,7 @@ export function buildRootMetadata(locale: "en_CA" | "fr_CA"): Metadata {
         {
           url: "/stillawake-media-social-preview.jpeg",
           width: 1200,
-          height: 630,
+          height: 655,
           alt: "StillAwake Media — Web Design, SEO, AI and Software",
         },
       ],

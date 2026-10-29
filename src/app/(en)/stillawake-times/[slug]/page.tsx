@@ -4,7 +4,7 @@ import { draftMode } from "next/headers";
 import { notFound, permanentRedirect, redirect } from "next/navigation";
 import { siteUrl } from "@/lib/data";
 import { entityIds } from "@/data/entities";
-import { articleAuthors, jaedenDoody, personAuthorNames } from "@/data/people/jaeden-doody";
+import { articleAuthors, authorJsonLd, jaedenDoody, personAuthorNames } from "@/data/people/jaeden-doody";
 import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/content";
 import { getPublishedByTypeSlugConfirmed, getSiblingOf, redirectFor } from "@/lib/cms/adapter";
 import { fetchDraftByRoute } from "@/lib/cms/draft";
@@ -90,7 +90,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           {
             url: "/stillawake-media-social-preview.jpeg",
             width: 1200,
-            height: 630,
+            height: 655,
             alt: title,
           },
         ],
@@ -133,7 +133,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: [
         post.ogImage
           ? { url: post.ogImage, alt: post.title }
-          : { url: "/stillawake-media-social-preview.jpeg", width: 1200, height: 630, alt: post.title },
+          : { url: "/stillawake-media-social-preview.jpeg", width: 1200, height: 655, alt: post.title },
       ],
     },
     twitter: {
@@ -186,7 +186,6 @@ export default async function ArticlePage({ params }: Props) {
    * reassigned implicitly — a post is authored by whoever the frontmatter says.
    */
   const byJaeden = personAuthorNames.has(post.author);
-  const authorId = byJaeden ? jaedenDoody.id : entityIds.organization;
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -197,7 +196,8 @@ export default async function ArticlePage({ params }: Props) {
     datePublished: post.date,
     dateModified: post.updated || post.date,
     mainEntityOfPage: `${siteUrl}/stillawake-times/${post.slug}`,
-    author: { "@id": authorId },
+    image: post.ogImage ? new URL(post.ogImage, siteUrl).href : `${siteUrl}/stillawake-media-social-preview.jpeg`,
+    author: authorJsonLd(byJaeden),
     publisher: { "@id": entityIds.organization },
     isPartOf: { "@id": entityIds.website },
   };

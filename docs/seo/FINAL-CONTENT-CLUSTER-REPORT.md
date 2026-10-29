@@ -2,17 +2,17 @@
 
 Program: five content clusters (Roblox, AI search, free tools, Shopify, software and automation) for stillawakemedia.com. Report date 2026-10-29.
 
-**Implementation status is separate from outcomes.** Everything below is built and verified on a local production build. None of it is deployed yet, and no ranking, indexing or AI-citation outcome can be measured until it is live and has been crawled. The first review is due 2026-11-30.
+**Implementation status is separate from outcomes.** Everything below is deployed and verified on production as of 2026-10-29 (PR #37, `fd3c4e9`; four rewrites republished through the CMS). No ranking, indexing or AI-citation outcome can be measured until Google has crawled the pages. The first review is due 2026-11-30.
 
 ## 1. Cluster inventory
 
 | Cluster | Delivered | Built in this batch | From PR #34 | Blocked |
 |---|---|---|---|---|
 | A Roblox | 6/6 | A3, A4, A5, /games hub section | A1, A2 (consolidated with 301) | — |
-| B AI search | 5/6 (+ hub) | B4; B2, B3 (+B5 merged) markdown | B1 | B2, B3/B5 live text waits on CMS sync (B-13); experiment not run (B-18) |
+| B AI search | 5/6 (+ hub) | B4; B2, B3 (+B5 merged) | B1 | Experiment not run (B-18) |
 | C Tools | 5/5 | C2, C3, tools hub | C1, C4 | — |
-| D Shopify | 5/5 | D1, D3, D4 markdown, D2 fact fix, hub links | — | D4 live text waits on B-13 |
-| E Software | 3/3 | E1, E2 markdown, hub links | — | E2 live text waits on B-13 |
+| D Shopify | 5/5 | D1, D3, D4, D2 fact fix, hub links | — | — |
+| E Software | 3/3 | E1, E2, hub links | — | — |
 
 ## 2. URLs
 
@@ -69,14 +69,12 @@ No new schema types were invented. Times articles use the existing Article templ
 
 ## 8. Verification
 
-Local production build only (`next start`): crawl of 338 URLs, 0 non-200, 0 missing/duplicate titles or descriptions, one H1 everywhere, self-canonicals, 0 noindex, hreflang reciprocal, 0 broken links, 0 orphans. 911 unit tests pass. No horizontal overflow at 375px or 1280px. **Production: not verified — not deployed.**
+Local production build only (`next start`): crawl of 338 URLs, 0 non-200, 0 missing/duplicate titles or descriptions, one H1 everywhere, self-canonicals, 0 noindex, hreflang reciprocal, 0 broken links, 0 orphans. 911 unit tests pass. No horizontal overflow at 375px or 1280px. **Production (2026-10-29):** all 18 new/changed URLs return 200 with self-canonicals, valid JSON-LD and sitemap entries; the old guide 308s; the SEO audit tool works with BotID on Vercel; IndexNow accepted all 338 sitemap URLs.
 
 ## 9. Outstanding issues
 
 | Issue | Ref |
 |---|---|
-| CMS sync for four rewritten articles | B-13 |
-| Merge order of PRs #33, #34 and this PR (merging is a production deploy) | B-16 |
 | URL Inspection requests and sitemap resubmission after deploy | B-17 |
 | AI answer experiment not run | B-18 |
 | Blackwater robots.txt blocks `?variant=` / `?locale=` | B-14 |

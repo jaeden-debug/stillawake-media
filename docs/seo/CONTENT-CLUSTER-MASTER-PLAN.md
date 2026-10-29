@@ -15,44 +15,44 @@ Other files: `CANNIBALIZATION-AUDIT.md`, `AI-DISCOVERY-AUDIT.md`, `CONTENT-PUBLI
 
 Status: `[ ]` not started · `[-]` in progress · `[x]` completed and verified · `[!]` blocked · `[~]` monitoring
 
-**"Verified" in this file means verified on a local production build** (`next build` + `next start`, crawl of all 338 sitemap URLs). Production verification happens after merge; until then every item's deployment column reads "PR open".
+**Deployed 2026-10-29.** PR #37 merged to main (`fd3c4e9`) after #33; #34 was already in main. `[x]` below means verified on production (status 200, self-canonical, valid JSON-LD, in the live sitemap).
 
 ## Where things stand (2026-10-29)
 
-- Branch `seo/content-clusters` stacks on PR #34 (`seo/discoverability-week1-2`) and includes PR #33 (`content/risk-it-public`). Merging it ships all three.
-- Production serves 35 English articles from the CMS (Supabase `cms_public_content`), not from markdown. Four articles rewritten here are CMS-served; their markdown is updated, but the live copy changes only after a CMS sync (B-13).
+- PRs #33, #34 and #37 are all in main and live.
+- Production serves 35 English articles from the CMS (Supabase `cms_public_content`), not from markdown. Four articles rewritten here are CMS-served; they were republished through the CMS on 2026-10-29 (B-13).
 - Search Console baseline (90 days to 2026-10-27): 0 impressions for any cluster query. See `CONTENT-PERFORMANCE-TRACKER.md`.
 
 ## Completion matrix
 
 | ID | Deliverable | Action | URL | Words | Status | Deployment |
 |---|---|---|---|---:|---|---|
-| A1 | Best scary Roblox games to play with friends | CREATE (PR #34) | /games/guides/scary-roblox-games-with-friends | guide page | [x] local | PR #34 |
-| A2 | Best Roblox survival horror games | MERGE into A1, 301 (PR #34) | /games/guides/roblox-survival-horror-games → A1 | — | [x] local | PR #34 |
-| A3 | How to make a Roblox game | CREATE | /stillawake-times/how-to-make-a-roblox-game | 2,685 | [x] local | PR open |
-| A4 | How to make a horror game in Roblox Studio | CREATE | /stillawake-times/how-to-make-a-horror-game-in-roblox-studio | 3,063 | [x] local | PR open |
-| A5 | How to fix lag in Roblox games | CREATE | /stillawake-times/how-to-fix-lag-in-roblox-studio | 2,449 | [x] local | PR open |
-| A-hub | Roblox development hub | IMPROVE | /games ("Make your own Roblox game" section) | hub | [x] local | PR open |
-| B1 | What is llms.txt? | CREATE (PR #34) | /tools/llms-txt | guide page | [x] local | PR #34 |
-| B2 | How to get recommended by ChatGPT | IMPROVE (rewrite) | /stillawake-times/can-chatgpt-recommend-my-business | 2,413 | [!] markdown done; CMS sync B-13 | PR open + B-13 |
-| B3 | Generative engine optimization guide | IMPROVE | /stillawake-times/what-is-generative-engine-optimization | 3,379 | [!] markdown done; CMS sync B-13 | PR open + B-13 |
-| B4 | How to appear in Google AI Overviews | CREATE | /stillawake-times/how-to-appear-in-google-ai-overviews | 2,651 | [x] local | PR open |
-| B5 | ChatGPT SEO vs traditional SEO | MERGE into B3 (section + table) | B3 URL | in B3 | [!] with B3 | PR open + B-13 |
-| B-hub | AI search hub | IMPROVE | /answer-engine-optimization related links + homepage group | hub | [x] local | PR open |
+| A1 | Best scary Roblox games to play with friends | CREATE (PR #34) | /games/guides/scary-roblox-games-with-friends | guide page | [x] | live (PR #34) |
+| A2 | Best Roblox survival horror games | MERGE into A1, 301 (PR #34) | /games/guides/roblox-survival-horror-games → A1 | — | [x] | live (PR #34) |
+| A3 | How to make a Roblox game | CREATE | /stillawake-times/how-to-make-a-roblox-game | 2,685 | [x] | live (PR #37) |
+| A4 | How to make a horror game in Roblox Studio | CREATE | /stillawake-times/how-to-make-a-horror-game-in-roblox-studio | 3,063 | [x] | live (PR #37) |
+| A5 | How to fix lag in Roblox games | CREATE | /stillawake-times/how-to-fix-lag-in-roblox-studio | 2,449 | [x] | live (PR #37) |
+| A-hub | Roblox development hub | IMPROVE | /games ("Make your own Roblox game" section) | hub | [x] | live (PR #37) |
+| B1 | What is llms.txt? | CREATE (PR #34) | /tools/llms-txt | guide page | [x] | live (PR #34) |
+| B2 | How to get recommended by ChatGPT | IMPROVE (rewrite) | /stillawake-times/can-chatgpt-recommend-my-business | 2,413 | [x] | live via CMS sync |
+| B3 | Generative engine optimization guide | IMPROVE | /stillawake-times/what-is-generative-engine-optimization | 3,379 | [x] | live via CMS sync |
+| B4 | How to appear in Google AI Overviews | CREATE | /stillawake-times/how-to-appear-in-google-ai-overviews | 2,651 | [x] | live (PR #37) |
+| B5 | ChatGPT SEO vs traditional SEO | MERGE into B3 (section + table) | B3 URL | in B3 | [x] | live via CMS sync |
+| B-hub | AI search hub | IMPROVE | /answer-engine-optimization related links + homepage group | hub | [x] | live (PR #37) |
 | B-exp | "Can AI assistants discover StillAwake?" experiment | — | not published | — | [ ] protocol written, not run | — |
-| C1 | Schema markup generator | CREATE (PR #34) | /tools/schema-markup-generator | tool | [x] local | PR #34 |
-| C2 | Website SEO audit tool | CREATE | /tools/seo-audit + /api/tools/seo-audit | tool | [x] local | PR open |
-| C3 | App development cost calculator | CREATE (extends existing engine) | /tools/app-development-cost-calculator | tool | [x] local | PR open |
-| C4 | llms.txt generator improvements | IMPROVE (PR #34) | /tools/llms-txt-generator | tool | [x] local | PR #34 |
-| C-hub | Free tools hub | IMPROVE | /tools | hub | [x] local | PR open |
-| D1 | Shopify store cost in Canada | CREATE | /stillawake-times/how-much-does-a-shopify-store-cost-canada | 2,552 | [x] local | PR open |
-| D2 | Shopify vs WooCommerce | KEEP + fact fix | /shopify-vs-woocommerce | page | [x] local | PR open |
-| D3 | How to build a Shopify store | CREATE | /stillawake-times/how-to-build-a-shopify-store | 2,465 | [x] local | PR open |
-| D4 | Shopify SEO guide | IMPROVE (rewrite) | /stillawake-times/shopify-seo-guide | 2,988 | [!] markdown done; CMS sync B-13 | PR open + B-13 |
-| D-hub | Ecommerce hub | IMPROVE | /shopify-development links to D1, D3, D4 | hub | [x] local | PR open |
-| E1 | App development cost in Canada | CREATE | /stillawake-times/app-development-cost-canada | 2,609 | [x] local | PR open |
-| E2 | AI automation for small businesses | IMPROVE (rewrite) | /stillawake-times/how-businesses-use-ai-automation-to-save-hundreds-of-hours | 2,605 | [!] markdown done; CMS sync B-13 | PR open + B-13 |
-| E-hub | Software and automation hub | IMPROVE | /software-development, /ai-automation related articles | hub | [x] local | PR open |
+| C1 | Schema markup generator | CREATE (PR #34) | /tools/schema-markup-generator | tool | [x] | live (PR #34) |
+| C2 | Website SEO audit tool | CREATE | /tools/seo-audit + /api/tools/seo-audit | tool | [x] | live (PR #37) |
+| C3 | App development cost calculator | CREATE (extends existing engine) | /tools/app-development-cost-calculator | tool | [x] | live (PR #37) |
+| C4 | llms.txt generator improvements | IMPROVE (PR #34) | /tools/llms-txt-generator | tool | [x] | live (PR #34) |
+| C-hub | Free tools hub | IMPROVE | /tools | hub | [x] | live (PR #37) |
+| D1 | Shopify store cost in Canada | CREATE | /stillawake-times/how-much-does-a-shopify-store-cost-canada | 2,552 | [x] | live (PR #37) |
+| D2 | Shopify vs WooCommerce | KEEP + fact fix | /shopify-vs-woocommerce | page | [x] | live (PR #37) |
+| D3 | How to build a Shopify store | CREATE | /stillawake-times/how-to-build-a-shopify-store | 2,465 | [x] | live (PR #37) |
+| D4 | Shopify SEO guide | IMPROVE (rewrite) | /stillawake-times/shopify-seo-guide | 2,988 | [x] | live via CMS sync |
+| D-hub | Ecommerce hub | IMPROVE | /shopify-development links to D1, D3, D4 | hub | [x] | live (PR #37) |
+| E1 | App development cost in Canada | CREATE | /stillawake-times/app-development-cost-canada | 2,609 | [x] | live (PR #37) |
+| E2 | AI automation for small businesses | IMPROVE (rewrite) | /stillawake-times/how-businesses-use-ai-automation-to-save-hundreds-of-hours | 2,605 | [x] | live via CMS sync |
+| E-hub | Software and automation hub | IMPROVE | /software-development, /ai-automation related articles | hub | [x] | live (PR #37) |
 
 Word counts are body prose excluding frontmatter and code blocks (`awk` + code-fence strip, see `CONTENT-QUALITY-CHECKLIST.md`).
 
@@ -67,7 +67,7 @@ Each record: topic · intent · keywords · URL · existing URL · action · aud
 - **Sources:** create.roblox.com (publishing, content maturity, testing modes, script locations, remote events, streaming, performance), checked 2026-10.
 - **Original evidence:** RISK IT! source and docs (`stillawake-media/risk-it/`): server-side validation rules, token-bucket remote limiter, DataStore session pattern, end-to-end bot results (25/25 v0.2) and the jump-key bug the bot missed; Stillskin Forest server-authoritative crouch.
 - **Links:** A4, A5, /games, /games/risk-it, /games/stillskin-forest, /contact. **Promotion:** both games, disclosed as ours. **Schema:** Article (template).
-- **Quality review:** passed; two Luau examples read-reviewed, not run in Studio. **Deployment:** PR open. **Production verification:** pending. **Completed:** —
+- **Quality review:** passed; two Luau examples read-reviewed, not run in Studio. **Deployment:** live. **Production verification:** 2026-10-29. **Completed:** 2026-10-29
 
 ### A4 — How to make a horror game in Roblox Studio
 - **Intent:** advanced tutorial. **Primary:** how to make a horror game in roblox studio (US 210/mo).
@@ -86,13 +86,13 @@ Each record: topic · intent · keywords · URL · existing URL · action · aud
 - **Primary:** how to get cited by chatgpt (US 170/mo avg, 720 in Sept 2026 — rising). **URL:** existing /stillawake-times/can-chatgpt-recommend-my-business (slug kept). **Action:** IMPROVE, 856 → 2,413 words.
 - **Sources:** OpenAI crawler docs (OAI-SearchBot, GPTBot, ChatGPT-User), OpenAI "Introducing ChatGPT search", OpenAI publisher FAQ (utm_source=chatgpt.com, read via search excerpts because the page returns 403 to fetchers).
 - **Corrections:** removed an unsourced "$46 per click" and a "$150–$600" price; fixed Blackwater repeat rate to the case study's 5.9% → 33.3%.
-- **Status:** [!] markdown ready; production serves the CMS copy (B-13).
+- **Status:** [x] republished through the CMS 2026-10-29.
 
 ### B3 + B5 — GEO guide, absorbing "ChatGPT SEO vs traditional SEO"
 - **Primary:** generative engine optimization (US 4,400, CA 590). **Merged intent:** chatgpt seo (US 390, CA 50). One page owns both; see `CANNIBALIZATION-AUDIT.md`.
 - **Sources:** arXiv 2311.09735 (GEO paper, KDD 2024), Google AI features docs, Google common crawlers, OpenAI crawler docs, Anthropic crawler article, Perplexity bot docs, Bing AI Performance announcement (blogs.bing.com, Feb 2026).
 - **Removed:** "case-study sites score 98–100 for speed" (only accessibility/best-practices/SEO scores are backed in the repo).
-- **Status:** [!] CMS sync B-13.
+- **Status:** [x] republished through the CMS 2026-10-29.
 
 ### B4 — How to appear in Google AI Overviews
 - **Primary:** how to appear in google ai overviews (US 210 avg, 590–880/mo Jul–Sep 2026). **Action:** CREATE (no page owned this; AEO service page is commercial).
@@ -124,7 +124,7 @@ Each record: topic · intent · keywords · URL · existing URL · action · aud
 
 ### D4 — Shopify SEO guide
 - **Primary:** shopify seo (US 1,900, CA 260). Search Console: "Crawled – currently not indexed". Rewritten for specificity, not length (3,812 → 2,988).
-- **Original evidence:** Blackwater case-study figures with their dates. **Status:** [!] CMS sync B-13.
+- **Original evidence:** Blackwater case-study figures with their dates. **Status:** [x] republished through the CMS 2026-10-29.
 - **Side finding:** Blackwater's own `robots.txt.liquid` disallows `/*?variant=` and `/*?locale=` — may hide canonicals and interfere with Markets URLs (B-14).
 
 ### E1 — App development cost in Canada
@@ -134,7 +134,7 @@ Each record: topic · intent · keywords · URL · existing URL · action · aud
 ### E2 — AI automation for small businesses
 - **Primary:** ai automation for small business (US 1,600, CA 590). Owner URL kept (existing article) — no new page.
 - **Removed:** invented hours-saved figures, "$1,500–$60,000" bands, "15–20% maintenance". All examples labelled illustrative. Law 25 points rest on the CAI summary (LegisQuébec blocked fetching).
-- **Status:** [!] CMS sync B-13. The article still uses an unrelated featured image — replace when syncing.
+- **Status:** [x] republished through the CMS 2026-10-29. The article still uses an unrelated featured image — replace when syncing.
 
 ## Bilingual decision
 
@@ -142,7 +142,7 @@ No new French pages in this program. Measured French demand for these specific i
 
 ## Next task
 
-1. Owner: decide on merging PRs #33 → #34 → this PR (or this PR alone, which includes both), and approve the CMS sync (B-13).
-2. After merge: production verification for every URL in the matrix (status, canonical, schema, sitemap), then IndexNow submission and Search Console URL Inspection for A3, A4, B4, C2, C3, D1, D3, E1 (owner, quota ~10/day).
+1. Owner: Search Console URL Inspection → Request indexing for A3, A4, B4, C2, C3, D1, D3, E1, and resubmit the sitemap (B-17). IndexNow already submitted all 338 URLs.
+2. Owner decisions: B-14 (Blackwater robots.txt) and B-15 (conflicting Blackwater figure, Shopify store price).
 3. Run the AI-discovery experiment in `AI-DISCOVERY-AUDIT.md` §4 and record results.
 4. 30-day review on 2026-11-30 (`CONTENT-PERFORMANCE-TRACKER.md`).

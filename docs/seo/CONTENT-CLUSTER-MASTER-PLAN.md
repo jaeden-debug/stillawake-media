@@ -124,7 +124,7 @@ Each record: topic · intent · keywords · URL · existing URL · action · aud
 
 ### D4 — Shopify SEO guide
 - **Primary:** shopify seo (US 1,900, CA 260). Search Console: "Crawled – currently not indexed". Rewritten for specificity, not length (3,812 → 2,988).
-- **Original evidence:** Blackwater case-study figures with their dates. **Status:** [!] CMS sync B-13.
+- **Original evidence:** Blackwater case-study figures with their dates. **Status:** [x] republished through the CMS 2026-10-29.
 - **Side finding:** Blackwater's own `robots.txt.liquid` disallows `/*?variant=` and `/*?locale=` — may hide canonicals and interfere with Markets URLs (B-14).
 
 ### E1 — App development cost in Canada

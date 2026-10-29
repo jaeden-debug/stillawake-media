@@ -46,5 +46,5 @@ Per cluster: impressions, clicks, CTR, average position, non-branded clicks, num
 
 ## Instrumentation gaps
 
-- The SEO audit tool fires no GA4 event yet. Suggested: `seo_audit_run` with `fail`/`warn` counts (no URL, for privacy). Not added in this PR because the analytics helper's consent handling should be reviewed with it.
+- SEO audit tool: GA4 `seo_audit_run` / `seo_audit_run_failed` with a fail band (consented visitors), and the consent-free `tool_usage_daily` counter for everyone (2026-10-29, #45 and #49). The audited URL is never recorded.
 - The app calculator reuses the project calculator's existing events (`calculator_started`, etc.); it can be separated by `page_location`.

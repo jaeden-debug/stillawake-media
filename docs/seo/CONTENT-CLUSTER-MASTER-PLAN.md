@@ -145,5 +145,5 @@ No new French pages in this program. Measured French demand for these specific i
 1. Owner: Search Console URL Inspection → Request indexing for A3, A4, B4, C2, C3, D1, D3, E1, and resubmit the sitemap (B-17). IndexNow already submitted all 338 URLs.
 2. Owner decisions: B-14 (Blackwater robots.txt) and B-15 (conflicting Blackwater figure, Shopify store price).
 3. Re-run the AI baseline (`AI-DISCOVERY-AUDIT.md` §4a) around 2026-11-29 with identical prompts; add ChatGPT/Gemini if the owner runs them signed in.
-3a. SEO audit tool GA4 events live (#45, 2026-10-29): `seo_audit_run` (fail_band) and `seo_audit_run_failed`. Consent-free counter waits on B-20.
+3a. SEO audit tool usage is tracked (2026-10-29): GA4 events `seo_audit_run` (fail_band) and `seo_audit_run_failed` (#45, consented visitors), plus the consent-free `tool_usage_daily` counter with the same events (#49, migration 0011). It appears in the Monday digest as "SEO audit tool".
 4. 30-day review on 2026-11-30 (`CONTENT-PERFORMANCE-TRACKER.md`).

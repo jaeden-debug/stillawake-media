@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageSchema } from "@/components/page-schema";
 import { LlmsTxtTool } from "@/components/tools/llms-txt-tool";
 
+import { ProjectCta } from "@/components/project-cta";
 const url = "https://stillawakemedia.com/tools/llms-txt-generator";
 
 export const metadata: Metadata = {
@@ -264,6 +265,7 @@ export default function LlmsTxtGeneratorPage() {
           </p>
         </div>
       </section>
+      <ProjectCta />
     </main>
   );
 }

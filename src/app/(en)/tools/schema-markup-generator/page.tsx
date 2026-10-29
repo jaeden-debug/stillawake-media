@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageSchema } from "@/components/page-schema";
 import { SchemaGeneratorTool } from "@/components/tools/schema-generator-tool";
 
+import { ProjectCta } from "@/components/project-cta";
 const url = "https://stillawakemedia.com/tools/schema-markup-generator";
 
 /**
@@ -153,6 +154,7 @@ export default function SchemaMarkupGeneratorPage() {
           </p>
         </div>
       </section>
+      <ProjectCta title="Want structured data done right across your whole site?" body="We implement and test schema across every page template, alongside technical SEO and local search. Tell us about your site, estimate the cost first, or read our published prices." />
     </main>
   );
 }

@@ -5,6 +5,7 @@ import { LlmsTxtTool } from "@/components/tools/llms-txt-tool";
 import { publishedGuides } from "@/data/llms-txt-guides";
 import { siteUrl } from "@/lib/data";
 
+import { ProjectCta } from "@/components/project-cta";
 const url = `${siteUrl}/fr/outils/generateur-llms-txt`;
 const enUrl = `${siteUrl}/tools/llms-txt-generator`;
 
@@ -207,6 +208,7 @@ export default function GenerateurLlmsTxtPage() {
           </p>
         </div>
       </section>
+      <ProjectCta locale="fr" />
     </main>
   );
 }

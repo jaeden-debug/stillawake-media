@@ -233,14 +233,14 @@ export const expansion: WikiEntry[] = [
     slug: "generators-and-jerry-cans",
     category: "mechanics",
     verification: "verified_live",
-    lastVerified: VERIFIED_28,
+    lastVerified: "2026-10-29",
     title: "Generators and Jerry Cans",
     seoTitle: "Generators and Jerry Cans in Stillskin Forest: Fuel and Power",
     description:
       "How to power lights in Stillskin Forest: where Jerry Cans turn up, refuelling a generator, how long a can lasts, starting and stopping it, and the noise it makes.",
     question: "How do generators work in Stillskin Forest?",
-    answer: `Take a Jerry Can in your hands, walk to the generator and hold E (Square on controller) for ${K.generators.RefuelHold} seconds to pour it in: one can adds ${min(K.generators.SecondsPerCan)} of fuel (one whole night), up to ${min(K.generators.MaxFuel)}. Then start it with E at the switch. It burns fuel only while running, lights everything wired to it, and its noise draws the infected nearby.`,
-    facts: [["One Jerry Can", min(K.generators.SecondsPerCan)], ["Fuel tank", min(K.generators.MaxFuel)], ["Refuel", `Hold ${K.generators.RefuelHold} s with the can in hand`], ["Noise", `Every ${K.generators.NoiseEvery} s, ${K.generators.NoiseRadius}-stud radius`], ["Jerry Cans in the world", `${econ.JerryCans.Total} at a time`]],
+    answer: `Take a Jerry Can in your hands and walk up to the generator: the prompt reads "Refuel Generator". Hold E (Square on controller) for 2.5 seconds to pour it in; one can adds ${min(K.generators.SecondsPerCan)} of fuel (one whole night), up to ${min(K.generators.MaxFuel)}. The prompt then reads "Start Generator": hold E for a second to start it, and again to stop it. It burns fuel only while running, lights everything wired to it, and its noise draws the infected nearby.`,
+    facts: [["One Jerry Can", min(K.generators.SecondsPerCan)], ["Fuel tank", min(K.generators.MaxFuel)], ["Refuel", "Hold 2.5 s with the can in hand"], ["Start / stop", "Hold 1 s"], ["Noise", `Every ${K.generators.NoiseEvery} s, ${K.generators.NoiseRadius}-stud radius`], ["Jerry Cans in the world", `${econ.JerryCans.Total} at a time`]],
     sections: [
       {
         id: "jerry-cans",
@@ -252,13 +252,22 @@ export const expansion: WikiEntry[] = [
       },
       {
         id: "refuelling",
-        heading: "Refuelling",
+        heading: "Refuelling, starting and stopping",
         blocks: [
+          { type: "p", text: "Each generator has one prompt. What it does depends on what you're holding and the generator's state:" },
+          { type: "table", caption: "What the generator prompt says", head: ["When", "Prompt", "What a hold does"], rows: [
+            ["Jerry Can in your hands, tank not full", "Refuel Generator", "Pours the can in (2.5 s hold)"],
+            ["Fuel in it, switched off", "Start Generator", "Starts it (1 s hold)"],
+            ["Running", "Stop Generator", "Stops it and keeps the fuel that's left"],
+            ["Empty, no can in hand", "Generator needs fuel. Equip a jerry can.", "Nothing"],
+            ["Another survivor is pouring", "Someone is refuelling", "Nothing"],
+          ] },
           { type: "list", items: [
-            "Select the Jerry Can so it's in your hands. A can left in your bag won't pour.",
-            `At the generator, hold E (Square) for ${K.generators.RefuelHold} seconds. The can tips and you hear the fuel go in. Let go early and nothing is used.`,
-            "When it's done the can is gone and the generator is ready to start.",
-            `If the tank is already full (${min(K.generators.MaxFuel)}) it tells you so and keeps your can.`,
+            "The can has to be in your hands: select it on the hotbar. One left in your bag won't pour.",
+            "Let go early, walk away, get downed or put the can away and nothing is used: the can stays yours.",
+            "The can only disappears once its fuel is in. You'll see \"Generator refuelled\" and the new fuel time.",
+            "One survivor refuels a generator at a time, and one press never refuels and starts it at once.",
+            "When the fuel runs out it stops by itself: \"Generator out of fuel.\"",
           ] },
         ],
       },
@@ -277,6 +286,6 @@ export const expansion: WikiEntry[] = [
     related: ["blackpine-airfield", "night-survival", "headlamp"],
     sources: [SRC.config28, SRC.playtest28],
     aliases: ["generator", "gas can", "jerry can", "fuel", "gasoline", "power", "floodlights", "refuel"],
-    gaps: ["No refuelling animation beyond the can tipping, and no engine-running sound yet. The pouring sound has not been reviewed by the developer."],
+    gaps: ["No engine-running sound yet. The pouring sound has not been reviewed by the developer. Refuelling was tested with keyboard input in Studio, not yet with a controller."],
   },
 ];

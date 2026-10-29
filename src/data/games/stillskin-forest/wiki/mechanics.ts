@@ -337,6 +337,7 @@ export const mechanics: WikiEntry[] = [
   {
     ...base,
     slug: "inventory-and-hotbar",
+    lastVerified: "2026-10-29",
     title: "Inventory and Hotbar",
     seoTitle: "Inventory in Stillskin Forest: Slots, Stacking and the Backpack",
     description:
@@ -357,6 +358,7 @@ export const mechanics: WikiEntry[] = [
         heading: "The backpack",
         blocks: [
           { type: "p", text: "Press **B** or **Tab** to open the backpack: item cards with rarity, descriptions, stats and ammo, plus equip, use and drop buttons and the settings. It frees the mouse and blurs the background. On a controller, the D-pad navigates it." },
+          { type: "p", text: "**Graphics** in the settings switches between High, Balanced and Performance. It only changes how the game looks on your device (how far tree shadows reach, how much the foliage sways, how many leaves drift), never what you can see or do. Consoles start on Performance, phones on Balanced, and PCs follow Roblox's own graphics slider. Your choice is saved." },
         ],
       },
       {
@@ -639,21 +641,21 @@ export const mechanics: WikiEntry[] = [
   {
     ...base,
     slug: "durability-and-wear",
-    lastVerified: "2026-10-28",
+    lastVerified: "2026-10-29",
     title: "Durability and Wear",
     seoTitle: "Weapon Durability in Stillskin Forest: How Long Weapons Last",
     description:
       "Weapons and tools in Stillskin Forest wear out. Durability values for each item, what causes wear, how to repair weapons, and what happens when one breaks.",
     question: "Do weapons break in Stillskin Forest?",
     answer:
-      "Yes. Every weapon and tool has durability. Each landed swing, shot, nailed plank or gadget use costs 1, as does a swing that hits a wall and each hit you take while holding the item. At zero the item breaks. A gun that breaks gives the rounds in its magazine back to your ammo reserve, so you never lose ammo with it. Melee weapons repair themselves the scavenger's way: pick up another copy of one you carry and yours goes back to full and gets 5% tougher (up to 125% of its original durability); the copy is used up. A gun is repaired with a [Gun Repair Kit](@gun-repair-kit), and finding a less worn copy of a gun you carry swaps its durability onto yours. Lanterns and the Freeze Device never wear out. Durability ranges from 70 (Shotgun) to 160 (Hammer, Pistol) before any repairs.",
+      "Yes. Every weapon and tool has durability. Each landed swing, shot, nailed plank or gadget use costs 1, as does a swing that hits a wall and each hit you take while holding the item. At zero the item breaks. A gun that breaks gives the rounds in its magazine back to your ammo reserve, so you never lose ammo with it. Melee weapons repair themselves the scavenger's way: pick up another copy of one you carry and yours goes back to full and gets 5% tougher (up to 125% of its original durability); the copy is used up. A gun is repaired with a [Gun Repair Kit](@gun-repair-kit), and finding a less worn copy of a gun you carry swaps its durability onto yours. Lanterns and the Freeze Device never wear out. Durability ranges from 70 (Shotgun) to 480 (Hammer) before any repairs.",
     sections: [
       {
         id: "values",
         heading: "Durability by item",
         blocks: [
           { type: "table", caption: "Maximum durability", head: ["Item", "Durability"], rows: [
-            ["[Hammer](@hammer)", "160"], ["[Pistol](@pistol)", "160"], ["[Crowbar](@crowbar)", "140"], ["[Baseball Bat](@baseball-bat)", "120"], ["[Machete](@machete)", "110"], ["[Shotgun](@shotgun)", "70"], ["[Lantern](@lantern)", "Never wears out"], ["[Freeze Device](@freeze-device)", "Never wears out"],
+            ["[Hammer](@hammer)", "480"], ["[Pistol](@pistol)", "160"], ["[Crowbar](@crowbar)", "140"], ["[Baseball Bat](@baseball-bat)", "120"], ["[Machete](@machete)", "110"], ["[Shotgun](@shotgun)", "70"], ["[Lantern](@lantern)", "Never wears out"], ["[Freeze Device](@freeze-device)", "Never wears out"],
           ] },
         ],
       },

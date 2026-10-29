@@ -21,7 +21,7 @@ Generated from the wiki registry. Do not edit by hand.
 | Weapons | Fists | `/games/stillskin-forest/wiki/weapons/fists` | no | 2026-10-27 |
 | Weapons | Baseball Bat | `/games/stillskin-forest/wiki/weapons/baseball-bat` | no | 2026-10-25 |
 | Weapons | Machete | `/games/stillskin-forest/wiki/weapons/machete` | no | 2026-10-25 |
-| Weapons | Hammer | `/games/stillskin-forest/wiki/weapons/hammer` | no | 2026-10-27 |
+| Weapons | Hammer | `/games/stillskin-forest/wiki/weapons/hammer` | no | 2026-10-29 |
 | Weapons | Crowbar | `/games/stillskin-forest/wiki/weapons/crowbar` | no | 2026-10-25 |
 | Weapons | Pistol | `/games/stillskin-forest/wiki/weapons/pistol` | no | 2026-10-25 |
 | Weapons | Shotgun | `/games/stillskin-forest/wiki/weapons/shotgun` | no | 2026-10-25 |
@@ -29,7 +29,7 @@ Generated from the wiki registry. Do not edit by hand.
 | Items & Equipment | Gun Repair Kit | `/games/stillskin-forest/wiki/items/gun-repair-kit` | no | 2026-10-28 |
 | Items & Equipment | Food: Bag of Chips, Canned Beans and Energy Bar | `/games/stillskin-forest/wiki/items/food` | no | 2026-10-25 |
 | Items & Equipment | First Aid Kit | `/games/stillskin-forest/wiki/items/first-aid-kit` | no | 2026-10-28 |
-| Items & Equipment | Ammunition: Pistol Ammo, Shells and Rifle Rounds | `/games/stillskin-forest/wiki/items/ammunition` | no | 2026-10-27 |
+| Items & Equipment | Ammunition: Pistol Ammo, Shells and Rifle Rounds | `/games/stillskin-forest/wiki/items/ammunition` | no | 2026-10-29 |
 | Items & Equipment | Headlamp | `/games/stillskin-forest/wiki/items/headlamp` | no | 2026-10-28 |
 | Items & Equipment | Headlamp Upgrades and Batteries | `/games/stillskin-forest/wiki/items/headlamp-upgrades` | no | 2026-10-27 |
 | Items & Equipment | Lantern | `/games/stillskin-forest/wiki/items/lantern` | no | 2026-10-28 |
@@ -46,14 +46,14 @@ Generated from the wiki registry. Do not edit by hand.
 | Survival Mechanics | The Dread Encounter | `/games/stillskin-forest/wiki/mechanics/the-dread-encounter` | no | 2026-10-25 |
 | Survival Mechanics | Health, Damage and Healing | `/games/stillskin-forest/wiki/mechanics/health-and-healing` | no | 2026-10-25 |
 | Survival Mechanics | Downed and Revive | `/games/stillskin-forest/wiki/mechanics/downed-and-revive` | no | 2026-10-25 |
-| Survival Mechanics | Inventory and Hotbar | `/games/stillskin-forest/wiki/mechanics/inventory-and-hotbar` | no | 2026-10-25 |
+| Survival Mechanics | Inventory and Hotbar | `/games/stillskin-forest/wiki/mechanics/inventory-and-hotbar` | no | 2026-10-29 |
 | Survival Mechanics | Aiming, Headshots and Reloading | `/games/stillskin-forest/wiki/mechanics/aiming-and-reloading` | no | 2026-10-27 |
 | Survival Mechanics | Shooting Through Doors, Windows and Glass | `/games/stillskin-forest/wiki/mechanics/shooting-through-cover` | no | 2026-10-28 |
 | Survival Mechanics | Weather: Rain, Storms and Puddles | `/games/stillskin-forest/wiki/mechanics/weather` | no | 2026-10-27 |
 | Survival Mechanics | Climbing, Jumping and Ladders | `/games/stillskin-forest/wiki/mechanics/climbing-and-ladders` | no | 2026-10-25 |
 | Survival Mechanics | Crouching and Takedowns | `/games/stillskin-forest/wiki/mechanics/crouching-and-takedowns` | no | 2026-10-25 |
 | Survival Mechanics | Doors and Building Barricades | `/games/stillskin-forest/wiki/mechanics/doors-and-building` | no | 2026-10-27 |
-| Survival Mechanics | Durability and Wear | `/games/stillskin-forest/wiki/mechanics/durability-and-wear` | no | 2026-10-28 |
+| Survival Mechanics | Durability and Wear | `/games/stillskin-forest/wiki/mechanics/durability-and-wear` | no | 2026-10-29 |
 | Locations | The Campgrounds | `/games/stillskin-forest/wiki/locations/campgrounds` | no | 2026-10-25 |
 | Locations | The Forest Trail | `/games/stillskin-forest/wiki/locations/forest-trail` | no | 2026-10-27 |
 | Locations | Stillwater | `/games/stillskin-forest/wiki/locations/stillwater` | no | 2026-10-25 |
@@ -98,7 +98,7 @@ Generated from the wiki registry. Do not edit by hand.
 | Weapons | Mini AK | `/games/stillskin-forest/wiki/weapons/mini-ak` | no | 2026-10-28 |
 | Items & Equipment | Military Armor: Plate Carrier and Helmet | `/games/stillskin-forest/wiki/items/military-armor` | no | 2026-10-27 |
 | Survival Mechanics | Night Survival: Hunters, Wisps, Night Caches and Sleep | `/games/stillskin-forest/wiki/mechanics/night-survival` | no | 2026-10-27 |
-| Survival Mechanics | Generators and Jerry Cans | `/games/stillskin-forest/wiki/mechanics/generators-and-jerry-cans` | no | 2026-10-28 |
+| Survival Mechanics | Generators and Jerry Cans | `/games/stillskin-forest/wiki/mechanics/generators-and-jerry-cans` | no | 2026-10-29 |
 
 ## Not published, and why
 
@@ -133,7 +133,7 @@ Generated from the wiki registry. Do not edit by hand.
 | Mini AK | The third-person model uses the shared gun pose; no dedicated reload animation yet. |
 | Military Armor: Plate Carrier and Helmet | Taking armor off with a controller is not mapped yet (keyboard K only). |
 | Night Survival: Hunters, Wisps, Night Caches and Sleep | Sleeping with two or more players voting has not been tested. |
-| Generators and Jerry Cans | No refuelling animation beyond the can tipping, and no engine-running sound yet. The pouring sound has not been reviewed by the developer. |
+| Generators and Jerry Cans | No engine-running sound yet. The pouring sound has not been reviewed by the developer. Refuelling was tested with keyboard input in Studio, not yet with a controller. |
 
 ## Media
 

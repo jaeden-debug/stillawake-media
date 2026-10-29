@@ -117,7 +117,7 @@ export const items: WikiEntry[] = [
   {
     ...base,
     slug: "ammunition",
-    lastVerified: "2026-10-27",
+    lastVerified: "2026-10-29",
     title: "Ammunition: Pistol Ammo, Shells and Rifle Rounds",
     seoTitle: "Ammo in Stillskin Forest: Pistol Ammo, Shells, Rifle Rounds",
     description:
@@ -154,9 +154,10 @@ export const items: WikiEntry[] = [
       },
       {
         id: "rifle-rounds",
-        heading: "Rifle Rounds and ammo from kills",
+        heading: "Where ammo turns up",
         blocks: [
-          { type: "p", text: "Rifle Rounds are the scarcest: they turn up in Blackthorn Asylum, stashes, [Blackpine Airfield](@blackpine-airfield) containers and night caches. An infected you kill has an 18% chance to drop a small amount of ammo (22% for soldiers, who drop Rifle Rounds more often). See [Night survival](@night-survival)." },
+          { type: "p", text: "Pistol Ammo and Shells turn up in ordinary scavenging: houses, the store, the hospital, the campground cabins and sheds, the trail and the airfield. Each box holds twice what it used to (a house box of Pistol Ammo is 8–18 rounds), and boxes are more common than before, though still rarer than food. You never need to go to the airfield just for pistol or shotgun ammo." },
+          { type: "p", text: "Rifle Rounds are the scarcest: they turn up in Blackthorn Asylum, stashes, [Blackpine Airfield](@blackpine-airfield) and night caches. An infected you kill has an 18% chance to drop a small amount of ammo (22% for soldiers, who drop Rifle Rounds more often). See [Night survival](@night-survival)." },
         ],
       },
     ],

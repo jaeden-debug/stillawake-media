@@ -50,7 +50,7 @@ export const weapons: WikiEntry[] = [
           { type: "table", caption: "Melee weapon base stats (Tier I)", head: ["Weapon", "Damage", "Time between swings", "Range", "Knockback", "Durability", "Rarity"], rows: [
             ["[Baseball Bat](@baseball-bat)", "25", "0.8 s", "5.5", "30", "120", "Common"],
             ["[Machete](@machete)", "40", "0.9 s", "5.5", "22", "110", "Uncommon"],
-            ["[Hammer](@hammer)", "32", "1.0 s", "5", "48", "160", "Uncommon"],
+            ["[Hammer](@hammer)", "32", "1.0 s", "5", "48", "480", "Uncommon"],
             ["[Crowbar](@crowbar)", "18", "0.7 s", "5", "20", "140", "Uncommon"],
             ["[Fists](@fists)", "17", "0.55 s", "4.5", "10", "—", "Always"],
           ] },
@@ -229,17 +229,17 @@ export const weapons: WikiEntry[] = [
   {
     ...base,
     slug: "hammer",
-    lastVerified: "2026-10-27",
+    lastVerified: "2026-10-29",
     title: "Hammer",
     seoTitle: "Hammer in Stillskin Forest: Damage, Building and Tips",
     description:
-      "The Hammer in Stillskin Forest: 32 damage, the biggest knockback of any weapon, 160 durability, and the only tool that nails planks for building.",
+      "The Hammer in Stillskin Forest: 32 damage, the biggest knockback of any weapon, 480 durability, and the only tool that nails planks for building.",
     question: "What does the Hammer do in Stillskin Forest?",
     answer:
       "The Hammer is a heavy melee weapon (32 damage, 1.0 s between swings, 48 knockback) and the building tool. A quick tap swings; holding the click (or R2) and dragging across a surface nails a plank, costing one point of the hammer's 160 durability. A hold never swings, even if you let go without placing a plank.",
     facts: [
       ["Type", "Melee / builder"], ["Damage", "32"], ["Time between swings", "1.0 s"], ["Range", "5 studs"],
-      ["Knockback", "48"], ["Durability", "160"], ["Rarity", "Uncommon"],
+      ["Knockback", "48"], ["Durability", "480"], ["Rarity", "Uncommon"],
     ],
     sections: [
       {
@@ -253,7 +253,7 @@ export const weapons: WikiEntry[] = [
         id: "where-to-find",
         heading: "Where to find it",
         blocks: [
-          { type: "p", text: "Hammers turn up in house, store and trail loot, most often in the store. In the current build the lobby Outfitter also offers one as a one-match supply for 60 Embers." },
+          { type: "p", text: "Hammers are easy to find, above all in the campground cabins, the campsite sheds and the ranger station, then houses and the store. On the first two days of a run there is always at least one lying around for each survivor (up to four), and one that's taken is replaced. It lasts a long time: 480 durability, three times the old value. In the current build the lobby Outfitter also offers one as a one-match supply for 60 Embers." },
         ],
       },
       meleeTiers,

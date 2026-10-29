@@ -8,6 +8,31 @@ import { SRC, VERIFIED } from "./sources";
  */
 export const stillskinUpdates: GameUpdate[] = [
   {
+    id: "2026-10-29-performance-generators-hammers",
+    version: null,
+    date: "2026-10-29",
+    title: "Smoother on consoles, generators fixed, more hammers and ammo",
+    kind: "development-milestone",
+    newFeatures: [
+      "A Graphics setting (High, Balanced, Performance) in the backpack's settings. Consoles start on Performance. It changes only looks, never gameplay, and your choice is saved.",
+    ],
+    changes: [
+      "Performance work aimed at consoles: far fewer shadows from small props and placed lights, tree shadows that reach as far as your Graphics setting allows, lighter foliage animation, tighter world streaming, and at most 48 infected at night (was 72).",
+      "Hammers are much easier to find, above all in the campground cabins, campsite sheds and the ranger station, with at least one per survivor lying around on the first two days. A Hammer now lasts three times as long (480).",
+      "Every ammo box holds twice as much, and ammo turns up more often in ordinary places.",
+      "Generators have one prompt that says what a hold will do: Refuel Generator, Start Generator or Stop Generator.",
+      "New loot spots on the airfield's bunks, desks, benches and crates; frozen infected show cracking ice; you lean in and pour when refuelling.",
+    ],
+    fixes: [
+      "Generators wouldn't take a Jerry Can: the start prompt could cover the refuel prompt, and a finished hold could be lost.",
+    ],
+    balance: [],
+    knownIssues: [
+      "Not yet tested on a PlayStation or with a controller. Frame rates were measured on a Mac in Studio only.",
+    ],
+    relatedEntries: ["generators-and-jerry-cans", "hammer", "ammunition", "inventory-and-hotbar", "durability-and-wear"],
+  },
+  {
     id: "2026-10-28-loot-economy",
     version: null,
     date: "2026-10-28",

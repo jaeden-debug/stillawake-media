@@ -108,6 +108,36 @@ export function trackStudioFromEstimate(low: number, high: number, locale: "en" 
 }
 
 /**
+ * SECONDARY — free-tool usage: the schema markup generator and the llms.txt
+ * generator. They answer "is anyone using it, and do they get to the end?":
+ * a first edit or a run means someone used the tool, and a copy or download
+ * means they left with something.
+ *
+ * PRIVACY: nothing typed into either tool reaches GA4. No URLs, names or
+ * markup; only the schema type, an error count and a score band. Never
+ * conversions.
+ */
+export function trackSchemaGeneratorEvent(
+  action: "type_selected" | "edited" | "copied",
+  schemaType: string,
+  extra: { error_count?: number; with_script_tag?: boolean } = {},
+) {
+  gtag("event", `schema_generator_${action}`, { schema_type: schemaType, ...extra });
+}
+
+function scoreBand(score: number): string {
+  return score < 40 ? "0_39" : score < 70 ? "40_69" : score < 90 ? "70_89" : "90_100";
+}
+
+export function trackLlmsToolEvent(
+  action: "run" | "run_failed" | "copied" | "downloaded",
+  locale: "en" | "fr",
+  score?: number,
+) {
+  gtag("event", `llms_tool_${action}`, { locale, ...(score === undefined ? {} : { score_band: scoreBand(score) }) });
+}
+
+/**
  * SECONDARY — discovery diagnostics for the portfolio, games and wiki.
  * None of these is a conversion. A Roblox outbound click means someone left
  * for the Roblox page, not that they played.

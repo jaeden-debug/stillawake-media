@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { GuideStep, PlatformGuide } from "@/lib/llms-txt-guides/types";
 
+import { ProjectCta } from "@/components/project-cta";
 /**
  * Renders one platform guide.
  *
@@ -271,6 +272,7 @@ export function PlatformGuideView({ guide }: { guide: PlatformGuide }) {
           </p>
         </div>
       </section>
+      <ProjectCta locale={fr ? "fr" : "en"} />
     </main>
   );
 }

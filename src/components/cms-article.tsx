@@ -240,12 +240,26 @@ export async function CmsArticle({
                     ? "Envie d'appliquer ce genre de stratégie à votre entreprise ?"
                     : "Want this kind of strategy applied to your business?"}
                 </h2>
-                <Link
-                  href={locale === "fr" ? "/fr/contact" : "/contact"}
-                  className="mt-8 inline-flex rounded-full bg-black px-6 py-4 font-bold"
-                >
-                  {locale === "fr" ? "Démarrer mon projet →" : "Start Your Project →"}
-                </Link>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Link
+                    href={locale === "fr" ? "/fr/contact" : "/contact"}
+                    className="inline-flex rounded-full bg-black px-6 py-4 font-bold"
+                  >
+                    {locale === "fr" ? "Démarrer mon projet →" : "Start Your Project →"}
+                  </Link>
+                  <Link
+                    href={locale === "fr" ? "/fr/outils/calculateur-cout-projet" : "/tools/project-cost-calculator"}
+                    className="inline-flex rounded-full border border-white/40 px-6 py-4 font-bold transition hover:bg-white/10"
+                  >
+                    {locale === "fr" ? "Estimer le coût" : "Estimate the cost"}
+                  </Link>
+                  <Link
+                    href={locale === "fr" ? "/fr/tarifs" : "/pricing"}
+                    className="inline-flex rounded-full border border-white/40 px-6 py-4 font-bold transition hover:bg-white/10"
+                  >
+                    {locale === "fr" ? "Voir les tarifs" : "See pricing"}
+                  </Link>
+                </div>
               </section>
             </div>
           </div>

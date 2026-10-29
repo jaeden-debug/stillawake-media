@@ -5,6 +5,7 @@ import { PageSchema } from "@/components/page-schema";
 import { FR } from "@/lib/custom-software/fr";
 import { siteUrl } from "@/lib/data";
 
+import { ProjectCta } from "@/components/project-cta";
 const url = `${siteUrl}${FR.path}`;
 const enUrl = `${siteUrl}${FR.otherPath}`;
 
@@ -53,6 +54,7 @@ export default function LogicielSurMesureOuSolutionExistantePage() {
     <main className="bg-black text-white">
       <PageSchema route={FR.path} />
       <GuideBody content={FR} />
+      <ProjectCta locale="fr" />
     </main>
   );
 }

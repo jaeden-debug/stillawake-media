@@ -98,6 +98,30 @@ Also in this release:
 - `/llms.txt` now puts the long tail (every project, wiki page and article) under `## Optional`, as the proposal intends. It was measured at 77 KB with 245 links and no Optional section.
 - Validator fix found in browser testing: a bad price no longer reports two errors.
 
+### Project CTAs (requested 2026-10-29, second release)
+
+- [x] "Need help getting started with your project?" band (`src/components/project-cta.tsx`). Three buttons: the Studio intake, the cost calculator and the pricing page; FR version links `/fr/...`. Added to:
+  - EN: the tools hub, the llms.txt guide (AEO-specific copy), the schema generator (structured-data copy), the llms.txt generator, the three llms.txt platform guides, the website setup guide, choosing website technology, and do I need custom software.
+  - FR: outils, the générateur llms.txt, the FR platform guides, guide-site-web-entreprise, choisir-technologie-site-web, and logiciel-sur-mesure-ou-solution-existante.
+- [x] Article "Next step" boxes (Times, CMS articles, FR articles) gain "Estimate the cost" and "See pricing" next to the existing start button.
+- Left out on purpose: the games guides and wiki. Readers there are players, and StillAwake doesn't sell game development, so an agency CTA would be off-intent.
+
+### Tool usage tracking (requested 2026-10-29, third release)
+
+GA4 events. None is a conversion, and nothing typed into a tool is sent.
+
+| Event | Fires when | Parameters |
+|---|---|---|
+| `schema_generator_type_selected` | someone switches schema type | `schema_type` |
+| `schema_generator_edited` | first edit of a type in a visit (one per type) | `schema_type` |
+| `schema_generator_copied` | Copy JSON-LD clicked | `schema_type`, `error_count`, `with_script_tag` |
+| `llms_tool_run` / `llms_tool_run_failed` | an analysis finishes or fails | `locale`, `score_band` |
+| `llms_tool_copied` / `llms_tool_downloaded` | the file is copied or downloaded | `locale`, `score_band` |
+
+The project calculator already had `calculator_started`, `project_type_selected`, `calculator_completed` and `studio_started_from_estimate`.
+
+Where to look: GA4 → Reports → Engagement → Events, or Realtime to watch it live. To break counts down by `schema_type` or `score_band`, register them as event-scoped custom dimensions in GA4 Admin (owner step).
+
 ## 4. Follow-ups (not in this release)
 
 - Rewrite or consolidate the 11 crawled-not-indexed articles.

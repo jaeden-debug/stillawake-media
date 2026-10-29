@@ -43,7 +43,8 @@ export async function GET(req: Request) {
   const db = createClient(url, key, { auth: { persistSession: false } });
   const weekAgo = new Date(Date.now() - 7 * 86_400_000).toISOString();
 
-  const [stalledRes, newRes, leadsRes] = await Promise.all([
+  const weekAgoDay = weekAgo.slice(0, 10);
+  const [stalledRes, newRes, leadsRes, usageRes] = await Promise.all([
     db
       .from("contact_submissions")
       .select("name,email,service,created_at,followup_sent_at,referral_source")
@@ -63,14 +64,17 @@ export async function GET(req: Request) {
       .neq("status", "draft")
       .gte("submitted_at", weekAgo)
       .limit(50),
+    // Consent-free free-tool counters (src/lib/tool-usage.ts).
+    db.from("tool_usage_daily").select("tool,event,count").gte("day", weekAgoDay).limit(1000),
   ]);
 
   const stalled = stalledRes.data ?? [];
   const fresh = newRes.data ?? [];
   const onboarded = leadsRes.data ?? [];
+  const usage = summarizeUsage(usageRes.data ?? []);
 
   // Nothing happened and nothing is stuck — don't send a "no news" email.
-  if (stalled.length === 0 && fresh.length === 0 && onboarded.length === 0) {
+  if (stalled.length === 0 && fresh.length === 0 && onboarded.length === 0 && usage.length === 0) {
     return Response.json({ sent: false, reason: "nothing_to_report" });
   }
 
@@ -127,6 +131,14 @@ export async function GET(req: Request) {
     );
   }
 
+  if (usage.length) {
+    sections.push(
+      `<h2 style="font-size:15px;color:#fff;margin:24px 0 10px">Free tools this week</h2>
+       <ul style="padding-left:18px;margin:0">${rows(usage.map((u) => `<strong style="color:#fff">${esc(u.label)}</strong>: ${esc(u.text)}`))}</ul>
+       <p style="color:#8a8a8a;font-size:12px;margin:8px 0 0">Counted without cookies, so this includes visitors GA4 can't see.</p>`
+    );
+  }
+
   const html = `<div style="background:#050505;padding:40px 16px;font-family:Inter,system-ui,sans-serif">
   <div style="max-width:560px;margin:0 auto;background:#0b0b0b;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:32px;color:#fff">
     <div style="letter-spacing:.3em;font-size:11px;color:#8a8a8a">STILLAWAKE MEDIA</div>
@@ -151,6 +163,8 @@ export async function GET(req: Request) {
         (s) => `AWAITING: ${s.name} — ${s.service} — ${days(s.created_at as string)} days`
       ),
       "",
+      ...usage.map((u) => `TOOLS: ${u.label}: ${u.text}`),
+      "",
       `${adminBase}/admin/clients`,
     ].join("\n"),
   });
@@ -161,5 +175,26 @@ export async function GET(req: Request) {
     stalled: stalled.length,
     new: fresh.length,
     onboarded: onboarded.length,
+    tool_usage: usage,
   });
+}
+
+const TOOL_LABELS: Record<string, string> = {
+  schema_generator: "Schema markup generator",
+  llms_txt: "llms.txt generator",
+  calculator: "Project cost calculator",
+};
+
+/** One line per tool: event totals for the week, biggest first. */
+function summarizeUsage(rows: { tool: string; event: string; count: number }[]) {
+  const byTool = new Map<string, Map<string, number>>();
+  for (const r of rows) {
+    const events = byTool.get(r.tool) ?? new Map<string, number>();
+    events.set(r.event, (events.get(r.event) ?? 0) + r.count);
+    byTool.set(r.tool, events);
+  }
+  return [...byTool].map(([tool, events]) => ({
+    label: TOOL_LABELS[tool] ?? tool,
+    text: [...events].sort((a, b) => b[1] - a[1]).map(([e, n]) => `${n} ${e.replace(/_/g, " ")}`).join(", "),
+  }));
 }

@@ -15,11 +15,14 @@
 const SCORE_BANDS = ["", "0_39", "40_69", "70_89", "90_100"] as const;
 const ESTIMATE_BANDS = ["", "under_5k", "5k_10k", "10k_25k", "25k_50k", "over_50k"] as const;
 const SCHEMA_TYPES = ["Organization", "LocalBusiness", "Article", "Product", "BreadcrumbList", "FAQPage", "Person"] as const;
+/** How many blocking problems an SEO audit found. Never the URL that was checked. */
+const FAIL_BANDS = ["", "fail_0", "fail_1_2", "fail_3_plus"] as const;
 
 export const USAGE_EVENTS = {
   schema_generator: { events: ["type_selected", "edited", "copied"], details: SCHEMA_TYPES },
   llms_txt: { events: ["run", "run_failed", "copied", "downloaded"], details: SCORE_BANDS },
   calculator: { events: ["started", "completed", "studio_from_estimate"], details: ESTIMATE_BANDS },
+  seo_audit: { events: ["run", "run_failed"], details: FAIL_BANDS },
 } as const;
 
 export type UsageTool = keyof typeof USAGE_EVENTS;

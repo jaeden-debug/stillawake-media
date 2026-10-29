@@ -8,6 +8,39 @@ import { SRC, VERIFIED } from "./sources";
  */
 export const stillskinUpdates: GameUpdate[] = [
   {
+    id: "2026-10-29-zombie-overhaul",
+    version: null,
+    date: "2026-10-29",
+    title: "Smarter, fairer infected: cleared ground stays cleared, no more night tracking, quieter hiding",
+    kind: "development-milestone",
+    newFeatures: [
+      "Cleared ground stays cleared: kill the infected around you and no new ones appear in your part of the map while anyone stays there. It refills only after everyone has been gone about two minutes.",
+      "Nightfall brings a fresh batch of infected everywhere, even where you cleared them by day. They arrive out of sight and don't know where you are.",
+      "Hiding has real stakes: an infected that watched you climb in from close up can find you and drag you out (after a warning bang). Break its line of sight first and it looks, then leaves.",
+    ],
+    changes: [
+      "No more night hunting. The infected no longer drift toward survivors after dark; they find you by sight, by sound, or from another infected that saw you.",
+      "Walls muffle sound: quiet noises carry less than half as far through a wall, gunshots about four fifths as far.",
+      "A chase never ends on a timer while the infected can still see you. Out of sight, it searches for a while, stopping to listen.",
+      "The infected claw at planks, doors and windows only when they've just seen or heard you behind them.",
+      "One population cap for everything: at most 16 ordinary infected by day, 40 at night, and never more than 56 from all sources at once. Blood Moon and Infected Surge change who comes and how they act, not how many.",
+      "Infected Surge: the night fills fast, the infected see further, and more of them are Runners and Screamers.",
+      "After a win the infected are more persistent (they hear further, search longer, keep after you a little longer) but no longer flood the area or know where you are.",
+      "The Dread Encounter is quiet: no music and no sting, only breathing, heartbeat and footsteps. The infected look straight in through the opening, glance away, look back, and nothing tells you when it's safe.",
+      "Freeze Device: hitting a frozen infected still hurts but adds only 2 seconds, at most 14 seconds frozen in a row, and an infected that has just thawed shakes off the next freeze twice as fast.",
+      "Lighter infected models (no unused parts) and sleeping infected far from everyone no longer use physics.",
+    ],
+    fixes: [
+      "A hiding spot's camera could keep pointing at an old camera after the match loaded.",
+    ],
+    balance: [],
+    knownIssues: [
+      "Not yet tested on a PlayStation, with a controller, or with four players; two-player Studio tests only.",
+      "The infected's plain heads have no face, so the stare through the slats reads less clearly than it should.",
+    ],
+    relatedEntries: ["day-night-cycle", "night-survival", "detection-and-noise", "hiding", "the-dread-encounter", "infected-surge", "freeze-device"],
+  },
+  {
     id: "2026-10-29-performance-generators-hammers",
     version: null,
     date: "2026-10-29",

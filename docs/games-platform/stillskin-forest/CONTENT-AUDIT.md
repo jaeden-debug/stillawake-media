@@ -25,7 +25,7 @@ Generated from the wiki registry. Do not edit by hand.
 | Weapons | Crowbar | `/games/stillskin-forest/wiki/weapons/crowbar` | no | 2026-10-25 |
 | Weapons | Pistol | `/games/stillskin-forest/wiki/weapons/pistol` | no | 2026-10-25 |
 | Weapons | Shotgun | `/games/stillskin-forest/wiki/weapons/shotgun` | no | 2026-10-25 |
-| Weapons | Freeze Device | `/games/stillskin-forest/wiki/weapons/freeze-device` | no | 2026-10-28 |
+| Weapons | Freeze Device | `/games/stillskin-forest/wiki/weapons/freeze-device` | no | 2026-10-29 |
 | Items & Equipment | Gun Repair Kit | `/games/stillskin-forest/wiki/items/gun-repair-kit` | no | 2026-10-28 |
 | Items & Equipment | Food: Bag of Chips, Canned Beans and Energy Bar | `/games/stillskin-forest/wiki/items/food` | no | 2026-10-25 |
 | Items & Equipment | First Aid Kit | `/games/stillskin-forest/wiki/items/first-aid-kit` | no | 2026-10-28 |
@@ -39,11 +39,11 @@ Generated from the wiki registry. Do not edit by hand.
 | Enemies | Screamer | `/games/stillskin-forest/wiki/enemies/screamer` | no | 2026-10-25 |
 | Enemies | Brute | `/games/stillskin-forest/wiki/enemies/brute` | no | 2026-10-25 |
 | Enemies | The Watcher | `/games/stillskin-forest/wiki/enemies/watcher` | no | 2026-10-25 |
-| Survival Mechanics | Day and Night Cycle | `/games/stillskin-forest/wiki/mechanics/day-night-cycle` | no | 2026-10-27 |
+| Survival Mechanics | Day and Night Cycle | `/games/stillskin-forest/wiki/mechanics/day-night-cycle` | no | 2026-10-29 |
 | Survival Mechanics | Stamina and Sprinting | `/games/stillskin-forest/wiki/mechanics/stamina-and-sprinting` | no | 2026-10-25 |
-| Survival Mechanics | Detection, Noise and Pursuit | `/games/stillskin-forest/wiki/mechanics/detection-and-noise` | no | 2026-10-27 |
-| Survival Mechanics | Hiding | `/games/stillskin-forest/wiki/mechanics/hiding` | no | 2026-10-25 |
-| Survival Mechanics | The Dread Encounter | `/games/stillskin-forest/wiki/mechanics/the-dread-encounter` | no | 2026-10-25 |
+| Survival Mechanics | Detection, Noise and Pursuit | `/games/stillskin-forest/wiki/mechanics/detection-and-noise` | no | 2026-10-29 |
+| Survival Mechanics | Hiding | `/games/stillskin-forest/wiki/mechanics/hiding` | no | 2026-10-29 |
+| Survival Mechanics | The Dread Encounter | `/games/stillskin-forest/wiki/mechanics/the-dread-encounter` | no | 2026-10-29 |
 | Survival Mechanics | Health, Damage and Healing | `/games/stillskin-forest/wiki/mechanics/health-and-healing` | no | 2026-10-25 |
 | Survival Mechanics | Downed and Revive | `/games/stillskin-forest/wiki/mechanics/downed-and-revive` | no | 2026-10-25 |
 | Survival Mechanics | Inventory and Hotbar | `/games/stillskin-forest/wiki/mechanics/inventory-and-hotbar` | no | 2026-10-29 |
@@ -97,7 +97,7 @@ Generated from the wiki registry. Do not edit by hand.
 | Enemies | Soldier | `/games/stillskin-forest/wiki/enemies/soldier` | no | 2026-10-27 |
 | Weapons | Mini AK | `/games/stillskin-forest/wiki/weapons/mini-ak` | no | 2026-10-28 |
 | Items & Equipment | Military Armor: Plate Carrier and Helmet | `/games/stillskin-forest/wiki/items/military-armor` | no | 2026-10-27 |
-| Survival Mechanics | Night Survival: Hunters, Wisps, Night Caches and Sleep | `/games/stillskin-forest/wiki/mechanics/night-survival` | no | 2026-10-27 |
+| Survival Mechanics | Night Survival: New Arrivals, Wisps, Night Caches and Sleep | `/games/stillskin-forest/wiki/mechanics/night-survival` | no | 2026-10-29 |
 | Survival Mechanics | Generators and Jerry Cans | `/games/stillskin-forest/wiki/mechanics/generators-and-jerry-cans` | no | 2026-10-29 |
 
 ## Not published, and why
@@ -132,7 +132,7 @@ Generated from the wiki registry. Do not edit by hand.
 | Blackpine Airfield | Not yet walked through with two or more players. |
 | Mini AK | The third-person model uses the shared gun pose; no dedicated reload animation yet. |
 | Military Armor: Plate Carrier and Helmet | Taking armor off with a controller is not mapped yet (keyboard K only). |
-| Night Survival: Hunters, Wisps, Night Caches and Sleep | Sleeping with two or more players voting has not been tested. |
+| Night Survival: New Arrivals, Wisps, Night Caches and Sleep | Sleeping with two or more players voting has not been tested. |
 | Generators and Jerry Cans | No engine-running sound yet. The pouring sound has not been reviewed by the developer. Refuelling was tested with keyboard input in Studio, not yet with a controller. |
 
 ## Media

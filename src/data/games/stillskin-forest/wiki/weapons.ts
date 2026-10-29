@@ -377,7 +377,7 @@ export const weapons: WikiEntry[] = [
   {
     ...base,
     slug: "freeze-device",
-    lastVerified: "2026-10-28",
+    lastVerified: "2026-10-29",
     title: "Freeze Device",
     seoTitle: "Freeze Device in Stillskin Forest: How to Get It and How It Works",
     description:
@@ -411,7 +411,8 @@ export const weapons: WikiEntry[] = [
             "Frozen infected can't move, chase or attack, but they can still be hit.",
             "Each shot takes 25% of each target's maximum health, once. An infected already at a quarter or less dies.",
             "Frost creeps over a frozen infected. Two seconds before it breaks free the ice pulses and cracks, then it shatters.",
-            "Freezing one again restarts its timer, but nothing stays frozen longer than 16 seconds in a row.",
+            "Hitting one that's already frozen still takes a quarter of its health, but only adds 2 seconds to the freeze, and nothing stays frozen longer than 14 seconds in a row.",
+            "Just after it thaws, an infected shakes the next freeze off twice as fast (for about 6 seconds).",
             "Firing again inside the 5-second recharge tells you how long is left.",
           ] },
           { type: "callout", tone: "tip", text: "Save it for [the Rite of Stillness](@the-rite-of-stillness): a shot into the doorway when a wave arrives buys real time." },

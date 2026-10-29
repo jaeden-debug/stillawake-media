@@ -110,7 +110,7 @@ export const gettingStarted: WikiEntry[] = [
         heading: "How a run ends",
         blocks: [
           { type: "p", text: "When the last survivor falls the run is over: the squad's stat cards appear on the roof of St. Agnes Hospital and everyone votes to **Return to Camp** for a fresh Day 1. Completing [the Rite of Stillness](@the-rite-of-stillness) or destroying [the Heart of Stillskin](@the-heart-of-stillskin) wins the run, and the win is paid the moment it happens. The run then keeps going until the last survivor falls, and its end screen still shows your win." },
-          { type: "p", text: "**After you win.** Night-vision goggles replace the headlamp (after the ritual you claim yours from the circle; after the Heart everyone gets them at once), and the infected turn aggressive. At night many more of them come to search the area you're in. They don't know exactly where you are, but if they see or hear you they tear through planks and doors to reach you. Lose them for about ten seconds and they give up, but they stay nearby." },
+          { type: "p", text: "**After you win.** Night-vision goggles replace the headlamp (after the ritual you claim yours from the circle; after the Heart everyone gets them at once), and the infected get more persistent: they hear a little further, a scream pulls in one more, they search longer, and they keep after you for about seven seconds out of sight instead of five. They still don't know where you are until they see or hear you, and there are no more of them than on any other night. If they've just heard you behind a plank or door, they tear at it." },
         ],
       },
     ],

@@ -127,7 +127,7 @@ Projects whose canonical page lives elsewhere (cards link there, and `/our-work/
 | `/games/stillskin-forest/wiki/enemies/soldier` | Soldier |
 | `/games/stillskin-forest/wiki/weapons/mini-ak` | Mini AK |
 | `/games/stillskin-forest/wiki/items/military-armor` | Military Armor: Plate Carrier and Helmet |
-| `/games/stillskin-forest/wiki/mechanics/night-survival` | Night Survival: Hunters, Wisps, Night Caches and Sleep |
+| `/games/stillskin-forest/wiki/mechanics/night-survival` | Night Survival: New Arrivals, Wisps, Night Caches and Sleep |
 | `/games/stillskin-forest/wiki/mechanics/generators-and-jerry-cans` | Generators and Jerry Cans |
 | `/games/risk-it` | RISK IT! landing page |
 | `/games/risk-it/wiki` | RISK IT! wiki home |

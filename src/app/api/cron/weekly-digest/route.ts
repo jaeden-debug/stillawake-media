@@ -183,6 +183,7 @@ const TOOL_LABELS: Record<string, string> = {
   schema_generator: "Schema markup generator",
   llms_txt: "llms.txt generator",
   calculator: "Project cost calculator",
+  seo_audit: "SEO audit tool",
 };
 
 /** One line per tool: event totals for the week, biggest first. */

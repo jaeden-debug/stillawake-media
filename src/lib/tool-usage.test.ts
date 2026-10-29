@@ -17,6 +17,13 @@ describe("tool usage allow-list", () => {
     expect(parseUsagePing("run")).toBeNull();
   });
 
+  it("counts SEO audit runs by fail band and never accepts a URL", () => {
+    expect(parseUsagePing({ tool: "seo_audit", event: "run", detail: "fail_1_2" })).toEqual({ tool: "seo_audit", event: "run", detail: "fail_1_2" });
+    expect(parseUsagePing({ tool: "seo_audit", event: "run_failed" })).not.toBeNull();
+    expect(parseUsagePing({ tool: "seo_audit", event: "run", detail: "https://example.com/" })).toBeNull();
+    expect(parseUsagePing({ tool: "seo_audit", event: "copied", detail: "" })).toBeNull();
+  });
+
   it("treats missing or crawler user agents as bots", () => {
     expect(looksLikeBot(null)).toBe(true);
     expect(looksLikeBot("Mozilla/5.0 (compatible; Googlebot/2.1)")).toBe(true);

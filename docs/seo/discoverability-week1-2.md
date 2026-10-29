@@ -138,6 +138,11 @@ The project calculator already had `calculator_started`, `project_type_selected`
 
 **Consent caveat:** GA4 loads only after a visitor accepts analytics on the cookie banner, so these events count consenting visitors only. The llms.txt tool also calls `/api/tools/llms-txt` on every run, so Vercel function logs give a consent-independent count for that tool. The schema generator runs entirely in the browser and has no server-side signal.
 
+**Consent-free counter (added 2026-10-29, fourth release).** Every tool event above also adds 1 to a daily total in Supabase table `tool_usage_daily` (shared project `qzyzdpjvrecplkenrxhe`), through `POST /api/tools/usage`.
+- What's stored: date, tool, event, and a label from a fixed list (schema type or score/estimate band). No IP, user agent, URL or typed text.
+- Protections: an allow-list, a same-site origin check, a bot filter and an in-memory rate limit. Row-level security is on, and only the service role can execute `increment_tool_usage`.
+- Totals appear in the Monday pipeline email under "Free tools this week". An ad hoc query: `select day, tool, event, detail, count from tool_usage_daily order by day desc;`
+
 Where to look: GA4 → Reports → Engagement → Events, or Realtime to watch it live. To break counts down by `schema_type` or `score_band`, register them as event-scoped custom dimensions in GA4 Admin (owner step).
 
 ## 4. What to monitor for 30 days (from 2026-10-29)

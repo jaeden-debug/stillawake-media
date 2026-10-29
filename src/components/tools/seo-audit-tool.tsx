@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { Check, CheckLevel } from "@/lib/seo-audit/analyze";
+import { trackSeoAuditEvent } from "@/lib/analytics";
 
 type Result = {
   url: string;
@@ -46,10 +47,16 @@ export function SeoAuditTool() {
         body: JSON.stringify({ url }),
       });
       const data = await res.json();
-      if (!res.ok) setError(data.error ?? "The check failed. Try again.");
-      else setResult(data as Result);
+      if (!res.ok) {
+        setError(data.error ?? "The check failed. Try again.");
+        trackSeoAuditEvent("run_failed");
+      } else {
+        setResult(data as Result);
+        trackSeoAuditEvent("run", (data as Result).summary.fail);
+      }
     } catch {
       setError("The check failed. Try again.");
+      trackSeoAuditEvent("run_failed");
     } finally {
       setLoading(false);
     }

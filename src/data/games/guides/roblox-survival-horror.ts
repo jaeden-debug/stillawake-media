@@ -163,7 +163,7 @@ export const survivalHorrorGuide: ComparisonGuide = {
     before: "Disclosure: StillAwake Media makes ",
     linkText: "Stillskin Forest",
     href: "/games/stillskin-forest",
-    after: ", a co-op survival-horror game that is still in development. It is left off this list because it is not yet publicly playable.",
+    after: ", a co-op survival-horror game released on Roblox in October 2026. It is left off this list because we will not rank our own game against the games we are recommending.",
   },
   groups: [
     { label: "Play with a group of friends (16+ per server)", min: 16 },

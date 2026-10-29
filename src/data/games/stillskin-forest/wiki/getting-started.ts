@@ -18,7 +18,7 @@ export const gettingStarted: WikiEntry[] = [
       ["Platform", "Roblox"],
       ["Genre", "Co-op survival horror"],
       ["Developer", "StillAwake Media"],
-      ["Status", "In development"],
+      ["Status", "Released 28 Oct 2026"],
       ["Players per squad", "1–4 (Solo, Duo, Squad queues)"],
     ],
     sections: [
@@ -51,9 +51,9 @@ export const gettingStarted: WikiEntry[] = [
       },
       {
         id: "development-status",
-        heading: "Development status",
+        heading: "Release status",
         blocks: [
-          { type: "callout", tone: "note", text: "Stillskin Forest is in active development. This wiki documents the current development build; public play on Roblox has not been confirmed yet, and numbers can change between builds. Every page shows the date it was last checked." },
+          { type: "callout", tone: "note", text: "Stillskin Forest went public on Roblox on 28 October 2026. This wiki documents the build checked on 25 October 2026, and numbers can change between updates. Every page shows the date it was last checked." },
         ],
       },
     ],
@@ -314,7 +314,7 @@ export const gettingStarted: WikiEntry[] = [
       {
         id: "is-it-out",
         heading: "Is Stillskin Forest out yet?",
-        blocks: [{ type: "p", text: "It is in active development. The Roblox page exists, but public play has not been confirmed yet. This wiki documents the current development build." }],
+        blocks: [{ type: "p", text: "Yes. Stillskin Forest went public on Roblox on 28 October 2026 and is free to play from its Roblox page. This wiki documents the build checked on 25 October 2026." }],
       },
       {
         id: "how-do-you-hide",

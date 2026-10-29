@@ -1,6 +1,7 @@
 import { entityIds } from "@/data/entities";
 import type { Game, WikiEntry } from "@/data/games/types";
 import type { GameBundle } from "@/data/games";
+import wikiPublished from "@/data/games/wiki-published.json";
 import { siteUrl } from "@/lib/data";
 import { absolute, entryImage, entryPath, entryText, gamePath, hasImage, mediaFor, plainText, wikiPath } from "@/lib/games";
 
@@ -103,6 +104,8 @@ export function gamePageNode(bundle: GameBundle) {
 export function wikiArticleNode(bundle: GameBundle, entry: WikiEntry) {
   const url = absolute(entryPath(bundle.game.slug, entry));
   const image = entryImage(bundle, entry);
+  // First time the entry went live, from git history (scripts/wiki-published-dates.mjs).
+  const published = (wikiPublished as Record<string, Record<string, string>>)[bundle.game.slug]?.[entry.slug];
   const node: Record<string, unknown> = {
     "@type": "Article",
     "@id": `${url}#article`,
@@ -110,6 +113,7 @@ export function wikiArticleNode(bundle: GameBundle, entry: WikiEntry) {
     description: entry.description,
     url,
     mainEntityOfPage: { "@id": `${url}#webpage` },
+    ...(published ? { datePublished: published } : {}),
     dateModified: entry.lastVerified,
     author: { "@id": entityIds.organization },
     publisher: { "@id": entityIds.organization },

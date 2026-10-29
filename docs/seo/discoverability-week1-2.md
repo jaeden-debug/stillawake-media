@@ -74,9 +74,20 @@ Resubmitting the sitemap tells Google about the 140 new game URLs; it won't make
   - tools hub → the new tool and guide: a schema generator card, and the guide linked from the guides intro.
   - GEO article → llms.txt guide. The article now says llms.txt isn't a ranking factor and nothing guarantees a citation; `updated` is 2026-10-29.
 - [x] Sitemap lastmod updated for changed pages. New pages included; the redirected guide excluded. *Evidence:* the local build sitemap has 329 URLs, including `/tools/llms-txt`, `/tools/schema-markup-generator` and `/games/guides/scary-roblox-games-with-friends`, and not the old guide.
-- [ ] Resubmit the sitemap in Search Console after deploy, so Google reads the 327+ URL version.
-- [ ] Request indexing (URL Inspection) for the priority URLs after deploy. Daily quota is about 10.
-- [ ] Bing Webmaster Tools. **Owner:** needs a Microsoft or Google sign-in consent.
+- [x] Resubmit the sitemap in Search Console after deploy, so Google reads the 327+ URL version. *Evidence (2026-10-29):* the Sitemaps report shows submitted Oct 29, last read Oct 29, Success, **329 discovered pages** (was 178).
+- [x] Request indexing (URL Inspection) for the priority URLs after deploy. *Evidence:* "Indexing requested" confirmed for 9 URLs:
+  - /tools/llms-txt
+  - /tools/schema-markup-generator
+  - /games/guides/scary-roblox-games-with-friends
+  - /tools/llms-txt-generator
+  - /tools
+  - /stillawake-times/what-is-generative-engine-optimization
+  - /local-seo (already on Google)
+  - /stillawake-times/how-to-rank-higher-on-google-maps
+  - /games/stillskin-forest/wiki (already on Google)
+
+  Before the request, /tools/llms-txt was "URL is unknown to Google".
+- [ ] Bing Webmaster Tools. **Blocked, owner:** needs a Microsoft or Google sign-in consent. IndexNow (which Bing uses) was submitted for the changed URLs; HTTP 200.
 
 ### Week 2: new and consolidated pages
 
@@ -91,8 +102,13 @@ Resubmitting the sitemap tells Google about the 140 new game URLs; it won't make
   - vitest: 29 files, 880 passed, 2 skipped. New tests: `src/lib/schema-generator/index.test.ts` (11) and the guide-sections test in `games.test.ts`.
   - `npm run build` exits 0.
   - Local `next start`: the 10 changed routes return 200; the old guide returns 308 to the new one; no console errors; no horizontal overflow at 375px.
-- [ ] PR merged; production serves the new pages (200, canonical, in sitemap).
-- [ ] IndexNow submission accepted.
+- [x] PR merged; production serves the new pages (200, canonical, in sitemap). *Evidence:*
+  - PRs [#34](https://github.com/jaeden-debug/stillawake-media/pull/34) (merge 7a34f7a), [#35](https://github.com/jaeden-debug/stillawake-media/pull/35) (CTAs) and [#36](https://github.com/jaeden-debug/stillawake-media/pull/36) (tool tracking).
+  - Live: the 9 changed routes return 200; the old guide returns 308 to the new one; the sitemap has 329 URLs including the new pages.
+  - The schema tool serves `index, follow` and a self canonical; `/llms.txt` has `## Optional`.
+  - CTAs are present on the 13 checked pages.
+  - `schema_generator_type_selected` reaches dataLayer on production.
+- [x] IndexNow submission accepted. *Evidence:* api.indexnow.org returned 200 for 11 URLs on 2026-10-29.
 
 Also in this release:
 - `/llms.txt` now puts the long tail (every project, wiki page and article) under `## Optional`, as the proposal intends. It was measured at 77 KB with 245 links and no Optional section.
@@ -120,9 +136,23 @@ GA4 events. None is a conversion, and nothing typed into a tool is sent.
 
 The project calculator already had `calculator_started`, `project_type_selected`, `calculator_completed` and `studio_started_from_estimate`.
 
+**Consent caveat:** GA4 loads only after a visitor accepts analytics on the cookie banner, so these events count consenting visitors only. The llms.txt tool also calls `/api/tools/llms-txt` on every run, so Vercel function logs give a consent-independent count for that tool. The schema generator runs entirely in the browser and has no server-side signal.
+
 Where to look: GA4 → Reports → Engagement → Events, or Realtime to watch it live. To break counts down by `schema_type` or `score_band`, register them as event-scoped custom dimensions in GA4 Admin (owner step).
 
-## 4. Follow-ups (not in this release)
+## 4. What to monitor for 30 days (from 2026-10-29)
+
+| Metric | Where | Baseline 2026-10-29 | Check |
+|---|---|---|---|
+| Indexed pages | GSC → Pages | 45 indexed / 144 not (report of 10-22) | Weekly. Expect game URLs to appear first as Discovered, then Indexed. |
+| Discovered – not indexed | GSC → Pages | 127 | Should fall as priority pages get crawled. |
+| Crawled – not indexed | GSC → Pages | 11 | Won't move until those articles are rewritten. |
+| Impressions per page | GSC → Performance → Pages | 0 for all new URLs | First sign of success: impressions on /tools/llms-txt, the schema generator and the Roblox guide. |
+| Queries | GSC → Performance → Queries | 16 queries / 90 days | Look for "llms txt", "schema markup generator", "scary roblox games…". |
+| Tool usage | GA4 → Events (schema_generator_*, llms_tool_*, calculator_*) | 0 (new) | Weekly. |
+| CTA clicks → leads | GA4 cta_click_start, contact_form_submit; Ads "Studio lead" | n/a | Monthly. |
+
+## 5. Follow-ups (not in this release)
 
 - Rewrite or consolidate the 11 crawled-not-indexed articles.
 - French counterparts for the llms.txt hub and the schema generator.

@@ -17,20 +17,20 @@ Generated from the wiki registry. Do not edit by hand.
 | Getting Started | How to Survive Your First Night in Stillskin Forest | `/games/stillskin-forest/wiki/getting-started/surviving-your-first-night` | no | 2026-10-25 |
 | Getting Started | Playing Stillskin Forest with Friends | `/games/stillskin-forest/wiki/getting-started/playing-with-friends` | no | 2026-10-25 |
 | Getting Started | Stillskin Forest FAQ | `/games/stillskin-forest/wiki/getting-started/faq` | no | 2026-10-25 |
-| Weapons | Stillskin Forest Weapons Compared | `/games/stillskin-forest/wiki/weapons/weapons-compared` | no | 2026-10-27 |
+| Weapons | Stillskin Forest Weapons Compared | `/games/stillskin-forest/wiki/weapons/weapons-compared` | no | 2026-10-30 |
 | Weapons | Fists | `/games/stillskin-forest/wiki/weapons/fists` | no | 2026-10-27 |
 | Weapons | Baseball Bat | `/games/stillskin-forest/wiki/weapons/baseball-bat` | no | 2026-10-25 |
 | Weapons | Machete | `/games/stillskin-forest/wiki/weapons/machete` | no | 2026-10-25 |
-| Weapons | Hammer | `/games/stillskin-forest/wiki/weapons/hammer` | no | 2026-10-29 |
+| Weapons | Hammer | `/games/stillskin-forest/wiki/weapons/hammer` | no | 2026-10-30 |
 | Weapons | Crowbar | `/games/stillskin-forest/wiki/weapons/crowbar` | no | 2026-10-25 |
-| Weapons | Pistol | `/games/stillskin-forest/wiki/weapons/pistol` | no | 2026-10-25 |
-| Weapons | Shotgun | `/games/stillskin-forest/wiki/weapons/shotgun` | no | 2026-10-25 |
+| Weapons | Pistol | `/games/stillskin-forest/wiki/weapons/pistol` | no | 2026-10-30 |
+| Weapons | Shotgun | `/games/stillskin-forest/wiki/weapons/shotgun` | no | 2026-10-30 |
 | Weapons | Freeze Device | `/games/stillskin-forest/wiki/weapons/freeze-device` | no | 2026-10-29 |
 | Items & Equipment | Gun Repair Kit | `/games/stillskin-forest/wiki/items/gun-repair-kit` | no | 2026-10-28 |
 | Items & Equipment | Food: Bag of Chips, Canned Beans and Energy Bar | `/games/stillskin-forest/wiki/items/food` | no | 2026-10-25 |
 | Items & Equipment | First Aid Kit | `/games/stillskin-forest/wiki/items/first-aid-kit` | no | 2026-10-28 |
 | Items & Equipment | Ammunition: Pistol Ammo, Shells and Rifle Rounds | `/games/stillskin-forest/wiki/items/ammunition` | no | 2026-10-29 |
-| Items & Equipment | Headlamp | `/games/stillskin-forest/wiki/items/headlamp` | no | 2026-10-28 |
+| Items & Equipment | Headlamp | `/games/stillskin-forest/wiki/items/headlamp` | no | 2026-10-30 |
 | Items & Equipment | Headlamp Upgrades and Batteries | `/games/stillskin-forest/wiki/items/headlamp-upgrades` | no | 2026-10-27 |
 | Items & Equipment | Lantern | `/games/stillskin-forest/wiki/items/lantern` | no | 2026-10-28 |
 | Enemies | Stillskin Forest Enemies Compared | `/games/stillskin-forest/wiki/enemies/enemy-comparison` | no | 2026-10-27 |
@@ -53,7 +53,7 @@ Generated from the wiki registry. Do not edit by hand.
 | Survival Mechanics | Climbing, Jumping and Ladders | `/games/stillskin-forest/wiki/mechanics/climbing-and-ladders` | no | 2026-10-25 |
 | Survival Mechanics | Crouching and Takedowns | `/games/stillskin-forest/wiki/mechanics/crouching-and-takedowns` | no | 2026-10-25 |
 | Survival Mechanics | Doors and Building Barricades | `/games/stillskin-forest/wiki/mechanics/doors-and-building` | no | 2026-10-27 |
-| Survival Mechanics | Durability and Wear | `/games/stillskin-forest/wiki/mechanics/durability-and-wear` | no | 2026-10-29 |
+| Survival Mechanics | Durability and Wear | `/games/stillskin-forest/wiki/mechanics/durability-and-wear` | no | 2026-10-30 |
 | Locations | The Campgrounds | `/games/stillskin-forest/wiki/locations/campgrounds` | no | 2026-10-25 |
 | Locations | The Forest Trail | `/games/stillskin-forest/wiki/locations/forest-trail` | no | 2026-10-27 |
 | Locations | Stillwater | `/games/stillskin-forest/wiki/locations/stillwater` | no | 2026-10-25 |

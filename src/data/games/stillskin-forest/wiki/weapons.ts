@@ -34,7 +34,7 @@ export const weapons: WikiEntry[] = [
   {
     ...base,
     slug: "weapons-compared",
-    lastVerified: "2026-10-27",
+    lastVerified: "2026-10-30",
     title: "Stillskin Forest Weapons Compared",
     seoTitle: "Stillskin Forest Weapons: Every Weapon Compared (Damage, Speed, Range)",
     description:
@@ -62,8 +62,8 @@ export const weapons: WikiEntry[] = [
         heading: "Guns",
         blocks: [
           { type: "table", caption: "Gun base stats (Tier I)", head: ["Weapon", "Damage", "Pellets", "Magazine", "Reload", "Time between shots", "Range", "Durability", "Ammo"], rows: [
-            ["[Pistol](@pistol)", "34", "1", "12", "1.6 s", "0.35 s", "250", "160", "[Pistol Ammo](@ammunition)"],
-            ["[Shotgun](@shotgun)", "18 per pellet", "6", "6", "2.4 s", "1.0 s", "70", "70", "[Shells](@ammunition)"],
+            ["[Pistol](@pistol)", "34", "1", "12", "1.6 s", "0.35 s", "250", "400", "[Pistol Ammo](@ammunition)"],
+            ["[Shotgun](@shotgun)", "18 per pellet", "6", "6", "2.4 s", "1.0 s", "70", "175", "[Shells](@ammunition)"],
             ["[Mini AK](@mini-ak)", "26", "1", "20", "2.4 s", "0.12 s (automatic)", "320", "—", "[Rifle Rounds](@ammunition)"],
           ] },
           { type: "p", text: "Headshots double a pistol bullet's damage and multiply each shotgun pellet by 1.4. See [Aiming and reloading](@aiming-and-reloading)." },
@@ -229,14 +229,14 @@ export const weapons: WikiEntry[] = [
   {
     ...base,
     slug: "hammer",
-    lastVerified: "2026-10-29",
+    lastVerified: "2026-10-30",
     title: "Hammer",
     seoTitle: "Hammer in Stillskin Forest: Damage, Building and Tips",
     description:
       "The Hammer in Stillskin Forest: 32 damage, the biggest knockback of any weapon, 480 durability, and the only tool that nails planks for building.",
     question: "What does the Hammer do in Stillskin Forest?",
     answer:
-      "The Hammer is a heavy melee weapon (32 damage, 1.0 s between swings, 48 knockback) and the building tool. A quick tap swings; holding the click (or R2) and dragging across a surface nails a plank, costing one point of the hammer's 160 durability. A hold never swings, even if you let go without placing a plank.",
+      "The Hammer is a heavy melee weapon (32 damage, 1.0 s between swings, 48 knockback) and the building tool. A quick tap swings; holding the click (or R2) and dragging across a surface nails a plank, costing one point of the hammer's 480 durability. A hold never swings, even if you let go without placing a plank.",
     facts: [
       ["Type", "Melee / builder"], ["Damage", "32"], ["Time between swings", "1.0 s"], ["Range", "5 studs"],
       ["Knockback", "48"], ["Durability", "480"], ["Rarity", "Uncommon"],
@@ -293,6 +293,7 @@ export const weapons: WikiEntry[] = [
   {
     ...base,
     slug: "pistol",
+    lastVerified: "2026-10-30",
     title: "Pistol",
     seoTitle: "Pistol in Stillskin Forest: Damage, Magazine, Reload and Tips",
     description:
@@ -302,7 +303,7 @@ export const weapons: WikiEntry[] = [
       "The Pistol fires one 34-damage bullet up to 250 studs, with a 12-round magazine, 0.35 seconds between shots and a 1.6-second reload. Headshots deal double (68). It uses Pistol Ammo, and every shot is heard by infected up to 90 studs away.",
     facts: [
       ["Type", "Gun"], ["Damage", "34 (68 headshot)"], ["Magazine", "12"], ["Reload", "1.6 s"],
-      ["Time between shots", "0.35 s"], ["Range", "250 studs"], ["Ammo", "Pistol Ammo"], ["Durability", "160"], ["Rarity", "Rare"],
+      ["Time between shots", "0.35 s"], ["Range", "250 studs"], ["Ammo", "Pistol Ammo"], ["Durability", "400"], ["Rarity", "Rare"],
     ],
     sections: [
       {
@@ -339,6 +340,7 @@ export const weapons: WikiEntry[] = [
   {
     ...base,
     slug: "shotgun",
+    lastVerified: "2026-10-30",
     title: "Shotgun",
     seoTitle: "Shotgun in Stillskin Forest: Damage, Shells, Reload and Tips",
     description:
@@ -348,7 +350,7 @@ export const weapons: WikiEntry[] = [
       "The Shotgun fires six pellets of 18 damage each (108 if all hit), enough to drop a Walker in one blast at close range. It holds six Shells, takes 2.4 seconds to reload, reaches 70 studs, and is the loudest weapon in the game: every shot is heard 120 studs away.",
     facts: [
       ["Type", "Gun"], ["Damage", "6 × 18 per shot"], ["Magazine", "6"], ["Reload", "2.4 s"],
-      ["Time between shots", "1.0 s"], ["Range", "70 studs"], ["Ammo", "Shells"], ["Durability", "70"], ["Rarity", "Epic"],
+      ["Time between shots", "1.0 s"], ["Range", "70 studs"], ["Ammo", "Shells"], ["Durability", "175"], ["Rarity", "Epic"],
     ],
     sections: [
       {
@@ -364,7 +366,7 @@ export const weapons: WikiEntry[] = [
         blocks: [
           { type: "list", items: [
             "**Strengths:** highest burst damage; staggers; can stop a [Brute](@brute) charge.",
-            "**Weaknesses:** loudest weapon (120-stud noise), short range, slow reload, lowest durability of any weapon (70).",
+            "**Weaknesses:** loudest weapon (120-stud noise), short range, slow reload, and it wears out sooner than the Pistol (175 shots against 400).",
           ] },
         ],
       },

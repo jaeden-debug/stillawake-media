@@ -656,21 +656,21 @@ export const mechanics: WikiEntry[] = [
   {
     ...base,
     slug: "durability-and-wear",
-    lastVerified: "2026-10-29",
+    lastVerified: "2026-10-30",
     title: "Durability and Wear",
     seoTitle: "Weapon Durability in Stillskin Forest: How Long Weapons Last",
     description:
       "Weapons and tools in Stillskin Forest wear out. Durability values for each item, what causes wear, how to repair weapons, and what happens when one breaks.",
     question: "Do weapons break in Stillskin Forest?",
     answer:
-      "Yes. Every weapon and tool has durability. Each landed swing, shot, nailed plank or gadget use costs 1, as does a swing that hits a wall and each hit you take while holding the item. At zero the item breaks. A gun that breaks gives the rounds in its magazine back to your ammo reserve, so you never lose ammo with it. Melee weapons repair themselves the scavenger's way: pick up another copy of one you carry and yours goes back to full and gets 5% tougher (up to 125% of its original durability); the copy is used up. A gun is repaired with a [Gun Repair Kit](@gun-repair-kit), and finding a less worn copy of a gun you carry swaps its durability onto yours. Lanterns and the Freeze Device never wear out. Durability ranges from 70 (Shotgun) to 480 (Hammer) before any repairs.",
+      "Yes. Every weapon and tool has durability. Each landed swing, shot, nailed plank or gadget use costs 1, as does a swing that hits a wall and each hit you take while holding the item. At zero the item breaks, and you can't miss it: a loud snap and a big BROKE! notice across the screen. A gun's last shot still fires, then it snaps and drops out of your hand; the rounds in its magazine go back to your ammo reserve, so you never lose ammo with it. Melee weapons repair themselves the scavenger's way: pick up another copy of one you carry and yours goes back to full and gets 5% tougher (up to 125% of its original durability); the copy is used up. A gun is repaired with a [Gun Repair Kit](@gun-repair-kit), and finding a less worn copy of a gun you carry swaps its durability onto yours. Lanterns and the Freeze Device never wear out. Durability ranges from 110 (Machete) to 480 (Hammer) before any repairs; guns last 400 (Pistol) and 175 (Shotgun) shots.",
     sections: [
       {
         id: "values",
         heading: "Durability by item",
         blocks: [
           { type: "table", caption: "Maximum durability", head: ["Item", "Durability"], rows: [
-            ["[Hammer](@hammer)", "480"], ["[Pistol](@pistol)", "160"], ["[Crowbar](@crowbar)", "140"], ["[Baseball Bat](@baseball-bat)", "120"], ["[Machete](@machete)", "110"], ["[Shotgun](@shotgun)", "70"], ["[Lantern](@lantern)", "Never wears out"], ["[Freeze Device](@freeze-device)", "Never wears out"],
+            ["[Hammer](@hammer)", "480"], ["[Pistol](@pistol)", "400"], ["[Shotgun](@shotgun)", "175"], ["[Crowbar](@crowbar)", "140"], ["[Baseball Bat](@baseball-bat)", "120"], ["[Machete](@machete)", "110"], ["[Lantern](@lantern)", "Never wears out"], ["[Freeze Device](@freeze-device)", "Never wears out"],
           ] },
         ],
       },
@@ -684,6 +684,17 @@ export const mechanics: WikiEntry[] = [
             "Getting hit while holding the item: 1.",
           ] },
           { type: "p", text: "The hotbar strip shows durability and turns red below 25%. Dropped items keep their wear." },
+        ],
+      },
+      {
+        id: "when-it-breaks",
+        heading: "When something breaks",
+        blocks: [
+          { type: "list", items: [
+            "A big red notice drops onto your screen naming what broke; for a gun it also says how many rounds went back to your ammo.",
+            "A gun's last shot fires first. A moment later it snaps, then it falls out of your hand and clatters on the ground. The broken gun can't be picked up and disappears after a while.",
+            "A melee weapon or tool snaps and is gone.",
+          ] },
         ],
       },
       {

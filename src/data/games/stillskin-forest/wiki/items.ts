@@ -168,7 +168,7 @@ export const items: WikiEntry[] = [
   {
     ...base,
     slug: "headlamp",
-    lastVerified: "2026-10-28",
+    lastVerified: "2026-10-30",
     title: "Headlamp",
     seoTitle: "Headlamp in Stillskin Forest: Range, Battery and Detection Trade-off",
     description:
@@ -206,6 +206,7 @@ export const items: WikiEntry[] = [
         heading: "Night-vision goggles",
         blocks: [
           { type: "p", text: "Night-vision goggles are the endgame prize. Complete [the Rite of Stillness](@the-rite-of-stillness) and a pair rises out of the ritual circle: walk up and press E (Square) to claim yours. Each survivor claims their own, once per ritual. Winning by killing [the Heart](@the-heart-of-stillskin) gives everyone goggles straight away. Either way they replace the headlamp for the rest of that run (your lamp, battery and spares are untouched and come back next run), and the HUD's lamp indicator turns into an NVG one. They use the same button (F / D-pad down) and the same battery. Switched on, they throw no beam: the world turns bright green and you can see across the dark. In first person the view narrows a little, as if looking through the tubes. Teammates see the goggles glow green while they're on." },
+          { type: "p", text: "**They amplify light, so bright light blinds them.** Step into sunlight, a lit room or a floodlight's beam and the picture washes out to a glaring pale green within a second; back in the dark it settles again over a couple of seconds. What matters is how much light reaches you, not the time of day: a dark building or the crypt cave at noon is clear through the goggles, open ground in the sun is not, and the shade of a dense forest is somewhere in between. Daylight never switches them off; take them off (F / D-pad down) when your own eyes see better. Only you see your goggles' view." },
         ],
       },
       {

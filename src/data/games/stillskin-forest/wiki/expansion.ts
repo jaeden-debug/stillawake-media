@@ -147,14 +147,14 @@ export const expansion: WikiEntry[] = [
     slug: "military-armor",
     category: "items",
     verification: "verified_live",
-    lastVerified: VERIFIED_27,
+    lastVerified: "2026-10-30",
     title: "Military Armor: Plate Carrier and Helmet",
     seoTitle: "Plate Carrier and Military Helmet in Stillskin Forest: Armor Guide",
     description:
       "How armor works in Stillskin Forest: the Plate Carrier and Military Helmet, how much damage each absorbs, durability, and how to wear and remove them.",
     question: "How does armor work in Stillskin Forest?",
-    answer: `Hold the armor and press fire to wear it; it leaves your bag and shows on your character. The Plate Carrier absorbs ${pct(plate.Absorb)} of each hit and the Military Helmet ${pct(helmet.Absorb)}, until their durability (${plate.Durability} and ${helmet.Durability}) runs out. Press K to take it off. Both are only found at Blackpine Airfield.`,
-    facts: [["Plate Carrier", `${pct(plate.Absorb)} of each hit, ${plate.Durability} durability`], ["Military Helmet", `${pct(helmet.Absorb)} of each hit, ${helmet.Durability} durability`], ["Wear", "Hold it, press fire (WEAR on touch)"], ["Take off", "K"]],
+    answer: `Hold E (X / Square) on armor lying on the ground and it goes straight on, with no bag slot needed ("Equip Helmet", or "Swap Helmet" if you already wear one); a piece in your bag goes on when you hold it and press fire. The Plate Carrier absorbs ${pct(plate.Absorb)} of each hit and the Military Helmet ${pct(helmet.Absorb)}, until their durability (${plate.Durability} and ${helmet.Durability}) runs out. Press K to take it off. Both are only found at Blackpine Airfield.`,
+    facts: [["Plate Carrier", `${pct(plate.Absorb)} of each hit, ${plate.Durability} durability`], ["Military Helmet", `${pct(helmet.Absorb)} of each hit, ${helmet.Durability} durability`], ["Wear", "Hold E on it on the ground (no bag slot)"], ["Take off", "K"]],
     sections: [
       {
         id: "how-it-works",
@@ -163,7 +163,7 @@ export const expansion: WikiEntry[] = [
           { type: "list", items: [
             "Each worn piece takes its share of a hit, and that much is taken off its durability. Wearing both, a 20-damage hit costs you 9 health.",
             "At 0 durability a piece breaks and is gone.",
-            "Taken-off armor goes back in your bag with its remaining durability, or onto the ground if your bag is full.",
+            "Taken-off armor goes back in your bag with its remaining durability, or onto the ground if your bag is full. Swapping works the same way: the old piece is never deleted.",
             "If you are knocked out of the run for good, what you wore drops where you fell.",
             "The HUD shows each worn piece's condition above the health bar.",
           ] },
@@ -179,7 +179,7 @@ export const expansion: WikiEntry[] = [
     slug: "night-survival",
     category: "mechanics",
     verification: "verified_live",
-    lastVerified: "2026-10-29",
+    lastVerified: "2026-10-30",
     title: "Night Survival: New Arrivals, Wisps, Night Caches and Sleep",
     seoTitle: "Night in Stillskin Forest: New Infected, Wisps, Caches and Sleep",
     description:
@@ -221,14 +221,14 @@ export const expansion: WikiEntry[] = [
         id: "sleep",
         heading: "Sleeping until dawn",
         blocks: [
-          { type: "p", text: `If everyone alive is inside one building with at least ${K.night.Sleep.MinPlanks} planks nailed up, and no infected are right outside, a "Sleep until dawn" prompt appears (hold N, or D-pad up). Everyone has to hold it. The night ends at once, and everyone loses ${K.night.Sleep.HealthCost} health (never below 10).` },
+          { type: "p", text: `Nail at least ${K.night.Sleep.MinPlanks} planks onto a building and, at dusk or night, a card under your objective says SLEEP UNTIL DAWN. Hold E (X / Square on a controller) inside to lie down: that asks the squad to sleep. Everyone still alive has to lie down in the same shelter; downed and fallen players don't hold it up. Teammates outside see "Hold E to Return to Base", which walks them into the shelter, but not while something is close to them or after them. Hold E again to get up. When everyone is down, the screen fades, the night is skipped, and you all wake at dawn, ${K.night.Sleep.HealthCost} health lighter (never below 10). Infected right by the shelter stop it, and the card says why.` },
         ],
       },
     ],
     related: ["day-night-cycle", "doors-and-building", "detection-and-noise", "generators-and-jerry-cans"],
     sources: [SRC.config27, SRC.playtest27],
     aliases: ["night", "wisp", "wisps", "night cache", "sleep", "skip night", "ammo drop", "night hunt"],
-    gaps: ["Sleeping with two or more players voting has not been tested."],
+    gaps: ["Sleeping with three or four players has not been tested (two players tested)."],
   },
   {
     slug: "generators-and-jerry-cans",

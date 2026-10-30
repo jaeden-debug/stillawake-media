@@ -2,9 +2,9 @@
 
 Generated from the wiki registry. Do not edit by hand.
 
-- Published (verified_live): **88** articles across 11 categories
+- Published (verified_live): **89** articles across 11 categories
 - Not published: **8** (planned, unverified or deprecated)
-- Articles with recorded gaps: **24**
+- Articles with recorded gaps: **25**
 - Last verified: 2026-10-25
 
 ## Published articles
@@ -47,7 +47,7 @@ Generated from the wiki registry. Do not edit by hand.
 | Survival Mechanics | Health, Damage and Healing | `/games/stillskin-forest/wiki/mechanics/health-and-healing` | no | 2026-10-25 |
 | Survival Mechanics | Downed and Revive | `/games/stillskin-forest/wiki/mechanics/downed-and-revive` | no | 2026-10-25 |
 | Survival Mechanics | Inventory and Hotbar | `/games/stillskin-forest/wiki/mechanics/inventory-and-hotbar` | no | 2026-10-29 |
-| Survival Mechanics | Aiming, Headshots and Reloading | `/games/stillskin-forest/wiki/mechanics/aiming-and-reloading` | no | 2026-10-27 |
+| Survival Mechanics | Aiming, Headshots and Reloading | `/games/stillskin-forest/wiki/mechanics/aiming-and-reloading` | no | 2026-10-30 |
 | Survival Mechanics | Shooting Through Doors, Windows and Glass | `/games/stillskin-forest/wiki/mechanics/shooting-through-cover` | no | 2026-10-28 |
 | Survival Mechanics | Weather: Rain, Storms and Puddles | `/games/stillskin-forest/wiki/mechanics/weather` | no | 2026-10-27 |
 | Survival Mechanics | Climbing, Jumping and Ladders | `/games/stillskin-forest/wiki/mechanics/climbing-and-ladders` | no | 2026-10-25 |
@@ -80,24 +80,25 @@ Generated from the wiki registry. Do not edit by hand.
 | Story & Lore | The Hollow (Lore) | `/games/stillskin-forest/wiki/story/the-hollow-lore` | yes | 2026-10-25 |
 | Story & Lore | E. Hollis | `/games/stillskin-forest/wiki/story/e-hollis` | yes | 2026-10-25 |
 | Story & Lore | Dr. H. Vance | `/games/stillskin-forest/wiki/story/dr-h-vance` | yes | 2026-10-25 |
-| Story & Lore | The Four Relics | `/games/stillskin-forest/wiki/story/the-four-relics` | yes | 2026-10-25 |
+| Story & Lore | The Four Relics | `/games/stillskin-forest/wiki/story/the-four-relics` | yes | 2026-10-30 |
 | Story & Lore | The Sister's Rosary | `/games/stillskin-forest/wiki/story/sisters-rosary` | yes | 2026-10-25 |
 | Story & Lore | The Miner's Lantern | `/games/stillskin-forest/wiki/story/miners-lantern` | yes | 2026-10-25 |
 | Story & Lore | The Angel's Tear | `/games/stillskin-forest/wiki/story/angels-tear` | yes | 2026-10-25 |
 | Story & Lore | Dr. Vance's Ring | `/games/stillskin-forest/wiki/story/dr-vances-ring` | yes | 2026-10-25 |
-| Story & Lore | Notes and Tapes | `/games/stillskin-forest/wiki/story/notes-and-tapes` | yes | 2026-10-25 |
+| Story & Lore | Notes and Tapes | `/games/stillskin-forest/wiki/story/notes-and-tapes` | yes | 2026-10-30 |
 | Quests & Walkthroughs | Unlocking Blackthorn Asylum: The Admission Ledger | `/games/stillskin-forest/wiki/quests/blackthorn-admission-ledger` | no | 2026-10-25 |
-| Quests & Walkthroughs | The Rite of Stillness: Ritual Walkthrough | `/games/stillskin-forest/wiki/quests/the-rite-of-stillness` | no | 2026-10-28 |
+| Quests & Walkthroughs | The Rite of Stillness: Ritual Walkthrough | `/games/stillskin-forest/wiki/quests/the-rite-of-stillness` | no | 2026-10-30 |
 | Quests & Walkthroughs | Descent into the Hollow | `/games/stillskin-forest/wiki/quests/descent-into-the-hollow` | no | 2026-10-25 |
 | Quests & Walkthroughs | The Heart of Stillskin | `/games/stillskin-forest/wiki/quests/the-heart-of-stillskin` | no | 2026-10-25 |
 | Co-op & End of Run | Co-op Survival: Revives, Pings and Sharing | `/games/stillskin-forest/wiki/multiplayer/co-op-survival` | no | 2026-10-28 |
-| Co-op & End of Run | Death, Ghosts and the Rooftop Finale | `/games/stillskin-forest/wiki/multiplayer/death-ghosts-and-the-finale` | no | 2026-10-25 |
+| Co-op & End of Run | Death, Ghosts and the Rooftop Finale | `/games/stillskin-forest/wiki/multiplayer/death-ghosts-and-the-finale` | no | 2026-10-30 |
+| Co-op & End of Run | Persistent Expeditions: Saved Worlds and Crews | `/games/stillskin-forest/wiki/multiplayer/persistent-expeditions` | no | 2026-10-30 |
 | Updates | Stillskin Forest Development Log | `/games/stillskin-forest/wiki/updates/development-log` | no | 2026-10-27 |
 | Locations | Blackpine Airfield | `/games/stillskin-forest/wiki/locations/blackpine-airfield` | no | 2026-10-28 |
 | Enemies | Soldier | `/games/stillskin-forest/wiki/enemies/soldier` | no | 2026-10-27 |
 | Weapons | Mini AK | `/games/stillskin-forest/wiki/weapons/mini-ak` | no | 2026-10-28 |
-| Items & Equipment | Military Armor: Plate Carrier and Helmet | `/games/stillskin-forest/wiki/items/military-armor` | no | 2026-10-27 |
-| Survival Mechanics | Night Survival: New Arrivals, Wisps, Night Caches and Sleep | `/games/stillskin-forest/wiki/mechanics/night-survival` | no | 2026-10-29 |
+| Items & Equipment | Military Armor: Plate Carrier and Helmet | `/games/stillskin-forest/wiki/items/military-armor` | no | 2026-10-30 |
+| Survival Mechanics | Night Survival: New Arrivals, Wisps, Night Caches and Sleep | `/games/stillskin-forest/wiki/mechanics/night-survival` | no | 2026-10-30 |
 | Survival Mechanics | Generators and Jerry Cans | `/games/stillskin-forest/wiki/mechanics/generators-and-jerry-cans` | no | 2026-10-29 |
 
 ## Not published, and why
@@ -129,10 +130,11 @@ Generated from the wiki registry. Do not edit by hand.
 | Notes and Tapes | The location of every individual note is not yet documented. |
 | Descent into the Hollow | The full descent has been verified solo; a two-player run of the cave has not been recorded yet. |
 | Death, Ghosts and the Rooftop Finale | Return to Camp voting with several real clients has not been recorded yet. |
+| Persistent Expeditions: Saved Worlds and Crews | A crew member joining a running world has only been tested in code and Studio, not yet between live servers. |
 | Blackpine Airfield | Not yet walked through with two or more players. |
 | Mini AK | The third-person model uses the shared gun pose; no dedicated reload animation yet. |
 | Military Armor: Plate Carrier and Helmet | Taking armor off with a controller is not mapped yet (keyboard K only). |
-| Night Survival: New Arrivals, Wisps, Night Caches and Sleep | Sleeping with two or more players voting has not been tested. |
+| Night Survival: New Arrivals, Wisps, Night Caches and Sleep | Sleeping with three or four players has not been tested (two players tested). |
 | Generators and Jerry Cans | No engine-running sound yet. The pouring sound has not been reviewed by the developer. Refuelling was tested with keyboard input in Studio, not yet with a controller. |
 
 ## Media

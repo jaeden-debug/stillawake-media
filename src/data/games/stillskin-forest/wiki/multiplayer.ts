@@ -72,6 +72,7 @@ export const multiplayer: WikiEntry[] = [
   {
     ...base,
     slug: "death-ghosts-and-the-finale",
+    lastVerified: "2026-10-30",
     title: "Death, Ghosts and the Rooftop Finale",
     seoTitle: "What Happens When You Die in Stillskin Forest: Ghosts and the Finale",
     description:
@@ -88,8 +89,9 @@ export const multiplayer: WikiEntry[] = [
           { type: "list", items: [
             "**Fly:** ghosts fly by default. Move with **WASD** (or the left stick) in the direction you look, **Space** and **Ctrl** to rise and sink, **Shift** to go faster. Hold the right mouse button (or use the right stick) to look around.",
             "**Follow a survivor:** **Q** / **E** (LB / RB) switch to watching a teammate; **F** (Y) flies again.",
-            "**Back at dawn:** when dawn breaks, every ghost respawns next to a teammate who is still standing. You keep your ammo, but the gear you carried is gone.",
-            "If nobody is left standing, the run is over and there is no respawn.",
+            "**Back at dawn:** when dawn breaks, every ghost respawns next to a teammate who is still standing. You keep your ammo.",
+            "**Your backpack:** what you carried is packed into a backpack where you fell. Only you can open it (hold E, \"Recover Backpack\"); anything that doesn't fit stays in it for later. It lasts three dawns.",
+            "If nobody is left standing, a normal run is over. In a [persistent expedition](@persistent-expeditions) the night passes instead and everyone wakes at base at the next dawn.",
           ] },
         ],
       },
@@ -126,5 +128,51 @@ export const multiplayer: WikiEntry[] = [
     sources: [SRC.config, SRC.playtest, SRC.report],
     aliases: ["death", "die", "ghost", "spectate", "spectator", "end of run", "return to camp", "finale", "zombie dance", "stats"],
     gaps: ["Return to Camp voting with several real clients has not been recorded yet."],
+  },
+  {
+    ...base,
+    slug: "persistent-expeditions",
+    lastVerified: "2026-10-30",
+    title: "Persistent Expeditions: Saved Worlds and Crews",
+    seoTitle: "Stillskin Forest Expeditions: Save Your World and Play With Your Crew",
+    description:
+      "Persistent expeditions in Stillskin Forest: three save slots, autosave, Save & Leave, returning on the same day, inviting a crew, and what happens when all fall.",
+    question: "Can you save your world in Stillskin Forest?",
+    answer:
+      "Yes. At camp, press EXPEDITIONS to start a persistent world in one of three slots. It saves on its own (every minute and a half, at each dawn, when someone leaves) and with SAVE & LEAVE, and when you come back you continue on the same day and phase: your planks, the rite, your bag, ammo, armour and headlamp batteries are as you left them. Add friends as crew so they can join; the owner decides whether the crew can keep playing without them.",
+    facts: [["Slots", "3 per player"], ["Autosave", "About every 90 s, each dawn, when a player leaves"], ["Who can join", "Owner and crew"], ["Crew without the owner", "Only if the owner turns Offline ON"], ["Everyone falls", "Wake at base next dawn"]],
+    sections: [
+      {
+        id: "what-is-kept",
+        heading: "What a saved world keeps",
+        blocks: [
+          { type: "list", items: [
+            "The day, the phase and how far into it you were.",
+            "Every plank you nailed up, the asylum, the relics laid in the circle and the rite (done stays done), and a win you already earned.",
+            "Each survivor's bag (with each item's wear and magazine), ammo, headlamp and spare batteries, goggles, armour and the personal finds they've made.",
+            "Recovery backpacks still lying where someone fell.",
+          ] },
+          { type: "p", text: "The infected, loot lying around, doors and glass, the weather and generator fuel start fresh each time. Nothing happens while nobody is playing: time stands still and nobody can die offline." },
+        ],
+      },
+      {
+        id: "crew",
+        heading: "Playing with a crew",
+        blocks: [
+          { type: "p", text: "In the expedition's card, Crew lists your friends; add the ones you want. They'll see your world under CREW EXPEDITIONS at camp and can Join it while you're playing, or Continue it on their own if you've turned Offline ON (their progress is shared with yours). Someone joining a world on Day 20 for the first time starts with a basic kit at base and a short welcome; they don't get anyone else's gear or finds." },
+        ],
+      },
+      {
+        id: "dying",
+        heading: "Dying in an expedition",
+        blocks: [
+          { type: "p", text: "You come back at the next dawn as usual. If everyone falls, the day and night pass and the whole crew wakes at base, the shelter you last slept in. Your gear waits in your recovery backpack where you fell. See [Death and ghosts](@death-ghosts-and-the-finale)." },
+        ],
+      },
+    ],
+    related: ["co-op-survival", "death-ghosts-and-the-finale", "night-survival"],
+    sources: [SRC.config, SRC.playtest],
+    aliases: ["save", "saving", "expedition", "expeditions", "persistent world", "save slots", "continue", "crew"],
+    gaps: ["A crew member joining a running world has only been tested in code and Studio, not yet between live servers."],
   },
 ];

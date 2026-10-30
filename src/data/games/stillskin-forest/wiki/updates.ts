@@ -8,6 +8,37 @@ import { SRC, VERIFIED } from "./sources";
  */
 export const stillskinUpdates: GameUpdate[] = [
   {
+    id: "2026-10-30-survival-systems-expeditions",
+    version: null,
+    date: "2026-10-30",
+    title: "Saved worlds, shared sleep, personal finds and a centred shotgun",
+    kind: "development-milestone",
+    newFeatures: [
+      "Persistent expeditions: three saved worlds per player. Leave on Day 20 and come back to Day 20, with your planks, the rite, your bag, armour and batteries as you left them. Add friends as crew; the owner decides whether the crew can play without them.",
+      "Sleeping is a crew decision: lie down in a boarded-up shelter and everyone alive is asked to join you. A card under the objective shows who's ready, and teammates outside can Return to Base.",
+      "Letters, tapes, relics, the rifle, the Freeze Device and the ritual's goggles are personal: taking one only removes it for you, and every survivor finds their own.",
+      "Recovery backpacks: what you carried waits where you fell, for you to pick up.",
+      "A battery reminder when your headlamp is left on in daylight.",
+    ],
+    changes: [
+      "Helmets and plate carriers go straight on from the ground, with no bag slot needed.",
+      "Aiming: each gun's front sight now sits dead centre, shots leave from your eye line, shotgun pellets spread in a round pattern with one straight down the middle, and aimed recoil settles back where it was.",
+      "Relics are laid in the circle by whoever carries them, the circle keeps what the squad has laid, and the rite can only be completed once.",
+    ],
+    fixes: [
+      "\"Place the relics\" no longer comes back after the rite is complete, and the circle's prompt closes for good.",
+      "Sleeping at dusk no longer briefly starts the night.",
+      "Two players arriving at a match in the same moment no longer leaves the run unstarted.",
+      "Leaving while reading the Admission Ledger still opens the asylum.",
+    ],
+    balance: [],
+    knownIssues: [
+      "A crew member joining a world that's already running has been tested in Studio and in code, not yet between live servers.",
+      "Not yet tested with three or four players, on a controller, on mobile or on a PlayStation.",
+    ],
+    relatedEntries: ["persistent-expeditions", "night-survival", "the-rite-of-stillness", "military-armor", "notes-and-tapes", "death-ghosts-and-the-finale", "aiming-and-reloading"],
+  },
+  {
     id: "2026-10-30-nvg-light-gun-breaks",
     version: null,
     date: "2026-10-30",

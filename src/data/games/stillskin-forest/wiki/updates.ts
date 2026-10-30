@@ -8,6 +8,29 @@ import { SRC, VERIFIED } from "./sources";
  */
 export const stillskinUpdates: GameUpdate[] = [
   {
+    id: "2026-10-30-nvg-light-gun-breaks",
+    version: null,
+    date: "2026-10-30",
+    title: "Night vision reacts to light, guns last much longer, and breaks are impossible to miss",
+    kind: "development-milestone",
+    newFeatures: [
+      "Night-vision goggles respond to the light around you: clear in the dark at any hour, washed out in sunlight, lit rooms and floodlight beams, and partly washed out under a dense canopy by day. They never switch off on their own.",
+      "When a weapon breaks a big notice drops onto your screen with a loud snap. A gun fires its last shot, snaps, then falls out of your hand and clatters on the ground.",
+    ],
+    changes: [
+      "Guns last two and a half times as long: Pistol 400 shots (was 160), Shotgun 175 (was 70).",
+    ],
+    fixes: [
+      "The Hammer page still listed its old 160 durability; it is 480.",
+    ],
+    balance: [],
+    knownIssues: [
+      "The goggles judge light from an estimate (sun, sky, tree crowns and nearby lamps), not from the picture itself, so an odd spot can read a little brighter or darker than it looks.",
+      "Not yet tested with several players, on a controller, on mobile or on a PlayStation.",
+    ],
+    relatedEntries: ["headlamp", "durability-and-wear", "weapons-compared", "pistol", "shotgun"],
+  },
+  {
     id: "2026-10-29-zombie-overhaul",
     version: null,
     date: "2026-10-29",

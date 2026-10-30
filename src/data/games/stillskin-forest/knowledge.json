@@ -1,7 +1,7 @@
 {
   "game": "stillskin-forest",
   "source": "Exported from the published place (ReplicatedStorage.GameConfig, ServerScriptService.LootConfig, ServerStorage.Items) with fresh module copies",
-  "build": "Published 2026-10-29 (performance, generators, hammers, ammo; zombie overhaul); values updated 2026-10-29",
+  "build": "Published 2026-10-30 (NVG light exposure, gun durability 2.5x and break feedback); values updated 2026-10-30",
   "lastVerified": "2026-10-27",
   "values": {
     "airfield": {
@@ -846,6 +846,28 @@
       "verifiedBy": "Studio play test 2026-10-29: shots at 0/5/10/15 s gave 10, 7, 4 s left, then a half-length 5 s after the thaw (Brute 6, 3, 3, 3)",
       "wiki": [
         "freeze-device"
+      ]
+    },
+    {
+      "id": "nvg-light-exposure",
+      "name": "Night-vision goggles wash out in bright light, clear in the dark at any hour",
+      "category": "items",
+      "status": "verified_live",
+      "verifiedBy": "Studio 2026-10-30 solo: open sun washout 1.0; hospital and crypt cave at midday 0.0; dense pine forest by day 0.43; night field and hospital 0.0; bonfire area and spotlight beam 1.0, behind the spotlight 0.0; lamp off clear in ~2 s, on washed out in ~1 s; server Lighting unchanged",
+      "wiki": [
+        "headlamp"
+      ]
+    },
+    {
+      "id": "gun-break-feedback",
+      "name": "Guns last 2.5x longer; breaking fires the last shot, snaps, shows a notice and drops the gun",
+      "category": "weapons",
+      "status": "verified_live",
+      "verifiedBy": "Studio 2026-10-30: Pistol max 400, Shotgun 175; pistol at 2 durability: shot, snap +0.21 s with 10 rounds refunded and the notice shown, wreck dropped +0.48 s, landing sound +0.78 s; third shot refused",
+      "wiki": [
+        "durability-and-wear",
+        "pistol",
+        "shotgun"
       ]
     }
   ]

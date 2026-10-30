@@ -228,7 +228,7 @@ export const expansion: WikiEntry[] = [
     related: ["day-night-cycle", "doors-and-building", "detection-and-noise", "generators-and-jerry-cans"],
     sources: [SRC.config27, SRC.playtest27],
     aliases: ["night", "wisp", "wisps", "night cache", "sleep", "skip night", "ammo drop", "night hunt"],
-    gaps: ["Sleeping with three or four players has not been tested (two players tested)."],
+    gaps: ["Tested in Studio with up to four players; not yet on a controller, mobile or console."],
   },
   {
     slug: "generators-and-jerry-cans",

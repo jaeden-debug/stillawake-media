@@ -1,7 +1,7 @@
 {
   "game": "stillskin-forest",
   "source": "Exported from the published place (ReplicatedStorage.GameConfig, ServerScriptService.LootConfig, ServerStorage.Items) with fresh module copies",
-  "build": "Published 2026-10-30 (NVG light exposure, gun durability 2.5x and break feedback); values updated 2026-10-30",
+  "build": "Published 2026-10-30 (survival systems, personal pickups, shared sleep, persistent expeditions); values updated 2026-10-30",
   "lastVerified": "2026-10-27",
   "values": {
     "airfield": {
@@ -564,7 +564,7 @@
       "name": "Sleep until dawn",
       "category": "night",
       "status": "verified_live",
-      "verifiedBy": "Play test (solo): 233 s of night left → -25 health and Dawn; infected nearby blocks it",
+      "verifiedBy": "Studio 2026-10-30, Server + 2 Clients: P1 lay down (1/2), P2 outside got Return to Base (moved 36 studs in), P2 lay down, dawn exactly once, both up; dusk sleep skips straight to dawn",
       "notVerified": [
         "Two or more players voting",
         "On-screen prompt card (capture tool doesn't draw prompt cards)"
@@ -868,6 +868,68 @@
         "durability-and-wear",
         "pistol",
         "shotgun"
+      ]
+    },
+    {
+      "id": "personal-pickups",
+      "name": "Letters, tapes, relics, rifle, Freeze Device and goggles are collected per survivor",
+      "category": "items",
+      "status": "verified_live",
+      "verifiedBy": "Studio 2026-10-30, Server + 2 Clients: P1 took the rosary and walked off, hidden for P1 only; P2 still saw it with an active prompt and collected their own",
+      "wiki": [
+        "notes-and-tapes",
+        "the-four-relics",
+        "the-rite-of-stillness"
+      ]
+    },
+    {
+      "id": "ritual-once",
+      "name": "Relics laid per carrier, ritual completes once, objective never falls back",
+      "category": "quests",
+      "status": "verified_live",
+      "verifiedBy": "Studio 2026-10-30: 2 placed then 2 more (4/4, Ready); ritual done in 48 s; second attempt did nothing; circle prompt closed; card moved on",
+      "wiki": [
+        "the-rite-of-stillness"
+      ]
+    },
+    {
+      "id": "armor-direct-equip",
+      "name": "Armor equips from the ground without a bag slot",
+      "category": "items",
+      "status": "verified_live",
+      "verifiedBy": "Studio 2026-10-30: helmet and plate carrier equipped with an 8/8 bag; swap set the old helmet on the ground; prompt read Swap Helmet",
+      "wiki": [
+        "military-armor"
+      ]
+    },
+    {
+      "id": "recovery-backpack",
+      "name": "Recovery backpacks",
+      "category": "multiplayer",
+      "status": "verified_live",
+      "verifiedBy": "Studio 2026-10-30: elimination packed 3 items into a backpack; owner recovered all 3; backpack removed",
+      "wiki": [
+        "death-ghosts-and-the-finale"
+      ]
+    },
+    {
+      "id": "persistent-expeditions",
+      "name": "Persistent expeditions with crew",
+      "category": "multiplayer",
+      "status": "verified_live",
+      "verifiedBy": "Studio 2026-10-30 with the real DataStore: create, play, Save & Leave, restart, continue (bag, ammo, plank, dusk restored); a second server's claim refused while running; delete refused in-match, done from camp",
+      "wiki": [
+        "persistent-expeditions"
+      ]
+    },
+    {
+      "id": "headlamp-reminder",
+      "name": "Daylight headlamp battery reminder",
+      "category": "items",
+      "status": "verified_live",
+      "verifiedBy": "Studio 2026-10-30: reminder fired between 25 and 32 s of daylight; no third reminder that day",
+      "wiki": [
+        "headlamp"
       ]
     }
   ]

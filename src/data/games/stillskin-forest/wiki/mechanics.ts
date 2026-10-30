@@ -392,7 +392,7 @@ export const mechanics: WikiEntry[] = [
   {
     ...base,
     slug: "aiming-and-reloading",
-    lastVerified: "2026-10-27",
+    lastVerified: "2026-10-30",
     title: "Aiming, Headshots and Reloading",
     seoTitle: "Aiming and Headshots in Stillskin Forest: Damage, Spread and Reloads",
     description:
@@ -412,6 +412,8 @@ export const mechanics: WikiEntry[] = [
             "Aim sway is gentle when rested and larger when you're winded.",
             "On controller and touch only, aiming applies a gentle pull toward targets within 7°.",
             "Shots go exactly where your crosshair is, from your eye line: hugging a car, fence or wall no longer eats the shot. See [Shooting through cover](@shooting-through-cover).",
+            "Aimed in first person, each gun's front sight (the shotgun's bead) sits dead centre, and the crosshair stays up until the sights are fully raised.",
+            "A shotgun's pellets spread in a round pattern with the first pellet straight down the middle. Walking with the sights up widens it less than hip fire does.",
           ] },
         ],
       },

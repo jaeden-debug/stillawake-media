@@ -122,6 +122,7 @@ Projects whose canonical page lives elsewhere (cards link there, and `/our-work/
 | `/games/stillskin-forest/wiki/quests/the-heart-of-stillskin` | The Heart of Stillskin |
 | `/games/stillskin-forest/wiki/multiplayer/co-op-survival` | Co-op Survival: Revives, Pings and Sharing |
 | `/games/stillskin-forest/wiki/multiplayer/death-ghosts-and-the-finale` | Death, Ghosts and the Rooftop Finale |
+| `/games/stillskin-forest/wiki/multiplayer/persistent-expeditions` | Persistent Expeditions: Saved Worlds and Crews |
 | `/games/stillskin-forest/wiki/updates/development-log` | Stillskin Forest Development Log |
 | `/games/stillskin-forest/wiki/locations/blackpine-airfield` | Blackpine Airfield |
 | `/games/stillskin-forest/wiki/enemies/soldier` | Soldier |

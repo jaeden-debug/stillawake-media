@@ -410,8 +410,8 @@ export const locations: WikiEntry[] = [
         spoiler: true,
         blocks: [
           { type: "list", items: [
-            "The [Freeze Device](@freeze-device), on the nurse-station counter: each survivor claims their own, once per server.",
-            "The Hunting Rifle case, in Dr. Vance's office: hold E to open it, then press E (Square) to claim your rifle. Each survivor gets one, once per server; losing it doesn't give another.",
+            "The [Freeze Device](@freeze-device), on the nurse-station counter: each survivor claims their own, once per run. Once you have yours it's gone from the counter for you only.",
+            "The Hunting Rifle case, in Dr. Vance's office: hold E to open it, then press E (Square) to claim your rifle. Each survivor gets one per run; losing it doesn't give another. Once you have yours, the rifle in the case is gone for you only.",
             "[Dr. Vance's Ring](@dr-vances-ring), in his office upstairs.",
             "The ritual circle in the cafeteria, where [the Rite of Stillness](@the-rite-of-stillness) is performed.",
             "Two tapes: the Night Nurse and the Records Room.",

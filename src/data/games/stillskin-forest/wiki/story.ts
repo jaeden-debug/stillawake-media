@@ -140,6 +140,7 @@ export const story: WikiEntry[] = [
   {
     ...base,
     slug: "the-four-relics",
+    lastVerified: "2026-10-30",
     title: "The Four Relics",
     seoTitle: "All 4 Relic Locations in Stillskin Forest",
     description:
@@ -159,7 +160,7 @@ export const story: WikiEntry[] = [
             ["[The Angel's Tear](@angels-tear)", "[The graveyard](@graveyard)", "\"Search the grave\" at Marion Hollis' grave"],
             ["[Dr. Vance's Ring](@dr-vances-ring)", "[Blackthorn Asylum](@blackthorn-asylum)", "Vance's office, upstairs"],
           ] },
-          { type: "p", text: "Relics count toward one shared total for the squad, whoever is carrying them." },
+          { type: "p", text: "Each survivor collects their own relics: taking one removes it only for you (once you walk away), so your teammates can still find theirs. At the cafeteria circle, \"Place Relics\" lays every relic you carry, and the circle keeps what the whole squad has laid: one survivor can bring all four, or you can split them up." },
         ],
       },
     ],
@@ -254,6 +255,7 @@ export const story: WikiEntry[] = [
   {
     ...base,
     slug: "notes-and-tapes",
+    lastVerified: "2026-10-30",
     title: "Notes and Tapes",
     seoTitle: "All Notes and Tapes in Stillskin Forest",
     description:
@@ -267,6 +269,7 @@ export const story: WikiEntry[] = [
         heading: "Reading and the journal",
         blocks: [
           { type: "p", text: "Notes open in a paper reader; close it with Esc. A toast confirms \"Added to your journal\". The journal's Notes tab keeps everything you've read." },
+          { type: "p", text: "Letters and tapes are personal: once you've read a letter (or stopped a tape) a quiet chime marks the find, and when you walk away it disappears for you. Your teammates still see it until they've found it themselves, and you can reread it any time in your journal." },
         ],
       },
       {

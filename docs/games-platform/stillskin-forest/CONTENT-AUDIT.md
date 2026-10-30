@@ -130,11 +130,11 @@ Generated from the wiki registry. Do not edit by hand.
 | Notes and Tapes | The location of every individual note is not yet documented. |
 | Descent into the Hollow | The full descent has been verified solo; a two-player run of the cave has not been recorded yet. |
 | Death, Ghosts and the Rooftop Finale | Return to Camp voting with several real clients has not been recorded yet. |
-| Persistent Expeditions: Saved Worlds and Crews | A crew member joining a running world has only been tested in code and Studio, not yet between live servers. |
+| Persistent Expeditions: Saved Worlds and Crews | Crew joining a Day 20 world was tested in Studio with four players (owner restored, crew given the starter kit, a non-crew player refused); joining a world running on another live server has not been tested yet. |
 | Blackpine Airfield | Not yet walked through with two or more players. |
 | Mini AK | The third-person model uses the shared gun pose; no dedicated reload animation yet. |
 | Military Armor: Plate Carrier and Helmet | Taking armor off with a controller is not mapped yet (keyboard K only). |
-| Night Survival: New Arrivals, Wisps, Night Caches and Sleep | Sleeping with three or four players has not been tested (two players tested). |
+| Night Survival: New Arrivals, Wisps, Night Caches and Sleep | Tested in Studio with up to four players; not yet on a controller, mobile or console. |
 | Generators and Jerry Cans | No engine-running sound yet. The pouring sound has not been reviewed by the developer. Refuelling was tested with keyboard input in Studio, not yet with a controller. |
 
 ## Media

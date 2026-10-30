@@ -173,6 +173,6 @@ export const multiplayer: WikiEntry[] = [
     related: ["co-op-survival", "death-ghosts-and-the-finale", "night-survival"],
     sources: [SRC.config, SRC.playtest],
     aliases: ["save", "saving", "expedition", "expeditions", "persistent world", "save slots", "continue", "crew"],
-    gaps: ["A crew member joining a running world has only been tested in code and Studio, not yet between live servers."],
+    gaps: ["Crew joining a Day 20 world was tested in Studio with four players (owner restored, crew given the starter kit, a non-crew player refused); joining a world running on another live server has not been tested yet."],
   },
 ];

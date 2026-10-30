@@ -564,7 +564,7 @@
       "name": "Sleep until dawn",
       "category": "night",
       "status": "verified_live",
-      "verifiedBy": "Studio 2026-10-30, Server + 2 Clients: P1 lay down (1/2), P2 outside got Return to Base (moved 36 studs in), P2 lay down, dawn exactly once, both up; dusk sleep skips straight to dawn",
+      "verifiedBy": "Studio 2026-10-30, Server + 4 Clients in a Day 20 expedition: three lay down (3/4), the fourth returned to base (36 studs) and lay down, Day 21 dawn exactly once, all up; earlier 2-client run the same",
       "notVerified": [
         "Two or more players voting",
         "On-screen prompt card (capture tool doesn't draw prompt cards)"
@@ -917,7 +917,7 @@
       "name": "Persistent expeditions with crew",
       "category": "multiplayer",
       "status": "verified_live",
-      "verifiedBy": "Studio 2026-10-30 with the real DataStore: create, play, Save & Leave, restart, continue (bag, ammo, plank, dusk restored); a second server's claim refused while running; delete refused in-match, done from camp",
+      "verifiedBy": "Studio 2026-10-30 with the real DataStore: create, play, Save & Leave, restart, continue (bag, ammo, plank, dusk restored); a second server's claim refused while running; delete refused in-match, done from camp; Server + 4 Clients: owner's bag restored, two crew newcomers got the starter kit, the non-crew player was refused and left out of the save",
       "wiki": [
         "persistent-expeditions"
       ]
@@ -927,7 +927,7 @@
       "name": "Daylight headlamp battery reminder",
       "category": "items",
       "status": "verified_live",
-      "verifiedBy": "Studio 2026-10-30: reminder fired between 25 and 32 s of daylight; no third reminder that day",
+      "verifiedBy": "Studio 2026-10-30: first reminder at 28 s; switching off at 15 s cancelled; second reminder 30 s after switching back on; no third that day",
       "wiki": [
         "headlamp"
       ]

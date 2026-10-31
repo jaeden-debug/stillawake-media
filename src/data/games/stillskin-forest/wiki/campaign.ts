@@ -551,6 +551,8 @@ export const campaign: WikiEntry[] = [
         id: "overview",
         heading: "What changes in V3",
         blocks: [
+          { type: "p", text: "**It moves to the Lost Camp.** The device leaves the asylum's nurse-station counter and waits in a case under the middle lean-to at the [Lost Camp](@lost-camp), where its unstable green light glows through the trees and helps lead you in (TO VERIFY AT RELEASE)." },
+          { type: "p", text: "**A new sound when it works.** A low, creepy tone plays only while something is actually frozen, and fades out as the freeze wears off, so you can hear when a target is about to break free. A shot that freezes nothing stays quiet (TO VERIFY AT RELEASE)." },
           draft,
           { type: "p", text: "The [Freeze Device](@freeze-device) you know is the same gadget with a new history. In the live game you claim it from the nurse-station counter in Blackthorn Asylum; in V3 its story, and the place you recover it, move to Green Lake and the [Lost Camp](@lost-camp) (TO VERIFY AT RELEASE). Its cooldown, identity and anti-duplication rules stay as they are (TO VERIFY AT RELEASE)." },
         ],
@@ -690,13 +692,13 @@ export const campaign: WikiEntry[] = [
     title: "Relics and the Buried Relic",
     seoTitle: "Stillskin Forest V3 Relics: Where the Buried Relic Is",
     description:
-      "The four relics in the Stillskin Forest V3 campaign: what stays the same, why the Sister's Rosary is buried near the ranger trader station, and the fire-map clue.",
+      "The four relics in the Stillskin Forest V3 campaign: what stays the same, why the Sister's Rosary is buried west of the trader station, and the fire-map clue.",
     question: "Where is the buried relic in the Stillskin Forest campaign?",
     answer:
-      "Three relics keep their live locations. The Sister's Rosary is buried at an off-trail spot near the Ranger Trader Station (TO VERIFY AT RELEASE). The clue is on the ranger's fire map: a small circle with a line through it, drawn in green ink near the trader station. The same symbol is carved on a stump at the dig site (TO VERIFY AT RELEASE).",
+      "Three relics keep their live locations. The Sister's Rosary is buried off the trail, on the ridge west of the Ranger Trader Station (TO VERIFY AT RELEASE). The clue is on the ranger's fire map: a small circle with a line through it, drawn in green ink near the trader station. The same symbol is carved on a stump at the dig site (TO VERIFY AT RELEASE).",
     facts: [
       ["Relics", "4"],
-      ["Buried", "The Sister's Rosary, near the Ranger Trader Station (TO VERIFY AT RELEASE)"],
+      ["Buried", "The Sister's Rosary, on the ridge west of the Ranger Trader Station (TO VERIFY AT RELEASE)"],
       ["Clue", "The ranger's fire map (TO VERIFY AT RELEASE)"],
       ["Marker", "A circle-and-line symbol carved on a stump (TO VERIFY AT RELEASE)"],
       ["Chapter", "11 (TO VERIFY AT RELEASE)"],
@@ -716,11 +718,11 @@ export const campaign: WikiEntry[] = [
         heading: "Finding the buried relic",
         blocks: [
           { type: "list", ordered: true, items: [
-            "Look at the fire map at the ranger station, the same map the old watch log mentions. Her pencil marks the drainage route from Green Lake. Near the trader station, off the trail, there's a small circle with a line through it in green ink, pressed hard enough to tear the paper (TO VERIFY AT RELEASE).",
-            "Head for the [Ranger Trader Station](@ranger-trader-station) and look off the trail for a stump carved with the same symbol, with disturbed earth beside it. It is visible from the trail (TO VERIFY AT RELEASE).",
+            "Look at the fire map at the ranger station, the same map the old watch log mentions. Her pencil marks the drainage route from Green Lake. On the ridge west of the trader station, off the trail, there's a small circle with a line through it in green ink, pressed hard enough to tear the paper (TO VERIFY AT RELEASE).",
+            "Head for the [Ranger Trader Station](@ranger-trader-station), then climb the ridge to the north-west, well off the trail, and look for a stump carved with the same symbol with disturbed earth beside it (TO VERIFY AT RELEASE).",
             "Hold **Dig** at the stump to recover the Sister's Rosary (TO VERIFY AT RELEASE).",
           ] },
-          { type: "callout", tone: "tip", text: "Stuck? After 12 in-game hours the assist note reads: \"Someone marked a spot on the fire map near the trader station. Not me.\" (TO VERIFY AT RELEASE)" },
+          { type: "callout", tone: "tip", text: "Stuck? After 12 in-game hours the assist note reads: \"Someone marked a spot on the fire map, on the ridge west of the trader station. Not me.\" (TO VERIFY AT RELEASE)" },
           { type: "p", text: "The trader station is a safe zone inside its fence, but the dig site is outside it (TO VERIFY AT RELEASE)." },
         ],
       },

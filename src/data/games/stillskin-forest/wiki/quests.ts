@@ -52,7 +52,7 @@ export const quests: WikiEntry[] = [
       "How to complete the ritual in Stillskin Forest: lay the four relics at the cafeteria circle in Blackthorn Asylum and hold it for 50 seconds against the waves.",
     question: "How do you do the ritual in Stillskin Forest?",
     answer:
-      "Each survivor finds their own relics. At the ritual circle in Blackthorn Asylum's cafeteria, hold E / Square on \"Place Relics\" to lay the ones you carry; the circle keeps what the whole squad has laid. With all four in place, hold \"Begin Ritual\". Then hold the cafeteria for 50 seconds while the candles light and waves of infected arrive, with a Brute at the halfway point. If the circle is left empty for 6 seconds it breaks, and you can start again. Finish it and every infected drops: the run ends in victory, \"THE HOLLOW SLEEPS\".",
+      "Each survivor finds their own relics. At the ritual circle in Blackthorn Asylum's cafeteria, hold E / Square on \"Place Relics\" to lay the ones you carry; the circle keeps what the whole squad has laid. With all four in place, hold \"Begin Ritual\". Then hold the cafeteria for 50 seconds while the candles light and waves of infected arrive, with a Brute at the halfway point. If the circle is left empty for 6 seconds it breaks, and you can start again. Finish it and every infected drops: you win, \"THE HOLLOW SLEEPS\", and the run keeps going until the last survivor falls.",
     facts: [["Requires", "All 4 relics"], ["Where", "Blackthorn Asylum cafeteria"], ["Hold time", "50 s"], ["Breaks if empty for", "6 s"], ["Reward", "Victory: The Hollow Sleeps"]],
     sections: [
       {

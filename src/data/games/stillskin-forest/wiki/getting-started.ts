@@ -53,7 +53,7 @@ export const gettingStarted: WikiEntry[] = [
         id: "development-status",
         heading: "Release status",
         blocks: [
-          { type: "callout", tone: "note", text: "Stillskin Forest went public on Roblox on 28 October 2026. This wiki documents the build checked on 25 October 2026, and numbers can change between updates. Every page shows the date it was last checked." },
+          { type: "callout", tone: "note", text: "Stillskin Forest went public on Roblox on 28 October 2026. This wiki describes the published game, and numbers can change between updates. Every page shows the date it was last checked against the live game." },
         ],
       },
     ],
@@ -70,11 +70,11 @@ export const gettingStarted: WikiEntry[] = [
       "How a run of Stillskin Forest works: scavenge by day, prepare at dusk, survive the night, and what happens when your squad falls. A plain-English guide.",
     question: "How do you play Stillskin Forest?",
     answer:
-      "Each run starts on Day 1 in morning light. Spend the day scavenging food, medicine, weapons and ammunition and reading clues; use the 40-second dusk to get somewhere defensible; then survive the three-minute night as the infected multiply and hunt. Revive teammates who go down. The run ends when everyone has fallen, or when your squad completes one of the story endings.",
+      "Each run starts on Day 1 in morning light. Spend the day scavenging food, medicine, weapons and ammunition and reading clues; use the 40-second dusk to get somewhere defensible; then survive the five-minute night as far more infected roam and hunt. Revive teammates who go down. The run ends when everyone has fallen, or when your squad completes one of the story endings.",
     facts: [
-      ["Full day", "About 8 minutes"],
-      ["Day phase", "5 minutes (incl. 20 s sunrise, 40 s dusk)"],
-      ["Night phase", "3 minutes"],
+      ["Day phase", "8 minutes (incl. 20 s sunrise, 40 s dusk)"],
+      ["Night phase", "5 minutes"],
+      ["Full day and night", "About 13 minutes"],
       ["Run starts", "Day 1, 8:00 a.m."],
     ],
     sections: [
@@ -82,7 +82,7 @@ export const gettingStarted: WikiEntry[] = [
         id: "the-day",
         heading: "By day: scavenge and prepare",
         blocks: [
-          { type: "p", text: "A few infected roam in daylight, but far fewer than at night (seven on Day 1). This is the time to leave camp, choose a route and search. Loot sits on real surfaces in houses, the hospital, the store and along the trails; walk up to it and press **E**. Empty loot spots refill at dawn." },
+          { type: "p", text: "A few infected roam in daylight, but far fewer than at night (at most 16 at a time by day, against 40 at night). This is the time to leave camp, choose a route and search. Loot sits on real surfaces in houses, the hospital, the store and along the trails; walk up to it and press **E**. Empty loot spots refill at dawn." },
           { type: "list", items: [
             "Pick up [food](@food) and a [First Aid Kit](@first-aid-kit) before you need them.",
             "A melee weapon such as the [Baseball Bat](@baseball-bat) handles single infected quietly. Save [guns](@weapons-compared) for emergencies; they are loud.",
@@ -101,7 +101,7 @@ export const gettingStarted: WikiEntry[] = [
         id: "the-night",
         heading: "At night: survive",
         blocks: [
-          { type: "p", text: "The infected population jumps (45 on Night 1) and they spot you from further away. Your [headlamp](@headlamp) shows you more but also makes you easier to see. Gunfire, alarms and sprinting all draw attention; see [Detection and noise](@detection-and-noise)." },
+          { type: "p", text: "The infected population jumps (up to 40 at night, against 16 by day) and they spot you from further away. Your [headlamp](@headlamp) shows you more but also makes you easier to see. Gunfire, alarms and sprinting all draw attention; see [Detection and noise](@detection-and-noise)." },
           { type: "p", text: "You can fight, run, or [hide](@hiding). If you go down, a teammate has 2 minutes to [revive](@downed-and-revive) you." },
         ],
       },
@@ -115,45 +115,50 @@ export const gettingStarted: WikiEntry[] = [
       },
     ],
     related: ["day-night-cycle", "surviving-your-first-night", "controls", "death-ghosts-and-the-finale"],
-    sources: [SRC.config, SRC.playtest, SRC.report],
+    sources: [SRC.config, SRC.playtest, SRC.report, SRC.notes30],
     aliases: ["how to play", "guide", "gameplay loop", "beginner"],
   },
   {
     ...base,
     slug: "controls",
+    lastVerified: "2026-10-31",
     title: "Stillskin Forest Controls",
     seoTitle: "Stillskin Forest Controls: Keyboard, Mouse and Controller",
     description:
-      "Every Stillskin Forest control on keyboard and mouse, with the controller buttons confirmed so far: sprint, headlamp, crouch, aim, reload, ping and more.",
+      "Every Stillskin Forest control on keyboard and mouse and on controller: sprint, crouch, aim, reload, headlamp, lantern, ping, bag, journal and more.",
     question: "What are the controls in Stillskin Forest?",
     answer:
-      "Move with WASD, sprint with Left Shift, jump with Space, interact with E, toggle the headlamp with F, crouch with C, aim with right mouse, fire or swing with left mouse, reload with R, ping with T, and open the backpack with B or Tab. V switches to first person and J opens your journal.",
+      "Move with WASD, jump with Space, sprint with Left Shift, crouch with C, aim with right mouse, fire or swing with left mouse, reload with R, and hold E to interact. F toggles the headlamp, T pings, Tab or B opens the bag, J opens the journal and map, and V switches between first and third person.",
     sections: [
       {
         id: "keyboard-and-mouse",
-        heading: "Keyboard and mouse",
+        heading: "Keyboard and mouse (PC and Mac)",
         blocks: [
           { type: "table", caption: "Keyboard and mouse controls", head: ["Input", "Action"], rows: [
-            ["W A S D", "Move"],
-            ["Mouse", "Look and aim (the cursor is locked to the crosshair)"],
-            ["Space", "Jump. Cars and furniture must be jumped onto, not walked up"],
-            ["Left Shift", "Sprint while you have stamina"],
-            ["C or Left Ctrl", "Crouch"],
-            ["E", "Interact: pick up, read, hide, open doors, climb ladders"],
-            ["Hold E", "Revive a downed teammate; give your held item to a teammate"],
-            ["F", "Headlamp on/off"],
+            ["W A S D / Space", "Move / jump"],
+            ["Left Shift", "Sprint (hold); hold your breath while aiming"],
+            ["C or Ctrl", "Crouch (toggle). On a Mac, use C"],
+            ["V · X", "Switch first/third person · swap shoulder"],
+            ["Right mouse", "Aim (hold). Mac trackpad: two-finger click"],
             ["Left mouse", "Fire, swing, or use the held item"],
-            ["Right mouse", "Aim"],
             ["R", "Reload"],
-            ["V", "Switch between third and first person"],
-            ["Number keys", "Select a hotbar slot"],
-            ["B or Tab", "Open the backpack"],
-            ["G", "Drop the held item"],
-            ["T or middle mouse", "Ping (infected, loot, or here)"],
-            ["J", "Journal: notes, achievements and map"],
-            ["L", "Light or put out a carried lantern"],
-            ["H", "Clip the lantern to your belt"],
-            ["Esc", "Close a note or menu"],
+            ["1–8 · Q · G", "Hotbar slot · last item · drop"],
+            ["Tab or B", "Bag"],
+            ["F", "Headlamp or night vision"],
+            ["L · H", "Lantern light · lantern in hand or on belt"],
+            ["K", "Take off armour"],
+            ["Hold E", "Interact: pick up, equip armour, revive, relics, sleep, Return to Base, recover a backpack"],
+            ["Z", "Search a loot spot again"],
+            ["T or middle mouse", "Ping"],
+            ["J", "Journal and map"],
+            ["O", "Collapse the objective"],
+            ["Esc", "Close a menu, note or tape"],
+          ] },
+          { type: "table", caption: "As a ghost (after you fall)", head: ["Input", "Action"], rows: [
+            ["W A S D", "Fly"],
+            ["Space · Ctrl", "Rise · sink"],
+            ["Shift", "Faster"],
+            ["Q · E", "Watch a teammate"],
           ] },
         ],
       },
@@ -161,17 +166,27 @@ export const gettingStarted: WikiEntry[] = [
         id: "controller",
         heading: "Controller",
         blocks: [
-          { type: "table", caption: "Controller mappings in the current build", head: ["Button", "Action"], rows: [
-            ["R2 / L2", "Fire / aim"],
-            ["B", "Crouch"],
-            ["X / Square", "Tap: reload. Hold: use a prompt (pick up, open, place relics)"],
-            ["Y / Triangle", "Tap: ping. Hold: drop what you're holding"],
-            ["LB / RB", "Cycle hotbar"],
+          { type: "table", caption: "Controller (PlayStation labels; on Xbox, Square = X, Triangle = Y, Circle = B, Cross = A)", head: ["Button", "Action"], rows: [
+            ["R2", "Fire, swing or use"],
+            ["L2", "Aim"],
+            ["Square", "Tap: reload. Hold: prompts"],
+            ["Triangle", "Tap: ping. Hold: drop"],
+            ["Circle", "Crouch; back out of menus"],
+            ["L1 / R1", "Cycle hotbar"],
+            ["D-pad up", "Swap shoulder"],
             ["D-pad down", "Headlamp"],
-            ["D-pad left / right", "Light lantern / lantern to belt"],
-            ["R3", "First person"],
+            ["D-pad left / right", "Lantern / lantern in hand or on belt"],
+            ["L3", "Sprint; hold your breath while aiming"],
+            ["R3", "Switch camera view"],
+            ["Select / Touchpad", "Tap: bag. Hold: journal"],
           ] },
-          { type: "callout", tone: "note", text: "Controller and touch layouts are built and the on-screen hints switch automatically to the device you last used, but both still need a full test on real hardware. This table will be updated after that pass." },
+        ],
+      },
+      {
+        id: "touch",
+        heading: "Touch screens",
+        blocks: [
+          { type: "p", text: "On phones and tablets the game uses on-screen touch controls." },
         ],
       },
       {
@@ -183,14 +198,15 @@ export const gettingStarted: WikiEntry[] = [
             "With a hammer, a quick click swings; holding the click and dragging across a surface nails a plank. See [Doors and building](@doors-and-building).",
             "Walking into the foot of a ladder starts a climb; Jump lets go partway.",
           ] },
+          { type: "callout", tone: "note", text: "These bindings were read from the published game's input scripts on 31 October 2026. Punching with empty hands is temporarily unavailable; see [Fists](@fists)." },
         ],
       },
     ],
     media: "stillskin-forest-hotbar",
     related: ["how-to-play", "stamina-and-sprinting", "crouching-and-takedowns", "aiming-and-reloading"],
-    sources: [SRC.playtest, SRC.report],
+    sources: [SRC.controls31, SRC.playtest],
     aliases: ["keybinds", "keys", "key bindings", "controller", "gamepad", "buttons"],
-    gaps: ["Controller and touch mappings not yet verified on real devices.", "Hotbar slot count shown on number keys (1–8) not confirmed with a real keypress for every slot."],
+    gaps: ["Bindings read from the game's scripts, not hand-checked on every device.", "Touch button layout not yet documented."],
   },
   {
     ...base,
@@ -220,7 +236,7 @@ export const gettingStarted: WikiEntry[] = [
         id: "when-dusk-comes",
         heading: "When dusk comes",
         blocks: [
-          { type: "p", text: "Dusk gives you 40 seconds. Get inside, close the [doors](@doors-and-building) (the infected cannot open them and need eight hits to bash one in), and agree on a fallback route. Night 1 starts with around 45 infected spread across the map." },
+          { type: "p", text: "Dusk gives you 40 seconds. Get inside, close the [doors](@doors-and-building) (the infected cannot open them and need eight hits to bash one in), and agree on a fallback route. At night up to 40 infected roam the map at once." },
         ],
       },
       {
@@ -232,7 +248,7 @@ export const gettingStarted: WikiEntry[] = [
             "**Mind your headlamp.** At night a lit lamp lets the infected spot you from 1.25× further; with it off they see only 0.8× as far. See [Headlamp](@headlamp).",
             "**Melee singles, avoid groups.** Only two infected can swing at you in any 1.6-second window, but a crowd will still pin you.",
             "**Shoot only when you must.** A pistol shot pulls in every infected within 90 studs; the shotgun, 120.",
-            "**Break line of sight to end a chase.** Chases end after about 22 seconds, or once you get 85 studs clear.",
+            "**Break line of sight to end a chase.** A chase never times out while an infected can see you. Stay out of sight for about 5 seconds and it switches to searching where you were.",
           ] },
         ],
       },
@@ -245,7 +261,7 @@ export const gettingStarted: WikiEntry[] = [
       },
     ],
     related: ["how-to-play", "day-night-cycle", "hiding", "detection-and-noise"],
-    sources: [SRC.config, SRC.items, SRC.playtest],
+    sources: [SRC.config, SRC.items, SRC.playtest, SRC.notes30],
     aliases: ["beginner guide", "tips", "first night", "night 1", "how to survive"],
   },
   {
@@ -257,14 +273,13 @@ export const gettingStarted: WikiEntry[] = [
       "How to play Stillskin Forest with friends: Solo, Duo and Squad queues, what you share as a team, and the co-op tools that keep a squad alive.",
     question: "Can you play Stillskin Forest with friends?",
     answer:
-      "Yes. Stillskin Forest is built for co-op. From the lobby, a squad steps onto a queue pad together (Solo for 1, Duo for 2, Squad for 4) and is sent into its own match. In the match you share progress such as the asylum unlock and the relic count, and you can revive, ping and hand items to each other.",
+      "Yes. Stillskin Forest is built for co-op. From the lobby, a squad steps onto a queue pad together (Solo for 1, Duo for 2, Squad for 4) and is sent into its own match. In the match you share progress such as the asylum unlock and the relics placed at the ritual circle, and you can revive, ping and hand found items to each other.",
     sections: [
       {
         id: "queues",
         heading: "Joining as a squad",
         blocks: [
-          { type: "p", text: "The lobby is a ranger station in the woods with a campfire, a supply crate and a board of survival tips. At the trailhead are three queue pads: **Solo (1)**, **Duo (2)** and **Squad (4)**. A full pad leaves after a short countdown; otherwise it waits up to 20 seconds for teammates. The match then waits for the whole squad to arrive before Day 1 begins." },
-          { type: "callout", tone: "note", text: "Queues have been tested in development. Moving squads between live servers needs the public game, so that part has not been confirmed yet." },
+          { type: "p", text: "The lobby is a camp in a forest clearing, with a bonfire, Mortimer's shop stall and a departure truck at the trailhead. At the gate are three queue pads: **Solo (1)**, **Duo (2)** and **Squad (4)**. A full pad leaves after a short countdown; otherwise it waits up to 20 seconds for teammates. The match then waits for the whole squad to arrive before Day 1 begins." },
         ],
       },
       {
@@ -273,7 +288,7 @@ export const gettingStarted: WikiEntry[] = [
         blocks: [
           { type: "list", items: [
             "Reading the [Blackthorn Admission Ledger](@blackthorn-admission-ledger) unlocks the asylum for the whole team.",
-            "Relics count toward one shared total, whoever carries them (verified with two players).",
+            "Relics are personal: each survivor finds their own. The relics placed at the ritual circle are shared, so the squad fills the circle together.",
             "One player can hold [the ritual](@the-rite-of-stillness) while others leave, and everyone sees the ending.",
           ] },
         ],
@@ -287,9 +302,9 @@ export const gettingStarted: WikiEntry[] = [
       },
     ],
     related: ["co-op-survival", "death-ghosts-and-the-finale", "downed-and-revive"],
-    sources: [SRC.playtest],
+    sources: [SRC.playtest, SRC.notes30],
     aliases: ["multiplayer", "co-op", "coop", "friends", "squad", "duo", "party"],
-    gaps: ["Live teleports between lobby and match servers not yet verified (needs the public game)."],
+    gaps: ["The squad teleport between the lobby and live match servers has not been independently verified."],
   },
   {
     ...base,
@@ -309,12 +324,12 @@ export const gettingStarted: WikiEntry[] = [
       {
         id: "what-platforms",
         heading: "What platforms is Stillskin Forest on?",
-        blocks: [{ type: "p", text: "Roblox. The game has keyboard, controller and touch controls, but only keyboard and mouse has been fully tested so far. See [Controls](@controls)." }],
+        blocks: [{ type: "p", text: "Roblox. You can play with keyboard and mouse, with a controller, or on a touch screen with on-screen controls. See [Controls](@controls)." }],
       },
       {
         id: "is-it-out",
         heading: "Is Stillskin Forest out yet?",
-        blocks: [{ type: "p", text: "Yes. Stillskin Forest went public on Roblox on 28 October 2026 and is free to play from its Roblox page. This wiki documents the build checked on 25 October 2026." }],
+        blocks: [{ type: "p", text: "Yes. Stillskin Forest went public on Roblox on 28 October 2026 and is free to play from its Roblox page. This wiki describes the published game." }],
       },
       {
         id: "how-do-you-hide",

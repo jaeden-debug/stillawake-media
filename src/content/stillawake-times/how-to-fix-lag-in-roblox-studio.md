@@ -1,6 +1,7 @@
 ---
 title: "How to Fix Lag in Roblox Games: A Developer's Optimization Guide"
 date: "2026-10-29"
+updated: "2026-10-31"
 excerpt: "To fix lag in a Roblox game, first find which kind it is (client frame rate, server heartbeat or network) with the MicroProfiler and Developer Console, then fix that cause."
 category: "Game Development"
 featured: false
@@ -9,7 +10,7 @@ author: "Jaeden Doody"
 
 **To fix lag in a Roblox game, first find out which kind of lag you have (low client frame rate, a slow server heartbeat, or network delay), measure it with the MicroProfiler, Developer Console and Performance Stats, and only then change the cause: too many draw calls, expensive lighting, busy scripts, unnecessary physics, chatty remotes or a world that isn't streaming.** Players describe all of these as "lag," but each has a different fix. Optimizing blind usually means removing detail that wasn't the problem.
 
-This guide is written for developers. Tool names, properties and shortcuts are checked against Roblox's Creator Hub documentation as of October 2026, and the examples come from our own Roblox projects at StillAwake Media: [RISK IT!](/games/risk-it), which is public on Roblox, and [Stillskin Forest](/games/stillskin-forest), a co-op survival-horror game still in development. We don't quote frame-rate gains here, because your results depend on your game, your players' devices and what you measure.
+This guide is written for developers. Tool names, properties and shortcuts are checked against Roblox's Creator Hub documentation as of October 2026, and the examples come from our own Roblox projects at StillAwake Media: [RISK IT!](/games/risk-it), which is public on Roblox, and [Stillskin Forest](/games/stillskin-forest), a co-op survival-horror game that went public on Roblox on 28 October 2026. We don't quote frame-rate gains here, because your results depend on your game, your players' devices and what you measure.
 
 If you're still building your first game, start with [how to make a Roblox game](/stillawake-times/how-to-make-a-roblox-game).
 

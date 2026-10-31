@@ -14,7 +14,7 @@ export const multiplayer: WikiEntry[] = [
       "How to survive as a squad in Stillskin Forest: reviving, pinging infected and loot, giving items and ammo, and what your team shares.",
     question: "How does co-op work in Stillskin Forest?",
     answer:
-      "Squads share one run. You revive downed teammates by holding E for three seconds, ping infected, loot or your position with T (X on controller) so the squad sees a marker for 8 seconds, and hold E on a teammate to give them your held item, or half your ammo if your hands are empty. Story progress such as the asylum unlock and relic count is shared.",
+      "Squads share one run. You revive downed teammates by holding E for three seconds, ping infected, loot or your position with T (X on controller) so the squad sees a marker for 8 seconds, and hold E on a teammate to give them your held item, or half your ammo if your hands are empty. Story progress such as the asylum unlock and the relics placed at the ritual circle is shared; each survivor finds their own relics.",
     sections: [
       {
         id: "squad-markers",
@@ -48,7 +48,7 @@ export const multiplayer: WikiEntry[] = [
         id: "giving",
         heading: "Giving items",
         blocks: [
-          { type: "p", text: "Hold **E** on a teammate to hand over the item in your hands. With empty hands you give them half your ammunition instead. It respects their bag space." },
+          { type: "p", text: "Hold **E** on a teammate to hand over the item in your hands. With empty hands you give them half your ammunition instead. It respects their bag space. Gear bought from Mortimer's shop stays with its buyer: it can't be given or dropped, and only the part of your ammunition you found is shared." },
         ],
       },
       {
@@ -57,16 +57,16 @@ export const multiplayer: WikiEntry[] = [
         blocks: [
           { type: "list", items: [
             "One player reading the [ledger](@blackthorn-admission-ledger) unlocks the asylum for everyone.",
-            "Relics count toward one shared total.",
+            "Relics are personal: each survivor finds their own, and the relics placed at the ritual circle are shared.",
             "One player can hold [the ritual](@the-rite-of-stillness); everyone gets the ending.",
-            "Placed [lanterns](@lantern) can be picked up by anyone.",
+            "Placed [lanterns](@lantern) you found can be picked up by anyone; a lantern bought from Mortimer's shop can only be picked up by its owner.",
           ] },
-          { type: "callout", tone: "note", text: "Revives, the shared asylum unlock, shared relics and the ritual have been verified with two players. Pings and giving are built but not yet confirmed in a recorded two-player test." },
+          { type: "callout", tone: "note", text: "Revives, the shared asylum unlock, relic placing and the ritual have been verified with two players. Pings and giving are built but not yet confirmed in a recorded two-player test." },
         ],
       },
     ],
     related: ["playing-with-friends", "downed-and-revive", "death-ghosts-and-the-finale"],
-    sources: [SRC.config, SRC.playtest],
+    sources: [SRC.config, SRC.playtest, SRC.notes30],
     aliases: ["co-op", "coop", "team", "ping", "pings", "give items", "share ammo", "teamwork"],
   },
   {

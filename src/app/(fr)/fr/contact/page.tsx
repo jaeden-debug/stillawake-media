@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import { ContactForm, FR_LABELS } from "@/components/contact-form";
@@ -8,7 +9,7 @@ import { slot } from "@/lib/cms/layer";
 import { PageSchema } from "@/components/page-schema";
 export const revalidate = 300;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Contact | Démarrer un projet",
   description:
     metaDescription(
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     locale: "fr_CA",
     images: OG_IMAGES,
   },
-};
+});
 
 export default async function ContactFr() {
   const slots = await getContentLayer("contact", "fr");

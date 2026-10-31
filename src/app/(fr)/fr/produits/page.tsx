@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -12,7 +13,7 @@ const TITLE = "Produits | Nos logiciels";
 const DESCRIPTION =
   "Les logiciels que StillAwake Media bâtit et exploite pour elle-même : intelligence d'affaires, facturation et gestion financière — en production, pas des concepts.";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: TITLE,
   description: metaDescription(
     DESCRIPTION,
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     title: "Produits | StillAwake Media",
     description: DESCRIPTION,
   },
-};
+});
 
 export const revalidate = 300;
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -20,7 +21,7 @@ const CHECKED = "2026-10-29";
  * Every measurement in EXAMPLES was taken with curl on CHECKED. Re-measure
  * before changing the date.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "What Is llms.txt? Real Examples, Limits and How to Add One",
   description:
     metaDescription(
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
     modifiedTime: CHECKED,
     images: OG_IMAGES,
   },
-};
+});
 
 const EXAMPLES = [
   { site: "llmstxt.org", url: "https://llmstxt.org/llms.txt", kb: 0.6, links: 3, h2: 1, optional: false, note: "The proposal's own file. A title, a one-line summary, and three links to Markdown docs." },

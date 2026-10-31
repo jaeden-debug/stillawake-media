@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { RelatedServices } from "@/components/service-page";
@@ -6,7 +7,7 @@ import { ArticlesLies } from "@/components/articles-lies";
 
 const pageUrl = "https://stillawakemedia.com/fr/agence-web-montreal";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Agence web Montréal | Sites sur mesure",
   description:
     metaDescription(
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
       "x-default": "https://stillawakemedia.com/web-design-montreal",
     },
   },
-};
+});
 
 const sections = [
   {

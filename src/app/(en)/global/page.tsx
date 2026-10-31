@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -18,7 +19,7 @@ import { Testimonials } from "@/components/testimonials";
 
 const url = "https://stillawakemedia.com/global";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Work With Us From Anywhere",
   description:
     metaDescription(
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
     type: "website",
     images: OG_IMAGES,
   },
-};
+});
 
 /** How remote actually works here — the real questions, answered plainly. */
 const faqs = [

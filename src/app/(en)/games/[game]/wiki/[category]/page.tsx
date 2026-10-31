@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/page-title";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -32,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cat = bundle && getCategory(bundle, category);
   if (!bundle || !cat) return {};
   return {
-    title: `${cat.title} | ${bundle.game.title} Wiki`,
+    title: pageTitle(`${cat.title} | ${bundle.game.title} Wiki`),
     description: cat.description,
     alternates: { canonical: categoryPath(slug, cat.slug) },
     openGraph: { title: `${cat.title} | ${bundle.game.title} Wiki`, description: cat.description, url: absolute(categoryPath(slug, cat.slug)), type: "website", images: OG_IMAGES },

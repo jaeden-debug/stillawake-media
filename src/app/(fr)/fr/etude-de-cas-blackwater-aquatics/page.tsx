@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import { ServiceJsonLd, RelatedServices } from "@/components/service-page";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Étude de cas : Blackwater Aquatics — le commerce Shopify mené par l'éducation",
   description:
     metaDescription(
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     locale: "fr_CA",
     images: OG_IMAGES,
   },
-};
+});
 
 const METRICS: [string, string, string][] = [
   ["8,6 % CTR", "Une fiche produit qui se positionne seule", "La fiche produit de culture de scuds a gagné 233 clics organiques avec un taux de clic de 8,55 % (position 8,5) — Google Search Console, fenêtre de 180 jours au 13 août 2026. Une fiche produit n'y arrive presque jamais sans architecture de contenu derrière."],

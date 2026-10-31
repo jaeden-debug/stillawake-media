@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/page-title";
 import { OG_IMAGES } from "@/lib/og-image";
 import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `${siteUrl}/our-work/${project.slug}`;
   const description = `${project.summary} ${project.kind} by StillAwake Media.`.slice(0, 160);
   return {
-    title: `${project.title}: ${project.kind}`,
+    title: pageTitle(`${project.title}: ${project.kind}`),
     description,
     alternates: { canonical: `/our-work/${project.slug}` },
     openGraph: {

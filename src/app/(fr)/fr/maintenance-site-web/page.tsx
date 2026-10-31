@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -19,7 +20,7 @@ const bandLabel = (id: keyof typeof EMERGENCY) =>
 const CARE = RECURRING_BY_ID["website-care-plan"];
 const HOSTING = RECURRING_BY_ID["managed-hosting"];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Maintenance de site web | Tarifs affichés",
   description: metaDescription(
     `Maintenance de site web et support d'urgence le jour même, de Montréal pour tout le Québec. Forfaits d'entretien à partir de ${HOSTING.monthly} $ CAD par mois et dépannage à partir de ${Math.min(...tierPrices("custom_site"))} $ CAD, tarifs affichés avant le paiement.`,
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
     locale: "fr_CA",
     images: OG_IMAGES,
   },
-};
+});
 
 const FAQ: [string, string][] = [
   [

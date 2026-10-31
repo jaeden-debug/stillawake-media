@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 
@@ -14,9 +15,9 @@ import Link from "next/link";
  * absent from navigation, and carrying no structured data. It exists to
  * close the loop for the visitor, not to rank.
  */
-export const metadata: Metadata = {
-  // The root layout appends "| StillAwake Media" — naming the brand here too
-  // would double it, which is the exact bug 3db8c04 cleaned out of 40 titles.
+export const metadata: Metadata = withPageTitle({
+  // withPageTitle() appends "| StillAwake Media" when it fits — naming the
+  // brand here too would double it, the bug 3db8c04 cleaned out of 40 titles.
   title: "Project Received",
   description:
     metaDescription(
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     follow: false,
     googleBot: { index: false, follow: false },
   },
-};
+});
 
 const CTA_BASE =
   "inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-medium tracking-[-0.02em] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D71920]";

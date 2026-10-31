@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -9,7 +10,7 @@ import { ArticlesLies } from "@/components/articles-lies";
 
 const url = `${siteUrl}/fr/audit-seo`;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Audit SEO : quoi vérifier, dans quel ordre (grille 2026)",
   description:
     metaDescription(
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     locale: "fr_CA",
     images: OG_IMAGES,
   },
-};
+});
 
 export default function AuditSeoPage() {
   const schema = {

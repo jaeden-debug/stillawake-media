@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import { ServiceJsonLd, RelatedServices } from "@/components/service-page";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Case Study: BankDeMark — #1 Rankings with a Perfect Lighthouse Score",
   description:
     metaDescription(
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     type: "article",
     images: OG_IMAGES,
   },
-};
+});
 
 const METRICS: [string, string, string][] = [
   ["Position 1.3", "#1 on its head query", "Google Search Console, 180-day window ending Aug 12, 2026: the net-worth-by-age page holds average position 1.3 (332 impressions), retirement-savings-by-age sits at 2.3, and the calculators hub at 2.6."],

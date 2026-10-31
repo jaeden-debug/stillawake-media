@@ -79,7 +79,7 @@ export const multiplayer: WikiEntry[] = [
       "What happens when you die in Stillskin Forest: flying as a ghost, respawning at dawn, the last-survivor sequence, the rooftop finale and Return to Camp.",
     question: "What happens when you die in Stillskin Forest?",
     answer:
-      "If your teammates are still alive, you become a ghost: you fly freely around the map (or follow a teammate) and respawn beside a survivor when dawn breaks. When the last survivor falls, the run ends: everyone appears on the roof of St. Agnes Hospital with their stat cards while the infected walk in and dance, the camera tours the map, and players choose Return to Camp to start a new run on Day 1.",
+      "If your teammates are still alive, you become a ghost: you fly freely around the map (or follow a teammate) and respawn beside a survivor when dawn breaks. When the last survivor falls, the run ends: everyone appears on the roof of St. Agnes Hospital with their stat cards while the infected walk in and dance, the camera tours the map, and players choose Play Again to start a new run on Day 1 with the squad, or Return to Camp to go back to the lobby.",
     sections: [
       {
         id: "ghost-mode",
@@ -111,7 +111,7 @@ export const multiplayer: WikiEntry[] = [
             "The squad stands on the roof of [St. Agnes Hospital](@st-agnes-hospital).",
             "Infected walk in from out of frame and dance, point, laugh and headbang around the lineup.",
             "The camera tours the hospital, the camp lake and dock, the forest, a cabin, the police car and a burning dumpster.",
-            "Each player chooses **Return to Camp** to start the next run.",
+            "Each player chooses **Play Again** to start a fresh Day 1 with the squad, or **Return to Camp** to go back to the lobby.",
           ] },
           { type: "p", text: "Winning ([the ritual](@the-rite-of-stillness) or [the Heart](@the-heart-of-stillskin)) no longer ends the run: you keep playing until the last survivor falls, and that end screen shows the win, without the laughing horde." },
         ],
@@ -127,7 +127,7 @@ export const multiplayer: WikiEntry[] = [
     related: ["downed-and-revive", "co-op-survival", "how-to-play"],
     sources: [SRC.config, SRC.playtest, SRC.report],
     aliases: ["death", "die", "ghost", "spectate", "spectator", "end of run", "return to camp", "finale", "zombie dance", "stats"],
-    gaps: ["Return to Camp voting with several real clients has not been recorded yet."],
+    gaps: ["Play Again and Return to Camp with several real clients in a live server have not been recorded yet."],
   },
   {
     ...base,

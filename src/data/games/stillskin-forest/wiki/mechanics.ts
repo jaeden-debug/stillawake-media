@@ -56,20 +56,21 @@ export const mechanics: WikiEntry[] = [
   {
     ...base,
     slug: "stamina-and-sprinting",
+    lastVerified: "2026-10-31",
     title: "Stamina and Sprinting",
     seoTitle: "Stamina and Sprinting in Stillskin Forest: Speeds and Recovery",
     description:
       "How sprinting and stamina work in Stillskin Forest: sprint speed 23 vs walk 16, about six seconds of sprint, recovery, and why it beats every infected.",
     question: "How does stamina work in Stillskin Forest?",
     answer:
-      "Hold Left Shift to sprint at 23 studs per second instead of walking at 16. Sprinting drains 16 stamina per second from 100, so a full bar gives about six seconds. It starts refilling at 22 per second 0.8 seconds after you stop. You need 15 stamina to start a sprint, and if you run dry you are winded until it is back to 35.",
+      "Hold Left Shift (L3 on a controller) to sprint at 23 studs per second instead of walking at 16. Sprinting drains 16 stamina per second from 100, so a full bar gives about six seconds. It starts refilling at 22 per second 0.8 seconds after you stop. You need 15 stamina to start a sprint, and if you run dry you are winded until it is back to 35.",
     facts: [["Walk", "16 studs/s"], ["Sprint", "23 studs/s"], ["Aiming walk", "12 studs/s"], ["Crouch", "8 studs/s"], ["Stamina", "100"], ["Drain", "16/s"], ["Regen", "22/s after 0.8 s"]],
     sections: [
       {
         id: "the-race",
         heading: "Why sprinting matters",
         blocks: [
-          { type: "p", text: "No normal infected is faster than you. The quickest, the [Runner](@runner), is capped at 21.5. That gap is deliberately small: you can just barely pull away, and only while your stamina lasts. Chases also end on their own after about 22 seconds, after 145 studs of pursuit, or once you are 85 studs clear." },
+          { type: "p", text: "No normal infected is faster than you. The quickest, the [Runner](@runner), is capped at 21.5. That gap is deliberately small: you can just barely pull away, and only while your stamina lasts. A chase never times out while the infected can see you; about 5 seconds after it loses sight of you it starts searching instead." },
         ],
       },
       {
@@ -92,7 +93,7 @@ export const mechanics: WikiEntry[] = [
       },
     ],
     related: ["detection-and-noise", "runner", "crouching-and-takedowns"],
-    sources: [SRC.config, SRC.playtest],
+    sources: [SRC.config, SRC.playtest, SRC.notes30, SRC.controls31],
     aliases: ["stamina", "sprint", "run", "speed", "movement speed"],
   },
   {
@@ -142,7 +143,7 @@ export const mechanics: WikiEntry[] = [
           { type: "list", ordered: true, items: [
             "**Roam.** Idle or wandering.",
             "**Suspicious.** It has seen you; after about 1.1 seconds it commits.",
-            "**Alert.** It screams, pulling in infected within 45 studs (100 for a [Screamer](@screamer)).",
+            "**Alert.** It screams, pulling in the nearest four infected within 45 studs (a [Screamer](@screamer) calls the nearest six within 100).",
             "**Chase.** It leads your movement; a pack fans out to close from the sides.",
             "**Attack.** In reach, it winds up (slowing down) and swings.",
             "**Search.** If it loses sight of you for 5 seconds, it searches where you were heading for roughly 7 to 12 seconds, stopping now and then to listen and look around, then returns to roaming.",
@@ -186,7 +187,7 @@ export const mechanics: WikiEntry[] = [
             "The chest freezer in the [walk-in freezer](@pine-general-store)",
             "The trunk in Tommy's attic",
             "A drawer in the [morgue](@morgue)",
-            "The tent at the [Campgrounds](@campgrounds)",
+            "The tent at the Lookout Camp in the woods east of town",
           ] },
         ],
       },
@@ -217,7 +218,7 @@ export const mechanics: WikiEntry[] = [
     title: "The Dread Encounter",
     seoTitle: "The Dread Encounter in Stillskin Forest: What Happens When You Hide",
     description:
-      "The Dread Encounter is what happens in Stillskin Forest when the infected see you hide: the slow approach, the stare through the grate, and how it ends.",
+      "The Dread Encounter is what happens in Stillskin Forest when the infected see you hide: the slow approach, the look inside your hiding spot, and how it ends.",
     question: "What is the Dread Encounter in Stillskin Forest?",
     answer:
       "The Dread Encounter happens when infected that were after you see where you hid, or lose you right beside it. The chase goes quiet; there's no music, only your breathing, your heart and their footsteps. They walk slowly toward your spot. One steps up to the opening and looks straight in at you for four to nine seconds while others wait nearby. If it watched you climb in from close up, it may find you and drag you out. If it only lost you nearby, it looks, then leaves, one at a time, sometimes glancing back.",
@@ -266,6 +267,7 @@ export const mechanics: WikiEntry[] = [
   {
     ...base,
     slug: "health-and-healing",
+    lastVerified: "2026-10-31",
     title: "Health, Damage and Healing",
     seoTitle: "Health and Healing in Stillskin Forest: Regen, Food and First Aid",
     description:
@@ -280,7 +282,7 @@ export const mechanics: WikiEntry[] = [
         blocks: [
           { type: "p", text: "A hit produces a physical hit reaction, an impact sound, a red edge on screen and a health bar that flashes and jumps. Only two infected may swing at you in any 1.6-second window, and there is 0.45 seconds of grace after each hit. Below a third of your health, music and ambience go muffled." },
           { type: "table", caption: "Damage per hit", head: ["Attacker", "Damage"], rows: [
-            ["[Walker](@walker)", "10"], ["[Runner](@runner)", "8"], ["[Screamer](@screamer)", "8"], ["[Brute](@brute)", "28"],
+            ["[Walker](@walker)", "10"], ["[Runner](@runner)", "8"], ["[Screamer](@screamer)", "8"], ["[Brute](@brute)", "28"], ["[Soldier](@soldier)", "11.5"],
           ] },
           { type: "p", text: "Holding an item when you're hit wears it slightly. See [Durability](@durability-and-wear)." },
         ],
@@ -306,46 +308,47 @@ export const mechanics: WikiEntry[] = [
       },
     ],
     related: ["food", "first-aid-kit", "downed-and-revive"],
-    sources: [SRC.config, SRC.items, SRC.playtest],
+    sources: [SRC.config, SRC.items, SRC.playtest, SRC.notes30],
     aliases: ["health", "hp", "heal", "regen", "damage"],
   },
   {
     ...base,
     slug: "downed-and-revive",
+    lastVerified: "2026-10-31",
     title: "Downed and Revive",
     seoTitle: "How to Revive Teammates in Stillskin Forest",
     description:
       "What happens when you go down in Stillskin Forest: the 2-minute window, how to revive a teammate by holding E for 3 seconds, and coming back at dawn.",
     question: "How do you revive a teammate in Stillskin Forest?",
     answer:
-      "Walk to your downed teammate and hold E for three seconds. You have 2 minutes from the moment they go down. They come back at 35% health. While downed, a player can only crawl slowly and can't use items or interact.",
-    facts: [["Revive window", "2 min"], ["Hold to revive", "3 s (E)"], ["Health after revive", "35%"], ["Crawl speed", "4 studs/s"]],
+      "Walk to your downed teammate and hold E (□ / X on a controller) for three seconds. You have 2 minutes from the moment they go down. They come back at 35% health. While downed, a player can't move, use items or interact.",
+    facts: [["Revive window", "2 min"], ["Hold to revive", "3 s (E)"], ["Health after revive", "35%"]],
     sections: [
       {
         id: "going-down",
         heading: "Going down",
         blocks: [
-          { type: "p", text: "A lethal hit doesn't kill you outright while teammates are standing. You go down with a 2-minute countdown and an overlay. Movement and interaction are disabled except a slow crawl, and you don't regenerate." },
-          { type: "callout", tone: "warning", text: "If you are the last survivor standing, there is no revive. A lethal hit starts the final-death sequence. See [Death, ghosts and the finale](@death-ghosts-and-the-finale)." },
+          { type: "p", text: "A lethal hit doesn't kill you outright while teammates are standing. You go down with a 2-minute countdown and an overlay. You can't move, use items or interact, and you don't regenerate. Infected that were after you back off and leave you alone while you're down." },
+          { type: "callout", tone: "warning", text: "If you are the last survivor standing, there is no revive. A lethal hit starts the final-death sequence: a classic run ends, while on an expedition the crew wakes at base at dawn. See [Death, ghosts and the finale](@death-ghosts-and-the-finale)." },
         ],
       },
       {
         id: "reviving",
         heading: "Reviving",
         blocks: [
-          { type: "p", text: "Hold **E** on the downed player for three seconds; letting go cancels. Clear or block the infected first: you can't fight while reviving. Reviving with real input between two players has been verified." },
+          { type: "p", text: "Hold **E** (□ / X on a controller) on the downed player for three seconds; letting go cancels, so clear or block the infected first. Reviving with real input between two players has been verified." },
         ],
       },
       {
         id: "if-time-runs-out",
         heading: "If time runs out",
         blocks: [
-          { type: "p", text: "At zero the player is eliminated and becomes a ghost while the run continues. Infected chasing them disperse rather than attacking the body. Ghosts fly freely around the map and come back at dawn: see [Death, ghosts and the finale](@death-ghosts-and-the-finale)." },
+          { type: "p", text: "At zero the player is eliminated and becomes a ghost while the run continues. What they carried is left in a backpack where they fell, for them to recover. Ghosts fly freely around the map and come back beside a teammate at dawn: see [Death, ghosts and the finale](@death-ghosts-and-the-finale)." },
         ],
       },
     ],
     related: ["death-ghosts-and-the-finale", "co-op-survival", "health-and-healing"],
-    sources: [SRC.config, SRC.playtest, SRC.report],
+    sources: [SRC.config, SRC.playtest, SRC.report, SRC.notes30, SRC.controls31],
     aliases: ["revive", "downed", "knocked down", "bleeding out", "res"],
   },
   {
@@ -541,6 +544,7 @@ export const mechanics: WikiEntry[] = [
   {
     ...base,
     slug: "climbing-and-ladders",
+    lastVerified: "2026-10-31",
     title: "Climbing, Jumping and Ladders",
     seoTitle: "Can Zombies Climb in Stillskin Forest? Ladders, Roofs and Cars",
     description:
@@ -553,7 +557,7 @@ export const mechanics: WikiEntry[] = [
         id: "ladders",
         heading: "Ladders",
         blocks: [
-          { type: "p", text: "You can only climb at ladders. Press **E** at the bottom (\"Climb up\") or the top (\"Climb down\"), or walk into a ladder's foot. Jump lets go partway. Ladders lead to the hospital roof, the store roof, Tommy's attic, and the campground watchtowers." },
+          { type: "p", text: "You can only climb at ladders. Press **E** (□ / X on a controller) at the bottom (\"Climb up\") or the top (\"Climb down\"), or walk into a ladder's foot. Jump lets go partway. Ladders lead to the hospital roof, the store roof, Tommy's attic, and the campground watchtowers." },
         ],
       },
       {
@@ -576,19 +580,20 @@ export const mechanics: WikiEntry[] = [
       },
     ],
     related: ["detection-and-noise", "st-agnes-hospital", "doors-and-building"],
-    sources: [SRC.config, SRC.playtest],
+    sources: [SRC.config, SRC.playtest, SRC.notes30, SRC.controls31],
     aliases: ["climb", "ladder", "roof", "jump", "parkour", "can zombies climb"],
   },
   {
     ...base,
     slug: "crouching-and-takedowns",
+    lastVerified: "2026-10-31",
     title: "Crouching and Takedowns",
     seoTitle: "Crouch and Stealth Takedowns in Stillskin Forest",
     description:
-      "How to crouch in Stillskin Forest (C, Left Ctrl or B), how much harder it makes you to spot, and how to land a one-hit stealth takedown.",
+      "How to crouch in Stillskin Forest (C, Ctrl, or ○ / B on a controller), how much harder it makes you to spot, and how to land a one-hit stealth takedown.",
     question: "How do stealth takedowns work in Stillskin Forest?",
     answer:
-      "Crouch (C, Left Ctrl, or B on controller) and hit a calm infected from behind with a melee weapon: it's a one-blow TAKEDOWN. Crouching slows you to 8 studs per second, silences your footsteps, and makes the infected see you at only 0.55× their normal range. Brutes can't be taken down.",
+      "Crouch (C or Ctrl, C on a Mac, or ○ / B on a controller) and hit a calm infected from behind with a melee weapon: it's a one-blow TAKEDOWN. Crouching slows you to 8 studs per second, silences your footsteps, and makes the infected see you at only 0.55× their normal range. Brutes can't be taken down.",
     sections: [
       {
         id: "crouching",
@@ -597,7 +602,7 @@ export const mechanics: WikiEntry[] = [
           { type: "table", caption: "Crouch effects", head: ["Effect", "Value"], rows: [
             ["Speed", "8 studs/s (walk is 16)"], ["Sight range against you", "×0.55"], ["Close-range sense", "×0.6"], ["Footsteps", "Silent"],
           ] },
-          { type: "p", text: "Sprinting stands you up. Other players see your crouch pose." },
+          { type: "p", text: "Sprinting stands you up. A melee swing while crouched makes less noise. Other players see your crouch pose." },
         ],
       },
       {
@@ -614,7 +619,7 @@ export const mechanics: WikiEntry[] = [
       },
     ],
     related: ["detection-and-noise", "baseball-bat", "machete"],
-    sources: [SRC.config, SRC.playtest],
+    sources: [SRC.config, SRC.playtest, SRC.notes30, SRC.controls31],
     aliases: ["crouch", "sneak", "stealth", "takedown", "stealth kill"],
     gaps: ["Takedowns and the crouch-walk cycle are built but were not yet confirmed in a recorded playtest."],
   },
@@ -634,7 +639,7 @@ export const mechanics: WikiEntry[] = [
         id: "doors",
         heading: "Doors",
         blocks: [
-          { type: "p", text: "Stillwater has 29 working doors. Press **E** to open or close one; it swings away from you. Infected can't open doors; they bash a closed one, which bursts open after eight hits. Every door is shut and repaired at the start of each run." },
+          { type: "p", text: "Every building door in Stillwater works the same way. Press **E** to open or close one; it swings away from you. Infected can't open doors; they bash a closed one, which bursts open after eight hits. Every door is shut and repaired at the start of each run." },
         ],
       },
       {

@@ -44,6 +44,7 @@ export const items: WikiEntry[] = [
   {
     ...base,
     slug: "food",
+    lastVerified: "2026-10-31",
     title: "Food: Bag of Chips, Canned Beans and Energy Bar",
     seoTitle: "Food in Stillskin Forest: Chips, Canned Beans and Energy Bars",
     description:
@@ -69,12 +70,12 @@ export const items: WikiEntry[] = [
         id: "where-to-find",
         heading: "Where to find food",
         blocks: [
-          { type: "p", text: "Food appears in loot spots across the map, and [Pine General Store](@pine-general-store) uses a food-heavy loot table. The hospital lobby vending machine can be shaken for a snack once per run, but it is loud and draws infected from up to 90 studs away." },
+          { type: "p", text: "Food appears in loot spots across the map, and [Pine General Store](@pine-general-store) uses a food-heavy loot table. You can shake the hospital lobby vending machine. It may drop one snack per run, but it is loud and draws infected from up to 90 studs away." },
         ],
       },
     ],
     related: ["first-aid-kit", "health-and-healing", "inventory-and-hotbar"],
-    sources: [SRC.items, SRC.playtest],
+    sources: [SRC.items, SRC.playtest, SRC.notes30],
     aliases: ["chips", "beans", "energy bar", "snack", "heal", "healing items"],
   },
   {

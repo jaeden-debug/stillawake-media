@@ -63,13 +63,14 @@ export const enemies: WikiEntry[] = [
   {
     ...base,
     slug: "walker",
+    lastVerified: "2026-10-31",
     title: "Walker",
     seoTitle: "Walker in Stillskin Forest: Stats and How to Survive",
     description:
       "The Walker is Stillskin Forest's most common infected: 100 health, 10 damage, chase speed 20. Behaviour, weaknesses and how to deal with them.",
     question: "What is a Walker in Stillskin Forest?",
     answer:
-      "The Walker is the baseline infected and by far the most common. It has 100 health, hits for 10 every 1.9 seconds, and chases at 20 studs per second, so a sprinting survivor slowly pulls away. Four bat swings or three pistol body shots bring one down.",
+      "The Walker is the baseline infected and by far the most common. It has 100 health, hits for 10 every 1.9 seconds, and chases at 20 studs per second, so a sprinting survivor slowly pulls away. Four swings of a common bat or three common pistol body shots bring one down.",
     facts: [["Health", "100"], ["Damage", "10"], ["Time between attacks", "1.9 s"], ["Roam speed", "5"], ["Chase speed", "20"], ["First appears", "Day 1"]],
     sections: [
       {
@@ -93,12 +94,13 @@ export const enemies: WikiEntry[] = [
       },
     ],
     related: ["runner", "enemy-comparison", "baseball-bat"],
-    sources: [SRC.config, SRC.playtest],
+    sources: [SRC.config, SRC.playtest, SRC.notes30],
     aliases: ["zombie", "basic zombie"],
   },
   {
     ...base,
     slug: "runner",
+    lastVerified: "2026-10-31",
     title: "Runner",
     seoTitle: "Runner in Stillskin Forest: The Fastest Infected",
     description:
@@ -129,26 +131,27 @@ export const enemies: WikiEntry[] = [
       },
     ],
     related: ["walker", "stamina-and-sprinting", "enemy-comparison"],
-    sources: [SRC.config],
+    sources: [SRC.config, SRC.notes30],
     aliases: ["fast zombie", "sprinter"],
   },
   {
     ...base,
     slug: "screamer",
+    lastVerified: "2026-10-31",
     title: "Screamer",
     seoTitle: "Screamer in Stillskin Forest: Stop It Before It Calls the Horde",
     description:
-      "The Screamer in Stillskin Forest alerts every infected within 100 studs. Its stats, why it's a priority target, and how to kill it first.",
+      "The Screamer in Stillskin Forest calls the nearest infected from up to 100 studs away. Its stats, why it's a priority target, and how to kill it first.",
     question: "What does the Screamer do in Stillskin Forest?",
     answer:
-      "The Screamer's scream pulls in other infected from up to 100 studs away, more than double the 45-stud alert of a normal infected. On its own it is weak (70 health, 8 damage), so kill it first, ideally with pistol headshots before it reaches you.",
-    facts: [["Health", "70"], ["Damage", "8"], ["Time between attacks", "1.9 s"], ["Chase speed", "20.5"], ["Alert radius", "100 studs"], ["First appears", "Day 2"]],
+      "The Screamer's scream calls the nearest six infected from up to 100 studs away, and it keeps calling while it chases you. A normal infected's alert reaches only the nearest four within 45 studs. On its own it is weak (70 health, 8 damage), so kill it first, ideally with a pistol headshot before it reaches you.",
+    facts: [["Health", "70"], ["Damage", "8"], ["Time between attacks", "1.9 s"], ["Chase speed", "20.5"], ["Alert radius", "100 studs"], ["Infected called", "Nearest 6"], ["First appears", "Day 2"]],
     sections: [
       {
         id: "behaviour",
         heading: "Behaviour",
         blocks: [
-          { type: "p", text: "Every infected screams when it commits to a chase, alerting others within 45 studs. The Screamer's call reaches 100. A Screamer you leave alive turns one fight into several. On a [Silent Night](@silent-night) no infected scream at all." },
+          { type: "p", text: "Any infected that spots you screams before it chases, sending the nearest four within 45 studs to where it saw you. The Screamer's call reaches 100 studs and the nearest six, and it calls again every 16 to 24 seconds while it chases. A Screamer you leave alive turns one fight into several. On a [Silent Night](@silent-night) the screams make no sound, but they still bring others." },
           configNote,
         ],
       },
@@ -157,7 +160,7 @@ export const enemies: WikiEntry[] = [
         heading: "How to deal with it",
         blocks: [
           { type: "list", items: [
-            "Shoot it at range: one headshot or three pistol body shots.",
+            "Shoot it at range: one headshot, or three body shots from a common pistol (two from a rarer one).",
             "Two machete swings also do it, if you can close the distance quietly.",
             "If it has already screamed, move. Infected are converging on that spot.",
           ] },
@@ -165,26 +168,27 @@ export const enemies: WikiEntry[] = [
       },
     ],
     related: ["pistol", "detection-and-noise", "enemy-comparison"],
-    sources: [SRC.config],
+    sources: [SRC.config, SRC.notes30],
     aliases: ["scream zombie", "shrieker"],
   },
   {
     ...base,
     slug: "brute",
+    lastVerified: "2026-10-31",
     title: "Brute",
     seoTitle: "Brute in Stillskin Forest: How to Beat the Biggest Infected",
     description:
       "The Brute in Stillskin Forest: 320 health, 28 damage per hit, night-only from Day 3. How much it takes to kill and how to avoid getting hit.",
     question: "How do you kill a Brute in Stillskin Forest?",
     answer:
-      "Keep your distance and use guns. A Brute has 320 health and hits for 28, the hardest of any infected, but it is the slowest (chase speed 18.5) and attacks only every 2.6 seconds. It takes about ten pistol body shots, or a single headshot from any gun. It shrugs off most knockback.",
+      "Keep your distance and use guns. A Brute has 320 health and hits for 28, the hardest of any infected, but it is the slowest (chase speed 18.5) and attacks only every 2.6 seconds. It takes about ten body shots from a common pistol, or a single headshot from any gun. It shrugs off most knockback.",
     facts: [["Health", "320"], ["Damage", "28"], ["Time between attacks", "2.6 s"], ["Chase speed", "18.5"], ["Size", "1.35× a Walker"], ["Knockback resistance", "80%"], ["First appears", "Day 3, nights only"]],
     sections: [
       {
         id: "behaviour",
         heading: "Behaviour",
         blocks: [
-          { type: "p", text: "Brutes only spawn at night, from Day 3 on, and are rare (about 6 in every 104 spawns). They also appear in fixed places: one wakes among the residents of [Blackthorn Asylum](@blackthorn-asylum), one arrives halfway through [the Rite of Stillness](@the-rite-of-stillness), and one joins every fourth guardian wave at [the Heart](@the-heart-of-stillskin)." },
+          { type: "p", text: "In the forest, Brutes only spawn at night, from Day 3 on, and are rare (about 6 in every 104 spawns). They also appear in fixed places: one wakes among the residents of [Blackthorn Asylum](@blackthorn-asylum), one arrives halfway through [the Rite of Stillness](@the-rite-of-stillness), and one joins every fourth guardian wave at [the Heart](@the-heart-of-stillskin)." },
           configNote,
         ],
       },
@@ -194,7 +198,7 @@ export const enemies: WikiEntry[] = [
         blocks: [
           { type: "list", items: [
             "You are much faster. Kite it and shoot.",
-            "Melee is a poor trade: 13 bat swings, and each of its hits costs you over a quarter of your health.",
+            "Melee is a poor trade: 13 swings of a common bat, and without armour each of its hits costs you over a quarter of your health.",
             "Crouched takedowns don't work on Brutes.",
             "The [Freeze Device](@freeze-device) holds it for 6 seconds and takes 25% of its health per shot.",
           ] },
@@ -202,12 +206,13 @@ export const enemies: WikiEntry[] = [
       },
     ],
     related: ["shotgun", "pistol", "enemy-comparison", "freeze-device"],
-    sources: [SRC.config, SRC.playtest],
+    sources: [SRC.config, SRC.playtest, SRC.notes30],
     aliases: ["tank", "big zombie", "boss"],
   },
   {
     ...base,
     slug: "watcher",
+    lastVerified: "2026-10-31",
     title: "The Watcher",
     seoTitle: "The Watcher in Stillskin Forest: What It Is and What It Does",
     description:
@@ -221,7 +226,7 @@ export const enemies: WikiEntry[] = [
         id: "sightings",
         heading: "When it appears",
         blocks: [
-          { type: "p", text: "Every 30 seconds there is a chance: about 12% on a normal night, 25% on a special night, and 1% by day, with at least 75 seconds between sightings. Each special night has its own chance; on a [Silent Night](@silent-night) it is guaranteed." },
+          { type: "p", text: "Every 30 seconds there is a chance: about 12% on a normal night, 25% on a special night, and 1% by day, with at least 75 seconds between sightings. Each special night also rolls its own chance of a sighting 20 to 70 seconds in; on a [Silent Night](@silent-night) that roll always succeeds. It never appears to a survivor who is being chased or who hid in the last minute." },
         ],
       },
       {
@@ -234,7 +239,7 @@ export const enemies: WikiEntry[] = [
       },
     ],
     related: ["enemy-comparison", "heavy-fog", "silent-night"],
-    sources: [SRC.config, SRC.playtest],
+    sources: [SRC.config, SRC.playtest, SRC.notes30],
     aliases: ["tall figure", "glowing eyes", "slender"],
   },
 ];

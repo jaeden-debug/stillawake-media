@@ -142,13 +142,14 @@ export const weapons: WikiEntry[] = [
   {
     ...base,
     slug: "baseball-bat",
+    lastVerified: "2026-10-31",
     title: "Baseball Bat",
     seoTitle: "Baseball Bat in Stillskin Forest: Damage, Speed and Tips",
     description:
       "The Baseball Bat in Stillskin Forest: 25 damage, 0.55 s between swings, strong knockback and 120 durability. How it compares and how to use it.",
     question: "How good is the Baseball Bat in Stillskin Forest?",
     answer:
-      "The Baseball Bat is the common starter melee weapon: 25 damage per swing, 0.55 seconds between swings, 5.5 studs of reach and solid knockback (30). It takes four body hits to drop a Walker and lasts 120 uses before it breaks.",
+      "The Baseball Bat is a common melee weapon: 25 damage per swing, 0.55 seconds between swings, 5.5 studs of reach and solid knockback (30). It takes four body hits to drop a Walker and has 120 durability.",
     facts: [
       ["Type", "Melee"], ["Damage", "25"], ["Time between swings", "0.55 s"], ["Range", "5.5 studs"],
       ["Knockback", "30"], ["Durability", "120"], ["Rarity", "Rolled when found"],
@@ -158,7 +159,7 @@ export const weapons: WikiEntry[] = [
         id: "overview",
         heading: "Overview",
         blocks: [
-          { type: "p", text: "Solid wood with a taped grip. The bat is the most common melee weapon you will find, and its knockback pushes an infected back out of swing range, which buys time against one or two at once. Three swings took a Walker from 100 to 25 health in testing; the fourth finishes it." },
+          { type: "p", text: "Solid wood with a taped grip. Bats turn up in houses, the store, the cabins and along the trail. Its knockback pushes an infected back out of swing range, which buys time against one or two at once. Three swings took a Walker from 100 to 25 health in testing; the fourth finishes it." },
         ],
       },
       {
@@ -177,7 +178,7 @@ export const weapons: WikiEntry[] = [
         blocks: [
           { type: "list", items: [
             "Swing, step back, swing. Knockback plus a step keeps you out of a Walker's reach.",
-            "Crouch and hit an unaware infected from behind for a one-blow [takedown](@crouching-and-takedowns).",
+            "Crouch and hit an unaware infected from behind for a one-blow [takedown](@crouching-and-takedowns) (not a Brute).",
             "Swinging into a wall wears the bat by 1. Every landed swing and every hit you take while holding it wears it too. See [Durability](@durability-and-wear).",
           ] },
         ],
@@ -185,13 +186,14 @@ export const weapons: WikiEntry[] = [
       meleeTiers,
     ],
     related: ["machete", "hammer", "weapons-compared", "walker"],
-    sources: [SRC.items, SRC.config, SRC.playtest],
+    sources: [SRC.items, SRC.config, SRC.playtest, SRC.notes30],
     aliases: ["bat"],
     gaps: ["Exact loot locations and drop rates not published."],
   },
   {
     ...base,
     slug: "machete",
+    lastVerified: "2026-10-31",
     title: "Machete",
     seoTitle: "Machete in Stillskin Forest: Damage, Speed and Tips",
     description:
@@ -224,7 +226,7 @@ export const weapons: WikiEntry[] = [
       meleeTiers,
     ],
     related: ["baseball-bat", "hammer", "weapons-compared"],
-    sources: [SRC.items, SRC.config],
+    sources: [SRC.items, SRC.config, SRC.notes30],
     aliases: ["knife", "blade"],
   },
   {
@@ -266,6 +268,7 @@ export const weapons: WikiEntry[] = [
   {
     ...base,
     slug: "crowbar",
+    lastVerified: "2026-10-31",
     title: "Crowbar",
     seoTitle: "Crowbar in Stillskin Forest: Prying Planks and Combat",
     description:
@@ -288,7 +291,7 @@ export const weapons: WikiEntry[] = [
       meleeTiers,
     ],
     related: ["hammer", "doors-and-building", "weapons-compared"],
-    sources: [SRC.items, SRC.config, SRC.playtest],
+    sources: [SRC.items, SRC.config, SRC.playtest, SRC.notes30],
     aliases: ["pry bar"],
   },
   {
@@ -311,7 +314,7 @@ export const weapons: WikiEntry[] = [
         id: "overview",
         heading: "Overview",
         blocks: [
-          { type: "p", text: "A reliable sidearm and the longest-range weapon in the game. Found guns come loaded. Pressing **R** moves rounds from your reserve into the magazine, and an empty gun reloads by itself. Switching away cancels a reload." },
+          { type: "p", text: "A reliable sidearm with long range (250 studs; only the Mini AK and Hunting Rifle reach further). Found guns come loaded. Pressing **R** moves rounds from your reserve into the magazine, and an empty gun reloads by itself. Switching away cancels a reload." },
         ],
       },
       {
@@ -327,7 +330,7 @@ export const weapons: WikiEntry[] = [
         blocks: [
           { type: "list", items: [
             "One headshot drops any infected except a helmeted Soldier.",
-            "Kill a [Screamer](@screamer) at range before it alerts everything within 100 studs.",
+            "Kill a [Screamer](@screamer) at range before it calls the nearest six infected within 100 studs.",
             "Every shot pulls in calm infected within 90 studs. Fire, then move.",
           ] },
         ],

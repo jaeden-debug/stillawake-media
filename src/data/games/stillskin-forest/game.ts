@@ -42,6 +42,11 @@ export const stillskinForest: Game = {
     "Stillskin Forest went public on Roblox on 28 October 2026. This site describes the published game; details may change between updates, and every page shows the date it was last checked.",
   behindTheGame: [
     {
+      title: "How to optimize a Roblox game for PS4",
+      href: "/stillawake-times/how-to-optimize-a-roblox-game-for-ps4",
+      blurb: "Our console performance case study: what we measured, what shipped and what still needs a real PS4.",
+    },
+    {
       title: "How to make a Roblox game with AI agents",
       href: "/stillawake-times/how-to-make-a-roblox-game-with-ai-agents",
       blurb: "The moderator-led workflow we use to build Stillskin Forest with a team of AI coding agents.",

@@ -391,7 +391,7 @@ export const updates: WikiEntry[] = [
         id: "how-we-build",
         heading: "How these updates are made",
         blocks: [
-          { type: "p", text: "Each update is planned, built and tested by a team of AI coding agents led by a moderator, with the owner approving every design decision and publish. The full method is in [How to make a Roblox game with AI agents](/stillawake-times/how-to-make-a-roblox-game-with-ai-agents)." },
+          { type: "p", text: "Each update is planned, built and tested by a team of AI coding agents led by a moderator, with the owner approving every design decision and publish. The full method is in [How to make a Roblox game with AI agents](/stillawake-times/how-to-make-a-roblox-game-with-ai-agents), and the console performance work is in [How to optimize a Roblox game for PS4](/stillawake-times/how-to-optimize-a-roblox-game-for-ps4)." },
         ],
       },
     ],

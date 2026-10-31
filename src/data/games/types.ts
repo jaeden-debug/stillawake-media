@@ -56,6 +56,8 @@ export type Game = {
    */
   publiclyPlayable: boolean;
   statusNote: string;
+  /** Articles about how the game was made, shown as "Behind the game" on the landing page. */
+  behindTheGame?: { title: string; href: string; blurb: string }[];
   features: { title: string; body: string }[];
   media: {
     hero?: string;

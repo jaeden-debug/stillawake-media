@@ -345,7 +345,15 @@ export const updates: WikiEntry[] = [
     question: "What's new in Stillskin Forest?",
     answer:
       "The most recent milestones (30 October 2026) added saved expeditions you can come back to, shared sleep, personal finds, night vision that reacts to light, and guns that last much longer. Before that, 29 October brought smarter infected and smoother play on consoles, and 28 October a fairer loot economy and the Freeze Device. The game has no public version numbers yet.",
-    sections: [],
+    sections: [
+      {
+        id: "how-we-build",
+        heading: "How these updates are made",
+        blocks: [
+          { type: "p", text: "Each update is planned, built and tested by a team of AI coding agents led by a moderator, with the owner approving every design decision and publish. The full method is in [How to make a Roblox game with AI agents](/stillawake-times/how-to-make-a-roblox-game-with-ai-agents)." },
+        ],
+      },
+    ],
     related: ["what-is-stillskin-forest", "how-to-play", "weather", "shooting-through-cover"],
     verification: "verified_live",
     sources: [SRC.playtest, SRC.playtest27, SRC.notes30],

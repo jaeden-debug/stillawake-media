@@ -208,12 +208,69 @@ export default async function ArticlePage({ params }: Props) {
     isPartOf: { "@id": entityIds.website },
   };
 
+  const faqSchema =
+    post.faq.length >= 2
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": `${siteUrl}/stillawake-times/${post.slug}#faq`,
+          mainEntity: post.faq.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: { "@type": "Answer", text: item.answer },
+          })),
+        }
+      : null;
+
+  const howToSchema = post.howTo
+    ? {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "@id": `${siteUrl}/stillawake-times/${post.slug}#howto`,
+        name: post.howTo.name,
+        isPartOf: { "@id": `${siteUrl}/stillawake-times/${post.slug}#article` },
+        step: post.howTo.steps.map((step, i) => ({
+          "@type": "HowToStep",
+          position: i + 1,
+          name: step.name,
+          text: step.text,
+        })),
+      }
+    : null;
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${siteUrl}/stillawake-times/${post.slug}#breadcrumb`,
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+      { "@type": "ListItem", position: 2, name: "StillAwake Times", item: `${siteUrl}/stillawake-times` },
+      { "@type": "ListItem", position: 3, name: post.title, item: `${siteUrl}/stillawake-times/${post.slug}` },
+    ],
+  };
+
   return (
     <main className="pt-28">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {howToSchema ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+        />
+      ) : null}
+      {faqSchema ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      ) : null}
       <article className="px-6 py-20">
         <div className="mx-auto max-w-7xl">
           <Link href="/stillawake-times" className="text-sm text-[#C7B9B9] hover:text-white">

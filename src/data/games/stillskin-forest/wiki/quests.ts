@@ -158,7 +158,7 @@ export const quests: WikiEntry[] = [
       "How to destroy the Heart of Stillskin: survive the guardian waves, sever all three veins (hold E for 3 s each), then get out before the Hollow caves in.",
     question: "How do you get the true ending in Stillskin Forest?",
     answer:
-      "Reach the Heart's cavern beyond the Root Gate. Entering wakes the Heart and starts waves of guardians every 7 seconds, with every fourth wave made of Brutes. Sever its three veins by holding E (Square on PlayStation) for three seconds on each. When the third vein is cut the Heart dies and every infected drops. Then the Hollow caves in: get out within 75 seconds. If anyone is still alive, you win: \"OUT ALIVE\".",
+      "Reach the Heart's cavern beyond the Root Gate. Entering wakes the Heart and starts waves of guardians every 7 seconds, with every fourth wave made of Brutes. Sever its three veins by holding E (Square on PlayStation) for three seconds on each. When the third vein is cut the Heart dies and every infected drops. The Hollow is then set to cave in, with 75 seconds to get out; surviving it wins the run (\"OUT ALIVE\").",
     facts: [["Veins", "3"], ["Sever", "Hold E for 3 s each"], ["Waves", "Every 7 s: 3, then 4, then 5 at most"], ["Every 4th wave", "Brutes"], ["Max guardians alive", "14"], ["Escape time", "75 s"]],
     sections: [
       {
@@ -180,7 +180,8 @@ export const quests: WikiEntry[] = [
         spoiler: true,
         blocks: [
           { type: "p", text: "Every infected drops and a banner reads \"The Heart is dead\": Stillskin will never wake again. This is the alternative to [the Rite of Stillness](@the-rite-of-stillness), which only puts the Hollow to sleep." },
-          { type: "p", text: "**Get out.** A few seconds later the Hollow starts to cave in. Anyone inside has 75 seconds, shown on a GET OUT countdown, to get back past the boulder while the ground shakes and rocks fall (each hit hurts). Anyone still inside when it comes down is buried. If anyone is still alive, the run is won: \"OUT ALIVE\". The win is paid at once and the run keeps going." },
+          { type: "p", text: "**Get out.** The game then starts a collapse: a GET OUT countdown gives anyone inside 75 seconds to get back past the boulder, with falling rocks that hurt. Anyone still inside at the end is buried. If anyone is still alive, the run is won (\"OUT ALIVE\"), the win is paid at once, and the run keeps going." },
+          { type: "callout", tone: "note", text: "The collapse and escape are in the published game, but we haven't confirmed them in a recorded playtest yet. This section will be updated once that test is done." },
         ],
       },
     ],

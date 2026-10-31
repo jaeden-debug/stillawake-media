@@ -80,12 +80,12 @@ Generated from the wiki registry. Do not edit by hand.
 | Story & Lore | The Hollow (Lore) | `/games/stillskin-forest/wiki/story/the-hollow-lore` | yes | 2026-10-31 |
 | Story & Lore | E. Hollis | `/games/stillskin-forest/wiki/story/e-hollis` | yes | 2026-10-31 |
 | Story & Lore | Dr. H. Vance | `/games/stillskin-forest/wiki/story/dr-h-vance` | yes | 2026-10-31 |
-| Story & Lore | The Four Relics | `/games/stillskin-forest/wiki/story/the-four-relics` | yes | 2026-10-30 |
+| Story & Lore | The Four Relics | `/games/stillskin-forest/wiki/story/the-four-relics` | yes | 2026-10-31 |
 | Story & Lore | The Sister's Rosary | `/games/stillskin-forest/wiki/story/sisters-rosary` | yes | 2026-10-31 |
 | Story & Lore | The Miner's Lantern | `/games/stillskin-forest/wiki/story/miners-lantern` | yes | 2026-10-31 |
 | Story & Lore | The Angel's Tear | `/games/stillskin-forest/wiki/story/angels-tear` | yes | 2026-10-31 |
 | Story & Lore | Dr. Vance's Ring | `/games/stillskin-forest/wiki/story/dr-vances-ring` | yes | 2026-10-31 |
-| Story & Lore | Notes and Tapes | `/games/stillskin-forest/wiki/story/notes-and-tapes` | yes | 2026-10-30 |
+| Story & Lore | Notes and Tapes | `/games/stillskin-forest/wiki/story/notes-and-tapes` | yes | 2026-10-31 |
 | Quests & Walkthroughs | Unlocking Blackthorn Asylum: The Admission Ledger | `/games/stillskin-forest/wiki/quests/blackthorn-admission-ledger` | no | 2026-10-31 |
 | Quests & Walkthroughs | The Rite of Stillness: Ritual Walkthrough | `/games/stillskin-forest/wiki/quests/the-rite-of-stillness` | no | 2026-10-30 |
 | Quests & Walkthroughs | Descent into the Hollow | `/games/stillskin-forest/wiki/quests/descent-into-the-hollow` | no | 2026-10-31 |
@@ -128,6 +128,7 @@ Generated from the wiki registry. Do not edit by hand.
 | Crouching and Takedowns | Takedowns and the crouch-walk cycle are built but were not yet confirmed in a recorded playtest. |
 | Doors and Building Barricades | Infected breaking planks on their own was not yet observed in a recorded playtest. |
 | Notes and Tapes | The location of every individual note is not yet documented. |
+| Notes and Tapes | A few newer notes are not listed here yet. |
 | Descent into the Hollow | The full descent has been verified solo; a two-player run of the cave has not been recorded yet. |
 | Death, Ghosts and the Rooftop Finale | Play Again and Return to Camp with several real clients in a live server have not been recorded yet. |
 | Persistent Expeditions: Saved Worlds and Crews | Crew joining a Day 20 world was tested in Studio with four players (owner restored, crew given the starter kit, a non-crew player refused); joining a world running on another live server has not been tested yet. |

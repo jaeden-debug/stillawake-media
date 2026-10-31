@@ -21,7 +21,7 @@ export const locations: WikiEntry[] = [
         heading: "What's here",
         blocks: [
           { type: "list", items: [
-            "Camping cabins and two sheds. Their loot leans toward tools: [hammers](@hammer) turn up here more than anywhere else, along with food and ammo. A shed can hold one of the two [jerry cans](@generators-and-jerry-cans) in play.",
+            "Camping cabins and two sheds. Their loot leans toward tools: [hammers](@hammer) turn up here more than anywhere else, along with food, ammo, the odd box of rifle rounds and [Gun Cleaning Kits](@gun-cleaning-kit). A shed can hold one of the two [jerry cans](@generators-and-jerry-cans) in play.",
             "The Abandoned House, with a couple of loot spots and a television. Walk up to the TV and the static cuts to green camcorder footage, with subtitles.",
             "Two watchtowers with climbable ladders.",
             "A lake and dock, lit by lanterns at night.",
@@ -33,12 +33,12 @@ export const locations: WikiEntry[] = [
         id: "routes",
         heading: "Routes out",
         blocks: [
-          { type: "p", text: "South through [the Forest Trail](@forest-trail) to [Stillwater](@stillwater). A squad starts a run spread across a few spawn points at the south edge of camp, by the trail." },
+          { type: "p", text: "South through [the Forest Trail](@forest-trail) to [Stillwater](@stillwater), or west along [the Ranger Station Trail](@ranger-station-trail) to [the Ranger Trader Station](@ranger-trader-station). A squad starts a run spread across a few spawn points at the south edge of camp, by the trail." },
         ],
       },
     ],
-    related: ["forest-trail", "stillwater", "how-to-play"],
-    sources: [SRC.playtest, SRC.world, SRC.notes30],
+    related: ["forest-trail", "ranger-station-trail", "stillwater", "how-to-play"],
+    sources: [SRC.playtest, SRC.world, SRC.notes30, SRC.publish31],
     aliases: ["camp", "spawn", "cabins", "lake", "dock", "watchtower"],
   },
   {
@@ -167,7 +167,7 @@ export const locations: WikiEntry[] = [
         id: "loot",
         heading: "Loot",
         blocks: [
-          { type: "p", text: "First aid kits are the most common find here, along with pistol ammo and snacks. Weapons found in the hospital roll a rarer tier more often than in town, and it is one of the few places a [jerry can](@generators-and-jerry-cans) can turn up. The roof has two stash spots with better odds." },
+          { type: "p", text: "Medical supplies are the main find here: first aid kits above all, along with pistol ammo and snacks. Since the 31 October update the hospital stocks more medicine and fewer weapons, and the weapons it does have roll a rarer tier more often than in town, and it is one of the few places a [jerry can](@generators-and-jerry-cans) can turn up. The roof has two stash spots with better odds." },
         ],
       },
       {
@@ -401,7 +401,7 @@ export const locations: WikiEntry[] = [
   {
     ...base,
     slug: "blackthorn-asylum",
-    lastVerified: "2026-10-28",
+    lastVerified: "2026-10-31",
     title: "Blackthorn Asylum",
     seoTitle: "Blackthorn Asylum in Stillskin Forest: How to Get In and What's Inside",
     description:
@@ -441,17 +441,24 @@ export const locations: WikiEntry[] = [
         spoiler: true,
         blocks: [
           { type: "list", items: [
-            "The [Freeze Device](@freeze-device), on the nurse-station counter: each survivor claims their own, once per run. Once you have yours it's gone from the counter for you only.",
-            "The Hunting Rifle case, in Dr. Vance's office: hold E to open it, then press E (Square) to claim your rifle. Each survivor gets one per run; losing it doesn't give another. Once you have yours, the rifle in the case is gone for you only.",
+            "The [Freeze Device](@freeze-device), on the nurse-station counter: each survivor claims their own, and the counter gives back your own device if you lose it. Once you have yours it's gone from the counter for you only.",
+            "The Hunting Rifle case, in Dr. Vance's office: hold E to open it, then press E (Square) to claim your rifle. Each survivor has their own. If you drop or lose yours, come back to the case and you get your own rifle back exactly as you left it (it never comes back freshly loaded); if yours broke, you can get a worn replacement once a day. Once you have yours, the rifle in the case is gone for you only.",
             "[Dr. Vance's Ring](@dr-vances-ring), in his office upstairs.",
             "The ritual circle in the cafeteria, where [the Rite of Stillness](@the-rite-of-stillness) is performed.",
             "Two tapes: the Night Nurse and the Records Room.",
           ] },
         ],
       },
+      {
+        id: "loot",
+        heading: "Loot",
+        blocks: [
+          { type: "p", text: "Blackthorn Asylum is the most dangerous place on the map, and since the 31 October update it has the best odds anywhere of rare and legendary weapons." },
+        ],
+      }
     ],
     related: ["blackthorn-admission-ledger", "graveyard", "chapel", "green-lake", "dr-h-vance"],
-    sources: [SRC.playtest, SRC.world],
+    sources: [SRC.playtest, SRC.world, SRC.publish31],
     aliases: ["asylum", "blackthorn", "blackthorn hill", "ritual circle", "cafeteria"],
   },
   {
@@ -528,6 +535,13 @@ export const locations: WikiEntry[] = [
           { type: "p", text: "A lantern-lit Crypt Trail leads to the arch, and a THE CRYPT CAVE title shows as you enter. A wooden stair also runs down from the chapel to the cave mouth. A note, \"Groundskeeper's Warning\", lies inside." },
         ],
       },
+      {
+        id: "loot",
+        heading: "Loot",
+        blocks: [
+          { type: "p", text: "Since the 31 October update the cave has loot spots that can hold rifle rounds and rare headlamp parts." },
+        ],
+      }
     ],
     related: ["chapel", "the-hollow", "miners-lantern", "descent-into-the-hollow"],
     sources: [SRC.playtest, SRC.notes30],
@@ -646,5 +660,99 @@ export const locations: WikiEntry[] = [
     related: ["stillwater", "houses-of-stillwater", "st-agnes-hospital", "pine-general-store"],
     sources: [SRC.playtest, SRC.world, SRC.notes30],
     aliases: ["secrets", "easter eggs", "hidden", "payphone", "mannequin", "dolls"],
+  },
+  {
+    ...base,
+    slug: "ranger-station-trail",
+    lastVerified: "2026-10-31",
+    title: "The Ranger Station Trail",
+    seoTitle: "The Ranger Station Trail in Stillskin Forest: Houses and Shed",
+    description:
+      "The Ranger Station Trail in Stillskin Forest runs west beyond the Campgrounds, past two abandoned houses and a loot shed, to the Ranger Trader Station.",
+    question: "Where is the Ranger Station Trail in Stillskin Forest?",
+    answer:
+      "The Ranger Station Trail starts at a sign beyond the Campgrounds and runs west, lit by lanterns, into a basin with two abandoned houses and a shed to search. It ends at the fenced Ranger Trader Station.",
+    sections: [
+      {
+        id: "what-is-here",
+        heading: "What's here",
+        blocks: [
+          { type: "list", items: [
+            "A trail sign, \"RANGER STATION TRAIL\", beyond the Campgrounds, and lanterns along the way. One of them flickers.",
+            "Two abandoned houses: a two-storey house and a single-storey one with a collapsed porch. Their front doors are torn off and the lights are dead.",
+            "A shed with loot to search.",
+            "At the end of the trail, [the Ranger Trader Station](@ranger-trader-station).",
+          ] },
+          { type: "p", text: "The basin is new in the 31 October update and still getting its finishing touches, so expect small changes. Finding it for the first time counts toward an achievement." },
+        ],
+      },
+    ],
+    related: ["campgrounds", "ranger-trader-station", "forest-trail"],
+    sources: [SRC.publish31],
+    aliases: ["ranger station trail", "abandoned houses", "west basin", "shed"],
+  },
+  {
+    ...base,
+    slug: "ranger-trader-station",
+    lastVerified: "2026-10-31",
+    title: "The Ranger Trader Station",
+    seoTitle: "The Ranger Trader Station in Stillskin Forest: Trader and Safe Zone",
+    description:
+      "The Ranger Trader Station in Stillskin Forest: a fenced safe zone where Mortimer sells survival supplies for Embers, with 15% off everything at night.",
+    question: "What does the Ranger Trader sell in Stillskin Forest?",
+    answer:
+      "Inside the fenced Ranger Trader Station, Mortimer sells survival supplies for Embers: first aid, food, batteries, gun cleaning and repair kits, lanterns and ammo. At night everything is 15% off. The station is a safe zone: inside the fence the infected can't hurt you.",
+    sections: [
+      {
+        id: "trading",
+        heading: "Trading",
+        blocks: [
+          { type: "p", text: "Walk up to the counter and use the Trade prompt to open the trade screen. Prices are in Embers only; the trader never takes Robux. Trading only works inside the station's fence." },
+          { type: "p", text: "**Night Trader Special.** At night everything costs 15% less. The trade screen shows the regular price struck through next to the night price." },
+        ],
+      },
+      {
+        id: "safe-zone",
+        heading: "The safe zone",
+        blocks: [
+          { type: "p", text: "Inside the fence you can't be hurt by the infected, and they don't spawn near the station. A chase ends at the fence, so it's a place to catch your breath. Step back outside and the forest's rules apply again." },
+        ],
+      },
+      {
+        id: "getting-there",
+        heading: "Getting there",
+        blocks: [
+          { type: "p", text: "Follow [the Ranger Station Trail](@ranger-station-trail) west from the [Campgrounds](@campgrounds). The gate is on the east side of the fence." },
+        ],
+      },
+    ],
+    related: ["ranger-station-trail", "campgrounds", "first-aid-kit", "gun-repair-kit"],
+    sources: [SRC.publish31],
+    aliases: ["trader", "ranger trader", "trader station", "mortimer", "night trader special", "safe zone", "shop"],
+  },
+  {
+    ...base,
+    slug: "lost-camp",
+    lastVerified: "2026-10-31",
+    title: "The Lost Camp",
+    seoTitle: "The Lost Camp in Stillskin Forest: Location and Loot",
+    description:
+      "The Lost Camp in Stillskin Forest: abandoned log lean-tos on a fork off the trail behind the chapel, stocked well enough for a full crew of four.",
+    question: "Where is the Lost Camp in Stillskin Forest?",
+    answer:
+      "The Lost Camp is a cluster of log lean-tos around a cold fire pit, on a fork off the trail that runs into the woods behind the chapel. It is stocked well enough for a full crew of four, including rifle rounds.",
+    sections: [
+      {
+        id: "what-is-here",
+        heading: "What's here",
+        blocks: [
+          { type: "p", text: "Three lean-tos and a fire pit in a ring of trees, close to the trail. Its loot spots are stocked with a crew of four in mind, and rifle rounds can turn up here. The first time you walk in, the place announces itself on screen." },
+          { type: "p", text: "The trail behind [the chapel](@chapel) is new in the 31 October update and its far end is still being reworked, so the route may change." },
+        ],
+      },
+    ],
+    related: ["chapel", "crypt-cave", "graveyard"],
+    sources: [SRC.publish31],
+    aliases: ["lost camp", "lean-to", "camp behind the chapel"],
   },
 ];

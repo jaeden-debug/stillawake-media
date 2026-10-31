@@ -59,6 +59,7 @@ Projects whose canonical page lives elsewhere (cards link there, and `/our-work/
 | `/games/stillskin-forest/wiki/weapons/shotgun` | Shotgun |
 | `/games/stillskin-forest/wiki/weapons/freeze-device` | Freeze Device |
 | `/games/stillskin-forest/wiki/items/gun-repair-kit` | Gun Repair Kit |
+| `/games/stillskin-forest/wiki/items/gun-cleaning-kit` | Gun Cleaning Kit |
 | `/games/stillskin-forest/wiki/items/food` | Food: Bag of Chips, Canned Beans and Energy Bar |
 | `/games/stillskin-forest/wiki/items/first-aid-kit` | First Aid Kit |
 | `/games/stillskin-forest/wiki/items/ammunition` | Ammunition: Pistol Ammo, Shells and Rifle Rounds |
@@ -103,6 +104,9 @@ Projects whose canonical page lives elsewhere (cards link there, and `/our-work/
 | `/games/stillskin-forest/wiki/locations/green-lake` | Green Lake |
 | `/games/stillskin-forest/wiki/locations/the-hollow` | The Hollow (Location) |
 | `/games/stillskin-forest/wiki/locations/secrets-and-easter-eggs` | Secrets and Easter Eggs |
+| `/games/stillskin-forest/wiki/locations/ranger-station-trail` | The Ranger Station Trail |
+| `/games/stillskin-forest/wiki/locations/ranger-trader-station` | The Ranger Trader Station |
+| `/games/stillskin-forest/wiki/locations/lost-camp` | The Lost Camp |
 | `/games/stillskin-forest/wiki/special-nights/special-nights-overview` | Special Nights Explained |
 | `/games/stillskin-forest/wiki/special-nights/blood-moon` | Blood Moon |
 | `/games/stillskin-forest/wiki/special-nights/heavy-fog` | Heavy Fog |
@@ -124,7 +128,7 @@ Projects whose canonical page lives elsewhere (cards link there, and `/our-work/
 | `/games/stillskin-forest/wiki/quests/the-heart-of-stillskin` | The Heart of Stillskin |
 | `/games/stillskin-forest/wiki/multiplayer/co-op-survival` | Co-op Survival: Revives, Pings and Sharing |
 | `/games/stillskin-forest/wiki/multiplayer/death-ghosts-and-the-finale` | Death, Ghosts and the Rooftop Finale |
-| `/games/stillskin-forest/wiki/multiplayer/persistent-expeditions` | Persistent Expeditions: Saved Worlds and Crews |
+| `/games/stillskin-forest/wiki/multiplayer/persistent-expeditions` | Saved Sessions: Saving Your Run and Playing With Friends |
 | `/games/stillskin-forest/wiki/updates/development-log` | Stillskin Forest Development Log |
 | `/games/stillskin-forest/wiki/locations/blackpine-airfield` | Blackpine Airfield |
 | `/games/stillskin-forest/wiki/enemies/soldier` | Soldier |

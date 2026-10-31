@@ -17,6 +17,15 @@ const meleeTiers: WikiSection = {
   ],
 };
 
+const chargedAttack: WikiSection = {
+  id: "charged-attack",
+  heading: "Charged attack",
+  blocks: [
+    { type: "p", text: "Hold the attack button (click or R2) to wind up: you'll see the arm drawn back. Let go to strike. A full wind-up (about a second) hits twice as hard and knocks the infected back, but you take longer to recover before the next swing. A quick tap swings as normal, on release. Put the weapon away mid-wind-up and nothing happens." },
+    { type: "p", text: "Swings, charged or not, don't land through walls or planks. Hitting a teammate only shoves them: nobody on your team ever loses health to you." },
+  ],
+};
+
 const gunTiers: WikiSection = {
   id: "upgrade-tiers",
   heading: "Upgrade tiers",
@@ -41,18 +50,20 @@ export const weapons: WikiEntry[] = [
       "Every Stillskin Forest weapon side by side: damage, attack speed, range, magazine, reload and durability for the bat, machete, hammer, crowbar, pistol, shotgun.",
     question: "What is the best weapon in Stillskin Forest?",
     answer:
-      "There is no single best weapon. The Machete deals the most damage per swing (40) and the Hammer knocks infected furthest; the Pistol is the accurate long-range option (34 damage, 12-round magazine); the Shotgun fires six 18-damage pellets and wins any fight at close range, but it is the loudest thing you can do. Most survivors carry one melee weapon and one gun.",
+      "There is no single best weapon. The Machete deals the most damage per swing (40, or 80 with a full charged wind-up) and the Hammer knocks infected furthest; the Pistol is the accurate long-range option (34 damage, 12-round magazine); the Shotgun fires six 18-damage pellets and wins any fight at close range, but it is the loudest thing you can do. Most survivors carry one melee weapon and one gun.",
     sections: [
       {
         id: "melee",
         heading: "Melee weapons",
         blocks: [
-          { type: "table", caption: "Melee weapon base stats (Tier I)", head: ["Weapon", "Damage", "Time between swings", "Range", "Knockback", "Durability"], rows: [
-            ["[Baseball Bat](@baseball-bat)", "25", "0.55 s", "5.5", "30", "120"],
-            ["[Machete](@machete)", "40", "0.6 s", "5.5", "22", "110"],
-            ["[Hammer](@hammer)", "32", "0.75 s", "5", "48", "480"],
-            ["[Crowbar](@crowbar)", "18", "0.5 s", "5", "20", "140"],
+          { type: "table", caption: "Melee weapon base stats (Tier I)", head: ["Weapon", "Damage", "Charged hit", "Time between swings", "Range", "Knockback", "Durability"], rows: [
+            ["[Baseball Bat](@baseball-bat)", "25", "50", "0.55 s", "5.5", "30", "120"],
+            ["[Machete](@machete)", "40", "80", "0.6 s", "5.5", "22", "110"],
+            ["[Hammer](@hammer)", "32", "No wind-up", "0.75 s", "5", "48", "480"],
+            ["[Crowbar](@crowbar)", "18", "36", "0.5 s", "5", "20", "140"],
+            ["[Fists](@fists)", "17", "34", "0.55 s", "4.5", "10", "Never wear out"],
           ] },
+          { type: "p", text: "**Charged attacks.** Hold the attack button with a melee weapon or empty hands to wind up, then let go: a full wind-up (about a second) hits twice as hard and knocks the infected back, at the cost of a slower recovery. Quick taps swing and punch as normal. The [Hammer](@hammer) has no wind-up, because holding it builds instead." },
           { type: "p", text: "Melee is quiet: a swing is heard by infected within 25 studs, compared with 90 for a pistol shot. A crouched hit from behind on an infected that hasn't noticed you is an instant [takedown](@crouching-and-takedowns)." },
         ],
       },
@@ -66,7 +77,7 @@ export const weapons: WikiEntry[] = [
             ["[Mini AK](@mini-ak)", "26", "1", "20", "2.4 s", "0.12 s (automatic)", "320", "350", "[Rifle Rounds](@ammunition)"],
           ] },
           { type: "p", text: "A headshot from any gun, or a single shotgun pellet to the head, kills an infected outright. The exception is a helmeted [Soldier](@soldier), whose helmet absorbs the first headshot. See [Aiming and reloading](@aiming-and-reloading)." },
-          { type: "p", text: "Pistols and shotguns turn up in ordinary scavenging: houses, the store, the hospital, the airfield, stashes and night caches, and now and then on the trail. They are still rarer than food and melee weapons. A [Gun Repair Kit](@gun-repair-kit) restores a worn gun to full." },
+          { type: "p", text: "Pistols and shotguns turn up in ordinary scavenging: houses, the store, the hospital, the airfield, stashes and night caches, and now and then on the trail. They are still rarer than food and melee weapons. A [Gun Repair Kit](@gun-repair-kit) restores a worn gun to full; a [Gun Cleaning Kit](@gun-cleaning-kit) gives back about a third of its condition. A gun you drop keeps its condition, so picking it up again gives you the same gun, just with an empty magazine (the rounds stayed with you)." },
         ],
       },
       {
@@ -78,10 +89,11 @@ export const weapons: WikiEntry[] = [
             ["Machete", "3", "2", "2", "8"],
             ["Hammer", "4", "2", "3", "10"],
             ["Crowbar", "6", "4", "4", "18"],
+            ["Fists", "6", "4", "5", "19"],
             ["Pistol (body)", "3", "2", "3", "10"],
             ["Any gun (head)", "1", "1", "1", "1"],
           ] },
-          { type: "callout", tone: "note", text: "These are worked out from base damage and enemy health. They ignore upgrade tiers. A headshot kills any of these outright. A full shotgun blast at close range (6 × 18 = 108) drops a Walker if every pellet lands." },
+          { type: "callout", tone: "note", text: "These are worked out from base damage and enemy health. They ignore upgrade tiers and charged attacks, which roughly halve the count. A headshot kills any of these outright. A full shotgun blast at close range (6 × 18 = 108) drops a Walker if every pellet lands." },
         ],
       },
       {
@@ -98,32 +110,56 @@ export const weapons: WikiEntry[] = [
       },
     ],
     related: ["baseball-bat", "machete", "pistol", "shotgun", "fists", "enemy-comparison"],
-    sources: [SRC.items, SRC.config, SRC.playtest, SRC.notes30],
-    aliases: ["weapons", "best weapon", "weapon tier list", "guns", "melee", "damage"],
+    sources: [SRC.items, SRC.config, SRC.playtest, SRC.notes30, SRC.publish31],
+    aliases: ["weapons", "best weapon", "weapon tier list", "guns", "melee", "damage", "charged attack", "heavy attack"],
   },
   {
     ...base,
     slug: "fists",
     lastVerified: "2026-10-31",
     title: "Fists",
-    seoTitle: "Punching in Stillskin Forest: Temporarily Unavailable",
+    seoTitle: "Punching in Stillskin Forest: Fists, Charged Punches and Damage",
     description:
-      "Can you punch zombies in Stillskin Forest? Not right now: punching with empty hands is temporarily unavailable while it is being fixed.",
+      "Yes, you can punch zombies in Stillskin Forest. With empty hands, click or R2 to punch for 17, or hold to wind up a charged punch for 34. A last resort.",
     question: "Can you punch zombies in Stillskin Forest?",
     answer:
-      "Not at the moment. Punching with empty hands is temporarily unavailable in the live game while it is being fixed. Until it returns, carry a melee weapon: the Baseball Bat, Machete, Hammer or Crowbar all work with no ammunition.",
-    facts: [["Status", "Temporarily unavailable"], ["Use instead", "Any melee weapon"]],
+      "Yes. With nothing in your hands, click (R2 on controller) to punch for 17 damage, or hold to wind up and let go for a charged punch that hits twice as hard (34) and knocks the infected back. It's a last resort: weaker than any weapon, and it takes six punches to drop a Walker.",
+    facts: [
+      ["Type", "Unarmed"], ["Damage", "17"], ["Charged punch", "34, with knockback"], ["Time between punches", "0.55 s"],
+      ["Range", "4.5 studs"], ["Knockback", "10"], ["Durability", "Never wears out"], ["Controls", "Click / R2 with empty hands"],
+    ],
     sections: [
       {
-        id: "status",
-        heading: "Why punching doesn't work right now",
+        id: "how-to-punch",
+        heading: "How to punch",
         blocks: [
-          { type: "p", text: "Clicking or pressing R2 with nothing in your hands does not punch in the current published build. The developers are fixing it, and this page will be updated with the new details when the fix goes live." },
+          { type: "p", text: "Put away whatever you're holding so your hands are empty, then click (R2 on controller). A quick tap throws a jab: 17 damage, a little knockback, and about half a second before the next one." },
+          { type: "p", text: "Hold the button instead to wind up: you'll see the arm drawn back. Let go to strike. A full wind-up (about a second) hits twice as hard (34) and knocks the infected back, but you take longer to recover. See [Charged attacks](@weapons-compared)." },
+        ],
+      },
+      {
+        id: "how-strong",
+        heading: "How strong it is",
+        blocks: [
+          { type: "table", caption: "Punches needed at base damage (derived from damage and health)", head: ["Infected", "Jabs", "Charged punches"], rows: [
+            ["[Walker](@walker) (100)", "6", "3"],
+            ["[Runner](@runner) (60)", "4", "2"],
+            ["[Screamer](@screamer) (70)", "5", "3"],
+            ["[Brute](@brute) (320)", "19", "10"],
+          ] },
+          { type: "p", text: "Punches are quiet like any melee hit, never run out and never wear out, but they're weaker and shorter-reaching than every weapon. They don't land through walls or planks, and a window pane takes several punches to break where any melee weapon breaks it in one. You can't punch while hiding." },
+        ],
+      },
+      {
+        id: "teammates",
+        heading: "Punching a teammate",
+        blocks: [
+          { type: "p", text: "Punching a teammate only gives them a shove. Nobody on your team ever loses health to you, so there's no way to knock a friend down." },
         ],
       },
       {
         id: "instead",
-        heading: "What to use instead",
+        heading: "Better options",
         blocks: [
           { type: "list", items: [
             "**[Baseball Bat](@baseball-bat):** the common starter melee weapon, with good knockback.",
@@ -131,13 +167,13 @@ export const weapons: WikiEntry[] = [
             "**[Hammer](@hammer):** heavy knockback, and it nails planks for building.",
             "**[Crowbar](@crowbar):** fast and weak, and it takes planks down.",
           ] },
-          { type: "p", text: "Any melee weapon or bullet breaks a window pane in one hit. See [Shooting through cover](@shooting-through-cover) and [Weapons compared](@weapons-compared)." },
+          { type: "p", text: "See [Weapons compared](@weapons-compared) and [Shooting through cover](@shooting-through-cover)." },
         ],
       },
     ],
     related: ["weapons-compared", "baseball-bat", "machete", "crouching-and-takedowns"],
-    sources: [SRC.notes30],
-    aliases: ["punch", "fist", "unarmed", "bare hands", "melee without weapon"],
+    sources: [SRC.notes30, SRC.publish31],
+    aliases: ["punch", "fist", "unarmed", "bare hands", "melee without weapon", "charged punch"],
   },
   {
     ...base,
@@ -180,13 +216,15 @@ export const weapons: WikiEntry[] = [
             "Swing, step back, swing. Knockback plus a step keeps you out of a Walker's reach.",
             "Crouch and hit an unaware infected from behind for a one-blow [takedown](@crouching-and-takedowns) (not a Brute).",
             "Swinging into a wall wears the bat by 1. Every landed swing and every hit you take while holding it wears it too. See [Durability](@durability-and-wear).",
+            "A full charged swing hits for 50: two of them drop a Walker.",
           ] },
         ],
       },
+      chargedAttack,
       meleeTiers,
     ],
     related: ["machete", "hammer", "weapons-compared", "walker"],
-    sources: [SRC.items, SRC.config, SRC.playtest, SRC.notes30],
+    sources: [SRC.items, SRC.config, SRC.playtest, SRC.notes30, SRC.publish31],
     aliases: ["bat"],
     gaps: ["Exact loot locations and drop rates not published."],
   },
@@ -219,20 +257,21 @@ export const weapons: WikiEntry[] = [
         blocks: [
           { type: "list", items: [
             "**Strengths:** highest melee damage, quiet, no ammunition.",
-            "**Weaknesses:** less knockback than the bat or hammer, so infected stay closer after each hit.",
+            "**Weaknesses:** less knockback than the bat or hammer, so infected stay closer after each hit. A charged swing (80 damage) adds knockback when you need room.",
           ] },
         ],
       },
+      chargedAttack,
       meleeTiers,
     ],
     related: ["baseball-bat", "hammer", "weapons-compared"],
-    sources: [SRC.items, SRC.config, SRC.notes30],
+    sources: [SRC.items, SRC.config, SRC.notes30, SRC.publish31],
     aliases: ["knife", "blade"],
   },
   {
     ...base,
     slug: "hammer",
-    lastVerified: "2026-10-30",
+    lastVerified: "2026-10-31",
     title: "Hammer",
     seoTitle: "Hammer in Stillskin Forest: Damage, Building and Tips",
     description:
@@ -250,19 +289,20 @@ export const weapons: WikiEntry[] = [
         heading: "Overview",
         blocks: [
           { type: "p", text: "Slow, but it staggers what it hits and sends it flying: the Hammer has the strongest knockback of any weapon. It is also the only way to build. See [Doors and building](@doors-and-building)." },
+          { type: "p", text: "**No charged attack.** Other melee weapons wind up when you hold the button, but holding with the Hammer is how you nail planks, so it only ever swings on a quick tap." },
         ],
       },
       {
         id: "where-to-find",
         heading: "Where to find it",
         blocks: [
-          { type: "p", text: "Hammers are easy to find, above all in the campground cabins, the campsite sheds and the ranger station, then houses and the store. On the first two days of a run there is always at least one lying around for each survivor (up to four), and one that's taken is replaced. It lasts a long time: 480 durability, three times the old value. In the current build the lobby Outfitter also offers one as a one-match supply for 60 Embers." },
+          { type: "p", text: "Hammers are easy to find, above all in the campground cabins, the campsite sheds and the ranger station, then houses and the store. On the first two days of a run there is always at least one lying around for each survivor (up to four), and one that's taken is replaced. It lasts a long time: 480 durability, three times the old value. The lobby shop also sells one as a supply for a run. Like any supply bought with Embers or Robux, once it's in the run you can hand it to or drop it for your crew. Hammers bought before the 31 Oct 2026 update stay with the player who bought them." },
         ],
       },
       meleeTiers,
     ],
     related: ["crowbar", "doors-and-building", "weapons-compared"],
-    sources: [SRC.items, SRC.config, SRC.playtest],
+    sources: [SRC.items, SRC.config, SRC.playtest, SRC.publish31],
     aliases: ["build", "builder"],
   },
   {
@@ -285,13 +325,14 @@ export const weapons: WikiEntry[] = [
         id: "overview",
         heading: "Overview",
         blocks: [
-          { type: "p", text: "The Crowbar pairs with the [Hammer](@hammer): one builds, the other unbuilds. Against the infected it is the weakest melee option (six hits on a Walker), so treat it as a tool you can fight with in a pinch." },
+          { type: "p", text: "The Crowbar pairs with the [Hammer](@hammer): one builds, the other unbuilds. Against the infected it is the weakest melee option (six hits on a Walker), so treat it as a tool you can fight with in a pinch. A full charged swing (36) halves that to three." },
         ],
       },
+      chargedAttack,
       meleeTiers,
     ],
     related: ["hammer", "doors-and-building", "weapons-compared"],
-    sources: [SRC.items, SRC.config, SRC.playtest, SRC.notes30],
+    sources: [SRC.items, SRC.config, SRC.playtest, SRC.notes30, SRC.publish31],
     aliases: ["pry bar"],
   },
   {
@@ -383,14 +424,14 @@ export const weapons: WikiEntry[] = [
   {
     ...base,
     slug: "freeze-device",
-    lastVerified: "2026-10-29",
+    lastVerified: "2026-10-31",
     title: "Freeze Device",
     seoTitle: "Freeze Device in Stillskin Forest: How to Get It and How It Works",
     description:
       "The Freeze Device in Stillskin Forest freezes the infected in front of you for 10 seconds (Brutes 6) and takes a quarter of their health. Where to claim it.",
     question: "What does the Freeze Device do?",
     answer:
-      "The Freeze Device is a rewired signal remote that throws a cone of cold in the direction you aim. Every infected in that cone, up to 42 studs away and in clear sight, freezes for 10 seconds (a Brute for 6) and loses a quarter of its maximum health. It recharges in 5 seconds and never wears out. Each survivor can claim one, once per server, from the nurse-station counter in Blackthorn Asylum.",
+      "The Freeze Device is a rewired signal remote that throws a cone of cold in the direction you aim. Every infected in that cone, up to 42 studs away and in clear sight, freezes for 10 seconds (a Brute for 6) and loses a quarter of its maximum health. It recharges in 5 seconds and never wears out. Each survivor claims their own from the nurse-station counter in Blackthorn Asylum, and can go back for it if it's dropped or lost.",
     facts: [
       ["Type", "Gadget"], ["Range", "42 studs, in front of you"], ["Freeze", "10 s (Brutes 6 s)"], ["Damage", "25% of max health"],
       ["Recharge", "5 s"], ["Durability", "Never wears out"], ["Rarity", "Legendary"], ["Location", "Blackthorn Asylum nurse station"],
@@ -403,8 +444,9 @@ export const weapons: WikiEntry[] = [
           { type: "p", text: "Once [Blackthorn Asylum](@blackthorn-asylum) is open and its residents wake, the Freeze Device sits on the nurse-station counter. Walk up and press E (Square on controller) to claim it." },
           { type: "list", items: [
             "Every survivor in the server can claim their own. One player taking theirs doesn't take anyone else's.",
-            "You get one per server. Dropping it, losing it, dying, rejoining or handing it to someone never gives you another, so look after it.",
-            "A dropped Freeze Device is an ordinary item anyone can pick up.",
+            "It stays yours. If you drop or lose it, go back to the counter and you get your own one back, exactly as you left it.",
+            "If a teammate is carrying yours, or it's packed in a backpack, the counter won't give you another; it tells you where yours is.",
+            "If it's gone for good, the counter gives you a replacement, at most once per in-game day.",
           ] },
         ],
       },
@@ -426,7 +468,7 @@ export const weapons: WikiEntry[] = [
       },
     ],
     related: ["blackthorn-asylum", "the-rite-of-stillness", "brute", "weapons-compared"],
-    sources: [SRC.items28, SRC.config28, SRC.playtest28],
+    sources: [SRC.items28, SRC.config28, SRC.playtest28, SRC.publish31],
     aliases: ["freeze", "freeze gun", "signal remote", "remote", "tv remote", "gadget", "ice gun"],
     gaps: ["Performance with a very large herd and on phones has not been measured. Its sounds have not been reviewed by the developer yet."],
   },

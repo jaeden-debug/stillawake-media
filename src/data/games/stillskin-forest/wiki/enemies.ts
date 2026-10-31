@@ -13,7 +13,7 @@ export const enemies: WikiEntry[] = [
   {
     ...base,
     slug: "enemy-comparison",
-    lastVerified: "2026-10-27",
+    lastVerified: "2026-10-31",
     title: "Stillskin Forest Enemies Compared",
     seoTitle: "Stillskin Forest Enemies: Walker, Runner, Screamer, Brute and Watcher",
     description:
@@ -35,6 +35,7 @@ export const enemies: WikiEntry[] = [
             ["[Soldier](@soldier)", "130", "20.5", "11.5", "1.9 s", "Blackpine Airfield only", "—"],
           ] },
           { type: "p", text: "Spawn weight is relative: of every 104 infected the director rolls once all four types are unlocked, about 70 are Walkers. Special nights change the mix; a [Blood Moon](@blood-moon) adds far more Runners and Brutes." },
+          { type: "p", text: "How many: up to 28 roam the forest at night, and no more than 40 are ever alive at once across the whole map. Scripted events like the [ritual siege](@the-rite-of-stillness) keep their own numbers. See [Day and night cycle](@day-night-cycle)." },
           configNote,
         ],
       },
@@ -57,7 +58,7 @@ export const enemies: WikiEntry[] = [
       },
     ],
     related: ["walker", "runner", "screamer", "brute", "watcher", "soldier", "detection-and-noise", "weather"],
-    sources: [SRC.config, SRC.playtest],
+    sources: [SRC.config, SRC.playtest, SRC.publish31],
     aliases: ["zombies", "monsters", "infected", "enemy list", "all enemies", "zombie types"],
   },
   {

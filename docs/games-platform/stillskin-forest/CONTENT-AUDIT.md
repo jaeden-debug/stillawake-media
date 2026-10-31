@@ -2,7 +2,7 @@
 
 Generated from the wiki registry. Do not edit by hand.
 
-- Published (verified_live): **89** articles across 11 categories
+- Published (verified_live): **93** articles across 11 categories
 - Not published: **8** (planned, unverified or deprecated)
 - Articles with recorded gaps: **25**
 - Last verified: 2026-10-25
@@ -21,39 +21,40 @@ Generated from the wiki registry. Do not edit by hand.
 | Weapons | Fists | `/games/stillskin-forest/wiki/weapons/fists` | no | 2026-10-31 |
 | Weapons | Baseball Bat | `/games/stillskin-forest/wiki/weapons/baseball-bat` | no | 2026-10-31 |
 | Weapons | Machete | `/games/stillskin-forest/wiki/weapons/machete` | no | 2026-10-31 |
-| Weapons | Hammer | `/games/stillskin-forest/wiki/weapons/hammer` | no | 2026-10-30 |
+| Weapons | Hammer | `/games/stillskin-forest/wiki/weapons/hammer` | no | 2026-10-31 |
 | Weapons | Crowbar | `/games/stillskin-forest/wiki/weapons/crowbar` | no | 2026-10-31 |
 | Weapons | Pistol | `/games/stillskin-forest/wiki/weapons/pistol` | no | 2026-10-30 |
 | Weapons | Shotgun | `/games/stillskin-forest/wiki/weapons/shotgun` | no | 2026-10-30 |
-| Weapons | Freeze Device | `/games/stillskin-forest/wiki/weapons/freeze-device` | no | 2026-10-29 |
-| Items & Equipment | Gun Repair Kit | `/games/stillskin-forest/wiki/items/gun-repair-kit` | no | 2026-10-28 |
+| Weapons | Freeze Device | `/games/stillskin-forest/wiki/weapons/freeze-device` | no | 2026-10-31 |
+| Items & Equipment | Gun Repair Kit | `/games/stillskin-forest/wiki/items/gun-repair-kit` | no | 2026-10-31 |
+| Items & Equipment | Gun Cleaning Kit | `/games/stillskin-forest/wiki/items/gun-cleaning-kit` | no | 2026-10-31 |
 | Items & Equipment | Food: Bag of Chips, Canned Beans and Energy Bar | `/games/stillskin-forest/wiki/items/food` | no | 2026-10-31 |
 | Items & Equipment | First Aid Kit | `/games/stillskin-forest/wiki/items/first-aid-kit` | no | 2026-10-28 |
-| Items & Equipment | Ammunition: Pistol Ammo, Shells and Rifle Rounds | `/games/stillskin-forest/wiki/items/ammunition` | no | 2026-10-29 |
+| Items & Equipment | Ammunition: Pistol Ammo, Shells and Rifle Rounds | `/games/stillskin-forest/wiki/items/ammunition` | no | 2026-10-31 |
 | Items & Equipment | Headlamp | `/games/stillskin-forest/wiki/items/headlamp` | no | 2026-10-30 |
 | Items & Equipment | Headlamp Upgrades and Batteries | `/games/stillskin-forest/wiki/items/headlamp-upgrades` | no | 2026-10-27 |
-| Items & Equipment | Lantern | `/games/stillskin-forest/wiki/items/lantern` | no | 2026-10-28 |
-| Enemies | Stillskin Forest Enemies Compared | `/games/stillskin-forest/wiki/enemies/enemy-comparison` | no | 2026-10-27 |
+| Items & Equipment | Lantern | `/games/stillskin-forest/wiki/items/lantern` | no | 2026-10-31 |
+| Enemies | Stillskin Forest Enemies Compared | `/games/stillskin-forest/wiki/enemies/enemy-comparison` | no | 2026-10-31 |
 | Enemies | Walker | `/games/stillskin-forest/wiki/enemies/walker` | no | 2026-10-31 |
 | Enemies | Runner | `/games/stillskin-forest/wiki/enemies/runner` | no | 2026-10-31 |
 | Enemies | Screamer | `/games/stillskin-forest/wiki/enemies/screamer` | no | 2026-10-31 |
 | Enemies | Brute | `/games/stillskin-forest/wiki/enemies/brute` | no | 2026-10-31 |
 | Enemies | The Watcher | `/games/stillskin-forest/wiki/enemies/watcher` | no | 2026-10-31 |
-| Survival Mechanics | Day and Night Cycle | `/games/stillskin-forest/wiki/mechanics/day-night-cycle` | no | 2026-10-29 |
+| Survival Mechanics | Day and Night Cycle | `/games/stillskin-forest/wiki/mechanics/day-night-cycle` | no | 2026-10-31 |
 | Survival Mechanics | Stamina and Sprinting | `/games/stillskin-forest/wiki/mechanics/stamina-and-sprinting` | no | 2026-10-31 |
 | Survival Mechanics | Detection, Noise and Pursuit | `/games/stillskin-forest/wiki/mechanics/detection-and-noise` | no | 2026-10-29 |
 | Survival Mechanics | Hiding | `/games/stillskin-forest/wiki/mechanics/hiding` | no | 2026-10-29 |
 | Survival Mechanics | The Dread Encounter | `/games/stillskin-forest/wiki/mechanics/the-dread-encounter` | no | 2026-10-29 |
 | Survival Mechanics | Health, Damage and Healing | `/games/stillskin-forest/wiki/mechanics/health-and-healing` | no | 2026-10-31 |
 | Survival Mechanics | Downed and Revive | `/games/stillskin-forest/wiki/mechanics/downed-and-revive` | no | 2026-10-31 |
-| Survival Mechanics | Inventory and Hotbar | `/games/stillskin-forest/wiki/mechanics/inventory-and-hotbar` | no | 2026-10-29 |
-| Survival Mechanics | Aiming, Headshots and Reloading | `/games/stillskin-forest/wiki/mechanics/aiming-and-reloading` | no | 2026-10-30 |
-| Survival Mechanics | Shooting Through Doors, Windows and Glass | `/games/stillskin-forest/wiki/mechanics/shooting-through-cover` | no | 2026-10-28 |
+| Survival Mechanics | Inventory and Hotbar | `/games/stillskin-forest/wiki/mechanics/inventory-and-hotbar` | no | 2026-10-31 |
+| Survival Mechanics | Aiming, Headshots and Reloading | `/games/stillskin-forest/wiki/mechanics/aiming-and-reloading` | no | 2026-10-31 |
+| Survival Mechanics | Shooting Through Doors, Windows and Glass | `/games/stillskin-forest/wiki/mechanics/shooting-through-cover` | no | 2026-10-31 |
 | Survival Mechanics | Weather: Rain, Storms and Puddles | `/games/stillskin-forest/wiki/mechanics/weather` | no | 2026-10-27 |
 | Survival Mechanics | Climbing, Jumping and Ladders | `/games/stillskin-forest/wiki/mechanics/climbing-and-ladders` | no | 2026-10-31 |
 | Survival Mechanics | Crouching and Takedowns | `/games/stillskin-forest/wiki/mechanics/crouching-and-takedowns` | no | 2026-10-31 |
 | Survival Mechanics | Doors and Building Barricades | `/games/stillskin-forest/wiki/mechanics/doors-and-building` | no | 2026-10-27 |
-| Survival Mechanics | Durability and Wear | `/games/stillskin-forest/wiki/mechanics/durability-and-wear` | no | 2026-10-30 |
+| Survival Mechanics | Durability and Wear | `/games/stillskin-forest/wiki/mechanics/durability-and-wear` | no | 2026-10-31 |
 | Locations | The Campgrounds | `/games/stillskin-forest/wiki/locations/campgrounds` | no | 2026-10-31 |
 | Locations | The Forest Trail | `/games/stillskin-forest/wiki/locations/forest-trail` | no | 2026-10-27 |
 | Locations | Stillwater | `/games/stillskin-forest/wiki/locations/stillwater` | no | 2026-10-31 |
@@ -64,13 +65,16 @@ Generated from the wiki registry. Do not edit by hand.
 | Locations | The Houses of Stillwater | `/games/stillskin-forest/wiki/locations/houses-of-stillwater` | no | 2026-10-31 |
 | Locations | Memorial Park | `/games/stillskin-forest/wiki/locations/memorial-park` | no | 2026-10-31 |
 | Locations | The Storm Drain | `/games/stillskin-forest/wiki/locations/storm-drain` | no | 2026-10-31 |
-| Locations | Blackthorn Asylum | `/games/stillskin-forest/wiki/locations/blackthorn-asylum` | no | 2026-10-28 |
+| Locations | Blackthorn Asylum | `/games/stillskin-forest/wiki/locations/blackthorn-asylum` | no | 2026-10-31 |
 | Locations | The Blackthorn Graveyard | `/games/stillskin-forest/wiki/locations/graveyard` | no | 2026-10-31 |
 | Locations | The Chapel | `/games/stillskin-forest/wiki/locations/chapel` | no | 2026-10-31 |
 | Locations | The Crypt Cave | `/games/stillskin-forest/wiki/locations/crypt-cave` | yes | 2026-10-31 |
 | Locations | Green Lake | `/games/stillskin-forest/wiki/locations/green-lake` | no | 2026-10-31 |
 | Locations | The Hollow (Location) | `/games/stillskin-forest/wiki/locations/the-hollow` | yes | 2026-10-31 |
 | Locations | Secrets and Easter Eggs | `/games/stillskin-forest/wiki/locations/secrets-and-easter-eggs` | yes | 2026-10-31 |
+| Locations | The Ranger Station Trail | `/games/stillskin-forest/wiki/locations/ranger-station-trail` | no | 2026-10-31 |
+| Locations | The Ranger Trader Station | `/games/stillskin-forest/wiki/locations/ranger-trader-station` | no | 2026-10-31 |
+| Locations | The Lost Camp | `/games/stillskin-forest/wiki/locations/lost-camp` | no | 2026-10-31 |
 | Special Nights | Special Nights Explained | `/games/stillskin-forest/wiki/special-nights/special-nights-overview` | no | 2026-10-31 |
 | Special Nights | Blood Moon | `/games/stillskin-forest/wiki/special-nights/blood-moon` | no | 2026-10-31 |
 | Special Nights | Heavy Fog | `/games/stillskin-forest/wiki/special-nights/heavy-fog` | no | 2026-10-31 |
@@ -87,18 +91,18 @@ Generated from the wiki registry. Do not edit by hand.
 | Story & Lore | Dr. Vance's Ring | `/games/stillskin-forest/wiki/story/dr-vances-ring` | yes | 2026-10-31 |
 | Story & Lore | Notes and Tapes | `/games/stillskin-forest/wiki/story/notes-and-tapes` | yes | 2026-10-31 |
 | Quests & Walkthroughs | Unlocking Blackthorn Asylum: The Admission Ledger | `/games/stillskin-forest/wiki/quests/blackthorn-admission-ledger` | no | 2026-10-31 |
-| Quests & Walkthroughs | The Rite of Stillness: Ritual Walkthrough | `/games/stillskin-forest/wiki/quests/the-rite-of-stillness` | no | 2026-10-30 |
+| Quests & Walkthroughs | The Rite of Stillness: Ritual Walkthrough | `/games/stillskin-forest/wiki/quests/the-rite-of-stillness` | no | 2026-10-31 |
 | Quests & Walkthroughs | Descent into the Hollow | `/games/stillskin-forest/wiki/quests/descent-into-the-hollow` | no | 2026-10-31 |
 | Quests & Walkthroughs | The Heart of Stillskin | `/games/stillskin-forest/wiki/quests/the-heart-of-stillskin` | no | 2026-10-31 |
-| Co-op & End of Run | Co-op Survival: Revives, Pings and Sharing | `/games/stillskin-forest/wiki/multiplayer/co-op-survival` | no | 2026-10-28 |
-| Co-op & End of Run | Death, Ghosts and the Rooftop Finale | `/games/stillskin-forest/wiki/multiplayer/death-ghosts-and-the-finale` | no | 2026-10-30 |
-| Co-op & End of Run | Persistent Expeditions: Saved Worlds and Crews | `/games/stillskin-forest/wiki/multiplayer/persistent-expeditions` | no | 2026-10-30 |
+| Co-op & End of Run | Co-op Survival: Revives, Pings and Sharing | `/games/stillskin-forest/wiki/multiplayer/co-op-survival` | no | 2026-10-31 |
+| Co-op & End of Run | Death, Ghosts and the Rooftop Finale | `/games/stillskin-forest/wiki/multiplayer/death-ghosts-and-the-finale` | no | 2026-10-31 |
+| Co-op & End of Run | Saved Sessions: Saving Your Run and Playing With Friends | `/games/stillskin-forest/wiki/multiplayer/persistent-expeditions` | no | 2026-10-31 |
 | Updates | Stillskin Forest Development Log | `/games/stillskin-forest/wiki/updates/development-log` | no | 2026-10-31 |
-| Locations | Blackpine Airfield | `/games/stillskin-forest/wiki/locations/blackpine-airfield` | no | 2026-10-28 |
+| Locations | Blackpine Airfield | `/games/stillskin-forest/wiki/locations/blackpine-airfield` | no | 2026-10-31 |
 | Enemies | Soldier | `/games/stillskin-forest/wiki/enemies/soldier` | no | 2026-10-27 |
-| Weapons | Mini AK | `/games/stillskin-forest/wiki/weapons/mini-ak` | no | 2026-10-28 |
-| Items & Equipment | Military Armor: Plate Carrier and Helmet | `/games/stillskin-forest/wiki/items/military-armor` | no | 2026-10-30 |
-| Survival Mechanics | Night Survival: New Arrivals, Wisps, Night Caches and Sleep | `/games/stillskin-forest/wiki/mechanics/night-survival` | no | 2026-10-30 |
+| Weapons | Mini AK | `/games/stillskin-forest/wiki/weapons/mini-ak` | no | 2026-10-31 |
+| Items & Equipment | Military Armor: Plate Carrier and Helmet | `/games/stillskin-forest/wiki/items/military-armor` | no | 2026-10-31 |
+| Survival Mechanics | Night Survival: New Arrivals, Wisps, Night Caches and Sleep | `/games/stillskin-forest/wiki/mechanics/night-survival` | no | 2026-10-31 |
 | Survival Mechanics | Generators and Jerry Cans | `/games/stillskin-forest/wiki/mechanics/generators-and-jerry-cans` | no | 2026-10-29 |
 
 ## Not published, and why
@@ -120,7 +124,9 @@ Generated from the wiki registry. Do not edit by hand.
 |---|---|
 | Stillskin Forest Controls | Bindings read from the game's scripts, not hand-checked on every device. |
 | Stillskin Forest Controls | Touch button layout not yet documented. |
+| Stillskin Forest Controls | The new journal map and charged attacks are live but still being tested. |
 | Playing Stillskin Forest with Friends | The squad teleport between the lobby and live match servers has not been independently verified. |
+| Playing Stillskin Forest with Friends | Saved sessions, invites and the reworked lobby are live but still being tested with several players. |
 | Baseball Bat | Exact loot locations and drop rates not published. |
 | Freeze Device | Performance with a very large herd and on phones has not been measured. Its sounds have not been reviewed by the developer yet. |
 | Headlamp Upgrades and Batteries | Drop rates for each part are tuned frequently and not published. |
@@ -130,9 +136,11 @@ Generated from the wiki registry. Do not edit by hand.
 | Notes and Tapes | The location of every individual note is not yet documented. |
 | Notes and Tapes | A few newer notes are not listed here yet. |
 | Descent into the Hollow | The full descent has been verified solo; a two-player run of the cave has not been recorded yet. |
-| Death, Ghosts and the Rooftop Finale | Play Again and Return to Camp with several real clients in a live server have not been recorded yet. |
-| Persistent Expeditions: Saved Worlds and Crews | Crew joining a Day 20 world was tested in Studio with four players (owner restored, crew given the starter kit, a non-crew player refused); joining a world running on another live server has not been tested yet. |
+| Death, Ghosts and the Rooftop Finale | Play Again and Back to Camp with several real clients in a live server have not been recorded yet. |
+| Death, Ghosts and the Rooftop Finale | Whether the rooftop finale still plays before the session end screen in v382 has not been re-checked. |
+| Saved Sessions: Saving Your Run and Playing With Friends | Saved sessions are live but still being tested: invites, entering alone and ending a session with several players have not been recorded in a live server yet. |
 | Blackpine Airfield | Not yet walked through with two or more players. |
+| Blackpine Airfield | The daily helmet, plate carrier and Mini AK guarantee and the area restock are new in v382 and not yet confirmed over many in-game days. |
 | Mini AK | The third-person model uses the shared gun pose; no dedicated reload animation yet. |
 | Military Armor: Plate Carrier and Helmet | Taking armor off with a controller is not mapped yet (keyboard K only). |
 | Night Survival: New Arrivals, Wisps, Night Caches and Sleep | Tested in Studio with up to four players; not yet on a controller, mobile or console. |

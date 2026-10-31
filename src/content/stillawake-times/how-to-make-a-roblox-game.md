@@ -1,6 +1,7 @@
 ---
 title: "How to Make a Roblox Game: A Practical Guide From Concept to Publish"
 date: "2026-10-29"
+updated: "2026-10-31"
 excerpt: "To make a Roblox game, define one core loop, build it in Roblox Studio, keep game logic on the server, test with several clients, then publish and complete the maturity questionnaire."
 category: "Game Development"
 featured: false
@@ -9,7 +10,7 @@ author: "Jaeden Doody"
 
 **To make a Roblox game, you install Roblox Studio (free), decide on one core loop a player can repeat in under a minute, build a small playable space, write the rules in Luau with the server in charge of anything that matters, test with several simulated players, and publish through File > Publish, where you complete Roblox's content maturity questionnaire.** The tools are free and the first playable version can be small. What separates a game people return to from one they leave after a minute is usually not the art. It is a clear loop, server-side rules that can't be cheated, and testing under conditions closer to a real server than solo Play mode.
 
-This guide follows the order we actually work in at StillAwake Media. Our examples come from two of our own Roblox projects: [RISK IT!](/games/risk-it), a minigame game that is public on Roblox, and [Stillskin Forest](/games/stillskin-forest), a co-op survival-horror game that is still in development and not publicly released. Platform details are checked against Roblox's Creator Hub documentation as of October 2026.
+This guide follows the order we actually work in at StillAwake Media. Our examples come from two of our own Roblox projects: [RISK IT!](/games/risk-it), a minigame game that is public on Roblox, and [Stillskin Forest](/games/stillskin-forest), a co-op survival-horror game that went public on Roblox on 28 October 2026. Platform details are checked against Roblox's Creator Hub documentation as of October 2026.
 
 ## What you need before you start
 
@@ -33,7 +34,7 @@ For RISK IT!, the sentence is "walk up, risk it, get launched, try again." Every
 | Recovery takes about 2.6 seconds and puts you next to the pad | A retry is about three seconds away |
 | The game works alone | Nothing waits for a full server |
 
-Stillskin Forest's loop is longer: scavenge by day, survive the night, decide whether to fight, run, hide or go back for a downed teammate. A longer loop is fine, but it costs more to build and test, which is why it is still in development and RISK IT! is not.
+Stillskin Forest's loop is longer: scavenge by day, survive the night, decide whether to fight, run, hide or go back for a downed teammate. A longer loop is fine, but it costs more to build and test, which is why Stillskin Forest took longer to reach launch than RISK IT! did.
 
 Two things are worth deciding now:
 

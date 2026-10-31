@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 
@@ -32,7 +33,7 @@ const frUrl = `${siteUrl}${EN.otherPath}`;
  * place in the H1 and the FAQ because it is what a person actually asks an
  * assistant, and that is a citation surface rather than a ranking one.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: EN.meta.title,
   description: metaDescription(
     EN.meta.description,
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
     type: "article",
     images: OG_IMAGES,
   },
-};
+});
 
 export default function WebsiteSetupGuidePage() {
   return (

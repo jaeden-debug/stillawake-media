@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -35,7 +36,7 @@ const url = "https://stillawakemedia.com/fr/propriete-site-web";
 const HOSTING = RECURRING_BY_ID["managed-hosting"];
 const CARE = RECURRING_BY_ID["website-care-plan"];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Propriété d’un site web : qui possède le domaine, le code et les comptes",
   description:
     metaDescription(
@@ -58,7 +59,7 @@ export const metadata: Metadata = {
     locale: "fr_CA",
     images: OG_IMAGES,
   },
-};
+});
 
 const FAQ = faqPairs("fr");
 

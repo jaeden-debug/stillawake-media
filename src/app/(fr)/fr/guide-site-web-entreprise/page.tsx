@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 
@@ -29,7 +30,7 @@ const enUrl = `${siteUrl}${FR.otherPath}`;
  * web » 10/mois. C'est pourquoi ce sont les noms des types, pas des
  * traductions littérales de « brochure site » et « ecommerce website ».
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: FR.meta.title,
   description: metaDescription(
     FR.meta.description,
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
     locale: "fr_CA",
     images: OG_IMAGES,
   },
-};
+});
 
 export default function GuideSiteWebEntreprisePage() {
   return (

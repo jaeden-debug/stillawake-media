@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { serviceNav, montrealNav } from "@/lib/data";
 import { AuditCta, MagazineInjection, RelatedReadingInjection, InternalLinks } from "@/components/site";
 
 import { PageSchema } from "@/components/page-schema";
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Services | Web, SEO, AI & Custom Software",
   description:
     metaDescription(
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/services",
   },
-};
+});
 
 export default function Page() {
   return (

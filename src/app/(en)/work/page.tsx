@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -8,7 +9,7 @@ import { siteUrl } from "@/lib/data";
 import { Testimonials } from "@/components/testimonials";
 const pageUrl = `${siteUrl}/work`;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Case Studies | Client Projects",
   description:
     metaDescription(
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     type: "website",
     images: OG_IMAGES,
   },
-};
+});
 
 const caseStudies = [
   {

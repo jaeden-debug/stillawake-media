@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -12,7 +13,7 @@ const url = "https://stillawakemedia.com/tools/seo-audit";
  * would be slower, easier to abuse and, without Search Console access, no
  * more able to say what Google has actually indexed. The page says so.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Free SEO Audit Tool: Check Any Page's Technical SEO",
   description:
     metaDescription(
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     type: "website",
     images: OG_IMAGES,
   },
-};
+});
 
 const CHECKS = [
   ["Response", "The HTTP status, every redirect hop on the way to the final URL, HTTPS, and whether the server says it's HTML."],

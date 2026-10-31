@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import { ServiceJsonLd, RelatedServices } from "@/components/service-page";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Case Study: TravelDesign By Lisa — 0 Clicks to Page 1 in 8 Weeks",
   description:
     metaDescription(
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     type: "article",
     images: OG_IMAGES,
   },
-};
+});
 
 const METRICS: [string, string, string][] = [
   ["0 → page 1", "Organic reality shift", "June 22 audit: 14 keywords, avg position 64, zero clicks. August (180-day GSC window): page-1 positions (5.3–8.9) on multiple target resort queries, ~9,000 impressions on a single comparison article."],

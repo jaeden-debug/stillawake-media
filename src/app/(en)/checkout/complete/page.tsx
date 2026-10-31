@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 
 import { CheckoutComplete } from "@/components/checkout-complete";
 
@@ -9,10 +10,10 @@ import { CheckoutComplete } from "@/components/checkout-complete";
  */
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Checkout",
   robots: { index: false, follow: false },
-};
+});
 
 export default async function CheckoutCompletePage({
   searchParams,

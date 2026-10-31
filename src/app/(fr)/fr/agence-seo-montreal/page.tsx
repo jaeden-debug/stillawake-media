@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -33,7 +34,7 @@ const SEO_PLAN_ITEMS: Record<string, string[]> = {
   ],
 };
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Agence SEO Montréal | Tarifs affichés",
   description: metaDescription(
     `Agence SEO à Montréal : référencement technique, SEO local et optimisation IA avec tarifs affichés — forfaits de ${SEO_FLOOR} $ à ${SEO_CEILING} $ CAD par mois. Sans appel de vente obligatoire.`,
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
     locale: "fr_CA",
     images: OG_IMAGES,
   },
-};
+});
 
 const FAQ: [string, string][] = [
   [

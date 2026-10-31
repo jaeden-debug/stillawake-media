@@ -1,6 +1,7 @@
 ---
 title: "How to Make a Horror Game in Roblox Studio: Lessons From Building Stillskin Forest"
 date: "2026-10-29"
+updated: "2026-10-31"
 excerpt: "A practical guide to making a horror game in Roblox Studio: lighting, sound, enemy AI, hiding, pacing and multiplayer, using our own game Stillskin Forest as the example."
 category: "Game Development"
 featured: false
@@ -9,7 +10,7 @@ author: "Jaeden Doody"
 
 **To make a horror game in Roblox Studio that actually scares people, build the systems that control what players perceive: lighting that hides things, sound that tells them something is near, enemies that hunt with a believable process, and pacing that gives them time to dread what's coming.** Models and jumpscares matter less than most first projects assume. A zombie that searches the spot where it last saw you is scarier than a better-looking zombie that walks straight at you.
 
-This guide assumes you know your way around Studio and Luau. If you're starting from zero, read [how to make a Roblox game](/stillawake-times/how-to-make-a-roblox-game) first. The example throughout is [Stillskin Forest](/games/stillskin-forest), the co-op survival-horror game we're building at StillAwake Media. **It is still in development and not yet publicly playable**, so everything below comes from development builds, our design documents and our playtest notes, not from live player data. Where something has only been tested with one client, we say so.
+This guide assumes you know your way around Studio and Luau. If you're starting from zero, read [how to make a Roblox game](/stillawake-times/how-to-make-a-roblox-game) first. The example throughout is [Stillskin Forest](/games/stillskin-forest), the co-op survival-horror game we built at StillAwake Media, public on Roblox since 28 October 2026. Everything below comes from development builds, our design documents and our playtest notes, not from live player data. Where something has only been tested with one client, we say so.
 
 ## Start with the fear you want to create
 
@@ -113,7 +114,7 @@ Pass a `rangeMultiplier` that combines headlamp, crouch and weather, handle hidd
 
 ### A state machine with memory and a time limit
 
-Our published pursuit loop is Roam → Suspicious → Alert → Chase → Attack → Search. An infected that spots you hesitates for about 1.1 seconds before committing, which gives you a brief chance to break line of sight. If it loses sight of you for 5 seconds, it searches where you were heading for about 9 seconds, then returns to roaming. Chases also end on their own after about 22 seconds, after 145 studs, or once you're 85 studs clear.
+Our published pursuit loop is Roam → Suspicious → Alert → Chase → Attack → Search. An infected that spots you hesitates for about 1.1 seconds before committing, which gives you a brief chance to break line of sight. If it loses sight of you for 5 seconds, it searches where you were heading for about 9 seconds, then returns to roaming. Once it has gone 1.5 seconds without seeing you, the chase can also end on its limits (about 22 seconds, 145 studs, or once you're 85 studs clear); while it can still see you, those limits keep resetting.
 
 The time limit matters as much as the chase. An enemy that follows you across the whole map is tiring, not frightening. An enemy that loses you, searches your last position and then gives up leaves the player relieved and worried it will come back, and that's the feeling you want. Here's a skeleton of that logic:
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/page-title";
 import { OG_IMAGES } from "@/lib/og-image";
 import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { game } = bundle;
   const hero = [mediaFor(bundle, game.media.social), mediaFor(bundle, game.media.hero), mediaFor(bundle, game.media.thumbnail)].find(hasImage);
   return {
-    title: `${game.title}: ${game.kindLabel}`,
+    title: pageTitle(`${game.title}: ${game.kindLabel}`),
     description: metaDescription(game.metaDescription),
     alternates: { canonical: gamePath(game.slug) },
     openGraph: {

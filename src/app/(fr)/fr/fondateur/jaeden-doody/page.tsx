@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -8,7 +9,7 @@ import { jaedenDoody as person } from "@/data/people/jaeden-doody";
 
 const frUrl = `${siteUrl}/fr/fondateur/jaeden-doody`;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Jaeden Doody — Fondateur",
   description:
     metaDescription(
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     locale: "fr_CA",
     images: OG_IMAGES,
   },
-};
+});
 
 const principles = [
   [

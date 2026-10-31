@@ -157,7 +157,7 @@ export const enemies: WikiEntry[] = [
         heading: "How to deal with it",
         blocks: [
           { type: "list", items: [
-            "Shoot it at range: two pistol headshots or three body shots.",
+            "Shoot it at range: one headshot or three pistol body shots.",
             "Two machete swings also do it, if you can close the distance quietly.",
             "If it has already screamed, move. Infected are converging on that spot.",
           ] },
@@ -177,7 +177,7 @@ export const enemies: WikiEntry[] = [
       "The Brute in Stillskin Forest: 320 health, 28 damage per hit, night-only from Day 3. How much it takes to kill and how to avoid getting hit.",
     question: "How do you kill a Brute in Stillskin Forest?",
     answer:
-      "Keep your distance and use guns. A Brute has 320 health and hits for 28, the hardest of any infected, but it is the slowest (chase speed 18.5) and attacks only every 2.6 seconds. It takes about ten pistol body shots or five headshots. It shrugs off most knockback and only staggers from a headshot of 50 damage or more.",
+      "Keep your distance and use guns. A Brute has 320 health and hits for 28, the hardest of any infected, but it is the slowest (chase speed 18.5) and attacks only every 2.6 seconds. It takes about ten pistol body shots, or a single headshot from any gun. It shrugs off most knockback.",
     facts: [["Health", "320"], ["Damage", "28"], ["Time between attacks", "2.6 s"], ["Chase speed", "18.5"], ["Size", "1.35× a Walker"], ["Knockback resistance", "80%"], ["First appears", "Day 3, nights only"]],
     sections: [
       {

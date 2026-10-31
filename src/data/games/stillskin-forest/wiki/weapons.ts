@@ -12,7 +12,7 @@ const meleeTiers: WikiSection = {
       ["II", "Sharpened", "×1.25", "×0.9", "×1"],
       ["III", "Reinforced", "×1.5", "×0.8", "×1.3"],
     ] },
-    { type: "callout", tone: "note", text: "Tiers exist in the game's data and show on the hotbar, but the current build has no way to earn an upgrade yet. A workbench or shop upgrade is planned." },
+    { type: "callout", tone: "note", text: "Found weapons roll a rarity when they spawn, and rarer finds come at a higher tier. Picking up a rarer copy of a weapon you already carry upgrades yours." },
     { type: "p", text: "**Picking up a second one repairs yours.** If you already carry this weapon and find another, your own is repaired to full and gets a little tougher (+5% of its original durability each time, up to 125%). The copy you found is used up. Every melee weapon also breaks a window pane in one hit. See [Durability](@durability-and-wear)." },
   ],
 };
@@ -26,7 +26,7 @@ const gunTiers: WikiSection = {
       ["II", "Tuned", "×1.15", "×0.85", "×0.85", "+2"],
       ["III", "Custom", "×1.3", "×0.7", "×0.7", "+4"],
     ] },
-    { type: "callout", tone: "note", text: "Tiers exist in the game's data, but the current build has no way to earn an upgrade yet." },
+    { type: "callout", tone: "note", text: "Found weapons roll a rarity when they spawn, and rarer finds come at a higher tier. Picking up a rarer copy of a weapon you already carry upgrades yours." },
   ],
 };
 
@@ -34,7 +34,7 @@ export const weapons: WikiEntry[] = [
   {
     ...base,
     slug: "weapons-compared",
-    lastVerified: "2026-10-30",
+    lastVerified: "2026-10-31",
     title: "Stillskin Forest Weapons Compared",
     seoTitle: "Stillskin Forest Weapons: Every Weapon Compared (Damage, Speed, Range)",
     description:
@@ -47,12 +47,11 @@ export const weapons: WikiEntry[] = [
         id: "melee",
         heading: "Melee weapons",
         blocks: [
-          { type: "table", caption: "Melee weapon base stats (Tier I)", head: ["Weapon", "Damage", "Time between swings", "Range", "Knockback", "Durability", "Rarity"], rows: [
-            ["[Baseball Bat](@baseball-bat)", "25", "0.8 s", "5.5", "30", "120", "Common"],
-            ["[Machete](@machete)", "40", "0.9 s", "5.5", "22", "110", "Uncommon"],
-            ["[Hammer](@hammer)", "32", "1.0 s", "5", "48", "480", "Uncommon"],
-            ["[Crowbar](@crowbar)", "18", "0.7 s", "5", "20", "140", "Uncommon"],
-            ["[Fists](@fists)", "17", "0.55 s", "4.5", "10", "—", "Always"],
+          { type: "table", caption: "Melee weapon base stats (Tier I)", head: ["Weapon", "Damage", "Time between swings", "Range", "Knockback", "Durability"], rows: [
+            ["[Baseball Bat](@baseball-bat)", "25", "0.55 s", "5.5", "30", "120"],
+            ["[Machete](@machete)", "40", "0.6 s", "5.5", "22", "110"],
+            ["[Hammer](@hammer)", "32", "0.75 s", "5", "48", "480"],
+            ["[Crowbar](@crowbar)", "18", "0.5 s", "5", "20", "140"],
           ] },
           { type: "p", text: "Melee is quiet: a swing is heard by infected within 25 studs, compared with 90 for a pistol shot. A crouched hit from behind on an infected that hasn't noticed you is an instant [takedown](@crouching-and-takedowns)." },
         ],
@@ -62,11 +61,11 @@ export const weapons: WikiEntry[] = [
         heading: "Guns",
         blocks: [
           { type: "table", caption: "Gun base stats (Tier I)", head: ["Weapon", "Damage", "Pellets", "Magazine", "Reload", "Time between shots", "Range", "Durability", "Ammo"], rows: [
-            ["[Pistol](@pistol)", "34", "1", "12", "1.6 s", "0.35 s", "250", "400", "[Pistol Ammo](@ammunition)"],
-            ["[Shotgun](@shotgun)", "18 per pellet", "6", "6", "2.4 s", "1.0 s", "70", "175", "[Shells](@ammunition)"],
-            ["[Mini AK](@mini-ak)", "26", "1", "20", "2.4 s", "0.12 s (automatic)", "320", "—", "[Rifle Rounds](@ammunition)"],
+            ["[Pistol](@pistol)", "34", "1", "12", "1.6 s", "0.22 s", "250", "400", "[Pistol Ammo](@ammunition)"],
+            ["[Shotgun](@shotgun)", "18 per pellet", "6", "6", "2.4 s", "0.8 s", "70", "175", "[Shells](@ammunition)"],
+            ["[Mini AK](@mini-ak)", "26", "1", "20", "2.4 s", "0.12 s (automatic)", "320", "350", "[Rifle Rounds](@ammunition)"],
           ] },
-          { type: "p", text: "Headshots double a pistol bullet's damage and multiply each shotgun pellet by 1.4. See [Aiming and reloading](@aiming-and-reloading)." },
+          { type: "p", text: "A headshot from any gun, or a single shotgun pellet to the head, kills an infected outright. The exception is a helmeted [Soldier](@soldier), whose helmet absorbs the first headshot. See [Aiming and reloading](@aiming-and-reloading)." },
           { type: "p", text: "Pistols and shotguns turn up in ordinary scavenging: houses, the store, the hospital, the airfield, stashes and night caches, and now and then on the trail. They are still rarer than food and melee weapons. A [Gun Repair Kit](@gun-repair-kit) restores a worn gun to full." },
         ],
       },
@@ -79,11 +78,10 @@ export const weapons: WikiEntry[] = [
             ["Machete", "3", "2", "2", "8"],
             ["Hammer", "4", "2", "3", "10"],
             ["Crowbar", "6", "4", "4", "18"],
-            ["Fists", "6", "4", "5", "19"],
             ["Pistol (body)", "3", "2", "3", "10"],
-            ["Pistol (head)", "2", "1", "2", "5"],
+            ["Any gun (head)", "1", "1", "1", "1"],
           ] },
-          { type: "callout", tone: "note", text: "These are worked out from base damage and enemy health. They ignore upgrade tiers and headshots unless stated. A full shotgun blast at close range (6 × 18 = 108) drops a Walker if every pellet lands." },
+          { type: "callout", tone: "note", text: "These are worked out from base damage and enemy health. They ignore upgrade tiers. A headshot kills any of these outright. A full shotgun blast at close range (6 × 18 = 108) drops a Walker if every pellet lands." },
         ],
       },
       {
@@ -100,42 +98,45 @@ export const weapons: WikiEntry[] = [
       },
     ],
     related: ["baseball-bat", "machete", "pistol", "shotgun", "fists", "enemy-comparison"],
-    sources: [SRC.items, SRC.config, SRC.playtest],
+    sources: [SRC.items, SRC.config, SRC.playtest, SRC.notes30],
     aliases: ["weapons", "best weapon", "weapon tier list", "guns", "melee", "damage"],
   },
   {
     ...base,
     slug: "fists",
-    lastVerified: "2026-10-27",
+    lastVerified: "2026-10-31",
     title: "Fists",
-    seoTitle: "Punching in Stillskin Forest: Fist Damage and Hits to Kill",
+    seoTitle: "Punching in Stillskin Forest: Temporarily Unavailable",
     description:
-      "Fighting with your fists in Stillskin Forest: how to punch, how much it does, how many punches each infected takes, and breaking glass bare-handed.",
+      "Can you punch zombies in Stillskin Forest? Not right now: punching with empty hands is temporarily unavailable while it is being fixed.",
     question: "Can you punch zombies in Stillskin Forest?",
     answer:
-      "Yes. With nothing in your hands, click (or press R2) to punch. A punch does 17 damage, so six punches drop a Walker. It is short-ranged and slow next to a real weapon, but it never breaks and it is always there.",
-    facts: [["Damage", "17"], ["Time between punches", "0.55 s"], ["Range", "4.5 studs"], ["Punches to drop a Walker", "6"], ["Durability", "Never breaks"]],
+      "Not at the moment. Punching with empty hands is temporarily unavailable in the live game while it is being fixed. Until it returns, carry a melee weapon: the Baseball Bat, Machete, Hammer or Crowbar all work with no ammunition.",
+    facts: [["Status", "Temporarily unavailable"], ["Use instead", "Any melee weapon"]],
     sections: [
       {
-        id: "how",
-        heading: "How to punch",
+        id: "status",
+        heading: "Why punching doesn't work right now",
         blocks: [
-          { type: "p", text: "Put away whatever you're holding (or have nothing in your hands) and click, or press R2 on controller. Hands alternate. Punching is as quiet as a melee swing, a little quieter, and reaches down far enough to hit an infected at your feet." },
+          { type: "p", text: "Clicking or pressing R2 with nothing in your hands does not punch in the current published build. The developers are fixing it, and this page will be updated with the new details when the fix goes live." },
         ],
       },
       {
-        id: "hits",
-        heading: "Punches to bring each infected down",
+        id: "instead",
+        heading: "What to use instead",
         blocks: [
-          { type: "table", caption: "Punches needed (17 damage each)", head: ["Walker (100)", "Runner (60)", "Screamer (70)", "Brute (320)", "Soldier (130)"], rows: [
-            ["6", "4", "5", "19", "8"],
+          { type: "list", items: [
+            "**[Baseball Bat](@baseball-bat):** the common starter melee weapon, with good knockback.",
+            "**[Machete](@machete):** the hardest-hitting melee weapon.",
+            "**[Hammer](@hammer):** heavy knockback, and it nails planks for building.",
+            "**[Crowbar](@crowbar):** fast and weak, and it takes planks down.",
           ] },
-          { type: "p", text: "Six punches also break a window pane. See [Shooting through cover](@shooting-through-cover)." },
+          { type: "p", text: "Any melee weapon or bullet breaks a window pane in one hit. See [Shooting through cover](@shooting-through-cover) and [Weapons compared](@weapons-compared)." },
         ],
       },
     ],
-    related: ["weapons-compared", "baseball-bat", "shooting-through-cover", "crouching-and-takedowns"],
-    sources: [SRC.playtest27],
+    related: ["weapons-compared", "baseball-bat", "machete", "crouching-and-takedowns"],
+    sources: [SRC.notes30],
     aliases: ["punch", "fist", "unarmed", "bare hands", "melee without weapon"],
   },
   {
@@ -144,13 +145,13 @@ export const weapons: WikiEntry[] = [
     title: "Baseball Bat",
     seoTitle: "Baseball Bat in Stillskin Forest: Damage, Speed and Tips",
     description:
-      "The Baseball Bat in Stillskin Forest: 25 damage, 0.8 s between swings, strong knockback and 120 durability. How it compares and how to use it.",
+      "The Baseball Bat in Stillskin Forest: 25 damage, 0.55 s between swings, strong knockback and 120 durability. How it compares and how to use it.",
     question: "How good is the Baseball Bat in Stillskin Forest?",
     answer:
-      "The Baseball Bat is the common starter melee weapon: 25 damage per swing, 0.8 seconds between swings, 5.5 studs of reach and solid knockback (30). It takes four body hits to drop a Walker and lasts 120 uses before it breaks.",
+      "The Baseball Bat is the common starter melee weapon: 25 damage per swing, 0.55 seconds between swings, 5.5 studs of reach and solid knockback (30). It takes four body hits to drop a Walker and lasts 120 uses before it breaks.",
     facts: [
-      ["Type", "Melee"], ["Damage", "25"], ["Time between swings", "0.8 s"], ["Range", "5.5 studs"],
-      ["Knockback", "30"], ["Durability", "120"], ["Rarity", "Common"],
+      ["Type", "Melee"], ["Damage", "25"], ["Time between swings", "0.55 s"], ["Range", "5.5 studs"],
+      ["Knockback", "30"], ["Durability", "120"], ["Rarity", "Rolled when found"],
     ],
     sections: [
       {
@@ -194,13 +195,13 @@ export const weapons: WikiEntry[] = [
     title: "Machete",
     seoTitle: "Machete in Stillskin Forest: Damage, Speed and Tips",
     description:
-      "The Machete in Stillskin Forest: 40 damage per swing, the hardest-hitting melee weapon, with 0.9 s between swings and 110 durability.",
+      "The Machete in Stillskin Forest: 40 damage per swing, the hardest-hitting melee weapon, with 0.6 s between swings and 110 durability.",
     question: "Is the Machete better than the bat in Stillskin Forest?",
     answer:
-      "For damage, yes. The Machete hits for 40, the most of any melee weapon, so it drops a Walker in three swings instead of four. It swings slightly slower (0.9 s), has less knockback (22) and breaks a little sooner (110 uses).",
+      "For damage, yes. The Machete hits for 40, the most of any melee weapon, so it drops a Walker in three swings instead of four. It swings slightly slower (0.6 s against the bat's 0.55 s), has less knockback (22) and breaks a little sooner (110 uses).",
     facts: [
-      ["Type", "Melee"], ["Damage", "40"], ["Time between swings", "0.9 s"], ["Range", "5.5 studs"],
-      ["Knockback", "22"], ["Durability", "110"], ["Rarity", "Uncommon"],
+      ["Type", "Melee"], ["Damage", "40"], ["Time between swings", "0.6 s"], ["Range", "5.5 studs"],
+      ["Knockback", "22"], ["Durability", "110"], ["Rarity", "Rolled when found"],
     ],
     sections: [
       {
@@ -236,10 +237,10 @@ export const weapons: WikiEntry[] = [
       "The Hammer in Stillskin Forest: 32 damage, the biggest knockback of any weapon, 480 durability, and the only tool that nails planks for building.",
     question: "What does the Hammer do in Stillskin Forest?",
     answer:
-      "The Hammer is a heavy melee weapon (32 damage, 1.0 s between swings, 48 knockback) and the building tool. A quick tap swings; holding the click (or R2) and dragging across a surface nails a plank, costing one point of the hammer's 480 durability. A hold never swings, even if you let go without placing a plank.",
+      "The Hammer is a heavy melee weapon (32 damage, 0.75 s between swings, 48 knockback) and the building tool. A quick tap swings; holding the click (or R2) and dragging across a surface nails a plank, costing one point of the hammer's 480 durability. A hold never swings, even if you let go without placing a plank.",
     facts: [
-      ["Type", "Melee / builder"], ["Damage", "32"], ["Time between swings", "1.0 s"], ["Range", "5 studs"],
-      ["Knockback", "48"], ["Durability", "480"], ["Rarity", "Uncommon"],
+      ["Type", "Melee / builder"], ["Damage", "32"], ["Time between swings", "0.75 s"], ["Range", "5 studs"],
+      ["Knockback", "48"], ["Durability", "480"], ["Rarity", "Rolled when found"],
     ],
     sections: [
       {
@@ -271,10 +272,10 @@ export const weapons: WikiEntry[] = [
       "The Crowbar in Stillskin Forest: a fast 18-damage pry bar that takes a nailed plank down in two swings. Stats, uses and tips.",
     question: "What is the Crowbar for in Stillskin Forest?",
     answer:
-      "The Crowbar is a pry bar. Two swings take a nailed plank down, which is how you remove a barricade. It also works as a fast but weak weapon: 18 damage, 0.7 seconds between swings, 140 durability.",
+      "The Crowbar is a pry bar. Two swings take a nailed plank down, which is how you remove a barricade. It also works as a fast but weak weapon: 18 damage, 0.5 seconds between swings, 140 durability.",
     facts: [
-      ["Type", "Melee / pry tool"], ["Damage", "18"], ["Time between swings", "0.7 s"], ["Range", "5 studs"],
-      ["Knockback", "20"], ["Durability", "140"], ["Rarity", "Uncommon"],
+      ["Type", "Melee / pry tool"], ["Damage", "18"], ["Time between swings", "0.5 s"], ["Range", "5 studs"],
+      ["Knockback", "20"], ["Durability", "140"], ["Rarity", "Rolled when found"],
     ],
     sections: [
       {
@@ -297,13 +298,13 @@ export const weapons: WikiEntry[] = [
     title: "Pistol",
     seoTitle: "Pistol in Stillskin Forest: Damage, Magazine, Reload and Tips",
     description:
-      "The Pistol in Stillskin Forest: 34 damage, 12-round magazine, 1.6 s reload and 250-stud range. Headshots deal double. Stats and tips.",
+      "The Pistol in Stillskin Forest: 34 damage, 12-round magazine, 1.6 s reload and 250-stud range. A headshot kills outright. Stats and tips.",
     question: "How does the Pistol work in Stillskin Forest?",
     answer:
-      "The Pistol fires one 34-damage bullet up to 250 studs, with a 12-round magazine, 0.35 seconds between shots and a 1.6-second reload. Headshots deal double (68). It uses Pistol Ammo, and every shot is heard by infected up to 90 studs away.",
+      "The Pistol fires one 34-damage bullet up to 250 studs, with a 12-round magazine, 0.22 seconds between shots and a 1.6-second reload. A headshot kills any infected outright, except a helmeted Soldier's first. It uses Pistol Ammo, and every shot is heard by infected up to 90 studs away.",
     facts: [
-      ["Type", "Gun"], ["Damage", "34 (68 headshot)"], ["Magazine", "12"], ["Reload", "1.6 s"],
-      ["Time between shots", "0.35 s"], ["Range", "250 studs"], ["Ammo", "Pistol Ammo"], ["Durability", "400"], ["Rarity", "Rare"],
+      ["Type", "Gun"], ["Damage", "34 (headshot kills)"], ["Magazine", "12"], ["Reload", "1.6 s"],
+      ["Time between shots", "0.22 s"], ["Range", "250 studs"], ["Ammo", "Pistol Ammo"], ["Durability", "400"], ["Rarity", "Rolled when found"],
     ],
     sections: [
       {
@@ -317,7 +318,7 @@ export const weapons: WikiEntry[] = [
         id: "aiming",
         heading: "Aiming and headshots",
         blocks: [
-          { type: "p", text: "Aiming with right mouse tightens your spread considerably. A headshot does double damage (68 against 34 on the body in testing), shows a gold hitmarker and can stagger. See [Aiming and reloading](@aiming-and-reloading)." },
+          { type: "p", text: "Aiming with right mouse tightens your spread considerably. A headshot kills an infected outright and shows a gold hitmarker. A helmeted [Soldier](@soldier) loses its helmet to the first one instead. See [Aiming and reloading](@aiming-and-reloading)." },
         ],
       },
       {
@@ -325,7 +326,7 @@ export const weapons: WikiEntry[] = [
         heading: "Tips",
         blocks: [
           { type: "list", items: [
-            "Two headshots drop a Walker; one drops a Runner.",
+            "One headshot drops any infected except a helmeted Soldier.",
             "Kill a [Screamer](@screamer) at range before it alerts everything within 100 studs.",
             "Every shot pulls in calm infected within 90 studs. Fire, then move.",
           ] },
@@ -350,14 +351,14 @@ export const weapons: WikiEntry[] = [
       "The Shotgun fires six pellets of 18 damage each (108 if all hit), enough to drop a Walker in one blast at close range. It holds six Shells, takes 2.4 seconds to reload, reaches 70 studs, and is the loudest weapon in the game: every shot is heard 120 studs away.",
     facts: [
       ["Type", "Gun"], ["Damage", "6 × 18 per shot"], ["Magazine", "6"], ["Reload", "2.4 s"],
-      ["Time between shots", "1.0 s"], ["Range", "70 studs"], ["Ammo", "Shells"], ["Durability", "175"], ["Rarity", "Epic"],
+      ["Time between shots", "0.8 s"], ["Range", "70 studs"], ["Ammo", "Shells"], ["Durability", "175"], ["Rarity", "Rolled when found"],
     ],
     sections: [
       {
         id: "overview",
         heading: "Overview",
         blocks: [
-          { type: "p", text: "Devastating up close. The spread is wide, so damage falls off quickly with distance, and headshots multiply each pellet by 1.4 rather than doubling. Shotgun hits always stagger an infected." },
+          { type: "p", text: "Devastating up close. The spread is wide, so damage falls off quickly with distance, and a single pellet to the head kills outright. Shotgun hits always stagger an infected." },
         ],
       },
       {

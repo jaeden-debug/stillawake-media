@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -34,7 +35,7 @@ const url = "https://stillawakemedia.com/website-ownership";
 const HOSTING = RECURRING_BY_ID["managed-hosting"];
 const CARE = RECURRING_BY_ID["website-care-plan"];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Website Ownership: Who Owns the Domain, Hosting, Code & Accounts",
   description:
     metaDescription(
@@ -56,7 +57,7 @@ export const metadata: Metadata = {
     type: "article",
     images: OG_IMAGES,
   },
-};
+});
 
 const FAQ = faqPairs("en");
 

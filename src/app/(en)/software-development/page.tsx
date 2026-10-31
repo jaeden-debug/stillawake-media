@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
 import { PageSchema } from "@/components/page-schema";
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Custom Software Development",
   description: metaDescription(
     "StillAwake Media builds custom software, dashboards, portals, web applications, AI workflows, and scalable digital systems for modern businesses.",
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-};
+});
 
 const systems = [
   {

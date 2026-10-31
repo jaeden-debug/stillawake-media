@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -78,7 +79,7 @@ const MONTHLY_CTA: Record<string, [string, string]> = {
   "content-creation": ["Choisir la production de contenu", "/fr/contact"],
 };
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Tarifs — Prix affichés",
   description: metaDescription(
     `Tarifs StillAwake Media : forfaits mensuels à partir de ${ENTRY_MONTHLY} $ CAD, services à prix fixe à partir de ${ENTRY_ONE_TIME} $, sites à partir de 1 800 $ CAD, un site d'entreprise complet de 2 750 $ à 5 750 $, boutiques en ligne à partir de 4 250 $, cadrage payant à partir de 1 800 $ et dépannage d'urgence de ${ENTRY_ONE_TIME} $ à ${EMERGENCY_CEILING} $. Publiés, en dollars canadiens.`,
@@ -99,7 +100,7 @@ export const metadata: Metadata = {
     locale: "fr_CA",
     images: OG_IMAGES,
   },
-};
+});
 
 export default async function TarifsPage() {
   const slots = await getContentLayer("pricing", "fr");

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { ContactForm } from "@/components/contact-form";
@@ -10,7 +11,7 @@ import { slot } from "@/lib/cms/layer";
 import { PageSchema } from "@/components/page-schema";
 export const revalidate = 300;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Contact | Start a Project",
   description:
     metaDescription(
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
       "x-default": "https://stillawakemedia.com/contact",
     },
   },
-};
+});
 
 export default async function Contact() {
   const slots = await getContentLayer("contact", "en");

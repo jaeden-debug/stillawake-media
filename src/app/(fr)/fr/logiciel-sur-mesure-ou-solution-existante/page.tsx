@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 
@@ -30,7 +31,7 @@ const enUrl = `${siteUrl}${FR.otherPath}`;
  * prévue soit le calculateur de projet, qui pointe ici depuis chaque résultat
  * qui aboutit du côté applicatif.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: FR.meta.title,
   description: metaDescription(
     FR.meta.description,
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
     title: FR.meta.ogTitle,
     description: FR.meta.ogDescription,
   },
-};
+});
 
 export default function LogicielSurMesureOuSolutionExistantePage() {
   return (

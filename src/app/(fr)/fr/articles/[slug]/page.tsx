@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { draftMode } from "next/headers";
@@ -32,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if ((await draftMode()).isEnabled) {
     const draft = await fetchDraftByRoute(`/fr/articles/${slug}`);
     return {
-      title: draft?.title ?? "Aperçu du brouillon",
+      title: pageTitle(draft?.title ?? "Aperçu du brouillon"),
       robots: { index: false, follow: false },
     };
   }
@@ -68,7 +69,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           : undefined;
 
     return {
-      title,
+      title: pageTitle(title),
       description,
       authors: articleAuthors(filePost?.author),
       alternates: {
@@ -100,7 +101,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const url = `${siteUrl}/fr/articles/${post.slug}`;
   return {
-    title: post.title,
+    title: pageTitle(post.title),
     description: metaDescription(post.excerpt),
     authors: articleAuthors(post.author),
     // No `languages` block: these articles are written for Québec and most have

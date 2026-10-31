@@ -51,7 +51,7 @@ export const specialNights: WikiEntry[] = [
       "The Blood Moon special night in Stillskin Forest: 20% faster chases, longer sight, and many more Runners and Brutes.",
     question: "What happens during a Blood Moon in Stillskin Forest?",
     answer:
-      "A Blood Moon turns the sky and light red. The infected chase 20% faster and spot you from 25% further. The mix shifts hard toward Runners and Brutes. It can roll from Night 3. In testing it put 19 infected on the map where a normal night had fewer.",
+      "A Blood Moon turns the sky and light red. The infected chase 20% faster and spot you from 25% further. The mix shifts hard toward Runners and Brutes. It can roll from Night 3. It does not add infected: the normal night cap still applies.",
     facts: [["Earliest", "Night 3"], ["Infected", "Normal night cap (40)"], ["Chase speed", "×1.2"], ["Detection", "×1.25"], ["Watcher", "50% chance"]],
     sections: [
       {

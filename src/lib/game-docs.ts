@@ -140,6 +140,8 @@ export function routeInventoryMd(): string {
     "|---|---|",
     "| `/games` | Games hub |",
     "| `/games/guides/scary-roblox-games-with-friends` | Editorial guide: scary Roblox games to play with friends (absorbed the survival-horror guide) |",
+    "| `/games/guides/best-roblox-zombie-games` | Editorial guide: best Roblox zombie games |",
+    "| `/games/guides/roblox-horror-survival-games` | Editorial guide: Roblox horror survival games (survive the night) |",
   ];
   for (const b of gameBundles) {
     out.push(`| \`${gamePath(b.game.slug)}\` | ${b.game.title} landing page |`);

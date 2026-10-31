@@ -173,6 +173,8 @@ Phones and consoles have less memory and thermal headroom than a desktop. Practi
 
 ## Next step
 
+For a worked example on console hardware, read our case study on [how to optimize a Roblox game for PS4](/stillawake-times/how-to-optimize-a-roblox-game-for-ps4), with Studio before-and-after numbers and a ranked fix list.
+
 If several people or AI agents work on the same game, performance work needs the same discipline as everything else: labelled measurements and one owner per script. See [how we build Stillskin Forest with a team of AI agents](/stillawake-times/how-to-make-a-roblox-game-with-ai-agents).
 
 Fixing lag is easier when the architecture was built with it in mind. Our guides to [making a Roblox game](/stillawake-times/how-to-make-a-roblox-game) and [making a horror game in Roblox Studio](/stillawake-times/how-to-make-a-horror-game-in-roblox-studio) cover those foundations, and the [StillAwake games page](/games) shows what we're building. If you're stuck on a performance problem in your own Roblox project, [contact us](/contact).

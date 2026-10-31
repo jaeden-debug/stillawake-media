@@ -58,6 +58,7 @@ const DEV_GUIDES = [
   ["How to make a Roblox game", "/stillawake-times/how-to-make-a-roblox-game", "From concept and core loop to scripting, testing and publishing, with RISK IT! as the example."],
   ["How to make a horror game in Roblox Studio", "/stillawake-times/how-to-make-a-horror-game-in-roblox-studio", "Atmosphere, sound, enemy perception and hiding systems, from building Stillskin Forest."],
   ["How to fix lag in Roblox games", "/stillawake-times/how-to-fix-lag-in-roblox-studio", "Diagnose first, then fix draw calls, lighting, scripts, physics and replication."],
+  ["How to optimize a Roblox game for PS4", "/stillawake-times/how-to-optimize-a-roblox-game-for-ps4", "A console performance case study from Stillskin Forest: Studio measurements, ranked fixes and honest estimates."],
   ["How to make a Roblox game with AI agents", "/stillawake-times/how-to-make-a-roblox-game-with-ai-agents", "One moderator, seven specialist agents, shared contracts and evidence-only testing, from Stillskin Forest."],
 ] as const;
 

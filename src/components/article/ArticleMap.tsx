@@ -18,13 +18,14 @@ export function ArticleMap({
   title?: string;
   className?: string;
 }) {
-  const sections = items.filter((item) => item.level === 2 || item.level === 3);
+  // Sections only: sub-questions (an FAQ's H3s, say) make the map too long to scan.
+  const sections = items.filter((item) => item.level === 2);
   if (sections.length < 2) return null;
 
   const list = (
     <ol className="article-map-list">
       {sections.map((item) => (
-        <li key={item.id} className={item.level === 3 ? "is-sub" : undefined}>
+        <li key={item.id}>
           <a href={`#${item.id}`} data-map-link={item.id}>
             {item.text}
           </a>
@@ -38,7 +39,7 @@ export function ArticleMap({
       <details className={`article-map-mobile lg:hidden ${className}`}>
         <summary>
           <span>{title}</span>
-          <span className="article-map-count">{sections.filter((s) => s.level === 2).length} sections</span>
+          <span className="article-map-count">{sections.length}</span>
         </summary>
         <nav aria-label={title}>{list}</nav>
       </details>

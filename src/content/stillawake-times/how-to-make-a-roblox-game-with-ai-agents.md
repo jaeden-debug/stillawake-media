@@ -16,36 +16,11 @@ howTo: "The method, step by step"
 
 We used this workflow on 31 October 2026 to overhaul [Stillskin Forest](/games/stillskin-forest), our co-op zombie survival-horror game on Roblox, three days after it went public on 28 October 2026. One moderator session coordinated seven specialist [Claude Code](https://www.anthropic.com/claude-code) sessions, all working on the same live Roblox place at the same time. This article is the full method: the roles, the documents, the rules, the templates we actually used, a timeline of the day, what broke, and when you shouldn't do this at all.
 
-*By Jaeden Doody · Published 31 October 2026 · Last updated and last verified 31 October 2026.*
 
 <figure>
   <img src="/games/stillskin-forest/branding/stillskin-forest-hero.webp" alt="Survivors with headlamps on a forest trail at dusk in Stillskin Forest" width="2560" height="1440" loading="lazy" />
   <figcaption>Stillskin Forest, the Roblox game this workflow was built around.</figcaption>
 </figure>
-
-## Contents
-
-- [Key takeaways](#key-takeaways)
-- [Terms used in this article](#terms-used-in-this-article)
-- [Why one AI agent wasn't enough](#why-one-ai-agent-wasnt-enough)
-- [The method, step by step](#the-method-step-by-step)
-- [Roles: who does what](#roles-who-does-what)
-- [The shared documents](#the-shared-documents)
-- [The status ladder](#the-status-ladder)
-- [Ownership: one owner per script](#ownership-one-owner-per-script)
-- [Contracts before code](#contracts-before-code)
-- [One editor, one lock](#one-editor-one-lock)
-- [Testing in three tiers](#testing-in-three-tiers)
-- [Honesty rules](#honesty-rules)
-- [Human approvals](#human-approvals)
-- [The feedback loop](#the-feedback-loop)
-- [Templates you can copy](#templates-you-can-copy)
-- [A timeline of the day](#a-timeline-of-the-day)
-- [Failure modes and the fixes we used](#failure-modes-and-the-fixes-we-used)
-- [When not to use this approach](#when-not-to-use-this-approach)
-- [FAQ](#faq)
-- [Conclusion](#conclusion)
-- [About the author](#about-the-author)
 
 ## Key takeaways
 
@@ -389,7 +364,3 @@ The tools weren't the hard part of building a game with several AI agents. Organ
 If you want to try it, start smaller than we did. Two specialists and a moderator, an ownership table, one contract and a checklist with a status ladder will teach you most of it in a day. Then add agents only where you can give them something to own.
 
 For more on the game itself, start at the [Stillskin Forest wiki](/games/stillskin-forest/wiki) or the [development log](/games/stillskin-forest/wiki/updates/development-log). For building your own game, see [how to make a Roblox game](/stillawake-times/how-to-make-a-roblox-game), [how to make a horror game in Roblox Studio](/stillawake-times/how-to-make-a-horror-game-in-roblox-studio) and [how to fix lag in Roblox games](/stillawake-times/how-to-fix-lag-in-roblox-studio).
-
-## About the author
-
-[Jaeden Doody](/founder/jaeden-doody) is the Montreal-based founder of StillAwake Media, building software, AI systems, and practical business solutions for modern companies. He owns Stillskin Forest and made the product decisions described in this article.

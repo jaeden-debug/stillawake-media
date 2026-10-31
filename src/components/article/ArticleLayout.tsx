@@ -18,7 +18,7 @@ export type ArticleLayoutProps = {
   updated?: string;
   readTime: string;
   toc: ArticleMapItem[];
-  cta: { title: string; links: { href: string; label: string; primary?: boolean }[] };
+  cta: { title: string; body?: string; links: { href: string; label: string; primary?: boolean }[] };
   related: { href: string; category: string; title: string; excerpt: string }[];
   children: React.ReactNode;
 };
@@ -148,6 +148,7 @@ export function ArticleLayout(props: ArticleLayoutProps) {
             <section className="article-cta">
               <p className="article-cta-label">{t.next}</p>
               <h2 className="article-cta-title">{props.cta.title}</h2>
+              {props.cta.body ? <p className="article-cta-body">{props.cta.body}</p> : null}
               <div className="article-cta-links">
                 {props.cta.links.map((link) => (
                   <Link key={link.href} href={link.href} className={link.primary ? "is-primary" : undefined}>

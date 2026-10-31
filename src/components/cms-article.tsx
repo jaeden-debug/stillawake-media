@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { siteUrl } from "@/lib/data";
 import { entityIds } from "@/data/entities";
 import { authorJsonLd, jaedenDoody, personAuthorNames } from "@/data/people/jaeden-doody";
@@ -8,6 +7,7 @@ import { estimateReadTime, extractToc } from "@/lib/cms/prose";
 import { SectionRenderer } from "@/lib/cms/render";
 import type { CmsDraftItem, CmsLocale, CmsPublishedContent, CmsSection } from "@/lib/cms/types";
 import { InternalLinks } from "@/components/site";
+import { ArticleLayout } from "@/components/article/ArticleLayout";
 
 /**
  * CMS-backed article page body. Reproduces the EXACT existing markdown article
@@ -136,7 +136,6 @@ export async function CmsArticle({
   // Unattributed CMS articles are Jaeden's: he writes everything published here.
   const authorName = author?.name ?? jaedenDoody.name;
   const byJaeden = personAuthorNames.has(authorName);
-  const founderPath = locale === "fr" ? "/fr/fondateur/jaeden-doody" : jaedenDoody.path;
   const readTime = estimateReadTime(view.sections, locale);
   const toc = extractToc(view.sections);
   const url =
@@ -162,7 +161,6 @@ export async function CmsArticle({
   };
 
   const backHref = locale === "fr" ? "/fr/articles" : "/stillawake-times";
-  const backLabel = locale === "fr" ? "← Retour aux articles" : "← Back to StillAwake Times";
 
   return (
     <main className="pt-28">
@@ -174,125 +172,43 @@ export async function CmsArticle({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
         />
       )}
-      <article className="px-6 py-20">
-        <div className="mx-auto max-w-7xl">
-          <Link href={backHref} className="text-sm text-[#C7B9B9] hover:text-white">
-            {backLabel}
-          </Link>
-
-          <header className="mt-10 max-w-5xl">
-            <p className="mb-4 text-sm uppercase tracking-[.35em] text-[#D71920]">{view.category}</p>
-            <h1 className="geist text-5xl font-black leading-[.9] tracking-[-0.075em] md:text-8xl">
-              {view.title}
-            </h1>
-            <p className="mt-8 max-w-3xl text-lg leading-8 text-[#C7B9B9]">{view.excerpt}</p>
-            <p className="mt-6 text-xs uppercase tracking-[.25em] text-[#666]">
-              {byJaeden ? (
-                <Link
-                  href={founderPath}
-                  className="underline decoration-[#D71920] underline-offset-4 hover:text-white"
-                >
-                  {locale === "fr" ? "Par" : "By"} {authorName}
-                </Link>
-              ) : (
-                authorName
-              )}{" "}
-              · {view.date}
-              {view.updated
-                ? locale === "fr"
-                  ? ` · Mis à jour le ${view.updated}`
-                  : ` · Updated ${view.updated}`
-                : ""}{" "}
-              · {readTime}
-            </p>
-          </header>
-
-          <div className="mt-16 grid gap-10 lg:grid-cols-[280px_minmax(0,1fr)]">
-            <aside className="block min-w-0 lg:block">
-              <div className="rounded-[2rem] border border-white/10 bg-white/[.04] p-5 backdrop-blur-xl lg:sticky lg:top-28">
-                <p className="mb-4 text-xs uppercase tracking-[.3em] text-[#D71920]">
-                  {locale === "fr" ? "Plan de l'article" : "Article Map"}
-                </p>
-                <nav className="grid max-h-[340px] gap-3 overflow-y-auto pr-1">
-                  {toc.slice(0, 14).map((item) => (
-                    <a
-                      key={item.id}
-                      href={`#${item.id}`}
-                      className={`text-sm leading-5 text-[#C7B9B9] transition hover:text-white ${
-                        item.level === 3 ? "pl-4 text-xs text-[#777]" : ""
-                      }`}
-                    >
-                      {item.text}
-                    </a>
-                  ))}
-                </nav>
-              </div>
-            </aside>
-
-            <div className="min-w-0">
-              <SectionRenderer sections={view.sections} locale={locale} contentId={view.contentId} />
-
-              <section className="mt-16 rounded-[3rem] bg-[#D71920] p-8 md:p-12">
-                <p className="mb-4 text-sm uppercase tracking-[.35em] text-white/70">
-                  {locale === "fr" ? "Prochaine étape" : "Next Step"}
-                </p>
-                <h2 className="geist max-w-3xl text-4xl font-black leading-[.95] tracking-[-0.06em] md:text-6xl">
-                  {locale === "fr"
-                    ? "Envie d'appliquer ce genre de stratégie à votre entreprise ?"
-                    : "Want this kind of strategy applied to your business?"}
-                </h2>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <Link
-                    href={locale === "fr" ? "/fr/contact" : "/contact"}
-                    className="inline-flex rounded-full bg-black px-6 py-4 font-bold"
-                  >
-                    {locale === "fr" ? "Démarrer mon projet →" : "Start Your Project →"}
-                  </Link>
-                  <Link
-                    href={locale === "fr" ? "/fr/outils/calculateur-cout-projet" : "/tools/project-cost-calculator"}
-                    className="inline-flex rounded-full border border-white/40 px-6 py-4 font-bold transition hover:bg-white/10"
-                  >
-                    {locale === "fr" ? "Estimer le coût" : "Estimate the cost"}
-                  </Link>
-                  <Link
-                    href={locale === "fr" ? "/fr/tarifs" : "/pricing"}
-                    className="inline-flex rounded-full border border-white/40 px-6 py-4 font-bold transition hover:bg-white/10"
-                  >
-                    {locale === "fr" ? "Voir les tarifs" : "See pricing"}
-                  </Link>
-                </div>
-              </section>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      {related.length > 0 && (
-        <section className="px-6 py-16">
-          <div className="mx-auto max-w-7xl">
-            <p className="mb-4 text-sm uppercase tracking-[.35em] text-[#D71920]">
-              {locale === "fr" ? "À lire ensuite" : "Related Reading"}
-            </p>
-            <h2 className="geist text-4xl font-black tracking-[-0.06em] md:text-6xl">
-              {locale === "fr" ? "Continuez à bâtir le système." : "Keep building the system."}
-            </h2>
-
-            <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-              {related.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="glass rounded-[2rem] p-6 transition hover:border-[#D71920]/60"
-                >
-                  <p className="text-xs uppercase tracking-[.25em] text-[#D71920]">{item.category}</p>
-                  <h3 className="geist mt-4 text-2xl font-black tracking-[-0.06em]">{item.title}</h3>
-                  <p className="mt-4 text-sm leading-6 text-[#C7B9B9]">{item.excerpt}</p>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      <ArticleLayout
+        locale={locale}
+        backHref={backHref}
+        category={view.category}
+        title={view.title}
+        excerpt={view.excerpt}
+        author={authorName}
+        byJaeden={byJaeden}
+        date={view.date}
+        updated={view.updated}
+        readTime={readTime}
+        toc={toc}
+        cta={{
+          title:
+            locale === "fr"
+              ? "Envie d'appliquer ce genre de stratégie à votre entreprise ?"
+              : "Want this kind of strategy applied to your business?",
+          links: [
+            {
+              href: locale === "fr" ? "/fr/contact" : "/contact",
+              label: locale === "fr" ? "Démarrer mon projet →" : "Start Your Project →",
+              primary: true,
+            },
+            {
+              href: locale === "fr" ? "/fr/outils/calculateur-cout-projet" : "/tools/project-cost-calculator",
+              label: locale === "fr" ? "Estimer le coût" : "Estimate the cost",
+            },
+            {
+              href: locale === "fr" ? "/fr/tarifs" : "/pricing",
+              label: locale === "fr" ? "Voir les tarifs" : "See pricing",
+            },
+          ],
+        }}
+        related={related}
+      >
+        <SectionRenderer sections={view.sections} locale={locale} contentId={view.contentId} />
+      </ArticleLayout>
 
       <InternalLinks locale={locale} />
     </main>

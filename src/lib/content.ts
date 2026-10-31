@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
+import { enhanceArticleHtml } from "@/lib/article-html";
 
 /**
  * Articles are stored per-locale. French articles are written for Québec, not
@@ -214,7 +215,7 @@ export async function getPostBySlug(slug: string, locale: Locale = "en"): Promis
     author: data.author || "StillAwake Media",
     ogImage: typeof data.ogImage === "string" && data.ogImage ? data.ogImage : undefined,
     content,
-    html: processed.toString(),
+    html: enhanceArticleHtml(processed.toString()),
     toc,
     // Opt-in per article (`faqSchema: true`), so enabling it never changes
     // the markup of an existing post by surprise.

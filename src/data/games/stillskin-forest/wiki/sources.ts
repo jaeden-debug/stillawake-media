@@ -18,6 +18,7 @@ export const SRC = {
   notes30: "Release notes of the published builds, 26–30 Oct 2026 (last publish 30 Oct 2026), checked 31 Oct 2026",
   controls31: "Control bindings in the published build's input scripts, read 31 Oct 2026",
   publish31: "Release notes of the published build v382, 31 Oct 2026",
+  v3draft: "V3 campaign design documents (DRAFT, pre-release), 31 Oct 2026",
 } as const;
 
 export const VERIFIED = STILLSKIN_VERIFIED;

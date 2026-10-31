@@ -41,6 +41,7 @@ Projects whose canonical page lives elsewhere (cards link there, and `/our-work/
 | `/games/stillskin-forest/wiki/special-nights` | Wiki category: Special Nights |
 | `/games/stillskin-forest/wiki/story` | Wiki category: Story & Lore |
 | `/games/stillskin-forest/wiki/quests` | Wiki category: Quests & Walkthroughs |
+| `/games/stillskin-forest/wiki/campaign` | Wiki category: Campaign |
 | `/games/stillskin-forest/wiki/multiplayer` | Wiki category: Co-op & End of Run |
 | `/games/stillskin-forest/wiki/updates` | Wiki category: Updates |
 | `/games/stillskin-forest/wiki/getting-started/what-is-stillskin-forest` | What Is Stillskin Forest? |
@@ -126,6 +127,24 @@ Projects whose canonical page lives elsewhere (cards link there, and `/our-work/
 | `/games/stillskin-forest/wiki/quests/the-rite-of-stillness` | The Rite of Stillness: Ritual Walkthrough |
 | `/games/stillskin-forest/wiki/quests/descent-into-the-hollow` | Descent into the Hollow |
 | `/games/stillskin-forest/wiki/quests/the-heart-of-stillskin` | The Heart of Stillskin |
+| `/games/stillskin-forest/wiki/campaign/campaign-getting-started` | How the Campaign Starts |
+| `/games/stillskin-forest/wiki/campaign/main-campaign` | The Ranger's Last Transmission: All 22 Chapters |
+| `/games/stillskin-forest/wiki/campaign/ranger-journals` | Ranger Journals |
+| `/games/stillskin-forest/wiki/campaign/tapes-and-recordings` | Tapes and Recordings |
+| `/games/stillskin-forest/wiki/campaign/backstreet` | Backstreet |
+| `/games/stillskin-forest/wiki/campaign/hunters-rifle` | Hunter's Rifle |
+| `/games/stillskin-forest/wiki/campaign/freeze-device-story` | The Freeze Device's Story |
+| `/games/stillskin-forest/wiki/campaign/night-vision-and-the-ritual` | Night Vision and the Ritual |
+| `/games/stillskin-forest/wiki/campaign/relics-and-the-buried-relic` | Relics and the Buried Relic |
+| `/games/stillskin-forest/wiki/campaign/watchers` | Watchers in the Campaign |
+| `/games/stillskin-forest/wiki/campaign/silent-night-story` | Silent Night in the Campaign |
+| `/games/stillskin-forest/wiki/campaign/dark-forest` | The Dark Forest |
+| `/games/stillskin-forest/wiki/campaign/nowhere-tree` | The Nowhere Tree |
+| `/games/stillskin-forest/wiki/campaign/the-astral` | The Astral |
+| `/games/stillskin-forest/wiki/campaign/ending-the-marked` | Ending: The Marked |
+| `/games/stillskin-forest/wiki/campaign/ending-the-remains` | Ending: The Remains |
+| `/games/stillskin-forest/wiki/campaign/ending-the-severance` | Ending: The Severance |
+| `/games/stillskin-forest/wiki/campaign/post-campaign-survival` | After the Campaign |
 | `/games/stillskin-forest/wiki/multiplayer/co-op-survival` | Co-op Survival: Revives, Pings and Sharing |
 | `/games/stillskin-forest/wiki/multiplayer/death-ghosts-and-the-finale` | Death, Ghosts and the Rooftop Finale |
 | `/games/stillskin-forest/wiki/multiplayer/persistent-expeditions` | Saved Sessions: Saving Your Run and Playing With Friends |

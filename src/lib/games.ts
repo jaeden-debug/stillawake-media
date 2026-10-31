@@ -157,9 +157,10 @@ export function plainText(text: string): string {
 }
 
 /** The whole article as plain text, for search and structured data. */
-export function entryText(entry: WikiEntry): string {
+export function entryText(entry: WikiEntry, opts: { skipSpoilerSections?: boolean } = {}): string {
   const parts: string[] = [entry.answer];
   for (const section of entry.sections) {
+    if (opts.skipSpoilerSections && section.spoiler) continue;
     parts.push(section.heading);
     for (const block of section.blocks) {
       if (block.type === "p" || block.type === "callout") parts.push(block.text);

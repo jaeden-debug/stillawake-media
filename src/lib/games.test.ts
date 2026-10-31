@@ -227,3 +227,19 @@ describe("share images for hub-level pages", () => {
     }
   });
 });
+
+describe("AI index spoiler handling", () => {
+  it("drops spoiler sections from spoiler pages only", async () => {
+    const { entryText } = await import("@/lib/games");
+    const entry = {
+      answer: "Open answer.",
+      sections: [
+        { id: "a", heading: "Open", blocks: [{ type: "p", text: "Visible text." }] },
+        { id: "b", heading: "Secret", spoiler: true, blocks: [{ type: "p", text: "Twist text." }] },
+      ],
+    } as unknown as Parameters<typeof entryText>[0];
+    expect(entryText(entry)).toContain("Twist text.");
+    expect(entryText(entry, { skipSpoilerSections: true })).not.toContain("Twist text.");
+    expect(entryText(entry, { skipSpoilerSections: true })).toContain("Visible text.");
+  });
+});

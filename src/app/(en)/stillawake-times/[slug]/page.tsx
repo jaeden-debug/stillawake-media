@@ -17,6 +17,8 @@ import {
 } from "@/components/cms-article";
 import { InternalLinks } from "@/components/site";
 import { ArticleLayout } from "@/components/article/ArticleLayout";
+import { GameSpotlight } from "@/components/games/GameSpotlight";
+import { getBundle } from "@/lib/games";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -272,6 +274,10 @@ export default async function ArticlePage({ params }: Props) {
         />
       ) : null}
       <ArticleLayout
+        spotlight={(() => {
+          const game = post.game ? getBundle(post.game)?.game : undefined;
+          return game ? <GameSpotlight game={game} locale="en" placement="article" /> : null;
+        })()}
         locale="en"
         backHref="/stillawake-times"
         category={post.category}

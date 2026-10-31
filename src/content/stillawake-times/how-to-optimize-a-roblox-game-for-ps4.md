@@ -6,6 +6,7 @@ excerpt: "How we're optimizing Stillskin Forest for PS4 and consoles: what we me
 category: "Game Development"
 featured: false
 author: "Jaeden Doody"
+game: "stillskin-forest"
 image: "/games/stillskin-forest/branding/stillskin-forest-night-chase.webp"
 ogImage: "/games/stillskin-forest/branding/stillskin-forest-social.jpg"
 faqSchema: true

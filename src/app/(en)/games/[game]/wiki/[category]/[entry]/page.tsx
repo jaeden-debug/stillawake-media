@@ -8,6 +8,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { WikiShell } from "@/components/wiki/WikiShell";
 import { SpoilerGate, WikiSectionView, WikiText } from "@/components/wiki/WikiContent";
 import { RobloxCta } from "@/components/games/GameCta";
+import { GameSpotlight } from "@/components/games/GameSpotlight";
 import { gameBundles, type GameBundle } from "@/data/games";
 import { articleAuthors, jaedenDoody } from "@/data/people/jaeden-doody";
 import type { GameUpdate, WikiEntry } from "@/data/games/types";
@@ -251,12 +252,18 @@ export default async function EntryPage({ params }: Props) {
           </section>
         )}
 
-        <div className="mt-12 flex max-w-3xl flex-wrap gap-3">
-          <Link href={wikiPath(game)} className="rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">
-            ← Wiki home
-          </Link>
-          <RobloxCta game={bundle.game} placement="wiki_entry" variant="secondary" />
-        </div>
+        {bundle.game.spotlight ? (
+          <div className="mt-12 max-w-3xl">
+            <GameSpotlight game={bundle.game} placement="wiki_entry" />
+          </div>
+        ) : (
+          <div className="mt-12 flex max-w-3xl flex-wrap gap-3">
+            <Link href={wikiPath(game)} className="rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">
+              ← Wiki home
+            </Link>
+            <RobloxCta game={bundle.game} placement="wiki_entry" variant="secondary" />
+          </div>
+        )}
       </WikiShell>
     </main>
   );

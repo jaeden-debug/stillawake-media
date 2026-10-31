@@ -7,6 +7,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SiteSearch } from "@/components/search/SiteSearch";
 import { WikiShell } from "@/components/wiki/WikiShell";
 import { RobloxCta } from "@/components/games/GameCta";
+import { GameSpotlight } from "@/components/games/GameSpotlight";
 import { gameBundles } from "@/data/games";
 import type { WikiEntry } from "@/data/games/types";
 import { JsonLd, breadcrumbList, collectionPageNode, graph, itemList, videoGameId, type Crumb } from "@/lib/game-schema";
@@ -176,12 +177,18 @@ export default async function WikiHome({ params }: Props) {
             </ul>
           </section>
 
-          <div className="mt-14 flex flex-wrap gap-3">
-            <Link href={gamePath(slug)} className="rounded-full border border-white/20 px-6 py-3 text-sm font-bold text-white hover:bg-white/10">
-              About {game.title}
-            </Link>
-            <RobloxCta game={game} placement="wiki_home" variant="secondary" />
-          </div>
+          {game.spotlight ? (
+            <div className="mt-14 max-w-3xl">
+              <GameSpotlight game={game} placement="wiki_home" />
+            </div>
+          ) : (
+            <div className="mt-14 flex flex-wrap gap-3">
+              <Link href={gamePath(slug)} className="rounded-full border border-white/20 px-6 py-3 text-sm font-bold text-white hover:bg-white/10">
+                About {game.title}
+              </Link>
+              <RobloxCta game={game} placement="wiki_home" variant="secondary" />
+            </div>
+          )}
         </WikiShell>
       </div>
     </main>

@@ -6,6 +6,7 @@ excerpt: "To make a Roblox game, define one core loop, build it in Roblox Studio
 category: "Game Development"
 featured: false
 author: "Jaeden Doody"
+game: "stillskin-forest"
 ---
 
 **To make a Roblox game, you install Roblox Studio (free), decide on one core loop a player can repeat in under a minute, build a small playable space, write the rules in Luau with the server in charge of anything that matters, test with several simulated players, and publish through File > Publish, where you complete Roblox's content maturity questionnaire.** The tools are free and the first playable version can be small. What separates a game people return to from one they leave after a minute is usually not the art. It is a clear loop, server-side rules that can't be cheated, and testing under conditions closer to a real server than solo Play mode.

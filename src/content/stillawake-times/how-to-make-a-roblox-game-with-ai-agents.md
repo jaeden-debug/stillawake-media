@@ -75,11 +75,15 @@ We used this workflow on 31 October 2026 to overhaul [Stillskin Forest](/games/s
 
 ## Why one AI agent wasn't enough
 
-A single AI coding session can build a lot of a Roblox game. In Stillskin Forest's first week, AI coding sessions working one at a time built the town, the asylum, the zombie AI, the lobby, the loot and the economy. The limit isn't skill. It's attention and context. By the end of that week the project's own state document ran to well over 1,500 lines of dated changes, and one session holding all of it at once started to cost real time: re-reading, re-checking, and switching between a combat bug, a map edit and a shop price in the same hour.
+We didn't start with eight agents. From 24 October, Stillskin Forest was built by Claude Code sessions working alongside a separate Codex agent, which owned the Dread hiding encounter and a set of presentation modules. Even with two agents, the coordination lived in shared files: an ownership registry that said which agent owned which script, an integration queue for changes that crossed that line, written contracts, and a lock for the Studio editor. That week produced the town, the asylum, the zombie AI, the lobby, the loot and the economy.
+
+It also showed the limit of a few sessions doing everything. The project's own state document grew to well over 1,500 lines of dated changes. A session holding all of it at once spent real time re-reading, re-checking, and switching between a combat bug, a map edit and a shop price in the same hour. The limit wasn't skill. It was attention and context.
+
+On 31 October we took the same file-based coordination one step further. For the first time, one moderator ran seven specialist agents in parallel.
 
 The overhaul on 31 October had more parallel work than one session could hold. It covered an inventory that the HUD could trust, combat events that fired once per kill, a reward pipeline, a new trader, new map areas, saved sessions with friends, a security audit, PS4 performance and the website. Most of those systems touch each other. The question wasn't whether to split the work. It was how to split it without seven agents breaking each other's code.
 
-The answer was an organisation, not a smarter prompt: one coordinator, clear ownership, written contracts, a lock, and a rule that nothing counts until it's tested.
+The answer was more organisation, not a smarter prompt. We kept the ownership registry, contracts and lock that had worked for two agents, and added one coordinator and a rule that nothing counts until it's tested.
 
 ## The method, step by step
 

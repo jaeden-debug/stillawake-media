@@ -164,7 +164,7 @@ export const campaign: WikiEntry[] = [
             ["8", "Blackthorn", "Get into the asylum", "Memorial Park, Blackthorn Asylum"],
             ["9", "The Warden's office", "Find the [Hunter's Rifle](@hunters-rifle) or the Warden's journal", "Asylum, top floor, right side"],
             ["10", "The goggles", "Learn where the Warden's night-vision goggles went", "Asylum staff room and office"],
-            ["11", "The relics", "Find [the four relics](@relics-and-the-buried-relic)", "Around the map; one is buried"],
+            ["11", "The relics", "Find [the four relics](@relics-and-the-buried-relic)", "Around the map; the Rosary is buried"],
             ["12", "The ritual", "Complete the Rite of Stillness, which frees the goggles (TO VERIFY AT RELEASE)", "Asylum cafeteria"],
             ["13", "The quarantine", "Uncover what happened to the military", "Blackpine Airfield, the medical camp"],
             ["14", "Final transmissions", "Hear the ranger's last tapes", "Watchtower, Ranger Base, Lookout Camp"],
@@ -690,13 +690,13 @@ export const campaign: WikiEntry[] = [
     title: "Relics and the Buried Relic",
     seoTitle: "Stillskin Forest V3 Relics: Where the Buried Relic Is",
     description:
-      "The four relics in the Stillskin Forest V3 campaign: what stays the same, which relic moves to a buried spot near the ranger trader station, and the fire-map clue.",
+      "The four relics in the Stillskin Forest V3 campaign: what stays the same, why the Sister's Rosary is buried near the ranger trader station, and the fire-map clue.",
     question: "Where is the buried relic in the Stillskin Forest campaign?",
     answer:
-      "The four relics of the Rite of Stillness keep their live locations except one, which V3 moves to a buried, off-trail spot near the Ranger Trader Station (TO VERIFY AT RELEASE). The clue is on the ranger's fire map: a small circle with a line through it, drawn in green ink near the trader station. The same symbol is carved on a stump at the dig site (TO VERIFY AT RELEASE).",
+      "Three relics keep their live locations. The Sister's Rosary is buried at an off-trail spot near the Ranger Trader Station (TO VERIFY AT RELEASE). The clue is on the ranger's fire map: a small circle with a line through it, drawn in green ink near the trader station. The same symbol is carved on a stump at the dig site (TO VERIFY AT RELEASE).",
     facts: [
       ["Relics", "4"],
-      ["Moved", "1, to a buried spot near the Ranger Trader Station (TO VERIFY AT RELEASE)"],
+      ["Buried", "The Sister's Rosary, near the Ranger Trader Station (TO VERIFY AT RELEASE)"],
       ["Clue", "The ranger's fire map (TO VERIFY AT RELEASE)"],
       ["Marker", "A circle-and-line symbol carved on a stump (TO VERIFY AT RELEASE)"],
       ["Chapter", "11 (TO VERIFY AT RELEASE)"],
@@ -707,8 +707,8 @@ export const campaign: WikiEntry[] = [
         heading: "What stays the same",
         blocks: [
           draft,
-          { type: "p", text: "Three relics are where [the four relics](@the-four-relics) page says they are today (TO VERIFY AT RELEASE). Relics are still personal finds: each survivor finds their own, and whatever anyone lays in the cafeteria circle stays there for the squad (TO VERIFY AT RELEASE). The ritual can still be completed once per expedition (TO VERIFY AT RELEASE)." },
-          { type: "p", text: "Each relic has more than one clue pointing to it, and the ranger's Day 74 journal at the chapel says she found three of the four places (TO VERIFY AT RELEASE)." },
+          { type: "p", text: "The Miner's Lantern (crypt cave), the Angel's Tear (graveyard) and Dr. Vance's Ring (the Warden's office) are where [the four relics](@the-four-relics) page says they are today (TO VERIFY AT RELEASE). Relics are still personal finds: each survivor finds their own, and whatever anyone lays in the cafeteria circle stays there for the squad (TO VERIFY AT RELEASE). The ritual can still be completed once per expedition (TO VERIFY AT RELEASE)." },
+          { type: "p", text: "Each relic has more than one clue pointing to it. The ranger's Day 74 journal at the chapel says she found three of the four places: the rosary was no longer in the morgue. Sister Agnes had taken it back from Hollis and buried it where the Warden never looked (TO VERIFY AT RELEASE)." },
         ],
       },
       {
@@ -718,7 +718,7 @@ export const campaign: WikiEntry[] = [
           { type: "list", ordered: true, items: [
             "Look at the fire map at the ranger station, the same map the old watch log mentions. Her pencil marks the drainage route from Green Lake. Near the trader station, off the trail, there's a small circle with a line through it in green ink, pressed hard enough to tear the paper (TO VERIFY AT RELEASE).",
             "Head for the [Ranger Trader Station](@ranger-trader-station) and look off the trail for a stump carved with the same symbol, with disturbed earth beside it. It is visible from the trail (TO VERIFY AT RELEASE).",
-            "Dig up the relic there (TO VERIFY AT RELEASE).",
+            "Hold **Dig** at the stump to recover the Sister's Rosary (TO VERIFY AT RELEASE).",
           ] },
           { type: "callout", tone: "tip", text: "Stuck? After 12 in-game hours the assist note reads: \"Someone marked a spot on the fire map near the trader station. Not me.\" (TO VERIFY AT RELEASE)" },
           { type: "p", text: "The trader station is a safe zone inside its fence, but the dig site is outside it (TO VERIFY AT RELEASE)." },
@@ -729,14 +729,14 @@ export const campaign: WikiEntry[] = [
         heading: "Who marked the map",
         spoiler: true,
         blocks: [
-          { type: "p", text: "The green circle is not in the ranger's handwriting, and the same circle-and-line symbol is painted a hundred times on the asylum's day-room wall and carved into a tree at the hunting camp. After the quarantine collapsed, the entity under the hill arranged the trail of real evidence to bring capable survivors to it; moving one relic, and marking where, is part of that arrangement." },
+          { type: "p", text: "The green circle is not in the ranger's handwriting, and the same circle-and-line symbol is painted a hundred times on the asylum's day-room wall and carved into a tree at the hunting camp. After the quarantine collapsed, the entity under the hill arranged the trail of real evidence to bring capable survivors to it; marking where Agnes buried the rosary is part of that arrangement." },
           { type: "p", text: "The relics also explain the link between the entity and the Warden: the rite they belong to was the tool he tried to turn into command, and the circle they are laid in is where it took him." },
         ],
       },
     ],
     related: ["the-four-relics", "the-rite-of-stillness", "ranger-trader-station", "night-vision-and-the-ritual", "main-campaign"],
     sources: [SRC.v3draft],
-    aliases: ["buried relic", "relic locations", "fire map", "moved relic", "relic near trader", "relics v3"],
+    aliases: ["buried relic", "rosary", "sister's rosary location", "relic locations", "fire map", "relic near trader", "relics v3"],
     gaps: [provisionalGap, "The design documents don't say which of the four relics is moved."],
   },
 
@@ -1307,6 +1307,22 @@ export const campaign: WikiEntry[] = [
             "**The Freeze Device** is that green light. In the confrontation it cuts the radio voice off mid-word, and for those seconds the figure stands silent and wrong. Then it goes still and the radio dies with a click (TO VERIFY AT RELEASE).",
           ] },
           { type: "p", text: "The rest of the confrontation is still being designed; the ritual's advantage, such as a longer window to act, applies here (TO VERIFY AT RELEASE). The journal afterwards: \"She's gone, and so is the voice that wore her. Something may still be under the hill. Not today.\"" },
+        ],
+      },
+      {
+        id: "the-confrontation",
+        heading: "How the confrontation works",
+        spoiler: true,
+        blocks: [
+          { type: "p", text: "Under design for the release: everything in this section is TO VERIFY AT RELEASE." },
+          { type: "list", ordered: true, items: [
+            "**Light her.** Keep a headlamp, lantern or night vision on her until she flickers and turns solid. Shots and swings pass through her until then (TO VERIFY AT RELEASE).",
+            "**Freeze her.** Hit her with the Freeze Device while she's exposed. The green holds her still for a short window, about eleven seconds, the Warden's own number (TO VERIFY AT RELEASE).",
+            "**Take back what's hers.** Inside the window, hold the prompt to take one thing back, in order: the radio on her vest, then her lantern, then her badge. Each one is gone for good (TO VERIFY AT RELEASE).",
+          ] },
+          { type: "p", text: "She never attacks directly. The lamp-post circles wake each time a window closes, Watchers stalk the clearing from the second strand, and standing alone in her light gets you grabbed (TO VERIFY AT RELEASE)." },
+          { type: "p", text: "**The ritual helps:** a crew that completed it gets a longer window, exposes her faster, and is spared her first grab (TO VERIFY AT RELEASE)." },
+          { type: "p", text: "**If the crew falls:** you wake at the edge of the clearing with everything you've already taken back still gone from her. After three wipes you can walk away and choose again (TO VERIFY AT RELEASE)." },
         ],
       },
     ],

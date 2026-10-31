@@ -40,6 +40,18 @@ export const stillskinForest: Game = {
   publiclyPlayable: true,
   statusNote:
     "Stillskin Forest went public on Roblox on 28 October 2026. This site describes the published game; details may change between updates, and every page shows the date it was last checked.",
+  behindTheGame: [
+    {
+      title: "How to make a Roblox game with AI agents",
+      href: "/stillawake-times/how-to-make-a-roblox-game-with-ai-agents",
+      blurb: "The moderator-led workflow we use to build Stillskin Forest with a team of AI coding agents.",
+    },
+    {
+      title: "How to make a horror game in Roblox Studio",
+      href: "/stillawake-times/how-to-make-a-horror-game-in-roblox-studio",
+      blurb: "Lighting, sound, enemy perception and hiding, from building Stillskin Forest.",
+    },
+  ],
   features: [
     {
       title: "Infected that hunt with intent",

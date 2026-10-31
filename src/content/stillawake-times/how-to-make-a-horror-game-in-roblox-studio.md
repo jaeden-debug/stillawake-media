@@ -257,4 +257,6 @@ Whether a scare works depends on timing and feel, so testing needs discipline:
 
 ## Next step
 
+The process behind these systems is written up in [how we build Stillskin Forest with a team of AI agents](/stillawake-times/how-to-make-a-roblox-game-with-ai-agents).
+
 You don't need a big team to make a frightening Roblox game, but it helps to decide on your key scare before writing code and to give each system one clear job. We're documenting Stillskin Forest's mechanics as we build them on the [game page](/games/stillskin-forest) and its wiki. If you're planning a Roblox project and want help with the AI, multiplayer architecture or the website around it, [get in touch](/contact).

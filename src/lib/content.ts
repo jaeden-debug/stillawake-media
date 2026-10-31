@@ -47,13 +47,79 @@ export type TocItem = {
   level: number;
 };
 
+export type FaqItem = {
+  question: string;
+  answer: string;
+};
+
+export type HowToStepItem = {
+  name: string;
+  text: string;
+};
+
 export type Post = PostMeta & {
   /** Social preview image (frontmatter `ogImage`, 1200×630 or 16:9). Defaults to the site preview. */
   ogImage?: string;
   content: string;
   html: string;
   toc: TocItem[];
+  /** Questions from the article's own visible FAQ section (frontmatter `faqSchema: true`); drives FAQPage markup. */
+  faq: FaqItem[];
+  /** The numbered method named by frontmatter `howTo` (an H2's text); drives HowTo markup. */
+  howTo: { name: string; steps: HowToStepItem[] } | null;
 };
+
+/** Markdown inline syntax to plain text, for structured data. */
+function plainText(markdown: string) {
+  return markdown
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/<[^>]+>/g, "")
+    .replace(/[*_`]+/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * HowTo steps come from the ordered list under the H2 whose text matches the
+ * article's `howTo` frontmatter, so the markup mirrors the visible method.
+ * Each item reads "**Step name.** Explanation".
+ */
+export function extractHowTo(content: string, heading: string): HowToStepItem[] {
+  const lines = content.split("\n");
+  const start = lines.findIndex((line) => /^## +/.test(line) && cleanHeadingText(line.replace(/^## +/, "")) === heading);
+  if (start === -1) return [];
+  const steps: HowToStepItem[] = [];
+  for (const line of lines.slice(start + 1)) {
+    if (/^## /.test(line)) break;
+    const item = line.match(/^\d+\.\s+\*\*(.+?)\*\*\s*(.*)$/);
+    if (item) steps.push({ name: plainText(item[1]).replace(/[.:]$/, ""), text: plainText(item[2]) });
+  }
+  return steps;
+}
+
+/**
+ * The FAQ is read from the article body, never from separate frontmatter, so
+ * the FAQPage markup can only ever contain questions a reader can see. The
+ * section is an H2 titled "FAQ" or "Frequently asked questions"; each H3 inside
+ * it is a question and the text under it, up to the next heading, its answer.
+ */
+export function extractFaq(content: string): FaqItem[] {
+  const start = content.search(/^## +(?:FAQ|Frequently asked questions)\s*$/im);
+  if (start === -1) return [];
+  const afterHeading = content.slice(start).replace(/^.*\n/, "");
+  const end = afterHeading.search(/^## /m);
+  const section = end === -1 ? afterHeading : afterHeading.slice(0, end);
+
+  const items: FaqItem[] = [];
+  for (const block of section.split(/^### +/m).slice(1)) {
+    const [questionLine, ...rest] = block.split("\n");
+    const question = plainText(questionLine);
+    const answer = plainText(rest.join(" "));
+    if (question && answer) items.push({ question, answer });
+  }
+  return items;
+}
 
 function slugify(value: string) {
   return value
@@ -150,6 +216,13 @@ export async function getPostBySlug(slug: string, locale: Locale = "en"): Promis
     content,
     html: processed.toString(),
     toc,
+    // Opt-in per article (`faqSchema: true`), so enabling it never changes
+    // the markup of an existing post by surprise.
+    faq: data.faqSchema === true ? extractFaq(content) : [],
+    howTo:
+      typeof data.howTo === "string" && extractHowTo(content, data.howTo).length >= 2
+        ? { name: data.howTo, steps: extractHowTo(content, data.howTo) }
+        : null,
   };
 }
 

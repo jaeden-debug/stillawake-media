@@ -228,6 +228,8 @@ A real example: as of 29 October 2026, RISK IT! is public with a **Minimal** mat
 
 ## Where to go next
 
+If you plan to build with AI coding tools, read [how we build Stillskin Forest with a team of AI agents](/stillawake-times/how-to-make-a-roblox-game-with-ai-agents): one moderator, seven specialist agents, shared contracts and evidence-only testing.
+
 Start with a one-sentence loop and the orb script above, then grow it one system at a time. When you want to see how a finished loop plays, try [RISK IT!](/games/risk-it) or read the [Stillskin Forest wiki](/games/stillskin-forest/wiki) for a look at a larger game's systems. The [StillAwake games page](/games) lists everything we're building.
 
 If you're working on a Roblox project and want to talk through architecture, testing or launch, [get in touch](/contact).

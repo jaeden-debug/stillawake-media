@@ -245,6 +245,22 @@ export default async function GamePage({ params }: Props) {
         </section>
       )}
 
+      {game.behindTheGame && game.behindTheGame.length > 0 && (
+        <section className="mx-auto mt-20 max-w-7xl px-4 sm:px-6" aria-labelledby="behind-the-game">
+          <h2 id="behind-the-game" className="geist text-3xl font-black tracking-[-.05em] md:text-4xl">Behind the game</h2>
+          <ul className="mt-6 grid gap-4 md:grid-cols-2">
+            {game.behindTheGame.map((a) => (
+              <li key={a.href}>
+                <Link href={a.href} className="block h-full rounded-[1.5rem] border border-white/10 bg-white/[.03] p-6 hover:border-white/30">
+                  <span className="text-lg font-bold text-white">{a.title}</span>
+                  <span className="mt-2 block text-sm leading-6 text-[#C7B9B9]">{a.blurb}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {/* Wiki CTA */}
       <section className="mx-auto mt-20 max-w-7xl px-4 sm:px-6">
         <div className="rounded-[2.5rem] bg-[linear-gradient(135deg,#1a2617,#0b100b)] p-8 md:p-14">

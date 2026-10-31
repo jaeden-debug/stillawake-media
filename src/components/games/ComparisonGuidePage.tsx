@@ -5,7 +5,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { InternalLinks } from "@/components/site";
 import { entityIds } from "@/data/entities";
 import { articleAuthors, authorJsonLd, jaedenDoody } from "@/data/people/jaeden-doody";
-import { robloxUrl, type ComparisonGuide, type GuideGame } from "@/data/games/guides/types";
+import { guideApiUrl, robloxUrl, type ComparisonGuide, type GuideGame } from "@/data/games/guides/types";
 import { JsonLd, breadcrumbList, graph, type Crumb } from "@/lib/game-schema";
 import { absolute, getBundle, socialImage } from "@/lib/games";
 
@@ -48,6 +48,7 @@ export function guideMetadata(guide: ComparisonGuide): Metadata {
 
 export function ComparisonGuidePage({ guide }: { guide: ComparisonGuide }) {
   const { title, description, games: guideGames, snapshotDate: SNAPSHOT_DATE } = guide;
+  const ourGame = getBundle(guide.gameSlug)?.game;
   const url = absolute(guide.path);
   const crumbs: Crumb[] = [
     { name: "Home", path: "/" },
@@ -184,7 +185,7 @@ export function ComparisonGuidePage({ guide }: { guide: ComparisonGuide }) {
         </section>
 
         <section aria-labelledby="friends" className="mt-12">
-          <h2 id="friends" className="geist text-2xl font-black tracking-[-.04em] md:text-3xl">Which to play with friends</h2>
+          <h2 id="friends" className="geist text-2xl font-black tracking-[-.04em] md:text-3xl">{guide.groupsHeading ?? "Which to play with friends"}</h2>
           <p className="mt-4 text-[1.0625rem] leading-8 text-[#cfc8c8]">
             Every game here is multiplayer. Server size is the practical difference: it decides whether your whole group fits in one server.
           </p>
@@ -214,8 +215,8 @@ export function ComparisonGuidePage({ guide }: { guide: ComparisonGuide }) {
             </dl>
             <p className="mt-6 text-sm text-[#a9a0a0]">
               Read how squad play works in the{" "}
-              <Link href={`/games/${guide.gameSlug}/wiki`} className="text-[#cfe3c2] underline decoration-[#7FA36B]/60 underline-offset-[3px]">Stillskin Forest wiki</Link>.
-              The game is in development and not publicly playable yet.
+              <Link href={`/games/${guide.gameSlug}/wiki`} className="text-[#cfe3c2] underline decoration-[#7FA36B]/60 underline-offset-[3px]">{ourGame?.title ?? "game"} wiki</Link>.
+              {ourGame && !ourGame.publiclyPlayable && " The game is in development and not publicly playable yet."}
             </p>
           </section>
         )}
@@ -234,9 +235,37 @@ export function ComparisonGuidePage({ guide }: { guide: ComparisonGuide }) {
           </section>
         )}
 
+        {guide.related && (
+          <section aria-labelledby="related" className="mt-12">
+            <h2 id="related" className="geist text-2xl font-black tracking-[-.04em] md:text-3xl">Related</h2>
+            <ul className="mt-4 grid gap-3">
+              {guide.related.map((r) => (
+                <li key={r.href} className="text-[1.0625rem] leading-8 text-[#cfc8c8]">
+                  <Link href={r.href} className="font-semibold text-[#cfe3c2] underline decoration-[#7FA36B]/60 underline-offset-[3px]">{r.label}</Link>
+                  {": "}
+                  {r.note}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         <footer className="mt-14 border-t border-white/10 pt-6 text-xs leading-6 text-[#8a8a8a]">
           Source: Roblox public game listings (games.roblox.com), read {SNAPSHOT_DATE}. Player counts change minute to minute; event names in titles are left out. Spotted something out of date?{" "}
           <Link href="/contact" className="text-[#C7B9B9] underline underline-offset-2">Tell us</Link>.
+          <details className="mt-3">
+            <summary className="cursor-pointer text-[#C7B9B9]">Sources ({guideGames.length + 1})</summary>
+            <ul className="mt-2 list-disc space-y-1 pl-5">
+              <li>
+                <a href={guideApiUrl(guide)} rel="nofollow noopener" className="break-all underline underline-offset-2">Roblox games API: visits, players, server size, created date and description for every game</a>, read {SNAPSHOT_DATE}
+              </li>
+              {guideGames.map((g) => (
+                <li key={g.universeId}>
+                  <a href={robloxUrl(g)} rel="noopener" className="underline underline-offset-2">{g.name} on Roblox</a> (universe {g.universeId}), read {SNAPSHOT_DATE}
+                </li>
+              ))}
+            </ul>
+          </details>
         </footer>
       </article>
 

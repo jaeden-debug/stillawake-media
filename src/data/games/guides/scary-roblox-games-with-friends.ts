@@ -10,6 +10,14 @@
  * roblox games" 49,500/mo, "roblox horror games" 33,100, "roblox survival
  * horror games" 18,100, "scary roblox games to play with friends" 3,600.
  *
+ * Broadened 2026-10-31 to also own the multiplayer / co-op phrasings
+ * (Keyword Planner, US): "roblox horror games to play with friends" 880,
+ * "horror games to play with friends roblox" 880, "best roblox horror games
+ * to play with friends" 590, "multiplayer roblox horror games" 260, "roblox
+ * co op horror games" 90. Zombie games and night-survival games have their
+ * own guides (best-roblox-zombie-games, roblox-horror-survival-games); this
+ * page links to them rather than competing for those terms.
+ *
  * Every figure is from Roblox's public games API (games.roblox.com/v1/games),
  * read on SNAPSHOT_DATE. "playing" is a single moment, not an average; visits
  * are lifetime totals; maxPlayers is server size, not party size. Genre is
@@ -25,9 +33,9 @@ import type { ComparisonGuide, GuideGame } from "./types";
 
 export { robloxUrl, type GuideGame } from "./types";
 
-export const SNAPSHOT_DATE = "2026-10-29";
+export const SNAPSHOT_DATE = "2026-10-31";
 export const GUIDE_PATH = "/games/guides/scary-roblox-games-with-friends";
-export const GUIDE_TITLE = "Best Scary Roblox Games to Play With Friends: 15 Picks by Play Style";
+export const GUIDE_TITLE = "Best Scary Roblox Horror Games to Play With Friends";
 
 export const guideGames: GuideGame[] = [
   {
@@ -38,8 +46,8 @@ export const guideGames: GuideGame[] = [
     genre: "Survival · Escape",
     style: "Co-op escape horror",
     maxPlayers: 50,
-    visits: 7_971_253_190,
-    playingAtSnapshot: 45_745,
+    visits: 7_980_799_468,
+    playingAtSnapshot: 37_431,
     created: "2021-03-14",
     premise:
       "A horror game built around opening door after door. The developers suggest going in without a guide and treating each death as a lesson.",
@@ -54,8 +62,8 @@ export const guideGames: GuideGame[] = [
     genre: "Survival · Escape",
     style: "Escape horror",
     maxPlayers: 50,
-    visits: 492_991_700,
-    playingAtSnapshot: 826,
+    visits: 493_172_387,
+    playingAtSnapshot: 608,
     created: "2023-02-07",
     premise:
       "You are told you are expendable and not expected to return. The developers describe it as being in alpha.",
@@ -69,8 +77,8 @@ export const guideGames: GuideGame[] = [
     genre: "Survival · Escape",
     style: "Fast rooms-style escape",
     maxPlayers: 50,
-    visits: 461_412_905,
-    playingAtSnapshot: 883,
+    visits: 461_715_364,
+    playingAtSnapshot: 681,
     created: "2024-09-03",
     premise:
       "A rooms-style game built around chaos, movement and speed: get from saferoom to saferoom before your time runs out. The developer says it is in alpha and mostly made by one person.",
@@ -84,8 +92,8 @@ export const guideGames: GuideGame[] = [
     genre: "Survival · Escape",
     style: "Story-driven horror chapters",
     maxPlayers: 45,
-    visits: 1_269_615_601,
-    playingAtSnapshot: 13_263,
+    visits: 1_272_632_264,
+    playingAtSnapshot: 12_325,
     created: "2021-01-15",
     premise:
       "Four stories drawn from Japanese history and urban legend. Each book casts you as a different character in a world that mirrors our own.",
@@ -100,8 +108,8 @@ export const guideGames: GuideGame[] = [
     genre: "Adventure · Exploration",
     style: "Backrooms exploration horror",
     maxPlayers: 40,
-    visits: 438_653_203,
-    playingAtSnapshot: 403,
+    visits: 438_760_683,
+    playingAtSnapshot: 376,
     created: "2022-07-19",
     premise:
       "Exploration and documentation in endless rooms, with puzzles to solve and entities to hide from. Inspired by the Backrooms.",
@@ -116,8 +124,8 @@ export const guideGames: GuideGame[] = [
     genre: "Survival",
     style: "Camp-building survival horror",
     maxPlayers: 25,
-    visits: 30_308_987_633,
-    playingAtSnapshot: 191_696,
+    visits: 30_334_574_903,
+    playingAtSnapshot: 198_361,
     created: "2025-03-04",
     premise: "Build a camp in the forest with your friends while something out there watches you.",
     goodFor: "Groups who want to build and hold a camp together, night after night.",
@@ -130,8 +138,8 @@ export const guideGames: GuideGame[] = [
     genre: "Survival · 1 vs All",
     style: "Survival with base building",
     maxPlayers: 16,
-    visits: 3_335_274_902,
-    playingAtSnapshot: 18_320,
+    visits: 3_336_981_955,
+    playingAtSnapshot: 20_152,
     created: "2019-01-20",
     premise:
       "An enormous furniture store you can wander, build a base in, and survive its employees.",
@@ -145,8 +153,8 @@ export const guideGames: GuideGame[] = [
     genre: "Adventure · Exploration",
     style: "Zombie survival journey",
     maxPlayers: 16,
-    visits: 6_628_984_357,
-    playingAtSnapshot: 21_318,
+    visits: 6_632_593_929,
+    playingAtSnapshot: 23_381,
     created: "2025-01-01",
     premise:
       "Set in 1899 after a zombie plague. You and your friends take a train across an infected desert toward a cure in Mexico.",
@@ -160,8 +168,8 @@ export const guideGames: GuideGame[] = [
     genre: "Survival · Escape",
     style: "One-monster night survival",
     maxPlayers: 8,
-    visits: 204_743_732,
-    playingAtSnapshot: 394,
+    visits: 204_812_829,
+    playingAtSnapshot: 359,
     created: "2018-09-27",
     premise:
       "The Rake stalks a forest at night. Run, hide, find items and spend points on upgrades to last until morning.",
@@ -175,8 +183,8 @@ export const guideGames: GuideGame[] = [
     genre: "Survival",
     style: "Co-op ghost hunting",
     maxPlayers: 50,
-    visits: 365_063_336,
-    playingAtSnapshot: 750,
+    visits: 365_274_657,
+    playingAtSnapshot: 526,
     created: "2020-12-25",
     premise:
       "A ghost-hunting game the developers describe as inspired by Phasmophobia: gather evidence, work out which type of ghost you are dealing with, and explore haunted locations.",
@@ -191,8 +199,8 @@ export const guideGames: GuideGame[] = [
     genre: "Survival",
     style: "Co-op ghost hunting",
     maxPlayers: 50,
-    visits: 239_851_687,
-    playingAtSnapshot: 201,
+    visits: 239_912_199,
+    playingAtSnapshot: 160,
     created: "2021-12-16",
     premise:
       "Investigate haunted locations with friends: use your equipment to find evidence, identify the ghost, then escape before it hunts you. Hiding spots and stamina matter during a hunt.",
@@ -207,8 +215,8 @@ export const guideGames: GuideGame[] = [
     genre: "Survival · 1 vs All",
     style: "Asymmetric killer vs survivors",
     maxPlayers: 9,
-    visits: 5_883_216_866,
-    playingAtSnapshot: 40_131,
+    visits: 5_889_125_682,
+    playingAtSnapshot: 39_793,
     created: "2024-07-28",
     premise:
       "Survivors protect each other and complete objectives until a timer runs out; killers try to eliminate everyone. The developers describe it as in beta.",
@@ -223,8 +231,8 @@ export const guideGames: GuideGame[] = [
     genre: "Survival",
     style: "Social deduction horror",
     maxPlayers: 30,
-    visits: 870_185_541,
-    playingAtSnapshot: 397,
+    visits: 870_280_113,
+    playingAtSnapshot: 338,
     created: "2018-01-12",
     premise:
       "When the lights go out, the murderer strikes. Everyone has a hidden ability, and you use clues, questioning and intuition to find the killer, or to be the one nobody catches.",
@@ -238,8 +246,8 @@ export const guideGames: GuideGame[] = [
     genre: "Survival",
     style: "Chase and escape",
     maxPlayers: 6,
-    visits: 14_439_318_953,
-    playingAtSnapshot: 8_988,
+    visits: 14_442_829_892,
+    playingAtSnapshot: 18_469,
     created: "2020-01-23",
     premise:
       "Escape Piggy and uncover the mystery behind it, using items, crouching and traps.",
@@ -253,8 +261,8 @@ export const guideGames: GuideGame[] = [
     genre: "Survival",
     style: "Parkour chase horror",
     maxPlayers: 15,
-    visits: 9_399_310_947,
-    playingAtSnapshot: 64_300,
+    visits: 9_409_120_254,
+    playingAtSnapshot: 58_080,
     created: "2022-06-10",
     premise:
       "An action parkour game where movement is what keeps you alive while Nextbots chase you through the map.",
@@ -268,14 +276,14 @@ export const friendsGuide: ComparisonGuide = {
   path: GUIDE_PATH,
   gameSlug: "stillskin-forest",
   title: GUIDE_TITLE,
-  shortName: "Scary Roblox games to play with friends",
+  shortName: "Scary Roblox horror games to play with friends",
   description:
-    "15 scary Roblox games for a group, sorted by how you play together: escape, survive the night, hunt ghosts, play the monster or get chased. Real numbers from Roblox, checked 29 Oct 2026.",
-  blurb: "DOORS, 99 Nights in the Forest, Blair, Forsaken, Flicker, Evade and nine more, grouped by how you play together.",
+    "15 multiplayer Roblox horror games for a group, from co-op escapes to ghost hunts, sorted by how you play together. Numbers from Roblox, 31 Oct 2026.",
+  blurb: "15 multiplayer and co-op horror games: DOORS, 99 Nights in the Forest, Blair, Forsaken, Flicker, Evade and more, grouped by how you play together.",
   snapshotDate: SNAPSHOT_DATE,
-  question: "What are good scary Roblox games to play with friends?",
+  question: "What are the best scary Roblox horror games to play with friends?",
   answer:
-    "Pick by how your group likes to be scared. To **escape together**: DOORS, Pressure, Grace, The Mimic or Apeirophobia. To **survive the night as a team**: 99 Nights in the Forest, 3008, Dead Rails or The Rake REMASTERED. To **solve a haunting**: Blair or SPECTER. To **let someone play the monster**: Forsaken or Flicker. For **quick, loud chases**: Piggy or Evade. Then check server size, because it decides whether your whole group fits in one game.",
+    "Every game here is multiplayer, and most are co-op horror, so pick by how your group likes to be scared. To **escape together**: DOORS, Pressure, Grace, The Mimic or Apeirophobia. To **survive the night as a team**: 99 Nights in the Forest, 3008, Dead Rails or The Rake REMASTERED. To **solve a haunting**: Blair or SPECTER. To **let someone play the monster**: Forsaken or Flicker. For **quick, loud chases**: Piggy or Evade. Then check server size, because it decides whether your whole group fits in one game.",
   disclosure: {
     before: "Disclosure: StillAwake Media makes ",
     linkText: "Stillskin Forest",
@@ -322,7 +330,7 @@ export const friendsGuide: ComparisonGuide = {
   experience: {
     heading: "What building a co-op horror game taught us about playing one with friends",
     intro:
-      "We are building Stillskin Forest, a co-op survival-horror game for squads of up to four on Roblox. Designing it meant deciding, mechanic by mechanic, what makes horror better with friends. These are the things we look for in other games now, and they're a useful checklist when your group is choosing.",
+      "We make Stillskin Forest, a co-op survival-horror game for squads of up to four that went public on Roblox on 28 October 2026. Designing it meant deciding, mechanic by mechanic, what makes horror better with friends. These are the things we look for in other games now, and they're a useful checklist when your group is choosing.",
     points: [
       {
         title: "A reason to go back for each other",
@@ -334,7 +342,7 @@ export const friendsGuide: ComparisonGuide = {
       },
       {
         title: "Something to do after you die",
-        body: "Fallen Stillskin players keep playing as ghosts and watch the rest of the run. Long waits in a lobby after an early death are where a group's evening falls apart, so it's worth checking how a game handles them.",
+        body: "A fallen Stillskin player becomes a ghost who can fly around the map, then respawns next to a teammate at dawn. Long waits in a lobby after an early death are where a group's evening falls apart, so it's worth checking how a game handles them.",
       },
       {
         title: "Fear that escalates",
@@ -348,22 +356,52 @@ export const friendsGuide: ComparisonGuide = {
   },
   faqs: [
     {
-      q: "What is the most-played scary Roblox game right now?",
-      a: "Of the 15 here, 99 Nights in the Forest had the most people playing when we checked (191,696 on 29 October 2026), followed by Evade (64,300) and DOORS (45,745). Player counts change by the minute, so treat these as a snapshot.",
+      q: "What are the best co-op horror games on Roblox?",
+      a: "If you want to work together against the game rather than against each other, start with the escape games (DOORS, Pressure, Grace, The Mimic, Apeirophobia), the survive-the-night games (99 Nights in the Forest, 3008, Dead Rails, The Rake REMASTERED) or the ghost hunts (Blair, SPECTER). Forsaken and Flicker are multiplayer too, but one player is the killer, so they are not purely co-op.",
+    },
+    {
+      q: "What is the most-played multiplayer Roblox horror game right now?",
+      a: "Of the 15 here, 99 Nights in the Forest had the most people playing when we checked (198,361 on 31 October 2026), followed by Evade (58,080) and Forsaken (39,793). Player counts change by the minute, so treat these as a snapshot.",
     },
     {
       q: "Which scary Roblox games are best for two players?",
       a: "Any of them work for two, since every game here holds at least six per server. For a duo, the ghost-hunting games (Blair, SPECTER) and the escape games (DOORS, Pressure) suit two people talking through a problem together.",
     },
     {
-      q: "Which ones work for a big group?",
+      q: "Which multiplayer horror games work for a big group?",
       a: "DOORS, Pressure, Grace, Blair and SPECTER hold up to 50 per server, The Mimic 45, Apeirophobia 40, Flicker 30 and 99 Nights in the Forest 25.",
     },
     {
       q: "Is this a ranking?",
       a: "No. Every game here is established and multiplayer. We grouped them by how you play together and took every number from Roblox's own listings so you can choose for your group.",
     },
+    {
+      q: "Where are the zombie games?",
+      a: "Dead Rails is here because it is a journey a group takes together. For wave shooters, open-world zombie survival and base defence, see our guide to the best Roblox zombie games. For games built around lasting until morning, see Roblox horror survival games.",
+    },
   ],
-  keywords: ["guide", "best", "scary roblox games", "roblox horror games", "with friends", "survival horror", "multiplayer"],
+  related: [
+    {
+      label: "Best Roblox zombie games",
+      href: "/games/guides/best-roblox-zombie-games",
+      note: "12 zombie survival games compared: open worlds, wave shooters, historical settings and base defence.",
+    },
+    {
+      label: "Roblox horror survival games",
+      href: "/games/guides/roblox-horror-survival-games",
+      note: "10 games where the goal is to survive the night, grouped by how you get through it.",
+    },
+    {
+      label: "Stillskin Forest",
+      href: "/games/stillskin-forest",
+      note: "our own co-op zombie survival-horror game on Roblox, for squads of up to four.",
+    },
+    {
+      label: "Playing Stillskin Forest with friends",
+      href: "/games/stillskin-forest/wiki/getting-started/playing-with-friends",
+      note: "Solo, Duo and Squad queues and the co-op tools a squad shares.",
+    },
+  ],
+  keywords: ["guide", "best", "scary roblox games", "roblox horror games", "with friends", "survival horror", "multiplayer", "co-op horror", "co op"],
   games: guideGames,
 };

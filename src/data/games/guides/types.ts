@@ -39,6 +39,8 @@ export type ComparisonGuide = {
   disclosure: { before: string; linkText: string; href: string; after: string };
   /** Server-size groups for the "with friends" section. */
   groups: { label: string; min?: number; max?: number }[];
+  /** Heading for the server-size section; defaults to "Which to play with friends". */
+  groupsHeading?: string;
   keywords: string[];
   games: GuideGame[];
   /**
@@ -50,7 +52,14 @@ export type ComparisonGuide = {
   /** First-hand notes from building our own game in the genre. */
   experience?: { heading: string; intro: string; points: { title: string; body: string }[] };
   faqs?: { q: string; a: string }[];
+  /** Internal links rendered as "Related" near the end of the page. */
+  related?: { label: string; href: string; note: string }[];
 };
+
+/** Roblox's public games API query a guide's figures were read from. */
+export function guideApiUrl(guide: Pick<ComparisonGuide, "games">) {
+  return `https://games.roblox.com/v1/games?universeIds=${guide.games.map((g) => g.universeId).join(",")}`;
+}
 
 export function robloxUrl(g: GuideGame) {
   return `https://www.roblox.com/games/${g.placeId}`;

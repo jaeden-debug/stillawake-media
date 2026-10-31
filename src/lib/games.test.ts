@@ -184,6 +184,36 @@ describe("share images for hub-level pages", () => {
     }
   });
 
+  it("comparison guides have unique, SERP-sized titles and descriptions", async () => {
+    const { comparisonGuides } = await import("@/data/games/guides");
+    const { META_DESCRIPTION_MAX } = await import("@/lib/meta-description");
+    // Known exception, predates this check (63 chars); retitling it is a separate SEO change.
+    const titleExceptions = new Set(["roblox-minigame"]);
+    for (const g of comparisonGuides) {
+      if (!titleExceptions.has(g.id)) expect(g.title.length, `${g.id} title`).toBeLessThanOrEqual(60);
+      expect(g.description.length, `${g.id} description`).toBeLessThanOrEqual(META_DESCRIPTION_MAX);
+    }
+    for (const key of ["id", "path", "title", "description"] as const) {
+      const vals = comparisonGuides.map((g) => g[key]);
+      expect(new Set(vals).size, key).toBe(vals.length);
+    }
+  });
+
+  it("comparison guide games are unique and internal links point at real routes", async () => {
+    const { comparisonGuides } = await import("@/data/games/guides");
+    const fs = await import("node:fs");
+    const path = await import("node:path");
+    const paths = new Set(comparisonGuides.map((g) => g.path));
+    for (const g of comparisonGuides) {
+      const ids = g.games.map((x) => x.universeId);
+      expect(new Set(ids).size, g.id).toBe(ids.length);
+      expect(fs.existsSync(path.join(process.cwd(), "src/app/(en)", g.path, "page.tsx")), g.path).toBe(true);
+      for (const r of g.related ?? []) {
+        if (r.href.startsWith("/games/guides/")) expect(paths.has(r.href), `${g.id} -> ${r.href}`).toBe(true);
+      }
+    }
+  });
+
   it("every comparison guide names one of our games and uses its thumbnail", async () => {
     const { comparisonGuides } = await import("@/data/games/guides");
     const { guideMetadata } = await import("@/components/games/ComparisonGuidePage");

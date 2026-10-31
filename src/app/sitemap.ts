@@ -248,9 +248,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
    * platform facts were verified, which is the only date that means anything
    * on a page whose value is being current.
    */
+  const frGuideSlugs = new Set(publishedGuides("fr").map((guide) => guide.slug));
   const guides = publishedGuides("en").map((guide) => ({
     url: `${siteUrl}/tools/llms-txt/${guide.slug}`,
     lastModified: new Date(guide.verifiedDate),
+    alternates: frGuideSlugs.has(guide.slug)
+      ? {
+          languages: {
+            "en-CA": `${siteUrl}/tools/llms-txt/${guide.slug}`,
+            "fr-CA": `${siteUrl}/fr/outils/llms-txt/${guide.slug}`,
+            "x-default": `${siteUrl}/tools/llms-txt/${guide.slug}`,
+          },
+        }
+      : undefined,
   }));
 
   /** Same evidence gate, French cluster. Paired to the EN guide by shared slug. */
@@ -261,6 +271,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       languages: {
         "en-CA": `${siteUrl}/tools/llms-txt/${guide.slug}`,
         "fr-CA": `${siteUrl}/fr/outils/llms-txt/${guide.slug}`,
+        "x-default": `${siteUrl}/tools/llms-txt/${guide.slug}`,
       },
     },
   }));
@@ -296,6 +307,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     byGroup.set(item.translation_group_id, group);
   }
 
+  /**
+   * A CMS row that supersedes a markdown article must not lose the article's
+   * verified pairing: the page still renders that hreflang, so the sitemap has
+   * to say the same thing or Google sees two conflicting clusters.
+   */
+  const fileAlternates = new Map(
+    [...articles, ...articlesFr, ...guides, ...guidesFr]
+      .filter((entry) => entry.alternates)
+      .map((entry) => [entry.url, entry.alternates]),
+  );
+
   const cmsEntries = cmsRows.map((item) => {
     const group = item.translation_group_id ? byGroup.get(item.translation_group_id) : undefined;
     const en = group?.find((row) => row.locale === "en" && row.route_path);
@@ -310,9 +332,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
               languages: {
                 "en-CA": `${siteUrl}${en.route_path}`,
                 "fr-CA": `${siteUrl}${fr.route_path}`,
+                "x-default": `${siteUrl}${en.route_path}`,
               },
             }
-          : undefined,
+          : fileAlternates.get(`${siteUrl}${item.route_path}`),
     };
   });
 

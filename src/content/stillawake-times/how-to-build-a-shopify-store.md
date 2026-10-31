@@ -41,7 +41,7 @@ Go to **Settings > General**. Set the store name, store address, time zone, unit
 
 [Shopify Markets](https://help.shopify.com/en/manual/markets), managed from the **Markets** page in your admin, controls which currencies, languages, domains, pricing and taxes each audience sees. A store selling only in Canada can keep this simple. If you'll ship to the US, decide now whether Americans see USD prices.
 
-If you're in Québec or selling to Québec, add French under **Settings > Languages** ([Shopify Help](https://help.shopify.com/en/manual/markets/languages/manage-languages)). Shopify's Translate & Adapt app installs automatically when you add a language. A Québec business selling to Québec customers must provide a French version of its website ([Éducaloi](https://educaloi.qc.ca/decryptage/droits-linguistiques-votre-site-web-est-il-conforme-a-la-loi)), so plan for French at the start, not as a phase two.
+If you're in Québec or selling to Québec, add French under **Settings > Languages** ([Shopify Help](https://help.shopify.com/en/manual/markets/languages/manage-languages)). Shopify's Translate & Adapt app installs automatically when you add a language. A Québec business selling to Québec customers must provide a French version of its website ([Éducaloi](https://educaloi.qc.ca/en/understanding-the-law/language-legislation-does-your-website-comply/)), so plan for French at the start, not as a phase two.
 
 ### Taxes for Canada
 

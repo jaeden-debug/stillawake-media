@@ -86,7 +86,7 @@ This is the line with the widest range, because it's labour, not software.
 
 ## Bilingual stores and Québec
 
-If your business has a Québec address and sells to customers in Québec, French isn't optional. [Éducaloi](https://educaloi.qc.ca/decryptage/droits-linguistiques-votre-site-web-est-il-conforme-a-la-loi) explains that such a business must provide a French version of its website. The Office québécois de la langue française has prosecuted businesses whose French version wasn't available on terms at least as good as the English one. Get legal advice on your specific situation. For a Montréal store, plan French from day one.
+If your business has a Québec address and sells to customers in Québec, French isn't optional. [Éducaloi](https://educaloi.qc.ca/en/understanding-the-law/language-legislation-does-your-website-comply/) explains that such a business must provide a French version of its website. The Office québécois de la langue française has prosecuted businesses whose French version wasn't available on terms at least as good as the English one. Get legal advice on your specific situation. For a Montréal store, plan French from day one.
 
 On Shopify, the platform side is inexpensive. You add a language under **Settings > Languages** ([Shopify Help](https://help.shopify.com/en/manual/markets/languages/manage-languages)). Shopify's **Translate & Adapt** app installs automatically when you do, and you can translate manually or use Shopify's AI translations ([Shopify Help](https://help.shopify.com/manual/markets/languages/translate-adapt-app)). [Shopify Markets](https://help.shopify.com/en/manual/markets) controls which languages, currencies and domains each audience sees.
 

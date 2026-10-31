@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     languages: {
       "en-CA": pageUrl,
       "fr-CA": "https://stillawakemedia.com/fr/agence-web-montreal",
+      "x-default": pageUrl,
     },
   },
   openGraph: {

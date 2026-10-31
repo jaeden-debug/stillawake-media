@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     languages: {
       "fr-CA": pageUrl,
       "en-CA": "https://stillawakemedia.com/web-design-montreal",
+      "x-default": "https://stillawakemedia.com/web-design-montreal",
     },
   },
 };

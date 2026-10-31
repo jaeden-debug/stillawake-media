@@ -396,10 +396,10 @@ export const mechanics: WikiEntry[] = [
     title: "Aiming, Headshots and Reloading",
     seoTitle: "Aiming and Headshots in Stillskin Forest: Damage, Spread and Reloads",
     description:
-      "How aiming works in Stillskin Forest: right mouse to aim, headshot multipliers, spread, first person, aim assist on controller, and reloading.",
+      "How aiming works in Stillskin Forest: right mouse to aim, headshots, spread, first person, aim assist on controller, and reloading.",
     question: "Do headshots do more damage in Stillskin Forest?",
     answer:
-      "Yes. A headshot doubles a single bullet's damage (a Pistol hit goes from 34 to 68) and multiplies each shotgun pellet by 1.4. Headshots show a gold hitmarker and damage number. Hold right mouse to aim, which tightens your spread and slows you to 12 studs per second.",
+      "Yes. A headshot from any gun, or a single shotgun pellet to the head, kills an infected outright; a helmeted Soldier's helmet absorbs the first one. Headshots show a gold hitmarker. Hold right mouse to aim, which tightens your spread.",
     sections: [
       {
         id: "aiming",
@@ -421,7 +421,7 @@ export const mechanics: WikiEntry[] = [
         id: "staggers",
         heading: "Staggers",
         blocks: [
-          { type: "p", text: "Infected stagger from headshots, melee hits, shotgun blasts, or any hit dealing 30% or more of their health, then can't be staggered again for 1.1 seconds. A [Brute](@brute) only staggers from a headshot of 50 damage or more." },
+          { type: "p", text: "Infected stagger from headshots, melee hits, shotgun blasts, or any hit dealing 30% or more of their health, then can't be staggered again for 1.1 seconds. A headshot kills even a [Brute](@brute) outright." },
         ],
       },
       {
@@ -433,7 +433,7 @@ export const mechanics: WikiEntry[] = [
       },
     ],
     related: ["pistol", "shotgun", "ammunition", "weapons-compared", "shooting-through-cover"],
-    sources: [SRC.config, SRC.items, SRC.playtest, SRC.playtest27],
+    sources: [SRC.config, SRC.items, SRC.playtest, SRC.playtest27, SRC.notes30],
     aliases: ["aim", "headshot", "reload", "first person", "crosshair", "aim assist"],
   },
   {
@@ -446,7 +446,7 @@ export const mechanics: WikiEntry[] = [
       "What bullets go through in Stillskin Forest: open doorways, glass that shatters, doors and thin wood for less damage, what stops a shot, and how to break windows.",
     question: "Can you shoot through doors and windows in Stillskin Forest?",
     answer:
-      "Yes. A bullet flies through open doorways, shatters window glass and carries on (90% damage), and punches through a closed door or a thin wooden board for about half damage, up to two in a row. Concrete, plaster, brick, metal, rock and thick walls stop it. Any bullet or any melee weapon breaks a window pane in one hit, fists take six punches, and the infected break one in eight blows.",
+      "Yes. A bullet flies through open doorways, shatters window glass and carries on (90% damage), and punches through a closed door or a thin wooden board for about half damage, up to two in a row. Concrete, plaster, brick, metal, rock and thick walls stop it. Any bullet or any melee weapon breaks a window pane in one hit, and the infected break one in eight blows.",
     facts: [["Through glass", "90% damage, glass breaks"], ["Through a door or thin wood", "55% each, up to 2"], ["Stops a bullet", "Concrete, plaster, brick, metal, rock, thick walls"], ["Bullets to break a pane", "1"], ["Melee weapon hits to break a pane", "1"], ["Infected blows to break a pane", "8"]],
     sections: [
       {
@@ -469,7 +469,6 @@ export const mechanics: WikiEntry[] = [
           { type: "table", caption: "Hits to break one window pane", head: ["With", "Hits"], rows: [
             ["Any bullet (every shotgun pellet too)", "1"],
             ["Any melee weapon: [Machete](@machete), [Baseball Bat](@baseball-bat), [Hammer](@hammer), [Crowbar](@crowbar)", "1"],
-            ["[Fists](@fists)", "6"],
             ["An infected", "8"],
           ] },
           { type: "p", text: "Breaking glass is loud: it draws infected from about 45 studs. A broken pane leaves the frame open, so you can climb through a window big enough to fit. Every window is whole again at the start of a new run." },
@@ -477,7 +476,7 @@ export const mechanics: WikiEntry[] = [
         ],
       },
     ],
-    related: ["aiming-and-reloading", "doors-and-building", "weapons-compared", "fists", "detection-and-noise"],
+    related: ["aiming-and-reloading", "doors-and-building", "weapons-compared", "detection-and-noise"],
     sources: [SRC.playtest27, SRC.playtest28],
     aliases: ["wallbang", "wall bang", "shoot through doors", "glass", "break window", "windows", "penetration", "bullet through wall"],
   },

@@ -39,7 +39,7 @@ export const stillskinForest: Game = {
   officialUrl: "https://www.roblox.com/games/111788627314883/Stillskin-Forest",
   publiclyPlayable: true,
   statusNote:
-    "Stillskin Forest went public on Roblox on 28 October 2026. This site documents the build as of 25 October 2026; details may change between updates, and every page shows the date it was last checked.",
+    "Stillskin Forest went public on Roblox on 28 October 2026. This site describes the published game; details may change between updates, and every page shows the date it was last checked.",
   features: [
     {
       title: "Infected that hunt with intent",
@@ -51,7 +51,7 @@ export const stillskinForest: Game = {
     },
     {
       title: "Nights that escalate",
-      body: "The horde grows every night, and from Night 2 a special night can roll: Blood Moon, Heavy Fog, Infected Surge or Silent Night.",
+      body: "Night brings far more infected than the day, and from Night 2 a special night can roll: Blood Moon, Heavy Fog, Infected Surge or Silent Night.",
     },
     {
       title: "Built for a squad",

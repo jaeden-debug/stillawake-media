@@ -13,12 +13,12 @@ Generated from the wiki registry. Do not edit by hand.
 |---|---|---|---|---|
 | Getting Started | What Is Stillskin Forest? | `/games/stillskin-forest/wiki/getting-started/what-is-stillskin-forest` | no | 2026-10-25 |
 | Getting Started | How to Play Stillskin Forest | `/games/stillskin-forest/wiki/getting-started/how-to-play` | no | 2026-10-25 |
-| Getting Started | Stillskin Forest Controls | `/games/stillskin-forest/wiki/getting-started/controls` | no | 2026-10-25 |
+| Getting Started | Stillskin Forest Controls | `/games/stillskin-forest/wiki/getting-started/controls` | no | 2026-10-31 |
 | Getting Started | How to Survive Your First Night in Stillskin Forest | `/games/stillskin-forest/wiki/getting-started/surviving-your-first-night` | no | 2026-10-25 |
 | Getting Started | Playing Stillskin Forest with Friends | `/games/stillskin-forest/wiki/getting-started/playing-with-friends` | no | 2026-10-25 |
 | Getting Started | Stillskin Forest FAQ | `/games/stillskin-forest/wiki/getting-started/faq` | no | 2026-10-25 |
-| Weapons | Stillskin Forest Weapons Compared | `/games/stillskin-forest/wiki/weapons/weapons-compared` | no | 2026-10-30 |
-| Weapons | Fists | `/games/stillskin-forest/wiki/weapons/fists` | no | 2026-10-27 |
+| Weapons | Stillskin Forest Weapons Compared | `/games/stillskin-forest/wiki/weapons/weapons-compared` | no | 2026-10-31 |
+| Weapons | Fists | `/games/stillskin-forest/wiki/weapons/fists` | no | 2026-10-31 |
 | Weapons | Baseball Bat | `/games/stillskin-forest/wiki/weapons/baseball-bat` | no | 2026-10-25 |
 | Weapons | Machete | `/games/stillskin-forest/wiki/weapons/machete` | no | 2026-10-25 |
 | Weapons | Hammer | `/games/stillskin-forest/wiki/weapons/hammer` | no | 2026-10-30 |
@@ -93,7 +93,7 @@ Generated from the wiki registry. Do not edit by hand.
 | Co-op & End of Run | Co-op Survival: Revives, Pings and Sharing | `/games/stillskin-forest/wiki/multiplayer/co-op-survival` | no | 2026-10-28 |
 | Co-op & End of Run | Death, Ghosts and the Rooftop Finale | `/games/stillskin-forest/wiki/multiplayer/death-ghosts-and-the-finale` | no | 2026-10-30 |
 | Co-op & End of Run | Persistent Expeditions: Saved Worlds and Crews | `/games/stillskin-forest/wiki/multiplayer/persistent-expeditions` | no | 2026-10-30 |
-| Updates | Stillskin Forest Development Log | `/games/stillskin-forest/wiki/updates/development-log` | no | 2026-10-27 |
+| Updates | Stillskin Forest Development Log | `/games/stillskin-forest/wiki/updates/development-log` | no | 2026-10-31 |
 | Locations | Blackpine Airfield | `/games/stillskin-forest/wiki/locations/blackpine-airfield` | no | 2026-10-28 |
 | Enemies | Soldier | `/games/stillskin-forest/wiki/enemies/soldier` | no | 2026-10-27 |
 | Weapons | Mini AK | `/games/stillskin-forest/wiki/weapons/mini-ak` | no | 2026-10-28 |
@@ -118,9 +118,9 @@ Generated from the wiki registry. Do not edit by hand.
 
 | Article | Gap |
 |---|---|
-| Stillskin Forest Controls | Controller and touch mappings not yet verified on real devices. |
-| Stillskin Forest Controls | Hotbar slot count shown on number keys (1–8) not confirmed with a real keypress for every slot. |
-| Playing Stillskin Forest with Friends | Live teleports between lobby and match servers not yet verified (needs the public game). |
+| Stillskin Forest Controls | Bindings read from the game's scripts, not hand-checked on every device. |
+| Stillskin Forest Controls | Touch button layout not yet documented. |
+| Playing Stillskin Forest with Friends | The squad teleport between the lobby and live match servers has not been independently verified. |
 | Baseball Bat | Exact loot locations and drop rates not published. |
 | Freeze Device | Performance with a very large herd and on phones has not been measured. Its sounds have not been reviewed by the developer yet. |
 | Headlamp Upgrades and Batteries | Drop rates for each part are tuned frequently and not published. |

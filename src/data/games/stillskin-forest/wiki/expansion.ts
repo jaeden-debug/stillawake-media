@@ -200,7 +200,7 @@ export const expansion: WikiEntry[] = [
         id: "wisps",
         heading: "Green wisps",
         blocks: [
-          { type: "p", text: `${K.night.Wisps.PerNight} times a night, a green light appears ahead of a survivor. It only drifts on while someone is within ${K.night.Wisps.LeadRange} studs, and fades if nobody follows. About half lead toward a relic nobody has taken (to its way in); the rest lead to a stash of ${K.night.Wisps.StashItems} night-cache items.` },
+          { type: "p", text: `${K.night.Wisps.PerNight} times a night, a green light appears ahead of a survivor. It only drifts on while someone is within ${K.night.Wisps.LeadRange} studs, and fades if nobody follows. About half lead toward a relic (to its way in); the rest lead to a stash of ${K.night.Wisps.StashItems} night-cache items.` },
         ],
       },
       {

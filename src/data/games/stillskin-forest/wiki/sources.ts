@@ -15,6 +15,8 @@ export const SRC = {
   config28: "Game configuration (GameConfig, LootConfig), published build of 28 Oct 2026, via knowledge.json",
   items28: "Item data (Items), published build of 28 Oct 2026, via knowledge.json",
   playtest28: "Studio playtests of the loot economy update, 28 Oct 2026 (solo)",
+  notes30: "Release notes of the published builds, 26–30 Oct 2026 (last publish 30 Oct 2026), checked 31 Oct 2026",
+  controls31: "Control bindings in the published build's input scripts, read 31 Oct 2026",
 } as const;
 
 export const VERIFIED = STILLSKIN_VERIFIED;

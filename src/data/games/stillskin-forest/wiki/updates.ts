@@ -139,7 +139,7 @@ export const stillskinUpdates: GameUpdate[] = [
       "Gas Cans are now Jerry Cans: two exist at a time, only at the airfield, the hospital and the campground sheds. Pouring one into a generator uses it up and frees a replacement.",
       "Refuelling needs the can in your hands and a 2.5-second hold. The ranger station's generator now needs fuel too.",
       "Picking up a second copy of a melee weapon repairs yours to full and makes it 5% tougher, up to 125%.",
-      "Any melee weapon breaks a window pane in one hit (fists still take six).",
+      "Any melee weapon breaks a window pane in one hit.",
       "Pistols and shotguns are easier to find in ordinary scavenging. How they shoot is unchanged.",
       "Blackpine Airfield's crates and lockers are gone: its supplies lie on bunks, desks, benches and floors.",
       "Airfield rare gear: each day one or two of the Plate Carrier, Military Helmet and Mini AK appear (never none, never all three), each on about half of all days.",
@@ -214,7 +214,7 @@ export const stillskinUpdates: GameUpdate[] = [
       "Rain hides you: the infected see and hear far less in a downpour.",
       "Breakable glass: one bullet shatters a window, melee chips at it, and the infected smash through in eight blows. They can also see you through it.",
       "Wall-bangs: bullets punch through doors and thin wood for less damage, and pass through glass and open doorways.",
-      "Fists: with nothing in your hands, click or press R2 to punch (six punches drop a Walker).",
+      "Fists: with nothing in your hands, click or press R2 to punch. (As of 31 October 2026, punching is temporarily unavailable in the live game while it is being fixed.)",
       "Night lighting: a navy moonlit sky with stars and clouds, lanterns around the lake, a lit asylum entrance and windows, the hospital's red emergency sign, and an ambulance with flashing lights.",
     ],
     changes: [
@@ -344,12 +344,12 @@ export const updates: WikiEntry[] = [
       "What's new in Stillskin Forest: dated development milestones with new features, changes, fixes, balance changes and known issues.",
     question: "What's new in Stillskin Forest?",
     answer:
-      "The most recent milestone (27 October 2026) made the forest much denser and added weather (rain, thunderstorms and puddles, which make sneaking easier), glowing zombie eyes at night, breakable glass, shooting through doors, punching, and a cinematic lighting pass. Earlier on 27 October came the Blackpine Airfield expansion. The game has no public version numbers yet.",
+      "The most recent milestones (30 October 2026) added saved expeditions you can come back to, shared sleep, personal finds, night vision that reacts to light, and guns that last much longer. Before that, 29 October brought smarter infected and smoother play on consoles, and 28 October a fairer loot economy and the Freeze Device. The game has no public version numbers yet.",
     sections: [],
     related: ["what-is-stillskin-forest", "how-to-play", "weather", "shooting-through-cover"],
     verification: "verified_live",
-    sources: [SRC.playtest, SRC.playtest27],
-    lastVerified: "2026-10-27",
+    sources: [SRC.playtest, SRC.playtest27, SRC.notes30],
+    lastVerified: "2026-10-31",
     aliases: ["updates", "patch notes", "changelog", "what's new", "news", "version"],
   },
 ];

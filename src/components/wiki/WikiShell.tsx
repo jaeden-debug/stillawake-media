@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { GameBundle } from "@/data/games";
 import { activeCategories, categoryPath, entriesInCategory, entryPath, wikiPath } from "@/lib/games";
+import { ArticleMap } from "@/components/article/ArticleMap";
 
 /**
  * Documentation layout: navigation left, article centre, contents right.
@@ -41,18 +42,13 @@ export function WikiShell({
 
         {toc && toc.length > 1 && (
           <aside className="hidden xl:block" aria-label="On this page">
-            <nav className="sticky top-28">
-              <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#8a8a8a]">On this page</p>
-              <ol className="mt-3 space-y-2 border-l border-white/10 pl-4 text-sm">
-                {toc.map((t) => (
-                  <li key={t.id}>
-                    <a href={`#${t.id}`} className="text-[#a9a0a0] transition hover:text-white">
-                      {t.heading}
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            </nav>
+            <div className="sticky top-28">
+              <ArticleMap
+                title="On this page"
+                items={toc.map((item) => ({ id: item.id, text: item.heading, level: 2 }))}
+                className="wiki-article-map"
+              />
+            </div>
           </aside>
         )}
       </div>

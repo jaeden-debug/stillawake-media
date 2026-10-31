@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getRelatedFor, getSourcesFor } from "./adapter";
 import { ensureHeadingIds, sanitizeRichtext } from "./prose";
+import { enhanceArticleHtml } from "@/lib/article-html";
 import type { CmsLocale, CmsSection, ImageItem } from "./types";
 
 /**
@@ -189,7 +190,7 @@ function renderSection(section: CmsSection, locale: CmsLocale, contentId?: strin
   switch (section.type) {
     case "richtext": {
       const { html } = ensureHeadingIds(sanitizeRichtext(section.html));
-      return <div className="articleProse" dangerouslySetInnerHTML={{ __html: html }} />;
+      return <div className="articleProse" dangerouslySetInnerHTML={{ __html: enhanceArticleHtml(html) }} />;
     }
 
     case "direct_answer":

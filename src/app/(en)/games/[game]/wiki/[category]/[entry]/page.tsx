@@ -86,7 +86,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const verificationLabel: Record<WikiEntry["verification"], string> = {
-  verified_live: "Checked against the development build",
+  verified_live: "Checked against the live game",
   verified_planned: "Planned",
   unverified: "Unverified",
   deprecated: "No longer in the game",

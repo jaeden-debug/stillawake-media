@@ -200,7 +200,7 @@ With the baseline in hand, a separate investigation ranked console fixes by expe
 | 2 | Zombie animation speed updated only when it changes (about 1,600 calls a second with 27 moving infected) | Animation work per frame during a horde | About 90% fewer calls; 5–15% of horde client cost | High / medium | In Studio |
 | 3 | Day/night lighting written only when a value changes | Lighting property writes every frame | 0.2–0.5 ms CPU per frame | Low–medium | In Studio |
 | 4 | Cave ambience no longer scans the whole world (about 110,000 instances) every 5 seconds | A periodic hitch | Removes an estimated 15–50 ms hitch every 5 s | High / medium | In Studio |
-| 5 | Night zombie cap 40 → 28, total ceiling 56 → 40 | Fewer animated characters | 25–40% of horde client frame time at peak | Medium | In Studio, owner-approved |
+| 5 | Night zombie cap 40 → 28, total ceiling 56 → 40 | Fewer animated characters | 25–40% of horde client frame time at peak | Medium | In Studio, not published (owner-approved) |
 | 6 | Replace the 45-part pine tree with a 1–2 part version | Instances, streaming and memory | Instances −45–50%; streaming hitches −40–60% | Medium | Not started; awaiting the owner's sign-off on looks |
 | 7 | Rain particles scale with the preset | GPU in heavy rain | 1–4 ms GPU in storms | Low–medium | In Studio |
 | 8 | Lobby player cap lowered | Fewer characters in the lobby | 20–40% of lobby frame time when full | Low–medium | **Live** (cap 50 → 20) |
@@ -255,7 +255,7 @@ Not every lesson was about frames. These cost us time during the week, and each 
 Being specific about what we don't know is part of the method:
 
 - **The game hasn't been measured on a PS4.** Every number in this article is from Studio on a Mac, an estimate, or a setting.
-- **Most of the 31 October fixes aren't published.** Only the lobby cap is live. The rest go live after multiplayer testing and the owner's approval, and this page will be updated then.
+- **None of the 31 October fixes is published except the lobby player cap**, which is a dashboard setting. That includes the lower zombie caps. The rest go live after multiplayer testing and the owner's approval, and this page will be updated then.
 - **Not yet measured:** the streaming hitch when arriving at the asylum, night lighting cost, the ritual's waves, several players firing at once, a full lobby, and CPU versus GPU on the console.
 - **Not yet reviewed by eye:** whether the Performance preset's shadow culling hides anything that matters for gameplay or changes the night's horror look.
 
@@ -300,7 +300,7 @@ They can, if they run on the server. A free-model light that flickers on the ser
 
 ### How many zombies or NPCs can a Roblox game handle on console?
 
-There's no fixed number; it depends on how heavy each character is. We cap infected at 40 at night and 56 in total in the live game, and we're lowering that to 28 at night and 40 in total. Capping the count did more than making each zombie cheaper.
+There's no fixed number; it depends on how heavy each character is. We cap infected at 40 at night and 56 in total in the live game, and a change to 28 at night and 40 in total is built in Studio but not yet published. Capping the count did more than making each zombie cheaper.
 
 ### Does StreamingEnabled help performance on console?
 

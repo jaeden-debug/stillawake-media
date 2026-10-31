@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -8,7 +9,7 @@ import { publishedGuides } from "@/data/llms-txt-guides";
 import { ProjectCta } from "@/components/project-cta";
 const url = "https://stillawakemedia.com/tools";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Free Technical Tools for Web and AI Search",
   description:
     metaDescription(
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     type: "website",
     images: OG_IMAGES,
   },
-};
+});
 
 const PLATFORM_LABEL: Record<string, string> = {
   shopify: "Shopify",

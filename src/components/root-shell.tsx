@@ -30,6 +30,10 @@ export function buildRootMetadata(locale: "en_CA" | "fr_CA"): Metadata {
     metadataBase: new URL(siteUrl),
     title: {
       default: title,
+      // Fallback only. Pages brand their titles through withPageTitle() /
+      // pageTitle() in src/lib/page-title.ts, which drops the suffix when it
+      // would push the title past 60 characters and always returns
+      // `{ absolute }`, so this template never applies to them.
       template: "%s | StillAwake Media",
     },
     description,

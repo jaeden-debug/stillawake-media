@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -50,7 +51,7 @@ const url = `${siteUrl}/seo-canada`;
  * cannot honestly win.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "SEO Services for Canadian Businesses | Published Pricing",
   description:
     metaDescription(
@@ -69,7 +70,7 @@ export const metadata: Metadata = {
     images: OG_IMAGES,
   },
   robots: { index: true, follow: true },
-};
+});
 
 const FAQ: [string, string][] = [
   [

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { InternalLinks } from "@/components/site";
 
 import { PageSchema } from "@/components/page-schema";
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Framer Development Services | Premium Framer Websites",
   description:
     metaDescription(
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
       "x-default": "https://stillawakemedia.com/framer-development",
     },
   },
-};
+});
 
 const included = [
   [

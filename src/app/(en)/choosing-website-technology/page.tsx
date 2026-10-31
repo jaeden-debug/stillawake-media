@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 
@@ -46,7 +47,7 @@ const frUrl = `${siteUrl}${PATHS.fr}`;
  * types into an assistant, and being the cited answer to it is worth more
  * here than ranking for any single 10/mo phrase.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: EN.chrome.meta.title,
   description: metaDescription(
     EN.chrome.meta.description,
@@ -62,7 +63,7 @@ export const metadata: Metadata = {
     type: "article",
     images: OG_IMAGES,
   },
-};
+});
 
 export default function ChoosingWebsiteTechnologyPage() {
   return (

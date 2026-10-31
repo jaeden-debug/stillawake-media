@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -6,7 +7,7 @@ import { AuditCta, MagazineInjection, RelatedReadingInjection, InternalLinks } f
 
 const pageUrl = "https://stillawakemedia.com/web-design-montreal";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Web Design Montreal | Custom Websites",
   description: metaDescription(
     "Premium web design in Montreal with published pricing context and measured results: page-1 rankings, 100/100 Lighthouse scores, and four sourced case studies.",
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-};
+});
 
 const relatedPages = [
   ["/seo-montreal", "SEO Montreal"],

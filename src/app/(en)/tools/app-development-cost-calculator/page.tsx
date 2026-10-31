@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -18,7 +19,7 @@ const url = "https://stillawakemedia.com/tools/app-development-cost-calculator";
  * the same engine with the custom-software goal pre-answered, and every
  * figure on this page is read from src/lib/pricing/model.ts.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "App Development Cost Calculator (Canada, CAD)",
   description:
     metaDescription(
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     type: "website",
     images: OG_IMAGES,
   },
-};
+});
 
 const band = (b: { low: number; high: number }) => `${formatCad(b.low, "en")}–${formatCad(b.high, "en")}`;
 

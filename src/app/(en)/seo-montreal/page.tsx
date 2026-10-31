@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -30,7 +31,7 @@ const SEO_PLAN_ITEMS: Record<string, string[]> = {
   ],
 };
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "SEO Montreal | Local SEO Services",
   description: metaDescription(
     `SEO services for Montréal businesses: technical SEO, local and map-pack visibility, content and AI search. Month-to-month plans from $${SEO_PLANS[0].monthly} CAD, price on the page.`,
@@ -67,7 +68,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-};
+});
 
 export default function SeoMontrealPage() {
   return (

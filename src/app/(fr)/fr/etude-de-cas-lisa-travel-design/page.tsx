@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import { ServiceJsonLd, RelatedServices } from "@/components/service-page";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Étude de cas : TravelDesign By Lisa — de 0 clic à la page 1 en 8 semaines",
   description:
     metaDescription(
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     locale: "fr_CA",
     images: OG_IMAGES,
   },
-};
+});
 
 const METRICS: [string, string, string][] = [
   ["0 → page 1", "Bascule organique", "Audit du 22 juin : 14 mots-clés, position moyenne 64, zéro clic. Août (fenêtre GSC de 180 jours) : positions en page 1 (5,3–8,9) sur plusieurs requêtes cibles d'hôtels, ~9 000 impressions sur un seul article comparatif."],

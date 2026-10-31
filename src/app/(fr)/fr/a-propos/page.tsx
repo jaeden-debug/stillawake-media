@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -9,7 +10,7 @@ import { jaedenDoody } from "@/data/people/jaeden-doody";
 import { PageSchema } from "@/components/page-schema";
 const pageUrl = `${siteUrl}/fr/a-propos`;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "À propos | Studio d'infrastructure numérique à Montréal",
   description:
     metaDescription(
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     locale: "fr_CA",
     images: OG_IMAGES,
   },
-};
+});
 
 const capabilities: [string, string][] = [
   ["Sites web", "Sites codés sur mesure, pages d'atterrissage, pages de services et systèmes de pages orientés conversion."],

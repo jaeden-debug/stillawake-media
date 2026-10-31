@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 
@@ -19,7 +20,7 @@ const enUrl = "https://stillawakemedia.com/tools/project-cost-calculator";
  * fonctionnel en français est un signal d'entité que le contenu traduit ne
  * donne pas. Ce n'est pas une prévision de trafic.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Calculateur de coût de projet web — prix réels au Canada",
   description:
     metaDescription(
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
     description: "Voyez la portée de votre projet, l'investissement estimé et les prochaines étapes.",
     images: ["https://stillawakemedia.com/og-project-estimate.jpg"],
   },
-};
+});
 
 export default function CalculateurCoutProjetPage() {
   return (

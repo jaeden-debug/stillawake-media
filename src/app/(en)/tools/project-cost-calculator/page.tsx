@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 
@@ -18,7 +19,7 @@ const frUrl = "https://stillawakemedia.com/fr/outils/calculateur-cout-projet";
  * intents already served by /pricing and the cost articles; this page links to
  * them instead of trying to rank for them too.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Website & Project Cost Calculator (Canada)",
   description:
     metaDescription(
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
     description: "See your project scope, estimated investment, and next steps.",
     images: ["https://stillawakemedia.com/og-project-estimate.jpg"],
   },
-};
+});
 
 export default function ProjectCostCalculatorPage() {
   return (

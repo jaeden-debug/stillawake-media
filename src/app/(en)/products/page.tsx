@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -12,7 +13,7 @@ const TITLE = "Products | Software We Build";
 const DESCRIPTION =
   "The software StillAwake Media builds and runs for itself — business intelligence, invoicing, and financial management tools used in production, not concepts.";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: TITLE,
   description: metaDescription(
     DESCRIPTION,
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
     title: "Products | StillAwake Media",
     description: DESCRIPTION,
   },
-};
+});
 
 export const revalidate = 300;
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -11,7 +12,7 @@ import { ProjectCta } from "@/components/project-cta";
 const url = `${siteUrl}/fr/outils/generateur-llms-txt`;
 const enUrl = `${siteUrl}/tools/llms-txt-generator`;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Générateur llms.txt gratuit + vérification de lisibilité IA",
   description:
     metaDescription(
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     locale: "fr_CA",
     images: OG_IMAGES,
   },
-};
+});
 
 /**
  * Les vérifications, décrites exactement comme `src/lib/llms-txt/analyze.ts`

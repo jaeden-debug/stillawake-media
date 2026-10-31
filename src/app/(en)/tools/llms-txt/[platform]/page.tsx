@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import { notFound } from "next/navigation";
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const fr = getPublishedGuide(guide.slug, "fr");
   const frUrl = fr ? `${siteUrl}/fr/outils/llms-txt/${fr.slug}` : null;
   return {
-    title: guide.title,
+    title: pageTitle(guide.title),
     description: metaDescription(guide.description),
     alternates: {
       canonical: url,

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import { ServiceJsonLd, RelatedServices } from "@/components/service-page";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Étude de cas : NAVTRL / Stalkr — une app de localisation en 24 jours",
   description:
     metaDescription(
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     locale: "fr_CA",
     images: OG_IMAGES,
   },
-};
+});
 
 const METRICS: [string, string, string][] = [
   ["24 jours", "De l'idée au build prêt pour TestFlight", "10 947 lignes de TypeScript sur 11 écrans : suivi d'équipe en direct, zones géorepérées, trajets, invitations et trajets de sécurité — du premier commit à la préparation TestFlight en moins d'un mois (mai 2026, historique git)."],

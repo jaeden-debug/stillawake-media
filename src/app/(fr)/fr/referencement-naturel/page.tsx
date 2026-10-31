@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -8,7 +9,7 @@ import { authorJsonLd } from "@/data/people/jaeden-doody";
 
 const url = `${siteUrl}/fr/referencement-naturel`;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Le référencement naturel (SEO), expliqué simplement",
   description:
     metaDescription(
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     locale: "fr_CA",
     images: OG_IMAGES,
   },
-};
+});
 
 export default function ReferencementNaturelPage() {
   const schema = {

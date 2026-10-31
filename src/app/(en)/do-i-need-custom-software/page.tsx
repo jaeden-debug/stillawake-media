@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 
@@ -42,7 +43,7 @@ const frUrl = `${siteUrl}${EN.otherPath}`;
  * the project calculator, which links here from every result at the
  * application end of the ladder.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: EN.meta.title,
   description: metaDescription(
     EN.meta.description,
@@ -63,7 +64,7 @@ export const metadata: Metadata = {
     title: EN.meta.ogTitle,
     description: EN.meta.ogDescription,
   },
-};
+});
 
 export default function DoINeedCustomSoftwarePage() {
   return (

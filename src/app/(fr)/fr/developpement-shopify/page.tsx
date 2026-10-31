@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { ServiceJsonLd, FaqBlock, RelatedServices } from "@/components/service-page";
 import { ArticlesLies } from "@/components/articles-lies";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Développement Shopify | Expert Shopify à Montréal",
   description:
     metaDescription(
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     locale: "fr_CA",
     images: OG_IMAGES,
   },
-};
+});
 
 const FAQ: [string, string][] = [
   [

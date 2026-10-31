@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -15,7 +16,7 @@ const url = "https://stillawakemedia.com/tools/schema-markup-generator";
  * competition. One tool owns the whole cluster; the type picker covers the
  * long-tail variants rather than a page per type.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Free Schema Markup Generator (JSON-LD) with Validation",
   description:
     metaDescription(
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     type: "website",
     images: OG_IMAGES,
   },
-};
+});
 
 const TYPES = [
   ["Local business", "Name and full postal address are required by Google. Phone, opening hours, coordinates and a photo are recommended. Subtypes such as ProfessionalService or Restaurant are available."],

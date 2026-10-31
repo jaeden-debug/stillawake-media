@@ -45,8 +45,10 @@ describe("/thank-you renders", () => {
 });
 
 describe("metadata", () => {
-  it("does not repeat the brand the root title template already appends", () => {
-    expect(String(metadata.title)).not.toMatch(/StillAwake Media/);
+  it("names the brand exactly once, added by the shared title helper", () => {
+    const title = (metadata.title as { absolute: string }).absolute;
+    expect(title).toBe("Project Received | StillAwake Media");
+    expect(title.match(/StillAwake Media/g)).toHaveLength(1);
   });
 });
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/page-title";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -40,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = bundle.game.wikiBlurb.description;
   const image = socialImage(bundle);
   return {
-    title: `${bundle.game.title} Wiki: ${bundle.game.wikiBlurb.title}`,
+    title: pageTitle(`${bundle.game.title} Wiki: ${bundle.game.wikiBlurb.title}`),
     description,
     alternates: { canonical: wikiPath(slug) },
     openGraph: {

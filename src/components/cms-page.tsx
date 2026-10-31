@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/page-title";
 import { draftMode } from "next/headers";
 import { notFound, permanentRedirect, redirect } from "next/navigation";
 import { siteUrl } from "@/lib/data";
@@ -49,7 +50,7 @@ export async function cmsCatchAllMetadata(path: string, locale: CmsLocale): Prom
 
   if ((await draftMode()).isEnabled) {
     const draft = await fetchDraftByRoute(path);
-    return { title: draft?.title ?? "Draft Preview", robots: { index: false, follow: false } };
+    return { title: pageTitle(draft?.title ?? "Draft Preview"), robots: { index: false, follow: false } };
   }
 
   const item = await getPublishedByRouteConfirmed(path);
@@ -69,7 +70,7 @@ export async function cmsCatchAllMetadata(path: string, locale: CmsLocale): Prom
   }
 
   return {
-    title,
+    title: pageTitle(title),
     description,
     alternates: { canonical: path, ...(languages ? { languages } : {}) },
     openGraph: {

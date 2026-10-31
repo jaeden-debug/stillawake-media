@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { draftMode } from "next/headers";
@@ -37,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if ((await draftMode()).isEnabled) {
     const draft = await fetchDraftByRoute(`/stillawake-times/${slug}`);
     return {
-      title: draft?.title ?? "Draft Preview",
+      title: pageTitle(draft?.title ?? "Draft Preview"),
       robots: { index: false, follow: false },
     };
   }
@@ -80,7 +81,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           : undefined;
 
     return {
-      title,
+      title: pageTitle(title),
       description,
       authors: articleAuthors(filePost?.author),
       alternates: {
@@ -114,7 +115,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {};
 
   return {
-    title: post.title,
+    title: pageTitle(post.title),
     description: metaDescription(post.excerpt),
     authors: articleAuthors(post.author),
     alternates: {

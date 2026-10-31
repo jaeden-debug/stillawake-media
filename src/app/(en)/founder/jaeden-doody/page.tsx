@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { InternalLinks } from "@/components/site";
@@ -7,7 +8,7 @@ import { entityIds, ventures } from "@/data/entities";
 import { jaedenDoody as person, personAuthorNames } from "@/data/people/jaeden-doody";
 import { getAllPosts } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Jaeden Doody — Founder",
   description: metaDescription(
     person.shortBio,
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
     description: person.shortBio,
     images: [person.image],
   },
-};
+});
 
 const principles = [
   [

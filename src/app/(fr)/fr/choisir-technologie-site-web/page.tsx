@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 
@@ -42,7 +43,7 @@ const enUrl = `${siteUrl}${PATHS.en}`;
  * anglais seulement : on publie une langue quand elle sert le lecteur, pas
  * parce qu'un tableau de mots-clés le demande.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: FR.chrome.meta.title,
   description: metaDescription(
     FR.chrome.meta.description,
@@ -59,7 +60,7 @@ export const metadata: Metadata = {
     locale: "fr_CA",
     images: OG_IMAGES,
   },
-};
+});
 
 export default function ChoisirTechnologieSiteWebPage() {
   return (

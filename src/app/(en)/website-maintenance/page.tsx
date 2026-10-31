@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -24,7 +25,7 @@ const bandLabel = (id: keyof typeof EMERGENCY) =>
 const CARE = RECURRING_BY_ID["website-care-plan"];
 const HOSTING = RECURRING_BY_ID["managed-hosting"];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Website Maintenance & Emergency Support",
   description:
     metaDescription(
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
     type: "website",
     images: OG_IMAGES,
   },
-};
+});
 
 const FAQ: [string, string][] = [
   [

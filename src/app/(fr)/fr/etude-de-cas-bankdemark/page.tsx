@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import { ServiceJsonLd, RelatedServices } from "@/components/service-page";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Étude de cas : BankDeMark — no 1 sur Google avec un Lighthouse parfait",
   description:
     metaDescription(
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     locale: "fr_CA",
     images: OG_IMAGES,
   },
-};
+});
 
 const METRICS: [string, string, string][] = [
   ["Position 1,3", "No 1 sur sa requête principale", "Google Search Console, fenêtre de 180 jours au 12 août 2026 : la page valeur-nette-par-âge tient la position moyenne 1,3 (332 impressions), l'épargne-retraite par âge est à 2,3 et le hub de calculatrices à 2,6."],

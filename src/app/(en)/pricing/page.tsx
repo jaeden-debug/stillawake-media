@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import { OG_IMAGES } from "@/lib/og-image";
 import Link from "next/link";
@@ -83,7 +84,7 @@ const MONTHLY_CTA: Record<string, [string, string]> = {
   "content-creation": ["Start content production", "/contact"],
 };
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Pricing — Published Rates, No Sales Call",
   description: metaDescription(
     `StillAwake Media pricing: monthly plans from ${money(ENTRY_MONTHLY)}, fixed-price services from ${money(ENTRY_ONE_TIME)}, websites from $1,800 CAD, a full business website $2,750–$5,750, online stores from $4,250, paid discovery from $1,800 and emergency support $${ENTRY_ONE_TIME}–$${EMERGENCY_CEILING} one-time. Published, in CAD, no sales call.`,
@@ -103,7 +104,7 @@ export const metadata: Metadata = {
     type: "website",
     images: OG_IMAGES,
   },
-};
+});
 
 export default async function PricingPage() {
   const slots = await getContentLayer("pricing", "en");

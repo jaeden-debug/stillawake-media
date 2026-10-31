@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withPageTitle } from "@/lib/page-title";
 import { metaDescription } from "@/lib/meta-description";
 import Link from "next/link";
 import { PageSchema } from "@/components/page-schema";
@@ -13,7 +14,7 @@ import { PageSchema } from "@/components/page-schema";
 
 const url = "https://stillawakemedia.com/fr/confidentialite";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageTitle({
   title: "Politique de confidentialité",
   description:
     metaDescription(
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
       "x-default": "https://stillawakemedia.com/privacy",
     },
   },
-};
+});
 
 const updated = "13 août 2026";
 

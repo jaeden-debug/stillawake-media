@@ -7,13 +7,14 @@ export const quests: WikiEntry[] = [
   {
     ...base,
     slug: "blackthorn-admission-ledger",
+    lastVerified: "2026-10-31",
     title: "Unlocking Blackthorn Asylum: The Admission Ledger",
     seoTitle: "How to Unlock Blackthorn Asylum in Stillskin Forest (Ledger Walkthrough)",
     description:
-      "Step-by-step: how to unlock Blackthorn Asylum in Stillskin Forest. Read the note on the barricade, follow its riddle to the park, and read the Admission Ledger.",
+      "Step-by-step: how to unlock Blackthorn Asylum in Stillskin Forest. Read the note on the barricade, follow its riddle to the park gazebo, and read the ledger.",
     question: "How do you unlock Blackthorn Asylum in Stillskin Forest?",
     answer:
-      "Read the note \"Nailed to the Barricade\" at the ROAD CLOSED barricade on the road out of Stillwater. Its riddle points to Memorial Park. Find the Blackthorn Admission Ledger there, near the picnic tables, and read it: the asylum unlocks for your whole team for the rest of the run.",
+      "Read the note \"Nailed to the Barricade\" at the ROAD CLOSED barricade on the road out of Stillwater. Its riddle points to the gazebo in Memorial Park. Find the Blackthorn Admission Ledger under a loose board there and read it: the asylum unlocks for your whole team for the rest of the run.",
     sections: [
       {
         id: "steps",
@@ -22,10 +23,10 @@ export const quests: WikiEntry[] = [
         blocks: [
           { type: "list", ordered: true, items: [
             "In [Stillwater](@stillwater), follow Birch Lane to where it becomes Blackthorn Hill Road. The ROAD CLOSED barricade has been shoved onto the verge.",
-            "Read the note nailed to it: \"Nailed to the Barricade\". It is a riddle: the book that signed the patients in waits \"where the band played on Sundays\".",
-            "Go to [Memorial Park](@memorial-park) in Stillwater.",
-            "Find the Blackthorn Admission Ledger, a readable note near the picnic tables, and read it.",
-            "The asylum doors swing open and the chains drop for every player in your run.",
+            "Read the note nailed to it: \"Nailed to the Barricade\". It is a riddle: the book that signed the patients in waits \"where the band played on Sundays\", under the boards.",
+            "Go to the gazebo in [Memorial Park](@memorial-park) in Stillwater.",
+            "Find the Blackthorn Admission Ledger, a readable note poking out from under a loose board, and read it.",
+            "The asylum doors swing open and the chains drop for every player in your run, with the banner \"Chains fall on Blackthorn Hill\".",
           ] },
           { type: "callout", tone: "warning", text: "The first time anyone steps onto the asylum grounds after this, 19 residents wake, including a Screamer and a Brute. Go together. See [Blackthorn Asylum](@blackthorn-asylum)." },
         ],
@@ -39,7 +40,7 @@ export const quests: WikiEntry[] = [
       },
     ],
     related: ["blackthorn-asylum", "memorial-park", "the-four-relics", "the-rite-of-stillness"],
-    sources: [SRC.playtest, SRC.world],
+    sources: [SRC.world, SRC.notes30],
     aliases: ["ledger", "admission ledger", "unlock asylum", "riddle", "barricade note", "asylum investigation"],
   },
   {
@@ -94,20 +95,21 @@ export const quests: WikiEntry[] = [
   {
     ...base,
     slug: "descent-into-the-hollow",
+    lastVerified: "2026-10-31",
     title: "Descent into the Hollow",
     seoTitle: "Stillskin Forest Hollow Walkthrough: Bridge, Plates and Root Gate",
     description:
       "How to get through the Hollow in Stillskin Forest: the boulder, the Weeping Gallery bridge and pressure plates, and the two-lever Root Gate, solo or co-op.",
     question: "How do you get through the Hollow in Stillskin Forest?",
     answer:
-      "Take the Miner's Lantern from the crypt cave and the boulder moves. In the Weeping Gallery, the bridge over the chasm rises only while a living player or the pushable stone stands on a pressure plate; solo players push the stone onto the plate. At the Root Gate, pull both levers (about 40 studs apart) within 6 seconds of each other.",
+      "Once anyone takes the Miner's Lantern from the crypt cave, the boulder moves. In the Weeping Gallery, the bridge over the chasm rises only while a living player or the pushable stone stands on a pressure plate; solo players push the stone onto the plate. At the Root Gate, pull both levers (about 40 studs apart) within 6 seconds of each other.",
     sections: [
       {
         id: "the-boulder",
         heading: "1. The boulder",
         spoiler: true,
         blocks: [
-          { type: "p", text: "In [the crypt cave](@crypt-cave), take [the Miner's Lantern](@miners-lantern). The boulder grinds aside: \"THE LIGHT OPENS THE WAY\"." },
+          { type: "p", text: "In [the crypt cave](@crypt-cave), take [the Miner's Lantern](@miners-lantern). The boulder grinds aside, for the whole squad, next to green words on the wall: \"THE LIGHT OPENS THE WAY\"." },
         ],
       },
       {
@@ -129,7 +131,7 @@ export const quests: WikiEntry[] = [
         heading: "3. The Root Gate",
         spoiler: true,
         blocks: [
-          { type: "p", text: "Two levers sit in alcoves about 40 studs apart: \"TWO HANDS AT ONCE\". Pull both within 6 seconds of each other. It is easy with two players and a sprint for one." },
+          { type: "p", text: "Two levers sit in alcoves about 40 studs apart, under the words \"TWO HANDS AT ONCE\". Pull both within 6 seconds of each other; after the first, a banner counts you in. It is easy with two players and a sprint for one." },
         ],
       },
       {
@@ -142,21 +144,22 @@ export const quests: WikiEntry[] = [
       },
     ],
     related: ["the-heart-of-stillskin", "the-hollow", "crypt-cave", "e-hollis"],
-    sources: [SRC.playtest],
+    sources: [SRC.playtest, SRC.notes30],
     aliases: ["hollow walkthrough", "bridge puzzle", "pressure plate", "levers", "root gate", "cooperative cave"],
     gaps: ["The full descent has been verified solo; a two-player run of the cave has not been recorded yet."],
   },
   {
     ...base,
     slug: "the-heart-of-stillskin",
+    lastVerified: "2026-10-31",
     title: "The Heart of Stillskin",
     seoTitle: "How to Beat the Heart of Stillskin (True Ending Walkthrough)",
     description:
-      "How to destroy the Heart of Stillskin for the true ending: survive the guardian waves and sever all three veins by holding E for three seconds each.",
+      "How to destroy the Heart of Stillskin: survive the guardian waves, sever all three veins (hold E for 3 s each), then get out before the Hollow caves in.",
     question: "How do you get the true ending in Stillskin Forest?",
     answer:
-      "Reach the Heart's cavern beyond the Root Gate. Entering wakes the Heart and starts waves of guardians that grow each time (with a Brute every fourth wave). Sever its three veins by holding E for three seconds on each. When the third vein is cut the Heart dies and every infected drops: \"THE HEART IS DEAD. Stillskin will never wake again.\"",
-    facts: [["Veins", "3"], ["Sever", "Hold E for 3 s each"], ["Waves", "Grow each wave; Brute every 4th"], ["Max guardians alive", "14"]],
+      "Reach the Heart's cavern beyond the Root Gate. Entering wakes the Heart and starts waves of guardians every 7 seconds, with every fourth wave made of Brutes. Sever its three veins by holding E (Square on PlayStation) for three seconds on each. When the third vein is cut the Heart dies and every infected drops. Then the Hollow caves in: get out within 75 seconds. If anyone is still alive, you win: \"OUT ALIVE\".",
+    facts: [["Veins", "3"], ["Sever", "Hold E for 3 s each"], ["Waves", "Every 7 s: 3, then 4, then 5 at most"], ["Every 4th wave", "Brutes"], ["Max guardians alive", "14"], ["Escape time", "75 s"]],
     sections: [
       {
         id: "the-fight",
@@ -164,7 +167,7 @@ export const quests: WikiEntry[] = [
         spoiler: true,
         blocks: [
           { type: "list", items: [
-            "The Heart pulses red when it wakes. Guardian waves grow each time (3, then 7, then 12 in testing), capped at 14 alive.",
+            "The Heart pulses red when it wakes. A wave comes every 7 seconds: 3 guardians, then 4, then 5 a wave from then on, with never more than 14 alive. Most are Walkers, some Runners, and every fourth wave is Brutes.",
             "Waves only spawn while someone is in the cavern.",
             "A VEINS counter shows your progress.",
             "Severing takes a three-second hold. Have teammates cover whoever is cutting.",
@@ -176,13 +179,13 @@ export const quests: WikiEntry[] = [
         heading: "The ending",
         spoiler: true,
         blocks: [
-          { type: "p", text: "Every infected drops and the game announces THE HEART IS DEAD. This is the alternative to [the Rite of Stillness](@the-rite-of-stillness): the rite only puts the Hollow to sleep." },
-          { type: "callout", tone: "note", text: "A timed collapse and escape from the Hollow after the Heart dies is being added. It hasn't been confirmed in a playtest yet, so it isn't documented here." },
+          { type: "p", text: "Every infected drops and a banner reads \"The Heart is dead\": Stillskin will never wake again. This is the alternative to [the Rite of Stillness](@the-rite-of-stillness), which only puts the Hollow to sleep." },
+          { type: "p", text: "**Get out.** A few seconds later the Hollow starts to cave in. Anyone inside has 75 seconds, shown on a GET OUT countdown, to get back past the boulder while the ground shakes and rocks fall (each hit hurts). Anyone still inside when it comes down is buried. If anyone is still alive, the run is won: \"OUT ALIVE\". The win is paid at once and the run keeps going." },
         ],
       },
     ],
     related: ["descent-into-the-hollow", "the-rite-of-stillness", "the-hollow-lore", "brute"],
-    sources: [SRC.playtest],
+    sources: [SRC.playtest, SRC.notes30],
     aliases: ["heart", "true ending", "final boss", "veins", "heart confrontation"],
   },
 ];

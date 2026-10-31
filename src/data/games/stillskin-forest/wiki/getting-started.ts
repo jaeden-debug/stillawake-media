@@ -7,13 +7,14 @@ export const gettingStarted: WikiEntry[] = [
   {
     ...base,
     slug: "what-is-stillskin-forest",
+    lastVerified: "2026-10-31",
     title: "What Is Stillskin Forest?",
     seoTitle: "What Is Stillskin Forest? The Roblox Co-op Survival Horror Game",
     description:
       "Stillskin Forest is a cooperative zombie survival-horror game on Roblox by StillAwake Media. What you do, where it's set, and how it differs.",
     question: "What is Stillskin Forest?",
     answer:
-      "Stillskin Forest is a cooperative zombie survival-horror game on Roblox, made by StillAwake Media. You and your squad scavenge an abandoned campground, the ruined town of Stillwater and Blackthorn Asylum by day, survive increasingly dangerous nights, and follow clues toward something living under the hill.",
+      "Stillskin Forest is a cooperative zombie survival-horror game on Roblox, made by StillAwake Media. You and your squad scavenge an abandoned campground, the ruined town of Stillwater and Blackthorn Asylum by day, survive increasingly dangerous nights, and follow clues toward what lies beneath the asylum.",
     facts: [
       ["Platform", "Roblox"],
       ["Genre", "Co-op survival horror"],
@@ -26,7 +27,7 @@ export const gettingStarted: WikiEntry[] = [
         id: "the-premise",
         heading: "The premise",
         blocks: [
-          { type: "p", text: "The tagline says it: **the forest is beautiful; the nights are not.** Daylight is calm enough to explore. You leave camp, pick a route, search houses, the hospital and the shops for supplies, and read what the people of Stillwater left behind. When dusk comes the infected multiply and start hunting." },
+          { type: "p", text: "The tagline says it: **the forest is beautiful. The nights are not.** Daylight is calm enough to explore. You leave camp, pick a route, search houses, the hospital and the shops for supplies, and read what the people of Stillwater left behind. When night falls there are far more infected, and they spot you from further away." },
           { type: "p", text: "There are three goals running at once: survive the run, keep your squad alive, and understand what is happening beneath [Blackthorn Asylum](@blackthorn-asylum)." },
         ],
       },
@@ -36,9 +37,9 @@ export const gettingStarted: WikiEntry[] = [
         blocks: [
           { type: "list", items: [
             "**Infected that behave with intent.** They notice you, alert each other, search where you were last seen, and only follow you up a ladder if they saw you climb it. See [Detection and noise](@detection-and-noise).",
-            "**Hiding has consequences.** If the infected saw you hide, the [Dread Encounter](@the-dread-encounter) begins: they approach slowly and stare through the grate.",
+            "**Hiding has consequences.** If an infected was after you when you hid, it comes to look in at you: the [Dread Encounter](@the-dread-encounter). If it watched you climb in from close by, it drags you out.",
             "**Close escapes are designed in.** Your sprint is 23 studs per second; the fastest normal infected is capped at 21.5. You can just barely pull away. See [Stamina and sprinting](@stamina-and-sprinting).",
-            "**The run ends with a show.** When the last survivor falls, the squad lines up on the roof of St. Agnes Hospital while the infected dance around them. See [Death, ghosts and the finale](@death-ghosts-and-the-finale).",
+            "**The run ends with a show.** In a normal run, when the last survivor falls, the squad lines up on the roof of St. Agnes Hospital while the infected dance around them. See [Death, ghosts and the finale](@death-ghosts-and-the-finale).",
           ] },
         ],
       },
@@ -46,7 +47,7 @@ export const gettingStarted: WikiEntry[] = [
         id: "where-it-is-set",
         heading: "Where it is set",
         blocks: [
-          { type: "p", text: "The world runs north to south: [the Campgrounds](@campgrounds), [the Forest Trail](@forest-trail), the town of [Stillwater](@stillwater), then up the hill to [Blackthorn Asylum](@blackthorn-asylum), its [graveyard](@graveyard), [chapel](@chapel), [crypt cave](@crypt-cave) and [Green Lake](@green-lake). Below all of it is [the Hollow](@the-hollow)." },
+          { type: "p", text: "The world runs north to south: [the Campgrounds](@campgrounds), [the Forest Trail](@forest-trail), the town of [Stillwater](@stillwater), then up the hill to [Blackthorn Asylum](@blackthorn-asylum), its [graveyard](@graveyard), [chapel](@chapel), [crypt cave](@crypt-cave) and [Green Lake](@green-lake). Below all of it is [the Hollow](@the-hollow). East of town lies [Blackpine Airfield](@blackpine-airfield)." },
         ],
       },
       {
@@ -58,19 +59,20 @@ export const gettingStarted: WikiEntry[] = [
       },
     ],
     related: ["how-to-play", "controls", "surviving-your-first-night", "enemy-comparison"],
-    sources: [SRC.report, SRC.config, SRC.listing],
+    sources: [SRC.report, SRC.config, SRC.listing, SRC.notes30],
     aliases: ["stillskin", "still skin forest", "stillskin forest roblox", "about"],
   },
   {
     ...base,
     slug: "how-to-play",
+    lastVerified: "2026-10-31",
     title: "How to Play Stillskin Forest",
     seoTitle: "How to Play Stillskin Forest: The Day, Night and Run Loop",
     description:
       "How a run of Stillskin Forest works: scavenge by day, prepare at dusk, survive the night, and what happens when your squad falls. A plain-English guide.",
     question: "How do you play Stillskin Forest?",
     answer:
-      "Each run starts on Day 1 in morning light. Spend the day scavenging food, medicine, weapons and ammunition and reading clues; use the 40-second dusk to get somewhere defensible; then survive the five-minute night as far more infected roam and hunt. Revive teammates who go down. The run ends when everyone has fallen, or when your squad completes one of the story endings.",
+      "Each run starts on Day 1 in morning light. Spend the day scavenging food, medicine, weapons and ammunition and reading clues; use the 40-second dusk to get somewhere defensible; then survive the five-minute night as far more infected roam. Revive teammates who go down. A normal run ends when everyone has fallen; winning one of the story endings doesn't end it.",
     facts: [
       ["Day phase", "8 minutes (incl. 20 s sunrise, 40 s dusk)"],
       ["Night phase", "5 minutes"],
@@ -82,7 +84,7 @@ export const gettingStarted: WikiEntry[] = [
         id: "the-day",
         heading: "By day: scavenge and prepare",
         blocks: [
-          { type: "p", text: "A few infected roam in daylight, but far fewer than at night (at most 16 at a time by day, against 40 at night). This is the time to leave camp, choose a route and search. Loot sits on real surfaces in houses, the hospital, the store and along the trails; walk up to it and press **E**. Empty loot spots refill at dawn." },
+          { type: "p", text: "A few infected roam in daylight, but far fewer than at night (at most 16 at a time by day, against 40 at night). This is the time to leave camp, choose a route and search. Loot sits on real surfaces in houses, the hospital, the store and along the trails; walk up to it and hold **E**. Empty loot spots refill at dawn." },
           { type: "list", items: [
             "Pick up [food](@food) and a [First Aid Kit](@first-aid-kit) before you need them.",
             "A melee weapon such as the [Baseball Bat](@baseball-bat) handles single infected quietly. Save [guns](@weapons-compared) for emergencies; they are loud.",
@@ -109,7 +111,7 @@ export const gettingStarted: WikiEntry[] = [
         id: "how-a-run-ends",
         heading: "How a run ends",
         blocks: [
-          { type: "p", text: "When the last survivor falls the run is over: the squad's stat cards appear on the roof of St. Agnes Hospital and everyone votes to **Return to Camp** for a fresh Day 1. Completing [the Rite of Stillness](@the-rite-of-stillness) or destroying [the Heart of Stillskin](@the-heart-of-stillskin) wins the run, and the win is paid the moment it happens. The run then keeps going until the last survivor falls, and its end screen still shows your win." },
+          { type: "p", text: "When the last survivor falls in a normal run, the run is over: the squad's stat cards appear on the roof of St. Agnes Hospital. Choose **Play Again** to start a fresh Day 1 with your squad, or **Return to Camp** to go back to the lobby. In a [persistent expedition](@persistent-expeditions) the run doesn't end: the night passes and everyone wakes at base at the next dawn. Completing [the Rite of Stillness](@the-rite-of-stillness) or destroying [the Heart of Stillskin](@the-heart-of-stillskin) wins the run, and the win is paid the moment it happens. The run then keeps going until the last survivor falls, and its end screen still shows your win." },
           { type: "p", text: "**After you win.** Night-vision goggles replace the headlamp (after the ritual you claim yours from the circle; after the Heart everyone gets them at once), and the infected get more persistent: they hear a little further, a scream pulls in one more, they search longer, and they keep after you for about seven seconds out of sight instead of five. They still don't know where you are until they see or hear you, and there are no more of them than on any other night. If they've just heard you behind a plank or door, they tear at it." },
         ],
       },
@@ -211,6 +213,7 @@ export const gettingStarted: WikiEntry[] = [
   {
     ...base,
     slug: "surviving-your-first-night",
+    lastVerified: "2026-10-31",
     title: "How to Survive Your First Night in Stillskin Forest",
     seoTitle: "Stillskin Forest Beginner's Guide: Survive Your First Night",
     description:
@@ -247,7 +250,7 @@ export const gettingStarted: WikiEntry[] = [
             "**Walk near calm infected.** Sprinting is audible from 30 studs; walking is quiet. Crouching is quieter still. See [Detection and noise](@detection-and-noise).",
             "**Mind your headlamp.** At night a lit lamp lets the infected spot you from 1.25× further; with it off they see only 0.8× as far. See [Headlamp](@headlamp).",
             "**Melee singles, avoid groups.** Only two infected can swing at you in any 1.6-second window, but a crowd will still pin you.",
-            "**Shoot only when you must.** A pistol shot pulls in every infected within 90 studs; the shotgun, 120.",
+            "**Shoot only when you must.** A pistol shot is heard up to 90 studs away; the shotgun, 120. Walls muffle it only a little.",
             "**Break line of sight to end a chase.** A chase never times out while an infected can see you. Stay out of sight for about 5 seconds and it switches to searching where you were.",
           ] },
         ],
@@ -256,7 +259,7 @@ export const gettingStarted: WikiEntry[] = [
         id: "if-it-goes-wrong",
         heading: "If it goes wrong",
         blocks: [
-          { type: "p", text: "If you go down you have 2 minutes; a teammate holds **E** for 3 seconds to bring you back at 35% health. If no one reaches you, you become a ghost who can fly around the map, and you respawn next to a teammate at dawn. See [Downed and revive](@downed-and-revive)." },
+          { type: "p", text: "If you go down you have 2 minutes; a teammate holds **E** for 3 seconds to bring you back at 35% health. If no one reaches you, you become a ghost who can fly around the map, and you respawn next to a teammate at dawn. The gear you carried is packed into a backpack where you fell; only you can open it, and it lasts three dawns. See [Downed and revive](@downed-and-revive)." },
         ],
       },
     ],
@@ -267,6 +270,7 @@ export const gettingStarted: WikiEntry[] = [
   {
     ...base,
     slug: "playing-with-friends",
+    lastVerified: "2026-10-31",
     title: "Playing Stillskin Forest with Friends",
     seoTitle: "Playing Stillskin Forest with Friends: Squads, Queues and Co-op",
     description:
@@ -280,6 +284,7 @@ export const gettingStarted: WikiEntry[] = [
         heading: "Joining as a squad",
         blocks: [
           { type: "p", text: "The lobby is a camp in a forest clearing, with a bonfire, Mortimer's shop stall and a departure truck at the trailhead. At the gate are three queue pads: **Solo (1)**, **Duo (2)** and **Squad (4)**. A full pad leaves after a short countdown; otherwise it waits up to 20 seconds for teammates. The match then waits for the whole squad to arrive before Day 1 begins." },
+          { type: "p", text: "To keep a world going between sessions, start a [persistent expedition](@persistent-expeditions) from camp and add friends as crew; they can join while you're playing." },
         ],
       },
       {
@@ -289,7 +294,7 @@ export const gettingStarted: WikiEntry[] = [
           { type: "list", items: [
             "Reading the [Blackthorn Admission Ledger](@blackthorn-admission-ledger) unlocks the asylum for the whole team.",
             "Relics are personal: each survivor finds their own. The relics placed at the ritual circle are shared, so the squad fills the circle together.",
-            "One player can hold [the ritual](@the-rite-of-stillness) while others leave, and everyone sees the ending.",
+            "One player can hold [the ritual](@the-rite-of-stillness) while others leave, and the win counts for everyone in the match.",
           ] },
         ],
       },
@@ -301,7 +306,7 @@ export const gettingStarted: WikiEntry[] = [
         ],
       },
     ],
-    related: ["co-op-survival", "death-ghosts-and-the-finale", "downed-and-revive"],
+    related: ["co-op-survival", "persistent-expeditions", "death-ghosts-and-the-finale", "downed-and-revive"],
     sources: [SRC.playtest, SRC.notes30],
     aliases: ["multiplayer", "co-op", "coop", "friends", "squad", "duo", "party"],
     gaps: ["The squad teleport between the lobby and live match servers has not been independently verified."],
@@ -309,6 +314,7 @@ export const gettingStarted: WikiEntry[] = [
   {
     ...base,
     slug: "faq",
+    lastVerified: "2026-10-31",
     title: "Stillskin Forest FAQ",
     seoTitle: "Stillskin Forest FAQ: Platforms, Co-op, Weapons and More",
     description:
@@ -334,7 +340,7 @@ export const gettingStarted: WikiEntry[] = [
       {
         id: "how-do-you-hide",
         heading: "How do you hide from zombies?",
-        blocks: [{ type: "p", text: "Walk up to a hiding spot such as a locker, wardrobe or dumpster and press **E**. If an infected saw you go in, it may come and stare at you through the opening. Stay put until it leaves. See [Hiding](@hiding) and [the Dread Encounter](@the-dread-encounter)." }],
+        blocks: [{ type: "p", text: "Walk up to a hiding spot such as a locker, wardrobe or dumpster and press **E**. If an infected was after you, it may come and look in at you through the opening. If it watched you climb in from close by it will usually find you and pull you out, so break its line of sight first. Nothing tells you when it's safe: listen before you leave. See [Hiding](@hiding) and [the Dread Encounter](@the-dread-encounter)." }],
       },
       {
         id: "best-weapon",
@@ -358,7 +364,7 @@ export const gettingStarted: WikiEntry[] = [
       },
     ],
     related: ["what-is-stillskin-forest", "how-to-play", "controls"],
-    sources: [SRC.config, SRC.playtest, SRC.listing],
+    sources: [SRC.config, SRC.playtest, SRC.listing, SRC.notes30],
     aliases: ["questions", "faq", "help"],
   },
 ];

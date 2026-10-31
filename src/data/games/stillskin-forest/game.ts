@@ -243,6 +243,16 @@ export const stillskinCategories: WikiCategory[] = [
       "The route through the mystery, in order. Walkthroughs are published only for content confirmed in the current build.",
   },
   {
+    id: "campaign",
+    slug: "campaign",
+    title: "Campaign",
+    navLabel: "Campaign",
+    description:
+      "The Ranger's Last Transmission, the Stillskin Forest V3 campaign: how it starts, its chapters, journals and tapes, the Watchers, the Astral and the endings.",
+    intro:
+      "Pre-release draft guides to the V3 campaign, The Ranger's Last Transmission. Story reveals stay behind spoiler controls, and every mechanic will be checked against the released game.",
+  },
+  {
     id: "multiplayer",
     slug: "multiplayer",
     title: "Co-op & End of Run",

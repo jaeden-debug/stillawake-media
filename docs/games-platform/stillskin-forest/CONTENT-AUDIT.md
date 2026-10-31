@@ -2,9 +2,9 @@
 
 Generated from the wiki registry. Do not edit by hand.
 
-- Published (verified_live): **93** articles across 11 categories
+- Published (verified_live): **111** articles across 12 categories
 - Not published: **8** (planned, unverified or deprecated)
-- Articles with recorded gaps: **25**
+- Articles with recorded gaps: **43**
 - Last verified: 2026-10-25
 
 ## Published articles
@@ -94,6 +94,24 @@ Generated from the wiki registry. Do not edit by hand.
 | Quests & Walkthroughs | The Rite of Stillness: Ritual Walkthrough | `/games/stillskin-forest/wiki/quests/the-rite-of-stillness` | no | 2026-10-31 |
 | Quests & Walkthroughs | Descent into the Hollow | `/games/stillskin-forest/wiki/quests/descent-into-the-hollow` | no | 2026-10-31 |
 | Quests & Walkthroughs | The Heart of Stillskin | `/games/stillskin-forest/wiki/quests/the-heart-of-stillskin` | no | 2026-10-31 |
+| Campaign | How the Campaign Starts | `/games/stillskin-forest/wiki/campaign/campaign-getting-started` | no | 2026-10-31 |
+| Campaign | The Ranger's Last Transmission: All 22 Chapters | `/games/stillskin-forest/wiki/campaign/main-campaign` | no | 2026-10-31 |
+| Campaign | Ranger Journals | `/games/stillskin-forest/wiki/campaign/ranger-journals` | no | 2026-10-31 |
+| Campaign | Tapes and Recordings | `/games/stillskin-forest/wiki/campaign/tapes-and-recordings` | no | 2026-10-31 |
+| Campaign | Backstreet | `/games/stillskin-forest/wiki/campaign/backstreet` | no | 2026-10-31 |
+| Campaign | Hunter's Rifle | `/games/stillskin-forest/wiki/campaign/hunters-rifle` | no | 2026-10-31 |
+| Campaign | The Freeze Device's Story | `/games/stillskin-forest/wiki/campaign/freeze-device-story` | no | 2026-10-31 |
+| Campaign | Night Vision and the Ritual | `/games/stillskin-forest/wiki/campaign/night-vision-and-the-ritual` | no | 2026-10-31 |
+| Campaign | Relics and the Buried Relic | `/games/stillskin-forest/wiki/campaign/relics-and-the-buried-relic` | no | 2026-10-31 |
+| Campaign | Watchers in the Campaign | `/games/stillskin-forest/wiki/campaign/watchers` | no | 2026-10-31 |
+| Campaign | Silent Night in the Campaign | `/games/stillskin-forest/wiki/campaign/silent-night-story` | no | 2026-10-31 |
+| Campaign | The Dark Forest | `/games/stillskin-forest/wiki/campaign/dark-forest` | no | 2026-10-31 |
+| Campaign | The Nowhere Tree | `/games/stillskin-forest/wiki/campaign/nowhere-tree` | no | 2026-10-31 |
+| Campaign | The Astral | `/games/stillskin-forest/wiki/campaign/the-astral` | no | 2026-10-31 |
+| Campaign | Ending: The Marked | `/games/stillskin-forest/wiki/campaign/ending-the-marked` | no | 2026-10-31 |
+| Campaign | Ending: The Remains | `/games/stillskin-forest/wiki/campaign/ending-the-remains` | no | 2026-10-31 |
+| Campaign | Ending: The Severance | `/games/stillskin-forest/wiki/campaign/ending-the-severance` | no | 2026-10-31 |
+| Campaign | After the Campaign | `/games/stillskin-forest/wiki/campaign/post-campaign-survival` | no | 2026-10-31 |
 | Co-op & End of Run | Co-op Survival: Revives, Pings and Sharing | `/games/stillskin-forest/wiki/multiplayer/co-op-survival` | no | 2026-10-31 |
 | Co-op & End of Run | Death, Ghosts and the Rooftop Finale | `/games/stillskin-forest/wiki/multiplayer/death-ghosts-and-the-finale` | no | 2026-10-31 |
 | Co-op & End of Run | Saved Sessions: Saving Your Run and Playing With Friends | `/games/stillskin-forest/wiki/multiplayer/persistent-expeditions` | no | 2026-10-31 |
@@ -136,6 +154,41 @@ Generated from the wiki registry. Do not edit by hand.
 | Notes and Tapes | The location of every individual note is not yet documented. |
 | Notes and Tapes | A few newer notes are not listed here yet. |
 | Descent into the Hollow | The full descent has been verified solo; a two-player run of the cave has not been recorded yet. |
+| How the Campaign Starts | Some story details are provisional in the design documents and await the owner's confirmation. |
+| How the Campaign Starts | Objective wording, hint timing and session rules are from design documents and must be checked in the released build. |
+| The Ranger's Last Transmission: All 22 Chapters | Some story details are provisional in the design documents and await the owner's confirmation. |
+| The Ranger's Last Transmission: All 22 Chapters | Chapter names, completion rules and the order of chapters 16 to 22 are from design documents. |
+| Ranger Journals | Some story details are provisional in the design documents and await the owner's confirmation. |
+| Ranger Journals | The final number of journal entries and every placement are from design documents; world placement is still being built. |
+| Tapes and Recordings | Some story details are provisional in the design documents and await the owner's confirmation. |
+| Tapes and Recordings | Transcript timing, prompts and placements are from design documents. |
+| Backstreet | Some story details are provisional in the design documents and await the owner's confirmation. |
+| Backstreet | Backstreet's real name is left blank by the owner. The hunting camp and flooded tunnel are still being built. |
+| Hunter's Rifle | Some story details are provisional in the design documents and await the owner's confirmation. |
+| Hunter's Rifle | Whether the rename changes any stats, and how the rifle is claimed in V3, must be checked in the released build. |
+| The Freeze Device's Story | Some story details are provisional in the design documents and await the owner's confirmation. |
+| The Freeze Device's Story | How charges work in V3 (the live device recharges and never wears out) must be checked at release. |
+| Night Vision and the Ritual | Some story details are provisional in the design documents and await the owner's confirmation. |
+| Night Vision and the Ritual | The ritual's advantage for the Severance confrontation is not designed yet. |
+| Relics and the Buried Relic | Some story details are provisional in the design documents and await the owner's confirmation. |
+| Relics and the Buried Relic | The design documents don't say which of the four relics is moved. |
+| Watchers in the Campaign | Some story details are provisional in the design documents and await the owner's confirmation. |
+| Watchers in the Campaign | Every Watcher value comes from design notes and is a starting point for tuning. The first sighting is still under human review. |
+| Silent Night in the Campaign | Some story details are provisional in the design documents and await the owner's confirmation. |
+| Silent Night in the Campaign | The hum at the lamp posts is silent until a track is approved. |
+| The Dark Forest | Some story details are provisional in the design documents and await the owner's confirmation. |
+| The Dark Forest | The Dark Forest is still being built; its layout and markers must be checked at release. |
+| The Nowhere Tree | Some story details are provisional in the design documents and await the owner's confirmation. |
+| The Astral | Some story details are provisional in the design documents and await the owner's confirmation. |
+| The Astral | The number and pacing of the Astral's phases are from design documents. |
+| Ending: The Marked | Some story details are provisional in the design documents and await the owner's confirmation. |
+| Ending: The Marked | The tie rule awaits owner confirmation. Gift values are starting points for tuning. |
+| Ending: The Remains | Some story details are provisional in the design documents and await the owner's confirmation. |
+| Ending: The Remains | What the burned forest contains (traders, loot tables) is not specified yet. |
+| Ending: The Severance | Some story details are provisional in the design documents and await the owner's confirmation. |
+| Ending: The Severance | The confrontation is not designed yet. Whether a document found by any member counts for the whole crew awaits confirmation. |
+| After the Campaign | Some story details are provisional in the design documents and await the owner's confirmation. |
+| After the Campaign | Post-campaign objectives for each world are not written yet. |
 | Death, Ghosts and the Rooftop Finale | Play Again and Back to Camp with several real clients in a live server have not been recorded yet. |
 | Death, Ghosts and the Rooftop Finale | Whether the rooftop finale still plays before the session end screen in v382 has not been re-checked. |
 | Saved Sessions: Saving Your Run and Playing With Friends | Saved sessions are live but still being tested: invites, entering alone and ending a session with several players have not been recorded in a live server yet. |

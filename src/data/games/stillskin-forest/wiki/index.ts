@@ -8,6 +8,7 @@ import { locations } from "./locations";
 import { specialNights } from "./special-nights";
 import { story } from "./story";
 import { quests } from "./quests";
+import { campaign } from "./campaign";
 import { multiplayer } from "./multiplayer";
 import { updates } from "./updates";
 import { expansion } from "./expansion";
@@ -26,6 +27,7 @@ export const stillskinWiki: WikiEntry[] = [
   ...specialNights,
   ...story,
   ...quests,
+  ...campaign,
   ...multiplayer,
   ...updates,
   ...expansion,

@@ -7,7 +7,7 @@ export const mechanics: WikiEntry[] = [
   {
     ...base,
     slug: "day-night-cycle",
-    lastVerified: "2026-10-29",
+    lastVerified: "2026-10-31",
     title: "Day and Night Cycle",
     seoTitle: "Stillskin Forest Day and Night Cycle: How Long Is a Night?",
     description:
@@ -33,9 +33,9 @@ export const mechanics: WikiEntry[] = [
         id: "escalation",
         heading: "How it escalates",
         blocks: [
-          { type: "p", text: "Every day adds infected. By day the forest holds 6 plus the day number (to a maximum of 14). At night it holds up to 40, arriving up to three at a time, out of sight and never closer than 70 studs. Counting every infected from every source (the airfield's soldiers, the asylum, the ritual, ambushes), there are never more than 56 at once, special nights included." },
+          { type: "p", text: "Every day adds infected. By day the forest holds 6 plus the day number (to a maximum of 14). At night up to 28 roam the forest, arriving up to three at a time, out of sight and never closer than 70 studs. Counting every infected across the whole map (the airfield's soldiers, the asylum, ambushes), no more than 40 are ever alive at once, special nights included. Scripted events like the [ritual siege](@the-rite-of-stillness) keep their own numbers." },
           { type: "table", caption: "Ordinary infected in the forest", head: ["Day", "By day", "At night"], rows: [
-            ["1", "7", "40"], ["2", "8", "40"], ["3", "9", "40"], ["4", "10", "40"], ["5+", "11–14", "40"],
+            ["1", "7", "28"], ["2", "8", "28"], ["3", "9", "28"], ["4", "10", "28"], ["5+", "11–14", "28"],
           ] },
           { type: "p", text: "Detection range grows too: 45 studs by day, 70 at night, plus 1.5 studs for every day survived. From Night 2, dusk can roll a [special night](@special-nights-overview)." },
         ],
@@ -50,7 +50,7 @@ export const mechanics: WikiEntry[] = [
       },
     ],
     related: ["night-survival", "surviving-your-first-night", "special-nights-overview", "detection-and-noise", "headlamp"],
-    sources: [SRC.config, SRC.playtest],
+    sources: [SRC.config, SRC.playtest, SRC.publish31],
     aliases: ["day night", "night length", "time", "cycle", "how long is a day"],
   },
   {
@@ -88,12 +88,13 @@ export const mechanics: WikiEntry[] = [
             "Sprint in bursts. Stopping briefly lets stamina recover quickly (22 per second against a 16 per second drain).",
             "Sprinting stands you up from a crouch.",
             "Aim sway grows when you are winded, so catch your breath before a careful shot.",
+            "When you're nearly out of stamina you hear yourself breathing harder, easing off as you get your breath back. Only you hear it.",
           ] },
         ],
       },
     ],
     related: ["detection-and-noise", "runner", "crouching-and-takedowns"],
-    sources: [SRC.config, SRC.playtest, SRC.notes30, SRC.controls31],
+    sources: [SRC.config, SRC.playtest, SRC.notes30, SRC.controls31, SRC.publish31],
     aliases: ["stamina", "sprint", "run", "speed", "movement speed"],
   },
   {
@@ -329,7 +330,7 @@ export const mechanics: WikiEntry[] = [
         heading: "Going down",
         blocks: [
           { type: "p", text: "A lethal hit doesn't kill you outright while teammates are standing. You go down with a 2-minute countdown and an overlay. You can't move, use items or interact, and you don't regenerate. Infected that were after you back off and leave you alone while you're down." },
-          { type: "callout", tone: "warning", text: "If you are the last survivor standing, there is no revive. A lethal hit starts the final-death sequence: a classic run ends, while on an expedition the crew wakes at base at dawn. See [Death, ghosts and the finale](@death-ghosts-and-the-finale)." },
+          { type: "callout", tone: "warning", text: "If you are the last survivor standing, there is no revive. A lethal hit starts the final-death sequence and, when everyone in the session has fallen, that session is over for good: it stays in your list, greyed out, with the day you reached. See [Death, ghosts and the finale](@death-ghosts-and-the-finale)." },
         ],
       },
       {
@@ -348,13 +349,13 @@ export const mechanics: WikiEntry[] = [
       },
     ],
     related: ["death-ghosts-and-the-finale", "co-op-survival", "health-and-healing"],
-    sources: [SRC.config, SRC.playtest, SRC.report, SRC.notes30, SRC.controls31],
+    sources: [SRC.config, SRC.playtest, SRC.report, SRC.notes30, SRC.controls31, SRC.publish31],
     aliases: ["revive", "downed", "knocked down", "bleeding out", "res"],
   },
   {
     ...base,
     slug: "inventory-and-hotbar",
-    lastVerified: "2026-10-29",
+    lastVerified: "2026-10-31",
     title: "Inventory and Hotbar",
     seoTitle: "Inventory in Stillskin Forest: Slots, Stacking and the Backpack",
     description:
@@ -367,35 +368,42 @@ export const mechanics: WikiEntry[] = [
         id: "hotbar",
         heading: "The hotbar",
         blocks: [
-          { type: "p", text: "Number keys select a slot (LB/RB cycle on a controller). The selected item lifts with a 3D preview; guns show magazine and reserve, and the coloured strip shows [durability](@durability-and-wear), turning red below 25%." },
+          { type: "p", text: "Number keys select a slot (LB/RB cycle on a controller). The selected item lifts with a 3D preview." },
+          { type: "list", items: [
+            "Guns show magazine/reserve rounds, in red when empty, and RELOAD while you reload.",
+            "A condition strip under each item shows its [durability](@durability-and-wear) and turns red when it is worn. Broken items say BROKEN.",
+            "Items with a cooldown show a timer.",
+            "Ammo and condition come straight from the server, so the hotbar never shows rounds you don't have. Your bag is re-sent in full after you respawn.",
+          ] },
         ],
       },
       {
         id: "backpack",
         heading: "The backpack",
         blocks: [
-          { type: "p", text: "Press **B** or **Tab** to open the backpack: item cards with rarity, descriptions, stats and ammo, plus equip, use and drop buttons and the settings. It frees the mouse and blurs the background. On a controller, the D-pad navigates it." },
-          { type: "p", text: "**Graphics** in the settings switches between High, Balanced and Performance. It only changes how the game looks on your device (how far tree shadows reach, how much the foliage sways, how many leaves drift), never what you can see or do. Consoles start on Performance, phones on Balanced, and PCs follow Roblox's own graphics slider. Your choice is saved." },
+          { type: "p", text: "Press **B** or **Tab** to open the backpack: item cards with rarity, descriptions, stats, ammo and condition, plus equip, use and drop buttons and the settings. It also shows the condition of your [helmet and plate carrier](@military-armor). It frees the mouse and blurs the background. On a controller, the D-pad navigates it." },
+          { type: "p", text: "**Graphics** in the settings switches between High, Balanced and Performance. It only changes how the game looks on your device (how far tree shadows reach, how much the foliage sways, how many leaves drift), never what you can see or do. Consoles start on Performance and keep their own graphics choice, phones start on Balanced, and PCs follow Roblox's own graphics slider. Your choice is saved. Performance turns off sun shadows and sun rays and softens the screen glow for a smoother frame rate; consoles and phones also draw fewer distant shadows, while nearby scenery keeps its own." },
         ],
       },
       {
         id: "dropping",
         heading: "Dropping and sharing",
         blocks: [
-          { type: "p", text: "Press **G** to drop the held item. Dropped items keep their wear. To hand something to a teammate directly, hold **E** on them; see [Co-op survival](@co-op-survival)." },
+          { type: "p", text: "Press **G** to drop the held item. Dropped items keep their wear, and a dropped gun keeps its condition and is still the same gun when picked up again. To hand something to a teammate directly, hold **E** on them; see [Co-op survival](@co-op-survival)." },
+          { type: "p", text: "Supplies you bring into a run, whether bought with Embers or Robux, can be handed to or dropped for your crew like anything you find, keeping their ammo and condition. Passes, cosmetics, Embers and Ember packs stay on your account. The shop marks which is which, and gear bought before the 31 October 2026 update stays with its buyer." },
           { type: "p", text: "Up to two guns or melee weapons from your bag are shown holstered across your back." },
         ],
       },
     ],
     related: ["durability-and-wear", "food", "co-op-survival"],
-    sources: [SRC.config, SRC.playtest],
+    sources: [SRC.config, SRC.playtest, SRC.publish31],
     aliases: ["inventory", "backpack", "bag", "slots", "hotbar", "drop"],
     gaps: ["An eight-slot physical layout (shoulder, hip and pocket slots) is designed but not yet the live inventory."],
   },
   {
     ...base,
     slug: "aiming-and-reloading",
-    lastVerified: "2026-10-30",
+    lastVerified: "2026-10-31",
     title: "Aiming, Headshots and Reloading",
     seoTitle: "Aiming and Headshots in Stillskin Forest: Damage, Spread and Reloads",
     description:
@@ -410,7 +418,7 @@ export const mechanics: WikiEntry[] = [
         blocks: [
           { type: "list", items: [
             "Right mouse (L2 on controller) to aim. The camera pulls in and your spread tightens.",
-            "Your character turns to face whatever you shoot at, even behind you.",
+            "Your character turns to face where you aim. You can't fire straight behind you or from inside a wall.",
             "V switches to first person; aiming there brings the sights to your eye line.",
             "Aim sway is gentle when rested and larger when you're winded.",
             "On controller and touch only, aiming applies a gentle pull toward targets within 7°.",
@@ -432,25 +440,26 @@ export const mechanics: WikiEntry[] = [
         heading: "Reloading",
         blocks: [
           { type: "p", text: "Press **R**. An empty magazine reloads automatically; switching weapons cancels the reload. The Pistol reloads in 1.6 s and the Shotgun in 2.4 s. See [Ammunition](@ammunition)." },
+          { type: "p", text: "Your ammo count comes straight from the server: it reaches 0 on your last shot, and reloads and drops update at once. The hotbar shows magazine/reserve (red when empty) and RELOAD while you reload." },
         ],
       },
     ],
     related: ["pistol", "shotgun", "ammunition", "weapons-compared", "shooting-through-cover"],
-    sources: [SRC.config, SRC.items, SRC.playtest, SRC.playtest27, SRC.notes30],
+    sources: [SRC.config, SRC.items, SRC.playtest, SRC.playtest27, SRC.notes30, SRC.publish31],
     aliases: ["aim", "headshot", "reload", "first person", "crosshair", "aim assist"],
   },
   {
     ...base,
     slug: "shooting-through-cover",
-    lastVerified: "2026-10-28",
+    lastVerified: "2026-10-31",
     title: "Shooting Through Doors, Windows and Glass",
     seoTitle: "Stillskin Forest Wall-Bangs: Shooting Through Doors and Breaking Glass",
     description:
       "What bullets go through in Stillskin Forest: open doorways, glass that shatters, doors and thin wood for less damage, what stops a shot, and how to break windows.",
     question: "Can you shoot through doors and windows in Stillskin Forest?",
     answer:
-      "Yes. A bullet flies through open doorways, shatters window glass and carries on (90% damage), and punches through a closed door or a thin wooden board for about half damage, up to two in a row. Concrete, plaster, brick, metal, rock and thick walls stop it. Any bullet or any melee weapon breaks a window pane in one hit, and the infected break one in eight blows.",
-    facts: [["Through glass", "90% damage, glass breaks"], ["Through a door or thin wood", "55% each, up to 2"], ["Stops a bullet", "Concrete, plaster, brick, metal, rock, thick walls"], ["Bullets to break a pane", "1"], ["Melee weapon hits to break a pane", "1"], ["Infected blows to break a pane", "8"]],
+      "Yes. A bullet flies through open doorways, shatters window glass and carries on (90% damage), and punches through a closed door or a thin wooden board for about half damage, up to two in a row. Concrete, plaster, brick, metal, rock and thick walls stop it. Any bullet or any melee weapon breaks a window pane in one hit, six punches break one, and the infected break one in eight blows.",
+    facts: [["Through glass", "90% damage, glass breaks"], ["Through a door or thin wood", "55% each, up to 2"], ["Stops a bullet", "Concrete, plaster, brick, metal, rock, thick walls"], ["Bullets to break a pane", "1"], ["Melee weapon hits to break a pane", "1"], ["Punches to break a pane", "6"], ["Infected blows to break a pane", "8"]],
     sections: [
       {
         id: "what-bullets-do",
@@ -463,6 +472,7 @@ export const mechanics: WikiEntry[] = [
             ["Concrete, plaster, brick, metal, rock, thick walls, the ground", "Stops the bullet", "0%"],
           ] },
           { type: "p", text: "Shots are traced from your eye to the crosshair, so standing right next to a car, a fence or a wall doesn't block a shot you can see. Standing on a car and shooting an infected at its wheels works. A headshot through a door still hurts more than a body shot, but it is no longer an instant kill." },
+          { type: "p", text: "Fair fights work both ways: swings and punches don't land through walls or planks, and a gun can't be fired from inside a wall or straight behind you." },
         ],
       },
       {
@@ -472,6 +482,7 @@ export const mechanics: WikiEntry[] = [
           { type: "table", caption: "Hits to break one window pane", head: ["With", "Hits"], rows: [
             ["Any bullet (every shotgun pellet too)", "1"],
             ["Any melee weapon: [Machete](@machete), [Baseball Bat](@baseball-bat), [Hammer](@hammer), [Crowbar](@crowbar)", "1"],
+            ["Bare fists (click / R2 with nothing in your hands)", "6"],
             ["An infected", "8"],
           ] },
           { type: "p", text: "Breaking glass is loud: it draws infected from about 45 studs. A broken pane leaves the frame open, so you can climb through a window big enough to fit. Every window is whole again at the start of a new run." },
@@ -480,7 +491,7 @@ export const mechanics: WikiEntry[] = [
       },
     ],
     related: ["aiming-and-reloading", "doors-and-building", "weapons-compared", "detection-and-noise"],
-    sources: [SRC.playtest27, SRC.playtest28],
+    sources: [SRC.playtest27, SRC.playtest28, SRC.publish31],
     aliases: ["wallbang", "wall bang", "shoot through doors", "glass", "break window", "windows", "penetration", "bullet through wall"],
   },
   {
@@ -662,14 +673,14 @@ export const mechanics: WikiEntry[] = [
   {
     ...base,
     slug: "durability-and-wear",
-    lastVerified: "2026-10-30",
+    lastVerified: "2026-10-31",
     title: "Durability and Wear",
     seoTitle: "Weapon Durability in Stillskin Forest: How Long Weapons Last",
     description:
       "Weapons and tools in Stillskin Forest wear out. Durability values for each item, what causes wear, how to repair weapons, and what happens when one breaks.",
     question: "Do weapons break in Stillskin Forest?",
     answer:
-      "Yes. Every weapon and tool has durability. Each landed swing, shot, nailed plank or gadget use costs 1, as does a swing that hits a wall and each hit you take while holding the item. At zero the item breaks, and you can't miss it: a loud snap and a big BROKE! notice across the screen. A gun's last shot still fires, then it snaps and drops out of your hand; the rounds in its magazine go back to your ammo reserve, so you never lose ammo with it. Melee weapons repair themselves the scavenger's way: pick up another copy of one you carry and yours goes back to full and gets 5% tougher (up to 125% of its original durability); the copy is used up. A gun is repaired with a [Gun Repair Kit](@gun-repair-kit), and finding a less worn copy of a gun you carry swaps its durability onto yours. Lanterns and the Freeze Device never wear out. Durability ranges from 110 (Machete) to 480 (Hammer) before any repairs; guns last 400 (Pistol) and 175 (Shotgun) shots.",
+      "Yes. Every weapon and tool has durability. Each landed swing, shot, nailed plank or gadget use costs 1, as does a swing that hits a wall and each hit you take while holding the item. At zero the item breaks, and you can't miss it: a loud snap and a big BROKE! notice across the screen. A gun's last shot still fires, then it snaps and drops out of your hand; the rounds in its magazine go back to your ammo reserve, so you never lose ammo with it. Melee weapons repair themselves the scavenger's way: pick up another copy of one you carry and yours goes back to full and gets 5% tougher (up to 125% of its original durability); the copy is used up. A gun is repaired with a [Gun Repair Kit](@gun-repair-kit) or partly restored with a Gun Cleaning Kit, and finding a less worn copy of a gun you carry swaps its durability onto yours. Lanterns and the Freeze Device never wear out. Durability ranges from 110 (Machete) to 480 (Hammer) before any repairs; guns last 400 (Pistol) and 175 (Shotgun) shots.",
     sections: [
       {
         id: "values",
@@ -689,7 +700,7 @@ export const mechanics: WikiEntry[] = [
             "A melee swing that hits a wall: 1.",
             "Getting hit while holding the item: 1.",
           ] },
-          { type: "p", text: "The hotbar strip shows durability and turns red below 25%. Dropped items keep their wear." },
+          { type: "p", text: "The hotbar strip under each item shows its condition and turns red when it is worn; a broken item is marked BROKEN. Dropped items keep their wear, and a dropped gun keeps its condition and stays the same gun when it is picked up again. Your bag and HUD show ammo and condition exactly as the server has them." },
         ],
       },
       {
@@ -710,14 +721,15 @@ export const mechanics: WikiEntry[] = [
           { type: "table", caption: "How to repair", head: ["Weapon", "How", "Result"], rows: [
             ["Melee (bat, machete, hammer, crowbar)", "Pick up another of the same weapon", "Full durability, +5% of the original each time, up to 125%"],
             ["Guns", "Use a [Gun Repair Kit](@gun-repair-kit)", "Your most worn gun back to full"],
+            ["Guns", "Use a Gun Cleaning Kit (found in the campsite cabins)", "Your most worn gun gets back about a third of its condition"],
             ["Guns", "Pick up a less worn copy of a gun you carry", "Yours takes the better durability; its rounds go to your reserve"],
           ] },
-          { type: "p", text: "A repair never makes a better weapon worse. Once a melee weapon reaches 125% further copies still repair it to full." },
+          { type: "p", text: "A repair never makes a better weapon worse. Once a melee weapon reaches 125% further copies still repair it to full. After a Gun Cleaning Kit the bag shows the new condition straight away." },
         ],
       },
     ],
     related: ["weapons-compared", "inventory-and-hotbar", "gun-repair-kit"],
-    sources: [SRC.config, SRC.config28, SRC.playtest28],
-    aliases: ["durability", "wear", "break", "weapon breaking"],
+    sources: [SRC.config, SRC.config28, SRC.playtest28, SRC.publish31],
+    aliases: ["durability", "wear", "break", "weapon breaking", "gun cleaning kit", "cleaning kit"],
   },
 ];

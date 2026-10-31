@@ -7,7 +7,7 @@ export const items: WikiEntry[] = [
   {
     ...base,
     slug: "gun-repair-kit",
-    lastVerified: "2026-10-28",
+    lastVerified: "2026-10-31",
     title: "Gun Repair Kit",
     seoTitle: "Gun Repair Kit in Stillskin Forest: How to Repair Guns",
     description:
@@ -33,13 +33,59 @@ export const items: WikiEntry[] = [
         id: "where-to-find",
         heading: "Where to find it",
         blocks: [
-          { type: "p", text: "Gun Repair Kits are uncommon. Look on the floors and benches of [Blackpine Airfield](@blackpine-airfield), in stashes, and occasionally in houses and the store." },
+          { type: "p", text: "Gun Repair Kits are uncommon. Look on the floors and benches of [Blackpine Airfield](@blackpine-airfield), in stashes, at the Lost Camp, and occasionally in houses, the store and the campground cabins. The ranger trader at the Ranger Trader Station also sells them for Embers, 15% cheaper at night." },
+          { type: "p", text: "For a gun that's only a little worn, a [Gun Cleaning Kit](@gun-cleaning-kit) is easier to come by and gives back about a third of its condition." },
         ],
       },
     ],
-    related: ["durability-and-wear", "pistol", "shotgun", "ammunition"],
-    sources: [SRC.items28, SRC.config28, SRC.playtest28],
+    related: ["gun-cleaning-kit", "durability-and-wear", "pistol", "shotgun", "ammunition"],
+    sources: [SRC.items28, SRC.config28, SRC.playtest28, SRC.publish31],
     aliases: ["repair kit", "gun repair", "repair gun", "fix gun", "weapon repair"],
+  },
+  {
+    ...base,
+    slug: "gun-cleaning-kit",
+    lastVerified: "2026-10-31",
+    title: "Gun Cleaning Kit",
+    seoTitle: "Gun Cleaning Kit in Stillskin Forest: Restoring Gun Condition",
+    description:
+      "The Gun Cleaning Kit in Stillskin Forest restores about a third of your most worn gun's condition. How to use it and where to find one.",
+    question: "What does the Gun Cleaning Kit do in Stillskin Forest?",
+    answer:
+      "Select the Gun Cleaning Kit and use it: after a few seconds it cleans the most worn gun you carry, restoring about a third of its condition (never past full), and the kit is used up. Look for them in the campsite cabins, or buy one from the ranger trader for Embers.",
+    facts: [["Restores", "About a third of one gun's condition"], ["Which gun", "Your most worn one"], ["Use time", "A few seconds"], ["Found in", "Campsite cabins, the Lost Camp"], ["Sold by", "The ranger trader (Embers)"]],
+    sections: [
+      {
+        id: "using-it",
+        heading: "Using it",
+        blocks: [
+          { type: "list", items: [
+            "Select the kit and use it (click or R2). It works on the gun of yours that's most worn.",
+            "It gives back about a third of that gun's condition and never takes it past full. The bag and hotbar show the new condition straight away, and a message shows the before and after.",
+            "It's only used up once the cleaning is done. Put it away during the cleaning and the kit stays in your bag.",
+            "If every gun you carry is already in perfect condition, it tells you so and keeps the kit.",
+            "It can't bring back a gun that has already broken.",
+          ] },
+        ],
+      },
+      {
+        id: "cleaning-or-repair",
+        heading: "Cleaning kit or repair kit?",
+        blocks: [
+          { type: "p", text: "A [Gun Repair Kit](@gun-repair-kit) brings a gun all the way back to full but is rare. A Cleaning Kit does about a third of the job and is much easier to find, so use cleaning kits to keep a gun topped up and save repair kits for one that's badly worn. See [Durability](@durability-and-wear)." },
+        ],
+      },
+      {
+        id: "where-to-find",
+        heading: "Where to find it",
+        blocks: [
+          { type: "p", text: "Cleaning kits turn up on tables, shelves and workbenches in the [campsite cabins](@campgrounds), and at the Lost Camp. The ranger trader at the Ranger Trader Station sells them for Embers too, 15% cheaper at night." },
+        ],
+      },
+    ],
+    related: ["gun-repair-kit", "durability-and-wear", "pistol", "shotgun"],
+    sources: [SRC.publish31],
+    aliases: ["cleaning kit", "gun cleaning", "clean gun", "gun maintenance", "weapon cleaning"],
   },
   {
     ...base,
@@ -118,7 +164,7 @@ export const items: WikiEntry[] = [
   {
     ...base,
     slug: "ammunition",
-    lastVerified: "2026-10-29",
+    lastVerified: "2026-10-31",
     title: "Ammunition: Pistol Ammo, Shells and Rifle Rounds",
     seoTitle: "Ammo in Stillskin Forest: Pistol Ammo, Shells, Rifle Rounds",
     description:
@@ -146,7 +192,8 @@ export const items: WikiEntry[] = [
         heading: "Ammo is never lost during a run",
         blocks: [
           { type: "list", items: [
-            "Drop a gun and the rounds in its magazine stay with you; the gun goes on the ground empty.",
+            "Drop a gun and the rounds in its magazine stay with you; the gun goes on the ground empty but keeps its condition, so picking it up again gives you the same gun.",
+            "The hotbar and bag always show your real magazine, reserve and condition: the count reaches 0 on your last shot.",
             "Being taken out doesn't cost ammo: the rounds in your guns go back to you, and you have them when you respawn at dawn.",
             "Swap to another gun and your ammo carries over, plus whatever the new gun had loaded.",
             "Ammo only resets when a new run starts.",
@@ -158,12 +205,13 @@ export const items: WikiEntry[] = [
         heading: "Where ammo turns up",
         blocks: [
           { type: "p", text: "Pistol Ammo and Shells turn up in ordinary scavenging: houses, the store, the hospital, the campground cabins and sheds, the trail and the airfield. Each box holds twice what it used to (a house box of Pistol Ammo is 8–18 rounds), and boxes are more common than before, though still rarer than food. You never need to go to the airfield just for pistol or shotgun ammo." },
-          { type: "p", text: "Rifle Rounds are the scarcest: they turn up in Blackthorn Asylum, stashes, [Blackpine Airfield](@blackpine-airfield) and night caches. An infected you kill has an 18% chance to drop a small amount of ammo (22% for soldiers, who drop Rifle Rounds more often). See [Night survival](@night-survival)." },
+          { type: "p", text: "Rifle Rounds are the scarcest: they turn up in Blackthorn Asylum, stashes, [Blackpine Airfield](@blackpine-airfield) and night caches. An infected you kill has an 18% chance to drop a small amount of ammo (22% for soldiers, who drop Rifle Rounds more often). The campsite cabins sometimes hold a few Rifle Rounds too. See [Night survival](@night-survival)." },
+          { type: "p", text: "The ranger trader at the Ranger Trader Station sells all three for Embers, 15% cheaper at night. Ammo bought in the lobby shop rides into your next run with your guns and needs no slot." },
         ],
       },
     ],
     related: ["pistol", "shotgun", "mini-ak", "aiming-and-reloading"],
-    sources: [SRC.items, SRC.playtest],
+    sources: [SRC.items, SRC.playtest, SRC.publish31],
     aliases: ["ammo", "pistol ammo", "shells", "shotgun shells", "bullets"],
   },
   {
@@ -257,7 +305,7 @@ export const items: WikiEntry[] = [
   {
     ...base,
     slug: "lantern",
-    lastVerified: "2026-10-28",
+    lastVerified: "2026-10-31",
     title: "Lantern",
     seoTitle: "Lantern in Stillskin Forest: Carrying, Placing and Lighting",
     description:
@@ -287,11 +335,12 @@ export const items: WikiEntry[] = [
         heading: "Finding lanterns",
         blocks: [
           { type: "p", text: "Lanterns are fairly common. Up to four lie around the map at a time (at least one per survivor, up to four), most often at the campground. When someone picks one up, another appears somewhere else a little later. Lanterns you drop or place don't count toward the four. Several lanterns share one bag slot." },
+          { type: "p", text: "You can also buy one in the lobby shop to take into a run, or from the ranger trader at the Ranger Trader Station for Embers. Like any supply bought with Embers or Robux, a shop lantern can be handed to or dropped for your crew once it's in the run. Lanterns bought before the 31 Oct 2026 update stay with the player who bought them." },
         ],
       },
     ],
     related: ["headlamp", "doors-and-building"],
-    sources: [SRC.items, SRC.config28, SRC.playtest28],
+    sources: [SRC.items, SRC.config28, SRC.playtest28, SRC.publish31],
     aliases: ["lamp", "kerosene lantern", "light source"],
   },
 ];

@@ -13,7 +13,7 @@ export const specialNights: WikiEntry[] = [
       "How special nights work in Stillskin Forest: when they happen, the odds each night, and what Blood Moon, Heavy Fog, Infected Surge and Silent Night change.",
     question: "How do special nights work in Stillskin Forest?",
     answer:
-      "Special nights are rolled at dusk from Night 2 onward. The chance starts at 30% on Night 2 and rises 6% each night to a maximum of 65%, and the same special night never comes twice in a row. Each is announced at dusk with a sting and a banner, and once night falls the HUD clock takes on its name and colour. None of them adds infected: the normal night cap always holds.",
+      "Special nights are rolled at dusk from Night 2 onward. The chance starts at 30% on Night 2 and rises 6% each night to a maximum of 65%, and the same special night never comes twice in a row. Each is announced at dusk with a sting and a banner, and once night falls the HUD clock takes on its name and colour. None of them adds infected: the normal night cap (up to 28 in the forest, 40 across the map) always holds.",
     sections: [
       {
         id: "the-four",
@@ -41,7 +41,7 @@ export const specialNights: WikiEntry[] = [
       },
     ],
     related: ["blood-moon", "heavy-fog", "infected-surge", "silent-night", "day-night-cycle"],
-    sources: [SRC.notes30],
+    sources: [SRC.notes30, SRC.publish31],
     aliases: ["special nights", "events", "night events", "night modifiers"],
   },
   {
@@ -54,7 +54,7 @@ export const specialNights: WikiEntry[] = [
     question: "What happens during a Blood Moon in Stillskin Forest?",
     answer:
       "A Blood Moon turns the sky and light red. The infected chase 20% faster (up to their usual top speed, just below your sprint) and spot you from 25% further. Far more of them are Runners, and more are Brutes. It can roll from Night 3. It does not add infected: the normal night cap still applies.",
-    facts: [["Earliest", "Night 3"], ["Infected", "Normal night cap (40)"], ["Chase speed", "×1.2"], ["Detection", "×1.25"], ["Watcher", "50% chance"]],
+    facts: [["Earliest", "Night 3"], ["Infected", "Normal night cap (28)"], ["Chase speed", "×1.2"], ["Detection", "×1.25"], ["Watcher", "50% chance"]],
     sections: [
       {
         id: "how-to-adapt",
@@ -70,7 +70,7 @@ export const specialNights: WikiEntry[] = [
       },
     ],
     related: ["special-nights-overview", "brute", "runner"],
-    sources: [SRC.notes30],
+    sources: [SRC.notes30, SRC.publish31],
     aliases: ["red moon", "blood night"],
   },
   {
@@ -98,7 +98,7 @@ export const specialNights: WikiEntry[] = [
       },
     ],
     related: ["special-nights-overview", "watcher"],
-    sources: [SRC.notes30],
+    sources: [SRC.notes30, SRC.publish31],
     aliases: ["fog", "foggy night"],
   },
   {
@@ -111,7 +111,7 @@ export const specialNights: WikiEntry[] = [
     question: "What is an Infected Surge in Stillskin Forest?",
     answer:
       "On an Infected Surge the night's infected arrive faster than usual instead of trickling in, they spot you from 15% further, and more of them are Runners and Screamers. Screams echo through the trees all night. There are no extra infected: the number never goes past the normal night cap, and they don't track you down; they still have to see or hear you.",
-    facts: [["Earliest", "Night 2"], ["Infected", "Normal night cap (40)"], ["Spawn interval", "0.8 s"], ["Detection", "×1.15"], ["Mix", "More Runners and Screamers"], ["Watcher", "15% chance"]],
+    facts: [["Earliest", "Night 2"], ["Infected", "Normal night cap (28)"], ["Spawn interval", "0.8 s"], ["Detection", "×1.15"], ["Mix", "More Runners and Screamers"], ["Watcher", "15% chance"]],
     sections: [
       {
         id: "how-to-adapt",
@@ -126,7 +126,7 @@ export const specialNights: WikiEntry[] = [
       },
     ],
     related: ["special-nights-overview", "doors-and-building", "shotgun"],
-    sources: [SRC.notes30],
+    sources: [SRC.notes30, SRC.publish31],
     aliases: ["surge", "horde night"],
   },
   {
@@ -154,7 +154,7 @@ export const specialNights: WikiEntry[] = [
       },
     ],
     related: ["special-nights-overview", "watcher", "screamer"],
-    sources: [SRC.notes30],
+    sources: [SRC.notes30, SRC.publish31],
     aliases: ["silent", "quiet night"],
   },
 ];

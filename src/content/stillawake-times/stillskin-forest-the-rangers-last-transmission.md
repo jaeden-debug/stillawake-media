@@ -148,7 +148,7 @@ All three are permanent. Everyone present votes; the majority wins, a tie gets o
 
 **The Remains: "Refuse and run."** You turn your back on the light and run through the grey. You wake at Green Lake in a burned, desolate copy of the whole forest, with no gifts, scarce resources and no way back *(to verify at release)*. Nothing followed you. Nothing is left. Dispatch can barely reach you. [More on the Remains](/games/stillskin-forest/wiki/campaign/ending-the-remains).
 
-**The Severance: "Destroy the false ranger."** This choice appears only if your crew has the ranger's warning tape, the Warden's frequency notes and a working Freeze Device with at least one charge *(to verify at release)*. The Warden's notes are what make it possible: he found that the green light interrupts the frequency, and that "any voice that has spoken near it can be spoken again". The device's green light cuts the voice off mid-word, and for those seconds the figure stands silent and wrong. The ritual isn't required, but it gives your crew an advantage in the confrontation *(to verify at release)*. You wake in a damaged, quieter forest with no curse and no gift, where the lamp-post circles are rare and broken *(to verify at release)*. Dispatch says it's too early to call it over. Something may still be under the hill. [More on the Severance](/games/stillskin-forest/wiki/campaign/ending-the-severance).
+**The Severance: "Destroy the false ranger."** This choice appears only if your crew has the ranger's warning tape, the Warden's frequency notes, and a member present who carries the Freeze Device *(to verify at release)*. The Warden's notes are what make it possible: he found that the green light interrupts the frequency, and that "any voice that has spoken near it can be spoken again". The device's green light cuts the voice off mid-word, and for those seconds the figure stands silent and wrong. The ritual isn't required, but it gives your crew an advantage in the confrontation *(to verify at release)*. You wake in a damaged, quieter forest with no curse and no gift, where the lamp-post circles are rare and broken *(to verify at release)*. Dispatch says it's too early to call it over. Something may still be under the hill. [More on the Severance](/games/stillskin-forest/wiki/campaign/ending-the-severance).
 
 The [post-campaign guide](/games/stillskin-forest/wiki/campaign/post-campaign-survival) compares the three worlds side by side.
 
@@ -184,7 +184,7 @@ Three: the Marked, the Remains and the Severance. All three are permanent for th
 
 ### How do you unlock the Severance ending?
 
-Your crew needs three things before the final choice: the ranger's last tape from the Lookout Camp tent, the Warden's frequency notes from the locked cabinet in his office, and a working Freeze Device with at least one charge. The ritual isn't required, but it helps (to verify at release).
+Your crew needs three things before the final choice: the ranger's last tape from the Lookout Camp tent, the Warden's frequency notes from the locked cabinet in his office, and a member present who carries the Freeze Device (its cooldown doesn't matter). The ritual isn't required, but it helps (to verify at release).
 
 ### Can you change your ending afterwards?
 

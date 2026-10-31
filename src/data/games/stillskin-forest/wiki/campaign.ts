@@ -552,7 +552,7 @@ export const campaign: WikiEntry[] = [
         heading: "What changes in V3",
         blocks: [
           draft,
-          { type: "p", text: "The [Freeze Device](@freeze-device) you know is the same gadget with a new history. In the live game you claim it from the nurse-station counter in Blackthorn Asylum; in V3 its story, and the place you recover it, move to Green Lake and the [Lost Camp](@lost-camp) (TO VERIFY AT RELEASE). Its charges, identity and anti-duplication rules stay as they are (TO VERIFY AT RELEASE)." },
+          { type: "p", text: "The [Freeze Device](@freeze-device) you know is the same gadget with a new history. In the live game you claim it from the nurse-station counter in Blackthorn Asylum; in V3 its story, and the place you recover it, move to Green Lake and the [Lost Camp](@lost-camp) (TO VERIFY AT RELEASE). Its cooldown, identity and anti-duplication rules stay as they are (TO VERIFY AT RELEASE)." },
         ],
       },
       {
@@ -584,7 +584,7 @@ export const campaign: WikiEntry[] = [
         id: "the-severance",
         heading: "Why the third ending needs it",
         blocks: [
-          { type: "p", text: "The third choice at the end of the campaign appears only if a member present has a working Freeze Device with at least one charge, alongside two documents (TO VERIFY AT RELEASE). See [the Severance](@ending-the-severance)." },
+          { type: "p", text: "The third choice at the end of the campaign appears only if a member present at the choice carries the Freeze Device (its cooldown doesn't matter), alongside two documents (TO VERIFY AT RELEASE). See [the Severance](@ending-the-severance)." },
           { type: "callout", tone: "note", text: "In the story, the people who used it measured different effects: the Warden timed eleven seconds with an early version of the green light, and a military tape reports three seconds before its operator was cut off. Those are story details, not the game's numbers." },
         ],
       },
@@ -600,7 +600,7 @@ export const campaign: WikiEntry[] = [
     related: ["freeze-device", "lost-camp", "green-lake", "watchers", "ending-the-severance"],
     sources: [SRC.v3draft],
     aliases: ["freeze device", "prototype", "interrupt unit", "lost camp device", "green lake specialist", "freeze gun story"],
-    gaps: [provisionalGap, "How charges work in V3 (the live device recharges and never wears out) must be checked at release."],
+    gaps: [provisionalGap, "Decided: the device has a cooldown, not charges; the Severance only needs a present member to carry it. Confirm at release."],
   },
 
   // 8 ─────────────────────────────────────────────────────────────────────
@@ -921,7 +921,7 @@ export const campaign: WikiEntry[] = [
           draft,
           { type: "list", items: [
             "**Night vision.** Complete the ritual to free the Warden's goggles. See [night vision and the ritual](@night-vision-and-the-ritual). Arrive without them and a hint at the forest's edge tells you where to get them (TO VERIFY AT RELEASE).",
-            "**The Freeze Device, charged.** You'll want it later, and it is one of the three things the third ending needs (TO VERIFY AT RELEASE).",
+            "**The Freeze Device, in your bag.** You'll want it later, and it is one of the three things the third ending needs (TO VERIFY AT RELEASE).",
             "**Healing and ammunition.** There is little to find once you are through.",
           ] },
         ],
@@ -967,6 +967,7 @@ export const campaign: WikiEntry[] = [
   {
     ...base,
     slug: "nowhere-tree",
+    spoiler: true,
     title: "The Nowhere Tree",
     seoTitle: "The Nowhere Tree in Stillskin Forest: What It Is and How to Enter",
     description:
@@ -996,7 +997,7 @@ export const campaign: WikiEntry[] = [
           { type: "p", text: "A prompt at the gap in the roots reads \"Go through\". Everyone present must choose it; nobody is forced, and the session waits (TO VERIFY AT RELEASE)." },
           { type: "p", text: "What's on the other side is a full night of survival with no infected, but hostile Watchers. Before you choose, check:" },
           { type: "list", items: [
-            "A [Freeze Device](@freeze-device-story) with at least one charge (TO VERIFY AT RELEASE).",
+            "A member present carries the [Freeze Device](@freeze-device-story); its cooldown doesn't matter (TO VERIFY AT RELEASE).",
             "Healing, ammunition and a melee weapon.",
             "If your crew wants the third choice at the end: the ranger's last tape from the Lookout Camp tent, the Warden's frequency notes and the device. See [the Severance](@ending-the-severance) (TO VERIFY AT RELEASE).",
           ] },
@@ -1023,6 +1024,7 @@ export const campaign: WikiEntry[] = [
   {
     ...base,
     slug: "the-astral",
+    spoiler: true,
     title: "The Astral",
     seoTitle: "The Astral in Stillskin Forest: How to Survive the Night (V3)",
     description:
@@ -1118,6 +1120,7 @@ export const campaign: WikiEntry[] = [
   {
     ...base,
     slug: "ending-the-marked",
+    spoiler: true,
     title: "Ending: The Marked",
     seoTitle: "Stillskin Forest Ending: The Marked (Follow the Light)",
     description:
@@ -1186,6 +1189,7 @@ export const campaign: WikiEntry[] = [
   {
     ...base,
     slug: "ending-the-remains",
+    spoiler: true,
     title: "Ending: The Remains",
     seoTitle: "Stillskin Forest Ending: The Remains (Refuse and Run)",
     description:
@@ -1243,13 +1247,14 @@ export const campaign: WikiEntry[] = [
   {
     ...base,
     slug: "ending-the-severance",
+    spoiler: true,
     title: "Ending: The Severance",
     seoTitle: "Stillskin Forest Ending: The Severance and How to Unlock It",
     description:
       "The Severance, the third ending of the Stillskin Forest V3 campaign: what your crew must prepare to unlock the third choice, and the world it leaves behind.",
     question: "How do you get the Severance ending in Stillskin Forest?",
     answer:
-      "The Severance is the ending behind the third choice, which appears only for crews who prepared. You need the ranger's last tape from the Lookout Camp tent, the Warden's frequency notes from the locked cabinet in his office, and a working Freeze Device with at least one charge (TO VERIFY AT RELEASE). The ritual isn't required but gives an advantage (TO VERIFY AT RELEASE). Afterwards the forest is damaged and quieter, with no curse and no stamina gift (TO VERIFY AT RELEASE).",
+      "The Severance is the ending behind the third choice, which appears only for crews who prepared. You need the ranger's last tape from the Lookout Camp tent, the Warden's frequency notes from the locked cabinet in his office, and a member present who carries the Freeze Device (TO VERIFY AT RELEASE). The ritual isn't required but gives an advantage (TO VERIFY AT RELEASE). Afterwards the forest is damaged and quieter, with no curse and no stamina gift (TO VERIFY AT RELEASE).",
     facts: [
       ["Unlocks", "The third choice (TO VERIFY AT RELEASE)"],
       ["Needs", "The ranger's last tape, the Warden's frequency notes, a working Freeze Device (TO VERIFY AT RELEASE)"],
@@ -1266,7 +1271,7 @@ export const campaign: WikiEntry[] = [
           { type: "table", caption: "Severance requirements", head: ["Item", "Where", "How to find it"], rows: [
             ["The ranger's last tape", "Lookout Camp tent, a recorder on the chair (TO VERIFY AT RELEASE)", "Her second final tape at the Ranger Base points there; it is also one of chapter 14's three tapes (TO VERIFY AT RELEASE)"],
             ["The Warden's frequency notes", "The locked cabinet in the Warden's office, asylum top floor, right side (TO VERIFY AT RELEASE)", "The key hangs on the ring by the cafeteria door, tagged \"W.\" (TO VERIFY AT RELEASE)"],
-            ["A working Freeze Device", "The Lost Camp (TO VERIFY AT RELEASE)", "At least one charge, in the bag of a member present at the choice (TO VERIFY AT RELEASE)"],
+            ["The Freeze Device", "The Lost Camp (TO VERIFY AT RELEASE)", "Carried by a member present at the choice; the cooldown doesn't matter (TO VERIFY AT RELEASE)"],
           ] },
           { type: "list", items: [
             "The tape and the notes count if any member of the session has found them (TO VERIFY AT RELEASE).",

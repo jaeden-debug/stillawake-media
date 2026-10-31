@@ -112,7 +112,8 @@ export function fullText(): string {
       for (const e of entriesInCategory(b, c.id)) {
         out.push(`### ${e.title}`, `URL: ${abs(entryPath(game.slug, e))}`, `Section: ${c.title}. Last checked: ${e.lastVerified}.${e.spoiler ? " Contains story spoilers." : ""}`);
         if (e.question) out.push(`Question: ${e.question}`);
-        out.push("", entryText(e), "");
+        // Story-twist pages keep their spoiler sections out of the AI index.
+        out.push("", entryText(e, { skipSpoilerSections: e.spoiler }), "");
         if (e.facts?.length) out.push(`Facts: ${e.facts.map(([k, v]) => `${k}: ${plainText(v)}`).join("; ")}.`, "");
         out.push(`Sources: ${e.sources.join("; ")}.`, "");
       }

@@ -106,11 +106,11 @@ Generated from the wiki registry. Do not edit by hand.
 | Campaign | Watchers in the Campaign | `/games/stillskin-forest/wiki/campaign/watchers` | no | 2026-10-31 |
 | Campaign | Silent Night in the Campaign | `/games/stillskin-forest/wiki/campaign/silent-night-story` | no | 2026-10-31 |
 | Campaign | The Dark Forest | `/games/stillskin-forest/wiki/campaign/dark-forest` | no | 2026-10-31 |
-| Campaign | The Nowhere Tree | `/games/stillskin-forest/wiki/campaign/nowhere-tree` | no | 2026-10-31 |
-| Campaign | The Astral | `/games/stillskin-forest/wiki/campaign/the-astral` | no | 2026-10-31 |
-| Campaign | Ending: The Marked | `/games/stillskin-forest/wiki/campaign/ending-the-marked` | no | 2026-10-31 |
-| Campaign | Ending: The Remains | `/games/stillskin-forest/wiki/campaign/ending-the-remains` | no | 2026-10-31 |
-| Campaign | Ending: The Severance | `/games/stillskin-forest/wiki/campaign/ending-the-severance` | no | 2026-10-31 |
+| Campaign | The Nowhere Tree | `/games/stillskin-forest/wiki/campaign/nowhere-tree` | yes | 2026-10-31 |
+| Campaign | The Astral | `/games/stillskin-forest/wiki/campaign/the-astral` | yes | 2026-10-31 |
+| Campaign | Ending: The Marked | `/games/stillskin-forest/wiki/campaign/ending-the-marked` | yes | 2026-10-31 |
+| Campaign | Ending: The Remains | `/games/stillskin-forest/wiki/campaign/ending-the-remains` | yes | 2026-10-31 |
+| Campaign | Ending: The Severance | `/games/stillskin-forest/wiki/campaign/ending-the-severance` | yes | 2026-10-31 |
 | Campaign | After the Campaign | `/games/stillskin-forest/wiki/campaign/post-campaign-survival` | no | 2026-10-31 |
 | Co-op & End of Run | Co-op Survival: Revives, Pings and Sharing | `/games/stillskin-forest/wiki/multiplayer/co-op-survival` | no | 2026-10-31 |
 | Co-op & End of Run | Death, Ghosts and the Rooftop Finale | `/games/stillskin-forest/wiki/multiplayer/death-ghosts-and-the-finale` | no | 2026-10-31 |
@@ -167,7 +167,7 @@ Generated from the wiki registry. Do not edit by hand.
 | Hunter's Rifle | Some story details are provisional in the design documents and await the owner's confirmation. |
 | Hunter's Rifle | Whether the rename changes any stats, and how the rifle is claimed in V3, must be checked in the released build. |
 | The Freeze Device's Story | Some story details are provisional in the design documents and await the owner's confirmation. |
-| The Freeze Device's Story | How charges work in V3 (the live device recharges and never wears out) must be checked at release. |
+| The Freeze Device's Story | Decided: the device has a cooldown, not charges; the Severance only needs a present member to carry it. Confirm at release. |
 | Night Vision and the Ritual | Some story details are provisional in the design documents and await the owner's confirmation. |
 | Night Vision and the Ritual | The ritual's advantage for the Severance confrontation is not designed yet. |
 | Relics and the Buried Relic | Some story details are provisional in the design documents and await the owner's confirmation. |

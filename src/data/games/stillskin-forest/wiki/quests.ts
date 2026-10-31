@@ -46,15 +46,15 @@ export const quests: WikiEntry[] = [
   {
     ...base,
     slug: "the-rite-of-stillness",
-    lastVerified: "2026-10-30",
+    lastVerified: "2026-10-31",
     title: "The Rite of Stillness: Ritual Walkthrough",
     seoTitle: "Stillskin Forest Ritual Walkthrough: The Rite of Stillness",
     description:
-      "How to complete the ritual in Stillskin Forest: lay the four relics at the cafeteria circle in Blackthorn Asylum and hold it for 50 seconds against the waves.",
+      "How to complete the ritual in Stillskin Forest: lay the four relics at the asylum's cafeteria circle, then hold it for 50 seconds as the asylum storms it.",
     question: "How do you do the ritual in Stillskin Forest?",
     answer:
-      "Each survivor finds their own relics. At the ritual circle in Blackthorn Asylum's cafeteria, hold E / Square on \"Place Relics\" to lay the ones you carry; the circle keeps what the whole squad has laid. With all four in place, hold \"Begin Ritual\". Then hold the cafeteria for 50 seconds while the candles light and waves of infected arrive, with a Brute at the halfway point. If the circle is left empty for 6 seconds it breaks, and you can start again. Finish it and every infected drops: you win, \"THE HOLLOW SLEEPS\", and the run keeps going until the last survivor falls.",
-    facts: [["Requires", "All 4 relics"], ["Where", "Blackthorn Asylum cafeteria"], ["Hold time", "50 s"], ["Breaks if empty for", "6 s"], ["Reward", "Victory: The Hollow Sleeps"]],
+      "Each survivor finds their own relics. At the ritual circle in Blackthorn Asylum's cafeteria, hold E / Square on \"Place Relics\" to lay the ones you carry; the circle keeps what the whole squad has laid. With all four in place, hold \"Begin Ritual\". Then hold the circle for 50 seconds until the candles burn down while the asylum's infected storm the cafeteria in waves of up to 10, heading straight for the circle, with a Brute at the halfway point. If the circle is left empty for 6 seconds it breaks, and you can start again. Finish it and every infected drops: you win, \"THE HOLLOW SLEEPS\", and the run keeps going until the last survivor falls.",
+    facts: [["Requires", "All 4 relics"], ["Where", "Blackthorn Asylum cafeteria"], ["Hold time", "50 s"], ["Wave size", "Up to 10"], ["Most infected per ritual", "50"], ["Breaks if empty for", "6 s"], ["Reward", "Victory: The Hollow Sleeps"]],
     sections: [
       {
         id: "preparation",
@@ -75,7 +75,9 @@ export const quests: WikiEntry[] = [
         spoiler: true,
         blocks: [
           { type: "p", text: "Lay your relics with \"Place Relics\", then hold \"Begin Ritual\" once all four are in. The rite can only be completed once per run: afterwards the circle stays closed and the objective moves on." },
-          { type: "p", text: "When it starts, the candles light one by one over 50 seconds while waves arrive; a Brute comes at the halfway point. Someone must stay in the cafeteria: if it is empty for 6 seconds the circle breaks. One player holding it is enough; teammates can leave." },
+          { type: "p", text: "The ritual is a siege. Once the rite begins, the asylum's infected storm the cafeteria in waves of up to 10, heading straight for the circle instead of waiting for you to draw them in. A new wave comes when the room thins out, up to 50 in one ritual, and a Brute joins at the halfway point. Hold the circle until the candles burn down, 50 seconds in all." },
+          { type: "p", text: "Someone must stay in the cafeteria: if it is empty for 6 seconds the circle breaks. One player holding it is enough; teammates can leave." },
+          { type: "callout", tone: "note", text: "The siege has been tested solo; a full multiplayer run hasn't been recorded yet, so the details may be tuned." },
         ],
       },
       {
@@ -89,8 +91,8 @@ export const quests: WikiEntry[] = [
       },
     ],
     related: ["the-four-relics", "blackthorn-asylum", "the-heart-of-stillskin", "brute"],
-    sources: [SRC.playtest],
-    aliases: ["ritual", "rite", "ritual defense", "ritual preparation", "hollow sleeps", "ending"],
+    sources: [SRC.playtest, SRC.publish31],
+    aliases: ["ritual", "rite", "ritual siege", "ritual defense", "ritual preparation", "hollow sleeps", "ending"],
   },
   {
     ...base,

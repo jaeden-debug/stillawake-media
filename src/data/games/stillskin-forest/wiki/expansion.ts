@@ -17,7 +17,6 @@ const soldier = K.zombies.Soldier;
 const walker = K.zombies.Walker;
 const plate = K.armor["Plate Carrier"];
 const helmet = K.armor["Military Helmet"];
-const VERIFIED_28 = "2026-10-28";
 const econ = K.economy;
 
 export const expansion: WikiEntry[] = [
@@ -25,7 +24,7 @@ export const expansion: WikiEntry[] = [
     slug: "blackpine-airfield",
     category: "locations",
     verification: "verified_live",
-    lastVerified: VERIFIED_28,
+    lastVerified: "2026-10-31",
     title: "Blackpine Airfield",
     seoTitle: "Blackpine Airfield in Stillskin Forest: Map, Loot and Military Gear",
     description:
@@ -60,6 +59,7 @@ export const expansion: WikiEntry[] = [
         heading: "Loot",
         blocks: [
           { type: "p", text: "There are no crates or lockers to search any more. Supplies lie out in the open: on bunks, desks, workbenches, shelves and floors across the barracks, hangar, command center and tower. Ammunition (including Rifle Rounds), first aid, batteries, food, tools, Gun Repair Kits and the odd shotgun turn up. Not every spot has something; the server keeps only part of them filled at a time." },
+          { type: "p", text: "Areas everyone has left for a while restock their empty spots, once per day or night, so the base is worth coming back to." },
           { type: "p", text: "The airfield is also one of the three places a [Jerry Can](@generators-and-jerry-cans) can appear." },
           { type: "p", text: "The rare gear is placed differently: see [Military armor](@military-armor), [Mini AK](@mini-ak) and the rare-gear rules below." },
         ],
@@ -68,20 +68,20 @@ export const expansion: WikiEntry[] = [
         id: "rare-gear",
         heading: "How the rare gear appears",
         blocks: [
-          { type: "p", text: "Every morning (the first morning of a run included), the server picks which of the three rare items can appear that day: always at least one and never all three. Over many days each of the Plate Carrier, the Military Helmet and the Mini AK is picked on about half of them." },
-          { type: "table", caption: "Rare gear per day (100,000 simulated days)", head: ["Picked that day", "Share of days"], rows: [
-            ["One of the three", "50%"],
-            ["Two of the three", "50%"],
-            ["None, or all three", "Never"],
+          { type: "p", text: "Every in-game day (the first morning of a run included), the airfield always has a [Military Helmet and a Plate Carrier](@military-armor) to find, and a [Mini AK](@mini-ak) at least every other day." },
+          { type: "table", caption: "Rare gear at the airfield", head: ["Item", "How often"], rows: [
+            ["Military Helmet", "Every day"],
+            ["Plate Carrier", "Every day"],
+            ["Mini AK", "At least every other day"],
           ] },
-          { type: "p", text: "A picked item lies on a floor spot somewhere inside the airfield fence, out of sight of anyone nearby. If one of that kind is still lying there unclaimed, no second one appears. Over a whole server session each kind can appear at most once per survivor in the run, so a squad still has to search and share. The odds are the same for everyone: nothing looks at how you play or what you buy." },
+          { type: "p", text: "Each one lies on a floor spot somewhere inside the airfield fence, out of sight of anyone nearby. If one of that kind is still lying there unclaimed, no second one appears, and taking today's doesn't make another until tomorrow. The odds are the same for everyone: nothing looks at how you play or what you buy." },
         ],
       },
     ],
     related: ["soldier", "military-armor", "mini-ak", "generators-and-jerry-cans"],
-    sources: [SRC.config28, SRC.world27, SRC.playtest27, SRC.playtest28],
+    sources: [SRC.config28, SRC.world27, SRC.playtest27, SRC.playtest28, SRC.publish31],
     aliases: ["military base", "army base", "airfield", "runway", "hangar", "control tower", "barracks"],
-    gaps: ["Not yet walked through with two or more players."],
+    gaps: ["Not yet walked through with two or more players.", "The daily helmet, plate carrier and Mini AK guarantee and the area restock are new in v382 and not yet confirmed over many in-game days."],
   },
   {
     slug: "soldier",
@@ -120,13 +120,13 @@ export const expansion: WikiEntry[] = [
     slug: "mini-ak",
     category: "weapons",
     verification: "verified_live",
-    lastVerified: VERIFIED_28,
+    lastVerified: "2026-10-31",
     title: "Mini AK",
     seoTitle: "Mini AK in Stillskin Forest: Damage, Fire Rate and Where to Find It",
     description:
       "The Mini AK in Stillskin Forest: a fully automatic carbine using Rifle Rounds, only found at Blackpine Airfield. Damage, fire rate, magazine and noise.",
     question: "Where do you find the Mini AK in Stillskin Forest?",
-    answer: `Only at Blackpine Airfield: on about half of all days it is one of the rare items picked for that morning, and then it lies somewhere inside the airfield fence. It is fully automatic (${Math.round(60 / ak.Cooldown)} rounds per minute), deals ${ak.Damage} per bullet, holds ${ak.MagSize} rounds and uses Rifle Rounds. It is loud.`,
+    answer: `Only at Blackpine Airfield: one turns up at least every other day, lying somewhere inside the airfield fence. It is fully automatic (${Math.round(60 / ak.Cooldown)} rounds per minute), deals ${ak.Damage} per bullet, holds ${ak.MagSize} rounds and uses Rifle Rounds. It is loud.`,
     facts: [["Type", "Automatic carbine"], ["Damage", String(ak.Damage)], ["Fire rate", `${Math.round(60 / ak.Cooldown)} rounds/min`], ["Magazine", String(ak.MagSize)], ["Reload", `${ak.ReloadTime} s`], ["Range", `${ak.Range} studs`], ["Ammo", "Rifle Rounds"]],
     sections: [
       {
@@ -139,7 +139,7 @@ export const expansion: WikiEntry[] = [
       },
     ],
     related: ["weapons-compared", "ammunition", "blackpine-airfield", "pistol"],
-    sources: [SRC.items27, SRC.playtest27],
+    sources: [SRC.items27, SRC.playtest27, SRC.publish31],
     aliases: ["ak", "ak47", "ak-47", "rifle", "assault rifle", "automatic"],
     gaps: ["The third-person model uses the shared gun pose; no dedicated reload animation yet."],
   },
@@ -147,13 +147,13 @@ export const expansion: WikiEntry[] = [
     slug: "military-armor",
     category: "items",
     verification: "verified_live",
-    lastVerified: "2026-10-30",
+    lastVerified: "2026-10-31",
     title: "Military Armor: Plate Carrier and Helmet",
     seoTitle: "Plate Carrier and Military Helmet in Stillskin Forest: Armor Guide",
     description:
       "How armor works in Stillskin Forest: the Plate Carrier and Military Helmet, how much damage each absorbs, durability, and how to wear and remove them.",
     question: "How does armor work in Stillskin Forest?",
-    answer: `Hold E (X / Square) on armor lying on the ground and it goes straight on, with no bag slot needed ("Equip Helmet", or "Swap Helmet" if you already wear one); a piece in your bag goes on when you hold it and press fire. The Plate Carrier absorbs ${pct(plate.Absorb)} of each hit and the Military Helmet ${pct(helmet.Absorb)}, until their durability (${plate.Durability} and ${helmet.Durability}) runs out. Press K to take it off. Both are only found at Blackpine Airfield.`,
+    answer: `Hold E (X / Square) on armor lying on the ground and it goes straight on, with no bag slot needed ("Equip Helmet", or "Swap Helmet" if you already wear one); a piece in your bag goes on when you hold it and press fire. The Plate Carrier absorbs ${pct(plate.Absorb)} of each hit and the Military Helmet ${pct(helmet.Absorb)}, until their durability (${plate.Durability} and ${helmet.Durability}) runs out. Press K to take it off. Both are only found at Blackpine Airfield, which has one of each to find every day.`,
     facts: [["Plate Carrier", `${pct(plate.Absorb)} of each hit, ${plate.Durability} durability`], ["Military Helmet", `${pct(helmet.Absorb)} of each hit, ${helmet.Durability} durability`], ["Wear", "Hold E on it on the ground (no bag slot)"], ["Take off", "K"]],
     sections: [
       {
@@ -165,13 +165,13 @@ export const expansion: WikiEntry[] = [
             "At 0 durability a piece breaks and is gone.",
             "Taken-off armor goes back in your bag with its remaining durability, or onto the ground if your bag is full. Swapping works the same way: the old piece is never deleted.",
             "If you are knocked out of the run for good, what you wore drops where you fell.",
-            "The HUD shows each worn piece's condition above the health bar.",
+            "The HUD shows each worn piece's condition above the health bar, and the backpack shows helmet and plate carrier condition too.",
           ] },
         ],
       },
     ],
     related: ["blackpine-airfield", "health-and-healing", "soldier"],
-    sources: [SRC.config27, SRC.playtest27],
+    sources: [SRC.config27, SRC.playtest27, SRC.publish31],
     aliases: ["armor", "armour", "plate carrier", "vest", "body armor", "helmet", "military helmet"],
     gaps: ["Taking armor off with a controller is not mapped yet (keyboard K only)."],
   },
@@ -179,7 +179,7 @@ export const expansion: WikiEntry[] = [
     slug: "night-survival",
     category: "mechanics",
     verification: "verified_live",
-    lastVerified: "2026-10-30",
+    lastVerified: "2026-10-31",
     title: "Night Survival: New Arrivals, Wisps, Night Caches and Sleep",
     seoTitle: "Night in Stillskin Forest: New Infected, Wisps, Caches and Sleep",
     description:
@@ -192,7 +192,7 @@ export const expansion: WikiEntry[] = [
         id: "new-arrivals",
         heading: "New infected at nightfall",
         blocks: [
-          { type: "p", text: `When night falls every part of the map, including ground you cleared by day and are still standing on, gets a fresh batch of up to ${K.regions.NightQuota} infected, up to ${K.population.NightAmbient} in the forest in all. They arrive a few at a time, out of sight and at least 70 studs from anyone, and start out wandering: they don't know where you are. They find you the usual way, by seeing you, hearing you, or from another infected that saw you. Light and movement give you away; darkness, crouching and walls help. See [Detection and noise](@detection-and-noise).` },
+          { type: "p", text: `When night falls every part of the map, including ground you cleared by day and are still standing on, gets a fresh batch of up to ${K.regions.NightQuota} infected, up to 28 in the forest in all (and never more than 40 alive across the whole map). They arrive a few at a time, out of sight and at least 70 studs from anyone, and start out wandering: they don't know where you are. They find you the usual way, by seeing you, hearing you, or from another infected that saw you. Light and movement give you away; darkness, crouching and walls help. See [Detection and noise](@detection-and-noise).` },
           { type: "p", text: `Kill the ones around you and your ground stays clear for the night. Ground nobody is standing on can get a couple more later in the night (after about ${Math.round(K.regions.NightReinforceAfter / 60)} minutes), and those can wander over to you.` },
         ],
       },
@@ -221,12 +221,13 @@ export const expansion: WikiEntry[] = [
         id: "sleep",
         heading: "Sleeping until dawn",
         blocks: [
-          { type: "p", text: `Nail at least ${K.night.Sleep.MinPlanks} planks onto a building and, at dusk or night, a card under your objective says SLEEP UNTIL DAWN. Hold E (X / Square on a controller) inside to lie down: that asks the squad to sleep. Everyone still alive has to lie down in the same shelter; downed and fallen players don't hold it up. Teammates outside see "Hold E to Return to Base", which walks them into the shelter, but not while something is close to them or after them. Hold E again to get up. When everyone is down, the screen fades, the night is skipped, and you all wake at dawn, ${K.night.Sleep.HealthCost} health lighter (never below 10). Infected right by the shelter stop it, and the card says why.` },
+          { type: "p", text: `Nail at least ${K.night.Sleep.MinPlanks} planks onto a building and, at dusk or night, a card under your objective says SLEEP UNTIL DAWN. Hold E (X / Square on a controller) inside to lie down: that asks the squad to sleep. Everyone still alive has to lie down in the same shelter; downed and fallen players don't hold it up. Teammates outside see "Hold E to Return to Base", which walks them into the shelter, but not while something is close to them or after them. Hold E again to get up. When everyone is down, the screen fades, the night is skipped, and you all wake at dawn, ${K.night.Sleep.HealthCost} health lighter (never below 10).` },
+          { type: "p", text: "Only an infected that is actually hunting you or your shelter stops you sleeping; one just wandering nearby doesn't, and the card says why when you're blocked. If something attacks while the screen is fading, everyone wakes back up with no penalty and the night goes on." },
         ],
       },
     ],
     related: ["day-night-cycle", "doors-and-building", "detection-and-noise", "generators-and-jerry-cans"],
-    sources: [SRC.config27, SRC.playtest27],
+    sources: [SRC.config27, SRC.playtest27, SRC.publish31],
     aliases: ["night", "wisp", "wisps", "night cache", "sleep", "skip night", "ammo drop", "night hunt"],
     gaps: ["Tested in Studio with up to four players; not yet on a controller, mobile or console."],
   },

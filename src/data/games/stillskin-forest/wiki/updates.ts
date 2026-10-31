@@ -8,6 +8,47 @@ import { SRC, VERIFIED } from "./sources";
  */
 export const stillskinUpdates: GameUpdate[] = [
   {
+    id: "2026-10-31-overhaul-v382",
+    version: null,
+    date: "2026-10-31",
+    title: "Saved sessions, the Ranger Trader, charged attacks and smoother consoles",
+    kind: "development-milestone",
+    newFeatures: [
+      "Saved sessions: every run you start from the trailhead is saved. Everyone who starts it together owns it, friends you invite can join any time, and you can keep up to 3 active sessions. If everyone in a session falls, that session is over.",
+      "The Ranger Station Trail: a new path west of the Campgrounds past two abandoned houses and a shed, to the Ranger Trader Station.",
+      "The Ranger Trader Station: a fenced safe zone where Mortimer sells survival supplies for Embers, with 15% off everything at night.",
+      "The Lost Camp, a set of lean-tos on a fork off a new trail behind the chapel, stocked for a crew of four.",
+      "Punching is back, and charged attacks: hold to wind up a melee weapon or your fists, let go to strike twice as hard.",
+      "Crew waypoints and a crew base marker on a new journal map with real terrain, roads and buildings, zoom and pan.",
+      "The Gun Cleaning Kit: restores some condition to your most worn gun.",
+      "73 achievements, up from 22, each paying Embers once. Everything you'd already unlocked is kept.",
+      "Launch gift: for the first 72 hours after launch (until 3 November 2026, 17:31 UTC), the reward chest at camp gives every player 6,000 Embers, once.",
+    ],
+    changes: [
+      "Embers now come with every reward that gives points, up to a daily limit per in-game day.",
+      "Supplies you buy can be handed to or dropped for your crew. Passes, cosmetics, Embers and Ember packs stay on your account, and the shop labels which is which. Gear bought before this update stays with you.",
+      "Teammates can shove each other but can never hurt each other.",
+      "The ritual is a siege: the asylum's infected storm the cafeteria in waves until the candles burn down.",
+      "Fewer infected at night: up to 28 after dark and at most 40 at once across the map.",
+      "Sleeping is only stopped by an infected that is actually hunting you or your shelter.",
+      "Loot: the asylum has the best odds of rare weapons, the hospital stocks more medicine, and Blackpine Airfield always has armour to find each day.",
+      "The lobby's ground is level, with clean, lit, signposted trails. Wandering too far just brings you back to camp.",
+      "Consoles start on the Performance graphics preset and keep their own choice; day-night lighting and gunfire effects are lighter.",
+    ],
+    fixes: [
+      "Your hotbar and bag always show your real ammo and weapon condition.",
+      "Swings and punches no longer land through walls or planks.",
+      "Arriving at camp no longer snaps you back to where you spawned.",
+    ],
+    balance: [],
+    knownIssues: [
+      "This update was published before all multiplayer testing was finished; some features are still being checked with several players.",
+      "The trail behind the chapel and its cave entrance are still being reworked.",
+      "Not yet measured on a PS4.",
+    ],
+    relatedEntries: ["persistent-expeditions", "ranger-trader-station", "ranger-station-trail", "lost-camp", "fists", "controls", "the-rite-of-stillness", "co-op-survival"],
+  },
+  {
     id: "2026-10-30-survival-systems-expeditions",
     version: null,
     date: "2026-10-30",
@@ -214,7 +255,7 @@ export const stillskinUpdates: GameUpdate[] = [
       "Rain hides you: the infected see and hear far less in a downpour.",
       "Breakable glass: one bullet shatters a window, melee chips at it, and the infected smash through in eight blows. They can also see you through it.",
       "Wall-bangs: bullets punch through doors and thin wood for less damage, and pass through glass and open doorways.",
-      "Fists: with nothing in your hands, click or press R2 to punch. (As of 31 October 2026, punching is temporarily unavailable in the live game while it is being fixed.)",
+      "Fists: with nothing in your hands, click or press R2 to punch. (Punching stopped working for a while and was fixed in the 31 October update, which also added charged punches.)",
       "Night lighting: a navy moonlit sky with stars and clouds, lanterns around the lake, a lit asylum entrance and windows, the hospital's red emergency sign, and an ambulance with flashing lights.",
     ],
     changes: [
@@ -344,7 +385,7 @@ export const updates: WikiEntry[] = [
       "What's new in Stillskin Forest: dated development milestones with new features, changes, fixes, balance changes and known issues.",
     question: "What's new in Stillskin Forest?",
     answer:
-      "The most recent milestones (30 October 2026) added saved expeditions you can come back to, shared sleep, personal finds, night vision that reacts to light, and guns that last much longer. Before that, 29 October brought smarter infected and smoother play on consoles, and 28 October a fairer loot economy and the Freeze Device. The game has no public version numbers yet.",
+      "The latest update (31 October 2026) added saved sessions with friends, the Ranger Station Trail and Ranger Trader Station, the Lost Camp, charged attacks and working punches, crew waypoints on a new map, 73 achievements and lighter console graphics. Before that, 30 October brought saved expeditions, shared sleep and night vision that reacts to light. The game has no public version numbers yet.",
     sections: [
       {
         id: "how-we-build",
@@ -356,7 +397,7 @@ export const updates: WikiEntry[] = [
     ],
     related: ["what-is-stillskin-forest", "how-to-play", "weather", "shooting-through-cover"],
     verification: "verified_live",
-    sources: [SRC.playtest, SRC.playtest27, SRC.notes30],
+    sources: [SRC.playtest, SRC.playtest27, SRC.notes30, SRC.publish31],
     lastVerified: "2026-10-31",
     aliases: ["updates", "patch notes", "changelog", "what's new", "news", "version"],
   },

@@ -56,6 +56,15 @@ export type Game = {
    */
   publiclyPlayable: boolean;
   statusNote: string;
+  /**
+   * Opt-in related-game block (GameSpotlight) for articles and wiki pages.
+   * Links must point at pages that exist; labels in both site languages.
+   */
+  spotlight?: {
+    blurbEn: string;
+    blurbFr: string;
+    links: { href: string; labelEn: string; labelFr: string }[];
+  };
   /** Articles about how the game was made, shown as "Behind the game" on the landing page. */
   behindTheGame?: { title: string; href: string; blurb: string }[];
   features: { title: string; body: string }[];

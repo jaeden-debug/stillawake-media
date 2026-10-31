@@ -20,6 +20,8 @@ export type ArticleLayoutProps = {
   toc: ArticleMapItem[];
   cta: { title: string; body?: string; links: { href: string; label: string; primary?: boolean }[] };
   related: { href: string; category: string; title: string; excerpt: string }[];
+  /** Optional related-game block (GameSpotlight), shown after the article text. */
+  spotlight?: React.ReactNode;
   children: React.ReactNode;
 };
 
@@ -126,6 +128,8 @@ export function ArticleLayout(props: ArticleLayoutProps) {
 
           <div className="article-main">
             {props.children}
+
+            {props.spotlight}
 
             {props.byJaeden ? (
               <section className="article-author-card" aria-labelledby="article-author-heading">

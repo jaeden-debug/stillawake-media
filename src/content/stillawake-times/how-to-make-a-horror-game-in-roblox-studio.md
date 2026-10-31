@@ -6,6 +6,7 @@ excerpt: "A practical guide to making a horror game in Roblox Studio: lighting, 
 category: "Game Development"
 featured: false
 author: "Jaeden Doody"
+game: "stillskin-forest"
 ---
 
 **To make a horror game in Roblox Studio that actually scares people, build the systems that control what players perceive: lighting that hides things, sound that tells them something is near, enemies that hunt with a believable process, and pacing that gives them time to dread what's coming.** Models and jumpscares matter less than most first projects assume. A zombie that searches the spot where it last saw you is scarier than a better-looking zombie that walks straight at you.

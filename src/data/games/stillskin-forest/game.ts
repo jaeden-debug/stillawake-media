@@ -40,6 +40,18 @@ export const stillskinForest: Game = {
   publiclyPlayable: true,
   statusNote:
     "Stillskin Forest went public on Roblox on 28 October 2026. This site describes the published game; details may change between updates, and every page shows the date it was last checked.",
+  spotlight: {
+    blurbEn:
+      "A co-op zombie survival-horror game on Roblox for up to four players. Scavenge by day, survive the night, and find out what happened in the forest.",
+    blurbFr:
+      "Un jeu coopératif de survie et d'horreur sur Roblox, jusqu'à quatre joueurs. Fouillez le jour, survivez à la nuit et découvrez ce qui s'est passé dans la forêt.",
+    links: [
+      { href: "/games/stillskin-forest/wiki/getting-started/how-to-play", labelEn: "How to play", labelFr: "Comment jouer (en anglais)" },
+      { href: "/games/stillskin-forest/wiki", labelEn: "Official wiki", labelFr: "Wiki officiel (en anglais)" },
+      { href: "/games/stillskin-forest/wiki/getting-started/controls", labelEn: "Controls", labelFr: "Commandes (en anglais)" },
+      { href: "/games/stillskin-forest/wiki/updates/development-log", labelEn: "What's new", labelFr: "Nouveautés (en anglais)" },
+    ],
+  },
   behindTheGame: [
     {
       title: "How to optimize a Roblox game for PS4",

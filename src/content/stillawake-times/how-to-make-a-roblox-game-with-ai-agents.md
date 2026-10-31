@@ -6,6 +6,7 @@ excerpt: "How we build Stillskin Forest on Roblox with AI coding agents: one mod
 category: "Game Development"
 featured: false
 author: "Jaeden Doody"
+game: "stillskin-forest"
 image: "/games/stillskin-forest/branding/stillskin-forest-hero.webp"
 ogImage: "/games/stillskin-forest/branding/stillskin-forest-social.jpg"
 faqSchema: true

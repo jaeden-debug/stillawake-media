@@ -165,4 +165,20 @@ a{text-decoration:none}
   font-size:.9rem;
   color:#9a9090;
 }
-.articleProse hr:has(+ h2){display:none}
+.articleProse hr + h2{margin-top:2.5rem;padding-top:0;border-top:0}
+
+/* GameSpotlight: related-game block for articles and wiki pages. */
+.game-spotlight{margin-top:3.5rem;padding:1.75rem;border:1px solid rgba(127,163,107,.3);border-radius:1.5rem;background:linear-gradient(160deg,rgba(127,163,107,.09),rgba(255,255,255,.02))}
+.game-spotlight-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem}
+.game-spotlight-kicker{font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#7FA36B}
+.game-spotlight-title{margin-top:.9rem;font-family:Geist,Inter,sans-serif;font-size:clamp(1.5rem,2.4vw,1.9rem);font-weight:800;letter-spacing:-.03em;line-height:1.15}
+.game-spotlight-title a{color:#fff;text-decoration:none}
+.game-spotlight-title a:hover{text-decoration:underline;text-decoration-color:#7FA36B;text-underline-offset:4px}
+.game-spotlight-tagline{margin-top:.35rem;font-style:italic;color:#a9b8a0}
+.game-spotlight-blurb,.game-spotlight-context{margin-top:.9rem;max-width:62ch;color:#C7B9B9;line-height:1.7}
+.game-spotlight-links{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem;padding:0;list-style:none}
+.game-spotlight-links a{display:inline-flex;padding:.45rem .9rem;border:1px solid rgba(255,255,255,.14);border-radius:999px;font-size:.88rem;color:#e8e2e2;text-decoration:none}
+.game-spotlight-links a:hover,.game-spotlight-links a:focus-visible{border-color:#7FA36B;color:#fff}
+.game-spotlight-play{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.4rem;padding:.8rem 1.4rem;border-radius:999px;background:#7FA36B;color:#06110a;font-weight:700;text-decoration:none}
+.game-spotlight-play:hover{background:#93b87e}
+.game-spotlight a:focus-visible{outline:2px solid #fff;outline-offset:2px}

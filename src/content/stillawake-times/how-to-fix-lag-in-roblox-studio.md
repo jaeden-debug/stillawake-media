@@ -6,6 +6,7 @@ excerpt: "To fix lag in a Roblox game, first find which kind it is (client frame
 category: "Game Development"
 featured: false
 author: "Jaeden Doody"
+game: "stillskin-forest"
 ---
 
 **To fix lag in a Roblox game, first find out which kind of lag you have (low client frame rate, a slow server heartbeat, or network delay), measure it with the MicroProfiler, Developer Console and Performance Stats, and only then change the cause: too many draw calls, expensive lighting, busy scripts, unnecessary physics, chatty remotes or a world that isn't streaming.** Players describe all of these as "lag," but each has a different fix. Optimizing blind usually means removing detail that wasn't the problem.

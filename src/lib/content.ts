@@ -40,6 +40,8 @@ export type PostMeta = {
   image?: string;
   readTime: string;
   author: string;
+  /** Slug of a game this article is about (frontmatter `game`); shows its GameSpotlight. */
+  game?: string;
 };
 
 export type TocItem = {
@@ -184,6 +186,7 @@ export function getAllPosts(locale: Locale = "en"): PostMeta[] {
         image: data.image || "",
         readTime: data.readTime || estimateReadTime(content, locale),
         author: data.author || "StillAwake Media",
+        game: typeof data.game === "string" && data.game ? data.game : undefined,
       };
     })
     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
@@ -213,6 +216,7 @@ export async function getPostBySlug(slug: string, locale: Locale = "en"): Promis
     image: data.image || "",
     readTime: data.readTime || estimateReadTime(content, locale),
     author: data.author || "StillAwake Media",
+    game: typeof data.game === "string" && data.game ? data.game : undefined,
     ogImage: typeof data.ogImage === "string" && data.ogImage ? data.ogImage : undefined,
     content,
     html: enhanceArticleHtml(processed.toString()),

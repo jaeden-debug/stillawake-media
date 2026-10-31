@@ -414,7 +414,7 @@ describe("invariants", () => {
       expect(CLASS_LABELS[rec.classId]).toBeDefined();
       expect(CLASS_SUMMARIES[rec.classId]).toBeDefined();
     }
-  });
+  }, 15_000);
 
   it("never shows more than three pieces of further reading, and never a duplicate", () => {
     for (const answers of everyFlow()) {

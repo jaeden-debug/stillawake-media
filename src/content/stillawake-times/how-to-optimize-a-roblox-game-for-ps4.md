@@ -16,33 +16,11 @@ howTo: "The optimization method, step by step"
 
 This is the case study of how we're doing that for [Stillskin Forest](/games/stillskin-forest), our co-op zombie survival-horror game on Roblox. Players told us it was laggy on PS4. This article covers what we measured, what we changed, what's already live and what isn't, with every number labelled by where it came from. One thing up front: **as of 31 October 2026, nobody has measured the game on a PS4, and we don't claim it runs smoothly there yet.** What we can show is the method, the Studio measurements, and a ranked list of fixes with honest estimates. We'll update this page with device numbers once we have them.
 
-*By Jaeden Doody · Published 31 October 2026 · Last updated and last verified 31 October 2026.*
 
 <figure>
   <img src="/games/stillskin-forest/branding/stillskin-forest-night-chase.webp" alt="A survivor runs from a crowd of infected along a lantern-lit forest trail at night" width="1672" height="941" loading="lazy" />
   <figcaption>Night chases are the heaviest moments in Stillskin Forest: dense forest, lights, rain and a crowd of animated infected at once.</figcaption>
 </figure>
-
-## Contents
-
-- [Key takeaways](#key-takeaways)
-- [How to read the numbers in this article](#how-to-read-the-numbers-in-this-article)
-- [Why the PS4 is harder than your development machine](#why-the-ps4-is-harder-than-your-development-machine)
-- [The development journey in one week](#the-development-journey-in-one-week)
-- [The optimization method, step by step](#the-optimization-method-step-by-step)
-- [Step one: measure work time, not frame rate](#step-one-measure-work-time-not-frame-rate)
-- [What the census found](#what-the-census-found)
-- [The first console pass (live since 29 October)](#the-first-console-pass-live-since-29-october)
-- [Zombie caps beat zombie micro-optimisation](#zombie-caps-beat-zombie-micro-optimisation)
-- [The ten ranked fixes](#the-ten-ranked-fixes)
-- [What we measured after the fixes](#what-we-measured-after-the-fixes)
-- [The biggest costs were content, not code](#the-biggest-costs-were-content-not-code)
-- [Bugs and traps along the way](#bugs-and-traps-along-the-way)
-- [What we still can't claim](#what-we-still-cant-claim)
-- [A checklist for your own Roblox game](#a-checklist-for-your-own-roblox-game)
-- [FAQ](#faq)
-- [Conclusion](#conclusion)
-- [About the author](#about-the-author)
 
 ## Key takeaways
 
@@ -66,7 +44,7 @@ Two more terms come up often:
 - **Render CPU** is the time the client's CPU spends preparing a frame for the GPU, in milliseconds.
 - **Server heartbeat** is the time the server takes per simulation step. Our target is about 16.7 ms, which is 60 steps a second.
 
-**Published** means live in the game players can join. **In Studio** means built and tested in the editor but not yet published.
+**Published** means live in the game players can join. The 31 October fixes were published that afternoon (17:31 UTC), before every multiplayer test had finished.
 
 ## Why the PS4 is harder than your development machine
 
@@ -93,7 +71,7 @@ Performance problems in Stillskin Forest built up the way they do in most games:
 | 28 Oct | Loot economy, the Freeze Device, gun repairs. | Published |
 | 29 Oct | **First console performance pass** (below), then the **zombie overhaul** with hard population caps. | Published |
 | 30 Oct | Night-vision light exposure, longer-lasting guns, saved expeditions with friends. | Published |
-| 31 Oct | Full performance baseline, a PS4 investigation, ten ranked fixes, most of them built. | In Studio, not yet published |
+| 31 Oct | Full performance baseline, a PS4 investigation, ten ranked fixes; nine of them shipped that afternoon. | Published 17:31 UTC |
 
 The pattern is worth noticing. The heaviest additions, the denser forest, more lights, weather and more zombies, all landed on 27 October, the day after console support was switched on. Each was tested on a fast machine and looked fine. The console cost only showed up once players brought it up.
 
@@ -192,20 +170,20 @@ A later measurement confirmed where a horde's cost lives. With 47 infected chasi
 
 ## The ten ranked fixes
 
-With the baseline in hand, a separate investigation ranked console fixes by expected impact divided by effort. **Every percentage in this table is an estimate, not a measurement.** Each comes from our Studio numbers, our part counts or engine documentation, and has a confidence level. Status is as of 31 October.
+With the baseline in hand, a separate investigation ranked console fixes by expected impact divided by effort. **Every percentage in this table is an estimate, not a measurement.** Each comes from our Studio numbers, our part counts or engine documentation, and has a confidence level. Status is as of the 31 October publish.
 
 | # | Fix | Why it helps on PS4 | Estimated gain | Confidence | Status |
 |---|---|---|---|---|---|
-| 1 | Console graphics floor: consoles default to Performance, no High on console, sun shadows off on Performance | Shadow pass and GPU load outdoors | 10–30% of GPU frame time for console players | Medium | In Studio |
-| 2 | Zombie animation speed updated only when it changes (about 1,600 calls a second with 27 moving infected) | Animation work per frame during a horde | About 90% fewer calls; 5–15% of horde client cost | High / medium | In Studio |
-| 3 | Day/night lighting written only when a value changes | Lighting property writes every frame | 0.2–0.5 ms CPU per frame | Low–medium | In Studio |
-| 4 | Cave ambience no longer scans the whole world (about 110,000 instances) every 5 seconds | A periodic hitch | Removes an estimated 15–50 ms hitch every 5 s | High / medium | In Studio |
-| 5 | Night zombie cap 40 → 28, total ceiling 56 → 40 | Fewer animated characters | 25–40% of horde client frame time at peak | Medium | In Studio, not published (owner-approved) |
+| 1 | Console graphics floor: consoles default to Performance, no High on console, sun shadows off on Performance | Shadow pass and GPU load outdoors | 10–30% of GPU frame time for console players | Medium | Live |
+| 2 | Zombie animation speed updated only when it changes (about 1,600 calls a second with 27 moving infected) | Animation work per frame during a horde | About 90% fewer calls; 5–15% of horde client cost | High / medium | Live |
+| 3 | Day/night lighting written only when a value changes | Lighting property writes every frame | 0.2–0.5 ms CPU per frame | Low–medium | Live |
+| 4 | Cave ambience no longer scans the whole world (about 110,000 instances) every 5 seconds | A periodic hitch | Removes an estimated 15–50 ms hitch every 5 s | High / medium | Live |
+| 5 | Night zombie cap 40 → 28, total ceiling 56 → 40 | Fewer animated characters | 25–40% of horde client frame time at peak | Medium | Live (owner-approved) |
 | 6 | Replace the 45-part pine tree with a 1–2 part version | Instances, streaming and memory | Instances −45–50%; streaming hitches −40–60% | Medium | Not started; awaiting the owner's sign-off on looks |
-| 7 | Rain particles scale with the preset | GPU in heavy rain | 1–4 ms GPU in storms | Low–medium | In Studio |
+| 7 | Rain particles scale with the preset | GPU in heavy rain | 1–4 ms GPU in storms | Low–medium | Live |
 | 8 | Lobby player cap lowered | Fewer characters in the lobby | 20–40% of lobby frame time when full | Low–medium | **Live** (cap 50 → 20) |
-| 9 | Bloom and sun rays scale with the preset | Post-processing cost | 0.5–2 ms GPU | Low | In Studio |
-| 10 | Weapon effects built on clients, not the server | Replication churn when firing | 70–90% less fire replication | Medium | In Studio |
+| 9 | Bloom and sun rays scale with the preset | Post-processing cost | 0.5–2 ms GPU | Low | Live |
+| 10 | Weapon effects built on clients, not the server | Replication churn when firing | 70–90% less fire replication | Medium | Live |
 
 A few notes on how we chose these:
 
@@ -215,7 +193,7 @@ A few notes on how we chose these:
 
 ## What we measured after the fixes
 
-These are before-and-after numbers from the same Studio sessions on 31 October (Studio, Mac). None of these changes is published yet.
+These are before-and-after numbers from the same Studio sessions on 31 October (Studio, Mac). All of these changes went live in the 31 October publish; the numbers are still Studio numbers, not PS4 ones.
 
 | Change | Before | After | Change |
 |---|---|---|---|
@@ -255,7 +233,7 @@ Not every lesson was about frames. These cost us time during the week, and each 
 Being specific about what we don't know is part of the method:
 
 - **The game hasn't been measured on a PS4.** Every number in this article is from Studio on a Mac, an estimate, or a setting.
-- **None of the 31 October fixes is published except the lobby player cap**, which is a dashboard setting. That includes the lower zombie caps. The rest go live after multiplayer testing and the owner's approval, and this page will be updated then.
+- **The 31 October fixes are live, but some haven't been play-tested since.** Nine of the ten ranked fixes shipped in the 31 October publish, including the lower zombie caps. A few (the animation-speed, cave-scan and rain changes) were built and checked in code but not yet in a play test. The pine tree swap hasn't started.
 - **Not yet measured:** the streaming hitch when arriving at the asylum, night lighting cost, the ritual's waves, several players firing at once, a full lobby, and CPU versus GPU on the console.
 - **Not yet reviewed by eye:** whether the Performance preset's shadow culling hides anything that matters for gameplay or changes the night's horror look.
 
@@ -300,7 +278,7 @@ They can, if they run on the server. A free-model light that flickers on the ser
 
 ### How many zombies or NPCs can a Roblox game handle on console?
 
-There's no fixed number; it depends on how heavy each character is. We cap infected at 40 at night and 56 in total in the live game, and a change to 28 at night and 40 in total is built in Studio but not yet published. Capping the count did more than making each zombie cheaper.
+There's no fixed number; it depends on how heavy each character is. Since the 31 October update the live game caps infected at 28 at night and 40 in total, down from 40 and 56. Capping the count did more than making each zombie cheaper.
 
 ### Does StreamingEnabled help performance on console?
 
@@ -317,7 +295,3 @@ Optimizing for the PS4 is mostly a matter of being honest about what you've meas
 The next step is the one that matters: a capture on a real PS4. When we have it, this page gets the device numbers, including the ones that don't flatter us.
 
 To see the game this is about, start with [Stillskin Forest](/games/stillskin-forest) and its [development log](/games/stillskin-forest/wiki/updates/development-log). For the team process behind the work, read [how to make a Roblox game with AI agents](/stillawake-times/how-to-make-a-roblox-game-with-ai-agents).
-
-## About the author
-
-[Jaeden Doody](/founder/jaeden-doody) is the Montreal-based founder of StillAwake Media, building software, AI systems, and practical business solutions for modern companies. He owns Stillskin Forest and approved the performance changes described in this article.

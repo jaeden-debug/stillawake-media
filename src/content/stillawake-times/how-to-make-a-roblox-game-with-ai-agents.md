@@ -14,7 +14,7 @@ howTo: "The method, step by step"
 
 > **Definition.** A *moderator-led multi-agent workflow* is a way to build software with several AI coding agents at once. One coordinating agent, the moderator, is the only one that talks to the human owner. It turns decisions into owned tasks, routes every change between agents, and keeps a written record of what is built, tested, blocked and approved.
 
-We used this workflow on 31 October 2026 to overhaul [Stillskin Forest](/games/stillskin-forest), our co-op zombie survival-horror game on Roblox, shortly after it went public. One moderator session coordinated seven specialist [Claude Code](https://www.anthropic.com/claude-code) sessions, all working on the same live Roblox place at the same time. This article is the full method: the roles, the documents, the rules, the templates we actually used, a timeline of the day, what broke, and when you shouldn't do this at all.
+We used this workflow on 31 October 2026 to overhaul [Stillskin Forest](/games/stillskin-forest), our co-op zombie survival-horror game on Roblox, three days after it went public on 28 October 2026. One moderator session coordinated seven specialist [Claude Code](https://www.anthropic.com/claude-code) sessions, all working on the same live Roblox place at the same time. This article is the full method: the roles, the documents, the rules, the templates we actually used, a timeline of the day, what broke, and when you shouldn't do this at all.
 
 *By Jaeden Doody · Published 31 October 2026 · Last updated and last verified 31 October 2026.*
 

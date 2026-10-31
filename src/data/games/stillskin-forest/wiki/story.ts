@@ -46,7 +46,7 @@ export const story: WikiEntry[] = [
         heading: "How it can end",
         spoiler: true,
         blocks: [
-          { type: "p", text: "There are two ways to win. Completing [the Rite of Stillness](@the-rite-of-stillness) puts the Hollow to sleep: \"THE HOLLOW SLEEPS\", \"for now\". Going down and destroying [the Heart of Stillskin](@the-heart-of-stillskin) ends it (\"Stillskin will never wake again\"); then the Hollow caves in, and getting out wins the run: \"OUT ALIVE\". Either way the win is paid at once and the run keeps going." },
+          { type: "p", text: "There are two ways to win. Completing [the Rite of Stillness](@the-rite-of-stillness) puts the Hollow to sleep: \"THE HOLLOW SLEEPS\", \"for now\". Going down and destroying [the Heart of Stillskin](@the-heart-of-stillskin) ends it (\"Stillskin will never wake again\"); then the Hollow is set to cave in, and getting out wins the run (\"OUT ALIVE\"). Either way the win is paid at once and the run keeps going." },
         ],
       },
     ],
@@ -145,14 +145,14 @@ export const story: WikiEntry[] = [
   {
     ...base,
     slug: "the-four-relics",
-    lastVerified: "2026-10-30",
+    lastVerified: "2026-10-31",
     title: "The Four Relics",
     seoTitle: "All 4 Relic Locations in Stillskin Forest",
     description:
       "Where to find all four relics in Stillskin Forest: the Sister's Rosary, the Miner's Lantern, the Angel's Tear and Dr. Vance's Ring, and what they're for.",
     question: "Where are the four relics in Stillskin Forest?",
     answer:
-      "The Sister's Rosary is in the morgue under St. Agnes Hospital. The Miner's Lantern is in the green-lit chamber of the crypt cave. The Angel's Tear is in Marion Hollis' grave, the one the angel statue points to. Dr. Vance's Ring is in his office upstairs in Blackthorn Asylum. Bring all four to the cafeteria circle for the Rite of Stillness.",
+      "The Sister's Rosary is on the autopsy table in the morgue under St. Agnes Hospital. The Miner's Lantern is in the green-lit chamber of the crypt cave. The Angel's Tear is in Marion Hollis' grave, the one the angel statue points to. Dr. Vance's Ring is in his office upstairs in Blackthorn Asylum. Each survivor finds their own; the squad fills the cafeteria circle together for the Rite of Stillness.",
     sections: [
       {
         id: "locations",
@@ -160,7 +160,7 @@ export const story: WikiEntry[] = [
         spoiler: true,
         blocks: [
           { type: "table", caption: "Relic locations", head: ["Relic", "Location", "How"], rows: [
-            ["[The Sister's Rosary](@sisters-rosary)", "[The morgue](@morgue)", "In the morgue under St. Agnes"],
+            ["[The Sister's Rosary](@sisters-rosary)", "[The morgue](@morgue)", "On the autopsy table; take the stairs down on the hospital's east side"],
             ["[The Miner's Lantern](@miners-lantern)", "[The crypt cave](@crypt-cave)", "Green-lit chamber at the bottom"],
             ["[The Angel's Tear](@angels-tear)", "[The graveyard](@graveyard)", "\"Search the grave\" at Marion Hollis' grave"],
             ["[Dr. Vance's Ring](@dr-vances-ring)", "[Blackthorn Asylum](@blackthorn-asylum)", "Vance's office, upstairs"],
@@ -170,7 +170,7 @@ export const story: WikiEntry[] = [
       },
     ],
     related: ["the-rite-of-stillness", "sisters-rosary", "miners-lantern", "angels-tear", "dr-vances-ring"],
-    sources: [SRC.playtest, SRC.report],
+    sources: [SRC.world, SRC.notes30],
     aliases: ["relics", "relic locations", "four relics", "4 relics"],
   },
   {
@@ -264,26 +264,26 @@ export const story: WikiEntry[] = [
   {
     ...base,
     slug: "notes-and-tapes",
-    lastVerified: "2026-10-30",
+    lastVerified: "2026-10-31",
     title: "Notes and Tapes",
     seoTitle: "All Notes and Tapes in Stillskin Forest",
     description:
       "Every readable note and tape in Stillskin Forest by title: how reading works, how notes are tracked in your journal, and where the tapes are.",
     question: "How many notes are in Stillskin Forest?",
     answer:
-      "The current build has 31 readable notes and 5 tapes. Walk up to a note and use its Read prompt; each new note is added to your journal (J) and counts toward the notes you've found that run. Tapes have a \"Play tape\" prompt.",
+      "The game has more than 30 readable notes and five tapes. Walk up to a note and use its Read prompt; each new note is added to your journal (J) and counts toward the notes you've found that run. Tapes have a \"Play tape\" prompt.",
     sections: [
       {
         id: "reading",
         heading: "Reading and the journal",
         blocks: [
-          { type: "p", text: "Notes open in a paper reader; close it with Esc. A toast confirms \"Added to your journal\". The journal's Notes tab keeps everything you've read." },
+          { type: "p", text: "Notes open in a paper reader; close it with E or Esc (B on a controller, or tap anywhere on a touch screen). A toast confirms \"Added to your journal\". The journal's Notes tab keeps everything you've read." },
           { type: "p", text: "Letters and tapes are personal: once you've read a letter (or stopped a tape) a quiet chime marks the find, and when you walk away it disappears for you. Your teammates still see it until they've found it themselves, and you can reread it any time in your journal." },
         ],
       },
       {
         id: "all-notes",
-        heading: "All 31 notes",
+        heading: "31 notes you can find",
         spoiler: true,
         blocks: [
           { type: "list", items: [
@@ -297,14 +297,14 @@ export const story: WikiEntry[] = [
         spoiler: true,
         blocks: [
           { type: "table", caption: "Tapes", head: ["Tape", "Where"], rows: [
-            ["Dr. Vance", "Elm 2"], ["Sister Agnes", "Elm 3"], ["The Groundskeeper", "Birch 2"], ["The Night Nurse", "Blackthorn Asylum"], ["The Records Room", "Blackthorn Asylum"],
+            ["Dr. Vance, Session 14", "Elm 2"], ["Sister Agnes", "Elm 3"], ["The Groundskeeper", "Birch 2"], ["Night Nurse", "Blackthorn Asylum"], ["Records Room", "Blackthorn Asylum"],
           ] },
         ],
       },
     ],
     related: ["story-overview", "houses-of-stillwater", "blackthorn-asylum"],
-    sources: [SRC.world, SRC.playtest],
+    sources: [SRC.world, SRC.notes30],
     aliases: ["notes", "tapes", "documents", "journal", "collectibles"],
-    gaps: ["The location of every individual note is not yet documented."],
+    gaps: ["The location of every individual note is not yet documented.", "A few newer notes are not listed here yet."],
   },
 ];
